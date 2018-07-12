@@ -17,7 +17,7 @@ This repository is split in to 2 parts.
 
 ## Labs
 
-Labs are split in to 5 levels. Each level corresponds to the grade you will earn by completing that level
+Labs have been split to 5 levels. Each level corresponds to the grade you will earn by completing that level
 
 * Level 1: For level one you don't have to participate in the lab. You earn this by attendig lectures and filling a lecture diary of corresponding topic
 * Level 2: Complete the bare minimum of the lab. You are expected to do this during lab hours

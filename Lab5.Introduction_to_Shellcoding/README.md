@@ -1,8 +1,6 @@
 Lab 5: Introduction to Shellcoding and a bit more
 ====
 
-[//]:<img src="../lib/images/oulun yliopisto_logo_eng_black_rgb.png" alt="University of Oulu" height="250px" align="right"/>
-
 Input validation and sanitization is one of the major challenges in software development. Improperly implemented validation and sanitization could lead to unexpected or unwanted situations, which have negative effect for functionality and thus security of software.
 
 Buffer overflows and buffer over-reads should be familiar topic from the lectures. These are some of the results from invalid input validation, and could lead in the worst case to possibility of arbitrary code execution in the system of vulnerable program.
@@ -13,7 +11,7 @@ Executing payloads in vulnerable program could lead to privilege escalation. Vul
 
 The intention of this exercise is to achieve hands-on experience by exploring software with improperly validated input. Further, by taking advantage of shellcoding, we should be aware of dangers what unintended behaviour of software could inflict to overall system.
 
- *The goal or intention of this exercise is **not** to courage to abuse or instruct these skills for something inappropriate.*
+ *The goal or intention of this exercise is **not** to courage to abuse or instruct these skills for something inappropriate. Can systems be truly secure, if they can't handle open discuss and testing?*
 
 ---
 Grading

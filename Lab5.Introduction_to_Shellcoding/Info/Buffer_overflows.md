@@ -98,7 +98,7 @@ Segmentation fault (core dumped)
 * Then, the malevolent input could be crafted to include machine language instructions, that the unwitting buggy program would then execute.
 * Or what if the program allows to read more data than intended?
 
-How easy is to change execution flow of this program?
+How easy is it to change execution flow of this program?
 ```c
 #include <string.h>
 #include <stdio.h>
