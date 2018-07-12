@@ -18,7 +18,7 @@ This repository is split in to 2 parts.
 ## Current state/ TODO
 
 - [ ] Lab1 ? Just tasks from previous year currently
-- [ ] Lab2 ?
+- [ ] Lab2 Level 4/5 WIP
 - [ ] Lab3 Only level/grade 5 task(s) missing?
 - [ ] Lab4
     - [ ] Missing instructions for dynamic analysis
@@ -55,7 +55,7 @@ Each lab utilizes one or multiple virtual machines. These machines can be found 
 At least following operating systems will be used:
 
 * Kali Linux - for Shellcoding, fuzzing and web security lab
-* Ubuntu 16.04 - for Botnets and malware analysis
+* Ubuntu 16.04 - for Fuzzing, Botnets and malware analysis
 * Lubuntu 16.04- Side-channel attacks with ChipWhisperer
 
 TODO at location
