@@ -15,6 +15,18 @@ This repository is split in to 2 parts.
 2. Return template folder
     * Contains material you need to return in order to pass the lab
 
+## Current state/ TODO
+
+- [ ] Lab1 ? Just tasks from previous year currently
+- [ ] Lab2 ?
+- [ ] Lab3 Only level/grade 5 task(s) missing?
+- [ ] Lab4
+    - [ ] Missing instructions for dynamic analysis
+    - [ ] Missing instructions for malware demonstration
+    - [ ] Need more ideas for level/grade 5 task(s)
+- [x] Lab5 Should be quite finished. 
+    - [ ] Have to rewrite guidelines/tutorials to buffer overflows and stack analysing, based on feedback(= combine some files)
+
 ## Labs
 
 Labs have been split to 5 levels. Each level corresponds to the grade you will earn by completing that level
