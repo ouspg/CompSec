@@ -3,17 +3,19 @@
 Exercises for computer security course in the University of Oulu
 
 <p align="center">
-<img src="lib/images/oulun yliopisto_logo_eng_black_rgb.png" alt="University of Oulu" height="400px"/>
+<img src="lib/images/oulun yliopisto_logo_eng_black_rgb.png" alt="University of Oulu" height="300px"/>
 </p>
 
 ## Contents
 
-This repository is split in to 2 parts.
+This repository is split to following contents:
 
 1. Lab folders
     * Each lab has its own folder which contains instructions on how to complete that specific lab.
-2. Return template folder
+2. Return templates
     * Contains material you need to return in order to pass the lab
+    * In future, return templates could be in own repository wheres the instructions repository is submodule of it
+    * Idea: use GitHub classroom to generate own repository for each student, and they can return their individual work this way
 
 ## Current state/ TODO
 
@@ -54,9 +56,9 @@ Each lab utilizes one or multiple virtual machines. These machines can be found 
 
 At least following operating systems will be used:
 
-* Kali Linux - for Shellcoding, fuzzing and web security lab
-* Ubuntu 16.04 - for Fuzzing, Botnets and malware analysis
-* Lubuntu 16.04- Side-channel attacks with ChipWhisperer
+* Kali Linux - for shellcoding, fuzzing and web security lab
+* Ubuntu 16.04 - for fuzzing, botnets and malware analysis
+* Lubuntu 16.04- side-channel attacks with ChipWhisperer
 
 TODO at location
 
