@@ -27,10 +27,10 @@ Tasks 3 & 4 are more advanced than earlier ones. Students will have more freedom
 
 Task|Grade/Level|Description|
 ----|:---:|-----------|
-| [Task 1](#task-1-:-basics-of-buffer-overflows "Task 1 : Basics of buffer overflows") | 1 |  Analyzing buffer overflow and changing execution flow
-|[Task 2](#task-2-:-arbitary-code-execution "Task 2 : Arbitary code execution") | 2 - 3| Arbitary code execution in vulnerable program
-|[Task 3](#task-3-:-defeating-no-execute "Task 3 : Defeating No-eXecute") | 4 | Code reuse attack techniques: ret2libc & ROP
-|[Task 4](#task-4-:-a-bit-more-advanced-rop-implementation "Task 4 : A bit more advanced ROP implementation") | 5 | Taking ROP to next level
+| [Task 1](#task-1--basics-of-buffer-overflows "Task 1 : Basics of buffer overflows") | 1 |  Analyzing buffer overflow and changing execution flow
+|[Task 2](#task-2--arbitary-code-execution "Task 2 : Arbitary code execution") | 2 - 3| Arbitary code execution in vulnerable program
+|[Task 3](#task-3--defeating-no-execute "Task 3 : Defeating No-eXecute") | 4 | Code reuse attack techniques: ret2libc & ROP
+|[Task 4](#task-4--a-bit-more-advanced-rop-implementation "Task 4 : A bit more advanced ROP implementation") | 5 | Taking ROP to next level
 
 By completing Task 1 and Task 2 A&B, you are eglible for passing the lab and getting minimum grade 2 from this lab. Completion of C part increases grade to 3.
 
