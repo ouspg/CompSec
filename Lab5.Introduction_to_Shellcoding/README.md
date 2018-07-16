@@ -147,7 +147,7 @@ It's not necessary to do functionality in C/C++ at first, if the assembly langua
 
 Finally our machine code is somehow executed in vulnerable program.
 
-Maybe the most known white paper about this method can be found [here][0].
+Extra: Maybe the most known white paper about this method can be found [here][0].
 
 ### A) Making a simple program to open Shell.
 
@@ -260,7 +260,7 @@ To be noted:
 
 One simple implementation can be found from [this][2] paper for example.
 
-Method was firstly introduced [here][3].
+Extra: Method was firstly introduced [here][3].
 
 ### B) Return-oriented programming (aka ROP)
 
@@ -283,11 +283,12 @@ But how we are actually getting and executing these gadgets?
  We could manually disassemble binaries and look for them, but that could take a lot of effort. Luckily there are now some tools what we are able to use.
 
 One very frequently updated and multipurpose tool - [radare2](https://github.com/radare/radare2) is used as example.
-Let's use once again our vulnerable program as target what we created in Task 1. Tutorial for ROP and example for using radare2 (and pwntools) with it, is [here. ](Tutorials/Tutorial3B_Radare2_and_gadgets.md) Pwntools is Python library, which helps to generate more controllable and readable payload.
+Let's use once again our vulnerable program as target what we created in Task 1. Tutorial for ROP and example for using radare2 (and pwntools) with it, is [here. ](Tutorials/Tutorial3B_Radare2_and_gadgets.md) 
+Pwntools is Python library, which helps to generate more controllable and readable payload.
 
-White paper introducing the ROP can be found [here][5].
+Simple, but practical demonstration of ROP technique can be found [here](https://tc.gtisc.gatech.edu/cs6265/2016/l/lab07-rop/README-tut.txt).
 
-Simple, but practical demonstration of technique can be found [here](https://tc.gtisc.gatech.edu/cs6265/2016/l/lab07-rop/README-tut.txt).
+Extra: White paper introducing the ROP can be found [here][5].
 
 > ***Try to get previously mentioned example (ROP_hello) [here](src/pwntools_example/ROP_hello.py) to work by yourself. Next, make simple example implementation of ROP technique. This could be spawning a local shell for example. To not make it same as ret2libc method, print some text before spawning shell, and print also something after exiting the shell. In this way we can apply some ROP - chain.***
 
@@ -328,7 +329,7 @@ This course contains lectures, coursework and five (5) guided exercises (labs). 
 
 Topic for cousework could be same than any of the topics handled in these labs, or it could be something else security related, what we haven't gone through yet.
 
-If you choose to select this lab as topic, the coursework could be combined to task 4, if you implement there something very carefully and well. 
+If you choose to select this lab as topic, the coursework could be combined to task 4, if you implement there something very carefully and well.
 
 
 

@@ -3,7 +3,7 @@
 Exercises for computer security course in the University of Oulu
 
 <p align="center">
-<img src="lib/images/oulun yliopisto_logo_eng_black_rgb.png" alt="University of Oulu" height="300px"/>
+<img src="lib/images/oulun yliopisto_logo_eng_black_rgb.png" alt="University of Oulu" height="300px" align="right"/>
 </p>
 
 ## Contents

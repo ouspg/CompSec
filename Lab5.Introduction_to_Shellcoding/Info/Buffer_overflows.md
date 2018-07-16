@@ -1,13 +1,61 @@
-## Buffer overflow problems
+# Buffer overflow problems
+
+There is a quite descriptive phrase on [CWE](http://cwe.mitre.org/top25/#CWE-120) website about the problem: "Buffer overflows are Mother Nature's little reminder of that law of physics that says: if you try to put more stuff into a container than it can hold, you're going to make a mess."
+
+In practise *software* buffer overflow means that the space reserved for data is insufficient for the data being stored.
+
+Conversely, buffer over-read means that read processing might read more than it should.
+
+Some high-level programming languages (C/C++/Objective-C) are enabling direct memory management and are not checking input against storage to prevent buffer overflows, and therefore making it possible to cause buffer overflow, when *input data* is improperly validated or sanitized. (In most cases: user input)
+
+When we are talking about user input, we might think about text at first, but this input could be anything: for example images, pdf -, audio - or video files.
+
+The are two basic categories for overflows:
+
+* stack overflows - data in the stack is overflowed
+
+* heap overflows - data in the dynamically allocated memory is overflowed
+
+Heap overflows are rare and challenging to exploit. We are getting better examples from stack overflows and therefore focusing on them.
+
+## Stack overflows
+
+We mentioned data and the space reserved for it. Insufficient space could cause overflow, but where and how more precisely?
+
+Vast majority of current modern computer computation uses stack to storage local data. Stack is pile of data, what is contolled with FILO (first in, last out) method.
+In most of the current operating systems, each application has its own stack.
+Stack is a region in computer memory, starting from higher address, growing to lower address.
+
+When application is executed, stack and registers are used for handling the execution flow of the program. Stack is divided into frames, where each of them contains running function of the program, containing data of local variables, called function parameters, function return addresses etc. For example, nesting three function calls in program could open three stack frames.
+
+More precise information is provided [here.](http://www.tenouk.com/Bufferoverflowc/Bufferoverflow2a.html)
+
+The place or reason, why stack overflow happens, is usually local variable.
+
+
+
+
+
+
+
+
+
 
 
 * **CWE-119: Improper Restriction of Operations within the Bounds of a Memory**
     * http://cwe.mitre.org/data/definitions/119.html
 *  Software buffer overflow means, that the space reserved for data is insufficient for the data being stored
-* Conversely, buffer over-read means that read processing might read more than it should.
+* 
 
-* More about buffer overflows: https://developer.apple.com/library/content/documentation/Security/Conceptual/SecureCodingGuide/Articles/BufferOverflows.html
-and http://www.tenouk.com/Bufferoverflowc/Bufferoverflow2a.html
+Sources:
+
+* [Apple Secure Coding Guide: Avoiding Buffer Overflows and Underflows](https://developer.apple.com/library/content/documentation/Security/Conceptual/SecureCodingGuide/Articles/BufferOverflows.html)
+
+* [ BUFFER OVERFLOW 6
+The Function Stack](http://www.tenouk.com/Bufferoverflowc/Bufferoverflow2a.html)
+* [7. Memory : Stack vs Heap](https://www.gribblelab.org/CBootCamp/7_Memory_Stack_vs_Heap.html)
+* [x86 Assembly Guide](http://www.cs.virginia.edu/~evans/cs216/guides/x86.html)
+
 
 |Address|Data|Comment|
 |---|---|---
@@ -57,8 +105,8 @@ return 0;
 
 * Yes, yes, of course, you could just examine the program file, because we have not taken any steps to protect the security code or the secret:
 ```shell
-[ttokola@cse-cn0001 ~/compsectesti]$ gcc -o overflow overflow.c
-[ttokola@cse-cn0001 ~/compsectesti]$ hexdump –C overflow
+$ gcc -o overflow overflow.c
+$ hexdump –C overflow
 
 00000730  0a 45 6e 74 65 72 20 73  65 63 75 72 69 74 79 20   |.Enter security |
 00000740  63 6f 64 65 20 74 6f 20  70 72 69 6e 74 20 73 65   |code to print se|
@@ -73,21 +121,21 @@ return 0;
 * The program works:
 
 ```shell
-[ttokola@cse-cn0001 ~/compsectesti]$ ./overflow
+$ ./overflow
 Enter security code to print secret>ohno
 Wrong code!
-[ttokola@cse-cn0001 ~/compsectesti]$ ./overflow
+$ ./overflow
 Enter security code to print secret>CSE-Oulu
 My secret: I love Assembly language
 ```
 * Or does it?
 
 ```shell
-[ttokola@cse-cn0001 ~/compsectesti]$ ./overflow
+$ ./overflow
 Enter security code to print secret>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 Wrong code!
 My secret: I love Assembly language
-[ttokola@cse-cn0001 ~/compsectesti]$ ./overflow
+$ ./overflow
 Enter security code to print secret>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 Wrong code!
 My secret: I love Assembly language
