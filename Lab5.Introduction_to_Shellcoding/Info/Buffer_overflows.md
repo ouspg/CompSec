@@ -35,6 +35,7 @@ The place or reason, why stack overflow happens, is usually local variable. The 
 Let's have a look on stack. Each line describes data section in correct order inside stack:
 
 *higher memory address* :arrow_up:
+
 |Data type|Address|Data|Comment|
 -|-|-|-
 |Function 1 parameter I|0xAB08 | 0x4141| Parameter 1(AA in ascii) passed to function
@@ -46,6 +47,7 @@ Let's have a look on stack. Each line describes data section in correct order in
 |Function 2 parameter II|0xAAFE | 0x0000| 
 |Function 2 etc...|... | ...| ...
 |Buffer|... | ...| Available stack space
+
 *lower memory address* :arrow_down:
 
 |
