@@ -26,8 +26,7 @@ This repository is split to following contents:
     - [ ] Missing instructions for dynamic analysis
     - [ ] Missing instructions for malware demonstration
     - [ ] Need more ideas for level/grade 5 task(s)
-- [x] Lab5 Should be quite finished. 
-    - [x] Have to rewrite guidelines/tutorials to buffer overflows and stack analysing, based on feedback(= combine some files)
+- [x] Lab5 Should be quite finished.
 
 ## Labs
 

@@ -84,13 +84,15 @@ These can be used in first tasks as well, but it is not necessary.
 ---
 Task 1 : Basics of buffer overflows
 ------
-In this first task, we are creating simple program with buffer overflow vulneralibity for analyzing the behaviour of system. With specifically crafted input, we will change the behaviour to something unintended for purpose of the program, but intended to us.
+In this first task, we are using simple program with buffer overflow vulneralibity for analyzing the behaviour of system. With specifically crafted input, we will change the behaviour to something unintended for purpose of the program, but intended to us.
 
 ### A) Creating a program with improper input validation and analyzing overflow.
  
- We want to understand very basics of what is actually happening in the stack and in the registers of the machine at the time when overflow occurs.
+We want to understand very basics of what is actually happening in the stack and in the registers of the machine at the time when overflow occurs.
 
 Short intro to buffer overflows and analyzing tutorial can be found [here](Tutorials/Tutorial1A_Analyzing_overflow.md).
+
+Try it out by yourself. It is not necessary, if you are already very familiar with topic and able to answer to bolded questions.
 
 Based on analyzing tutorial:
 
@@ -98,13 +100,13 @@ What makes this particular (rip) register so interesting? What does ret instruct
 
 This leads to conclusion, that in most cases we might need to put our buffer overflow in external function, and it's recommended to do so in this lab for not making things too hard. Depending on Operating System and architecture (x86/x64), overflowing return address of main function might not be that easy.
 
-> ***Explain shortly the role of the rip register and ret instruction, and why we are interested about them. Make a program with suitable buffer overflow vulneralibity. You can find example [here in the very end. ](Info/Buffer_overflows.md) Explain what is causing the overflow in your program.  Further, analyze your program with gdb and try to find suitable size for overflow (padding size), which starts to fill up instruction pointer register.***
+> ***Explain shortly the role of the rip register and ret instruction, and why we are interested about them. Explain what is causing the overflow in [example program. ](Info/Buffer_overflows.md).  Further, analyze this program with gdb and try to find suitable size for overflow (padding size), which starts to fill up instruction pointer register. You can also make your own program, if you want.***
 
 ### B) Adding hidden (non-used) function to previous program. (And still executing it)
 
 In short introduction to buffer overflows at previous task, there was an example about accessing secret data by just overflowing the input. In this task, we are willing to do something similar, in a bit different way. We are changing the execution flow of program to something we want.
 
-Let's add a new function to program we previously made, but never actually use it.
+Let's add a new function to previously used program , but never actually use it.
 
 We are going to execute this function by overflowing program with specified input (in other words, with our crafted payload). 
 
