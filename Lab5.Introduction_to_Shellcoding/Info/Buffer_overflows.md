@@ -30,22 +30,38 @@ When application is executed, stack and registers are used for handling the exec
 
 More precise information is provided [here.](http://www.tenouk.com/Bufferoverflowc/Bufferoverflow2a.html)
 
-The place or reason, why stack overflow happens, is usually local variable.
+The place or reason, why stack overflow happens, is usually local variable. The size for variable is defined too small in the code.
+
+Let's have a look on stack. Each line describes data section in correct order inside stack:
+
+*higher memory address* :arrow_up:
+|Data type|Address|Data|Comment|
+-|-|-|-
+|Function 1 parameter I|0xAB08 | 0x4141| Parameter 1(AA in ascii) passed to function
+|Function 1 parameter II|0xAB06 | 0x4242| Parameter 2(BB in ascii) passed to function
+|Function 1 return address|0xAB04 | 0xff6E| Place where function returns after completion
+|Function 1 Saved EBP address|0xAB02 | 0xAB09| Stack pointer of previous frame
+|Function 1 Local variables|0xAB02 | 0x0000| Reserved space for local variables, used in function
+|Function 2 parameter I|0xAB00 | 0x0000| 
+|Function 2 parameter II|0xAAFE | 0x0000| 
+|Function 2 etc...|... | ...| ...
+|Buffer|... | ...| Available stack space
+*lower memory address* :arrow_down:
+
+|
+|---|---|---
+
+
+
+
+0xAB08 | 0x0000| 
+0xAB0A | 0x0000| Buffer end
+0xAB0C | 0x1234| <- other data
 
 
 
 
 
-
-
-
-
-
-
-* **CWE-119: Improper Restriction of Operations within the Bounds of a Memory**
-    * http://cwe.mitre.org/data/definitions/119.html
-*  Software buffer overflow means, that the space reserved for data is insufficient for the data being stored
-* 
 
 Sources:
 
@@ -57,15 +73,7 @@ The Function Stack](http://www.tenouk.com/Bufferoverflowc/Bufferoverflow2a.html)
 * [x86 Assembly Guide](http://www.cs.virginia.edu/~evans/cs216/guides/x86.html)
 
 
-|Address|Data|Comment|
-|---|---|---
-0xAB00 | 0x0000| Buffer start
-0xAB02 | 0x0000| 
-0xAB04 | 0x0000| 
-0xAB06 | 0x0000| 
-0xAB08 | 0x0000| 
-0xAB0A | 0x0000| Buffer end
-0xAB0C | 0x1234| <- other data
+
 
 **A 12 byte buffer is shown on the above. How many X can be stored in to the buffer without overflow:**
 * Char
