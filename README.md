@@ -27,7 +27,7 @@ This repository is split to following contents:
     - [ ] Missing instructions for malware demonstration
     - [ ] Need more ideas for level/grade 5 task(s)
 - [x] Lab5 Should be quite finished. 
-    - [ ] Have to rewrite guidelines/tutorials to buffer overflows and stack analysing, based on feedback(= combine some files)
+    - [x] Have to rewrite guidelines/tutorials to buffer overflows and stack analysing, based on feedback(= combine some files)
 
 ## Labs
 

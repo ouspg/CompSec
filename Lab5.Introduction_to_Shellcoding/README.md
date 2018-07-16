@@ -90,9 +90,7 @@ In this first task, we are creating simple program with buffer overflow vulneral
  
  We want to understand very basics of what is actually happening in the stack and in the registers of the machine at the time when overflow occurs.
 
-Short intro to buffer overflows [here](Info/Buffer_overflows.md).
-
-Read short analyzing tutorial [here](Tutorials/Tutorial1A_Analyzing_overflow.md).
+Short intro to buffer overflows and analyzing tutorial can be found [here](Tutorials/Tutorial1A_Analyzing_overflow.md).
 
 Based on analyzing tutorial:
 
