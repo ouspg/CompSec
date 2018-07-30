@@ -25,7 +25,6 @@ This repository is split to following contents:
 - [ ] Lab4
     - [ ] Missing instructions for dynamic analysis
     - [ ] Missing instructions for malware demonstration
-    - [ ] Need more ideas for level/grade 5 task(s)
 - [x] Lab5 Should be quite finished.
 
 ## Labs
