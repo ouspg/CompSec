@@ -102,7 +102,8 @@ What SQL command did you use?
 
 ```
 Next we attempt some cross-site scripting attacks. Insert the following code snippet to "Order ID" field in "Track Orders" tab and to the search field. This should trigger the xss.
-<script>alert("XSS")</script>
+
+```<script>alert("XSS")</script>```
 
 Attack on the "Order ID" is an [reflected XSS attack](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)#Reflected_XSS_Attacks) and the attack on the searchfield is [DOM based XSS](https://www.owasp.org/index.php/DOM_Based_XSS).
 
