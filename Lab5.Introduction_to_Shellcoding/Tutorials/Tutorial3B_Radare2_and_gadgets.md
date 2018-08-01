@@ -69,7 +69,7 @@ child stopped with signal 11
 [+] SIGNAL 11 errno=0 addr=0x41414c41 code=1 ret=0
 [0x41414c41]> wopO $(dr eip)
 32
-[0x41414c41]> 
+[0x41414c41]>
 ```
 
 We can see that binary has buffer overflow vulneralibity.
@@ -88,6 +88,7 @@ At this point, it might be still unclear, what return-oriented programming actua
 First, we need to remember how function calls are usually handled in 32 bit system.
 
 Executing the function:
+
 1. Push arguments to the stack
 2. Push location of following instruction after function to stack (return address)
 3. jump to location of function start
@@ -161,7 +162,7 @@ First one to appear from the bottom:
 
 ```
 
-The address we are looking for, is 0xf7febdff. This is real address: generally it could be better to get offset from the start of library. If we look at the address, this is probably in libc. We could find suitable offset by just analyzing library alone, instead of analyzing it as dynamically linked to our program.
+The address we are looking for, is 0xf7febdff. This is real address: generally it could be better to get offset from the start of library. If we look at the address, this is probably in libc (it actually is not, bad choice!). We could find suitable offset by just analyzing library alone, instead of analyzing it as dynamically linked to our program.
 
 When system has ASLR enabled, we might need to create addresses dynamically, and therefore offsets are better choice, in case we know the version of libc in targeted system.
 
@@ -176,7 +177,9 @@ In this case, we can calculate the offset by ourself. First we need to find the 
 0xf7faf000 # 0xf7fb0000 - usr     4K s rw- /lib/i386-linux-gnu/libc-2.27.so 
 ```
 
-This is the section, which shows libc parts in memory. We are interested about first address, which is the start. Let's calculate offset:
+This is the section, which shows libc parts in memory. We are interested about first address, which is the start. If we look now the selected memory address, it is outside of scope libc, it's from some other library. We should have scrolled more to top, to get better alternative inside from libc, so the offset we are calculating is general for libc, not for this precise system.
+
+Let's calculate offset for this address anyway, it works at this situation:
 
 ```shell
 [0x56555586]> ?X 0xf7febdff -  0xf7dd7000

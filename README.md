@@ -23,7 +23,6 @@ This repository is split to following contents:
 - [ ] Lab2 Level 4/5 WIP
 - [ ] Lab3 Only level/grade 5 task(s) missing?
 - [ ] Lab4
-    - [ ] Missing instructions for dynamic analysis
     - [ ] Missing instructions for malware demonstration
 - [x] Lab5 Should be quite finished.
 
@@ -48,9 +47,9 @@ TODO
 Explanation on how to proceed
 Fork -> fill -> profit?
 
-## Virtual machines used in the Labs
+## Virtual machines
 
-Each lab utilizes one or multiple virtual machines. These machines can be found from the University drive.
+Each lab utilizes one or more virtual machines. These machines can be found from the University drive.
 
 At least following operating systems will be used:
 
@@ -66,3 +65,11 @@ Do you have a lot of ideas or suggestions to improve course?
 Fork repository, and make a pull request. Let's have a look!
 
 This might have positive effect for your grade as well.
+
+## License
+
+Any information, guidelines, tutorials, examples or code pieces here are for teaching purposes, under MIT license, unless otherwise declared.
+
+This repository contains tutorials and examples for how to use some spefic tools
+
+* The licence of corresponding tool should be applied for the usage of tool

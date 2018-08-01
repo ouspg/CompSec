@@ -22,7 +22,7 @@ Heap overflows are rare and challenging to exploit. We are getting better exampl
 
 We mentioned data and the space it required. Insufficient space could cause overflow, but where and how more precisely?
 
-Vast majority of current modern computer computation uses stack to storage local data. Stack is pile of data, what is contolled with FILO (first in, last out) method.
+Vast majority of current modern computer computation uses stack to storage local data. Stack is pile of data, what is controlled with FILO (first in, last out) method.
 In most of the current operating systems, each application has its own stack.
 Stack is a region in computer memory, starting from higher address, growing to lower address.
 
@@ -37,16 +37,16 @@ Let's have a look on stack. Each line in the folowing table describes data in co
 
 *higher memory address* :arrow_up:
 
-|Data type|Address|Data|Comment|
+Data type|Address|Data|Comment|
 -|-|-|-
-|Function 1 parameter I|0xAB08 | 0x4141| Parameter 1(AA in ascii) passed to function
-|Function 1 parameter II|0xAB06 | 0x4242| Parameter 2(BB in ascii) passed to function
-|Function 1 return address|0xAB04 | 0x????| Place where function returns after completion
-|Function 1 Saved EBP address|0xAB02 | 0xAB09| Stack pointer of previous frame
-|Function 1 Local variable I|0xAB00 | 0x0000| Reserved space for local variable, in this case 10 bytes
-|Function 2 parameter I|0xAAFB | 0x4343| CC in ascii
-|Function 2 etc...|... | ...| ...
-|Buffer|... | ...| Available stack space
+Function 1 parameter I|0xAB08 | 0x4141| Parameter 1(AA in ascii) passed to function
+Function 1 parameter II|0xAB06 | 0x4242| Parameter 2(BB in ascii) passed to function
+Function 1 return address|0xAB04 | 0x????| Place where function returns after completion
+Function 1 Saved EBP address|0xAB02 | 0xAB09| Stack pointer of previous frame
+Function 1 Local variable I|0xAB00 | 0x0000| Reserved space for local variable, in this case 10 bytes
+Function 2 parameter I|0xAAFB | 0x4343| CC in ascii
+Function 2 etc...|... | ...| ...
+Buffer|... | ...| Available stack space
 
 *lower memory address* :arrow_down: *stack grows*
 
@@ -96,6 +96,7 @@ return 0;
 ## Buffer overflow – solution 1
 
 * Yes, yes, of course, you could just examine the program file, because we have not taken any steps to protect the security code or the secret:
+
 ```shell
 $ gcc -o overflow overflow.c
 $ hexdump –C overflow
@@ -110,6 +111,7 @@ $ hexdump –C overflow
 ```
 
 ## Buffer overflow – solution 2
+
 * The program works:
 
 ```shell
@@ -120,6 +122,7 @@ $ ./overflow
 Enter security code to print secret>CSE-Oulu
 My secret: I love Assembly language
 ```
+
 * Or does it?
 
 ```shell
