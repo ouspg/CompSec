@@ -12,7 +12,7 @@ Make yourself familiar with the tools used to complete the exercises:
 
 ### **AFL** (American Fuzzy Lop) - http://lcamtuf.coredump.cx/afl/
 
-### **AddressSanitizer (ASan)** - https://github.com/google/sanitizers/wiki/AddressSanitizer
+### **AddressSanitizer** - https://github.com/google/sanitizers/wiki/AddressSanitizer
 
 ### **Valgrind** - http://valgrind.org/docs/manual/quick-start.html
 
@@ -22,22 +22,35 @@ If you use the Ubuntu VMWare image to complete the exercise, you should start by
 #### Step 1.
 Let's try out Radamsa using command line tool. Print 10 malformed samples of "Fuzztest 1337" using _echo_. 
 >***Provide the command line you used to do this.***
+```
+paste here
+```
 
 #### Step 2.
  What you just did can be done to various types of files too. Let's generate a folder full of .txt test samples for later usage. Create a .txt file, that contains text: "12 EF". Use radamsa to generate 100 fuzzed samples of the file. Create a new separate folder for the samples.
 >***Provide 2 different samples that radamsa created***
-
+```
+paste here
+```
 >***Command line used to create the samples***
-
+```
+paste here
+```
 ## Task 2:
 Your task is to analyze an example c-program *example.c*. Compile the code with appropriate sanitizer flags to enable AddressSanitizer. Run the compiled program and analyze what happens.
 
 >***Command line used to compile the program***
-
+```
+paste here
+```
 >***Screenshot of the result after running the program***
 
->***What is the error and what is causing it in this program***
+See Return_Instructions readme how to add image
 
+>***What is the error and what is causing it in this program***
+```
+answer here
+```
 ## Task 3:
 #### Step 1. 
 Download and install AFL
@@ -59,20 +72,32 @@ If you get an error regarding core dump notifications, try:
 ~$ exit
 ```
 >***Command line used to configure unrtf***
-
+```
+paste here
+```
 >***Command line used to run AFL***
-
+```
+paste here
+```
 >***Screenshot of the AFL status screen after stopping the fuzzer***
 
->***What do you think are the most interesting pieces of information in the status screen?***
+See Return_Instructions readme how to add image
 
+>***What do you think are the most interesting pieces of information in the status screen?***
+```
+answer here
+```
 ### Step 2.
 Did you find any crashes (you should)? Awesome! Let's reproduce one to see what went wrong. You can find the crashes where you specified the output folder when starting AFL fuzzer. Browse into the .../out/crashes folder, and take one .rtf file that caused crash under inspection. Runt unrtf with this file as you did with the example file earlier, but this time under Valgrind. Take a look at the Valgrind documentation how to do it, if you didn't already.
 
 >***Take a screenshot of the Valgrind result after running a testcase succesfully***
 
->***What can you tell about the crash?***
+See Return_Instructions readme how to add image
 
+>***What can you tell about the crash?***
+```
+answer here
+```
 
 ## Task 4:
 In this task you will write a small C program of your own and fuzztest it. In task 1 you created a .txt file containing "12 EF" and fuzzed samples of it, in this task we will use them. Your program must take a text file as an input and check the file for following requirements:
@@ -86,8 +111,11 @@ Compile and link your program with AddressSanitizer using appropriate flags.
 Run your program with the previously generated 100 test cases. A simple shell script loop for example is an easy way to run the test cases.
 
 >***Provide the C-code of your program***
+```c
+paste your code here
+```
 
 >***Take a screenshot of the AddressSanitizer results after running your program with the testcases. Show at least 3 ASan outputs.***
 
-
+See Return_Instructions readme how to add image
 ## Task 5: WIP?

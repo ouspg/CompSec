@@ -11,7 +11,7 @@ Because we have access to hardware, we can utilize that in our attack. We can at
 
 Idea of power analysis attack is simple. Every operation on target chip consumes different amount of energy and therefore it produces different power trace. Because we know what source code is, we know every possible operation that chip will perform and when it will perform it. We also can see from source code when the secret data affects execution and we can see the logic how secret data affects the execution and causes different energy consumption. By knowing all of that, we can deduce secret information that target contains by simply analyzing captured power traces from the device.
 
-More information about principles of power analysis can be found from Wikipedia https://en.wikipedia.org/wiki/Power_analysis and more ChipWhisperer-related information about CPA can be found from manufacturers wiki http://wiki.newae.com/Correlation_Power_Analysis
+More information about principles of power analysis can be found from [Wikipedia](https://en.wikipedia.org/wiki/Power_analysis) and more ChipWhisperer-related information about CPA can be found from manufacturers [wiki](http://wiki.newae.com/Correlation_Power_Analysis)
 
 In this lab you will be using ChipWhisperer Lite 1173. CW1173 Lite consists two parts: Capture board (bigger one) and target board (can be seen in picture below). Boards are connected to each other with serial cable and measurement connector and glitch connector. Notice that only measurement connector is needed to complete this lab and glitch connector are used only in advanced tasks. When you start doing these tasks you connect capture board to your computer with USB-cable.
 
@@ -37,7 +37,7 @@ In order for you to complete this lab you need a ChipWhisperer board + a target 
 
 # Level 2
 
-## **Getting started with device, capture program and SimpleSerial protocol**##
+## **Getting started with device, capture program and SimpleSerial protocol**
 Complete ChipWhisperer basic tutorial B1 http://wiki.newae.com/Tutorial_B1_Building_a_SimpleSerial_Project Purpose of this part is simply to give you some experience of the basic usage of ChipWhisperer which is required in later tasks of this lab exercise. You are not required to return anything for this task, but it is critical that you learn to use ChipWhisperer on basic level because otherwise all other tasks are impossible to complete. Basically important things what you will be doing in that tutorial are next:
 
 1. Learn what is SimpleSerial
@@ -138,7 +138,7 @@ Take screenshots from power trace and mark down the places where you think that 
 
 You can also use different operations and see how execution of those affects to power trace.
 
-Return screenshots of your power traces, tell what amount of which instructions you used while capturing them and tell your opinion where the execution of which operation happens.
+See the return template for more detailed instructions on what to return.
 
 ## **Breaking AES**
 Next we are going to complete the Breaking AES tutorial. Full tutorial can be found from http://wiki.newae.com/Tutorial_B5_Breaking_AES_(Straightforward). Idea of this task is to familiarize you with the Analyzer software and theory of statistical analysis of power traces. Below are simplified instructions on how to complete this part of the lab. (Remember that you can look also original tutorial because for example images of it might be good for illustrating what is supposed to happen)
@@ -176,7 +176,7 @@ Record couple of power traces manually to see how amount of different characters
 3. Learn what is resetter auxiliary module and use it manually to see that it is working.
 4. Create your own attack script which automatically does setup, tries passwords and resets device before every try.
 
-This lab is a modified version of http://wiki.newae.com/Tutorial_B3-1_Timing_Analysis_with_Power_for_Password_Bypass tutorial. Instead of manually setting most of the values we use ready made scripts to set different scope values etc.It is advised that you check this tutorial because it goes more in depth to several things. However you can complete this lab by following these steps:
+This lab is a modified version of http://wiki.newae.com/Tutorial_B3-1_Timing_Analysis_with_Power_for_Password_Bypass tutorial. Instead of manually setting most of the values we use ready made scripts to set different scope values etc. It is advised that you check this tutorial because it goes more in depth to several things. However you can complete this lab by following these steps:
 
 1. Restart the Capture software
 2. Go to \home\cwuser\Desktop\chipwhisperer\hardware\victims\firmware\basic-passwdcheck

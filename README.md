@@ -20,7 +20,7 @@ This repository is split to following contents:
 ## Current state/ TODO
 
 - [ ] Lab1 ? Just tasks from previous year currently
-- [ ] Lab2 Level 4/5 WIP
+- [ ] Lab2 Level 5 task missing for now
 - [ ] Lab3 Only level/grade 5 task(s) missing?
 - [ ] Lab4
     - [ ] Missing instructions for malware demonstration

@@ -2,11 +2,26 @@
 
 ## Level 2
 ### Inspecting power differences of operations
-Tell which instructions were used and take screenshots from power trace and mark down the places where you think that you can see different instructions to be executed. You can draw those markings to pictures or tell those by your own words (for example: “From sample x to y target is running operation A and from y to z target runs operation B).
 
-Replace the screenshot below with your own. Please have it roughly in the same scale.
+Replace the following 3 screenshots. First screenshot should contain a picture of a power trace where you are executing nothing but 30 lines of of asm mul.
+Second should contain a screenshot of a power trace where you execute nothing but 30 lines of asm nop.
+Third should contain a power trace where you execute any amount of nops or muls. You need to execute atleast 10 lines worth of each command and in total atleast 40 lines worth of assembly code. You are not required to execute the commands in 10 line chuncks and you are allowed to execute other assembly commands besides nop and mul.  
+
+Please have your screenshots roughly in the same scale as the placeholders. If your whole trace doesn't fit to that scale then you are allowed to take a larger picture.
 X: ~800-1000 samples Y: ~0,3- -0,3
-![ ](https://github.com/Nicceboy/CompSec/blob/master/Return_Instructions/images/esimerkkilab2.png  "Traces")
+
+#### Three blocks of asm mul operations
+![](images/esimerkkilab2.png  "Trace with 30 muls")
+#### Three blocks of asm nop operation
+![](images/esimerkkilab2.png  "Trace with 30 nops")
+#### Trace with ?????
+![](images/esimerkkilab2.png  "Your custom trace")
+
+*Explain what is happening and where*
+
+```
+Paste the code you used here. You only need to paste the asm volatile() blocks
+```
 
 ### Breaking AES
 
@@ -24,17 +39,19 @@ Explain shortly how the correlation power analysis works.
 Paste PASSWORD_BYPASS.py here
 ```
 
-![ ](path to picture  "Screenshot of the python console after the script has correctly guessed the password")
+![ ](images/ChipWhispererplaceholder2.png  "Screenshot of the python console after the script has correctly guessed the password")
 
 ### Breaking RSA
 
 Paste screenshot of the Difference plot here
 ![ ](path to picture  "Difference plot here")
 
-__Where did you take the reference sample?__
+__Where did you take the reference sample and why?__
+
 *answer*
 
 __What values did you use in the attack script?__
+
 *answer*
 ```
 Paste attack script here
@@ -43,14 +60,20 @@ Paste attack script here
 
 ## Glitch
 **Paste the screenshot from step 6 here**
-![ ](path to picture  "Glitched terminal here")
-**Paste the screenshot from step 12 here**
-![ ](path to picture  "Glitched terminal here")
-**Paste the screenshot from step 16 here**
-![ ](path to picture  "Glitch Explorer here")
 
-**Paste the screenshot of Glitch Explorer showing succesfull password glitch**
-![ ](path to picture  "Glitch Explorer here")
+![ ](images/ChipWhispererplaceholder2.png  "Glitched terminal here")
+
+**Paste the screenshot from step 12 here**
+
+![ ](images/ChipWhispererplaceholder2.png  "Glitched terminal here")
+
+**Paste the screenshot from step 16 here**
+
+![ ](images/ChipWhispererplaceholder1.png  "Glitch Explorer here")
+
+**Paste the screenshot of Glitch Explorer showing succesful password glitch**
+
+![ ](images/ChipWhispererplaceholder1.png  "Glitch Explorer here")
 
 ```python
 Paste your script that modfies the glitch parameters
@@ -58,4 +81,4 @@ Paste your script that modfies the glitch parameters
 ```python
 Paste your setup script
 ```
-**Paste your Glitch Explorer logs to folder logs**
+**Paste your Glitch Explorer logs to logs folder**
