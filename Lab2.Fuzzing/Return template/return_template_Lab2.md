@@ -99,7 +99,7 @@ See Return_Instructions readme how to add image
 answer here
 ```
 
-## Task 4: WIP
+## Task 4:
 In this task you will write a small C program of your own and fuzztest it. In task 1 you created a .txt file containing "12 EF" and fuzzed samples of it, in this task we will use them. Your program must take a text file as an input and check the file for following requirements:
 - First token is an **integer**
 - Second token is a **string**
