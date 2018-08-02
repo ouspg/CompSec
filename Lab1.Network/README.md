@@ -108,10 +108,24 @@ What SQL command did you use and to which field?
 
 Use SQL injection to the searchfield using [UNION](http://www.sqlinjection.net/union/) command to get all the users emails and passwordhashes and make them visible on the shop page.
 
+ __Hint__ In this exercise you need to know the name of the users table,its column number and the name of the email and password fields. These values can be **guessed**. Table and column names are obviuos. Try guessing them and check the error messages if you got it right. First form a statement that attempts to select all the columns from the users table. If the server returns "table does not exist" you guessed it wrong. If you receive the following error "SQLITE_ERROR: SELECTs to the left and right of UNION do not have the same number of result columns" you are on the right track. 
+
 What SQL command did you use?
  ``` sql
 
 ```
+
+In the contact page the UI does not allow you to leave a 0-star review. Leave a 0-star review by modifying the packet.
+
+How did you do it?
+```
+```
+Put an item to your basket and checkout. Monitor the traffic using your browsers devtools. By modifying the requests it is possible to checkout with negative amount of items. Proceed to do so.
+
+How did you do it?
+```
+```
+
 Next we attempt some cross-site scripting attacks. Insert the following code snippet to "Order ID" field in "Track Orders" tab and to the search field. This should trigger the xss.
 
 ```<script>alert("XSS")</script>```
@@ -121,27 +135,8 @@ Attack on the "Order ID" is an [reflected XSS attack](https://www.owasp.org/inde
 What is the major difference between these two types of attack?
 ```
 ```
-With the following knowledge execute an XSS attack with the code snippet you used in the earlier taks:
-* API endpoint for products is suspectiple to XSS attack
-* All users have a permission to POST new products
-* Endpoint requires a content type of json.
+TODO XSS example
 
-Paste the packet contents that you used including the headers
-```
-
-```
-Picture of the XSS attack in action
-
-Put an item to your basket and checkout. Monitor the traffic using your browsers devtools. By modifying the requests it is possible to checkout with negative amount of items. Proceed to do so.
-
-How did you do it?
-```
-```
-In the contact page the UI does not allow you to leave a 0-star review. Leave a 0-star review by modifying the packet.
-
-How did you do it?
-```
-```
 
 ## Level 4 & 5
 Following task counts as level 4 and 5 task. See "How to complete this task" for instructions on how to earn each grade.  
