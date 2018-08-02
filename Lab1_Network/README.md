@@ -1,49 +1,112 @@
 
-# Network lab
-
+Lab 1: Networks and web security
+====
 
 ## Background
 
-In this lab we will go over some basic network related security issues with the help of [OWAPS Juice Shop](https://github.com/bkimminich/juice-shop) an intentionally vulnerable web site. We will also practice capturing and analyzing traffic with [WireShark](https://www.wireshark.org/).
+It might be a very good guess, if we suppose that nowadays the most of us are browsing the Internet in daily phases. We are using wide variety of platforms and browsers to access different kind websites or web applications.
 
-## Insert theory here?
+In many cases, user is able to give some kind of *input* to these websites or applications, regardless of platform or browser.
 
-* Injection (SQL and other kind)
+What could possibly go wrong, if this user input is not properly validated or sanitizied? What if you are even able to put input to somewhere, where you are not even supposed to?
+
+In this lab we will go over some basic network and web related security issues with the help of [OWAPS Juice Shop.](https://github.com/bkimminich/juice-shop)
+
+This site could be just another website, but if we cite the developers of it: "Juice Shop is supposed to be the opposite of a best practice or template application for web developers.", we might suppose that it is not.
+
+OWASP is collecting list of top 10 security risks on [each](https://www.owasp.org/index.php/Top_10-2017_Top_10) year. Juice Shop contains them all, and therefore it is great example for examination.
+
+The intention is to learn *why* the following things on tasks are happening and how we might be able to prevent them.
+
+
+On later task we will also practise capturing and analyzing traffic with [WireShark](https://www.wireshark.org/), and further by using [nmap](https://nmap.org/) for mapping the network. Our target will be [Example Voting App](https://github.com/dockersamples/example-voting-app)
+
+Can we understand, based on pure analysis, what is happening in there?
+
+## Theory
+(Maybe put on another file)
+
+The most of the bad things are happening on the website, because user input is not properly sanitizied.
+
+http://cwe.mitre.org/top25/#CWE-120
+
+(WORK IN PROGRESS)
+
+User input related
+
+* Injections
+  * SQL
+  * Command line
 * XSS
+* [Client Side Resource Manipulation](https://www.owasp.org/index.php/Testing_for_Client_Side_Resource_Manipulation_(OTG-CLIENT-006))
 
-## Setup
+Phising/Social engineering
 
-If you are using the virtual machine provided to you by the course staff then everything should be already installed to your machine. Below are the steps to set it up on your own system.
+ * Cross-Site Request Forgery
 
-Get Docker instance
-```
+Unnessary priviledges/ No authorization
+
+ Insecure Direct Object References
+
+ Sensitive data exposure
+
+Unvalidated redirects and forwards
+
+## Prerequisities
+
+If you are using the virtual machine provided to you by the course staff,
+then everything should be already installed to your machine. 
+
+Below are the steps to set it up on your own system, in case you want to use your own computer, or your are otherwise unable to aquire provided virtual machine.
+
+Get [Docker](https://www.docker.com/) instance for Juice Shop
+```shell
 docker pull bkimminich/juice-shop
 ```
 
 Start docker instance with
-```
+```shell
 docker run --rm -p 3000:3000 bkimminich/juice-shop
 ```
-Site is hosted at
-``` 
-localhost:3000 
-```
+Site is hosted at **localhost:3000** and you are ready to go!
 
-For level 4 task the example-voting app is located at 
-```
+
+### For later level 4 task the example-voting app is located at
+```shell
 git clone https://github.com/dockersamples/example-voting-app
 ```
 
-Install Wireshark. Method depends on your operating system. 
+Install Wireshark and nmap. Method depends on your operating system.
+
+---
+Grading
+---
+You are elgible to following grades in this exercise by doing tasks as defined. Great ideas and implementations could compensate some poorly implemented ones.
+Upper grade requires that all previous ones have been done as well.
+
+It is estimated, that you are able to do Tasks 1 & 2 during lab session (4 hours).
+
+Task| Grade/Level | Description
+--|:--:|--
+1|2|Basic SQL injections and Client Side Resource Manipulation
+2|3|
+
+---
+
+## Task 1 / Level 2
+
+In level 2 and 3 tasks, you will only need your browser and it's developer tools.
+
+Observe and modify the traffic while you are browsing the site and do the following tasks.
+
+__Note__ In Firefox's devtools, in the "Headers" section of packet information, there is a handy "Edit and Resend" button Which can be used to modify packets.
 
 
+### A) Basic SQL Injections
 
-## Level 2
-
-In level 2 and 3 tasks you only need your browsers development tools. Observe and modify the traffic while you browse the site and do the following tasks.__Note__ In FireFoxes devtools, in the "Headers" section of packet information there is a handy "Edit and Resend" button Which can be used to modify packets. 
-
-Searchfield of the JuiceShop is vulnerable to SQL injections
-Inject some SQL to the searchfield and cause an error. __Hint__ Try different SQL symbols like statement terminators, comments, quotation marks. Check the network tab for servers response 
+Search field of the JuiceShop is vulnerable to SQL injections.
+Inject some SQL to the searchfield and cause an error. 
+__Hint__ Try different SQL symbols like statement terminators, comments, quotation marks. Check the network tab for servers response 
 
 What command did you use?
 ``` sql
@@ -59,18 +122,20 @@ Paste the command that the SQL server attempts to execute and replace the part(s
 
 ```
 
-This sites access control is lacking and users can in some cases access places where they should not have access to. One example is the users basket. Access other users basket
 
-How id you do it?
+### B) Modification of client-side code
+This site's access control is lacking and users can in some cases access into places where they should not be able to. One example is the user's basket. Find a way to access another users basket.
+
+How did you do it?
 ```
 ```
-Sometimes the HTML contains unwanted stuff. This site for example has a scoreboard and the top bar should contain a link to it. Use your browsers developer tools and make it visible. 
+Sometimes the HTML contains unwanted stuff. This site has for example a scoreboard, and the top bar should contain a link to it. Use your browsers developer tools and make it visible.
 __Hint__ You can edit the fields in "Inspector" tab
 
 How did you make it visible?
 ```
 ```
-Sometimes javascript has thing visible that you don't want to. For example this site has an admin page that is not linked from anywhere of the site. That pages endpoint is however visible in the javascript. Open the juice-shop-min.js with your browsers dev tools and access it. 
+Sometimes JavaScript has thing visible that you don't want to. For example this site has an admin page that is not linked from anywhere of the site. That pages endpoint is however visible in the javascript. Open the juice-shop-min.js with your browsers dev tools and access it. 
 __Hint__ Javascripts name is visible in the html code. There is a pretty print option at the bottom of the page ( "{}" - symbol) Use search to find the administration panels endpoint.
 
 What is the url to access administration panel?
@@ -83,7 +148,7 @@ __Hint__ Check the html form code.
 ```
 
 
-## Level 3
+## Task 2 / Level 3
 
 Shop has an item that has been deleted and therefore does not show on searches. Deduct how the item is marked as deleted and use SQL injection to make it visible and "buy" it. 
 __HINT__ Check the command that the SQL server attempts to execute. Also inspect the traffic that happens when you inspect an item.
