@@ -39,6 +39,9 @@ Install Wireshark. Method depends on your operating system.
 
 
 ## Level 2
+
+In level 2 and 3 tasks you only need your browsers development tools. Observe and modify the traffic while you browse the site and do the following tasks.__Note__ In FireFoxes devtools, in the "Headers" section of packet information there is a handy "Edit and Resend" button Which can be used to modify packets. 
+
 Searchfield of the JuiceShop is vulnerable to SQL injections
 Inject some SQL to the searchfield and cause an error. 
 
@@ -55,8 +58,6 @@ Paste the command that the SQL server attempts to execute and replace the part(s
 ``` sql
 
 ```
-
-Juice Shop is vulnerable to all sorts of injections. For the following tasks open your browsers developer tools and from there the network tab. Observe the traffic and modify it to complete the following tasks. __Note__ In FireFoxes devtools, in the "Headers" section of packet information there is a handy "Edit and Resend" button Which can be used to modify packets. 
 
 Access other users basket
 
