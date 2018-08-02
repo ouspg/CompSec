@@ -59,7 +59,7 @@ Paste the command that the SQL server attempts to execute and replace the part(s
 
 ```
 
-Access other users basket
+This sites access control is lacking and users can in some cases access places where they should not have access to. One example is the users basket. Access other users basket
 
 How id you do it?
 ```
