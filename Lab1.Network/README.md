@@ -99,7 +99,7 @@ How are the items "deleted"?
 ```
 Take a screenshot of the visible item.
 
-Login field is also suspectible to SQL injections. Log in as admin. __Hint__ Admin is the first user. You just have to bypass the login.
+Login field is also suspectible to SQL injections. Log in as admin. __Hint__ Admin is the first user. [You just have to bypass the login.](https://www.acunetix.com/websitesecurity/sql-injection/)
 
 What SQL command did you use and to which field?
  ``` sql
