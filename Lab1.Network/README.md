@@ -43,7 +43,7 @@ Install Wireshark. Method depends on your operating system.
 In level 2 and 3 tasks you only need your browsers development tools. Observe and modify the traffic while you browse the site and do the following tasks.__Note__ In FireFoxes devtools, in the "Headers" section of packet information there is a handy "Edit and Resend" button Which can be used to modify packets. 
 
 Searchfield of the JuiceShop is vulnerable to SQL injections
-Inject some SQL to the searchfield and cause an error. 
+Inject some SQL to the searchfield and cause an error. __Hint__ Try different SQL symbols like statement terminators, comments, quotation marks. Check the network tab for servers response 
 
 What command did you use?
 ``` sql
@@ -70,20 +70,19 @@ __Hint__ You can edit the fields in "Inspector" tab
 How did you make it visible?
 ```
 ```
-
-Paste a picture
-
-Go to "Contact Us" page. Leave a comment as someone else.
-__Hint__ Check the form code. 
-```
-```
-
 Sometimes javascript has thing visible that you don't want to. For example this site has an admin page that is not linked from anywhere of the site. That pages endpoint is however visible in the javascript. Open the juice-shop-min.js with your browsers dev tools and access it. 
-__Hint__ .js file is quite big. Use search to find the administration panels endpoint.
+__Hint__ Javascripts name is visible in the html code. There is a pretty print option at the bottom of the page ( "{}" - symbol) Use search to find the administration panels endpoint.
 
 What is the url to access administration panel?
 ```
 ```
+
+Go to "Contact Us" page. Leave a comment as someone else.
+__Hint__ Check the html form code.    
+```
+```
+
+
 
 
 ## Level 3
@@ -107,7 +106,7 @@ What SQL command did you use and to which field?
 
 ```
 
-Use SQL injection to the searchfield using UNION command to get all the users emails and passwordhashes and make them visible on the shop page.
+Use SQL injection to the searchfield using [UNION](http://www.sqlinjection.net/union/) command to get all the users emails and passwordhashes and make them visible on the shop page.
 
 What SQL command did you use?
  ``` sql
