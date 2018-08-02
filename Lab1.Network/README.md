@@ -1,19 +1,25 @@
 
 # Network lab
-## TODO 
 
-* Rewrite level 4 and 5 tasks
-* Write some background and theory
-* Go over this document and make it more plesant to read
-* Reorder some of the questions
 
 ## Background
 
-In this lab we will go over some basic network related security issues with the help of [OWAPS Juice Shop](https://github.com/bkimminich/juice-shop) an intentionally vulnerable web site.
+In this lab we will go over some basic network related security issues with the help of [OWAPS Juice Shop](https://github.com/bkimminich/juice-shop) an intentionally vulnerable web site. We will also practice capturing and analyzing traffic with [WireShark](https://www.wireshark.org/).
 
+## Insert theory here?
 
+* Injection (SQL and other kind)
+* XSS
 
 ## Setup
+
+If you are using the virtual machine provided to you by the course staff then everything should be already installed to your machine. Below are the steps to set it up on your own system.
+
+Get Docker instance
+```
+docker pull bkimminich/juice-shop
+```
+
 Start docker instance with
 ```
 docker run --rm -p 3000:3000 bkimminich/juice-shop
@@ -23,9 +29,14 @@ Site is hosted at
 localhost:3000 
 ```
 
+For level 4 task the example-voting app is located at 
+```
+git clone https://github.com/dockersamples/example-voting-app
+```
+
+Install Wireshark. Method depends on your operating system. 
 
 
-## Possible tasks:
 
 ## Level 2
 Searchfield of the JuiceShop is vulnerable to SQL injections
@@ -132,30 +143,38 @@ How did you do it?
 ```
 ```
 
-## Level 4
+## Level 4 & 5
+Following task counts as level 4 and 5 task. See "How to complete this task" for instructions on how to earn each grade.  
 
+### Setup
 
-BYOD version:
-Install wireshark, nmap and other relevant tools
-git clone https://github.com/dockersamples/example-voting-app
-
-
-Startup:
-
+Start the example-voting-app
+```
 cd example-voting-app
 docker-compose up
+```
+### Task
+Describe how the example voting app works based on port scanning with nmap and traffic captures with Wireshark. Draw a Data Flow Diagram.
+Do some security experiments (e.g. burp suite modifying traffic), and report on the results, even if unsuccessful. 
 
-Describe how the example voting app works based on port scanning (nmap) and traffic captures (e.g., wireshark). Draw a  DFD (no need to use tools, paper and picture is good :) ) . 
-
-Minimum requirement:
-
+__Hint__
+ You can draw the diagram by hand and take a picture (asuming that the picture is clear enough) or use any tool you like to draw it. 
 Scan networks (docker network ls, docker network inspect examplevotingapp_*, nmap 172.xx.0.0/24)
 Look at  https://github.com/dockersamples/example-voting-app for architecture diagram (good basis for DFD)
 Use wireshark on the two docker networks to see what happens when a vote is attempted
  
-## Level 5
-Do some security experiments (e.g. burp suite modifying traffic), and report on the results, even if unsuccessful. 
+ ### How to complete this task
 
+For level 4 completion return the following:
+* Data flow diagram
+* Short report on what kind of security experiment you tried and what was the result
+
+For level 5 completion
+* Data flow diagram
+* Short report on steps you took to analyze the network and create the diagram
+* Short report containing the following: Concept of your security experiment(What it is and how does it work?), steps you took to do the experiment, results, why did it work/not work?.
+
+Keep in mind that the experiment does not have to be succesful to grade 5. You are free to try as wacky experiment as you like. Most important aspect is that you can explain **why** it worked or not.  
 
 
 
