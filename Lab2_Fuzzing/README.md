@@ -12,11 +12,19 @@ Make yourself familiar with the tools used to complete the exercises:
 
 ### **AFL** (American Fuzzy Lop) - http://lcamtuf.coredump.cx/afl/
 
-### **AddressSanitizer (ASan)** - https://github.com/google/sanitizers/wiki/AddressSanitizer
+### **AddressSanitizer** (ASan) - https://github.com/google/sanitizers/wiki/AddressSanitizer
 
 ### **Valgrind** - http://valgrind.org/docs/manual/quick-start.html
 
 If you use the Ubuntu VMWare image to complete the exercise, you should start by installing VMWare Tools to make your life easier using the VM.
+
+Task|Grade/Level|Description|
+----|:---:|-----------|
+Task 1 | 1 | Mutated test case generation with Radamsa
+Task 2 | 2 | Analyzing a small C-program with AddressSanitizer
+Task 3 | 3 | Setting up AFL fuzzer and analyzing results
+Task 4 | 4 | Creating your own C-program and fuzztesting it
+Task 5 | 5 | WIP
 
 ## Task 1:
 #### Step 1.
