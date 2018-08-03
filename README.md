@@ -19,12 +19,12 @@ This repository is split to following contents:
 
 ## Current state/ TODO
 
-- [ ] Lab1 ? Just tasks from previous year currently
+- [ ] Lab1 Reworked all but one task. Reworded the network analysis task. Needs testing to make sure tasks are good and doable in a reasonable amount of time. 
 - [ ] Lab2 Level 5 task missing for now
 - [ ] Lab3 Only level/grade 5 task(s) missing?
 - [ ] Lab4
     - [ ] Missing instructions for malware demonstration
-- [x] Lab5 Should be quite finished.
+- [x] Lab5 Need to be tested with the virtual machine containing custom scripts. 
 
 ## Labs
 
