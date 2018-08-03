@@ -4,7 +4,7 @@ Lab 1: Networks and web security
 
 ## Background
 
-It might be a very good guess, if we suppose that nowadays the most of us are browsing the Internet in daily phases. We are using wide variety of platforms and browsers to access different kind websites or web applications.
+It might be a very good guess, if we suppose that nowadays the most of us are browsing the Internet on a daily basis. We are using a wide variety of platforms and browsers to access different kind websites or web applications.
 
 In many cases, user is able to give some kind of *input* to these websites or applications, regardless of platform or browser.
 
