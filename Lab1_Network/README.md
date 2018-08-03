@@ -24,33 +24,37 @@ On later task we will also practise capturing and analyzing traffic with [WireSh
 Can we understand, based on pure analysis, what is happening in there?
 
 ## Theory
-(Maybe put on another file)
 
-The most of the bad things are happening on the website, because user input is not properly sanitizied.
+Juiceshop is vulnerable to multiple types of [injections](https://www.owasp.org/index.php/Top_10-2017_A1-Injection). We are mostly focusing on [SQL injections](https://www.owasp.org/index.php/SQL_Injection). In SQL injection the user injects SQL code to the SQL query happening in the server side. This is usually possible because the SQL query that is happening in the server side takes the clients input as a parameter. Attacker can modify the query and this way expose, modify or even destroy data in the database. 
+
+In many places the Juice Shop is [improperly validating its inputs](https://cwe.mitre.org/data/definitions/20.html) Basically this means that the attacker is capable of crafting the input in a form that the rest of the application is not expecting. You will see this in action when you cash out with negative amount of items or when you leave a 0 star review of the store.
+
+ Usually shops like Juice Shop are made to be used by multiple users. In these cases different users have different privileges and are therefore able to access different places. For example you are able to access your basket but not other users baskets. In the same fashion only admin should be able to access the administration panel. However Juice Shops [access control is broken](https://en.wikipedia.org/wiki/Privilege_escalation) and users can access places that they should not be able.  
+
+Last thing we focus on using the Juice shop is Cross-Site Scripting. Short explanation on what Cross-Site Scripting mean taken from [OWASP](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)) "Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user. Flaws that allow these attacks to succeed are quite widespread and occur anywhere a web application uses input from a user within the output it generates without validating or encoding it.
+
+An attacker can use XSS to send a malicious script to an unsuspecting user. The end user’s browser has no way to know that the script should not be trusted, and will execute the script. Because it thinks the script came from a trusted source, the malicious script can access any cookies, session tokens, or other sensitive information retained by the browser and used with that site. These scripts can even rewrite the content of the HTML page " 
+
+
+More reading:
+
+https://cwe.mitre.org/data/definitions/20.html
+
+https://www.owasp.org/index.php/Top_10-2017_A1-Injection 
+
+https://www.owasp.org/index.php/Injection_Flaws
+
+https://www.owasp.org/index.php/SQL_Injection
 
 http://cwe.mitre.org/top25/#CWE-120
 
-(WORK IN PROGRESS)
+https://en.wikipedia.org/wiki/Privilege_escalation
 
-User input related
+https://www.owasp.org/index.php/DOM_Based_XSS
 
-* Injections
-  * SQL
-  * Command line
-* XSS
-* [Client Side Resource Manipulation](https://www.owasp.org/index.php/Testing_for_Client_Side_Resource_Manipulation_(OTG-CLIENT-006))
+https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)
 
-Phising/Social engineering
 
- * Cross-Site Request Forgery
-
-Unnessary priviledges/ No authorization
-
- Insecure Direct Object References
-
- Sensitive data exposure
-
-Unvalidated redirects and forwards
 
 ## Prerequisities
 
@@ -89,13 +93,14 @@ It is estimated, that you are able to do Tasks 1 & 2 during lab session (4 hours
 Task| Grade/Level | Description
 --|:--:|--
 1|2|Basic SQL injections and Client Side Resource Manipulation
-2|3|
-
+2|3|More complicated SQL injections, basics of Cross-Site Scripting and more Client Side Resource Manipulation
+3|4| Network traffic analysis and security experiment
+4|5| Network traffic analysis and analysis of the security experiment
 ---
 
 ## Task 1 / Level 2
 
-In level 2 and 3 tasks, you will only need your browser and it's developer tools.
+In level 2 and 3 tasks, you will only need your browser and it's developer tools. Most importantly follow the traffic in the network tab. 
 
 Observe and modify the traffic while you are browsing the site and do the following tasks.
 
@@ -203,8 +208,14 @@ Attack on the "Order ID" is an [reflected XSS attack](https://www.owasp.org/inde
 What is the major difference between these two types of attacks?
 ```
 ```
+XSS attacks above a relatively harmless. They only affect you and nobody else. It would be way more harmful if you could get the above used code snippet inside the servers database or otherwise visible to all the users. Basically you would have to create a user or a product which name is the XSS-script. Both of those are possible, however creating a user is easier. Create a user whose name is ```<script>alert('ALERT')</script>```. Go to the administration panel logged as any user to check that it worked 
 
+__Hint__ Juice Shop validates the input in the client side **but** not in the server side.
 
+*short explanation on how you did it*  
+```
+
+```
 
 ## Level 4 & 5
 Following task counts as level 4 and 5 task. See "How to complete this task" for instructions on how to earn each grade.  
@@ -217,8 +228,8 @@ cd example-voting-app
 docker-compose up
 ```
 ### Task
-Describe how the example voting app works based on port scanning with nmap and traffic captures with Wireshark. Draw a Data Flow Diagram.
-Do some security experiments (e.g. burp suite modifying traffic), and report on the results, even if unsuccessful. 
+In this task you are expected to learn to capture traffic using WireShark and to do very basic network analysis. With the knowledge you gain you are then expected to draw a data flow diagram on how the system behaves when you cast a vote or check the results. After this you try some form of a security experiment(for example modify traffic using burp). Report your result even if you are unsuccesful. 
+
 
 __Hint__
  You can draw the diagram by hand and take a picture (asuming that the picture is clear enough) or use any tool you like to draw it. 
@@ -229,15 +240,16 @@ Use wireshark on the two docker networks to see what happens when a vote is atte
  ### How to complete this task
 
 For level 4 completion return the following:
-* Data flow diagram
+* Data flow diagram of the situation where you cast a vote and when you check the results
 * Short report on what kind of security experiment you tried and what was the result
 
 For level 5 completion
-* Data flow diagram
+* Same data flow diagrams as in level 4
 * Short report on steps you took to analyze the network and create the diagram
+* Attempt two or more different security experiments
 * Short report containing the following: Concept of your security experiment(What it is and how does it work?), steps you took to do the experiment, results, why did it work/not work?.
 
-Keep in mind that the experiment does not have to be succesful to grade 5. You are free to try as wacky experiment as you like. Most important aspect is that you can explain **why** it worked or not.  
+So basically the difference between grades is documentation and experiment amount. Keep in mind that the experiments do not have to be succesful. You are free to try as wacky experiment as you like. Most important aspect is that you can explain **why** it worked or not.  
 
 
 
