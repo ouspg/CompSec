@@ -42,13 +42,15 @@ More reading:
 
 https://cwe.mitre.org/data/definitions/20.html
 
+https://www.owasp.org/index.php/Data_Validation
+
 https://www.owasp.org/index.php/Top_10-2017_A1-Injection 
 
 https://www.owasp.org/index.php/Injection_Flaws
 
 https://www.owasp.org/index.php/SQL_Injection
 
-http://cwe.mitre.org/top25/#CWE-120
+http://cwe.mitre.org/top25/
 
 https://en.wikipedia.org/wiki/Privilege_escalation
 
@@ -77,7 +79,7 @@ docker run --rm -p 3000:3000 bkimminich/juice-shop
 Site is hosted at **localhost:3000** and you are ready to go!
 
 
-### For later level 4 task the example-voting app is located at
+### For later level 4 and 5 task the example-voting app is located at
 ```shell
 git clone https://github.com/dockersamples/example-voting-app
 ```
@@ -98,6 +100,16 @@ Task| Grade/Level | Description
 2|3|More complicated SQL injections, basics of Cross-Site Scripting and more Client Side Resource Manipulation
 3|4| Network traffic analysis and security experiment
 4|5| Network traffic analysis and analysis of the security experiment
+
+
+## Particularly in tasks 1 and 2:
+
+***To be able to complete these tasks,*** you will need to explain *why things are happening*. Each answer, which is giving only pure commands or code is automatically though as uncompleted or insufficient.
+
+We happen to know, that there might be some answers availabe as wild out there.
+
+Follow Juice Shop guidlines presented [here!](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part1/rules.html)
+
 ---
 
 ## Task 1 / Level 2
@@ -111,43 +123,86 @@ __Note__ In Firefox's devtools, in the "Headers" section of packet information, 
 
 ### A) Basic SQL Injections
 
+**Noticing errors**
+
 Search field of the JuiceShop is vulnerable to SQL injections.
 Inject some SQL to the searchfield and cause an error. 
 __Hint__ Try different SQL symbols like statement terminators, comments, quotation marks. Check the network tab for servers response 
 
-What command did you use?
+What command(s) did you use?
 ``` sql
 
 ```
- What do the SQL characters you inject do (Explain each command/symbol you used)?
- ``` sql
+ What these SQL characters you used for injecting, are actually doing? (Explain each command/symbol you used, and why it is working)?
+```sql
 
 ```
  
-Paste the command that the SQL server attempts to execute and replace the part(s) taken from the searchfield with the text "SEARCHRESULT". 
+Paste here the command that the SQL server attempts to execute and replace the part(s) taken from the searchfield with the text "SEARCHRESULT". 
 ``` sql
 
 ```
 
+**A bit more concrete error**
+
+As we previously noticed, we are indeed able to inject some SQL commands to the server. Search field was not properly sanitizied. How about log-in fields?
+If this area is vulnerable, it could be very dangerous, because it might enable unauthroized access.
+
+Somehow we know that Admin user is *the first entry* in the User list.
+Can you log in as Admin with SQL - injection, based on that information? You just [have to bypass the login.](https://www.acunetix.com/websitesecurity/sql-injection/)
+
+What command(s) did you use?
+```sql
+
+```
+Why it is working/what is happening?
+```text
+
+```
+
+
 
 ### B) Modification of client-side code
-This site's access control is lacking and users can in some cases access into places where they should not be able to. One example is the user's basket. Find a way to access another users basket.
+(This task requires, that user has logged in to the some account, maybe add task like that before (Move admin task from level3))
 
-How did you do it?
+**Admin section**
+
+The Admin account which we previously "unlocked", does not actually have much special priviledges. We can see a bit more information than other users.
+
+The panel for making the admin stuff is actually hidden.
+
+Sometimes JavaScript is showing something that you don't want to. For example this site has an admin page that is not linked from anywhere of the site. That pages endpoint is however visible in the JavaScript. Open the juice-shop-min.js with your browsers dev tools and access it. 
+__Hint__ Javascripts name is visible in the html code. There is a pretty print option at the bottom of the page ( "{}" - symbol) Use search to find the administration panels endpoint.
+
+What is the url to access administration panel? You can find page even, when you are not logged in, but information is not showed. Why this still could be considered as risk?
 ```
 ```
+
+
+
+
+
+But anyway, could we control other users a bit?
+
+This site's access control is lacking and users can in some cases access into places where they should not be able to. One example is the user's basket. Find a way to access another users basket *and add some products into it*.
+
+You don't need to know anything about another users, we are using just some random victim.
+
+How did you do it? Why you were able to?
+```
+```
+
+**Scoreboard**
+
+At this point we might have seen some notifications about challenges we have completed. There is actually board about challenges you have completed and... it is behind a challenge.
+
 Sometimes the HTML contains unwanted stuff. This site has for example a scoreboard, and the top bar should contain a link to it. Use your browsers developer tools and make it visible.
 __Hint__ You can edit the fields in "Inspector" tab
 
-How did you make it visible?
+How did you make it visible? Why you were able to?
 ```
 ```
-Sometimes JavaScript has thing visible that you don't want to. For example this site has an admin page that is not linked from anywhere of the site. That pages endpoint is however visible in the javascript. Open the juice-shop-min.js with your browsers dev tools and access it. 
-__Hint__ Javascripts name is visible in the html code. There is a pretty print option at the bottom of the page ( "{}" - symbol) Use search to find the administration panels endpoint.
 
-What is the url to access administration panel?
-```
-```
 
 Go to "Contact Us" page. Leave a comment as someone else.
 __Hint__ Check the html form code.    
@@ -169,12 +224,6 @@ How are the items "deleted"?
 ```
 Take a screenshot of the visible item.
 
-Login field is also suspectible to SQL injections. Log in as admin. __Hint__ Admin is the first user. [You just have to bypass the login.](https://www.acunetix.com/websitesecurity/sql-injection/)
-
-What SQL command did you use and to which field?
- ``` sql
-
-```
 
 Use SQL injection to the searchfield using [UNION](http://www.sqlinjection.net/union/) command to get all the users emails and passwordhashes and make them visible on the shop page.
 
