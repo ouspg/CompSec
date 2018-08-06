@@ -1,5 +1,15 @@
 # **Computer security lab 3: ChipWhisperer**
-In this course this week’s theme is hardware security and this laboratory work digs deeper into the world of hardware security. In this lab you will be using ChipWhisperer hardware and tools to perform side channel attack experiments.
+
+## Before the lab 
+This lab works a little bit different than the others due to it using an external device.
+* Work is done in groups of 3-4 depending on how many people attent
+* You can make one return template for your group. Add everyones names to it. __Each person has to make a return before the deadline__   TO BE DECIDED
+* If you want to complete all the tasks you need to do them outside of the designated lab times. The way boards are loaned will be decided based on how many people need them. __Contact the assistants if you want to borrow the board__   TO BE DECIDED
+* You can use ChipWhisperer in your coursework. Please contact the assistants if you are interested on doing so. This way we can put one aside for you.  
+
+
+## Background
+This week’s theme is hardware security and this laboratory work digs deeper into the world of hardware security. In this lab you will be using ChipWhisperer hardware and tools to perform side channel attack experiments.
 
 Basic idea of this lab will be simple. Target device has secret information in its memory and we want to reveal it.
 
@@ -34,6 +44,7 @@ Notice that chipwhisperer folder location is different what is mentioned in tuto
 
 ### Requirements
 In order for you to complete this lab you need a ChipWhisperer board + a target board and a copy of ChipWhispererlubuntu virtual machine found in the course folder in the university drive.  
+
 
 # Level 2
 
@@ -119,8 +130,6 @@ Build your modified program like you did in previous task and program it to the 
 We expect that you are able to connect to device by the same way that you did in previous task. In the place of “setup_cwlite_xmega_aes.py” you should use “**setup_cwlite_xmega.py**” setup script. If you have device already up and running from the previous task, you can simply run “**setup_cwlite_xmega.py**” and it will setup everything for you.
 
 In order to be able to capture power traces we must make capture boards clock work faster. Navigate to the “Scope settings” tab in the capture software and set “Source” to be “**CLKGEN x4 via DCM**”.
-
-![alt text](pictures/screenshot1.jpg "  ")
 
 The “ADC Freq” should show 29.5 MHz (which is 4x 7.37 MHz), and the “DCM Locked” checkbox must be checked. If the DCM Locked checkbox is NOT checked, try hitting the Reset ADC DCM button again.
 
@@ -269,12 +278,11 @@ It is very likely that you have to loop through many values. Change the value *N
 
 
 
-
-
-
-
-
-
 # Level 5 
-TODO Documentation
-Glitch/analyze actual device or other more complex task  
+For level 5 complete [Breaking AES bootloader](https://wiki.newae.com/Tutorial_A5-Bonus_Breaking_AES-256_Bootloader) tutorial. You are expected to document the process. Explain what you did, what problems did you have, how did you solve them, what were the results.
+
+Alternatively you can attempt to glitch your own device. For example there is a [tutorial how to glitch raspberry pi.](https://wiki.newae.com/Tutorial_A3_VCC_Glitch_Attacks#Glitching_More_Advanced_Targets:_Raspberry_Pi) You can also analyze the power traces captured from your own device and attempt to use them for something.
+
+__Note:__ **If you decide to glitch/analyze external device you are responsible for the chipwhisperer and for the target device. We are not responsible if you break either of the devices during your experiments**
+
+If you have some other topic that uses chipwhisperer or is related to hardware security and you are interested on trying it you can do it and document the process and the results. __However__ before you do so please contact the assistants and make sure that the topic is ok. If the topic is too large for lab task it is possbile to do it later as a course work or potentially as a combined coursework + lab work. Talk with the assistants if you are interested on this path. 
