@@ -224,6 +224,10 @@ How are the items "deleted"?
 ```
 Take a screenshot of the visible item.
 
+Explain shortly the logic behind your attack. Why does it work?
+```
+
+```
 
 Use SQL injection to the searchfield using [UNION](http://www.sqlinjection.net/union/) command to get all the users emails and passwordhashes and make them visible on the shop page.
 
@@ -238,6 +242,13 @@ What SQL command did you use?
  ``` sql
 
 ```
+
+Explain shortly the logic behind your attack. Why and how does it work?
+
+```
+
+```
+
 
 In the contact page the UI does not allow you to leave a 0-star review. Leave a 0-star review by modifying the packet.
 
@@ -256,7 +267,7 @@ Next we attempt some cross-site scripting attacks. Insert the following code sni
 
 Attack on the "Order ID" is an [reflected XSS attack](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)#Reflected_XSS_Attacks) and the attack on the searchfield is [DOM based XSS](https://www.owasp.org/index.php/DOM_Based_XSS).
 
-What is the major difference between these two types of attacks?
+What is the difference between these two types of attacks? How can you protect your applications against both types of attacks?
 ```
 ```
 XSS attacks above a relatively harmless. They only affect you and nobody else. It would be way more harmful if you could get the above used code snippet inside the servers database or otherwise visible to all the users. Basically you would have to create a user or a product which name is the XSS-script. Both of those are possible, however creating a user is easier. Create a user whose name is ```<script>alert('ALERT')</script>```. Go to the administration panel logged as any user to check that it worked 
