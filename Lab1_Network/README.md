@@ -172,6 +172,7 @@ The Admin account which we previously "unlocked", does not actually have much sp
 The panel for making the admin stuff is actually hidden.
 
 Sometimes JavaScript is showing something that you don't want to. For example this site has an admin page that is not linked from anywhere of the site. That pages endpoint is however visible in the JavaScript. Open the juice-shop-min.js with your browsers dev tools and access it. 
+
 __Hint__ Javascripts name is visible in the html code. There is a pretty print option at the bottom of the page ( "{}" - symbol) Use search to find the administration panels endpoint.
 
 What is the url to access administration panel? You can find page even, when you are not logged in, but information is not showed. Why this still could be considered as risk?
@@ -213,6 +214,7 @@ __Hint__ Check the html form code.
 ## Task 2 / Level 3
 
 Shop has an item that has been deleted and therefore does not show on searches. Deduct how the item is marked as deleted and use SQL injection to make it visible and "buy" it. 
+
 __HINT__ Check the command that the SQL server attempts to execute. Also inspect the traffic that happens when you inspect an item.
 
 What SQL command did you use?
@@ -231,7 +233,7 @@ Explain shortly the logic behind your attack. Why does it work?
 
 Use SQL injection to the searchfield using [UNION](http://www.sqlinjection.net/union/) command to get all the users emails and passwordhashes and make them visible on the shop page.
 
- __Hint__ In this exercise you need to know the name of the users table,its column number and the name of the email and password fields. These values can be **guessed**. Table and column names are obviuos. Try guessing them and check the error messages if you got it right. 
+ __Hint__ In this exercise you need to know the name of the users table,its column number and the name of the email and password fields. These values can be **guessed**. Table and column names are obvious. Try guessing them and check the error messages if you got it right. 
  
  First form a statement that attempts to select all the columns from the users table. If the server returns "table does not exist" you guessed it wrong. If you receive the following error "SQLITE_ERROR: SELECTs to the left and right of UNION do not have the same number of result columns" you are on the right track. 
  
@@ -279,8 +281,34 @@ __Hint__ Juice Shop validates the input in the client side **but** not in the se
 
 ```
 
-## Level 4 & 5
-Following task counts as level 4 and 5 task. See "How to complete this task" for instructions on how to earn each grade.  
+## Level 4 
+
+The XSS attack you did in the previous task was mostly just annoying. It could however have been way more malicious. Next we are going to do just that and modify it to be way more dangerous. Your task is the following:
+
+* **Setup a server.** No need to do anything fancy. Basic python flask/http erver that can receive post requests is fine. Server can print or save the information to a file. Anything goes as long as it shows that the data entered the server.  
+* **When the user accesses the administration panel the page will look like the login page.** Page should be as similiar as possbile but small differences are fine. For example slightly different size login fields, email field not checking for @ sign etc.
+* **When the user inputs anything to the email and password fields and presses the *Login*-button all the information in the email and password fields are sent to your server.** The way you send/show the information is up to you. You just have to demostrate in the server side that the data has entered and that it is the same as inputted to the email and password fields.
+
+### Returns
+
+* Server code
+* Request you send to the server. Preferrably in a separate file
+* **Clear** instructions on how the start the server, send the Cross-Site script attack and how to verify that the information was sent to the server. 
+
+
+__Tips__  
+Refresh your mind how javascript can modify html elements.
+
+Data sending can be done using a javascript. Using buttons submit functionality is not necessary
+
+It is also handy to use programs like [curl](https://curl.haxx.se/) to send your XSS-scripts.
+
+Keep in mind that the user database is purged each time you restart the Juice Shop. If you break the system just reboot the docker container.
+
+You will likely need to format your request so that the servers JSON parser will accept it. Feel free to use tools like https://www.freeformatter.com/json-escape.html
+
+
+## Level 5
 
 ### Setup
 
@@ -301,17 +329,17 @@ Use wireshark on the two docker networks to see what happens when a vote is atte
  
  ### How to complete this task
 
-For level 4 completion return the following:
-* Data flow diagram of the situation where you cast a vote and when you check the results
-* Short report on what kind of security experiment you tried and what was the result
+Return the following:
 
-For level 5 completion
-* Same data flow diagrams as in level 4
-* Short report on steps you took to analyze the network and create the diagram
-* Attempt two or more different security experiments
-* Short report containing the following: Concept of your security experiment(What it is and how does it work?), steps you took to do the experiment, results, why did it work/not work?.
+* Data flow diagram or some other type of picture/written document that explains the dataflow in the situation where you cast a vote and when you check the results
 
-So basically the difference between grades is documentation and experiment amount. Keep in mind that the experiments do not have to be succesful. You are free to try as wacky experiment as you like. Most important aspect is that you can explain **why** it worked or not.  
+* Short explanation on the steps you took to analyze the network and create the diagram
+
+* Short explanation on what kind of security experiment you tried and what was the result
+
+
+
+
 
 
 
