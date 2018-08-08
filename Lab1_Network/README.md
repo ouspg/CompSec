@@ -5,7 +5,7 @@ Lab 1: Networks and web security
 ## Background
 
 
-It might be a very good guess, if we suppose that nowadays the most of us are browsing the Internet on a daily basis. We are using wide variety of platforms and browsers to access different kind websites or web applications.
+It is very likely that nowadays the most of us are browsing the Internet on a daily basis. We are using wide variety of platforms and browsers to access different kind websites or web applications.
 
 
 In many cases, user is able to give some kind of *input* to these websites or applications, regardless of platform or browser.
@@ -35,7 +35,7 @@ In many places the Juice Shop is [improperly validating its inputs](https://cwe.
 
 Last thing we focus on using the Juice shop is Cross-Site Scripting. Short explanation on what Cross-Site Scripting mean taken from [OWASP](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)) "Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user. Flaws that allow these attacks to succeed are quite widespread and occur anywhere a web application uses input from a user within the output it generates without validating or encoding it.
 
-An attacker can use XSS to send a malicious script to an unsuspecting user. The end user’s browser has no way to know that the script should not be trusted, and will execute the script. Because it thinks the script came from a trusted source, the malicious script can access any cookies, session tokens, or other sensitive information retained by the browser and used with that site. These scripts can even rewrite the content of the HTML page " 
+An attacker can use XSS to send a malicious script to an unsuspecting user. The end user’s browser has no way to know that the script should not be trusted, and will execute the script. Because it thinks the script came from a trusted source, the malicious script can access any cookies, session tokens, or other sensitive information retained by the browser and used with that site. These scripts can even rewrite the content of the HTML page ". During this lab you will see XSS in action and will create your own attack. 
 
 
 More reading:
@@ -61,11 +61,11 @@ https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)
 
 
 ## Prerequisities
-
 If you are using the virtual machine provided to you by the course staff,
 then everything should be already installed to your machine. 
 
 Below are the steps to set it up on your own system, in case you want to use your own computer, or your are otherwise unable to aquire provided virtual machine.
+### Level 2/3 tasks
 
 Get [Docker](https://www.docker.com/) instance for Juice Shop
 ```shell
@@ -78,13 +78,24 @@ docker run --rm -p 3000:3000 bkimminich/juice-shop
 ```
 Site is hosted at **localhost:3000** and you are ready to go!
 
+All tasks are duable using your browsers developer tools. Tasks were tested and created using Firefox but other browsers should works just as well.
 
-### For later level 4 and 5 task the example-voting app is located at
+### Level 4 task
+
+It is helpful to use programs like [curl](https://curl.haxx.se/) to send your XSS attack to the Juice Shop. Any other software that can send POST requests is also fine.
+
+You are expected to set up a basic server so having something like python and flask/BaseHttpServer is recommended.
+
+### Level 5 task
+
+the example-voting app is located at
 ```shell
 git clone https://github.com/dockersamples/example-voting-app
 ```
 
 Install Wireshark and nmap. Method depends on your operating system.
+
+For the security experiment you can use Burp, Zapp or any other tool you wish.
 
 ---
 Grading
@@ -98,8 +109,8 @@ Task| Grade/Level | Description
 --|:--:|--
 1|2|Basic SQL injections and Client Side Resource Manipulation
 2|3|More complicated SQL injections, basics of Cross-Site Scripting and more Client Side Resource Manipulation
-3|4| Network traffic analysis and security experiment
-4|5| Network traffic analysis and analysis of the security experiment
+3|4| Cross-Site Scripting attack
+4|5| Network traffic analysis and a security experiment
 
 
 ## Particularly in tasks 1 and 2:
@@ -299,8 +310,6 @@ The XSS attack you did in the previous task was mostly just annoying. It could h
 __Tips__  
 Refresh your mind how javascript can modify html elements.
 
-Data sending can be done using a javascript. Using buttons submit functionality is not necessary
-
 It is also handy to use programs like [curl](https://curl.haxx.se/) to send your XSS-scripts.
 
 Keep in mind that the user database is purged each time you restart the Juice Shop. If you break the system just reboot the docker container.
@@ -335,7 +344,7 @@ Return the following:
 
 * Short explanation on the steps you took to analyze the network and create the diagram
 
-* Short explanation on what kind of security experiment you tried and what was the result
+* Short explanation on what kind of security experiment you tried, how you did it and what was the result
 
 
 
