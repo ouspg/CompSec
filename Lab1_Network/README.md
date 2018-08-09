@@ -5,7 +5,7 @@ Lab 1: Networks and web security
 ## Background
 
 
-It might be a very good guess, if we suppose that nowadays the most of us are browsing the Internet on a daily basis. We are using wide variety of platforms and browsers to access different kind websites or web applications.
+It is very likely that nowadays the most of us are browsing the Internet on a daily basis. We are using wide variety of platforms and browsers to access different kind websites or web applications.
 
 
 In many cases, user is able to give some kind of *input* to these websites or applications, regardless of platform or browser.
@@ -35,7 +35,7 @@ In many places the Juice Shop is [improperly validating its inputs](https://cwe.
 
 Last thing we focus on using the Juice shop is Cross-Site Scripting. Short explanation on what Cross-Site Scripting mean taken from [OWASP](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)) "Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user. Flaws that allow these attacks to succeed are quite widespread and occur anywhere a web application uses input from a user within the output it generates without validating or encoding it.
 
-An attacker can use XSS to send a malicious script to an unsuspecting user. The end user’s browser has no way to know that the script should not be trusted, and will execute the script. Because it thinks the script came from a trusted source, the malicious script can access any cookies, session tokens, or other sensitive information retained by the browser and used with that site. These scripts can even rewrite the content of the HTML page " 
+An attacker can use XSS to send a malicious script to an unsuspecting user. The end user’s browser has no way to know that the script should not be trusted, and will execute the script. Because it thinks the script came from a trusted source, the malicious script can access any cookies, session tokens, or other sensitive information retained by the browser and used with that site. These scripts can even rewrite the content of the HTML page ". During this lab you will see XSS in action and will create your own attack. 
 
 
 More reading:
@@ -61,11 +61,11 @@ https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)
 
 
 ## Prerequisities
-
 If you are using the virtual machine provided to you by the course staff,
 then everything should be already installed to your machine. 
 
 Below are the steps to set it up on your own system, in case you want to use your own computer, or your are otherwise unable to aquire provided virtual machine.
+### Level 2 tasks
 
 Get [Docker](https://www.docker.com/) instance for Juice Shop
 ```shell
@@ -78,13 +78,32 @@ docker run --rm -p 3000:3000 bkimminich/juice-shop
 ```
 Site is hosted at **localhost:3000** and you are ready to go!
 
+All tasks are duable using your browsers developer tools. Tasks were tested and created using Firefox but other browsers should works just as well.
 
-### For later level 4 and 5 task the example-voting app is located at
+### level 3 task
+
+Same as above and the following:
+
+* ```git clone https://github.com/VilleKemp/Muumitalo``` follow the instruction on the git page on how to start it
+
+* For the brute forcing task the tools vary depending on how you choose to do it. Read the isntructions and proceed to get the tools you want. There are some hints in the task instruction.
+
+### Level 4 task
+
+It is helpful to use programs like [curl](https://curl.haxx.se/) to send your XSS attack to the Juice Shop. Any other software that can send POST requests is also fine.
+
+You are expected to set up a basic server so having something like python and flask/BaseHttpServer is recommended.
+
+### Level 5 task
+
+the example-voting app is located at
 ```shell
 git clone https://github.com/dockersamples/example-voting-app
 ```
 
 Install Wireshark and nmap. Method depends on your operating system.
+
+For the security experiment you can use Burp, Zapp or any other tool you wish.
 
 ---
 Grading
@@ -98,8 +117,8 @@ Task| Grade/Level | Description
 --|:--:|--
 1|2|Basic SQL injections and Client Side Resource Manipulation
 2|3|More complicated SQL injections, basics of Cross-Site Scripting and more Client Side Resource Manipulation
-3|4| Network traffic analysis and security experiment
-4|5| Network traffic analysis and analysis of the security experiment
+3|4| Cross-Site Scripting attack
+4|5| Network traffic analysis and a security experiment
 
 
 ## Particularly in tasks 1 and 2:
@@ -159,7 +178,23 @@ Why it is working/what is happening?
 ```text
 
 ```
+Shop has an item that has been deleted and therefore does not show on searches. Deduct how the item is marked as deleted and use SQL injection to make it visible and "buy" it. 
 
+__HINT__ Check the command that the SQL server attempts to execute. Also inspect the traffic that happens when you inspect an item.
+
+What SQL command did you use?
+ ``` sql
+
+```
+How are the items "deleted"?
+```
+```
+Take a screenshot of the visible item.
+
+Explain shortly the logic behind your attack. Why does it work?
+```
+
+```
 
 
 ### B) Modification of client-side code
@@ -178,10 +213,6 @@ __Hint__ Javascripts name is visible in the html code. There is a pretty print o
 What is the url to access administration panel? You can find page even, when you are not logged in, but information is not showed. Why this still could be considered as risk?
 ```
 ```
-
-
-
-
 
 But anyway, could we control other users a bit?
 
@@ -213,23 +244,7 @@ __Hint__ Check the html form code.
 
 ## Task 2 / Level 3
 
-Shop has an item that has been deleted and therefore does not show on searches. Deduct how the item is marked as deleted and use SQL injection to make it visible and "buy" it. 
 
-__HINT__ Check the command that the SQL server attempts to execute. Also inspect the traffic that happens when you inspect an item.
-
-What SQL command did you use?
- ``` sql
-
-```
-How are the items "deleted"?
-```
-```
-Take a screenshot of the visible item.
-
-Explain shortly the logic behind your attack. Why does it work?
-```
-
-```
 
 Use SQL injection to the searchfield using [UNION](http://www.sqlinjection.net/union/) command to get all the users emails and passwordhashes and make them visible on the shop page.
 
@@ -251,12 +266,6 @@ Explain shortly the logic behind your attack. Why and how does it work?
 
 ```
 
-
-In the contact page the UI does not allow you to leave a 0-star review. Leave a 0-star review by modifying the packet.
-
-How did you do it?
-```
-```
 Put an item to your basket and checkout. Monitor the traffic using your browsers devtools. By modifying the requests it is possible to checkout with negative amount of items. Proceed to do so.
 
 How did you do it?
@@ -281,6 +290,20 @@ __Hint__ Juice Shop validates the input in the client side **but** not in the se
 
 ```
 
+### Brute forcing
+
+Next we do some basic brute forcing. Do the following:
+* Start muumitalo
+* Create a wordlist containing mutations of the word "vaapukkamehu". Create mutations where individual letters case changes between upper and lower case. Also make mutations where a can be 4s and e can be 3. 
+* Brute force the right answer to the question posed by the server using above mentioned wordlist
+You can use any tools you find online. If you want to you can code your own mutator. Alternatively you can search online for a existing mutator/mutators and use them to create the wordlist. Same thing with the actual attack. You can use programs like [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) to do the actual attack after you have created the wordlist.
+#### Returns
+* Wordlist
+* Any code you created.
+* Detailed description on how you created the wordlist and how you did the brute force attack.
+
+__Hint__ Internet is full of tools to create wordlists. It is potentially easier to combine multiple tools to create the wordlist. You can use existing tools to do the attack if you don't feel like creating your own script. [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) for example can do the attack easily if you have a list containing all the mutations. Don't try to do the attack using burp community edition. It does not allow you to use files as payloads.
+
 ## Level 4 
 
 The XSS attack you did in the previous task was mostly just annoying. It could however have been way more malicious. Next we are going to do just that and modify it to be way more dangerous. Your task is the following:
@@ -298,8 +321,6 @@ The XSS attack you did in the previous task was mostly just annoying. It could h
 
 __Tips__  
 Refresh your mind how javascript can modify html elements.
-
-Data sending can be done using a javascript. Using buttons submit functionality is not necessary
 
 It is also handy to use programs like [curl](https://curl.haxx.se/) to send your XSS-scripts.
 
@@ -335,7 +356,7 @@ Return the following:
 
 * Short explanation on the steps you took to analyze the network and create the diagram
 
-* Short explanation on what kind of security experiment you tried and what was the result
+* Short explanation on what kind of security experiment you tried, how you did it and what was the result
 
 
 
