@@ -45,6 +45,12 @@ Notice that chipwhisperer folder location is different what is mentioned in tuto
 ### Requirements
 In order for you to complete this lab you need a ChipWhisperer board + a target board and a copy of ChipWhispererlubuntu virtual machine found in the course folder in the university drive.  
 
+## How to complete?
+Task of this lab are divided to 4 different levels which are also corresponding the grades that are achieved by completing them. For example, completing levels 2, 3 and 4 results grade 4 in this lab. Completing level 2 and 3 should be taking about 4 hours so you are expected to do that during classroom lab time. If you want to continue working at home with those tasks or you want to do more advanced level 4 and 5 tasks, you can disscuss about lending the equipment with course assistants.
+
+Read every task carefully before starting to work on it so you will have clear picture what you are expected to do and what you are expected to return. Every task will state clearly what you are expected to do. If you are in doubt, you can always ask further advise from lab assistants.
+
+(TODO: More info about returning stuff on git or on this template?)
 
 # Level 2
 
