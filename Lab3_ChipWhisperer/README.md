@@ -2,7 +2,7 @@
 
 ## Before the lab 
 This lab works a little bit different than the others due to it using an external device.
-* Work is done in groups of 3-4 depending on how many people attent
+* Work is done in groups of 2-4 depending on how many people attent
 * You can make one return template for your group. Add everyones names to it. __Each person has to make a return before the deadline__   TO BE DECIDED
 * If you want to complete all the tasks you need to do them outside of the designated lab times. The way boards are loaned will be decided based on how many people need them. __Contact the assistants if you want to borrow the board__   TO BE DECIDED
 * You can use ChipWhisperer in your coursework. Please contact the assistants if you are interested on doing so. This way we can put one aside for you.  
@@ -29,27 +29,25 @@ In this lab you will be using ChipWhisperer Lite 1173. CW1173 Lite consists two 
 
  More accurate documentation of it can be found from http://wiki.newae.com/CW1173_ChipWhisperer-Lite , but it should not be needed for basic tasks.
 
-Beware of static electricity. Discharge of static electricity can be harmful to board.
-
-Level 2 and 3 are meant to be done in this lab exercise. If you want to get higher grade, you can loan the equipment and complete level 4 or 5 tasks at your own time.
-
-__TIPS & TRICKS__
-You might have to unplug/plug USB cable again if computer or the capture software does not recognize the device. You also might have to unplug/plug device from virtual machine top right corner to make it detect it.
-
-Notice that you have to be connecting serial cable and measure ports, glitch port is not needed in this task.
-
-Notice that machines default username is **cwuser** and password is **cwpassword** in case you happen to need it
-
-Notice that chipwhisperer folder location is different what is mentioned in tutorial!. Chipwhisperer files are located on the desktop
 
 ### Requirements
-In order for you to complete this lab you need a ChipWhisperer board + a target board and a copy of ChipWhispererlubuntu virtual machine found in the course folder in the university drive.  
+In order for you to complete this lab you need a ChipWhisperer board + a target board and a copy of ChipWhispererlubuntu virtual machine found in the course folder in the university drive. You can also setup ChipWhisperer capture and analyze software separately to your own machine if you find it more suitable solution for you.
 
+## How to complete?
+Task of this lab are divided to 4 different levels which are also corresponding the grades that are achieved by completing them. For example, completing levels 2, 3 and 4 results grade 4 in this lab. Completing level 2 and 3 should be taking about 4 hours so you are expected to do that during classroom lab time. If you want to continue working at home with those tasks or you want to do more advanced level 4 and 5 tasks, you can disscuss about lending the equipment with course assistants.
+
+Read every task carefully before starting to work on it so you will have clear picture what you are expected to do and what you are expected to return. Every task will state clearly what you are expected to do. If you are in doubt, you can always ask further advise from lab assistants.
+
+It is also recommended to read background information about different issues from links that are offereded in tasks.
+
+(TODO: More info about returning stuff on git or on this template?)
 
 # Level 2
 
+Level 2 tasks are meant to be relatively simple tasks to help you understand that what is the Chipwhisperer device and what can be done with it.
+
 ## **Getting started with device, capture program and SimpleSerial protocol**
-Complete ChipWhisperer basic tutorial B1 http://wiki.newae.com/Tutorial_B1_Building_a_SimpleSerial_Project Purpose of this part is simply to give you some experience of the basic usage of ChipWhisperer which is required in later tasks of this lab exercise. You are not required to return anything for this task, but it is critical that you learn to use ChipWhisperer on basic level because otherwise all other tasks are impossible to complete. Basically important things what you will be doing in that tutorial are next:
+Complete ChipWhisperer basic tutorial B1 http://wiki.newae.com/Tutorial_B1_Building_a_SimpleSerial_Project Purpose of this part is simply to give you some experience of the basic usage of ChipWhisperer which is required in later tasks of this lab exercise. **You are not required to return anything for this task**, but it is critical that you learn to use ChipWhisperer on basic level because otherwise all other tasks are impossible to complete. Basically important things what you will be doing in that tutorial are next:
 
 1. Learn what is SimpleSerial
 2. Build basic example (Notice that ChipWhisperer device is referred as CW1173, but target chip platform is type CW303 and you have to build program for that platform)
@@ -57,7 +55,16 @@ Complete ChipWhisperer basic tutorial B1 http://wiki.newae.com/Tutorial_B1_Build
 4. Use capture software to connect the device
 5. Upload built example to the target device and test it
 
+__TIPS & TRICKS__
+* You might have to unplug/plug USB cable again if computer or the capture software does not recognize the device. You also might have to unplug/plug device from virtual machine top right corner to make it detect it.
 
+* Notice that you have to be connecting serial cable and measure ports, glitch port is not needed in this task.
+
+* Notice that machines default username is **cwuser** and password is **cwpassword** in case you happen to need it
+
+* Notice that chipwhisperer folder location is different what is mentioned in tutorial!. Chipwhisperer files are located on the desktop
+
+* Beware of static electricity. Discharge of static electricity can be harmful to board.
 
 ## **Inspecting power differences of operations**
 
@@ -168,12 +175,15 @@ First, read the theoretical basis of CPA so you can understand better what is id
 11. Switch to Results tab and execute the attack_cpa-py script
 
 __What to do to complete this task?__
-Explain shortly how the correlation power analysis works.
+
+**Explain shortly how the correlation power analysis that you just performed works.**
 
 **TIPS & TRICKS**
-If you are interested logic behind breaking AES encryption, you can find more detailed information about inner workings of attack script from tutorial http://wiki.newae.com/Tutorial_B6_Breaking_AES_(Manual_CPA_Attack) 
+* If you are interested logic behind breaking AES encryption, you can find more detailed information about inner workings of attack script from tutorial http://wiki.newae.com/Tutorial_B6_Breaking_AES_(Manual_CPA_Attack) 
 
 # Level 3
+
+Level 3 tasks are harder than previous ones. Basic understanding of Python is recommended when doing these tasks.
 
 ## **Password bypass with power analysis**
 In this task you will extract password from secure device by analyzing the power traces of device when it processes your login attempts. You will also learn how to use python scripts to control ChipWhisperer software. 
@@ -213,10 +223,11 @@ __HINT__: Use password guesses where the first letter is wrong, then the second 
 It is advised that you learn what each of the lines in this code do. It will be helpful if you are planning on working more with the ChipWhisperer. However for this exercise you only have to modify the commented part of the code.
 
 __What to do to complete this task?__
-Return code + screenshot of the Python console.
+
+Return your code + screenshot of the Python console. TODO: Do we require also some kind of explanations addition to code and values?
 
 ## **Breaking RSA**
-Last task for this lab session is breaking last 2 bytes of RSA key by analyzing captured power traces with python scripts.
+Last task for this level is breaking last 2 bytes of RSA key by analyzing captured power traces with python scripts.
 
 This task is done by following ChipWhisperer tutorial B11 http://wiki.newae.com/Tutorial_B11_Breaking_RSA Notice that you do not have to do last chapter “Extending the tutorial”!
 
