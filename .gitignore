@@ -17,4 +17,15 @@ Lab5_Introduction_to_Shellcoding/src/pwntools_example/pattern\.rr2
 
 Lab4\_Botnets_and_malwares/see/hooks/__pycache__/
 
-Lab4_Botnets_and_malwares/see/sampleExecution\.log
+Lab4_Botnets_and_malwares/see/conf/imageInfo/windows7\.xml
+
+Lab4_Botnets_and_malwares/see/conf/imageInfo/windows7.xml
+
+*.log
+!important.log
+
+Lab4_Botnets_and_malwares/see/screenshots
+
+Lab4_Botnets_and_malwares/see/disklogs/filesystem.json
+
+Lab4_Botnets_and_malwares/see/malware/malwares
