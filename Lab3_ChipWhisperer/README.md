@@ -182,7 +182,7 @@ __What to do to complete this task?__
 **Explain shortly how the correlation power analysis that you just performed works.**
 
 **TIPS & TRICKS**
-* If you are interested logic behind breaking AES encryption, you can find more detailed information about inner workings of attack script from tutorial http://wiki.newae.com/Tutorial_B6_Breaking_AES_(Manual_CPA_Attack) 
+* If you are interested logic behind breaking AES encryption, look at tutorial http://wiki.newae.com/Tutorial_B6_Breaking_AES_(Manual_CPA_Attack) which explains how to perform this task manually.
 
 # Level 3
 
@@ -240,6 +240,29 @@ In that tutorial you will be doing next main steps:
 2. Build and upload program to target device (like you did in previous tasks).
 3. Experiment with different plaintext inputs and capture and save power traces for later analysis. (Notice that tutorial says “The RSA demo does not support sending a key, and instead will use the plaintext as a fake-key.” So the plaintext is actually key that RSA is using)
 4. Write python script that solves last 2 bytes of encryption key by comparing captured power traces to reference sample.
+
+TODO: Explain here what we are doing next and why. (explain also that plaintext is actually key because of script)
+
+1. Start the Capture software
+2. Go to */home/cwuser/chipwhisperer/hardware/victims/firmware/simpleserial-rsa*
+3. Make the program with the command make PLATFORM=CW303.
+4. Execute connect_cwlite_simpleserial.py in the Capture software to connect the device.
+5. Execute setup_cwlite_xmega.py script in Capture software.
+6. Load program that you just made to the target board similar way that you did in previous tasks.
+7. Run script setup_breaking_rsa.py to setup some initial values.
+8. On *Generic settings*, change plaintext to be fixed at value `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00` and press capture button to confirm that it works as expected
+9. On *Generic settings*, change *Number of traces* and *Traces per set* to 2
+10. Save the project file as rsa_test_2bytes.cwp or any other name that you can find easily.
+11. Set the fixed plaintext to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00`, press "Capture M".
+12. Set the fixed plaintext to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 81 40`, press "Capture M".
+13. Set the fixed plaintext to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 AB E2`, press "Capture M".
+14. Set the fixed plaintext to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 AB E3`, press "Capture M".
+15. Save the project.
+16. Check from Project -> Trace management that you have successfully saved 8 different traces to this project.
+
+TODO: Explain here what we should have now and what were doing next and based on what
+
+TODO: Add modified attack script here. Modded script should have lots of plotting and here should be explained what to do and main work is just to make script working. Explain what parts should be changed and let student do the rest.
 
 __What to do to complete the task?__
 
