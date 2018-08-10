@@ -150,17 +150,20 @@ __What to do to complete this task__
 
 Modify your code by adding more nop and mul instructions to code and inspect how power trace changes. Remember that you have to rebuild and reload program to target device every time you change it.
 
-Take screenshots from power trace and mark down the places where you think that you can see different instructions to be executed. You can draw those markings to pictures or tell those by your own words (for example: “From sample x to y target is running operation A and from y to z target runs operation B).
+It is advisable to try least of couple different amounts of muls and nops and plot traces to same image to notice easily that what is happening.
 
-You can also use different operations and see how execution of those affects to power trace.
+Take screenshots from power trace and mark down the places where you think that you can see different instructions to be executed. You can draw those markings to pictures or tell those by your own words (for example: “From sample x to y target is running operation A and from y to z target runs operation B).
 
 See the return template for more detailed instructions on what to return.
 
 ## **Breaking AES**
-Next we are going to complete the Breaking AES tutorial. Full tutorial can be found from http://wiki.newae.com/Tutorial_B5_Breaking_AES_(Straightforward). Idea of this task is to familiarize you with the Analyzer software and theory of statistical analysis of power traces. Below are simplified instructions on how to complete this part of the lab. (Remember that you can look also original tutorial because for example images of it might be good for illustrating what is supposed to happen)
+In this task we are going to break AES with attack scripts that already exist in ChipWhisperer software. This task is based on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B5_Breaking_AES_(Straightforward).
+
+Idea of this task is to familiarize you with the Analyzer software and theory of statistical analysis of power traces. (Remember that you can look also original tutorial because for example images of it might be good for illustrating what is supposed to happen)
 
 First, read the theoretical basis of CPA so you can understand better what is idea of this task. http://wiki.newae.com/Correlation_Power_Analysis 
 
+Task should be doable by following instructions below, but feel free to look the original tutorial for hints. Especially pictures of it can be useful to help you understand what is supposed to happen during the steps.
 
 1. Make sure your Chipwhisperer is still connected(Master, Scope and Target buttons on the top panel are green) If this is not the case execute the "connect_cwlite_simpleserial.py" script
 2. Build the file simpleserial-aes to the target board the same way you did in the previous task. File can be found from *chipwhisperer\hardware\victims\firmware\simpleserial-aes*
