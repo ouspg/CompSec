@@ -230,37 +230,30 @@ __What to do to complete this task?__
 Return your code + screenshot of the Python console. TODO: Do we require also some kind of explanations addition to code and values?
 
 ## **Breaking RSA**
-Last task for this level is breaking last 2 bytes of RSA key by analyzing captured power traces with python scripts.
+Last task for this level is about principles of reading private key of RSA algorithm during decryption by analysing captured power traces with python scripts.
 
 This task is based on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B11_Breaking_RSA. This task should be able to be completed by following instructions below, but feel free to look at original tutorial because pictures and related information it contains might be helpful when you do this task.
 
 First, if you do not know what is RSA, you can find basic information about if from https://en.wikipedia.org/wiki/RSA_(cryptosystem)
 
-
-
-In that tutorial you will be doing next main steps:
-
-1. Understanding how RSA works and what is the weakpoint of it against power analysis.
-2. Build and upload program to target device (like you did in previous tasks).
-3. Experiment with different plaintext inputs and capture and save power traces for later analysis. (Notice that tutorial says “The RSA demo does not support sending a key, and instead will use the plaintext as a fake-key.” So the plaintext is actually key that RSA is using)
-4. Write python script that solves last 2 bytes of encryption key by comparing captured power traces to reference sample.
-
-TODO: Clarify that this is only 16 bit thing and modded algo we are attacking
+TODO: Breaking rsa theory part
 
 ChipWhisperer RSA demo what we will be using in this task has 2 modes: Real RSA algorithm (which is way too slow for our testing purposes) and "faked" stripped version of RSA algorithm (which is using last 16 bits of private key and executing only the vulnerable part of RSA implementation). We will be using latter one version to demonstrate RSA vulnerability against power analysis.
 
-TODO: Explain here what we are doing next and why. (explain also that plaintext is actually key because of script)
+When we use demo script (simplified version), we send "fixed plaintext" to algorithm. This is actually misleading, because send plaintext is used as "fake private key" to decrypt message. We do not care about actual message or resulting plaintext at all because our analysis targets only on private key so actual message and plaintext are irrelevant.
+
+First, we setup target board, capture multiple power traces with different keys and save them to project file.
 
 1. Start the Capture software
 2. Go to */home/cwuser/chipwhisperer/hardware/victims/firmware/simpleserial-rsa*
-3. Make the program with the command make PLATFORM=CW303.
+3. Make the program with the command `make PLATFORM=CW303` like you did in previous tasks.
 4. Execute connect_cwlite_simpleserial.py in the Capture software to connect the device.
 5. Execute setup_cwlite_xmega.py script in Capture software.
 6. Load program that you just made to the target board similar way that you did in previous tasks.
 7. Run script setup_breaking_rsa.py to setup some initial values.
 8. On *Generic settings*, change plaintext to be fixed at value `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00` and press capture button to confirm that it works as expected
 9. On *Generic settings*, change *Number of traces* and *Traces per set* to 2
-10. Save the project file as rsa_test_2bytes.cwp or any other name that you can find easily.
+10. Save the project file as rsa_test_2bytes.cwp or any other name or location that you can find easily.
 11. Set the fixed plaintext to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00`, press "Capture M".
 12. Set the fixed plaintext to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 81 40`, press "Capture M".
 13. Set the fixed plaintext to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 AB E2`, press "Capture M".
