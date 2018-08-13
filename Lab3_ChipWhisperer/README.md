@@ -314,7 +314,7 @@ show()
 
 Above script takes reference pattern from trace 0 and then uses it to trace 3 to look for places that are matching to it. Notice that above code produces "difference plot" so every time plot falls close to zero it means that match is found.
 
-Values of this script are most likely not correct. You are expected to find suitable reference pattern yourself by inspecting power trace and difference plot.
+Values of this script might not work. You are expected to find suitable reference pattern yourself by inspecting power trace and difference plot.
 
 __HINT__: Remember that your ending goal is to find execution time of vulnerable code. Therefore you should find reference pattern that is found always before and after vulnerable code. Expect that you might have to use some time for finding good one. You can consider that you have good reference pattern when your difference plot has clear and stable set of close-to-zero spikes.
 
@@ -326,21 +326,53 @@ plot(corr_data, 'r')
 show()
 ```
 
-TODO: Add modified attack script here. Modded script should have lots of plotting and here should be explained what to do and main work is just to make script working. Explain what parts should be changed and let student do the rest.
+This is sample how you can print the distance between found matches.
+```Python
+diffs = np.array(diffs)
+loc = np.where(diffs < 10)
 
-__What to do to complete the task?__
+#Get actual list
+loc = loc[0]
 
-When you have completed the tutorial and your script outputs correct result for last 2 bytes, you can consider yourself successful. Take screenshot of your “Difference plot” and tell where you took your reference sample. Tell what values you had to use in attack script to make it work correctly. Also tell if you had to modify attack script to make it detect spikes correctly and how you modified it.
+for i in range(0, len(loc)-1):
+    delta = loc[i+1]-loc[i]
+    print diff
+```
+
+And this is example how key could be solved from time distance of matches.
+```Python
+recovered_key = 0x0000
+bitnum = 17
+
+diffs = np.array(diffs)
+loc = np.where(diffs < 10)
+
+#Get actual list
+loc = loc[0]
+
+for i in range(0, len(loc)-1):
+    delta = loc[i+1]-loc[i]
+    bitnum -= 1
+
+    if delta > 1300:
+       recovered_key |= 1<<bitnum
+    
+print("Key = %04x"%recovered_key)
+```
+
+__What to do to complete this task?__
+
+Now you have to combine those scripts to the program which automatically solves the key for you. Notice that you will most likely change several hardcoded values and possibly make small modifications to make the code to work.
+
+Your complete program should be able to require correct keys `8140` and `ABE2` for corresponding traces.
+
+Can your program solve key `ABE3` for corresponding trace? If not, tell why it does not work. How you could fix that?
+
+Return you answers to above questions and complete code to .... TBA
 
 **TIPS & TRICKS**
 
-Full attack script can be found at the end of the tutorial. Feel free to use it or get advice from it.
-
-You will most likely have to modify hard coded values (delta, d, start and any other variable that depends on them) in attack script to make it work. You might also have to write couple lines of code to check that script does not see one negative spike as multiple spikes because it has multiple values under “d” threshold.
-
-Notice that quality of your “difference plot” is highly dependent of your reference sample. You most likely have to use some time for finding good reference sample.
-
-Pay close attention to the number of negative spikes in difference plot. 16 easily distinguishable spikes are needed to make example attack script work, but it is not necessary if you understand the meaning of every spike and are ready to modify code little.
+Notice that quality of your “difference plot” is highly dependent of your reference sample. Do not choose it hastily.
 
 # Level 4
 TODO Documentation
