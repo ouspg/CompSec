@@ -232,7 +232,11 @@ Return your code + screenshot of the Python console. TODO: Do we require also so
 ## **Breaking RSA**
 Last task for this level is breaking last 2 bytes of RSA key by analyzing captured power traces with python scripts.
 
-This task is done by following ChipWhisperer tutorial B11 http://wiki.newae.com/Tutorial_B11_Breaking_RSA Notice that you do not have to do last chapter “Extending the tutorial”!
+This task is based on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B11_Breaking_RSA. This task should be able to be completed by following instructions below, but feel free to look at original tutorial because pictures and related information it contains might be helpful when you do this task.
+
+First, if you do not know what is RSA, you can find basic information about if from https://en.wikipedia.org/wiki/RSA_(cryptosystem)
+
+
 
 In that tutorial you will be doing next main steps:
 
@@ -240,6 +244,10 @@ In that tutorial you will be doing next main steps:
 2. Build and upload program to target device (like you did in previous tasks).
 3. Experiment with different plaintext inputs and capture and save power traces for later analysis. (Notice that tutorial says “The RSA demo does not support sending a key, and instead will use the plaintext as a fake-key.” So the plaintext is actually key that RSA is using)
 4. Write python script that solves last 2 bytes of encryption key by comparing captured power traces to reference sample.
+
+TODO: Clarify that this is only 16 bit thing and modded algo we are attacking
+
+ChipWhisperer RSA demo what we will be using in this task has 2 modes: Real RSA algorithm (which is way too slow for our testing purposes) and "faked" stripped version of RSA algorithm (which is using last 16 bits of private key and executing only the vulnerable part of RSA implementation). We will be using latter one version to demonstrate RSA vulnerability against power analysis.
 
 TODO: Explain here what we are doing next and why. (explain also that plaintext is actually key because of script)
 
