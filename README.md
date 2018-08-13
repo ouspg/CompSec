@@ -22,15 +22,14 @@ This repository is split to following contents:
 - [ ] Lab1 Reworked all but one task. Reworded the network analysis task. Needs testing to make sure tasks are good and doable in a reasonable amount of time. 
 - [ ] Lab2 Level 5 task missing for now
 - [ ] Lab3 Only level/grade 5 task(s) missing?
-- [ ] Lab4
-    - [ ] Missing instructions for malware demonstration
-- [x] Lab5 Need to be tested with the virtual machine containing custom scripts. 
+- [x] Lab4 Should be finished
+- [x] Lab5 Should be finished.
 
 ## Labs
 
 Labs have been split to 5 levels. Each level corresponds to the grade you will earn by completing that level
 
-* Level 1: For level one you don't have to participate in the lab. You earn this by attendig lectures and filling a lecture diary of corresponding topic
+* Level 1: For level one you don't have to participate in the lab. You earn this by attending lectures and filling a lecture diary/tasks of corresponding topic
 * Level 2: Complete the bare minimum of the lab. You are expected to do this during lab hours
 * Level 3: Complete the whole lab without extra work. You are expexted to do this during the lab hours but you are allowed to finish it on your own time
 * Level 4: Complete the above and some extra work. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return them to the assistants before the deadline
