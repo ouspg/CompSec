@@ -232,7 +232,7 @@ Return your code + screenshot of the Python console. TODO: Do we require also so
 ## **Breaking RSA**
 Last task for this level is about principles of reading private key of RSA algorithm during decryption by analysing captured power traces with python scripts.
 
-This task is based on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B11_Breaking_RSA. This task should be able to be completed by following instructions below, but feel free to look at original tutorial because pictures and related information it contains might be helpful when you do this task.
+This task and example scripts are taken from on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B11_Breaking_RSA. This task should be able to be completed by following instructions below, but feel free to look at original tutorial because pictures and related information it contains might be helpful when you do this task.
 
 First, if you do not know what is RSA, you can find basic information about if from https://en.wikipedia.org/wiki/RSA_(cryptosystem)
 
@@ -262,6 +262,69 @@ First, we setup target board, capture multiple power traces with different keys 
 16. Check from Project -> Trace management that you have successfully saved 8 different traces to this project.
 
 TODO: Explain here what we should have now and what were doing next and based on what
+
+Technically it could be possible to determine private key by examinging power traces just by looking at them and plotting them carefully on top of each other, but we of course want automated attack instead of manual attack.
+
+Now we have successfully saved power traces for different private keys and next we analyze those with Python scripts. Capture sofware and ChipWhisperer board are not needed anymore if you have saved correct power traces successfully.
+
+Basically we will do next:
+1. Load power trace to script
+2. Find good reference pattern from power trace
+3. By using reference pattern, calculate execution times for every looping of vulnerable code in order to find out if processed bit of private key was 0 or 1
+
+Lets start with loading power trace and plotting it to the image. Write your own script and run it from command line.
+
+```Python
+from chipwhisperer.common.api.CWCoreAPI import CWCoreAPI
+from matplotlib.pylab import *
+import numpy as np
+
+cwapi = CWCoreAPI()
+cwapi.openProject(r'c:\examplelocation\rsa_test.cwp')
+
+tm = cwapi.project().traceManager()
+ntraces = tm.numTraces()
+
+#Reference trace
+trace_ref = tm.getTrace(0)
+
+plot(trace_ref)
+show()
+```
+
+By looking at image you should be seeing power trace "as-it-is". Next step is to take suitable reference pattern from power trace. Extend your code.
+
+```Python
+#The target trace we will attack
+target_trace_number = 3
+
+start = 3600
+rsa_one = trace_ref[start:(start+500)]
+        
+diffs = []
+
+for i in range(0, 23499):
+    
+    diff = tm.getTrace(target_trace_number)[i:(i+len(rsa_one))] - rsa_one    
+    diffs.append(np.sum(abs(diff)))
+
+plot(diffs)
+show()
+```
+
+Above script takes reference pattern from trace 0 and then uses it to trace 3 to look for places that are matching to it. Notice that above code produces "difference plot" so every time plot falls close to zero it means that match is found.
+
+Values of this script are most likely not correct. You are expected to find suitable reference pattern yourself by inspecting power trace and difference plot.
+
+__HINT__: Remember that your ending goal is to find execution time of vulnerable code. Therefore you should find reference pattern that is found always before and after vulnerable code. Expect that you might have to use some time for finding good one. You can consider that you have good reference pattern when your difference plot has clear and stable set of close-to-zero spikes.
+
+__EXTRA__: You are not limited to use sum of differences as metric if you dont want to. For example correlation might be useful tool.
+
+```Python
+corr_data = np.correlate(rsa_one,  tm.getTrace(target_trace_number), mode='full')
+plot(corr_data, 'r')
+show()
+```
 
 TODO: Add modified attack script here. Modded script should have lots of plotting and here should be explained what to do and main work is just to make script working. Explain what parts should be changed and let student do the rest.
 
