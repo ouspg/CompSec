@@ -68,9 +68,9 @@ __TIPS & TRICKS__
 
 ## **Inspecting power differences of operations**
 
-In this task, we will look at how the different operations on microcontroller affect to the power consumption of it. This task is simplified version of ChipWhisperer wiki B2 tutorial http://wiki.newae.com/Tutorial_B2_Viewing_Instruction_Power_Differences and you are free to search for help there (especially some screenshots of program might be helpfult to your understanding what is supposed to happen and what kind of waveforms might be corresponding to different operations), but this task should be doable without it.
+In this task, we will look at how the different operations on microcontroller affect to the power consumption of it. This task is simplified version of ChipWhisperer wiki B2 tutorial http://wiki.newae.com/Tutorial_B2_Viewing_Instruction_Power_Differences and you are free to search for help there (especially some screenshots of program might be helpfult to understand what is supposed to happen and what kind of waveforms might be corresponding to different operations), but this task should be doable without it.
 
-First we have to make program that performs different operations. You can create new folder similarly how you made it in previous task and make next modifications to code:
+First we have to make program that performs different operations. You can create new folder similarly how you made it in previous introduction tutorial and make next modifications to code:
 
 Find next code
 ```c
@@ -132,7 +132,7 @@ trigger_low();
  ********************************/
 
 ```
-Build your modified program like you did in previous task and program it to the target device like you did earlier.
+Build your modified program like you did in previous introduction tutorial and program it to the target device like you did earlier.
 
 We expect that you are able to connect to device by the same way that you did in previous task. In the place of “setup_cwlite_xmega_aes.py” you should use “**setup_cwlite_xmega.py**” setup script. If you have device already up and running from the previous task, you can simply run “**setup_cwlite_xmega.py**” and it will setup everything for you.
 
@@ -159,7 +159,7 @@ See the return template for more detailed instructions on what to return.
 ## **Breaking AES**
 In this task we are going to break AES with attack scripts that already exist in ChipWhisperer software. This task is based on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B5_Breaking_AES_(Straightforward).
 
-Idea of this task is to familiarize you with the Analyzer software and theory of statistical analysis of power traces. (Remember that you can look also original tutorial because for example images of it might be good for illustrating what is supposed to happen)
+Idea of this task is to familiarize you with the Analyzer software and theory of statistical analysis of power traces.
 
 First, read the theoretical basis of CPA so you can understand better what is idea of this task. http://wiki.newae.com/Correlation_Power_Analysis 
 
