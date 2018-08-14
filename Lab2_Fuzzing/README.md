@@ -55,7 +55,7 @@ Download and install AFL
 ```
 ~$ wget http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz
 ```
-You can find the target program sourcecode in the VM home folder: unrtf0.21.5.orig.tar.gz. This tool can be used to convert .rtf files into other formats (see README for more). Extract the package, **_configure_ it with appropriate AFL compiler flags and then _compile_**.
+You can find the target program sourcecode following this link: [unrtf0.21.5.orig.tar.gz](http://http.debian.net/debian/pool/main/u/unrtf/unrtf_0.21.5.orig.tar.gz). This tool can be used to convert .rtf files into other formats (see README for more). Extract the package, **_configure_ it with appropriate AFL compiler flags and then _compile_**.
 
 During this task, use the example .rtf file from AFL folder **.../afl-X.XX/testcases/others/rtf/small-document.rtf**. You can try that your unrtf is working properly:
 ```
