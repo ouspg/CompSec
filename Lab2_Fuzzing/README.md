@@ -32,7 +32,7 @@ Try out Radamsa using command line tool. Print 10 malformed samples of "Fuzztest
 >***Provide the command line you used to do this.***
 
 #### Step 2.
- What you just did can be done to various types of files too. Next, generate a folder full of .txt test samples for later usage. Create a .txt file, that contains text: "12 EF". Use radamsa to generate 100 fuzzed samples of the file.
+ What you just did can be done to various types of files too. Next, generate a bunch of .txt test samples for later usage. Create a .txt file, that contains text: "12 EF" and nothing more. Use radamsa to generate 100 fuzzed samples of the file and to name them fuzz1, fuzz2, fuzz3,...etc.
 
  __Hint__ Create a new, separate folder for the samples.
 
