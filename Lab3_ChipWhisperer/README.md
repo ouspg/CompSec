@@ -236,7 +236,101 @@ This task and example scripts are taken from on ChipWhisperer tutorial http://wi
 
 First, if you do not know what is RSA, you can find basic information about if from https://en.wikipedia.org/wiki/RSA_(cryptosystem)
 
-TODO: Breaking rsa theory part
+### Theory
+
+This is some code from RSA implementation from avr-crypto-lib
+```C
+uint8_t rsa_dec_crt_mono(bigint_t* data, const rsa_privatekey_t* key){
+	bigint_t m1, m2;
+	m1.wordv = malloc((key->components[0].length_B /* + 1 */) * sizeof(bigint_word_t));
+	m2.wordv = malloc((key->components[1].length_B /* + 1 */) * sizeof(bigint_word_t));
+	if(!m1.wordv || !m2.wordv){
+		//Out of memory error
+		free(m1.wordv);
+		free(m2.wordv);
+		return 1;
+	}
+	bigint_expmod_u(&m1, data, &(key->components[2]), &(key->components[0]));
+	bigint_expmod_u(&m2, data, &(key->components[3]), &(key->components[1]));
+	bigint_sub_s(&m1, &m1, &m2);
+	while(BIGINT_NEG_MASK & m1.info){
+		bigint_add_s(&m1, &m1, &(key->components[0]));
+	}
+
+	bigint_reduce(&m1, &(key->components[0]));
+	bigint_mul_u(data, &m1, &(key->components[4]));
+	bigint_reduce(data, &(key->components[0]));
+	bigint_mul_u(data, data, &(key->components[1]));
+	bigint_add_u(data, data, &m2);
+	free(m2.wordv);
+	free(m1.wordv);
+	return 0;
+}
+```
+
+You notice that `bigint_expmod_u` is called with private key material. Next we look at source code of it.
+```C
+oid bigint_expmod_u(bigint_t* dest, const bigint_t* a, const bigint_t* exp, const bigint_t* r){
+	if(a->length_B==0 || r->length_B==0){
+		return;
+	}
+
+	bigint_t res, base;
+	bigint_word_t t, base_b[MAX(a->length_B,r->length_B)], res_b[r->length_B*2];
+	uint16_t i;
+	uint8_t j;
+	res.wordv = res_b;
+	base.wordv = base_b;
+	bigint_copy(&base, a);
+	bigint_reduce(&base, r);
+	res.wordv[0]=1;
+	res.length_B=1;
+	res.info = 0;
+	bigint_adjust(&res);
+	if(exp->length_B == 0){
+		bigint_copy(dest, &res);
+		return;
+	}
+	uint8_t flag = 0;
+	t=exp->wordv[exp->length_B - 1];
+	for(i=exp->length_B; i > 0; --i){
+		t = exp->wordv[i - 1];
+		for(j=BIGINT_WORD_SIZE; j > 0; --j){
+			if(!flag){
+				if(t & (1<<(BIGINT_WORD_SIZE-1))){
+					flag = 1;
+				}
+			}
+			if(flag){
+				bigint_square(&res, &res);
+				bigint_reduce(&res, r);
+				if(t & (1<<(BIGINT_WORD_SIZE-1))){
+					bigint_mul_u(&res, &res, &base);
+					bigint_reduce(&res, r);
+				}
+			}
+			t<<=1;
+		}
+	}
+
+	SET_POS(&res);
+	bigint_copy(dest, &res);
+}
+```
+
+If you look closely at variable t in the loop, you can see that it contains the private key which is shifted one bit left on every round. Next code compares if it has 1 or zero as MSB.
+```C
+bigint_square(&res, &res);
+bigint_reduce(&res, r);
+if(t & (1<<(BIGINT_WORD_SIZE-1))){
+	bigint_mul_u(&res, &res, &base);
+	bigint_reduce(&res, r);
+}
+```
+
+This is execution dependent on our private key, and if we can deduce which branch is executed, we could determine the private key bits one by one!
+
+### Task instructions
 
 ChipWhisperer RSA demo what we will be using in this task has 2 modes: Real RSA algorithm (which is way too slow for our testing purposes) and "faked" stripped version of RSA algorithm (which is using last 16 bits of private key and executing only the vulnerable part of RSA implementation). We will be using latter one version to demonstrate RSA vulnerability against power analysis.
 
@@ -261,16 +355,14 @@ First, we setup target board, capture multiple power traces with different keys 
 15. Save the project.
 16. Check from Project -> Trace management that you have successfully saved 8 different traces to this project.
 
-TODO: Explain here what we should have now and what were doing next and based on what
-
-Technically it could be possible to determine private key by examinging power traces just by looking at them and plotting them carefully on top of each other, but we of course want automated attack instead of manual attack.
-
 Now we have successfully saved power traces for different private keys and next we analyze those with Python scripts. Capture sofware and ChipWhisperer board are not needed anymore if you have saved correct power traces successfully.
+
+Technically it could be possible to determine private key by examinging power traces just by looking at them and plotting them carefully on top of each other (feel free to try using different "fixed plaintexts" and draving multiple traces to same image with different colors!), but we of course want automated attack instead of manual attack.
 
 Basically we will do next:
 1. Load power trace to script
 2. Find good reference pattern from power trace
-3. By using reference pattern, calculate execution times for every looping of vulnerable code in order to find out if processed bit of private key was 0 or 1
+3. By using reference pattern, calculate execution times for every loop over private key bits in order to find out if processed bit of private key was 0 or 1
 
 Lets start with loading power trace and plotting it to the image. Write your own script and run it from command line.
 
@@ -318,13 +410,15 @@ Values of this script might not work. You are expected to find suitable referenc
 
 __HINT__: Remember that your ending goal is to find execution time of vulnerable code. Therefore you should find reference pattern that is found always before and after vulnerable code. Expect that you might have to use some time for finding good one. You can consider that you have good reference pattern when your difference plot has clear and stable set of close-to-zero spikes.
 
-__EXTRA__: You are not limited to use sum of differences as metric if you dont want to. For example correlation might be useful tool.
+__EXTRA__: You are not limited to use sum of differences as metric if you dont want to. For example, using this kind of correlation might be useful tool.
 
 ```Python
 corr_data = np.correlate(rsa_one,  tm.getTrace(target_trace_number), mode='full')
 plot(corr_data, 'r')
 show()
 ```
+
+When you have nice reference pattern, we can calculate sample distance (which is technically also time distance) between occured patterns.
 
 This is sample how you can print the distance between found matches.
 ```Python
