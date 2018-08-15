@@ -65,7 +65,7 @@ If you are using the virtual machine provided to you by the course staff,
 then everything should be already installed to your machine. 
 
 Below are the steps to set it up on your own system, in case you want to use your own computer, or your are otherwise unable to aquire provided virtual machine.
-### Level 2 tasks
+### Task 1
 
 Get [Docker](https://www.docker.com/) instance for Juice Shop
 ```shell
@@ -80,7 +80,7 @@ Site is hosted at **localhost:3000** and you are ready to go!
 
 All tasks are duable using your browsers developer tools. Tasks were tested and created using Firefox but other browsers should works just as well.
 
-### level 3 task
+### Task 2
 
 Same as above and the following:
 
@@ -88,13 +88,13 @@ Same as above and the following:
 
 * For the brute forcing task the tools vary depending on how you choose to do it. Read the isntructions and proceed to get the tools you want. There are some hints in the task instruction.
 
-### Level 4 task
+### Task 3
 
 It is helpful to use programs like [curl](https://curl.haxx.se/) to send your XSS attack to the Juice Shop. Any other software that can send POST requests is also fine.
 
 You are expected to set up a basic server so having something like python and flask/BaseHttpServer is recommended.
 
-### Level 5 task
+### Task 4
 
 the example-voting app is located at
 ```shell
@@ -198,7 +198,6 @@ Explain shortly the logic behind your attack. Why does it work?
 
 
 ### B) Modification of client-side code
-(This task requires, that user has logged in to the some account, maybe add task like that before (Move admin task from level3))
 
 **Admin section**
 
@@ -304,7 +303,7 @@ You can use any tools you find online. If you want to you can code your own muta
 
 __Hint__ Internet is full of tools to create wordlists. It is potentially easier to combine multiple tools to create the wordlist. You can use existing tools to do the attack if you don't feel like creating your own script. [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) for example can do the attack easily if you have a list containing all the mutations. Don't try to do the attack using burp community edition. It does not allow you to use files as payloads.
 
-## Level 4 
+## Task 3/Level 4 
 
 The XSS attack you did in the previous task was mostly just annoying. It could however have been way more malicious. Next we are going to do just that and modify it to be way more dangerous. Your task is the following:
 
@@ -329,7 +328,7 @@ Keep in mind that the user database is purged each time you restart the Juice Sh
 You will likely need to format your request so that the servers JSON parser will accept it. Feel free to use tools like https://www.freeformatter.com/json-escape.html
 
 
-## Level 5
+## Task 4/Level 5
 
 ### Setup
 
