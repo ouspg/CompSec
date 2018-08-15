@@ -48,7 +48,23 @@ Why it is working/what is happening?
 
 ```
 
+Shop has an item that has been deleted and therefore does not show on searches. Deduct how the item is marked as deleted and use SQL injection to make it visible and "buy" it. 
 
+__HINT__ Check the command that the SQL server attempts to execute. Also inspect the traffic that happens when you inspect an item.
+
+What SQL command did you use?
+ ``` sql
+
+```
+How are the items "deleted"?
+```
+```
+Take a screenshot of the visible item.
+
+Explain shortly the logic behind your attack. Why does it work?
+```
+
+```
 
 ### B) Modification of client-side code
 (This task requires, that user has logged in to the some account, maybe add task like that before (Move admin task from level3))
@@ -101,23 +117,7 @@ __Hint__ Check the html form code.
 
 ## Task 2 / Level 3
 
-Shop has an item that has been deleted and therefore does not show on searches. Deduct how the item is marked as deleted and use SQL injection to make it visible and "buy" it. 
 
-__HINT__ Check the command that the SQL server attempts to execute. Also inspect the traffic that happens when you inspect an item.
-
-What SQL command did you use?
- ``` sql
-
-```
-How are the items "deleted"?
-```
-```
-Take a screenshot of the visible item.
-
-Explain shortly the logic behind your attack. Why does it work?
-```
-
-```
 
 Use SQL injection to the searchfield using [UNION](http://www.sqlinjection.net/union/) command to get all the users emails and passwordhashes and make them visible on the shop page.
 
@@ -139,12 +139,6 @@ Explain shortly the logic behind your attack. Why and how does it work?
 
 ```
 
-
-In the contact page the UI does not allow you to leave a 0-star review. Leave a 0-star review by modifying the packet.
-
-How did you do it?
-```
-```
 Put an item to your basket and checkout. Monitor the traffic using your browsers devtools. By modifying the requests it is possible to checkout with negative amount of items. Proceed to do so.
 
 How did you do it?
@@ -168,6 +162,21 @@ __Hint__ Juice Shop validates the input in the client side **but** not in the se
 ```
 
 ```
+
+### Brute forcing
+
+Next we do some basic brute forcing. Do the following:
+* Start muumitalo
+* Create a wordlist containing mutations of the word "vaapukkamehu". Create mutations where individual letters case changes between upper and lower case. Also make mutations where a can be 4s and e can be 3. 
+* Brute force the right answer to the question posed by the server using above mentioned wordlist
+You can use any tools you find online. If you want to you can code your own mutator. Alternatively you can search online for a existing mutator/mutators and use them to create the wordlist. Same thing with the actual attack. You can use programs like [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) to do the actual attack after you have created the wordlist.
+#### Returns
+* Wordlist
+* Any code you created.
+* Detailed description on how you created the wordlist and how you did the brute force attack.
+
+
+
 
 ## Level 4 
 
