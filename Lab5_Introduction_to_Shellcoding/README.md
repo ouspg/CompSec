@@ -321,18 +321,7 @@ execve("/bin/sh", 0, 0);
 
 
 * **Something interesting** in shellcoding, but we haven't dealt with it yet?
-Feel free to implement and show us what you got. It does not necessary need to be related for ROP.
-
-## Final coursework
-
-This course contains lectures, coursework and five (5) guided exercises (labs). Additionally there is possiblity to do lecture diary from current topic, if you are not going to participate corresponding lab.
-
-Topic for cousework could be same than any of the topics handled in these labs, or it could be something else security related, what we haven't gone through yet.
-
-If you choose to select this lab as topic, the coursework could be combined to task 4, if you implement there something very carefully and well.
-
-
-
+Feel free to implement and show us what you got. It does not necessary need to be related for ROP. **Your task has to be approved by assistant before you start doing it.** Depending on estimated workload, this task could be extendable to final coursework.
 
 
 
