@@ -123,11 +123,10 @@ Task| Grade/Level | Description
 
 ## Particularly in tasks 1 and 2:
 
-***To be able to complete these tasks,*** you will need to explain *why things are happening*. Each answer, which is giving only pure commands or code is automatically though as uncompleted or insufficient.
+***To be able to complete these tasks,*** you will need to explain *why things are happening*. Each answer, which is giving only pure commands or code is automatically though as incompleted or insufficient.
 
 We happen to know, that there might be some answers availabe as wild out there.
 
-Follow Juice Shop guidlines presented [here!](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part1/rules.html)
 
 ---
 
