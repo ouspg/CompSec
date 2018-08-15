@@ -469,12 +469,89 @@ Return you answers to above questions and complete code to .... TBA
 Notice that quality of your “difference plot” is highly dependent of your reference sample. Do not choose it hastily.
 
 # Level 4
-TODO Documentation
 ## Glitching
 In the next section we go over clock glitching and voltage glitching. These excercises are build on existing Chipwhisperer tutorials found in https://wiki.newae.com/Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer) and https://wiki.newae.com/Tutorial_A3_VCC_Glitch_Attacks. For more detailed guide on how to glitch and the concept how ChipWhisperer generates glitches please check them out. Unlike the tutorials we generally use scripts to configure the ChipWhisperer. We advice that you check what variables are changed when we execute these scripts.
 
-ADD SOME THEORY HERE
+## Background
+A glitching attack is an intentional fault introduced to undermine device 
+security. These faults can for example cause instruction skipping,malformed data reads/write backs and instruction decoding errors.
+Below is a picture of the ChipWhisperers glitch generating process. Note that the clock can be either the target devices clock (clock glitching) or ChipWhisperers own clock(power glithching).
 
+![alt text](pictures/glitch4.png "Chipwhisperers glith generation ")
+
+### Clock glitching
+Following is the background to clock glitching taken from [chipwhisperers glitching tutorial](https://wiki.newae.com/Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer))
+
+Digital hardware devices almost always expect some form of reliable clock. We can manipulate the clock being presented to the device to cause unintended behaviour. We'll be concentrating on microcontrollers here, however other digital devices (e.g. hardware encryption accelerators) can also have faults injected using this technique.
+
+Consider a microcontroller first. The following figure is an excerpt the Atmel AVR ATMega328P datasheet: 
+
+![alt text](pictures/glitch1.jpg " ")
+
+Rather than loading each instruction from FLASH and performing the entire execution, the system has a pipeline to speed up the execution process. This means that an instruction is being decoded while the next one is being retrieved, as the following diagram shows: 
+
+![alt text](pictures/glitch2.jpg " ")
+
+But if we modify the clock, we could have a situation where the system doesn't have enough time to actually perform an instruction. Consider the following, where Execute #1 is effectively skipped. Before the system has time to actually execute it another clock edge comes, causing the microcontroller to start execution of the next instruction: 
+
+![alt text](pictures/glitch3.jpg " ")
+This causes the microcontroller to skip an instruction. Such attacks can be immensely powerful in practice. Consider for example the following code from `linux-util-2.24`: 
+
+```c
+/*
+ *   auth.c -- PAM authorization code, common between chsh and chfn
+ *   (c) 2012 by Cody Maloney <cmaloney@theoreticalchaos.com>
+ *
+ *   this program is free software.  you can redistribute it and
+ *   modify it under the terms of the gnu general public license.
+ *   there is no warranty.
+ *
+ */
+
+#include "auth.h"
+#include "pamfail.h"
+
+int auth_pam(const char *service_name, uid_t uid, const char *username)
+{
+    if (uid != 0) {
+        pam_handle_t *pamh = NULL;
+        struct pam_conv conv = { misc_conv, NULL };
+        int retcode;
+
+        retcode = pam_start(service_name, username, &conv, &pamh);
+        if (pam_fail_check(pamh, retcode))
+            return FALSE;
+
+        retcode = pam_authenticate(pamh, 0);
+        if (pam_fail_check(pamh, retcode))
+            return FALSE;
+
+        retcode = pam_acct_mgmt(pamh, 0);
+        if (retcode == PAM_NEW_AUTHTOK_REQD)
+            retcode =
+                pam_chauthtok(pamh, PAM_CHANGE_EXPIRED_AUTHTOK);
+        if (pam_fail_check(pamh, retcode))
+            return FALSE;
+
+        retcode = pam_setcred(pamh, 0);
+        if (pam_fail_check(pamh, retcode))
+            return FALSE;
+
+        pam_end(pamh, 0);
+        /* no need to establish a session; this isn't a
+         * session-oriented activity...  */
+    }
+    return TRUE;
+}
+```
+This is the login code for the Linux OS. Note that if we could skip the check of if (uid != 0) and simply branch to the end, we could avoid having to enter a password. This is the power of glitch attacks - not that we are breaking encryption, but simply bypassing the entire authentication module! 
+
+### Power glitching
+
+Power glitching works similiar to clock glitching instead we modify the voltage of the device, causing for example a failure to correctly read a memory location or otherwise cause havoc with the proper functioning. 
+
+
+## Task
 First we start with and example.
 1. Go to */home/cwuser/Desktop/chipwhisperer/hardware/victims/firmware/glitch-simple* and open *glitchsimple.c* with any text editor. Scroll to the main function and make sure that it executes glitch_infinite() function and nothing else. Then check the glitch_infinite() function so you understand what you are planning on programming to the target. 
 2. make it ```make PLATFORM=CW303```
@@ -511,7 +588,7 @@ You have three options on how to complete level 5.
 
 
 ## Option 1. Tutorials
-Complete 2 of the three tutorials listed below. You are expected to document the process. Explain what you did, what problems did you have, how did you solve them, what were the results. Report does not have to be long.
+Complete two of the three tutorials listed below. You are expected to document the process. Explain what you did, what problems did you have, how did you solve them, what were the results. Report does not have to be long.
 * [Breaking AES bootleader](https://wiki.newae.com/Tutorial_A5_Breaking_AES-256_Bootloader)
 * [Breaking AES bootloader extended](https://wiki.newae.com/Tutorial_A5-Bonus_Breaking_AES-256_Bootloader)
 * [Glitch buffer attacks](https://wiki.newae.com/Tutorial_A7_Glitch_Buffer_Attacks)
