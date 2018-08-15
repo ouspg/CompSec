@@ -321,7 +321,7 @@ execve("/bin/sh", 0, 0);
 
 
 * **Something interesting** in shellcoding, but we haven't dealt with it yet?
-Feel free to implement and show us what you got. It does not necessary need to be related for ROP. **Your task has to be approved by assistant before you start doing it.** Depending on estimated workload, this task could be extendable to final coursework.
+Feel free to implement and show us what you got. It does not necessary need to be related for ROP. **Your task has to be approved by assistant before you can start doing it.** Depending on estimated workload, this task could be extendable to final coursework.
 
 
 

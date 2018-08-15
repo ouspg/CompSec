@@ -37,11 +37,11 @@ Can we understand, based on pure analysis, what is happening in there?
 
 ## Theory
 
-Juiceshop is vulnerable to multiple types of [injections](https://www.owasp.org/index.php/Top_10-2017_A1-Injection). We are mostly focusing on [SQL injections](https://www.owasp.org/index.php/SQL_Injection). In SQL injection the user injects SQL code to the SQL query happening in the server side. This is usually possible because the SQL query that is happening in the server side takes the clients input as a parameter. Attacker can modify the query and this way expose, modify or even destroy data in the database. 
+Juiceshop is vulnerable to multiple types of [injections](https://www.owasp.org/index.php/Top_10-2017_A1-Injection). We are mostly focusing on [SQL injections](https://www.owasp.org/index.php/SQL_Injection). In SQL injection the user injects SQL code to the SQL query happening in the server side. This is usually possible because, the SQL query that is happening in the server side takes the client's input *straight* as a parameter. Attacker can modify the query and this way expose, modify or even destroy data in the database. SQL is just one example about injection - any simlar way in any imaginable way, which takes some strings or character as input to create some kind of command, can be vulnerable.
 
 In many places the Juice Shop is [improperly validating its inputs](https://cwe.mitre.org/data/definitions/20.html) Basically this means that the attacker is capable of crafting the input in a form that the rest of the application is not expecting. You will see this in action when you cash out with negative amount of items or when you leave a 0 star review of the store.
 
- Usually shops like Juice Shop are made to be used by multiple users. In these cases different users have different privileges and are therefore able to access different places. For example you are able to access your basket but not other users baskets. In the same fashion only admin should be able to access the administration panel. However Juice Shops [access control is broken](https://en.wikipedia.org/wiki/Privilege_escalation) and users can access places that they should not be able.  
+ Usually shops like Juice Shop, are made to be used by multiple users. In these cases different users have different privileges and are therefore able to access different places. For example you are able to access your basket but not other users baskets. In the same fashion only admin should be able to access the administration panel. However Juice Shops [access control is broken](https://en.wikipedia.org/wiki/Privilege_escalation) and users can access places that they should not be able.  
 
 Last thing we focus on using the Juice shop is Cross-Site Scripting. Short explanation on what Cross-Site Scripting mean taken from [OWASP](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)) "Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user. Flaws that allow these attacks to succeed are quite widespread and occur anywhere a web application uses input from a user within the output it generates without validating or encoding it.
 
@@ -124,7 +124,7 @@ Upper grade requires that all previous ones have been done as well.
 It is estimated, that you are able to do Tasks 1 & 2 during lab session (4 hours).
 
 Task| Grade/Level | Description
---|:--:|--
+:--:|:--:|--
 1|2|Basic SQL injections and Client Side Resource Manipulation
 2|3|More complicated SQL injections, basics of Cross-Site Scripting and more Client Side Resource Manipulation
 3|4| Cross-Site Scripting attack
@@ -170,7 +170,7 @@ Paste here the command that the SQL server attempts to execute and replace the p
 ``` sql
 
 ```
-
+---
 **A bit more concrete error**
 
 As we previously noticed, we are indeed able to inject some SQL commands to the server. Search field was not properly sanitizied. How about log-in fields?
@@ -187,6 +187,8 @@ Why it is working/what is happening?
 ```text
 
 ```
+
+---
 Shop has an item that has been deleted and therefore does not show on searches. Deduct how the item is marked as deleted and use SQL injection to make it visible and "buy" it. 
 
 __HINT__ Check the command that the SQL server attempts to execute. Also inspect the traffic that happens when you inspect an item.
@@ -222,6 +224,7 @@ What is the url to access administration panel? You can find page even, when you
 ```
 ```
 
+---
 But anyway, could we control other users a bit?
 
 This site's access control is lacking and users can in some cases access into places where they should not be able to. One example is the user's basket. Find a way to access another users basket *and add some products into it*.
@@ -231,7 +234,7 @@ You don't need to know anything about another users, we are using just some rand
 How did you do it? Why you were able to?
 ```
 ```
-
+---
 **Scoreboard**
 
 At this point we might have seen some notifications about challenges we have completed. There is actually board about challenges you have completed and... it is behind a challenge.
@@ -302,9 +305,9 @@ __Hint__ Juice Shop validates the input in the client side **but** not in the se
 
 Next we do some basic brute forcing. Do the following:
 * Start muumitalo
-* Create a wordlist containing mutations of the word "vaapukkamehu". Create mutations where individual letters case changes between upper and lower case. Also make mutations where a can be 4s and e can be 3. 
+* Create a wordlist containing mutations of the word "vaapukkamehu". Create mutations where individual letters case changes between upper and lower case. Also make mutations where letter 'a' can be number '4' and letter 'e' can be number '3'. 
 * Brute force the right answer to the question posed by the server using above mentioned wordlist
-You can use any tools you find online. If you want to you can code your own mutator. Alternatively you can search online for a existing mutator/mutators and use them to create the wordlist. Same thing with the actual attack. You can use programs like [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) to do the actual attack after you have created the wordlist.
+You can use any tools you find online. If you want to, you can code your own mutator. Alternatively you can search online for a existing mutator/mutators and use them to create the wordlist. Same thing with the actual attack. You can use programs like [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) to do the actual attack after you have created the wordlist.
 #### Returns
 * Wordlist
 * Any code you created.
