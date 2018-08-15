@@ -1,12 +1,12 @@
 # **Computer security lab 3: ChipWhisperer**
 
-## Before the lab 
+## About the lab
 This lab works a little bit different than the others due to it using an external device.
 * Work is done in groups of 2-4 depending on how many people attent
-* You can make one return template for your group. Add everyones names to it. __Each person has to make a return before the deadline__   TO BE DECIDED
-* If you want to complete all the tasks you need to do them outside of the designated lab times. The way boards are loaned will be decided based on how many people need them. __Contact the assistants if you want to borrow the board__   TO BE DECIDED
+* You can make one return template for your group. Add everyones names to it. __Each person has to make a return before the deadline__
+* You can borrow the ChipWhisperers and finish the task at home. Details on how to borrow the board will depend on how many people attend and want to continue the work at home. For up to date information check moodle and Slack. 
 * You can use ChipWhisperer in your coursework. Please contact the assistants if you are interested on doing so. This way we can put one aside for you.  
-
+* Handle the board with care and don't expose it to static electricity. 
 
 ## Background
 This week’s theme is hardware security and this laboratory work digs deeper into the world of hardware security. In this lab you will be using ChipWhisperer hardware and tools to perform side channel attack experiments.
@@ -32,6 +32,12 @@ In this lab you will be using ChipWhisperer Lite 1173. CW1173 Lite consists two 
 
 ### Requirements
 In order for you to complete this lab you need a ChipWhisperer board + a target board and a copy of ChipWhispererlubuntu virtual machine found in the course folder in the university drive. You can also setup ChipWhisperer capture and analyze software separately to your own machine if you find it more suitable solution for you.
+
+Details on how to setup everything your self or download a clean image can be found [here](https://wiki.newae.com/Installing_ChipWhisperer)
+
+Custom scripts used in this lab can be found from scripts folder in this repository. 
+
+__We suggest that you use the preconfigured virtual machine OR a clean virtual machine with our scripts.__
 
 ## How to complete?
 Task of this lab are divided to 4 different tasks which are also corresponding the grades that are achieved by completing them. For example, completing tasks 1, 2 and 3 results grade 4 in this lab. Completing task 1 and 2 should be taking about 4 hours so you are expected to do that during classroom lab time. If you want to continue working at home with those tasks or you want to do more advanced tasks, you can disscuss about lending the equipment with course assistants.
