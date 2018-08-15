@@ -9,6 +9,9 @@
 Below is a copy of the questions found in the Lab1_Network folder. Answer the questions here. In task 4 put the server code and the XSS-script to a different file. Also the picture and the report in task 5 can be returned as a separe files. 
 
 
+## Task 1 / Level 2
+
+
 ### A) Basic SQL Injections
 
 **Noticing errors**
@@ -47,7 +50,6 @@ Why it is working/what is happening?
 ```text
 
 ```
-
 Shop has an item that has been deleted and therefore does not show on searches. Deduct how the item is marked as deleted and use SQL injection to make it visible and "buy" it. 
 
 __HINT__ Check the command that the SQL server attempts to execute. Also inspect the traffic that happens when you inspect an item.
@@ -66,8 +68,8 @@ Explain shortly the logic behind your attack. Why does it work?
 
 ```
 
+
 ### B) Modification of client-side code
-(This task requires, that user has logged in to the some account, maybe add task like that before (Move admin task from level3))
 
 **Admin section**
 
@@ -82,10 +84,6 @@ __Hint__ Javascripts name is visible in the html code. There is a pretty print o
 What is the url to access administration panel? You can find page even, when you are not logged in, but information is not showed. Why this still could be considered as risk?
 ```
 ```
-
-
-
-
 
 But anyway, could we control other users a bit?
 
@@ -175,10 +173,9 @@ You can use any tools you find online. If you want to you can code your own muta
 * Any code you created.
 * Detailed description on how you created the wordlist and how you did the brute force attack.
 
+__Hint__ Internet is full of tools to create wordlists. It is potentially easier to combine multiple tools to create the wordlist. You can use existing tools to do the attack if you don't feel like creating your own script. [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) for example can do the attack easily if you have a list containing all the mutations. Don't try to do the attack using burp community edition. It does not allow you to use files as payloads.
 
-
-
-## Level 4 
+## Task 3/Level 4 
 
 The XSS attack you did in the previous task was mostly just annoying. It could however have been way more malicious. Next we are going to do just that and modify it to be way more dangerous. Your task is the following:
 
@@ -196,8 +193,6 @@ The XSS attack you did in the previous task was mostly just annoying. It could h
 __Tips__  
 Refresh your mind how javascript can modify html elements.
 
-Data sending can be done using a javascript. Using buttons submit functionality is not necessary
-
 It is also handy to use programs like [curl](https://curl.haxx.se/) to send your XSS-scripts.
 
 Keep in mind that the user database is purged each time you restart the Juice Shop. If you break the system just reboot the docker container.
@@ -205,7 +200,7 @@ Keep in mind that the user database is purged each time you restart the Juice Sh
 You will likely need to format your request so that the servers JSON parser will accept it. Feel free to use tools like https://www.freeformatter.com/json-escape.html
 
 
-## Level 5
+## Task 4/Level 5
 
 ### Setup
 
@@ -232,4 +227,5 @@ Return the following:
 
 * Short explanation on the steps you took to analyze the network and create the diagram
 
-* Short explanation on what kind of security experiment you tried and what was the result
+* Short explanation on what kind of security experiment you tried, how you did it and what was the result
+
