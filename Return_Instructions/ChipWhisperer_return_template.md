@@ -1,6 +1,22 @@
 # ChipWhisperer lab return template 
 
-## Level 2
+Name ``` ```
+
+Student id ``` ```
+
+Participated in tasks ``` ```
+
+...
+
+Name ``` ```
+
+Student id ``` ```
+
+Participated in tasks ``` ```
+
+Add all your group members names and student ids. If you continue the tasks at home you can work with different people. Please mark who participated in which tasks.
+
+# Task 1
 ### Inspecting power differences of operations
 
 Replace the following 3 screenshots. First screenshot should contain a picture of a power trace where you are executing nothing but 30 lines of of asm mul.
@@ -31,7 +47,7 @@ Explain shortly how the correlation power analysis works.
 *Insert picture of the Output vs Point plot tab below*
 ![](pathtopicture "Ouput vs Point plot")
 
-## Level 3
+# Task 2
 
 ### Password bypass with power analysis
 
@@ -48,26 +64,34 @@ Paste screenshot of the Difference plot here
 
 __Where did you take the reference sample and why?__
 
-*answer*
+```
+
+```
 
 __What values did you use in the attack script?__
+```
 
-*answer*
+```
 ```
 Paste attack script here
 ```
+Can your program solve key ABE3 for corresponding trace? If not, tell why it does not work. How you could fix that?
 
+```
 
-## Glitch
-**Paste the screenshot from step 6 here**
+```
+
+# Task 3
+##Glitch
+**Paste the screenshot from step 7 here**
 
 ![ ](images/ChipWhispererplaceholder2.png  "Glitched terminal here")
 
-**Paste the screenshot from step 12 here**
+**Paste the screenshot from step 13 here**
 
 ![ ](images/ChipWhispererplaceholder2.png  "Glitched terminal here")
 
-**Paste the screenshot from step 16 here**
+**Paste the screenshot from step 17 here**
 
 ![ ](images/ChipWhispererplaceholder1.png  "Glitch Explorer here")
 
@@ -82,3 +106,9 @@ Paste your script that modfies the glitch parameters
 Paste your setup script
 ```
 **Paste your Glitch Explorer logs to logs folder**
+
+
+
+# Task 4
+
+This tasks documentation varies depending on which versio you chose. Create your own documentation as you see fit. List here all the files that are part of your return

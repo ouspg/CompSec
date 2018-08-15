@@ -34,17 +34,24 @@ In this lab you will be using ChipWhisperer Lite 1173. CW1173 Lite consists two 
 In order for you to complete this lab you need a ChipWhisperer board + a target board and a copy of ChipWhispererlubuntu virtual machine found in the course folder in the university drive. You can also setup ChipWhisperer capture and analyze software separately to your own machine if you find it more suitable solution for you.
 
 ## How to complete?
-Task of this lab are divided to 4 different levels which are also corresponding the grades that are achieved by completing them. For example, completing levels 2, 3 and 4 results grade 4 in this lab. Completing level 2 and 3 should be taking about 4 hours so you are expected to do that during classroom lab time. If you want to continue working at home with those tasks or you want to do more advanced level 4 and 5 tasks, you can disscuss about lending the equipment with course assistants.
+Task of this lab are divided to 4 different tasks which are also corresponding the grades that are achieved by completing them. For example, completing tasks 1, 2 and 3 results grade 4 in this lab. Completing task 1 and 2 should be taking about 4 hours so you are expected to do that during classroom lab time. If you want to continue working at home with those tasks or you want to do more advanced tasks, you can disscuss about lending the equipment with course assistants.
 
 Read every task carefully before starting to work on it so you will have clear picture what you are expected to do and what you are expected to return. Every task will state clearly what you are expected to do. If you are in doubt, you can always ask further advise from lab assistants.
 
 It is also recommended to read background information about different issues from links that are offereded in tasks.
 
-(TODO: More info about returning stuff on git or on this template?)
 
-# Level 2
 
-Level 2 tasks are meant to be relatively simple tasks to help you understand that what is the Chipwhisperer device and what can be done with it.
+Task| Grade/Level | Description
+--|:--:|--
+1|2|Inspecting power traces and breaking AES
+2|3|Password bypass and breaking RSA
+3|4|Glitching
+4|5|Optional task 
+
+# Task 1
+
+Task 1 tasks are meant to be relatively simple tasks to help you understand that what is the Chipwhisperer device and what can be done with it.
 
 ## **Getting started with device, capture program and SimpleSerial protocol**
 Complete ChipWhisperer basic tutorial B1 http://wiki.newae.com/Tutorial_B1_Building_a_SimpleSerial_Project Purpose of this part is simply to give you some experience of the basic usage of ChipWhisperer which is required in later tasks of this lab exercise. **You are not required to return anything for this task**, but it is critical that you learn to use ChipWhisperer on basic level because otherwise all other tasks are impossible to complete. Basically important things what you will be doing in that tutorial are next:
@@ -184,9 +191,9 @@ __What to do to complete this task?__
 **TIPS & TRICKS**
 * If you are interested logic behind breaking AES encryption, look at tutorial http://wiki.newae.com/Tutorial_B6_Breaking_AES_(Manual_CPA_Attack) which explains how to perform this task manually.
 
-# Level 3
+# Task 2
 
-Level 3 tasks are harder than previous ones. Basic understanding of Python is recommended when doing these tasks.
+Basic understanding of Python is recommended when doing these tasks.
 
 ## **Password bypass with power analysis**
 In this task you will extract password from secure device by analyzing the power traces of device when it processes your login attempts. You will also learn how to use python scripts to control ChipWhisperer software. 
@@ -468,7 +475,7 @@ Return you answers to above questions and complete code to .... TBA
 
 Notice that quality of your “difference plot” is highly dependent of your reference sample. Do not choose it hastily.
 
-# Level 4
+# Task 3
 ## Glitching
 In the next section we go over clock glitching and voltage glitching. These excercises are build on existing Chipwhisperer tutorials found in https://wiki.newae.com/Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer) and https://wiki.newae.com/Tutorial_A3_VCC_Glitch_Attacks. For more detailed guide on how to glitch and the concept how ChipWhisperer generates glitches please check them out. Unlike the tutorials we generally use scripts to configure the ChipWhisperer. We advice that you check what variables are changed when we execute these scripts.
 
@@ -582,9 +589,9 @@ It is very likely that you have to loop through many values. Change the value *N
 
 
 
-# Level 5 
+# Task 4 
 
-You have three options on how to complete level 5.
+You have three options on how to complete Task 4.
 
 
 ## Option 1. Tutorials
