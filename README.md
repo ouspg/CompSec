@@ -19,9 +19,9 @@ This repository is split to following contents:
 
 ## Current state/ TODO
 
-- [ ] Lab1 Reworked all but one task. Reworded the network analysis task. Needs testing to make sure tasks are good and doable in a reasonable amount of time. 
+- [x] Lab1 Tasks finished. Reread and fix typos. Add a chapter about how to do the returns?   
 - [ ] Lab2 Level 5 task missing for now
-- [ ] Lab3 Only level/grade 5 task(s) missing?
+- [x] Lab3 Tasks finished. Finish the before the lab chapter.   
 - [x] Lab4 Should be finished
 - [x] Lab5 Should be finished.
 
