@@ -37,7 +37,7 @@ Can we understand, based on pure analysis, what is happening in there?
 
 ## Theory
 
-Juiceshop is vulnerable to multiple types of [injections](https://www.owasp.org/index.php/Top_10-2017_A1-Injection). We are mostly focusing on [SQL injections](https://www.owasp.org/index.php/SQL_Injection). In SQL injection the user injects SQL code to the SQL query happening in the server side. This is usually possible because, the SQL query that is happening in the server side takes the client's input *straight* as a parameter. Attacker can modify the query and this way expose, modify or even destroy data in the database. SQL is just one example about injection - any simlar way in any imaginable way, which takes some strings or character as input to create some kind of command, can be vulnerable.
+Juiceshop is vulnerable to multiple types of [injections](https://www.owasp.org/index.php/Top_10-2017_A1-Injection). We are mostly focusing on [SQL injections](https://www.owasp.org/index.php/SQL_Injection). In SQL injection the user injects SQL code to the SQL query happening in the server side. This is usually possible because, the SQL query that is happening in the server side takes the client's input *straight* as a parameter. Attacker can modify the query and this way expose, modify or even destroy data in the database. SQL is just one example about injection - any similar way in any imaginable way, which takes some strings or characters as input to create some kind of command, can be vulnerable.
 
 In many places the Juice Shop is [improperly validating its inputs](https://cwe.mitre.org/data/definitions/20.html) Basically this means that the attacker is capable of crafting the input in a form that the rest of the application is not expecting. You will see this in action when you cash out with negative amount of items or when you leave a 0 star review of the store.
 
@@ -259,7 +259,7 @@ __Hint__ Check the html form code.
 
 Use SQL injection to the searchfield using [UNION](http://www.sqlinjection.net/union/) command to get all the users emails and passwordhashes and make them visible on the shop page.
 
- __Hint__ In this exercise you need to know the name of the users table,its column number and the name of the email and password fields. These values can be **guessed**. Table and column names are obvious. Try guessing them and check the error messages if you got it right. 
+ __Hint__ In this exercise you need to know the name of the users table,its column number and the name of the email and password fields. These values can be **guessed**. Table and column names are obvious. Try guessing them and check the error messages if you got it right.
  
  First form a statement that attempts to select all the columns from the users table. If the server returns "table does not exist" you guessed it wrong. If you receive the following error "SQLITE_ERROR: SELECTs to the left and right of UNION do not have the same number of result columns" you are on the right track. 
  
