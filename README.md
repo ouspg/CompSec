@@ -37,14 +37,24 @@ Labs have been split to 5 levels. Each level corresponds to the grade you will e
 
 ## Returns
 
-TODO
-Explanation on what the return folder contains
+Return_Instructions folder contains a folder for each lab. In every folder is also a return template that you are expected to fill. __Only the contents of this folder will be graded. Put everything you want to return here__. Some labs are constructed so that the task descriptions also contain the anwer fields. If you want to you can put your answers to these fields and then copy the whole document to the return folder. In these cases remember to add your name to the document.
+
+ You are allowed and in some cases expected to add new files and folders to the lab return folder. If you return programs have a clear explanation on how to run it preferably in the return template.
 
 ## Instructions
 
-TODO
-Explanation on how to proceed
-Fork -> fill -> profit?
+* You are given a link by the course assistant that will give you a private repository containing all this.
+* Check this weeks task from LabX_YXZ folder.
+* Return what you are expected to the Return_instructions/LabXTemplate folder
+* Push your changes to your repo before deadline
+* Return a document containing your github repos link to moodle.
+
+Check [cheat sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) if you need a refresher on how to use git. Some basic commands below  
+```git
+git add <location>
+git commit -m "<message>"
+git push
+```
 
 ## Virtual machines
 
