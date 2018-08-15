@@ -2,6 +2,16 @@
 Lab 1: Networks and web security
 ====
 
+## About the lab
+
+* __Put your answers to the template found in return_templates folder__.
+* Push your progress to the git repository you were given earlier. It will be graded after the deadline as it is at that moment.
+* Return a document to moodle containing your git repositorys url before the deadline.
+* This document contains task descriptions and theory for network lab. If there are any differences between the return template and this file consider this to be the up to date document
+* You are expected to work alone. If there are too many participants and we run out of computers you are allowed to work in pairs.
+* **You can use your own computer if you want.** Check "Prerequisities" chapter for information on what you need to install. This lab is made to be done in Linux environment and tested to work in Ubuntu and Kali. How ever it should work in any other operating system.
+* You are not expected to be able to finish all the tasks during the lab session. Feel free to continue them at your own time.
+
 ## Background
 
 
@@ -328,6 +338,10 @@ You will likely need to format your request so that the servers JSON parser will
 
 
 ## Task 4/Level 5
+
+You can complete this task in two ways. You can do the predefined task explained below or you can suggest a task that interests you and do that. __Contact the course assistants__ and describe them what you are interested on doing/trying to do. If they say it is good you can do that as your task 4.
+
+## Predefined task
 
 ### Setup
 

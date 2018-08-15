@@ -16,9 +16,6 @@ Below is a copy of the questions found in the Lab1_Network folder. Answer the qu
 
 **Noticing errors**
 
-Search field of the JuiceShop is vulnerable to SQL injections.
-Inject some SQL to the searchfield and cause an error. 
-__Hint__ Try different SQL symbols like statement terminators, comments, quotation marks. Check the network tab for servers response 
 
 What command(s) did you use?
 ``` sql
@@ -36,8 +33,6 @@ Paste here the command that the SQL server attempts to execute and replace the p
 
 **A bit more concrete error**
 
-As we previously noticed, we are indeed able to inject some SQL commands to the server. Search field was not properly sanitizied. How about log-in fields?
-If this area is vulnerable, it could be very dangerous, because it might enable unauthroized access.
 
 Somehow we know that Admin user is *the first entry* in the User list.
 Can you log in as Admin with SQL - injection, based on that information? You just [have to bypass the login.](https://www.acunetix.com/websitesecurity/sql-injection/)
@@ -73,19 +68,9 @@ Explain shortly the logic behind your attack. Why does it work?
 
 **Admin section**
 
-The Admin account which we previously "unlocked", does not actually have much special priviledges. We can see a bit more information than other users.
-
-The panel for making the admin stuff is actually hidden.
-
-Sometimes JavaScript is showing something that you don't want to. For example this site has an admin page that is not linked from anywhere of the site. That pages endpoint is however visible in the JavaScript. Open the juice-shop-min.js with your browsers dev tools and access it. 
-
-__Hint__ Javascripts name is visible in the html code. There is a pretty print option at the bottom of the page ( "{}" - symbol) Use search to find the administration panels endpoint.
-
 What is the url to access administration panel? You can find page even, when you are not logged in, but information is not showed. Why this still could be considered as risk?
 ```
 ```
-
-But anyway, could we control other users a bit?
 
 This site's access control is lacking and users can in some cases access into places where they should not be able to. One example is the user's basket. Find a way to access another users basket *and add some products into it*.
 
@@ -97,7 +82,6 @@ How did you do it? Why you were able to?
 
 **Scoreboard**
 
-At this point we might have seen some notifications about challenges we have completed. There is actually board about challenges you have completed and... it is behind a challenge.
 
 Sometimes the HTML contains unwanted stuff. This site has for example a scoreboard, and the top bar should contain a link to it. Use your browsers developer tools and make it visible.
 __Hint__ You can edit the fields in "Inspector" tab
@@ -116,15 +100,6 @@ __Hint__ Check the html form code.
 ## Task 2 / Level 3
 
 
-
-Use SQL injection to the searchfield using [UNION](http://www.sqlinjection.net/union/) command to get all the users emails and passwordhashes and make them visible on the shop page.
-
- __Hint__ In this exercise you need to know the name of the users table,its column number and the name of the email and password fields. These values can be **guessed**. Table and column names are obvious. Try guessing them and check the error messages if you got it right. 
- 
- First form a statement that attempts to select all the columns from the users table. If the server returns "table does not exist" you guessed it wrong. If you receive the following error "SQLITE_ERROR: SELECTs to the left and right of UNION do not have the same number of result columns" you are on the right track. 
- 
- After you know the table name you have to find out how many columns the Products table has so you can select that many columns from the users table. You can guess this if you want to but the column amount can also be found from the response you get from a product search. Now select that many columns from the users table where atleast two of them are email and password. If the values are not visible you might have put it to a field that is not rendered visible. Try putting it to a different field.
- 
 
 What SQL command did you use?
  ``` sql
@@ -163,25 +138,14 @@ __Hint__ Juice Shop validates the input in the client side **but** not in the se
 
 ### Brute forcing
 
-Next we do some basic brute forcing. Do the following:
-* Start muumitalo
-* Create a wordlist containing mutations of the word "vaapukkamehu". Create mutations where individual letters case changes between upper and lower case. Also make mutations where a can be 4s and e can be 3. 
-* Brute force the right answer to the question posed by the server using above mentioned wordlist
-You can use any tools you find online. If you want to you can code your own mutator. Alternatively you can search online for a existing mutator/mutators and use them to create the wordlist. Same thing with the actual attack. You can use programs like [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) to do the actual attack after you have created the wordlist.
 #### Returns
 * Wordlist
 * Any code you created.
 * Detailed description on how you created the wordlist and how you did the brute force attack.
 
-__Hint__ Internet is full of tools to create wordlists. It is potentially easier to combine multiple tools to create the wordlist. You can use existing tools to do the attack if you don't feel like creating your own script. [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) for example can do the attack easily if you have a list containing all the mutations. Don't try to do the attack using burp community edition. It does not allow you to use files as payloads.
 
 ## Task 3/Level 4 
 
-The XSS attack you did in the previous task was mostly just annoying. It could however have been way more malicious. Next we are going to do just that and modify it to be way more dangerous. Your task is the following:
-
-* **Setup a server.** No need to do anything fancy. Basic python flask/http erver that can receive post requests is fine. Server can print or save the information to a file. Anything goes as long as it shows that the data entered the server.  
-* **When the user accesses the administration panel the page will look like the login page.** Page should be as similiar as possbile but small differences are fine. For example slightly different size login fields, email field not checking for @ sign etc.
-* **When the user inputs anything to the email and password fields and presses the *Login*-button all the information in the email and password fields are sent to your server.** The way you send/show the information is up to you. You just have to demostrate in the server side that the data has entered and that it is the same as inputted to the email and password fields.
 
 ### Returns
 
@@ -190,36 +154,9 @@ The XSS attack you did in the previous task was mostly just annoying. It could h
 * **Clear** instructions on how the start the server, send the Cross-Site script attack and how to verify that the information was sent to the server. 
 
 
-__Tips__  
-Refresh your mind how javascript can modify html elements.
-
-It is also handy to use programs like [curl](https://curl.haxx.se/) to send your XSS-scripts.
-
-Keep in mind that the user database is purged each time you restart the Juice Shop. If you break the system just reboot the docker container.
-
-You will likely need to format your request so that the servers JSON parser will accept it. Feel free to use tools like https://www.freeformatter.com/json-escape.html
 
 
 ## Task 4/Level 5
-
-### Setup
-
-Start the example-voting-app
-```
-cd example-voting-app
-docker-compose up
-```
-### Task
-In this task you are expected to learn to capture traffic using WireShark and to do very basic network analysis. With the knowledge you gain you are then expected to draw a data flow diagram on how the system behaves when you cast a vote or check the results. After this you try some form of a security experiment(for example modify traffic using burp). Report your result even if you are unsuccesful. 
-
-
-__Hint__
- You can draw the diagram by hand and take a picture (asuming that the picture is clear enough) or use any tool you like to draw it. 
-Scan networks (docker network ls, docker network inspect examplevotingapp_*, nmap 172.xx.0.0/24)
-Look at  https://github.com/dockersamples/example-voting-app for architecture diagram (good basis for DFD)
-Use wireshark on the two docker networks to see what happens when a vote is attempted
- 
- ### How to complete this task
 
 Return the following:
 
@@ -229,3 +166,6 @@ Return the following:
 
 * Short explanation on what kind of security experiment you tried, how you did it and what was the result
 
+OR
+
+* Your custom security experiment
