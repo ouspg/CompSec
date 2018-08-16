@@ -3,7 +3,7 @@
 ## About the lab
 This lab works a little bit different than the others due to it using an external device.
 * Work is done in groups of 2-4 depending on how many people attent
-* You can make one return template for your group. Add everyones names to it. __Each person has to make a return before the deadline__
+* After the lab hours you are allowed to continue working on the tasks with different people (or alone depending on how many people want to borrow the board). In these cases __mark down clearly who participated in which tasks__
 * You can borrow the ChipWhisperers and finish the task at home. Details on how to borrow the board will depend on how many people attend and want to continue the work at home. For up to date information check moodle and Slack. 
 * You can use ChipWhisperer in your coursework. Please contact the assistants if you are interested on doing so. This way we can put one aside for you.  
 * Handle the board with care and don't expose it to static electricity. 
