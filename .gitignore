@@ -25,7 +25,7 @@ Lab4_Botnets_and_malwares/see/conf/imageInfo/windows7.xml
 !important.log
 *.pcap
 !important.pcap
-*.pwntools_example
+*.exe
 !important.exe
 
 Lab4_Botnets_and_malwares/see/screenshots
