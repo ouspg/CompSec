@@ -2,6 +2,10 @@
 
 Exercises for computer security course in the University of Oulu
 
+The course covers the essential aspects of computer security and computer security research in theory and through practical examples.
+
+The course is intended for computer engineering masters students and additionally to any student interested in computer security that has *the sufficient* technical background to complete the course exercises.
+
 <p align="center">
 <img src="lib/images/oulun yliopisto_logo_eng_black_rgb.png" alt="University of Oulu" height="300px" align="right"/>
 </p>
@@ -10,7 +14,7 @@ Exercises for computer security course in the University of Oulu
 
 This repository is split to following contents:
 
-1. Lab folders
+1. Exercise/Lab folders
     * Each lab has its own folder which contains instructions on how to complete that specific lab.
 2. Return templates
     * Contains material you need to return in order to pass the lab
@@ -63,10 +67,16 @@ Each lab utilizes one or more virtual machines. These machines can be found from
 At least following operating systems will be used:
 
 * Kali Linux - for shellcoding, fuzzing and web security lab
-* Ubuntu 16.04 - for fuzzing, botnets and malware analysis
+  * User: compsec
+  * Password: course
+* Ubuntu 16.04 - for botnets and malware analysis
+  * User: compsec 
+  * Password: course
 * Lubuntu 16.04- side-channel attacks with ChipWhisperer
 
-TODO at location
+Path to virtual machines:
+
+Yleiset -> Mikroluokat -> CompSec
 
 ## Contribution
 
