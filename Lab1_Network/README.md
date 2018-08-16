@@ -8,7 +8,7 @@ Lab 1: Networks and web security
 * Push your progress to the git repository you were given earlier. It will be graded after the deadline as it is at that moment.
 * Return a document to moodle containing your git repositorys url before the deadline.
 * This document contains task descriptions and theory for network lab. If there are any differences between the return template and this file consider this to be the up to date document
-* You are expected to work alone. If there are too many participants and we run out of computers you are allowed to work in pairs.
+* Everyone returns their own document. **No group returns.** Obviously you are allowed to discuss and solve the problems with your friends. Just remember to credit them in your return.
 * **You can use your own computer if you want.** Check "Prerequisities" chapter for information on what you need to install. This lab is made to be done in Linux environment and tested to work in Ubuntu and Kali. How ever it should work in any other operating system.
 * You are not expected to be able to finish all the tasks during the lab session. Feel free to continue them at your own time.
 
@@ -142,7 +142,7 @@ We happen to know, that there might be some answers availabe as wild out there.
 
 ## Task 1 / Level 2
 
-In level 2 and 3 tasks, you will only need your browser and it's developer tools. Most importantly follow the traffic in the network tab. 
+In level 2 and 3 tasks, you will only need your browser, it's developer tools and Juice Shop. Start the Juice Shop using docker. Check Prequisities chapter for more information. Most importantly follow the traffic in the network tab. 
 
 Observe and modify the traffic while you are browsing the site and do the following tasks.
 
