@@ -359,6 +359,15 @@ Scan networks (docker network ls, docker network inspect examplevotingapp_*, nma
 Look at  https://github.com/dockersamples/example-voting-app for architecture diagram (good basis for DFD)
 Use wireshark on the two docker networks to see what happens when a vote is attempted
  
+
+ 
+To run Wireshark correctly without using straight root priviledges, we should add current user to group *wireshark* with following command:
+```shell
+sudo usermod -a -G wireshark compsec
+```
+Log out and log in, wireshark should show now all interfaces.
+
+
  ### How to complete this task
 
 Return the following:
