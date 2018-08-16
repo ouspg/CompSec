@@ -79,19 +79,12 @@ Get [Docker](https://www.docker.com/) instance for Juice Shop
 docker pull bkimminich/juice-shop
 ```
 
-Start docker instance with
-```shell
-docker run --rm -p 3000:3000 bkimminich/juice-shop
-```
-Site is hosted at **localhost:3000** and you are ready to go!
-
 All tasks are duable using your browsers developer tools. Tasks were tested and created using Firefox but other browsers should works just as well.
 
 ### Task 2
 
 Same as above and the following:
 
-* ```git clone https://github.com/VilleKemp/Muumitalo``` follow the instruction on the git page on how to start it
 
 * For the brute forcing task the tools vary depending on how you choose to do it. Read the isntructions and proceed to get the tools you want. There are some hints in the task instruction.
 
@@ -142,6 +135,12 @@ We happen to know, that there might be some answers availabe as wild out there.
 In level 2 and 3 tasks, you will only need your browser, it's developer tools and Juice Shop. Start the Juice Shop using docker. Check Prequisities chapter for more information. Most importantly follow the traffic in the network tab. 
 
 Observe and modify the traffic while you are browsing the site and do the following tasks.
+
+Start Juice Shop with the command
+```shell
+docker run --rm -p 3000:3000 bkimminich/juice-shop
+```
+Site is hosted at ```localhost:3000```. Access it with your browser and start working
 
 __Note__ In Firefox's devtools, in the "Headers" section of packet information, there is a handy "Edit and Resend" button Which can be used to modify packets.
 
@@ -300,8 +299,8 @@ __Hint__ Juice Shop validates the input in the client side **but** not in the se
 
 ### Brute forcing
 
-Next we do some basic brute forcing. Do the following:
-* Start muumitalo
+Next we do some basic brute forcing.Do the following:
+* Start muumitalo.  ```git clone https://github.com/VilleKemp/Muumitalo``` follow the instruction on the git page on how to start it. You will be bruteforcing this server
 * Create a wordlist containing mutations of the word "vaapukkamehu". Create mutations where individual letters case changes between upper and lower case. Also make mutations where letter 'a' can be number '4' and letter 'e' can be number '3'. 
 * Brute force the right answer to the question posed by the server using above mentioned wordlist
 You can use any tools you find online. If you want to, you can code your own mutator. Alternatively you can search online for a existing mutator/mutators and use them to create the wordlist. Same thing with the actual attack. You can use programs like [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) to do the actual attack after you have created the wordlist.
