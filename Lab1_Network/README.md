@@ -130,7 +130,7 @@ We happen to know, that there might be some answers availabe as wild out there.
 
 ---
 
-## Task 1 / Level 2
+## Task 1
 
 In level 2 and 3 tasks, you will only need your browser, it's developer tools and Juice Shop. Start the Juice Shop using docker. Check Prequisities chapter for more information. Most importantly follow the traffic in the network tab. 
 
@@ -245,7 +245,7 @@ How did you make it visible? Why you were able to?
 
 
 
-## Task 2 / Level 3
+## Task 2 
 
 
 
@@ -307,7 +307,7 @@ You can use any tools you find online. If you want to, you can code your own mut
 
 __Hint__ Internet is full of tools to create wordlists. It is potentially easier to combine multiple tools to create the wordlist. You can use existing tools to do the attack if you don't feel like creating your own script. [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) for example can do the attack easily if you have a list containing all the mutations. Don't try to do the attack using burp community edition. It does not allow you to use files as payloads.
 
-## Task 3/Level 4 
+## Task 3
 
 The XSS attack you did in the previous task was mostly just annoying. It could however have been way more malicious. Next we are going to do just that and modify it to be way more dangerous. Your task is the following:
 
@@ -332,7 +332,7 @@ Keep in mind that the user database is purged each time you restart the Juice Sh
 You will likely need to format your request so that the servers JSON parser will accept it. Feel free to use tools like https://www.freeformatter.com/json-escape.html
 
 
-## Task 4/Level 5
+## Task 4
 
 You can complete this task in two ways. You can do the predefined task explained below or you can suggest a task that interests you and do that. __Contact the course assistants__ and describe them what you are interested on doing/trying to do. If they say it is good you can do that as your task 4.
 
