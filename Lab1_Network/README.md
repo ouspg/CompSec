@@ -132,9 +132,11 @@ We happen to know, that there might be some answers availabe as wild out there.
 
 ## Task 1
 
-In level 2 and 3 tasks, you will only need your browser, it's developer tools and Juice Shop. Start the Juice Shop using docker. Check Prequisities chapter for more information. Most importantly follow the traffic in the network tab. 
+In level 2 and 3 tasks, you will only need your browser, its developer tools and Juice Shop. Start the Juice Shop using docker. Check Prequisities chapter for more information. Most importantly follow the traffic in the network tab. 
 
 Observe and modify the traffic while you are browsing the site and do the following tasks.
+
+If you are rusty on your SQl injections check the following before you start : https://www.acunetix.com/websitesecurity/sql-injection/
 
 Start Juice Shop with the command
 ```shell
