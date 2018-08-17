@@ -150,7 +150,7 @@ __Note__ In Firefox's devtools, in the "Headers" section of packet information, 
 **Noticing errors**
 
 Search field of the JuiceShop is vulnerable to SQL injections.
-Inject some SQL to the searchfield and cause an error. 
+Inject some SQL to the searchfield and cause an __SQL__ error. 
 __Hint__ Try different SQL symbols like statement terminators, comments, quotation marks. Check the network tab for servers response 
 
 What command(s) did you use?
