@@ -243,10 +243,6 @@ How did you make it visible? Why you were able to?
 ```
 
 
-Go to "Contact Us" page. Leave a comment as someone else.
-__Hint__ Check the html form code.    
-```
-```
 
 
 ## Task 2 / Level 3
