@@ -55,7 +55,7 @@ Labs have been split to different tasks. **The amount of tasks which are require
 
 ## Deadlines
 
-Each week you are expected to return assingments for corresponding lab OR for corresponding lecture tasks.
+Each week you are expected to return assignments of corresponding lab OR corresponding lecture tasks.
 
 Section|Deadline|Topic/Lab
 :-:|:-:|:-:
@@ -67,7 +67,7 @@ Week 5 | Wednesday, 10.10.2018, at 23:59 | Side-channel attacks with ChipWhisper
 Week 6 | Wednesday, 17.10.2018, at 23:59 | Possibility to improve or make missing labs
 Week 7 | - | Ask guidance for final coursework
 
-***NOTE:***  Week 5 and 6 might be mixed, depending on the amount of participants in the lab. There are limited amount of devices required for ChipWhisperer lab.
+***NOTE:***  Week 5 and 6 might be mixed, depending on the amount of participants in the lab. There are limited amount of devices which are required for ChipWhisperer lab.
 
 ## Instructions
 
@@ -103,7 +103,7 @@ git push
 
 ## Virtual machines
 
-Each lab utilizes one of the virtual machines. These machines can be found from the University drive.
+Each lab utilizes one of the virtual machines below. These machines can be found from the University drive.
 
 Following virtual machines will be used:
 
