@@ -19,26 +19,27 @@ Grading
 Make a short step-by-step report (what, why and how) of following tasks, and include source codes and the most important command line commands used in those tasks. It's recommended to read all tasks before starting. Actual instruction for what to do, is ***in bold and italics*** on each task.
 
 You are elgible to following grades in this exercise by doing tasks as defined. Great ideas and implementations could compensate some poorly implemented ones.
-Upper grade requires that all previous ones have been done as well.
+*Upper grade requires that all previous tasks have been done as well.*
 
 It is estimated, that you are able to do Tasks 1 & 2 during lab session (4 hours).
 
-Tasks 3 & 4 are more advanced than earlier ones. Students will have more freedom to implement them. Implementation will probably take time outside of lab.
+Tasks 3 & 4 are more advanced than earlier ones. Implementation will very likely take time outside of lab.
 
 Task|Grade/Level|Description|
 ----|:---:|-----------|
-[Task 1](#task-1--basics-of-buffer-overflows "Task 1 : Basics of buffer overflows") | 1 |  Analyzing buffer overflow and changing execution flow
+[Task 1](#task-1--basics-of-buffer-overflows "Task 1 : Basics of buffer overflows") | - |  Analyzing buffer overflow and changing execution flow
 [Task 2](#task-2--arbitary-code-execution "Task 2 : Arbitary code execution") | 2 - 3| Arbitary code execution in vulnerable program
 [Task 3](#task-3--defeating-no-execute "Task 3 : Defeating No-eXecute") | 4 | Code reuse attack techniques: ret2libc & ROP
 [Task 4](#task-4--a-bit-more-advanced-rop-implementation "Task 4 : A bit more advanced ROP implementation") | 5 | Taking ROP to next level
 
 By completing Task 1 and Task 2 A&B, you are eglible for passing the lab and getting minimum grade 2 from this lab. Completion of C part increases grade to 3.
 
-Grade 1 can be aquired aswell by doing diary from the corresponding lectures.
-
-Tasks will be reviewed during lab. Unifinished tasks can be returned for defined returning place.
+Grade 1 can be aquired by doing lecture tasks/diary from the corresponding lectures.
 
 Difficulty on tasks is expected to be exponentially raising as you go forward with them. Without understanding of previous task, next one could be very ambiguous.
+
+*Return completed tasks to your private GitHub repository!
+There will be answer template or more instructions.*
 
 ---
 
@@ -115,14 +116,14 @@ This payload uses some memory address what you should be able to figure out base
 Example scenario would be something like this. The function which is never actually called, is printing something and opening shell:
 
 ```shell
-root@kali:~/Desktop/CompSec/Shellcode Lab# ./Overflow $(python -c 'print "A" * 10')
+# ./Overflow $(python -c 'print "A" * 10')
 AAAAAAAAAA
-root@kali:~/Desktop/CompSec/Shellcode Lab# .$(python -c 'print "A" * 20 + "\x11\x11\x11\x11"')
+# .$(python -c 'print "A" * 20 + "\x11\x11\x11\x11"')
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGUUUUAccidental shell access appeared
-root@kali:~/Desktop/CompSec/Shellcode Lab# exit
+# exit
 exit
 Illegal instruction
-root@kali:~/Desktop/CompSec/Shellcode Lab#
+#
 
 ```
 Note, that using script like above expects that program is taking input as argument. Also, the way how memory address is actually used as input, is not so straightforward. (Is your system Little- or Big-endian?)
@@ -157,10 +158,10 @@ Extra: Maybe the most known white paper about this method can be found [here][0]
 > ***Make a simple program, which opens local shell. Example would be in execution like this:***
 
 ```shell
-root@kali:~/Desktop/Shellcode Lab2# gcc -o simpleshell Simpleshell.c 
-root@kali:~/Desktop/Shellcode Lab2# ./simpleshell 
+# gcc -o simpleshell Simpleshell.c 
+# ./simpleshell 
 # exit
-root@kali:~/Desktop/Shellcode Lab2# 
+# 
 ```
 This program represents functionality of our later arbitary code.
 

@@ -20,9 +20,11 @@ This repository contains a folder for following labs. Each folder contains tasks
 
 3. Botnets and malwares lab
 
-4. ChipWhisperer lab
+4. Shellcoding lab
 
-5. Shell coding lab
+5. ChipWhisperer lab
+
+
 
 
 ## Current state/ TODO
@@ -43,23 +45,39 @@ Labs have been split to 4 tasks. Each task corresponds to the grade you will ear
 * __Task 3:__ Complete the above and some extra work. Will earn you a grafe of **4** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return them to the assistants before the deadline
 * __Task 4:__ Complete all the above and the most challenging extra work. Yuo will earn a grade of **5** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time and return them to the assistants before the deadline
 
-## Returns
+## Deadlines
 
-Check [moodle](https://oystack.oulu.fi/) for a link from which you can receive a private repository containing your return folders. __Remember to leave a document to the moodle return box containing you name and link to your repository__. We need that to track who owns which repository and to check that you are active in the course. Your work will not be graded if you don't submit this document __each week__.
+Each week you are expected to return assingments for corresponding lab OR for corresponding lecture tasks.
 
-Deadlines are in moodle.
+Section|Deadline|Topic/Lab
+:-:|:-:|:-:
+Week 1 | Wednesday, 12.09.2018, at 23:59| Fuzzing
+Week 2 | Wednesday, 19.09.2018, at 23:59 | Network and websecurity
+Week 3 | Wednesday, 26.09.2018, at 23:59 | Botnets and malwares
+Week 4 | Wednesday, 03.10.2018, at 23:59 | Shellcoding
+Week 5 | Wednesday, 10.10.2018, at 23:59 | ChipWhisperer
+Week 6 | Wednesday, 17.10.2018, at 23:59 | Possibility improve or make missing labs
+Week 7 | - | Ask guidance for final coursework
+
+Check [Moodle](https://oystack.oulu.fi/) for a link from which you can receive a private repository containing your return folders. __Remember to leave a document to the Moodle return box containing you name and link to your repository__. We need that to track who owns which repository and to check that you are active in the course. 
+
+Your work will not be graded if you don't submit this document __each week__.
+
+Deadlines are in Moodle.
 
 ## Instructions
 
 * Enroll to the course
-* Find courses moodle page from universitys [moodle](https://oystack.oulu.fi/) 
-* Find a link from which you can receive a private repository containing all the return folders.
-* Check moodle for lab deadlines
+* Find course's Moodle page from University's [Moodle](https://oystack.oulu.fi/) 
+* Find a link from which you can receive and create a private repository containing all the return folders.
+* Check Moodle for lab deadlines
 * Complete as many tasks as you wish and update your repository accordingly. Check the grading table found in each labs instructions on what you have to complete in order to earn the grade of your choosing
-* Push your changes to your repo before deadline
-* Return a document containing your name and your github repos link to moodle.
+* Push your changes to your repository before deadline
+* Return a document to Moodle's return box containing:
+  * Your name 
+  * Link to your private GitHub repository
 
-Check [cheat sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) if you need a refresher on how to use git. Some basic commands below  
+Check [cheat sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) if you need a refresher on how to use Git. Some basic commands below  
 ```git
 git add </path/filename>
 git commit -m "<message>"
