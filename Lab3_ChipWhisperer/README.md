@@ -15,7 +15,7 @@ Basic idea of this lab will be simple. Target device has secret information in i
 
 We know the source code of device and inputs and outputs, but secret information like encryption keys and passwords are used only in internal execution and those cannot be seen by outsider.
 
-What can we do to reveal secrets? We could approach problem with more traditional software security viewpoint and try to find bug in the source code and then exploit that by constructing malformed input which causes device to function unexpectedly. But this time we are not going to do that.
+What can we do to reveal secrets? We could approach problem from software viewpoint and for example try to find bug in the source code and then exploit that by constructing malformed input which causes device to function unexpectedly. But this time we are not going to play by the ruleset that only software gives us.
 
 Because we have access to hardware, we can utilize that in our attack. We can attach our measurement device to the target board and perform side-channel attack in the form of power analysis.
 
@@ -23,21 +23,22 @@ Idea of power analysis attack is simple. Every operation on target chip consumes
 
 More information about principles of power analysis can be found from [Wikipedia](https://en.wikipedia.org/wiki/Power_analysis) and more ChipWhisperer-related information about CPA can be found from manufacturers [wiki](http://wiki.newae.com/Correlation_Power_Analysis)
 
-In this lab you will be using ChipWhisperer Lite 1173. CW1173 Lite consists two parts: Capture board (bigger one) and target board (can be seen in picture below). Boards are connected to each other with serial cable and measurement connector and glitch connector. Notice that only measurement connector is needed to complete this lab and glitch connector are used only in advanced tasks. When you start doing these tasks you connect capture board to your computer with USB-cable.
+In this lab you will be using ChipWhisperer Lite 1173 hardware. It consists two parts: Capture board (bigger one) and target board (can be seen in picture below). Capture board is basically boosted oscilloscope, which is able to capture accurately small power traces or glitch target board. Target board (XMEGA CW303) is just basic microcontroller that is used as victim of our experiments.
+
+Boards are connected to each other with serial cable and measurement connector and glitch connector. Notice that only measurement connector is needed to complete this lab and glitch connector are used only in advanced tasks. When you start doing these tasks you connect capture board to your computer with USB-cable.
 
 ![alt text](pictures/chipwhisperer.jpg " ChipWhisperer CW1173 Lite (2 part version) with serial cable and glitch ports connected. ")
 
  More accurate documentation of it can be found from http://wiki.newae.com/CW1173_ChipWhisperer-Lite , but it should not be needed for basic tasks.
 
-
 ### Requirements
-In order for you to complete this lab you need a ChipWhisperer board + a target board and a copy of ChipWhispererlubuntu virtual machine found in the course folder in the university drive. You can also setup ChipWhisperer capture and analyze software separately to your own machine if you find it more suitable solution for you.
+In order for you to complete this lab you need a ChipWhisperer board + a target board and a copy of customized ChipWhispererlubuntu virtual machine found in the course folder in the university drive.
 
-Details on how to setup everything your self or download a clean image can be found [here](https://wiki.newae.com/Installing_ChipWhisperer)
+You can also use clean ChipWhisperer virtual machine or just install ChipWhisperer software to your own machine. Details on how to setup everything your self or download a clean image can be found [here](https://wiki.newae.com/Installing_ChipWhisperer) and required custom scripts to be used in labs can be found from scripts folder in this repository.
 
-Custom scripts used in this lab can be found from scripts folder in this repository. 
+__We suggest that you use the preconfigured ChipWhisperer virtual machine of this course OR a clean ChipWhisperer virtual machine with our scripts.__
 
-__We suggest that you use the preconfigured virtual machine OR a clean virtual machine with our scripts.__
+If you want to install ChipWhisperer software to your machine (Linux, Windows and Mac are supported), you must acknowledge that this labwork is not tested with those configurations and course assistants might not be able to help you if you encounter problems with your custom installation. There is no reason why it would not work, but be aware that nobody has tested it.
 
 ## How to complete?
 Task of this lab are divided to 4 different tasks which are also corresponding the grades that are achieved by completing them. For example, completing tasks 1, 2 and 3 results grade 4 in this lab. Completing task 1 and 2 should be taking about 4 hours so you are expected to do that during classroom lab time. If you want to continue working at home with those tasks or you want to do more advanced tasks, you can disscuss about lending the equipment with course assistants.
@@ -480,6 +481,8 @@ Return you answers to above questions and complete code to .... TBA
 **TIPS & TRICKS**
 
 Notice that quality of your “difference plot” is highly dependent of your reference sample. Do not choose it hastily.
+
+Pay attention to the number of close-to-zero spikes in difference plot. Think how many of those spikes are needed to calculate 16-bit key.
 
 # Task 3
 ## Glitching
