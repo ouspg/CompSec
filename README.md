@@ -55,15 +55,15 @@ Week 1 | Wednesday, 12.09.2018, at 23:59| Fuzzing
 Week 2 | Wednesday, 19.09.2018, at 23:59 | Network and websecurity
 Week 3 | Wednesday, 26.09.2018, at 23:59 | Botnets and malwares
 Week 4 | Wednesday, 03.10.2018, at 23:59 | Shellcoding
-Week 5 | Wednesday, 10.10.2018, at 23:59 | ChipWhisperer
-Week 6 | Wednesday, 17.10.2018, at 23:59 | Possibility improve or make missing labs
+Week 5 | Wednesday, 10.10.2018, at 23:59 | Side-channel attacks with ChipWhisperer
+Week 6 | Wednesday, 17.10.2018, at 23:59 | Possibility to improve or make missing labs
 Week 7 | - | Ask guidance for final coursework
 
 Check [Moodle](https://oystack.oulu.fi/) for a link from which you can receive a private repository containing your return folders. __Remember to leave a document to the Moodle return box containing you name and link to your repository__. We need that to track who owns which repository and to check that you are active in the course. 
 
 Your work will not be graded if you don't submit this document __each week__.
 
-Deadlines are in Moodle.
+Deadlines are in Moodle as well. If for some reason Moodle box is available longer than presented here, that is correct deadline.
 
 ## Instructions
 
