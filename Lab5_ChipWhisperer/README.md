@@ -612,9 +612,9 @@ Complete two of the three tutorials listed below. You are expected to document t
 Note that if you want to complete the [Breaking AES bootloader extended](https://wiki.newae.com/Tutorial_A5-Bonus_Breaking_AES-256_Bootloader) tutorial you have to do [Breaking AES bootleader](https://wiki.newae.com/Tutorial_A5_Breaking_AES-256_Bootloader) before it.
 
 
-## Option 2. Glitch your own hardware
+## Option 2. Glitch or analyze your own target hardware
 
-Alternatively you can attempt to glitch your own device. For example there is a [tutorial how to glitch raspberry pi.](https://wiki.newae.com/Tutorial_A3_VCC_Glitch_Attacks#Glitching_More_Advanced_Targets:_Raspberry_Pi) You can also analyze the power traces captured from your own device and attempt to use them for something.
+Alternatively you can attempt to glitch or analyze your own device. For example there is a [tutorial how to glitch raspberry pi](https://wiki.newae.com/Tutorial_A3_VCC_Glitch_Attacks#Glitching_More_Advanced_Targets:_Raspberry_Pi) or how to [glitch LPC1114.](http://wiki.newae.com/Tutorial_A9_Bypassing_LPC1114_Read_Protect) Feel free to seach examples from internet or ChipWhisperer wiki for ideas for additional targets. Document your process. Tell what you tried, how you did it and did you succeeded or not.
 
 __Note:__ **If you decide to glitch/analyze external device you are responsible for the chipwhisperer and for the target device. We are not responsible if you break either of the devices during your experiments**
 
