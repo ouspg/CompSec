@@ -22,7 +22,7 @@ This repository contains a folder for following labs. Each folder contains tasks
 
 4. ChipWhisperer lab
 
-5. Shell coding lab
+5. Shellcoding lab
 
 
 ## Current state/ TODO
@@ -45,21 +45,23 @@ Labs have been split to 4 tasks. Each task corresponds to the grade you will ear
 
 ## Returns
 
-Check [moodle](https://oystack.oulu.fi/) for a link from which you can receive a private repository containing your return folders. __Remember to leave a document to the moodle return box containing you name and link to your repository__. We need that to track who owns which repository and to check that you are active in the course. Your work will not be graded if you don't submit this document __each week__.
+Check [Moodle](https://oystack.oulu.fi/) for a link from which you can receive a private repository containing your return folders. __Remember to leave a document to the Moodle return box containing you name and link to your repository__. We need that to track who owns which repository and to check that you are active in the course. Your work will not be graded if you don't submit this document __each week__.
 
-Deadlines are in moodle.
+Deadlines are in Moodle.
 
 ## Instructions
 
 * Enroll to the course
-* Find courses moodle page from universitys [moodle](https://oystack.oulu.fi/) 
-* Find a link from which you can receive a private repository containing all the return folders.
-* Check moodle for lab deadlines
+* Find course's Moodle page from University's [Moodle](https://oystack.oulu.fi/) 
+* Find a link from which you can receive and create a private repository containing all the return folders.
+* Check Moodle for lab deadlines
 * Complete as many tasks as you wish and update your repository accordingly. Check the grading table found in each labs instructions on what you have to complete in order to earn the grade of your choosing
-* Push your changes to your repo before deadline
-* Return a document containing your name and your github repos link to moodle.
+* Push your changes to your repository before deadline
+* Return a document to Moodle's return box containing:
+  * Your name 
+  * Link to your private GitHub repository
 
-Check [cheat sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) if you need a refresher on how to use git. Some basic commands below  
+Check [cheat sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) if you need a refresher on how to use Git. Some basic commands below  
 ```git
 git add </path/filename>
 git commit -m "<message>"
