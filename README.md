@@ -20,9 +20,11 @@ This repository contains a folder for following labs. Each folder contains tasks
 
 3. Botnets and malwares lab
 
-4. ChipWhisperer lab
+4. Shellcoding lab
 
-5. Shellcoding lab
+5. ChipWhisperer lab
+
+
 
 
 ## Current state/ TODO
@@ -43,9 +45,23 @@ Labs have been split to 4 tasks. Each task corresponds to the grade you will ear
 * __Task 3:__ Complete the above and some extra work. Will earn you a grafe of **4** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return them to the assistants before the deadline
 * __Task 4:__ Complete all the above and the most challenging extra work. Yuo will earn a grade of **5** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time and return them to the assistants before the deadline
 
-## Returns
+## Deadlines
 
-Check [Moodle](https://oystack.oulu.fi/) for a link from which you can receive a private repository containing your return folders. __Remember to leave a document to the Moodle return box containing you name and link to your repository__. We need that to track who owns which repository and to check that you are active in the course. Your work will not be graded if you don't submit this document __each week__.
+Each week you are expected to return assingments for corresponding lab OR for corresponding lecture tasks.
+
+Section|Deadline|Topic/Lab
+:-:|:-:|:-:
+Week 1 | Wednesday, 12.09.2018, at 23:59| Fuzzing
+Week 2 | Wednesday, 19.09.2018, at 23:59 | Network and websecurity
+Week 3 | Wednesday, 26.09.2018, at 23:59 | Botnets and malwares
+Week 4 | Wednesday, 03.10.2018, at 23:59 | Shellcoding
+Week 5 | Wednesday, 10.10.2018, at 23:59 | ChipWhisperer
+Week 6 | Wednesday, 17.10.2018, at 23:59 | Possibility improve or make missing labs
+Week 7 | - | Ask guidance for final coursework
+
+Check [Moodle](https://oystack.oulu.fi/) for a link from which you can receive a private repository containing your return folders. __Remember to leave a document to the Moodle return box containing you name and link to your repository__. We need that to track who owns which repository and to check that you are active in the course. 
+
+Your work will not be graded if you don't submit this document __each week__.
 
 Deadlines are in Moodle.
 
