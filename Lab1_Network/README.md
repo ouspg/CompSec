@@ -6,8 +6,9 @@ Lab 1: Networks and web security
 
 
 * This document contains task descriptions and theory for network lab. If there are any differences between the return template and this file consider this to be the up to date document
-* **You can use your own computer if you want.** Check "Prerequisities" chapter for information on what you need to install. This lab is made to be done in Linux environment and tested to work in Ubuntu and Kali. How ever it should work in any other operating system.
+* **You can use your own computer if you want.** Check "Prerequisities" chapter for information on what you need to install. This lab is made to be done in Linux environment and tested to work in Ubuntu and Kali. However it should work in any other operating system.
 * You are not expected to be able to finish all the tasks during the lab session. Feel free to continue them at your own time.
+* Check the deadline from Moodle and __remember that you have to return your name and github repository infromation to moodle before deadline__
 
 ## Background
 
@@ -17,7 +18,7 @@ It is very likely that nowadays the most of us are browsing the Internet on a da
 
 In many cases, user is able to give some kind of *input* to these websites or applications, regardless of platform or browser.
 
-What could possibly go wrong, if this user input is not properly validated or sanitizied? What if you are even able to put input to somewhere, where you are not even supposed to?
+What could possibly go wrong, if this user input is not properly validated or sanitizied? What if you are even able to put input to somewhere, where you are not supposed to?
 
 In this lab we will go over some basic network and web related security issues with the help of [OWAPS Juice Shop.](https://github.com/bkimminich/juice-shop)
 
@@ -30,7 +31,6 @@ The intention is to learn *why* the following things on tasks are happening and 
 
 On later task we will also practise capturing and analyzing traffic with [WireShark](https://www.wireshark.org/), and further by using [nmap](https://nmap.org/) for mapping the network. Our target will be [Example Voting App](https://github.com/dockersamples/example-voting-app)
 
-Can we understand, based on pure analysis, what is happening in there?
 
 ## Theory
 
@@ -86,13 +86,13 @@ All tasks are duable using your browsers developer tools. Tasks were tested and 
 Same as above and the following:
 
 
-* For the brute forcing task the tools vary depending on how you choose to do it. Read the isntructions and proceed to get the tools you want. There are some hints in the task instruction.
+* For the brute forcing task the tools vary depending on how you choose to do it. Read the instructions and proceed to get the tools you want. There are some hints in the task description.
 
 ### Task 3
 
 It is helpful to use programs like [curl](https://curl.haxx.se/) to send your XSS attack to the Juice Shop. Any other software that can send POST requests is also fine.
 
-You are expected to set up a basic server so having something like python and flask/BaseHttpServer is recommended.
+You are expected to set up a basic server so having something like python and [flask](http://flask.pocoo.org/)/[BaseHttpServer](https://docs.python.org/2/library/basehttpserver.html) is can be useful. You are free the setup the server any way you wish.
 
 ### Task 4
 
@@ -111,7 +111,7 @@ Grading
 You are elgible to following grades in this exercise by doing tasks as defined. Great ideas and implementations could compensate some poorly implemented ones.
 Upper grade requires that all previous ones have been done as well.
 
-It is estimated, that you are able to do Tasks 1 & 2 during lab session (4 hours).
+It is estimated, that you are able to do Tasks 1 & possibly 2 during lab session (4 hours).
 
 Task| Grade/Level | Description
 :--:|:--:|--
@@ -130,17 +130,17 @@ We happen to know, that there might be some answers availabe as wild out there.
 
 ---
 
-## Task 1 / Level 2
+## Task 1
 
-In level 2 and 3 tasks, you will only need your browser, it's developer tools and Juice Shop. Start the Juice Shop using docker. Check Prequisities chapter for more information. Most importantly follow the traffic in the network tab. 
+In level 2 and 3 tasks, you will only need your browser, its developer tools and Juice Shop. Start the Juice Shop using docker. Most importantly follow the traffic in the network tab. 
 
-Observe and modify the traffic while you are browsing the site and do the following tasks.
+If you are rusty on your SQl injections check the following before you start : https://www.acunetix.com/websitesecurity/sql-injection/
 
 Start Juice Shop with the command
 ```shell
 docker run --rm -p 3000:3000 bkimminich/juice-shop
 ```
-Site is hosted at ```localhost:3000```. Access it with your browser and start working
+Site is hosted at ```localhost:3000```. Access it with your browser. Observe and modify the traffic while you are browsing the site and do the following tasks.
 
 __Note__ In Firefox's devtools, in the "Headers" section of packet information, there is a handy "Edit and Resend" button Which can be used to modify packets.
 
@@ -187,7 +187,7 @@ Why it is working/what is happening?
 ---
 Shop has an item that has been deleted and therefore does not show on searches. Deduct how the item is marked as deleted and use SQL injection to make it visible and "buy" it. 
 
-__HINT__ Check the command that the SQL server attempts to execute. Also inspect the traffic that happens when you inspect an item.
+__HINT__ Check the command that the SQL server attempts to execute. Also inspect the traffic that happens when you inspect an item. 
 
 What SQL command did you use?
  ``` sql
@@ -196,7 +196,7 @@ What SQL command did you use?
 How are the items "deleted"?
 ```
 ```
-Take a screenshot of the visible item.
+
 
 Explain shortly the logic behind your attack. Why does it work?
 ```
@@ -238,18 +238,14 @@ At this point we might have seen some notifications about challenges we have com
 Sometimes the HTML contains unwanted stuff. This site has for example a scoreboard, and the top bar should contain a link to it. Use your browsers developer tools and make it visible.
 __Hint__ You can edit the fields in "Inspector" tab
 
-How did you make it visible? Why you were able to?
+How did you make it visible?
 ```
 ```
 
 
-Go to "Contact Us" page. Leave a comment as someone else.
-__Hint__ Check the html form code.    
-```
-```
 
 
-## Task 2 / Level 3
+## Task 2 
 
 
 
@@ -311,19 +307,19 @@ You can use any tools you find online. If you want to, you can code your own mut
 
 __Hint__ Internet is full of tools to create wordlists. It is potentially easier to combine multiple tools to create the wordlist. You can use existing tools to do the attack if you don't feel like creating your own script. [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) for example can do the attack easily if you have a list containing all the mutations. Don't try to do the attack using burp community edition. It does not allow you to use files as payloads.
 
-## Task 3/Level 4 
+## Task 3
 
 The XSS attack you did in the previous task was mostly just annoying. It could however have been way more malicious. Next we are going to do just that and modify it to be way more dangerous. Your task is the following:
 
-* **Setup a server.** No need to do anything fancy. Basic python flask/http erver that can receive post requests is fine. Server can print or save the information to a file. Anything goes as long as it shows that the data entered the server.  
+* **Setup a server.** No need to do anything fancy. Basic python flask/http server that can receive post requests is fine. Server can print or save the information to a file. Anything goes as long as it shows that the data entered the server.  
 * **When the user accesses the administration panel the page will look like the login page.** Page should be as similiar as possbile but small differences are fine. For example slightly different size login fields, email field not checking for @ sign etc.
 * **When the user inputs anything to the email and password fields and presses the *Login*-button all the information in the email and password fields are sent to your server.** The way you send/show the information is up to you. You just have to demostrate in the server side that the data has entered and that it is the same as inputted to the email and password fields.
 
 ### Returns
 
 * Server code
-* Request you send to the server. Preferrably in a separate file
-* **Clear** instructions on how the start the server, send the Cross-Site script attack and how to verify that the information was sent to the server. 
+* Request you send to the server in a separate file
+* **Clear** instructions on how to start the server, send the Cross-Site script attack and how to verify that the information was sent to the server. 
 
 
 __Tips__  
@@ -336,7 +332,7 @@ Keep in mind that the user database is purged each time you restart the Juice Sh
 You will likely need to format your request so that the servers JSON parser will accept it. Feel free to use tools like https://www.freeformatter.com/json-escape.html
 
 
-## Task 4/Level 5
+## Task 4
 
 You can complete this task in two ways. You can do the predefined task explained below or you can suggest a task that interests you and do that. __Contact the course assistants__ and describe them what you are interested on doing/trying to do. If they say it is good you can do that as your task 4.
 
