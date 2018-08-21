@@ -40,6 +40,15 @@ __We suggest that you use the preconfigured ChipWhisperer virtual machine of thi
 
 If you want to install ChipWhisperer software to your machine (Linux, Windows and Mac are supported), you must acknowledge that this labwork is not tested with those configurations and course assistants might not be able to help you if you encounter problems with your custom installation. There is no reason why it would not work, but be aware that nobody has tested it.
 
+## What connections are needed
+
+* Connect ChipWhisperers and target boards "*Measure*" ports using SMA cable.
+* If you are doing task 4 (glitching) also connect "*Glitch*" ports
+* Connect the serial cable between boards
+* Connect micro-usb to the board and your computer
+
+
+
 ## How to complete?
 Task of this lab are divided to 4 different tasks which are also corresponding the grades that are achieved by completing them. For example, completing tasks 1, 2 and 3 results grade 4 in this lab. Completing task 1 and 2 should be taking about 4 hours so you are expected to do that during classroom lab time. If you want to continue working at home with those tasks or you want to do more advanced tasks, you can disscuss about lending the equipment with course assistants.
 
