@@ -23,7 +23,7 @@ Idea of power analysis attack is simple. Every operation on target chip consumes
 
 More information about principles of power analysis can be found from [Wikipedia](https://en.wikipedia.org/wiki/Power_analysis) and more ChipWhisperer-related information about CPA can be found from manufacturers [wiki](http://wiki.newae.com/Correlation_Power_Analysis)
 
-In this lab you will be using ChipWhisperer Lite 1173 hardware. It consists two parts: Capture board (bigger one) and target board (can be seen in picture below). Capture board is basically boosted oscilloscope, which is able to capture accurately small power traces or glitch target board. Target board (XMEGA CW303) is just basic microcontroller that is used as victim of our experiments.
+In this lab you will be using ChipWhisperer Lite 1173 hardware. It consists two parts: Capture board and target board (can be seen in picture below). Capture board is basically boosted oscilloscope, which is able to capture accurately small power traces or glitch target board. Target board (XMEGA CW303) is just basic microcontroller that is used as victim of our experiments.
 
 Boards are connected to each other with serial cable and measurement connector and glitch connector. Notice that only measurement connector is needed to complete this lab and glitch connector are used only in advanced tasks. When you start doing these tasks you connect capture board to your computer with USB-cable.
 
@@ -74,9 +74,9 @@ __TIPS & TRICKS__
 
 * Notice that you have to be connecting serial cable and measure ports, glitch port is not needed in this task.
 
-* Notice that machines default username is **cwuser** and password is **cwpassword** in case you happen to need it
+* Notice that machines default username is **cwuser** and password is **cwpassword** in case you happen to need it.
 
-* Notice that chipwhisperer folder location is different what is mentioned in tutorial!. Chipwhisperer files are located on the desktop
+* Notice that chipwhisperer folder location is different what is mentioned in tutorial! Chipwhisperer files are located on the desktop.
 
 * Beware of static electricity. Discharge of static electricity can be harmful to board.
 
@@ -148,15 +148,15 @@ trigger_low();
 ```
 Build your modified program like you did in previous introduction tutorial and program it to the target device like you did earlier.
 
-We expect that you are able to connect to device by the same way that you did in previous task. In the place of “setup_cwlite_xmega_aes.py” you should use “**setup_cwlite_xmega.py**” setup script. If you have device already up and running from the previous task, you can simply run “**setup_cwlite_xmega.py**” and it will setup everything for you.
+We expect that you are able to connect to device by the same way that you did in previous task. In the place of **setup_cwlite_xmega_aes.py** you should use **setup_cwlite_xmega.py** setup script. If you have device already up and running from the previous task, you can simply run **setup_cwlite_xmega.py** and it will setup everything for you.
 
-In order to be able to capture power traces we must make capture boards clock work faster. Navigate to the “Scope settings” tab in the capture software and set “Source” to be “**CLKGEN x4 via DCM**”.
+In order to be able to capture power traces we must make capture boards clock work faster. Navigate to the *Scope settings* tab in the capture software and set *Source* to be **CLKGEN x4 via DCM**.
 
-The “ADC Freq” should show 29.5 MHz (which is 4x 7.37 MHz), and the “DCM Locked” checkbox must be checked. If the DCM Locked checkbox is NOT checked, try hitting the Reset ADC DCM button again.
+The *ADC Freq* should show **29.5 MHz** (which is 4x 7.37 MHz), and the *DCM Locked* checkbox must be checked. If the DCM Locked checkbox is NOT checked, try hitting the *Reset ADC DCM* button again.
 
 Press capture button and you should see the power trace which was captured. We can make power trace look nicer by adjusting some settings.
 
-Under “Gain Setting” set the “Mode” to high. Increase the “Gain Setting” to about 25. You'll be able to adjust this further during experimentations, you may need to increase this depending on your hardware and target device. “Under Trigger Setup” set the “Total Samples” to 500, because we do not need big amount of samples to be taken to inspect power consumption.
+Under *Gain Setting* set the *Mode* to high. Increase the *Gain Setting* to about 25. You'll be able to adjust this further during experimentations, you may need to increase this depending on your hardware and target device. Under *Trigger Setup* set the *Total Samples* to 500, because we do not need big amount of samples to be taken to inspect power consumption.
 
 Press capture button again and you should see captured power trace.
 
@@ -179,21 +179,21 @@ First, read the theoretical basis of CPA so you can understand better what is id
 
 Task should be doable by following instructions below, but feel free to look the original tutorial for hints. Especially pictures of it can be useful to help you understand what is supposed to happen during the steps.
 
-1. Make sure your Chipwhisperer is still connected(Master, Scope and Target buttons on the top panel are green) If this is not the case execute the "connect_cwlite_simpleserial.py" script
+1. Make sure your Chipwhisperer is still connected(Master, Scope and Target buttons on the top panel are green) If this is not the case execute the **connect_cwlite_simpleserial.py** script
 2. Build the file simpleserial-aes to the target board the same way you did in the previous task. File can be found from *chipwhisperer\hardware\victims\firmware\simpleserial-aes*
-3. Execute  "setup_cwlite_xmega_aes.py" script from the script list. This changes the settings of the scope. You can use the “Script view”-window to see what settings are set
-4. Press the “Capture many”-button on the top left(green triangle with the symbol ”M”). 
+3. Execute  **setup_cwlite_xmega_aes.py** script from the script list. This changes the settings of the scope. You can use the “Script view”-window to see what settings are set
+4. Press the *Capture many*-button on the top left(green triangle with the symbol ”M”). 
 5. Save the project with *File --> Save Project* option, give it any name you want.
 6. Open the Analyzer software
 7. Open the file you saved in the step 5
-8. Switch to Trace output Plot tab on the right side
-9. Switch to Results settings tab on the left side
+8. Switch to *Trace output Plot* tab on the right side
+9. Switch to *Results settings* tab on the left side
 10. You can play around with the Traces(s) to plot windows in order to draw different traces(for example 0-10 draws traces 0-10). In order to redraw the traces press Redraw button below the Traces(s) to plot. Consult http://wiki.newae.com/Plotting_Widget for different options
 11. Switch to Results tab and execute the attack_cpa-py script
 
 __What to do to complete this task?__
 
-**Explain shortly how the correlation power analysis that you just performed works.**
+Explain shortly how the correlation power analysis that you just performed works.
 
 **TIPS & TRICKS**
 * If you are interested logic behind breaking AES encryption, look at tutorial http://wiki.newae.com/Tutorial_B6_Breaking_AES_(Manual_CPA_Attack) which explains how to perform this task manually.
@@ -207,46 +207,45 @@ In this task you will extract password from secure device by analyzing the power
 In this tutorial you will be doing next main steps
 
 1. Build password program and load it to the device (like you did in previous tasks).
-2. Test that program is working with terminal emulator.
-Record couple of power traces manually to see how amount of different characters affects to the trace.
+2. Test that program is working with terminal emulator. Record couple of power traces manually to see how amount of different characters affects to the trace.
 3. Learn what is resetter auxiliary module and use it manually to see that it is working.
 4. Create your own attack script which automatically does setup, tries passwords and resets device before every try.
 
-This lab is a modified version of http://wiki.newae.com/Tutorial_B3-1_Timing_Analysis_with_Power_for_Password_Bypass tutorial. Instead of manually setting most of the values we use ready made scripts to set different scope values etc. It is advised that you check this tutorial because it goes more in depth to several things. However you can complete this lab by following these steps:
+This lab is a modified version of http://wiki.newae.com/Tutorial_B3-1_Timing_Analysis_with_Power_for_Password_Bypass tutorial. Instead of manually setting most of the values we use ready made scripts to set different scope values etc. You may check original tutorial because it might have screenshots and other helpful information which can make it easier to understand what is happening here. However you can complete this lab by following these steps:
 
-1. Restart the Capture software
-2. Go to \home\cwuser\Desktop\chipwhisperer\hardware\victims\firmware\basic-passwdcheck
-3. Make the program with the command make PLATFORM=CW303
-4. Execute connect_cwlite_simpleserial.py in the Capture software to connect the device
+1. Restart the Capture software.
+2. Go to *\home\cwuser\Desktop\chipwhisperer\hardware\victims\firmware\basic-passwdcheck*.
+3. Make the program with the command `make PLATFORM=CW303`.
+4. Execute **connect_cwlite_simpleserial.py** in the Capture software to connect the device.
 5. Execute setup_password_check_delay.py in the Capture software to set the parametres. Check the Script preview window to see what values were changed.
-6. Program the file you made earlier to the target board using XMEGA Programmer. Keep the programmer window open
-7. Open terminal from Tools > Terminal
-8. Press connect in the Terminal. 
-9. Press Check signature from Programmer window. This will reset the software in the target board and you should see text that asks for your password. Correct password is h0px3
-10. Type it to the terminal and press send. Terminal should say Access granted, Welcome!
-11. Reset the software and try a different password
+6. Program the file you made earlier to the target board using XMEGA Programmer. Keep the programmer window open.
+7. Open terminal from *Tools --> Terminal*.
+8. Press *Connect* in the Terminal. 
+9. Press Check signature from Programmer window. This will reset the software in the target board and you should see text that asks for your password. Correct password is h0px3.
+10. Type it to the terminal and press send. Terminal should say "Access granted, Welcome!"
+11. Reset the software and try a different password.
 
-12.  Next we capture a power trace of this operation. Have the terminal and XMEGA Programmer open. Write the correct password to the terminal but do not press send. Then press the “Check Signature” button to reset the device.  After that press the capture trace button and  right after the send on the terminal window. Try this with the correct password and with a incorrect password. Examine the traces and try to spot the differences. 
+12.  Next we capture a power trace of this operation. Have the terminal and XMEGA Programmer open. Write the correct password to the terminal but do not press send. Then press the *Check Signature* button to reset the device.  After that press the capture trace button and  right after the send on the terminal window. Try this with the correct password and with a incorrect password. Examine the traces and try to spot the differences. 
 Idea behind this lab is to spot how the power trace changes with different passwords. Then you make a script that will abuse that fact and guess the correct password. Examining the power traces with the above mentioned method is tedious due to you needing to reset the device manually and having to press multiple buttons to capture a single trace. Luckily for you there is a simpler way to do it using aux modules. With it we reset the target board when we press the capture trace button and simultaneously send the password guess to the target.
 
-13. Execute the following scipts **setup_password_check.py** **aux_reset_cw1173.py**
+13. Execute the following scipts **setup_password_check.py** and **aux_reset_cw1173.py**.
 
-14. Now put your password guess to the *Go command* field at the Target Settings tab. REMEMBER TO ADD \n AT THE END OF YOUR GUESS.
+14. Now put your password guess to the *Go command* field at the Target Settings tab. **Remember to add `\n` at the end of your guess**.
 
 15. Now when you press Capture Trace button the target should automatically reset, send your guess to the target board and capture a trace. Now input different passwords and observe the differences between the traces.
 __HINT__: Use password guesses where the first letter is wrong, then the second etc. This should give you an idea how the power trace differ with different inputs.
 
-16. Now with this knowledge modify the PASSWORD_BYPASS.py script in the */home/cwuser/Desktop/chipwhisperer/software/chipwhisperer/capture/scripts* folder so that it guesses the password correctly. Script should also be visible in the Capture Software.
+16. Now with this knowledge modify the **PASSWORD_BYPASS.py** script in the */home/cwuser/Desktop/chipwhisperer/software/chipwhisperer/capture/scripts* folder so that it guesses the password correctly. Script should also be visible in the Capture Software.
 It is advised that you learn what each of the lines in this code do. It will be helpful if you are planning on working more with the ChipWhisperer. However for this exercise you only have to modify the commented part of the code.
 
 __What to do to complete this task?__
 
-Return your code + screenshot of the Python console. TODO: Do we require also some kind of explanations addition to code and values?
+Return your code + screenshot of the Python console.
 
 ## **Breaking RSA**
 Last task for this level is about principles of reading private key of RSA algorithm during decryption by analysing captured power traces with python scripts.
 
-This task and example scripts are taken from on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B11_Breaking_RSA. This task should be able to be completed by following instructions below, but feel free to look at original tutorial because pictures and related information it contains might be helpful when you do this task.
+This task and example scripts are taken from on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B11_Breaking_RSA. This task should be able to be completed by following instructions below, but feel free to look at original tutorial because pictures, scripts and other related information it contains might be helpful when you do this task.
 
 First, if you do not know what is RSA, you can find basic information about if from https://en.wikipedia.org/wiki/RSA_(cryptosystem)
 
@@ -332,7 +331,7 @@ oid bigint_expmod_u(bigint_t* dest, const bigint_t* a, const bigint_t* exp, cons
 }
 ```
 
-If you look closely at variable t in the loop, you can see that it contains the private key which is shifted one bit left on every round. Next code compares if it has 1 or zero as MSB.
+If you look closely at variable `t` in the loop, you can see that it contains the private key which is shifted one bit left on every round. Next code compares if it has 1 or zero as MSB.
 ```C
 bigint_square(&res, &res);
 bigint_reduce(&res, r);
@@ -348,30 +347,30 @@ This is execution dependent on our private key, and if we can deduce which branc
 
 ChipWhisperer RSA demo what we will be using in this task has 2 modes: Real RSA algorithm (which is way too slow for our testing purposes) and "faked" stripped version of RSA algorithm (which is using last 16 bits of private key and executing only the vulnerable part of RSA implementation). We will be using latter one version to demonstrate RSA vulnerability against power analysis.
 
-When we use demo script (simplified version), we send "fixed plaintext" to algorithm. This is actually misleading, because send plaintext is used as "fake private key" to decrypt message. We do not care about actual message or resulting plaintext at all because our analysis targets only on private key so actual message and plaintext are irrelevant.
+When we use demo script (simplified version), we send *Fixed plaintext* to algorithm. This is actually misleading, because send plaintext is used as "fake private key" to decrypt message. We do not care about actual message or resulting plaintext at all because our analysis targets only on private key so actual message and plaintext are irrelevant.
 
 First, we setup target board, capture multiple power traces with different keys and save them to project file.
 
 1. Start the Capture software
 2. Go to */home/cwuser/chipwhisperer/hardware/victims/firmware/simpleserial-rsa*
 3. Make the program with the command `make PLATFORM=CW303` like you did in previous tasks.
-4. Execute connect_cwlite_simpleserial.py in the Capture software to connect the device.
-5. Execute setup_cwlite_xmega.py script in Capture software.
+4. Execute **connect_cwlite_simpleserial.py** in the Capture software to connect the device.
+5. Execute **setup_cwlite_xmega.py** script in Capture software.
 6. Load program that you just made to the target board similar way that you did in previous tasks.
-7. Run script setup_breaking_rsa.py to setup some initial values.
+7. Run script **setup_breaking_rsa.py** to setup some initial values.
 8. On *Generic settings*, change plaintext to be fixed at value `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00` and press capture button to confirm that it works as expected
 9. On *Generic settings*, change *Number of traces* and *Traces per set* to 2
-10. Save the project file as rsa_test_2bytes.cwp or any other name or location that you can find easily.
-11. Set the fixed plaintext to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00`, press "Capture M".
-12. Set the fixed plaintext to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 81 40`, press "Capture M".
-13. Set the fixed plaintext to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 AB E2`, press "Capture M".
-14. Set the fixed plaintext to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 AB E3`, press "Capture M".
+10. Save the project file as *rsa_test_2bytes.cwp* or any other name or location that you can find easily.
+11. Set the *Fixed plaintext* to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00`, press *Capture M*.
+12. Set the *Fixed plaintext* to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 81 40`, press *Capture M*.
+13. Set the *Fixed plaintext* to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 AB E2`, press *Capture M*.
+14. Set the *Fixed plaintext* to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 AB E3`, press *Capture M*.
 15. Save the project.
-16. Check from Project -> Trace management that you have successfully saved 8 different traces to this project.
+16. Check from *Project --> Trace management* that you have successfully saved 8 different traces to this project.
 
 Now we have successfully saved power traces for different private keys and next we analyze those with Python scripts. Capture sofware and ChipWhisperer board are not needed anymore if you have saved correct power traces successfully.
 
-Technically it could be possible to determine private key by examinging power traces just by looking at them and plotting them carefully on top of each other (feel free to try using different "fixed plaintexts" and draving multiple traces to same image with different colors!), but we of course want automated attack instead of manual attack.
+Technically it could be possible to determine private key by examinging power traces just by looking at them and plotting them carefully on top of each other (feel free to try using different *Fixed plaintexts* and draving multiple traces to same image with different colors!), but we of course want automated attack instead of manual attack.
 
 Basically we will do next:
 1. Load power trace to script
@@ -474,9 +473,7 @@ Now you have to combine those scripts to the program which automatically solves 
 
 Your complete program should be able to require correct keys `8140` and `ABE2` for corresponding traces.
 
-Can your program solve key `ABE3` for corresponding trace? If not, tell why it does not work. How you could fix that?
-
-Return you answers to above questions and complete code to .... TBA
+Can your program solve key `ABE3` from corresponding trace? If not, tell why it does not work. How you could fix that?
 
 **TIPS & TRICKS**
 
