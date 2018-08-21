@@ -29,11 +29,12 @@ This repository contains a folder for following labs. Each folder contains tasks
 
 ## Current state/ TODO
 
-- [x] Lab1 Tasks finished. Reread and fix typos. Add a chapter about how to do the returns?   
-- [ ] Lab2 Level 5 task missing for now
+  
+- [ ] Lab1 Level 5 task missing for now. Return template missing
+- [x] Lab2 Tasks done. Return template done. Might need typo fixes and minor wording tweaks  
 - [x] Lab3 Tasks finished. Finish the before the lab chapter.
 - [x] Lab4 Should be finished
-- [x] Lab5 Should be finished.
+- [x] Lab5 Tasks done. Return box done. Might need typo fixes and minor wording tweaks
 
 ## The Course
 
