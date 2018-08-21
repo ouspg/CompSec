@@ -1,5 +1,21 @@
 \.vscode/
 
+Lab3_Botnets_and_malwares/misc/anonlog
+
+Lab3_Botnets_and_malwares/commands\.txt
+
+Lab3_Botnets_and_malwares/see/screenshots
+
+Lab3_Botnets_and_malwares/see/disklogs/filesystem.json
+
+Lab3_Botnets_and_malwares/see/malware/malwares
+
+Lab3\_Botnets_and_malwares/see/hooks/__pycache__/
+
+Lab3_Botnets_and_malwares/see/conf/imageInfo/windows7\.xml
+
+Lab3_Botnets_and_malwares/see/conf/imageInfo/windows7.xml
+
 Lab4_Introduction_to_Shellcoding/src/vuln_progs/Overflow
 
 Lab4_Introduction_to_Shellcoding/src/remoteShell/remoteShell
@@ -10,12 +26,6 @@ Lab4_Introduction_to_Shellcoding/src/pwntools_example/payload\.txt
 
 Lab4_Introduction_to_Shellcoding/src/pwntools_example/pattern\.rr2
 
-Lab3\_Botnets_and_malwares/see/hooks/__pycache__/
-
-Lab3_Botnets_and_malwares/see/conf/imageInfo/windows7\.xml
-
-Lab3_Botnets_and_malwares/see/conf/imageInfo/windows7.xml
-
 *.log
 !important.log
 *.pcap
@@ -24,15 +34,3 @@ Lab3_Botnets_and_malwares/see/conf/imageInfo/windows7.xml
 !important.exe
 *.pyc
 !important.pyc
-*.ppm
-!important.ppm
-
-Lab3_Botnets_and_malwares/misc/anonlog
-
-Lab3_Botnets_and_malwares/commands\.txt
-
-Lab3_Botnets_and_malwares/see/screenshots
-
-Lab3_Botnets_and_malwares/see/disklogs/filesystem.json
-
-Lab3_Botnets_and_malwares/see/malware/malwares

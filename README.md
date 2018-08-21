@@ -42,7 +42,7 @@ The contents of the course have been divided to five (5) different levels. Level
 
 When level rises, so does workload/difficulty.
 
-To pass the course, you have to get enough points from exercises and final course work. From the beginning, you should be able to know, what you have to do for earning some specific grade.
+To pass the course, you have to get enough points from exercises and final course work. From the beginning, you should be able to see, what you have to do for earning some specific grade.
 
 *Generally, every week there is a choice: Make lecture tasks/diary sufficiently and you will get grade 1 **OR** participate for lab and complete tasks as described to get grade 2 or more.*
 
@@ -56,7 +56,7 @@ Labs have been split to different tasks. **The amount of tasks which are require
 
 ## Deadlines
 
-Each week you are expected to return assignments of corresponding lab OR corresponding lecture tasks.
+For each week you are expected to return assignments of corresponding lab OR corresponding lecture tasks.
 
 Section|Deadline|Topic/Lab
 :-:|:-:|:-:
@@ -78,7 +78,7 @@ Week 7 | - | Ask guidance for final coursework
  
  * Find a link whereof you can receive and create a private repository containing all the return folders.
 
- * Create GitHub account, if you don't have one already, and create this repository.
+ * Create GitHub account, if you don't have one already, and create this private repository from the link.
 
  * You can see deadlines above. They are same in Moodle. There might be exception for ChipWhiperer, depending on if everyone is able to get device in Week 5.
 
