@@ -1,5 +1,5 @@
 # **Computer security lab 2: Fuzzing**
-This week’s theme is fuzzing. The tasks should be done using Ubuntu, a virtual machine image can be found in the course folder in the university drive.
+This week’s theme is fuzzing. Tasks can be done with Kali Linux, a virtual machine image can be found in the course folder in the university drive. Kali image has all the required tools installed already. If you have your own computer with Ubuntu for example, you can use it too, just install all the required tools.
  
 ## Some prerequisities & tools
 Basic understanding of C/C++ programming language is required.
@@ -14,17 +14,15 @@ Make yourself familiar with the tools used to complete the exercises:
 
 ### **Valgrind** - http://valgrind.org/docs/manual/quick-start.html
 
-If you use the Ubuntu VMWare image to complete the exercise, you should start by installing VMWare Tools to make your life easier using the VM.
-
 It is estimated, that you are able to do Tasks 1,2 & 3 during the lab session (4 hours). Upper grade requires that all previous ones have been done as well.
 
 Task|Grade/Level|Description|
 ----|:---:|-----------|
 Task 1 | 1 | Mutated test case generation with Radamsa
 Task 2 | 2 | Analyzing a small C-program with AddressSanitizer
-Task 3 | 3 | Setting up AFL fuzzer and analyzing results
-Task 4 | 4 | Creating your own C-program and fuzztesting it
-Task 5 | 5 | WIP
+Task 3 | 3 | Setting up AFL fuzzer and analyzing results, creating your own small C-program and fuzztesting it
+Task 4 | 4 | WIP / Contribute to a existing open-source project. Set up a fuzzing environment and report findings.
+Task 5 | 5 | WIP / Contribute to a existing open-source project. Set up a fuzzing environment and report findings.
 
 ## Task 1:
 #### Step 1.
@@ -77,7 +75,6 @@ If you get an error regarding core dump notifications, try:
 
 >***What do you think are the most interesting pieces of information in the status screen?***
 
-### Step 2.
 Did you find any crashes (you should)? Awesome! Next you need to reproduce one crash to see what went wrong. You can find the crashes where you specified the output folder when starting AFL fuzzer. Browse into the .../out/crashes folder, and take one .rtf file that caused crash under inspection. Runt unrtf with this file as you did with the example file earlier, but this time under Valgrind. Take a look at the Valgrind documentation how to do it, if you didn't already.
 
 >***Take a screenshot of the Valgrind result after running a testcase succesfully***
@@ -85,7 +82,7 @@ Did you find any crashes (you should)? Awesome! Next you need to reproduce one c
 >***What can you tell about the crash?***
 
 
-## Task 4:
+### Step 2.
 In this task you will write a small C program of your own and fuzztest it. In task 1 you created a .txt file containing "12 EF" and fuzzed samples of it, in this task we will use them. Your program must take a text file as an input and check the file for following requirements:
 - First token is an **integer**
 - Second token is a **string**
@@ -101,4 +98,5 @@ Run your program with the previously generated 100 test cases. A simple shell sc
 >***Take a screenshot of the AddressSanitizer results after running your program with the testcases. Show at least 3 ASan outputs.***
 
 
+## Task 4: WIP?
 ## Task 5: WIP?
