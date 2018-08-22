@@ -87,7 +87,7 @@ Task 1 : Basics of buffer overflows
 ------
 In this first task, we are using simple program with buffer overflow vulneralibity for analyzing the behaviour of system. With specifically crafted input, we will change the behaviour to something unintended for purpose of the program, but intended to us.
 
-### A) Creating a program with improper input validation and analyzing overflow.
+### A) Using program with improper input validation and analyzing overflow.
  
 We want to understand very basics of what is actually happening in the stack and in the registers of the machine at the time when overflow occurs.
 
@@ -253,7 +253,7 @@ Reusing functions of vulnerable program is possible as well, but it might not be
 One very common library is **libc** (which probably named this method as 'ret2libc'), which grants a lot of flexibility. And the most useful function from there, could be *system()*. By giving */bin/sh* as an argument, we could start a shell.
 If we somehow can pass correct argument to system() function, code isn't executed in stack, it's executed in the address of system(). This was one of the eariliest methods to bypass NX protection.
 
-> ***In this task, you should make example implementation of this ret2libc method. It could be for example spawning local shell. This time, **do not** disable NX protection (do not use -z execstack flag in compiler). Disabling other protections is still required. Like previously, make step by step report(what, why, how) including source files and command line commands which lead you to get shell access.***
+> ***In this task, you should make example implementation of this ret2libc method. It could be for example spawning local shell. This time, **do not** disable NX protection (do not use -z execstack flag in compiler). Disabling other protections is still required. Like previously, make step by step report(what, why, how) including possible source files and command line commands which lead you to get shell access.***
 
 To be noted: 
 * You should check, if ASCII Armoring is present in your system. It should be disabled additionally for this task. In some systems, it might not be possible. It is recommended to use Kali Linux in this task.
