@@ -19,8 +19,8 @@ It is estimated, that you are able to do Tasks 1,2 & 3 during the lab session (4
 Task|Grade/Level|Description|
 ----|:---:|-----------|
 Task 1 |   | Mutated test case generation with Radamsa
-Task 2 | 2 | Analyzing a small C-program with AddressSanitizer
-Task 3 | 3 | Setting up AFL fuzzer and analyzing results, creating your own small C-program and fuzztesting it
+Task 2 | 2 | Analyzing a small C-program with AddressSanitizer, setting up AFL fuzzer and analyzing results
+Task 3 | 3 | Creating your own small C-program and fuzztesting it
 Task 4 | 4/5 | WIP / Contribute to a existing open-source project. Set up a fuzzing environment and report findings.
 
 
