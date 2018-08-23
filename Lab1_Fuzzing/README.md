@@ -1,6 +1,10 @@
 # **Computer security lab 2: Fuzzing**
 This week’s theme is fuzzing. Tasks can be done with Kali Linux, a virtual machine image can be found in the course folder in the university drive. Kali image has all the required tools installed already. If you have your own computer with Ubuntu for example, you can use it too, just install all the required tools.
  
+In a nutshell, fuzzing is a software testing method that feeds malformed and unexpected input data to a program, device or system. The programs that are used to perform fuzz testers are commonly called fuzzers. The one and only goal of fuzzing is to crash the target system. From the security perspective, the goal is to analyze those found flaws for possible exploits.
+
+In this exercise you will learn basic usage of 2 common fuzzers; Radamsa and American Fuzzy Lop (AFL). You will also use AddressSanitizer, a memory error detection tool, and Valgrind, a debugging tool, which are often used alongside different fuzzers.
+
 ## Some prerequisities & tools
 Basic understanding of C/C++ programming language is required.
 
@@ -26,27 +30,36 @@ Task 4 | 4/5 | WIP / Contribute to a existing open-source project. Set up a fuz
 
 ## Task 1:
 #### Step 1.
-Try out Radamsa using command line tool. Print 10 malformed samples of "Fuzztest 1337" using _echo_. 
->***Provide the command line you used to do this.***
+Try out Radamsa using command line tool. Print 10 malformed samples of "Fuzztest 1337" using _echo_.
 
+**Provide the command line you used to do this.**
+```
+```
 #### Step 2.
  What you just did can be done to various types of files too. Next, generate a bunch of .txt test samples for later usage. Create a .txt file, that contains text: "12 EF" and nothing more. Use radamsa to generate 100 fuzzed samples of the file and to name them fuzz1, fuzz2, fuzz3,...etc.
 
  __Hint__: Create a new, separate folder for the samples.
 
->***Provide the content of 2 different samples that radamsa created***
+**Provide the content of 2 different samples that radamsa created**
+```
+```
 
->***Command line used to create the samples***
+**Command line used to create the samples**
+```
+```
 
 ## Task 2:
 Your task is to analyze an example c-program *example.c*. Compile the code with appropriate sanitizer flags to enable AddressSanitizer. Run the compiled program and analyze what happens.
 
->***Command line used to compile the program***
-
->***Screenshot of the result after running the program***
-
->***What is the error and what is causing it in this program***
-
+**Command line used to compile the program**
+```
+```
+**Screenshot of the result after running the program**
+```
+```
+**What is the error and what is causing it in this program**
+```
+```
 #### Step 2.
 
 In this task you will be using American Fuzzy Lop (AFL), it is installed in the Kali Linux virtual machine. If you are using your own computer you can download it as follows:
@@ -71,19 +84,26 @@ If you get an error regarding core dump notifications, try:
 ~$ echo core>/proc/sys/kernel/core_pattern
 ~$ exit
 ```
->***Command line used to configure unrtf***
-
->***Command line used to run AFL***
-
->***Screenshot of the AFL status screen after stopping the fuzzer***
-
->***What do you think are the most trivial pieces of information in the status screen?***
-
+**Command line used to configure unrtf**
+```
+```
+**Command line used to run AFL**
+```
+```
+**Screenshot of the AFL status screen after stopping the fuzzer**
+```
+```
+**What do you think are the most trivial pieces of information in the status screen?**
+```
+```
 Did you find any crashes (you should)? Awesome! Next you need to reproduce one crash to see what went wrong. You can find the crashes where you specified the output folder when starting AFL fuzzer. Browse into the .../out/crashes folder, and take one .rtf file that caused crash under inspection. Runt unrtf with this file as you did with the example file earlier, but this time under Valgrind. Take a look at the Valgrind [documentation](http://valgrind.org/docs/manual/quick-start.html) for help.
 
->***Take a screenshot of the Valgrind result after running a testcase succesfully***
-
->***What can you tell about the crash?***
+**Take a screenshot of the Valgrind result after running a testcase succesfully**
+```
+```
+**What can you tell about the crash?**
+```
+```
 
 ## Task 3:
 
@@ -97,10 +117,12 @@ Compile and link your program with AddressSanitizer using appropriate flags.
 
 Run your program with the previously generated 100 test cases. A simple shell script loop for example is an easy way to run the test cases.
 
->***Provide the C-code of your program***
-
->***Take a screenshot of the AddressSanitizer results after running your program with the testcases. Show at least 3 ASan outputs.***
-
+**Provide the C-code of your program**
+```
+```
+**Take a screenshot of the AddressSanitizer results after running your program with the testcases. Show at least 3 ASan outputs.**
+```
+```
 
 ## Task 4: WIP?
 ## Task 5: WIP?
