@@ -179,8 +179,8 @@ https://mohit.io/blog/gdb-assembly-language-debugging-101/
 
 
 ```shell
-root@kali:~/Desktop/Shellcode# gcc -o test Overflow.c
-root@kali:~/Desktop/Shellcode# gdb -q test
+# gcc -o test Overflow.c
+# gdb -q test
 Reading symbols from test...(no debugging symbols found)...done.
 (gdb) r "$(python -c 'print "A" * 9')"
 Starting program: /root/Desktop/Shellcode/test "$(python -c 'print "A" * 9')"
@@ -283,7 +283,7 @@ Breakpoint 1 at 0x555555554758
 Breakpoint 2 at 0x55555555475d
 (gdb) b * 0x555555554770
 Breakpoint 3 at 0x555555554770
-Starting program: /root/Desktop/Shellcode Lab2/Overflow $(python -c 'print "A" * 20')
+Starting program: /root/Desktop/Shellcode Lab/Overflow $(python -c 'print "A" * 20')
 ```
 Execute, and after first breakpoint:
 Let's have a look for current stack of the program.
