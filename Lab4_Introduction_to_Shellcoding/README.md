@@ -101,7 +101,7 @@ What makes this particular (rip) register so interesting? What does ret instruct
 
 This leads to conclusion, that in most cases we might need to put our buffer overflow in external function, and it's recommended to do so in this lab for not making things too hard. Depending on Operating System and architecture (x86/x64), overflowing return address of main function might not be that easy.
 
-> ***Explain shortly the role of the rip register and ret instruction, and why we are interested about them. Explain what is causing the overflow in [example program. ](Info/Buffer_overflows.md).  Further, analyze this program with gdb and try to find suitable size for overflow (padding size), which starts to fill up instruction pointer register. You can also make your own program, if you want.***
+> ***Explain shortly the role of the rip register and ret instruction, and why we are interested about them. Explain what is causing the overflow in [example program. ](src/vuln_progs/Overflow.c).  Further, analyze this program with gdb and try to find suitable size for overflow (padding size), which starts to fill up instruction pointer register. You can also make your own program, if you want.***
 
 ### B) Adding hidden (non-used) function to previous program. (And still executing it)
 
