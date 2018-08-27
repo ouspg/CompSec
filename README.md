@@ -104,8 +104,7 @@ git push
 
 ## Virtual machines
 
-Each lab utilizes one of the virtual machines below. These machines can be found from the University drive.
-
+Each lab utilizes one of the virtual machines below.
 Following virtual machines will be used:
 
 * Kali Linux - for shellcoding, fuzzing and web security lab
@@ -114,27 +113,38 @@ Following virtual machines will be used:
 * Ubuntu 16.04 - for botnets and malware analysis
   * User: compsec 
   * Password: course
-* Lubuntu 16.04- side-channel attacks with ChipWhisperer
+* Lubuntu 17.04- side-channel attacks with ChipWhisperer
   * User: cwuser
   * Password. cwpassword
 
+These virtual machines are located on network drive:
+
+ Machines can be run directly from there, *but all changes on virtual machines are lost, after shutting them down.*
+
+ To run virtual machines from there, you have to use following commands. Open Windows cmd, and run them in there:
 
 ### For Kali Linux:
-To run VM directly from virtual hard drive, open Windows cmd and run:
 ```shell
 (if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$")) && (if exist "C:\Temp\Kali" (rd /s /q "C:\Temp\Kali" && mkdir "C:\Temp\Kali") else (mkdir "C:\Temp\Kali")) && copy "Z:\VMware\CompSec\Kalix64\Kali_copy_and_run_me.vmx" "C:\Temp\Kali\Kali_copy_and_run_me.vmx" && start "" "C:\Temp\Kali\Kali_copy_and_run_me.vmx"
 ```
-
-### For Ubuntu 16.04 x64: 
+### For Ubuntu 16.04: 
 
 ```shell
 (if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$")) && (if exist "C:\Temp\Ubuntux64" (rd /s /q "C:\Temp\Ubuntux64" && mkdir "C:\Temp\Ubuntux64") else (mkdir "C:\Temp\Ubuntux64")) && copy "Z:\VMware\CompSec\Ubuntu 64-bit\Ubuntu64_copy_and_run.vmx" "C:\Temp\Ubuntux64\Ubuntu64_copy_and_run.vmx" && start "" "C:\Temp\Ubuntux64\Ubuntu64_copy_and_run.vmx"
 ```
+### For Lubuntu 17.04:
+```shell
+(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$")) && (if exist "C:\Temp\LUbuntu64" (rd /s /q "C:\Temp\LUbuntu64" && mkdir "C:\Temp\LUbuntu64") else (mkdir "C:\Temp\LUbuntu64")) && copy "Z:\VMware\CompSec\ChipWhisperer\LUbuntu64-bit_copy_and_run.vmx" "C:\Temp\Ubuntux64\LUbuntu64_copy_and_run.vmx" && start "" "C:\Temp\Ubuntux64\LUbuntu64_copy_and_run.vmx"
+```
 
+If you want to copy virtual machine from network drive and run it by storing changes (or just get it to your own pc), you have to map network drive in location following, if it is not already mounted:
+```
+ \\kaappi\Virtuaalikoneet$
+```
+Virtual machines can be then found from:
 
-Path to virtual machines:
+Virtuaalikoneet$ -> VMware -> CompSec
 
-Yleiset -> Mikroluokat -> CompSec
 
 
 ## Contribution
