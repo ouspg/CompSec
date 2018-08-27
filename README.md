@@ -118,6 +118,13 @@ Following virtual machines will be used:
   * User: cwuser
   * Password. cwpassword
 
+
+### For Kali Linux:
+To run VM directly from virtual hard drive, open Windows cmd and run:
+```shell
+net use z: \\kaappi\Virtuaalikoneet$ && if not exist "C:\Temp\Kali" mkdir C:\Temp\Kali && copy /y Z:\VMware\CompSec\Kalix64\Kali_copy_and_run_me.vmx C:\Temp\Kali && start C:\Temp\Kali\Kali_copy_and_run_me.vmx
+```
+
 Path to virtual machines:
 
 Yleiset -> Mikroluokat -> CompSec
