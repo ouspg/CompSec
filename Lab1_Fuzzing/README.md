@@ -66,23 +66,21 @@ In this task you will be using American Fuzzy Lop (AFL), it is installed in the 
 ```
 ~$ wget http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz
 ```
-You can find the target program sourcecode following this link: [unrtf0.21.5.orig.tar.gz](http://http.debian.net/debian/pool/main/u/unrtf/unrtf_0.21.5.orig.tar.gz). This tool can be used to convert .rtf files into other, more readable formats (see README for more). Extract the package, **_configure_ it with appropriate AFL compiler flags and then _compile_**.
+You can find the target program sourcecode following this link: [unrtf0.21.5.tar.gz](https://ftp.gnu.org/gnu/unrtf/unrtf-0.21.5.tar.gz). This tool can be used to convert .rtf files into other, more readable formats (see README for more). Extract the package, **_configure_ it with appropriate AFL compiler flags and then _compile_**.
 
-__Hint__: See AFL [quick start guide](http://lcamtuf.coredump.cx/afl/README.txt) for help
+__Hint__: configure, make, make install. See AFL [quick start guide](http://lcamtuf.coredump.cx/afl/README.txt) for help
 
-During this task, use the example .rtf file from AFL folder **.../afl-2.52b/testcases/others/rtf/small-document.rtf**. You can try that your unrtf is working properly using command line:
+During this task, use the example .rtf file from AFL folder **/usr/share/afl/testcases/others/rtf/small-document.rtf**. You can try that your unrtf is working properly using command line:
 ```
 ~$ /path/to/unrtf --html /path/to/testfile
 ```
-Start fuzzing unrtf with AFL using the example .rtf file as input. See AFL [quick start guide](http://lcamtuf.coredump.cx/afl/README.txt) for instructions on how to start the fuzzer. Run the fuzzer, see what happens in the status window. Good description of the status window can be found [here](http://lcamtuf.coredump.cx/afl/status_screen.txt).
+Start fuzzing unrtf with AFL using the example .rtf file as input. You need to create 2 folders, one for input files and one for output result. Input folder must include the small-document.rtf file mentioned above. See AFL [quick start guide](http://lcamtuf.coredump.cx/afl/README.txt) for instructions on how to start the fuzzer. 
 
-__Hint__: You are fuzzing a binary.
+Run the fuzzer, see what happens in the status window. Good description of the status window can be found [here](http://lcamtuf.coredump.cx/afl/status_screen.txt).
 
-If you get an error regarding core dump notifications, try:
+__Hint__: You are fuzzing a binary. To copy your input file into in/ folder for AFL to use, you can do for example:
 ```
-~$ sudo su
-~$ echo core>/proc/sys/kernel/core_pattern
-~$ exit
+~$ cp /path/to/testfile /path/to/whereyouwanttocopyit
 ```
 **Command line used to configure unrtf**
 ```
