@@ -82,7 +82,7 @@ __Hint__: You are fuzzing a binary. To copy your input file into in/ folder for 
 ```
 ~$ cp /path/to/testfile /path/to/whereyouwanttocopyit
 ```
-**Command line used to configure unrtf**
+**Command lines used to configure and compile unrtf**
 ```
 ```
 **Command line used to run AFL**
