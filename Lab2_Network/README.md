@@ -264,8 +264,9 @@ __*short explanation on how you did it*__
 
 ### Brute forcing
 
-Next we do some basic brute forcing.Do the following:
-* Start muumitalo.  ```git clone https://github.com/VilleKemp/Muumitalo``` follow the instruction on the git page on how to start it. You will be bruteforcing this server
+Next we do some basic brute forcing. 
+Do the following:
+* Start [muumitalo](https://github.com/VilleKemp/Muumitalo).  ```git clone https://github.com/VilleKemp/Muumitalo``` follow the instruction on the git page on how to start it. You will be bruteforcing this server
 * Create a wordlist containing mutations of the word "vaapukkamehu". Create mutations where individual letters case changes between upper and lower case. Also make mutations where letter 'a' can be number '4' and letter 'e' can be number '3'. 
 * Brute force the right answer to the question posed by the server using above mentioned wordlist
 You can use any tools you find online. If you want to, you can code your own mutator. Alternatively you can search online for a existing mutator/mutators and use them to create the wordlist. Same thing with the actual attack. You can use programs like [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) to do the actual attack after you have created the wordlist.
