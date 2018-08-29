@@ -5,10 +5,10 @@ Computer Security Lab 2 : Networks and web security
 ## About the lab
 
 
-* This document contains task descriptions and theory for network lab. If there are any differences between the return template and this file consider this to be the up to date document
-* **You can use your own computer if you want.** Check "Prerequisities" chapter for information on what you need to install. This lab is made to be done in Linux environment and tested to work in Ubuntu and Kali. However it should work in any other operating system.
+* This document contains task descriptions and theory for network lab. If there are any differences between the return template and this file, consider this to be the up-to-date document.
+* **You can use your own computer if you want.** Check "Prerequisities" chapter for information on what you need to install. This lab has been made to be completed in Linux environment and tested to work in Ubuntu and Kali. However it should work in any other operating system.
 * You are not expected to be able to finish all the tasks during the lab session. Feel free to continue them at your own time.
-* Check the deadline from Moodle and __remember that you have to return your name and github repository infromation to moodle before deadline__
+* Check the deadline from Moodle and __remember that you have to return your name and GitHub repository infromation to Moodle before deadline.__
 
 ## Background
 
@@ -40,12 +40,12 @@ In many places the Juice Shop is [improperly validating its inputs](https://cwe.
 
  Usually shops like Juice Shop, are made to be used by multiple users. In these cases different users have different privileges and are therefore able to access different places. For example you are able to access your basket but not other users baskets. In the same fashion only admin should be able to access the administration panel. However Juice Shops [access control is broken](https://en.wikipedia.org/wiki/Privilege_escalation) and users can access places that they should not be able.  
 
-Last thing we focus on using the Juice shop is Cross-Site Scripting. Short explanation on what Cross-Site Scripting mean taken from [OWASP](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)) "Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user. Flaws that allow these attacks to succeed are quite widespread and occur anywhere a web application uses input from a user within the output it generates without validating or encoding it.
+The final thing we focus on by using the Juice Shop, is Cross-Site Scripting. Short explanation on what Cross-Site Scripting mean taken from [OWASP: ](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)) "Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user. Flaws that allow these attacks to succeed are quite widespread and occur anywhere a web application uses input from a user within the output it generates without validating or encoding it.
 
 An attacker can use XSS to send a malicious script to an unsuspecting user. The end user’s browser has no way to know that the script should not be trusted, and will execute the script. Because it thinks the script came from a trusted source, the malicious script can access any cookies, session tokens, or other sensitive information retained by the browser and used with that site. These scripts can even rewrite the content of the HTML page ". During this lab you will see XSS in action and will create your own attack. 
 
 
-More reading:
+More readings, if you are lacking some knowledge:
 
 https://cwe.mitre.org/data/definitions/20.html
 
@@ -176,6 +176,8 @@ __Why it is working/what is happening?__
 
 
 ---
+**Deleted item?**
+
 Shop has an item that has been deleted and therefore does not show on searches. Deduct how the item is marked as deleted and use SQL injection to make it visible and "buy" it. 
 
 __HINT__ Check the command that the SQL server attempts to execute. Also inspect the traffic that happens when you inspect an item. 
@@ -199,12 +201,14 @@ The panel for making the admin stuff is actually hidden.
 
 Sometimes JavaScript is showing something that you don't want to. For example this site has an admin page that is not linked from anywhere of the site. That pages endpoint is however visible in the JavaScript. Open the juice-shop-min.js with your browsers dev tools and access it. 
 
-__Hint__ Javascripts name is visible in the html code. There is a pretty print option at the bottom of the page ( "{}" - symbol) Use search to find the administration panels endpoint.
+__Hint__ JavaScript's name is visible in the HTML code. There is a pretty print option at the bottom of the page ( "{}" - symbol) Use search to find the administration panels endpoint.
 
 __What is the url to access administration panel? You can find page even, when you are not logged in, but information is not showed. Why this still could be considered as risk?__
 
 
 ---
+**Another's basket**
+
 But anyway, could we control other users a bit?
 
 This site's access control is lacking and users can in some cases access into places where they should not be able to. One example is the user's basket. Find a way to access another users basket *and add some products into it*.
@@ -216,7 +220,7 @@ __How did you do it? Why you were able to?__
 ---
 **Scoreboard**
 
-At this point we might have seen some notifications about challenges we have completed. There is actually board about challenges you have completed and... it is behind a challenge.
+At this point we might have seen some notifications about challenges we have completed. There is actually board about challenges you have completed and... it is behind of challenge.
 
 Sometimes the HTML contains unwanted stuff. This site has for example a scoreboard, and the top bar should contain a link to it. Use your browsers developer tools and make it visible.
 __Hint__ You can edit the fields in "Inspector" tab
@@ -229,24 +233,33 @@ __How did you make it visible?__
 
 ## Task 2 
 
-
+**'These are not my credentials'**
 
 Use SQL injection to the searchfield using [UNION](http://www.sqlinjection.net/union/) command to get all the users emails and passwordhashes and make them visible on the shop page.
 
- __Hint__ In this exercise you need to know the name of the users table,its column number and the name of the email and password fields. These values can be **guessed**. Table and column names are obvious. Try guessing them and check the error messages if you got it right.
+ __Hint__ In this exercise you need to know the name of the users table, its column number and the name of the email and password fields. These values can be **guessed**. Table and column names are obvious. Try guessing them and check the error messages if you got it right.
  
  First form a statement that attempts to select all the columns from the users table. If the server returns "table does not exist" you guessed it wrong. If you receive the following error "SQLITE_ERROR: SELECTs to the left and right of UNION do not have the same number of result columns" you are on the right track. 
  
- After you know the table name you have to find out how many columns the Products table has so you can select that many columns from the users table. You can guess this if you want to but the column amount can also be found from the response you get from a product search. Now select that many columns from the users table where atleast two of them are email and password. If the values are not visible you might have put it to a field that is not rendered visible. Try putting it to a different field.
+ After you know the table name, you have to find out how many columns the Products table has, so you can select that many columns from the users table. 
+ 
+ You can guess this if you want to, but the column amount can also be found from the response you get from a product search. 
+ Now select that many columns from the users table where atleast two of them are email and password. If the values are not visible, you might have put it to a field that is not rendered visible. Try putting it to a different field.
  
 
 __What SQL command did you use?__
 
 __Explain shortly the logic behind your attack. Why and how does it work?__
 
+---
+**Earning money from the shop**
+
 Put an item to your basket and checkout. Monitor the traffic using your browsers devtools. By modifying the requests it is possible to checkout with negative amount of items. Proceed to do so.
 
 __How did you do it?__
+
+---
+**Annoying pop-up**
 
 Next we attempt some cross-site scripting attacks. Insert the following code snippet to "Order ID" field in "Track Orders" tab and to the search field. This should trigger the xss.
 
@@ -256,15 +269,19 @@ Attack on the "Order ID" is an [reflected XSS attack](https://www.owasp.org/inde
 
 __What is the difference between these two types of attacks? How can you protect your applications against both types of attacks?__
 
-XSS attacks above a relatively harmless. They only affect you and nobody else. It would be way more harmful if you could get the above used code snippet inside the servers database or otherwise visible to all the users. Basically you would have to create a user or a product which name is the XSS-script. Both of those are possible, however creating a user is easier. Create a user whose name is ```<script>alert('ALERT')</script>```. Go to the administration panel logged as any user to check that it worked 
+XSS attacks above a relatively harmless. They only affect you and nobody else. It would be way more harmful if you could get the above used code snippet inside the servers database or otherwise visible to all the users. Basically you would have to create a user or a product which name is the XSS-script. Both of those are possible, however creating a user is easier. 
+
+Create a user whose name is ```<script>alert('ALERT')</script>```. Go to the administration panel logged as any user to check that it worked 
 
 __Hint__ Juice Shop validates the input in the client side **but** not in the server side.
 
-__*short explanation on how you did it*__  
+__*Short explanation on how you did it*__  
+
+---
 
 ### Brute forcing
 
-Next we do some basic brute forcing. 
+Let's try out some basic brute forcing. 
 Do the following:
 * Start [muumitalo](https://github.com/VilleKemp/Muumitalo).  ```git clone https://github.com/VilleKemp/Muumitalo``` follow the instruction on the git page on how to start it. You will be bruteforcing this server
 * Create a wordlist containing mutations of the word "vaapukkamehu". Create mutations where individual letters case changes between upper and lower case. Also make mutations where letter 'a' can be number '4' and letter 'e' can be number '3'. 
@@ -279,10 +296,12 @@ __Hint__ Internet is full of tools to create wordlists. It is potentially easier
 
 ## Task 3
 
-The XSS attack you did in the previous task was mostly just annoying. It could however have been way more malicious. Next we are going to do just that and modify it to be way more dangerous. Your task is the following:
+Let's get back to Juice Shop.
+
+The XSS attack you did in the previous task was mostly just annoying. It could however have been way more malicious.For next, we are actually doing that and modify it to be way more dangerous. Your task is the following:
 
 * **Setup a server.** No need to do anything fancy. Basic python [flask](http://flask.pocoo.org/)/[BaseHttpServer](https://docs.python.org/2/library/basehttpserver.html) that can receive post requests is fine. Server can print or save the information to a file. Anything goes as long as it shows that the data entered the server.  
-* **When the user accesses the administration panel the page will look like the login page.** Page should be as similiar as possbile but small differences are fine. For example slightly different size login fields, email field not checking for @ sign etc.
+* **When the user accesses the Juice Shop's administration panel, the page will look like the login page.** Page should be as similiar as possbile but small differences are fine. For example slightly different size login fields, email field not checking for @ sign etc.
 * **When the user inputs anything to the email and password fields and presses the *Login*-button all the information in the email and password fields are sent to your server.** The way you send/show the information is up to you. You just have to demostrate in the server side that the data has entered and that it is the same as inputted to the email and password fields.
 
 ### Returns
@@ -293,7 +312,7 @@ The XSS attack you did in the previous task was mostly just annoying. It could h
 
 
 __Tips__  
-Refresh your mind how javascript can modify html elements.
+Refresh your mind how JavaScript can modify HTML elements.
 
 It is also handy to use programs like [curl](https://curl.haxx.se/) to send your XSS-scripts.
 
