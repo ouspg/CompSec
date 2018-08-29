@@ -52,7 +52,7 @@ Task 4 | 4/5 | Contribute to a existing open-source project. Set up a fuzzer an
 
 **Screenshot of the result after running the program**
 
-**What is the error and what is causing it in this program**
+**What is the error and what is causing it in this program?**
 
 ---
 
@@ -87,7 +87,7 @@ __Hint__: You are fuzzing a binary. To copy your input file into in/ folder for 
 ---
 Did you find any crashes (you should)? Awesome! Next you need to reproduce one crash to see what went wrong. You can find the crashes where you specified the output folder when starting AFL fuzzer. Browse into the .../out/crashes folder, and take one .rtf file that caused crash under inspection. Runt unrtf with this file as you did with the example file earlier, but this time under Valgrind. Take a look at the Valgrind [documentation](http://valgrind.org/docs/manual/quick-start.html) for help.
 
-**Take a screenshot of the Valgrind result after running a testcase succesfully**
+**Take a screenshot of the Valgrind result after running the program**
 
 **What can you tell about the crash?**
 
