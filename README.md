@@ -36,9 +36,9 @@ To pass the course, you have to get enough *total* points from exercises/assignm
 
 Grades from labs are equal to amount of points they are offering.
 
-This means, that everyone can make weekly assigments from lectures in last two weeks, and earn two (2) points.
+Everyone can make weekly assigments from lectures in last two weeks, and earn two (2) points, even if all of the five labs has been completed.
 
-In practise, this means that exercises of the course have been divided to five (5) different levels. Level is indicating for grade/points you are able to achieve by reaching that level.
+In practise, exercises of the course have been divided to five (5) different levels. Level is indicating for grade/points you are able to achieve by reaching that level.
 
 When level rises, so does workload/difficulty.
 
@@ -67,7 +67,7 @@ Challenging own project | 3 - 5 (9 - 15p.)
 ### And this results to following grades for the course: 
 
 Points|Total Grade
--|-
+:-:|:-:
 < 10 | 0
 10+ | 1
 15+ | 2
