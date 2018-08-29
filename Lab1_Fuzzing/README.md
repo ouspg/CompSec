@@ -26,41 +26,35 @@ Task 1 |   | Mutated test case generation with Radamsa
 Task 2 | 2 | Analyzing a C-program with AddressSanitizer, fuzztesting with AFL
 Task 3 | 3 | Creating your own small C-program and fuzztesting it
 Task 4 | 4/5 | Contribute to a existing open-source project. Set up a fuzzer and report findings.
-
+---
 
 ## **Task 1**: Mutated test case generation with Radamsa
 
 **A)** Try out Radamsa using command line tool. Print 10 malformed samples of "Fuzztest 1337" using _echo_.
 
 **Provide the command line you used to do this.**
-```
-```
+
 
  **B)** What you just did can be done to various types of files too. Next, generate a bunch of .txt test samples for later usage. Create a .txt file, that contains text: "12 EF" and nothing more. Use radamsa to generate 100 fuzzed samples of the file and to name them fuzz1, fuzz2, fuzz3,...etc.
 
  __Hint__: Create a new, separate folder for the samples.
 
 **Provide the content of 2 different samples that radamsa created**
-```
-```
+
 
 **Command line used to create the samples**
-```
-```
 
+---
 ## **Task 2**: Analyzing a C-program with AddressSanitizer, fuzztesting with AFL
 **A)** Your task is to analyze an example c-program *example.c*. Compile the code with appropriate sanitizer flags to enable AddressSanitizer. Run the compiled program and analyze what happens.
 
 **Command line used to compile the program**
-```
-```
-**Screenshot of the result after running the program**
-```
-```
-**What is the error and what is causing it in this program**
-```
-```
 
+**Screenshot of the result after running the program**
+
+**What is the error and what is causing it in this program**
+
+---
 
 **B)** In the following task you will be using American Fuzzy Lop (AFL), it is installed in the Kali Linux virtual machine. If you are using your own computer you can download it as follows:
 ```
@@ -83,26 +77,21 @@ __Hint__: You are fuzzing a binary. To copy your input file into in/ folder for 
 ~$ cp /path/to/testfile /path/to/whereyouwanttocopyit
 ```
 **Command lines used to configure and compile unrtf**
-```
-```
+
 **Command line used to run AFL**
-```
-```
+
 **Screenshot of the AFL status screen after stopping the fuzzer**
-```
-```
+
 **What do you think are the most trivial pieces of information in the status screen?**
-```
-```
+
+---
 Did you find any crashes (you should)? Awesome! Next you need to reproduce one crash to see what went wrong. You can find the crashes where you specified the output folder when starting AFL fuzzer. Browse into the .../out/crashes folder, and take one .rtf file that caused crash under inspection. Runt unrtf with this file as you did with the example file earlier, but this time under Valgrind. Take a look at the Valgrind [documentation](http://valgrind.org/docs/manual/quick-start.html) for help.
 
 **Take a screenshot of the Valgrind result after running a testcase succesfully**
-```
-```
-**What can you tell about the crash?**
-```
-```
 
+**What can you tell about the crash?**
+
+---
 ## **Task 3**: Creating your own small C-program and fuzztesting it
 
 In this task you will write a small C program of your own and fuzztest it. In task 1 you created a .txt file containing "12 EF" and fuzzed samples of it, in this task we will use them. Your program must take a text file as an input and check the file for following requirements:
@@ -116,12 +105,10 @@ Compile and link your program with AddressSanitizer using appropriate flags.
 Run your program with the previously generated 100 test cases. A simple shell script loop for example is an easy way to run the test cases.
 
 **Provide the C-code of your program**
-```
-```
-**Take a screenshot of the AddressSanitizer results after running your program with the testcases. Show at least 3 ASan outputs.**
-```
-```
 
+**Take a screenshot of the AddressSanitizer results after running your program with the testcases. Show at least 3 ASan outputs.**
+
+---
 ## **Task 4**: Contribute to a existing open-source project. Set up a fuzzer and report findings.
 
 Contribute to an existing open-source software (OSS) project by setting up a fuzzing environment and documenting the process and results. You can choose the target software by yourself and use one of the 2 fuzzers introduced during the lab exercise, or pick some other that you think serves the purpose better. 
