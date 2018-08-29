@@ -28,15 +28,19 @@ This repository contains a folder for following labs. Each folder contains tasks
 
 The course has seven (7) lectures, seven (7) weekly lecture assignments and five (5) laboratory exercises.
 
+Lectures are handling topics from high perspective and they are not going technically deep. Lecture assignments are based on lectures (surprisingly!).
+
+Laboratory exercises are thought as individual packages: containing theory and exercises, and going technologically very deep.
+
 To pass the course, you have to get enough *total* points from exercises/assignments and final course work. From the beginning, you should be able to see, what you have to do for earning some specific grade. 
 
-**This means: as long as you get enough points from somewhere, you can skip even final coursework. Grading table is presented later [below.](#grading)**
+**This means: as long as you get enough points from somewhere, you can skip even final coursework. Grading table is presented [here.](#grading)**
 
 *Generally, every week there is a choice: Make lecture assigments sufficiently and you will get grade 1 from that week **OR** participate for lab and complete tasks as described to get grade 2 or more from that week. You can't get points from both lecture assigments and labs in the same week.*
 
-Grades from labs are equal to amount of points they are offering.
+Grades from the labs are equal to amount of points they are offering.
 
-Everyone can make weekly assigments from lectures in last two weeks, and earn two (2) points, even if all of the five labs has been completed.
+Everyone can make weekly assigments from lectures in last two weeks, and earn total of two (2) points, even if all of the five labs has been completed.
 
 In practise, exercises of the course have been divided to five (5) different levels. Level is indicating for grade/points you are able to achieve by reaching that level.
 
@@ -52,23 +56,23 @@ Labs have been split to different tasks. **The amount of tasks which are require
 
 ## Grading
 
-As described earlier, you can get up to 5 points in each first five week. (Total 25 points)
+As described earlier, you can get up to 5 points in each week during the first five weeks. (Total 25 points)
 
-For last two weeks, there is possibility earn total of 2  points from weekly lecture assigments. (2 extra for those, who did all the labs)
+For last two weeks, there is possibility earn total of 2  points from weekly lecture assignments (One (1) each), even, if you have completed five labs already.
 
 From final coursework, points can be obtained as following. Grade from 1 to 5 is multiplied with three (3):
 
 Topic|Grade/Points
 -|-
-Literature review/ cybersecurity essay|1 - 3 (3 - 9p.)
-Small own project or project from given topics| 2 - 4 (6 - 12p.)
-Challenging own project | 3 - 5 (9 - 15p.)
+Literature review/ cybersecurity essay|1 - 3 (3 - 9)
+Small own project or project from given topics| 2 - 4 (6 - 12)
+Challenging own project | 3 - 5 (9 - 15)
 
-### And this results to following grades for the course: 
+*As result, we get following table for total grade:*
 
 Points|Total Grade
 :-:|:-:
-< 10 | 0
+< 10 | fail
 10+ | 1
 15+ | 2
 21+ | 3
@@ -81,7 +85,7 @@ Points|Total Grade
 
 ## Deadlines
 
-For each week you are expected to return assignments of corresponding lab OR corresponding lecture tasks.
+For each week you are expected to return assignments of corresponding lab OR corresponding lecture assignment.
 
 Section|Deadline|Topic/Lab
 :-:|:-:|:-:
@@ -141,13 +145,13 @@ Each lab utilizes one of the virtual machines below:
   * User: cwuser
   * Password. cwpassword
 
-These virtual machines are located on network drive:
+These virtual machines are located on network drive.
 
  Machines can be run directly from there, *but all changes on virtual machines are lost, after shutting them down.*
 
 ### **Method 1: copy machine, and run locally**
 
-If you have enough space on your lab computer, and you are not too hesitated to start, recommended way is to copy virtual machine from network drive, and then start it locally. This way changes are not lost.
+If you have enough space on your lab computer, and you are not too hesitated to start, recommended way is to copy virtual machine from network drive, and then start it locally. This way changes are not lost in shutdown.
 
 You can mount network drive with following cmd command:
 
@@ -163,9 +167,9 @@ Virtuaalikoneet$ -> VMware -> CompSec
 
 Copy selected virtual machine to C:\Temp folder.
 
-Run machine from .vmx file, which ***does not*** say copy and run.
+Run machine from .vmx file, which ***does not*** say 'copy and run'.
 
-When the virtual machine asks if you copied or moved the machine press __"I copied it"__
+When the virtual machine asks if you have copied or moved the machine, press __"I copied it"__.
 
 ### **Method 2: run machine directly from network drive**
 
@@ -189,7 +193,7 @@ If you don't mind that changes are lost on shutdown, machines can be run directl
 (if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$")) && (if exist "C:\Temp\LUbuntu64" (rd /s /q "C:\Temp\LUbuntu64" && mkdir "C:\Temp\LUbuntu64") else (mkdir "C:\Temp\LUbuntu64")) && copy "Z:\VMware\CompSec\ChipWhisperer\LUbuntu64-bit_copy_and_run.vmx" "C:\Temp\LUbuntu64\LUbuntu64_copy_and_run.vmx" && start "" "C:\Temp\LUbuntu64\LUbuntu64_copy_and_run.vmx"
 ```
 
-When the virtual machine asks if you copied or moved the machine press __"I copied it"__
+When the virtual machine asks if you have copied or moved the machine, press __"I copied it"__.
 
 ## Contribution
 
