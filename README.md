@@ -32,7 +32,7 @@ Lectures are handling topics from high perspective and they are not going techni
 
 Laboratory exercises are thought as individual packages: containing theory and exercises, and going technologically very deep.
 
-To pass the course, you have to get enough *total* points from exercises/assignments and final course work. From the beginning, you should be able to see, what you have to do for earning some specific grade. 
+To pass the course, you have to get enough points *totally* from exercises/assignments and final course work. From the beginning, you should be able to see, what you have to do for earning some specific grade. 
 
 **This means: as long as you get enough points from somewhere, you can skip even final coursework. Grading table is presented [here.](#grading)**
 
@@ -58,7 +58,7 @@ Labs have been split to different tasks. **The amount of tasks which are require
 
 As described earlier, you can get up to 5 points in each week during the first five weeks. (Total 25 points)
 
-For last two weeks, there is possibility earn total of 2  points from weekly lecture assignments (One (1) each), even, if you have completed five labs already.
+For last two weeks, there is still possibility earn total of 2  points from weekly lecture assignments (one (1) each), even if you have completed five labs already.
 
 From final coursework, points can be obtained as following. Grade from 1 to 5 is multiplied with three (3):
 
@@ -72,7 +72,7 @@ Challenging own project | 3 - 5 (9 - 15)
 
 Points|Total Grade
 :-:|:-:
-< 10 | fail
+<10 | fail
 10+ | 1
 15+ | 2
 21+ | 3
