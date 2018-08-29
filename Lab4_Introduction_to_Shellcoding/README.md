@@ -1,5 +1,8 @@
-Lab 4: Introduction to Shellcoding and a bit more
+Computer Security Lab 4: Introduction to Shellcoding and a bit more
 ====
+
+Background
+---
 
 Input validation and sanitization is one of the major challenges in software development. Improperly implemented validation and sanitization could lead to unexpected or unwanted situations, which have negative effect for functionality and thus security of software.
 

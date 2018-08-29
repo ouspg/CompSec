@@ -24,35 +24,60 @@ This repository contains a folder for following labs. Each folder contains tasks
 
 5. ChipWhisperer lab
 
-
-
-
-## Current state/ TODO
-
-  
-- [ ] Lab1 Level 5 task missing for now. Return template missing
-- [x] Lab2 Tasks done. Return template done. Might need typo fixes and minor wording tweaks  
-- [x] Lab3 Tasks finished. Finish the before the lab chapter.
-- [x] Lab4 Should be finished
-- [x] Lab5 Tasks done. Return box done. Might need typo fixes and minor wording tweaks
-
 ## The Course
 
-The contents of the course have been divided to five (5) different levels. Level is indicating for grade/points you are able to achieve by reaching that level.
+The course has seven (7) lectures, seven (7) weekly lecture assignments and five (5) laboratory exercises.
+
+To pass the course, you have to get enough *total* points from exercises/assignments and final course work. From the beginning, you should be able to see, what you have to do for earning some specific grade. 
+
+**This means: as long as you get enough points from somewhere, you can skip even final coursework. Grading table is presented later [below.](#grading)**
+
+*Generally, every week there is a choice: Make lecture assigments sufficiently and you will get grade 1 from that week **OR** participate for lab and complete tasks as described to get grade 2 or more from that week. You can't get points from bothlecture assigments and labs in the same week.*
+
+Grade from labs are equal to amount of points they are offering.
+
+This means, that everyone can make weekly assigments from lectures in last two weeks, and earn two (2) points.
+
+In practise, this means that exercises of the course have been divided to five (5) different levels. Level is indicating for grade/points you are able to achieve by reaching that level.
 
 When level rises, so does workload/difficulty.
-
-To pass the course, you have to get enough points from exercises and final course work. From the beginning, you should be able to see, what you have to do for earning some specific grade.
-
-*Generally, every week there is a choice: Make lecture tasks/diary sufficiently and you will get grade 1 **OR** participate for lab and complete tasks as described to get grade 2 or more.*
 
 Labs have been split to different tasks. **The amount of tasks which are required for each level/grade is defined in the grading section of corresponding lab.**
 
 * __Level 1:__ You don't have to participate in the lab. You earn grade 1 from that week by attending lectures and filling a lecture diary/tasks of corresponding topic
 * __Level 2:__ Complete the bare minimum of the lab. This will earn you grade **2** from that week. You are expected to do this during lab hours.
 * __Level 3:__ Complete the whole lab without extra work. This will earn you grade **3** from this week. You are expexted to do this during the lab hours but you are allowed to finish it on your own time
-* __Level 4:__ Complete the above and some extra work. This will earn you a grade of **4** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
-* __Level 5:__ Complete all the above and the most challenging extra work. You will earn a grade of **5** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
+* __Level 4:__ Complete the above (excluding lecture diary/tasks) and some extra work. This will earn you a grade of **4** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
+* __Level 5:__ Complete all the above (excluding lecture diary/tasks) and the most challenging extra work. You will earn a grade of **5** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
+
+## Grading
+
+As described earlier, you can get up to 5 points in each first five week. (Total 25 points)
+
+For last two weeks, there is possibility earn total of 2  points from weekly lecture assigments. (2 extra for those, who did all the labs)
+
+From final coursework, points can be obtained as following. Grade from 1 to 5 is multiplied with three (3):
+
+Topic|Grade/Points
+-|-
+Literature review/ cybersecurity essay|1 - 3 (3 - 9p.)
+Small own project or project from given topics| 2 - 4 (6 - 12p.)
+Challenging own project | 3 - 5 (9 - 15p.)
+
+### And this results to following grades for the course: 
+
+Points|Total Grade
+-|-
+< 10 | 0
+10+ | 1
+15+ | 2
+21+ | 3
+28+ | 4
+35+ | 5
+
+42 points is maximun.
+
+
 
 ## Deadlines
 
@@ -136,7 +161,8 @@ And virtual machines are located in:
 
 Virtuaalikoneet$ -> VMware -> CompSec
 
-Copy selected virtual machine to C:\Temp folder
+Copy selected virtual machine to C:\Temp folder.
+
 Run machine from .vmx file, which ***does not*** say copy and run.
 
 ### **Method 2: run machine directly from network drive**

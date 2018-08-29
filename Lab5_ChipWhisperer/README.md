@@ -1,4 +1,5 @@
-# **Computer security lab: ChipWhisperer**
+Computer Security Lab 5: ChipWhisperer
+====
 
 ## About the lab
 This lab works a little bit different than the others due to it using an external device.

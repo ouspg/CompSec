@@ -1,5 +1,5 @@
 
-Computer Security lab : Networks and web security
+Computer Security Lab 2: Networks and web security
 ====
 
 ## About the lab
