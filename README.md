@@ -122,7 +122,7 @@ These virtual machines are located on network drive:
 
 ### **Method 1: copy machine, and run locally**
 
-If you have enough space on your lab computer, and you are not too hesitated to start, recommended way is to copy virtual machine from network drive, and then start it locally.
+If you have enough space on your lab computer, and you are not too hesitated to start, recommended way is to copy virtual machine from network drive, and then start it locally. This way changes are not lost. T
 
 You can mount network drive with following cmd command:
 
@@ -137,6 +137,7 @@ And virtual machines are located in:
 Virtuaalikoneet$ -> VMware -> CompSec
 
 Copy selected virtual machine to C:\Temp folder
+Run machine from .vmx file, which ***does not*** say copy and run.
 
 ### **Method 2: run machine directly from network drive**
 
