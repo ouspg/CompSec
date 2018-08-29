@@ -104,8 +104,7 @@ git push
 
 ## Virtual machines
 
-Each lab utilizes one of the virtual machines below.
-Following virtual machines will be used:
+Each lab utilizes one of the virtual machines below:
 
 * Kali Linux - for shellcoding, fuzzing and web security lab
   * User: compsec
@@ -120,6 +119,30 @@ Following virtual machines will be used:
 These virtual machines are located on network drive:
 
  Machines can be run directly from there, *but all changes on virtual machines are lost, after shutting them down.*
+
+### **Method 1: copy machine, and run locally**
+
+If you have enough space on your lab computer, and you are not too hesitated to start, recommended way is to copy virtual machine from network drive, and then start it locally.
+
+You can mount network drive with following cmd command:
+
+```
+net use z: "\\kaappi\Virtuaalikoneet$"
+```
+
+There should be now new Z: drive, named as Virtuaalikoneet$
+
+And virtual machines are located in:
+
+Virtuaalikoneet$ -> VMware -> CompSec
+
+Copy selected virtual machine to C:\Temp folder
+
+### **Method 2: run machine directly from network drive**
+
+This is the fastest way to start working: you don't need to wait copy-process.
+
+If you don't mind that changes are lost on shutdown, machines can be run directly from network drive.
 
  To run virtual machines from there, you have to use following commands. Open Windows cmd, and run them in there:
 
@@ -136,14 +159,6 @@ These virtual machines are located on network drive:
 ```shell
 (if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$")) && (if exist "C:\Temp\LUbuntu64" (rd /s /q "C:\Temp\LUbuntu64" && mkdir "C:\Temp\LUbuntu64") else (mkdir "C:\Temp\LUbuntu64")) && copy "Z:\VMware\CompSec\ChipWhisperer\LUbuntu64-bit_copy_and_run.vmx" "C:\Temp\Ubuntux64\LUbuntu64_copy_and_run.vmx" && start "" "C:\Temp\Ubuntux64\LUbuntu64_copy_and_run.vmx"
 ```
-
-If you want to copy virtual machine from network drive and run it by storing changes (or just get it to your own pc), you have to map network drive in location following, if it is not already mounted:
-```
- \\kaappi\Virtuaalikoneet$
-```
-Virtual machines can be then found from:
-
-Virtuaalikoneet$ -> VMware -> CompSec
 
 
 
