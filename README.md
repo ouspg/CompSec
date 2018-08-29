@@ -32,9 +32,9 @@ To pass the course, you have to get enough *total* points from exercises/assignm
 
 **This means: as long as you get enough points from somewhere, you can skip even final coursework. Grading table is presented later [below.](#grading)**
 
-*Generally, every week there is a choice: Make lecture assigments sufficiently and you will get grade 1 from that week **OR** participate for lab and complete tasks as described to get grade 2 or more from that week. You can't get points from bothlecture assigments and labs in the same week.*
+*Generally, every week there is a choice: Make lecture assigments sufficiently and you will get grade 1 from that week **OR** participate for lab and complete tasks as described to get grade 2 or more from that week. You can't get points from both lecture assigments and labs in the same week.*
 
-Grade from labs are equal to amount of points they are offering.
+Grades from labs are equal to amount of points they are offering.
 
 This means, that everyone can make weekly assigments from lectures in last two weeks, and earn two (2) points.
 

@@ -1,4 +1,6 @@
-# **Computer security lab 1: Fuzzing**
+Computer Security Lab 1: Fuzzing
+====
+
 This week’s theme is fuzzing. Tasks can be done with Kali Linux, see the [course mainpage](https://github.com/ouspg/CompSec) for instructions how to run the virtual machine (VM). Kali VM provided has all the required tools installed already. If you have your own computer with Ubuntu for example, you can use it too, just install all the required tools.
  
 In a nutshell, fuzzing is a software testing method that feeds malformed and unexpected input data to a program, device or system. The programs that are used to perform fuzz testing are commonly called fuzzers. The one and only goal of fuzzing is to crash the target system. From the security perspective, the goal is to analyze those found flaws for possible exploits.
