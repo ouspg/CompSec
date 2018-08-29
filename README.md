@@ -79,7 +79,7 @@ Points|Total Grade
 28+ | 4
 35+ | 5
 
-42 points is maximun.
+42 points are maximun.
 
 
 
