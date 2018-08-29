@@ -139,6 +139,8 @@ Virtuaalikoneet$ -> VMware -> CompSec
 Copy selected virtual machine to C:\Temp folder
 Run machine from .vmx file, which ***does not*** say copy and run.
 
+When the virtual machine asks if you copied or moved the machine press __"I copied it"__
+
 ### **Method 2: run machine directly from network drive**
 
 This is the fastest way to start working: you don't need to wait copy-process.
@@ -161,7 +163,7 @@ If you don't mind that changes are lost on shutdown, machines can be run directl
 (if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$")) && (if exist "C:\Temp\LUbuntu64" (rd /s /q "C:\Temp\LUbuntu64" && mkdir "C:\Temp\LUbuntu64") else (mkdir "C:\Temp\LUbuntu64")) && copy "Z:\VMware\CompSec\ChipWhisperer\LUbuntu64-bit_copy_and_run.vmx" "C:\Temp\LUbuntu64\LUbuntu64_copy_and_run.vmx" && start "" "C:\Temp\LUbuntu64\LUbuntu64_copy_and_run.vmx"
 ```
 
-
+When the virtual machine asks if you copied or moved the machine press __"I copied it"__
 
 ## Contribution
 
