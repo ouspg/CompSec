@@ -1,5 +1,5 @@
 
-Computer Security lab : Networks and web security
+Computer Security lab 2 : Networks and web security
 ====
 
 ## About the lab
@@ -140,7 +140,7 @@ Start Juice Shop with the command
 ```shell
 docker run --rm -p 3000:3000 bkimminich/juice-shop
 ```
-Site is hosted at ```localhost:3000```. Access it with your browser. Observe and modify the traffic while you are browsing the site and do the following tasks.
+Site is hosted at ```localhost:3000```. Access it with your browser. Observe and modify the traffic with your browsers developer tools while browsing the site and do the following tasks.
 
 __Note__ In Firefox's devtools, in the "Headers" section of packet information, there is a handy "Edit and Resend" button Which can be used to modify packets.
 
@@ -151,21 +151,16 @@ __Note__ In Firefox's devtools, in the "Headers" section of packet information, 
 
 Search field of the JuiceShop is vulnerable to SQL injections.
 Inject some SQL to the searchfield and cause an __SQL__ error. 
+
 __Hint__ Try different SQL symbols like statement terminators, comments, quotation marks. Check the network tab for servers response 
 
-What command(s) did you use?
-``` sql
+__What command(s) did you use?__
 
-```
- What these SQL characters you used for injecting, are actually doing? (Explain each command/symbol you used, and why it is working)?
-```sql
+ __What these SQL characters you used for injecting, are actually doing? (Explain each command/symbol you used, and why it is working)?__
 
-```
  
-Paste here the command that the SQL server attempts to execute and replace the part(s) taken from the searchfield with the text "SEARCHRESULT". 
-``` sql
+__Paste here the command that the SQL server attempts to execute and replace the part(s) taken from the searchfield with the text "SEARCHRESULT".__ 
 
-```
 ---
 **A bit more concrete error**
 
@@ -175,33 +170,23 @@ If this area is vulnerable, it could be very dangerous, because it might enable 
 Somehow we know that Admin user is *the first entry* in the User list.
 Can you log in as Admin with SQL - injection, based on that information? You just [have to bypass the login.](https://www.acunetix.com/websitesecurity/sql-injection/)
 
-What command(s) did you use?
-```sql
+__What command(s) did you use?__
 
-```
-Why it is working/what is happening?
-```text
+__Why it is working/what is happening?__
 
-```
 
 ---
 Shop has an item that has been deleted and therefore does not show on searches. Deduct how the item is marked as deleted and use SQL injection to make it visible and "buy" it. 
 
 __HINT__ Check the command that the SQL server attempts to execute. Also inspect the traffic that happens when you inspect an item. 
 
-What SQL command did you use?
- ``` sql
-
-```
-How are the items "deleted"?
-```
-```
+__What SQL command did you use?__
+ 
+__How are the items "deleted"?__
 
 
-Explain shortly the logic behind your attack. Why does it work?
-```
+__Explain shortly the logic behind your attack. Why does it work?__
 
-```
 
 
 ### B) Modification of client-side code
@@ -216,9 +201,8 @@ Sometimes JavaScript is showing something that you don't want to. For example th
 
 __Hint__ Javascripts name is visible in the html code. There is a pretty print option at the bottom of the page ( "{}" - symbol) Use search to find the administration panels endpoint.
 
-What is the url to access administration panel? You can find page even, when you are not logged in, but information is not showed. Why this still could be considered as risk?
-```
-```
+__What is the url to access administration panel? You can find page even, when you are not logged in, but information is not showed. Why this still could be considered as risk?__
+
 
 ---
 But anyway, could we control other users a bit?
@@ -227,9 +211,8 @@ This site's access control is lacking and users can in some cases access into pl
 
 You don't need to know anything about another users, we are using just some random victim.
 
-How did you do it? Why you were able to?
-```
-```
+__How did you do it? Why you were able to?__
+
 ---
 **Scoreboard**
 
@@ -238,9 +221,8 @@ At this point we might have seen some notifications about challenges we have com
 Sometimes the HTML contains unwanted stuff. This site has for example a scoreboard, and the top bar should contain a link to it. Use your browsers developer tools and make it visible.
 __Hint__ You can edit the fields in "Inspector" tab
 
-How did you make it visible?
-```
-```
+__How did you make it visible?__
+
 
 
 
@@ -258,22 +240,13 @@ Use SQL injection to the searchfield using [UNION](http://www.sqlinjection.net/u
  After you know the table name you have to find out how many columns the Products table has so you can select that many columns from the users table. You can guess this if you want to but the column amount can also be found from the response you get from a product search. Now select that many columns from the users table where atleast two of them are email and password. If the values are not visible you might have put it to a field that is not rendered visible. Try putting it to a different field.
  
 
-What SQL command did you use?
- ``` sql
+__What SQL command did you use?__
 
-```
-
-Explain shortly the logic behind your attack. Why and how does it work?
-
-```
-
-```
+__Explain shortly the logic behind your attack. Why and how does it work?__
 
 Put an item to your basket and checkout. Monitor the traffic using your browsers devtools. By modifying the requests it is possible to checkout with negative amount of items. Proceed to do so.
 
-How did you do it?
-```
-```
+__How did you do it?__
 
 Next we attempt some cross-site scripting attacks. Insert the following code snippet to "Order ID" field in "Track Orders" tab and to the search field. This should trigger the xss.
 
@@ -281,17 +254,13 @@ Next we attempt some cross-site scripting attacks. Insert the following code sni
 
 Attack on the "Order ID" is an [reflected XSS attack](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)#Reflected_XSS_Attacks) and the attack on the searchfield is [DOM based XSS](https://www.owasp.org/index.php/DOM_Based_XSS).
 
-What is the difference between these two types of attacks? How can you protect your applications against both types of attacks?
-```
-```
+__What is the difference between these two types of attacks? How can you protect your applications against both types of attacks?__
+
 XSS attacks above a relatively harmless. They only affect you and nobody else. It would be way more harmful if you could get the above used code snippet inside the servers database or otherwise visible to all the users. Basically you would have to create a user or a product which name is the XSS-script. Both of those are possible, however creating a user is easier. Create a user whose name is ```<script>alert('ALERT')</script>```. Go to the administration panel logged as any user to check that it worked 
 
 __Hint__ Juice Shop validates the input in the client side **but** not in the server side.
 
-*short explanation on how you did it*  
-```
-
-```
+__*short explanation on how you did it*__  
 
 ### Brute forcing
 
