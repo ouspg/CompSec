@@ -122,7 +122,7 @@ These virtual machines are located on network drive:
 
 ### **Method 1: copy machine, and run locally**
 
-If you have enough space on your lab computer, and you are not too hesitated to start, recommended way is to copy virtual machine from network drive, and then start it locally. This way changes are not lost. T
+If you have enough space on your lab computer, and you are not too hesitated to start, recommended way is to copy virtual machine from network drive, and then start it locally. This way changes are not lost.
 
 You can mount network drive with following cmd command:
 
