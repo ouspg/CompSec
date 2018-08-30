@@ -58,19 +58,24 @@ Task 4 | 4/5 | Contribute to a existing open-source project. Set up a fuzzer an
 
 ---
 
-**B)** In the following task you will be using American Fuzzy Lop (AFL), it is installed in the Kali Linux virtual machine. If you are using your own computer you can download it as follows:
-```
-~$ wget http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz
-```
-You can find the target program sourcecode following this link: [unrtf0.21.5.tar.gz](https://ftp.gnu.org/gnu/unrtf/unrtf-0.21.5.tar.gz). This tool can be used to convert .rtf files into other, more readable formats (see README for more). Extract the package, **_configure_ it with appropriate AFL compiler flags and then _compile_**.
+**B)** In the following task you will be using American Fuzzy Lop (AFL), it is installed in the Kali Linux virtual machine. 
 
-__Hint__: configure, make, make install. See AFL [quick start guide](http://lcamtuf.coredump.cx/afl/README.txt) for help
+You can find the target program sourcecode following this link: [unrtf0.21.5.tar.gz](https://ftp.gnu.org/gnu/unrtf/unrtf-0.21.5.tar.gz). This tool can be used to convert .rtf files into other, more readable formats (see README for more). Extract the package, **_configure_** it to use AFL compilers and then **_compile_**. You can do as following:
+```
+~$ ./configure CC="add_here" CXX="add_here" --prefix=$HOME/unrtf
+~$ make
+~$ make install
+```
+__Hint__: See AFL [documentation](http://lcamtuf.coredump.cx/afl/README.txt) how to instrument programs to use AFL compilers.
+
+ This way, with --prefix flag, you are installing the binary into your home directory, instead of giving it root access to do whatever the installer likes, which is not recommended to every binary you can find.
+
 
 During this task, use the example .rtf file from AFL folder (**/usr/share/afl/testcases/others/rtf/small-document.rtf**). You can try that your unrtf is working properly using command line:
 ```
-~$ /path/to/unrtf --html /path/to/testfile
+~$ /unrtf/bin/unrtf --html /path/to/testfile
 ```
-Start fuzzing unrtf with AFL using the example .rtf file as input. You need to create 2 folders, one for input files and one for results output. Input folder must include the small-document.rtf file mentioned above. See AFL [quick start guide](http://lcamtuf.coredump.cx/afl/README.txt) for instructions on how to start the fuzzer. 
+Start fuzzing unrtf with AFL using the example .rtf file as input. You need to create 2 folders, one for input files and one for results output. Input folder must include the small-document.rtf file mentioned above. See AFL [documentation](http://lcamtuf.coredump.cx/afl/README.txt) for instructions on how to start the fuzzer. 
 
 Run the fuzzer, see what happens in the status window. Good description of the status window can be found [here](http://lcamtuf.coredump.cx/afl/status_screen.txt).
 
@@ -78,7 +83,7 @@ __Hint__: You are fuzzing a binary. To copy your input file into in/ folder for 
 ```
 ~$ cp /path/to/testfile /path/to/whereyouwanttocopyit
 ```
-**Command lines used to configure and compile unrtf**
+**Command line used to configure unrtf**
 
 **Command line used to run AFL**
 
