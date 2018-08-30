@@ -156,8 +156,9 @@ __Hint__ Try different SQL symbols like statement terminators, comments, quotati
 
 __What command(s) did you use?__
 
- __What these SQL characters you used for injecting, are actually doing? (Explain each command/symbol you used, and why it is working)?__
+ __Explain each command/symbol you used in your SQL command that caused the SQL error?__
 
+__Why did it cause and error?__
  
 __Paste here the command that the SQL server attempts to execute and replace the part(s) taken from the searchfield with the text "SEARCHRESULT".__ 
 
