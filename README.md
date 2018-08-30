@@ -6,17 +6,6 @@ The course covers the essential aspects of computer security and computer securi
 
 The course is intended for computer engineering masters students and additionally to any student interested in computer security that has *the sufficient* technical background to complete the course exercises.
 
-### But what is sufficient technical background?
-
-*Sufficient* technical skills are hard to define, as generally fully understanding of systems(how they work) is required, before one can reach full understanding of the security of the system on technical level. To inspect some systems, this must be combinated with the skill of using some specific tools.
-
-Therefore, we are not listing here all of the  required technical details, which we think you should already have.
-
- We except, that you find out and learn by yourself, if you are missing some knowledge. Ability to find out things and to be in endless learning curve is core part of computer security.
-
- Of course, we try to help as much as we can, and we have tried to explain the most complicated things.
-
- *Because of this, there is option to pass the course, without participating to any of the labs. Good grade cannot be achieved with this way.*
 
 
 
