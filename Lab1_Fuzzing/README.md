@@ -118,8 +118,24 @@ Run your program with the previously generated 100 test cases. A simple shell sc
 ---
 ## **Task 4**: Contribute to a existing open-source project. Set up a fuzzer and report findings.
 
-Contribute to an existing open-source software (OSS) project by setting up a fuzzing environment and documenting the process and results. You can choose the target software by yourself and use one of the 2 fuzzers introduced during the lab exercise, or pick some other that you think serves the purpose better. 
+Contribute to an existing open-source software (OSS) project by setting up a fuzzing environment and documenting the process and results. You can choose the target software by yourself and use one of the 2 fuzzers introduced during the lab exercise, or pick some other that you think serves the purpose better. **You should do all the testing inside a virtual machine in case there are potentially malicious files being handled.**
 
-You should read for example [this guide](https://github.com/ouspg/fuzz-testing-beginners-guide) to get started. Please note that in case a real bug is found in the software, it is very important to document the results in a way that the issue can be easily reproduced. The guide has some good pointes of what information you should provide.
+You should read for example [this guide](https://github.com/ouspg/fuzz-testing-beginners-guide) to get started. Please note that in case a real bug is found in the software, it is very important to document the findings in a way that the issue can be easily reproduced. The guide has some good pointes of what information you should provide. It is not mandatory for the student to file a "real" bug report, but if you find something new, we highly recommend to do so.
+
+You should grab the most recent vesion of the source code. Few open-source projects as an example:
+
+-  [Chromium](https://www.chromium.org/Home) - An open-source browser project started by Google.
+- [VLC media player](https://www.videolan.org/vlc/index.html) - A common open-source media player from VideoLAN. Vast attack-surface as the player uses many different libraries to hande audio/video encoding. See [features](https://www.videolan.org/vlc/features.html).
+- [ImageMagick](https://www.imagemagick.org/script/index.php) - An open-source suite for displaying, converting and editing image, supporting over 200 file formats.
+- See [American Fuzzy Lop](http://lcamtuf.coredump.cx/afl/) main page for a comprehensive list of tools it has found bugs on. Newer versions of software can spawn new bugs, but the most common tools are usually tested the most so they might not be the best to start with.
+
+You should at minimum provide the following information in the documentation:
+- Which fuzzer was used
+- Brief explanation of the target software and why you chose it
+- Operating system and version information
+- Compiler and debugger flags
+- Initial testcase(s) and the one producing a crash
+- Necessary steps to reproduce the crash
+
 
 To be continued.. Work in progress.
