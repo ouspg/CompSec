@@ -3,9 +3,9 @@ Computer Security Lab 1: Fuzzing
 
 This week’s theme is fuzzing. Tasks can be done with Kali Linux, see the [course mainpage](https://github.com/ouspg/CompSec) for instructions how to run the virtual machine (VM). Kali VM provided has all the required tools installed already. If you have your own computer with Ubuntu for example, you can use it too, just install all the required tools.
  
-In a nutshell, fuzzing is a software testing method that feeds malformed and unexpected input data to a program, device or system. The programs that are used to perform fuzz testing are commonly called fuzzers. The one and only goal of fuzzing is to crash the target system. From the security perspective, the goal is to analyze those found flaws for possible exploits.
+In a nutshell, fuzzing is a software testing method that feeds malformed and unexpected input data to a program, device or system. The programs that are used to perform fuzz testing are commonly called fuzzers. The main goal of fuzzing is to make the target system behave *unexpectedly*. From the security perspective, the goal is to analyze those found flaws for possible exploits (estimate the size of risk) and finally figure out a way to fix it.
 
-In this exercise you will learn basic usage of 2 common fuzzers; Radamsa and American Fuzzy Lop (AFL). You will also use AddressSanitizer, a memory error detection tool, and Valgrind, a debugging tool, which are often used alongside different fuzzers.
+In this exercise you will learn basic usage of 2 common fuzzers; Radamsa and American Fuzzy Lop (AFL). You will also use AddressSanitizer, a memory error detection tool, and Valgrind, a debugging tool (and memory error detector as well), which are often used alongside different fuzzers.
 
 ## Some prerequisities & tools
 Basic understanding of C programming language is required.
@@ -29,6 +29,8 @@ Task 2 | 2 | Analyzing a C-program with AddressSanitizer, fuzztesting with AFL
 Task 3 | 3 | Creating your own small C-program and fuzztesting it
 Task 4 | 4/5 | Contribute to a existing open-source project. Set up a fuzzer and report findings.
 ---
+
+Grade 1 can be aquired by doing lecture questionnaires from the corresponding lectures.
 
 ## **Task 1**: Mutated test case generation with Radamsa
 
@@ -62,7 +64,7 @@ Task 4 | 4/5 | Contribute to a existing open-source project. Set up a fuzzer an
 
 You can find the target program sourcecode following this link: [unrtf0.21.5.tar.gz](https://ftp.gnu.org/gnu/unrtf/unrtf-0.21.5.tar.gz). This tool can be used to convert .rtf files into other, more readable formats (see README for more). Extract the package, **_configure_** it to use AFL's wrappers and then **_compile_**. 
 
-When source code is available, you should instrument the program for use with AFL by using AFL's own wrappers that work as drop-in replacements for **gcc** and **clang**. You can do as following, leave the quotations and modify *add_here* fields:
+When source code is available, you should instrument the program for use with AFL by using AFL's own wrappers that work as drop-in replacements for **gcc/g++** and **clang/clang++**. You can do as following, leave the quotations and modify *add_here* fields:
 ```
 ~$ ./configure CC="add_here" CXX="add_here" --prefix=$HOME/unrtf
 ~$ make
@@ -120,9 +122,9 @@ Run your program with the previously generated 100 test cases. A simple shell sc
 ---
 ## **Task 4**: Contribute to a existing open-source project. Set up a fuzzer and report findings.
 
-Contribute to an existing open-source software (OSS) project by setting up a fuzzing environment and documenting the process and results. You can choose the target software by yourself and use one of the 2 fuzzers introduced during the lab exercise, or pick some other that you think serves the purpose better. **You should do all the testing inside a virtual machine in case there are potentially malicious files being handled.**
+Contribute to an existing open-source software (OSS) project by setting up a fuzzing environment and documenting the total process and results. You can choose the target software by yourself and use one of the 2 fuzzers introduced during the lab exercise, or pick some other that you think serves the purpose better. **You should do all the testing inside a virtual machine in case there are potentially malicious files being handled.**
 
-You should read for example [this guide](https://github.com/ouspg/fuzz-testing-beginners-guide) to get started. Please note that in case a real bug is found in the software, it is very important to document the findings in a way that the issue can be easily reproduced. The guide has some good pointes of what information you should provide. It is not mandatory for the student to file a "real" bug report, but if you find something new, we highly recommend to do so.
+You should read for example [this guide](https://github.com/ouspg/fuzz-testing-beginners-guide) to get started. Please note that in case a real bug is found from the software, it is very important to document the findings in a way that the issue can be easily reproduced. The guide has some good points of what information you should provide. It is not mandatory for the student to file a "real" bug report, but if you find something new, we highly recommend to do so.
 
 You should grab the most recent vesion of the source code. Few open-source projects as an example:
 
@@ -131,13 +133,14 @@ You should grab the most recent vesion of the source code. Few open-source proje
 - [ImageMagick](https://www.imagemagick.org/script/index.php) - An open-source suite for displaying, converting and editing image, supporting over 200 file formats.
 - See [American Fuzzy Lop](http://lcamtuf.coredump.cx/afl/) main page for a comprehensive list of tools it has found bugs on. Newer versions of software can spawn new bugs, but the most common tools are usually tested the most so they might not be the best to start with.
 
-You should at minimum provide the following information in the documentation:
+You should at minimum to provide the following information in the documentation:
 - Which fuzzer was used
 - Brief explanation of the target software and why you chose it
-- Operating system and version information
+  - Are you fuzzing the whole software or some specific part of it? 
+  - Is software using some libraries? Are those fuzzed as well?
+- Operating system and version information. Version numbers of target software, target software libraries, fuzzer and operating system are very important! Can you explain why?
 - Compiler and debugger flags
-- Initial testcase(s) and the one producing a crash
-- Necessary steps to reproduce the crash
+- Initial testcase(s) and the one(s) producing a possible crash
+  - Necessary steps to reproduce the crash
+- It is not necessary to find any bugs. It is enough, if you can prove that you have fuzzed with good code-coverage and they way how input was mutated (=what kind of input fuzzer created overall))
 
-
-To be continued.. Work in progress.

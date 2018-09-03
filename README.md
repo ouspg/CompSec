@@ -99,7 +99,7 @@ Note, that all topics are not equal in maximum points they are offering.
 
 In each lab, there is option to make grade 5 task to be more challenging and comprehensive, and make it as final coursework. This has to be approved by assistant.
 
-*Deadline for final course work is in the end of week 41.*
+*Deadline for final course work is in the end of week 41. (End of course week 7.)*
 
 ## Deadlines
 
@@ -117,7 +117,7 @@ Week | Course week|Lecture Topics|Laboratory| Assigment Deadline|
 
 ***This is deadline of final coursework as well.*
 
-***NOTE:***  Week 5 and 6 are be mixed, because there are limited amount of devices which are required for ChipWhisperer lab.
+***NOTE:***  Week 5 and 6 have been mixed, because there are limited amount of devices which are required for ChipWhisperer lab.
 
 ## Instructions
 
@@ -129,17 +129,17 @@ Week | Course week|Lecture Topics|Laboratory| Assigment Deadline|
 
  * Create GitHub account, if you don't have one already, and create this private repository from the link.
 
- * You can see deadlines above. They are same in Moodle. There might be exception for ChipWhiperer, depending on if everyone is able to get device in Week 5.
+ * You can see deadlines above. They are same in Moodle. There might be exceptions for ChipWhisperer.
 
  * Complete as many tasks as you wish and update your repository accordingly. Check the grading table found in each labs instructions on what you have to complete in order to earn the grade of your choosing
 
  * Push your changes to your repository before deadline.
 
  * Return a document to Moodle's return box with following content:
-   * Your name
+   * Your name(s) (There is group work in ChipWhisperer lab)
    * Link to your private GitHub repository
    * *Remember to do this for each lab, if you want to get things reviewed!*
-   * Additionally for Week 6/Lab6, if you are returning something, mention what have you improved or done.
+   * Additionally for Week 6/Lab6, if you are returning some improvements for previous labs, mention what have you improved or done.
 
 
 

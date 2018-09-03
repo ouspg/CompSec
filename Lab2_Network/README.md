@@ -79,14 +79,14 @@ Get [Docker](https://www.docker.com/) instance for Juice Shop
 docker pull bkimminich/juice-shop
 ```
 
-All tasks are duable using your browsers developer tools. Tasks were tested and created using Firefox but other browsers should works just as well.
+All the tasks are doable using your browsers developer tools. Tasks were tested and created by using Firefox, but other browsers should works just as well.
 
 ### Task 2
 
 Same as above and the following:
 
 
-* For the brute forcing task the tools vary depending on how you choose to do it. Read the instructions and proceed to get the tools you want. There are some hints in the task description.
+* For the brute forcing task, the tools vary depending on how you choose to do it. Read the instructions and proceed to get the tools you want. There are some hints in the task description.
 
 ### Task 3
 
@@ -120,6 +120,7 @@ Task| Grade/Level | Description
 3|4| Cross-Site Scripting attack
 4|5| Network traffic analysis and a security experiment
 
+Grade 1 can be aquired by doing lecture questionnaires from the corresponding lecture.
 
 ## Particularly in tasks 1 and 2:
 
@@ -200,7 +201,7 @@ The Admin account which we previously "unlocked", does not actually have much sp
 
 The panel for making the admin stuff is actually hidden.
 
-Sometimes JavaScript is showing something that you don't want to. For example this site has an admin page that is not linked from anywhere of the site. That pages endpoint is however visible in the JavaScript. Open the juice-shop-min.js with your browsers dev tools and access it. 
+Sometimes JavaScript is showing something that you don't want to. For example this site has an admin page that is not linked from anywhere of the site. That pages endpoint is however visible in the JavaScript. Open the juice-shop-min.js with your browser's dev tools and access it. 
 
 __Hint__ JavaScript's name is visible in the HTML code. There is a pretty print option at the bottom of the page ( "{}" - symbol) Use search to find the administration panels endpoint.
 
@@ -262,7 +263,7 @@ __How did you do it?__
 ---
 **Annoying pop-up**
 
-Next we attempt some cross-site scripting attacks. Insert the following code snippet to "Order ID" field in "Track Orders" tab and to the search field. This should trigger the xss.
+For next, we attempt some cross-site scripting attacks. Insert the following code snippet to "Order ID" field in "Track Orders" tab and to the search field. This should trigger the xss.
 
 ```<script>alert("XSS")</script>```
 
@@ -299,11 +300,13 @@ __Hint__ Internet is full of tools to create wordlists. It is potentially easier
 
 Let's get back to Juice Shop. 
 
-The XSS attack you did in the previous task was mostly just annoying. It could however have been way more malicious.For next, we are actually doing that and modify it to be way more dangerous. Your task is the following:
+The XSS attack you did in the previous task was mostly just annoying. It could however have been way more malicious. For next, we are actually doing that and modify it to be way more dangerous. Your task is the following:
 
 * **Setup a server.** No need to do anything fancy. Basic python [flask](http://flask.pocoo.org/)/[BaseHttpServer](https://docs.python.org/2/library/basehttpserver.html) that can receive post requests is fine. Server can print or save the information to a file. Anything goes as long as it shows that the data entered the server.  
 * **When the user accesses the Juice Shop's administration panel, the page will look like the Juice Shops login page.** Page should be as similiar as possbile but small differences are fine. For example slightly different size login fields, email field not checking for @ sign etc.
 * **When the user inputs anything to the email and password fields and presses the *Login*-button all the information in the email and password fields are sent to your server.** The way you send/show the information is up to you. You just have to demostrate in the server side that the data has entered and that it is the same as inputted to the email and password fields.
+
+We are actually creating something very phishy, just by using XSS vulneralibity.
 
 ### Returns
 
@@ -336,7 +339,7 @@ cd example-voting-app
 docker-compose up
 ```
 ### Task
-In this task you are expected to learn to capture traffic using WireShark and to do very basic network analysis. With the knowledge you gain you are then expected to draw a data flow diagram on how the system behaves when you cast a vote or check the results. After this you try some form of a security experiment(for example modify traffic using burp). Report your result even if you are unsuccesful. 
+In this task you are expected to learn to capture traffic by using WireShark, and to do very basic network analysis. With the knowledge you gain, you are then expected to draw a data flow diagram on how the system behaves when you cast a vote or check the results. After this you try some form of a security experiment(for example modify traffic using Burp Suite). Report your result even if you are unsuccesful. 
 
 
 __Hint__
@@ -351,7 +354,7 @@ To run Wireshark correctly without using straight root priviledges, we should ad
 ```shell
 sudo usermod -a -G wireshark compsec
 ```
-Log out and log in, wireshark should show now all interfaces.
+Log out and log in, wireshark should show now all interfaces. This is already done with provided Kali Linux.
 
 
  ### How to complete this task

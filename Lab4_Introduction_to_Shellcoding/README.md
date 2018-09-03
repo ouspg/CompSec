@@ -37,7 +37,7 @@ Task|Grade/Level|Description|
 
 By completing Task 1 and Task 2 A&B, you are eglible for passing the lab and getting minimum grade 2 from this lab. Completion of C part increases grade to 3.
 
-Grade 1 can be aquired by doing lecture tasks/diary from the corresponding lectures.
+Grade 1 can be aquired by doing lecture questionnaires from the corresponding lectures.
 
 Difficulty on tasks is expected to be exponentially raising as you go forward with them. Without understanding of previous task, next one could be very ambiguous.
 

