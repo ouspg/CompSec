@@ -37,6 +37,12 @@ Boards are connected to each other with serial cable and measurement connector a
 #### Hardware
 In order for you to complete this lab you need a ChipWhisperer board + a target board. Boards are available at lab session and most likely you have to tasks in groups of 2 or 3. You can discuss with course assistants about lending the hardware after the lab session. It is also possible to lend hardware if you want to do ChipWhisperer related experiments as your coursework. Notice that there is also some tasks which do not require you to have hardware if you can get recorded traces from somewhere else.
 
+#### Hardware connections to be made when using it
+* Connect ChipWhisperers and target boards "*Measure*" ports using SMA cable.
+* If you are doing task 4 (glitching) also connect "*Glitch*" ports
+* Connect the serial cable between boards
+* Connect micro-usb to the board and your computer
+
 #### Software
 * We suggest that you use preconfigured virtual machine image of this laboratory exercise. It has everything installed and all scripts set ready.
 * If you do not want to do that, you may download clean image from manufacturer [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). After that clone this reposity and get setup scripts from scripts folder.
@@ -46,14 +52,6 @@ In order for you to complete this lab you need a ChipWhisperer board + a target 
 * Basic understanding of C and Assembly code. Ability to code small and simple scripts with Python.
 * Basic understanding of mathematics, especially statistics.
 * Basic understanding of cryptographig systems.
-
-## What connections are needed
-
-* Connect ChipWhisperers and target boards "*Measure*" ports using SMA cable.
-* If you are doing task 4 (glitching) also connect "*Glitch*" ports
-* Connect the serial cable between boards
-* Connect micro-usb to the board and your computer
-
 
 
 ## Grading + other principles
@@ -181,15 +179,23 @@ Under *Gain Setting* set the *Mode* to high. Increase the *Gain Setting* to abou
 
 Press capture button again and you should see captured power trace.
 
-__What to do to complete this task__
+__What to do to complete this task?__
 
 Modify your code by adding more nop and mul instructions to code and inspect how power trace changes. Remember that you have to rebuild and reload program to target device every time you change it.
 
+**Try at least next ones:**
+* 30 x ASM mul instructions
+* 30 x ASM nop instructions
+* Some amount of 10-sized instruction blocks and some amount of other 10-sized instruction block mixed
+
 It is advisable to try least of couple different amounts of muls and nops and plot traces to same image to notice easily that what is happening.
 
-Take screenshots from power trace and mark down the places where you think that you can see different instructions to be executed. You can draw those markings to pictures or tell those by your own words (for example: “From sample x to y target is running operation A and from y to z target runs operation B).
+**Take screenshots from power trace and mark down the places where you think that you can see different instructions to be executed.** You can draw those markings to pictures or tell those by your own words (for example: “From sample x to y target is running operation A and from y to z target runs operation B).
 
-See the return template for more detailed instructions on what to return.
+**Add next pictures and explanations where operation happens to return template (requirements are also stated in return template):**
+* Picture of 30 x ASM mul instructions
+* Picture of 30 x ASM nop instructions
+* Picture of at least 40 x ASM nop or mul (or your custom operation). Do not use same operation for all 40 ASM instructions. Add explanation where any used operation happens.
 
 ## C) Breaking AES
 In this task we are going to break AES with attack scripts that already exist in ChipWhisperer software. This task is based on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B5_Breaking_AES_(Straightforward).
@@ -214,7 +220,9 @@ Task should be doable by following instructions below, but feel free to look the
 
 __What to do to complete this task?__
 
-Explain shortly how the correlation power analysis that you just performed works.
+**Explain shortly how the correlation power analysis that you just performed works.**
+
+**Add picture of "Output vs Point plot"-tab to return template**
 
 **TIPS & TRICKS**
 * If you are interested logic behind breaking AES encryption, look at tutorial http://wiki.newae.com/Tutorial_B6_Breaking_AES_(Manual_CPA_Attack) which explains how to perform this task manually.
