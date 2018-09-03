@@ -74,11 +74,14 @@ Task| Grade/Level | Description
 3|4|Glitching
 4|5|Several alternatives for advanced experimenting
 
+---
 # Task 1
 
-Task 1 tasks are meant to be relatively simple tasks to help you understand that what is the Chipwhisperer device and what can be done with it.
+Ok, let's begin.
 
-## **Getting started with device, capture program and SimpleSerial protocol**
+Task 1 tasks are meant to be relatively simple tasks to help you understand that what is the Chipwhisperer device and what can be done with it. You will learn how to connect the board, inspect power traces and use ChipWhisperer analyzer program.
+
+## A) Getting started with device, capture program and SimpleSerial protocol
 Complete ChipWhisperer basic tutorial B1 http://wiki.newae.com/Tutorial_B1_Building_a_SimpleSerial_Project Purpose of this part is simply to give you some experience of the basic usage of ChipWhisperer which is required in later tasks of this lab exercise. **You are not required to return anything for this task**, but it is critical that you learn to use ChipWhisperer on basic level because otherwise all other tasks are impossible to complete. Basically important things what you will be doing in that tutorial are next:
 
 1. Learn what is SimpleSerial
@@ -98,11 +101,11 @@ __TIPS & TRICKS__
 
 * Beware of static electricity. Discharge of static electricity can be harmful to board.
 
-## **Inspecting power differences of operations**
+## B) Inspecting power differences of operations
 
 In this task, we will look at how the different operations on microcontroller affect to the power consumption of it. This task is simplified version of ChipWhisperer wiki B2 tutorial http://wiki.newae.com/Tutorial_B2_Viewing_Instruction_Power_Differences and you are free to search for help there (especially some screenshots of program might be helpfult to understand what is supposed to happen and what kind of waveforms might be corresponding to different operations), but this task should be doable without it.
 
-First we have to make program that performs different operations. You can create new folder similarly how you made it in previous introduction tutorial and make next modifications to code:
+First we have to make program that performs different operations. Create new folder similarly how you made it in previous introduction tutorial and make next modifications to code:
 
 Find next code
 ```c
@@ -188,7 +191,7 @@ Take screenshots from power trace and mark down the places where you think that 
 
 See the return template for more detailed instructions on what to return.
 
-## **Breaking AES**
+## C) Breaking AES
 In this task we are going to break AES with attack scripts that already exist in ChipWhisperer software. This task is based on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B5_Breaking_AES_(Straightforward).
 
 Idea of this task is to familiarize you with the Analyzer software and theory of statistical analysis of power traces.
@@ -215,19 +218,20 @@ Explain shortly how the correlation power analysis that you just performed works
 
 **TIPS & TRICKS**
 * If you are interested logic behind breaking AES encryption, look at tutorial http://wiki.newae.com/Tutorial_B6_Breaking_AES_(Manual_CPA_Attack) which explains how to perform this task manually.
-
+---
 # Task 2
 
-Basic understanding of Python is recommended when doing these tasks.
+In task 2, there is 2 harder tasks which require closer analysing of power traces with small Python scripts. Task 2 is significantly harder than previous task so expect that you will most likely use rest of the lab session for this task. Notice that you can easily continue working on task B at home after lab session without device if you manage to capture and save power traces for yourself.
 
-## **Password bypass with power analysis**
-In this task you will extract password from secure device by analyzing the power traces of device when it processes your login attempts. You will also learn how to use python scripts to control ChipWhisperer software. 
-In this tutorial you will be doing next main steps
+## A) Password bypass with power analysis
+In this task you will extract password from secure device by analyzing the power traces of device when it processes your login attempts. You will also learn how to use Python scripts to control ChipWhisperer software. 
+
+In this tutorial you will be doing next main steps:
 
 1. Build password program and load it to the device (like you did in previous tasks).
 2. Test that program is working with terminal emulator. Record couple of power traces manually to see how amount of different characters affects to the trace.
 3. Learn what is resetter auxiliary module and use it manually to see that it is working.
-4. Create your own attack script which automatically does setup, tries passwords and resets device before every try.
+4. Create your own attack script which automatically does setup, tries password, analyses resulting trace and resets device before every try.
 
 This lab is a modified version of http://wiki.newae.com/Tutorial_B3-1_Timing_Analysis_with_Power_for_Password_Bypass tutorial. Instead of manually setting most of the values we use ready made scripts to set different scope values etc. You may check original tutorial because it might have screenshots and other helpful information which can make it easier to understand what is happening here. However you can complete this lab by following these steps:
 
@@ -260,7 +264,7 @@ __What to do to complete this task?__
 
 Return your code + screenshot of the Python console.
 
-## **Breaking RSA**
+## B) Breaking RSA
 In this task you will explore the principles of breaking RSA implementation by analysing power traces. Basic idea is to detect conditional code branch execution from power trace and then deduct the private key that device uses internally.
 
 This task is based on and example scripts are taken from on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B11_Breaking_RSA. This task should be able to be completed by following instructions below, but feel free to look at original tutorial because pictures, scripts and other related information it contains might be helpful when you do this task.
@@ -501,6 +505,7 @@ Notice that quality of your “difference plot” is highly dependent of your re
 
 Pay attention to the number of close-to-zero spikes in difference plot. Think how many of those spikes are needed to calculate 16-bit key.
 
+---
 # Task 3
 ## Glitching
 In the next section we go over clock glitching and voltage glitching. These excercises are build on existing Chipwhisperer tutorials found in https://wiki.newae.com/Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer) and https://wiki.newae.com/Tutorial_A3_VCC_Glitch_Attacks. For more detailed guide on how to glitch and the concept how ChipWhisperer generates glitches please check them out. Unlike the tutorials we generally use scripts to configure the ChipWhisperer. We advice that you check what variables are changed when we execute these scripts.
@@ -614,14 +619,15 @@ __Tips & Tricks__
 It is very likely that you have to loop through many values. Change the value *Number of Traces* at the *Generic Settings* so that you capture more traces with *Capture Many* button. Feel free to tweak any values you like. It is possible that it will take really long time to find any glitches especially at lower repeat counts. This task can be passed without finding the glitch if you return a working program and proof of effort in a from of glitch explorer logs.
 
 
-
+---
 # Task 4 
 
-You have three options on how to complete Task 4.
+You made it this far and still want to continue? Nice, because here the interesting stuff begins. Choose the option you like and start pushing forward. Notice that these tasks might be quite challenging and laborius (as you probably already guessed).
 
+Also notice that you might gain some points from failed attempt if you are able to show that you really tried wholeheartedly.
 
 ## Option 1. Tutorials
-Complete two of the three tutorials listed below. You are expected to document the process. Explain what you did, what problems did you have, how did you solve them, what were the results. Report does not have to be long.
+Complete two of the three tutorials listed below. You are expected to document the process. Explain what you did, what problems did you have, how did you solve them, what were the results. Report does not have to be long but it must clearly tell what you did.
 * [Breaking AES bootleader](https://wiki.newae.com/Tutorial_A5_Breaking_AES-256_Bootloader)
   * Notice that currently tutorial lacks some information about preprocessing settings and example code contains some code which does not work on ChipWhisperer Analyzer V 4.0.0. You have to figure out those problems yourself. Google, ChipWhisperer wiki pages and recoding couple of lines should solve these problems. If you dont manage to get valid traces yourself or dont have device, you can download example traces from link that is presented in tutorial.
 * [Breaking AES bootloader extended](https://wiki.newae.com/Tutorial_A5-Bonus_Breaking_AES-256_Bootloader)
@@ -632,13 +638,11 @@ Note that if you want to complete the [Breaking AES bootloader extended](https:/
 
 ## Option 2. Glitch or analyze your own target hardware
 
-Alternatively you can attempt to glitch or analyze your own device. For example there is a [tutorial how to glitch raspberry pi](https://wiki.newae.com/Tutorial_A3_VCC_Glitch_Attacks#Glitching_More_Advanced_Targets:_Raspberry_Pi) or how to [glitch LPC1114.](http://wiki.newae.com/Tutorial_A9_Bypassing_LPC1114_Read_Protect) Feel free to seach examples from internet or ChipWhisperer wiki for ideas for additional targets. Document your process. Tell what you tried, how you did it and did you succeeded or not.
+Alternatively you can attempt to glitch or analyze your own device. For example there is a [tutorial how to glitch raspberry pi](https://wiki.newae.com/Tutorial_A3_VCC_Glitch_Attacks#Glitching_More_Advanced_Targets:_Raspberry_Pi) or how to [glitch LPC1114.](http://wiki.newae.com/Tutorial_A9_Bypassing_LPC1114_Read_Protect) Feel free to seach examples from internet or ChipWhisperer wiki for ideas for additional (and completely not-made-before) targets. Document your process. Tell what you tried, how you did it and did you succeeded or not.
 
 __Note:__ **If you decide to glitch/analyze external device you are responsible for the chipwhisperer and for the target device. We are not responsible if you break either of the devices during your experiments**
 
 ## Option 3. Your choice
 If you have some other topic that uses chipwhisperer or is related to hardware security and you are interested on trying it you can do it and document the process and the results. __However__ before you do so please contact the assistants and make sure that the topic is ok. If the topic is too large for lab task it is possbile to do it later as a course work or potentially as a combined coursework + lab work. Talk with the assistants if you are interested on this path.
 
-**Examples:**
-
-[Breaking AES bootleader](https://wiki.newae.com/Tutorial_A5_Breaking_AES-256_Bootloader) shows step-by-step guide how to break 256-bit AES bootloader. How about automating the tutorial completely? Your task is to write **fully automated** script that analyses captured power traces and gives back original encryption key.
+Notice that you can also just go and ask any additional ideas from course assistans. They might have some interesting basic ideas which are yet not so refined that those could be proposed in this documentation. But they are happy to share them with you and it is up to you to further refine idea.
