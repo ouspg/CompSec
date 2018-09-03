@@ -270,7 +270,7 @@ It is advised that you learn what each of the lines in this code do. It will be 
 
 __What to do to complete this task?__
 
-Return your code + screenshot of the Python console.
+**Return your working code (your modified PASSWORD_BYPASS.py) and screenshot of the Python console (which shows output when correct password is guessed).**
 
 ## B) Breaking RSA
 In this task you will explore the principles of breaking RSA implementation by analysing power traces. Basic idea is to detect conditional code branch execution from power trace and then deduct the private key that device uses internally.
@@ -501,9 +501,11 @@ print("Key = %04x"%recovered_key)
 
 __What to do to complete this task?__
 
-**Now you have to combine those scripts to one program which automatically solves the key for you from recorded traces.** Notice that you will most likely change several hardcoded values and make small modifications to given code pieces to make it work. This task would be too easy if it was only simple copy-pasting.
+**Take screenshot of your difference plot when you found the nice reference pattern and explain why you selected it.**
 
-Your complete program should be able to solve correct keys `8140` and `ABE2` from corresponding traces.
+**Combine those scripts above to one program which automatically solves the key for you from recorded traces.** Notice that you will most likely change several hardcoded values and make small modifications to given code pieces to make it work. This task would be too easy if it was only simple copy-pasting.
+
+Your complete program should be able to solve correct keys `8140` and `ABE2` from corresponding traces. **Copy your working program to return template. Tell which modifications to existing values you had to make and which modifications you had to make to make your script work correctly.**
 
 **Answer the next question:** Can program solve key `ABE3` from corresponding trace? If not, tell why it does not work. How you could fix that? (*You do not have to implement your answer, just tell how you would do it.*)
 
