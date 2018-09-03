@@ -29,7 +29,7 @@ This repository contains a folder for following labs. Each folder contains tasks
 
 ## The Course
 
-The course has seven (7) lectures, seven (7) weekly lecture questionnaires, five (5) laboratory exercises and final coursework.(No exam)
+The course has seven (7) lectures, seven (7) weekly lecture questionnaires, five (5) laboratory exercises and final coursework (no exam).
 
 Lectures are handling topics from high perspective and they are not going technically deep. Lecture questionnaires are based on lectures (surprisingly!).
 
@@ -39,7 +39,7 @@ To pass the course, you have to get enough points *totally* from exercises/quest
 
 **This means: as long as you get enough points from somewhere, you can skip even final coursework. Grading table is presented [here.](#grading)**
 
-*Generally, every week there is a choice: Make lecture assigments sufficiently and you will get grade 1 from that week **OR** participate for lab and complete tasks as described to get grade 2 or more from that week. You can't get points from both lecture assigments and labs in the same week.*
+*Generally, every week there is a choice: Make lecture questionnaires sufficiently and you will get grade 1 from that week **OR** participate for lab and complete tasks as described to get grade 2 or more from that week. You can't get points from both lecture questionnaires and labs in the same week.*
 
 Grades from the labs are equal to amount of points they are offering.
 
@@ -106,7 +106,7 @@ In each lab, there is option to make grade 5 task to be more challenging and com
 For each week you are expected to return assignments of corresponding lab OR corresponding lecture assignment.
 
 Week | Course week|Lecture Topics|Laboratory| Assigment Deadline|
--|:-:|:-:|:-:|:--:
+:-:|:-:|:-:|:-:|:--:
 36 | 1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing | Wednesday, 12.09.2018, at 23:59|
 37 | 2 | Network security, risk | Network and websecurity | Wednesday, 19.09.2018, at 23:59
 38 | 3 | Cybercrime, botnets, malware  | Botnets and malwares | Wednesday, 26.09.2018, at 23:59
@@ -114,6 +114,7 @@ Week | Course week|Lecture Topics|Laboratory| Assigment Deadline|
 40 | 5 | Hardware security | HW and side channels / Possibility to improve or make missing labs | -
 41 | 6 | IoT, product security | HW and side channels / Possibility to improve or make missing labs |Wednesday, 17.10.2018, at 23:59
 42 | 7 | Privacy, GDPR, future challenges | Demo of course projects |  **Sunday, 21.10.2018, at 23:59 
+
 ***This is deadline of final coursework as well.*
 
 ***NOTE:***  Week 5 and 6 are be mixed, because there are limited amount of devices which are required for ChipWhisperer lab.
