@@ -56,21 +56,23 @@ In order for you to complete this lab you need a ChipWhisperer board + a target 
 
 
 
-## How to complete?
-Task of this lab are divided to 4 different tasks which are also corresponding the grades that are achieved by completing them. For example, completing tasks 1, 2 and 3 results grade 4 in this lab. Completing task 1 and 2 should be taking about 4 hours so you are expected to do that during classroom lab time. If you want to continue working at home with those tasks or you want to do more advanced tasks, you can disscuss about lending the equipment with course assistants.
+## Grading + other principles
+Task of this lab are divided to 4 different tasks which have corresponding grades in table below.
+
+Start your work from Task 1 and proceed to harder ones without skipping tasks. Skills and experience from each task is needed in next tasks.
+
+Completing task 1 and 2 should be taking about 4 hours so you are expected to do that during classroom lab session. You most likely do not have time to do more advanced tasks 3 and 4 during lab, so you if you want to continue working at home you can disscuss about lending the equipment with course assistants.
 
 Read every task carefully before starting to work on it so you will have clear picture what you are expected to do and what you are expected to return. Every task will state clearly what you are expected to do. If you are in doubt, you can always ask further advise from lab assistants.
 
 It is also recommended to read background information about different issues from links that are offereded in tasks.
 
-
-
 Task| Grade/Level | Description
 --|:--:|--
-1|2|Inspecting power traces and breaking AES
-2|3|Password bypass and breaking RSA
+1|2|Getting started with ChipWhisperer, inspecting power traces and breaking AES
+2|3|Password bypass with timing attack and breaking RSA with power and timing analysis
 3|4|Glitching
-4|5|Optional task 
+4|5|Several alternatives for advanced experimenting
 
 # Task 1
 
