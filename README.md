@@ -29,7 +29,7 @@ This repository contains a folder for following labs. Each folder contains tasks
 
 ## The Course
 
-The course has seven (7) lectures, seven (7) weekly lecture questionnaires, five (5) laboratory exercises and final coursework. (No exam!)
+The course has seven (7) lectures, seven (7) weekly lecture questionnaires, five (5) laboratory exercises and final coursework.(No exam)
 
 Lectures are handling topics from high perspective and they are not going technically deep. Lecture questionnaires are based on lectures (surprisingly!).
 
@@ -70,6 +70,7 @@ Topic|Grade/Points*
 Academic survey (essay)|1 - 3 (3 - 9)
 Small own project or project from given topics| 2 - 4 (6 - 12)
 Challenging own project | 3 - 5 (9 - 15)
+
 *This table might still change. TBA final coursework topics
 
 
