@@ -32,14 +32,20 @@ Boards are connected to each other with serial cable and measurement connector a
 
  More accurate documentation of it can be found from http://wiki.newae.com/CW1173_ChipWhisperer-Lite , but it should not be needed for basic tasks.
 
-### Requirements
-In order for you to complete this lab you need a ChipWhisperer board + a target board and a copy of customized ChipWhispererlubuntu virtual machine found in the course folder in the university drive.
+## Prerequisites
 
-You can also use clean ChipWhisperer virtual machine or just install ChipWhisperer software to your own machine. Details on how to setup everything your self or download a clean image can be found [here](https://wiki.newae.com/Installing_ChipWhisperer) and required custom scripts to be used in labs can be found from scripts folder in this repository.
+#### Hardware
+In order for you to complete this lab you need a ChipWhisperer board + a target board. Boards are available at lab session and most likely you have to tasks in groups of 2 or 3. You can discuss with course assistants about lending the hardware after the lab session. It is also possible to lend hardware if you want to do ChipWhisperer related experiments as your coursework. Notice that there is also some tasks which do not require you to have hardware if you can get recorded traces from somewhere else.
 
-__We suggest that you use the preconfigured ChipWhisperer virtual machine of this course OR a clean ChipWhisperer virtual machine with our scripts.__
+#### Software
+* We suggest that you use preconfigured virtual machine image of this laboratory exercise. It has everything installed and all scripts set ready.
+* If you do not want to do that, you may download clean image from manufacturer [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). After that clone this reposity and get setup scripts from scripts folder.
+* If you refuse to use virtual machines, you may install ChipWhisperer software your own machine [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). There is no reason why it would not work, but notice that we have not tested this option and therefore we might not be able to help you if you run into problems which are caused by your custom installation.
 
-If you want to install ChipWhisperer software to your machine (Linux, Windows and Mac are supported), you must acknowledge that this labwork is not tested with those configurations and course assistants might not be able to help you if you encounter problems with your custom installation. There is no reason why it would not work, but be aware that nobody has tested it.
+#### Good-to-have skills for basic tasks
+* Basic understanding of C and Assembly code. Ability to code small and simple scripts with Python.
+* Basic understanding of mathematics, especially statistics.
+* Basic understanding of cryptographig systems.
 
 ## What connections are needed
 
@@ -253,11 +259,13 @@ __What to do to complete this task?__
 Return your code + screenshot of the Python console.
 
 ## **Breaking RSA**
-Last task for this level is about principles of reading private key of RSA algorithm during decryption by analysing captured power traces with python scripts.
+In this task you will explore the principles of breaking RSA implementation by analysing power traces. Basic idea is to detect conditional code branch execution from power trace and then deduct the private key that device uses internally.
 
-This task and example scripts are taken from on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B11_Breaking_RSA. This task should be able to be completed by following instructions below, but feel free to look at original tutorial because pictures, scripts and other related information it contains might be helpful when you do this task.
+This task is based on and example scripts are taken from on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B11_Breaking_RSA. This task should be able to be completed by following instructions below, but feel free to look at original tutorial because pictures, scripts and other related information it contains might be helpful when you do this task.
 
-First, if you do not know what is RSA, you can find basic information about if from https://en.wikipedia.org/wiki/RSA_(cryptosystem)
+First, if you do not know what is RSA, you can find basic information about if from https://en.wikipedia.org/wiki/RSA_(cryptosystem).
+
+Notice that you can complete this task even if you dont have device or cannot attend lab class. Main point of this task is not to capture traces so you can ask saved traces from your friend and complete task by analyzing them.
 
 ### Theory
 
@@ -431,7 +439,7 @@ Above script takes reference pattern from trace 0 and then uses it to trace 3 to
 
 Values of this script might not work. You are expected to find suitable reference pattern yourself by inspecting power trace and difference plot.
 
-__HINT__: Remember that your ending goal is to find execution time of vulnerable code. Therefore you should find reference pattern that is found always before and after vulnerable code. Expect that you might have to use some time for finding good one. You can consider that you have good reference pattern when your difference plot has clear and stable set of close-to-zero spikes.
+__HINT__: Remember that your ending goal is to find execution time differences between processed bits of secret key. This means that you have to find trace pattern that is found in every bit. Expect that you might have to use some time for finding good one. You can consider that you have good reference pattern when your difference plot has clear and stable set of close-to-zero spikes.
 
 __EXTRA__: You are not limited to use sum of differences as metric if you dont want to. For example, using this kind of correlation might be useful tool.
 
@@ -479,11 +487,11 @@ print("Key = %04x"%recovered_key)
 
 __What to do to complete this task?__
 
-Now you have to combine those scripts to the program which automatically solves the key for you. Notice that you will most likely change several hardcoded values and possibly make small modifications to make the code to work.
+**Now you have to combine those scripts to one program which automatically solves the key for you from recorded traces.** Notice that you will most likely change several hardcoded values and make small modifications to given code pieces to make it work. This task would be too easy if it was only simple copy-pasting.
 
-Your complete program should be able to require correct keys `8140` and `ABE2` for corresponding traces.
+Your complete program should be able to solve correct keys `8140` and `ABE2` from corresponding traces.
 
-Can your program solve key `ABE3` from corresponding trace? If not, tell why it does not work. How you could fix that?
+**Answer the next question:** Can program solve key `ABE3` from corresponding trace? If not, tell why it does not work. How you could fix that? (*You do not have to implement your answer, just tell how you would do it.*)
 
 **TIPS & TRICKS**
 
