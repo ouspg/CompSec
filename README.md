@@ -29,13 +29,13 @@ This repository contains a folder for following labs. Each folder contains tasks
 
 ## The Course
 
-The course has seven (7) lectures, seven (7) weekly lecture assignments and five (5) laboratory exercises.
+The course has seven (7) lectures, seven (7) weekly lecture questionnaires, five (5) laboratory exercises and final coursework. (No exam!)
 
-Lectures are handling topics from high perspective and they are not going technically deep. Lecture assignments are based on lectures (surprisingly!).
+Lectures are handling topics from high perspective and they are not going technically deep. Lecture questionnaires are based on lectures (surprisingly!).
 
 Laboratory exercises are thought as individual packages: containing theory and exercises, and going technologically very deep.
 
-To pass the course, you have to get enough points *totally* from exercises/assignments and final course work. From the beginning, you should be able to see, what you have to do for earning some specific grade. 
+To pass the course, you have to get enough points *totally* from exercises/questionnaires and final coursework. From the beginning, you should be able to see, what you have to do for earning some specific grade. 
 
 **This means: as long as you get enough points from somewhere, you can skip even final coursework. Grading table is presented [here.](#grading)**
 
@@ -43,7 +43,7 @@ To pass the course, you have to get enough points *totally* from exercises/assig
 
 Grades from the labs are equal to amount of points they are offering.
 
-Everyone can make weekly assigments from lectures in last two weeks, and earn total of two (2) points, even if all of the five labs has been completed.
+Everyone can make weekly questionnaires from lectures in last two weeks, and earn total of two (2) points, even if all of the five labs has been completed.
 
 In practise, exercises of the course have been divided to five (5) different levels. Level is indicating for grade/points you are able to achieve by reaching that level.
 
@@ -51,31 +51,33 @@ When level rises, so does workload/difficulty.
 
 Labs have been split to different tasks. **The amount of tasks which are required for each level/grade is defined in the grading section of corresponding lab.**
 
-* __Level 1:__ You don't have to participate in the lab. You earn grade 1 from that week by attending lectures and filling a lecture diary/tasks of corresponding topic
+* __Level 1:__ You don't have to participate in the lab. You earn grade 1 from that week by attending lectures and answering to lecture questionnaires of corresponding topic
 * __Level 2:__ Complete the bare minimum of the lab. This will earn you grade **2** from that week. You are expected to do this during lab hours.
 * __Level 3:__ Complete the whole lab without extra work. This will earn you grade **3** from this week. You are expexted to do this during the lab hours but you are allowed to finish it on your own time
-* __Level 4:__ Complete the above (excluding lecture diary/tasks) and some extra work. This will earn you a grade of **4** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
-* __Level 5:__ Complete all the above (excluding lecture diary/tasks) and the most challenging extra work. You will earn a grade of **5** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
+* __Level 4:__ Complete the above (excluding lecture questionnaires) and some extra work. This will earn you a grade of **4** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
+* __Level 5:__ Complete all the above (excluding lecture questionnaires) and the most challenging extra work. You will earn a grade of **5** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
 
 ## Grading
 
 As described earlier, you can get up to 5 points in each week during the first five weeks. (Total 25 points)
 
-For last two weeks, there is still possibility earn total of 2  points from weekly lecture assignments (one (1) each), even if you have completed five labs already.
+For last two weeks, there is still possibility earn total of 2  points from weekly lecture questionnaires (one (1) each), even if you have completed five labs already.
 
 From final coursework, points can be obtained as following. Grade from 1 to 5 is multiplied with three (3):
 
-Topic|Grade/Points
+Topic|Grade/Points*
 -|-
-Literature review/ cybersecurity essay|1 - 3 (3 - 9)
+Academic survey (essay)|1 - 3 (3 - 9)
 Small own project or project from given topics| 2 - 4 (6 - 12)
 Challenging own project | 3 - 5 (9 - 15)
+*This table might still change. TBA final coursework topics
+
 
 *As result, we get following table for total grade:*
 
-Points|Total Grade
+Total Points|Total Grade
 :-:|:-:
-<10 | fail
+<10 | failed
 10+ | 1
 15+ | 2
 21+ | 3
@@ -84,29 +86,42 @@ Points|Total Grade
 
 42 points are maximun.
 
+## Final coursework topics
 
+Note, that all topics are not equal in maximum points they are offering.
+
+* Academic survey (cybersecurity essay/literature review)
+* Trivial own project or predefined task
+* Advanced non-trivial own project
+
+*Predefined topics to be announced later...*
+
+In each lab, there is option to make grade 5 task to be more challenging and comprehensive, and make it as final coursework. This has to be approved by assistant.
+
+*Deadline for final course work is in the end of week 41.*
 
 ## Deadlines
 
 For each week you are expected to return assignments of corresponding lab OR corresponding lecture assignment.
 
-Section|Deadline|Topic/Lab
-:-:|:-:|:-:
-Week 1 | Wednesday, 12.09.2018, at 23:59| Fuzzing
-Week 2 | Wednesday, 19.09.2018, at 23:59 | Network and websecurity
-Week 3 | Wednesday, 26.09.2018, at 23:59 | Botnets and malwares
-Week 4 | Wednesday, 03.10.2018, at 23:59 | Shellcoding
-Week 5 | Wednesday, 10.10.2018, at 23:59 | Side-channel attacks with ChipWhisperer
-Week 6 | Wednesday, 17.10.2018, at 23:59 | Possibility to improve or make missing labs
-Week 7 | - | Ask guidance for final coursework
+Week | Course week|Lecture Topics|Laboratory| Assigment Deadline|
+-|:-:|:-:|:-:|:--:
+36 | 1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing | Wednesday, 12.09.2018, at 23:59|
+37 | 2 | Network security, risk | Network and websecurity | Wednesday, 19.09.2018, at 23:59
+38 | 3 | Cybercrime, botnets, malware  | Botnets and malwares | Wednesday, 26.09.2018, at 23:59
+39 | 4 | Software vulnerabilities and exploits | Shellcoding | Wednesday, 03.10.2018, at 23:59
+40 | 5 | Hardware security | HW and side channels / Possibility to improve or make missing labs | -
+41 | 6 | IoT, product security | HW and side channels / Possibility to improve or make missing labs |Wednesday, 17.10.2018, at 23:59
+42 | 7 | Privacy, GDPR, future challenges | Demo of course projects |  **Sunday, 21.10.2018, at 23:59 
+***This is deadline of final coursework as well.*
 
-***NOTE:***  Week 5 and 6 might be mixed, depending on the amount of participants in the lab. There are limited amount of devices which are required for ChipWhisperer lab.
+***NOTE:***  Week 5 and 6 are be mixed, because there are limited amount of devices which are required for ChipWhisperer lab.
 
 ## Instructions
 
  * Enroll to the course
 
- * Find course's Moodle page from University's [Moodle](https://oystack.oulu.fi/)
+ * Find course's Moodle page from University's [Moodle](https://oystack.oulu.fi/course/index.php?categoryid=16)
  
  * Find a link whereof you can receive and create a private repository containing all the return folders.
 
