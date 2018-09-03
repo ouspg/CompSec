@@ -8,7 +8,7 @@ In a nutshell, fuzzing is a software testing method that feeds malformed and une
 In this exercise you will learn basic usage of 2 common fuzzers; Radamsa and American Fuzzy Lop (AFL). You will also use AddressSanitizer, a memory error detection tool, and Valgrind, a debugging tool, which are often used alongside different fuzzers.
 
 ## Some prerequisities & tools
-Basic understanding of C/C++ programming language is required.
+Basic understanding of C programming language is required.
 
 Make yourself familiar with the tools used to complete the exercises:
 
@@ -60,7 +60,9 @@ Task 4 | 4/5 | Contribute to a existing open-source project. Set up a fuzzer an
 
 **B)** In the following task you will be using American Fuzzy Lop (AFL), it is installed in the Kali Linux virtual machine. 
 
-You can find the target program sourcecode following this link: [unrtf0.21.5.tar.gz](https://ftp.gnu.org/gnu/unrtf/unrtf-0.21.5.tar.gz). This tool can be used to convert .rtf files into other, more readable formats (see README for more). Extract the package, **_configure_** it to use AFL compilers and then **_compile_**. You can do as following:
+You can find the target program sourcecode following this link: [unrtf0.21.5.tar.gz](https://ftp.gnu.org/gnu/unrtf/unrtf-0.21.5.tar.gz). This tool can be used to convert .rtf files into other, more readable formats (see README for more). Extract the package, **_configure_** it to use AFL's wrappers and then **_compile_**. 
+
+When source code is available, you should instrument the program for use with AFL by using AFL's own wrappers that work as drop-in replacements for **gcc** and **clang**. You can do as following, leave the quotations and modify *add_here* fields:
 ```
 ~$ ./configure CC="add_here" CXX="add_here" --prefix=$HOME/unrtf
 ~$ make
@@ -71,7 +73,7 @@ __Hint__: See AFL [documentation](http://lcamtuf.coredump.cx/afl/README.txt) how
  This way, with --prefix flag, you are installing the binary into your home directory, instead of giving it root access to do whatever the installer likes, which is not recommended to every binary you can find.
 
 
-During this task, use the example .rtf file from AFL folder (**/usr/share/afl/testcases/others/rtf/small-document.rtf**). You can try that your unrtf is working properly using command line:
+During this task, use the example .rtf file from AFL folder (**/usr/share/afl/testcases/others/rtf/small_document.rtf**). You can try that your unrtf is working properly using command line:
 ```
 ~$ /unrtf/bin/unrtf --html /path/to/testfile
 ```
@@ -89,7 +91,7 @@ __Hint__: You are fuzzing a binary. To copy your input file into in/ folder for 
 
 **Screenshot of the AFL status screen after stopping the fuzzer**
 
-**What do you think are the most trivial pieces of information in the status screen?**
+**What do you think are the most significant pieces of information in the status screen?**
 
 ---
 Did you find any crashes (you should)? Awesome! Next you need to reproduce one crash to see what went wrong. You can find the crashes where you specified the output folder when starting AFL fuzzer. Browse into the .../out/crashes folder, and take one .rtf file that caused crash under inspection. Runt unrtf with this file as you did with the example file earlier, but this time under Valgrind. Take a look at the Valgrind [documentation](http://valgrind.org/docs/manual/quick-start.html) for help.
@@ -124,7 +126,7 @@ You should read for example [this guide](https://github.com/ouspg/fuzz-testing-b
 
 You should grab the most recent vesion of the source code. Few open-source projects as an example:
 
--  [Chromium](https://www.chromium.org/Home) - An open-source browser project started by Google.
+- [Chromium](https://www.chromium.org/Home) - An open-source browser project started by Google.
 - [VLC media player](https://www.videolan.org/vlc/index.html) - A common open-source media player from VideoLAN. Vast attack-surface as the player uses many different libraries to hande audio/video encoding. See [features](https://www.videolan.org/vlc/features.html).
 - [ImageMagick](https://www.imagemagick.org/script/index.php) - An open-source suite for displaying, converting and editing image, supporting over 200 file formats.
 - See [American Fuzzy Lop](http://lcamtuf.coredump.cx/afl/) main page for a comprehensive list of tools it has found bugs on. Newer versions of software can spawn new bugs, but the most common tools are usually tested the most so they might not be the best to start with.
