@@ -107,13 +107,13 @@ For each week you are expected to return assignments of corresponding lab OR cor
 
 Week | Course week|Lecture Topics|Laboratory| Assigment Deadline|
 :-:|:-:|:-:|:-:|:--:
-36 | 1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing | Wednesday, 12.09.2018, at 23:59|
-37 | 2 | Network security, risk | Network and websecurity | Wednesday, 19.09.2018, at 23:59
-38 | 3 | Cybercrime, botnets, malware  | Botnets and malwares | Wednesday, 26.09.2018, at 23:59
-39 | 4 | Software vulnerabilities and exploits | Shellcoding | Wednesday, 03.10.2018, at 23:59
+36 | 1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing | Wednesday, 12.09.2018, at 23:55|
+37 | 2 | Network security, risk | Network and websecurity | Wednesday, 19.09.2018, at 23:55
+38 | 3 | Cybercrime, botnets, malware  | Botnets and malwares | Wednesday, 26.09.2018, at 23:55
+39 | 4 | Software vulnerabilities and exploits | Shellcoding | Wednesday, 03.10.2018, at 23:55
 40 | 5 | Hardware security | HW and side channels / Possibility to improve or make missing labs | -
-41 | 6 | IoT, product security | HW and side channels / Possibility to improve or make missing labs |Wednesday, 17.10.2018, at 23:59
-42 | 7 | Privacy, GDPR, future challenges | Demo of course projects |  **Sunday, 21.10.2018, at 23:59 
+41 | 6 | IoT, product security | HW and side channels / Possibility to improve or make missing labs |Wednesday, 17.10.2018, at 23:55
+42 | 7 | Privacy, GDPR, future challenges | Demo of course projects |  **Sunday, 21.10.2018, at 23:55 
 
 ***This is deadline of final coursework as well.*
 
