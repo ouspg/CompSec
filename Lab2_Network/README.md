@@ -159,7 +159,7 @@ __What command(s) did you use?__
 
  __Explain each command/symbol you used in your SQL command that caused the SQL error?__
 
-__Why did it cause and error?__
+__Why did it cause an error?__
  
 __Paste here the command that the SQL server attempts to execute and replace the part(s) taken from the searchfield with the text "SEARCHRESULT".__ 
 
@@ -310,10 +310,10 @@ We are actually creating something very phishy, just by using XSS vulneralibity.
 
 ### Returns
 
-* Server code
-* Request you send to the server in a separate file
-* **Clear** instructions on how to start the server, send the Cross-Site script attack and how to verify that the information was sent to the server. 
-
+* Your own server code
+* Request you send to the Juice Shop in a separate file
+* **Clear** instructions on how to start your own server, send the Cross-Site script attack and how to verify that the information was sent to your server from Juice Shop. 
+* Show your possible code files(particularly HTML/JavaScript) as unpacked or non-formatted as well.
 
 __Tips__  
 Refresh your mind how JavaScript can modify HTML elements.

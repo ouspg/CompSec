@@ -93,7 +93,7 @@ __Hint__: You are fuzzing a binary. To copy your input file into in/ folder for 
 
 **Screenshot of the AFL status screen after stopping the fuzzer**
 
-**What do you think are the most significant pieces of information in the status screen?**
+**What do you think are the most significant pieces of information in the status screen? Why are they?**
 
 ---
 Did you find any crashes (you should)? Awesome! Next you need to reproduce one crash to see what went wrong. You can find the crashes where you specified the output folder when starting AFL fuzzer. Browse into the .../out/crashes folder, and take one .rtf file that caused crash under inspection. Runt unrtf with this file as you did with the example file earlier, but this time under Valgrind. Take a look at the Valgrind [documentation](http://valgrind.org/docs/manual/quick-start.html) for help.
@@ -120,7 +120,7 @@ Run your program with the previously generated 100 test cases. A simple shell sc
 **Take a screenshot of the AddressSanitizer results after running your program with the testcases. Show at least 3 ASan outputs.**
 
 ---
-## **Task 4**: Contribute to a existing open-source project. Set up a fuzzer and report findings.
+## **Task 4**: Contribute to a existing open-source project. Set up a fuzzer and report whole process and possible findings.
 
 Contribute to an existing open-source software (OSS) project by setting up a fuzzing environment and documenting the total process and results. You can choose the target software by yourself and use one of the 2 fuzzers introduced during the lab exercise, or pick some other that you think serves the purpose better. **You should do all the testing inside a virtual machine in case there are potentially malicious files being handled.**
 
