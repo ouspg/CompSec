@@ -216,6 +216,30 @@ If you don't mind that changes are lost on shutdown, machines can be run directl
 
 When the virtual machine asks if you have copied or moved the machine, press __"I copied it"__.
 
+## Getting virtual machines remotely
+
+If you are not able to get in to University to copy virtual machines from network drive, you can do it remotely as well.
+This requires setting up *VPN - connection* to University network.
+This can be aquired by following guidlines presented [here.](http://www.oulu.fi/ict/vpn)
+
+After you have successfully connected to network, you can mount network drive as following. If any credentials are asked, username is username@student.oulu.fi
+
+### Windows
+Open Windows cmd:
+
+```shell
+net use z: "\\kaappi\Virtuaalikoneet$"
+```
+Drive should be mounted after giving correct credentials.
+
+### Linux (Debian - based)
+If you have mnt folder in root directory, and package *cifs-utils* is installed, you can:
+
+```shell
+sudo mount -t cifs //kaappi/Virtuaalikoneet$ /mnt/ -o user=username@student.oulu.fi
+```
+Passwords should be prompted.
+
 ## Contribution
 
 Do you have a lot of ideas or suggestions to improve course?
