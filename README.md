@@ -106,7 +106,7 @@ In each lab, there is option to make grade 5 task to be more challenging and com
 
 For each week you are expected to return assignments of corresponding lab OR corresponding lecture assignment.
 
-Week | Course week|Lecture Topics|Laboratory| Assigment Deadline|
+Week | Course week|Lecture Topics|Laboratory| Assignment Deadline|
 :-:|:-:|:-:|:-:|:--:
 36 | 1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing | Wednesday, 12.09.2018, at 23:55|
 37 | 2 | Network security, risk | Network and websecurity | Wednesday, 19.09.2018, at 23:55
