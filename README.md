@@ -1,3 +1,6 @@
+Note: These instructions are not for active course.
+Look for here: [https://github.com/CompSec-2018/CompSec](https://github.com/CompSec-2018/CompSec)
+
 # 521155S Computer Security
 
 Exercises for computer security course in the University of Oulu.
