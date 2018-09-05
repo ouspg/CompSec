@@ -222,6 +222,13 @@ If you are not able to get in to University to copy virtual machines from networ
 This requires setting up *VPN - connection* to University network.
 This can be aquired by following guidlines presented [here.](http://www.oulu.fi/ict/vpn)
 
+**Shortly:**
+ * Download suitable VPN client here: [https://www.oulu.fi/jakelu/vpn/](https://www.oulu.fi/jakelu/vpn/)
+ * Login with student creadentials is required
+ * Once you have installed the correct client, start it
+ * Use *sa.oulu.fi* as server URL.
+ * Connect by using your student username and selecting Student (SMS) authentication method. You have to use strong authentication (Student (SMS)) to be able to mount the drive.
+
 After you have successfully connected to network, you can mount network drive as following. If any credentials are asked, username is username@student.oulu.fi
 
 ### Windows
