@@ -240,6 +240,10 @@ sudo mount -t cifs //kaappi/Virtuaalikoneet$ /mnt/ -o user=username@student.oulu
 ```
 Passwords should be prompted.
 
+Virtual machines are located in:
+
+Virtuaalikoneet$ -> VMware -> CompSec
+
 ## Contribution
 
 Do you have a lot of ideas or suggestions to improve course?
