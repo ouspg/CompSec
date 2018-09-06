@@ -218,7 +218,7 @@ When the virtual machine asks if you have copied or moved the machine, press __"
 
 ## Getting virtual machines remotely
 
-Looks like two factor authentication is not enabled by default. TBA instructions
+Looks like two factor authentication(Authentication via SMS) is not enabled by default. You have to enable it by following instructions here: [http://www.oulu.fi/ict/authentication#vpn](http://www.oulu.fi/ict/authentication#vpn)
 
 If you are not able to get in to University to copy virtual machines from network drive, you can do it remotely as well.
 This requires setting up *VPN - connection* to University network.
