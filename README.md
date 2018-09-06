@@ -154,6 +154,8 @@ git push
 
 ## Virtual machines
 
+Note: If you are using following virtual machines in your own pc, they are preconfigured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your pc, you might want to reduce this preconfigured RAM. 
+
 Each lab utilizes one of the virtual machines below:
 
 * Kali Linux - for shellcoding, fuzzing and web security lab
@@ -217,7 +219,6 @@ If you don't mind that changes are lost on shutdown, machines can be run directl
 When the virtual machine asks if you have copied or moved the machine, press __"I copied it"__.
 
 ## Getting virtual machines remotely
-
 
 
 If you are not able to get in to University to copy virtual machines from network drive, you can do it remotely as well.
