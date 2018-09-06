@@ -77,7 +77,7 @@ __Hint__: See AFL [documentation](http://lcamtuf.coredump.cx/afl/README.txt) how
 
 During this task, use the example .rtf file from AFL folder (**/usr/share/afl/testcases/others/rtf/small_document.rtf**). You can try that your unrtf is working properly using command line:
 ```
-~$ /unrtf/bin/unrtf --html /path/to/testfile
+~$ ~/unrtf/bin/unrtf --html /path/to/testfile
 ```
 Start fuzzing unrtf with AFL using the example .rtf file as input. You need to create 2 folders, one for input files and one for results output. Input folder must include the small-document.rtf file mentioned above. See AFL [documentation](http://lcamtuf.coredump.cx/afl/README.txt) for instructions on how to start the fuzzer. 
 
