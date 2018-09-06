@@ -251,7 +251,7 @@ If you have mnt folder in root directory, and package *cifs-utils* is installed,
 sudo mount -t cifs //kaappi/Virtuaalikoneet$ /mnt/ -o user=username@student.oulu.fi
 ```
 Depending on your versions, you might need to play with 'sec' -variable, for example Ubuntu 16.04 might require:
-``shell
+```shell
 sudo mount -t cifs //kaappi/Virtuaalikoneet$ /mnt/ -o user=username@student.oulu.fi,sec=ntlm
 ```
 
