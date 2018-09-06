@@ -218,11 +218,13 @@ When the virtual machine asks if you have copied or moved the machine, press __"
 
 ## Getting virtual machines remotely
 
-Looks like two factor authentication(Authentication via SMS) is not enabled by default. You have to enable it by following instructions here: [http://www.oulu.fi/ict/authentication#vpn](http://www.oulu.fi/ict/authentication#vpn)
+
 
 If you are not able to get in to University to copy virtual machines from network drive, you can do it remotely as well.
 This requires setting up *VPN - connection* to University network.
 This can be aquired by following guidlines presented [here.](http://www.oulu.fi/ict/vpn)
+
+Looks like two factor authentication(Authentication via SMS) is not enabled by default. You have to enable it by following instructions here: [http://www.oulu.fi/ict/authentication#vpn](http://www.oulu.fi/ict/authentication#vpn)
 
 **Shortly:**
  * Download suitable VPN client here: [https://www.oulu.fi/jakelu/vpn/](https://www.oulu.fi/jakelu/vpn/)
