@@ -215,7 +215,12 @@ But anyway, could we control other users a bit?
 
 This site's access control is lacking and users can in some cases access into places where they should not be able to. One example is the user's basket. Find a way to access another users basket *and add some products into it*.
 
-You don't need to know anything about another users, we are using just some random victim.
+You don't need to know anything about another users, we are using just some random victim. There are atleast two ways to solve this. You have to be able to **some way gain other users baskets content** and **some way add product to other users basket.**
+
+**Here are hints on two different ways to solve this.** 
+1.  Log in as admin or as a user you created and check the traffic that happens when you add products to your basket. Can I modify the packets so that the system returns some other users information? Can I use same logic to add products to other users basket? It is enough if you can see the other users basket content in the return packets. You don't have to see it visually in the webpage.
+2. How does the system know how is logged in? Do you possess some kind of a token that indetifies you as you? Can you change it? With this solution it is possible to acces someone elses basket through "My Basket" button and visually see the contents and edit them.
+
 
 __How did you do it? Why you were able to?__
 

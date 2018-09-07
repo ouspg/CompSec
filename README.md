@@ -10,8 +10,6 @@ The course covers the essential aspects of computer security and computer securi
 The course is intended for computer engineering masters students and additionally to any student interested in computer security that has *the sufficient* technical background to complete the course exercises.
 
 
-
-
 <p align="center">
 <img src="lib/images/oulun yliopisto_logo_eng_black_rgb.png" alt="University of Oulu" height="300px" align="right"/>
 </p>
@@ -29,6 +27,9 @@ This repository contains a folder for following labs. Each folder contains tasks
 4. Shellcoding lab
 
 5. ChipWhisperer lab
+
+The lectures and place for returning assignments can be found from University Moodle: [https://oystack.oulu.fi](https://oystack.oulu.fi)
+Course is under Computer Engineering and Science.
 
 ## The Course
 
@@ -108,15 +109,15 @@ In each lab, there is option to make grade 5 task to be more challenging and com
 
 For each week you are expected to return assignments of corresponding lab OR corresponding lecture assignment.
 
-Week | Course week|Lecture Topics|Laboratory| Assigment Deadline|
+Week | Course week|Lecture Topics|Laboratory| Assignment Deadline|
 :-:|:-:|:-:|:-:|:--:
-36 | 1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing | Wednesday, 12.09.2018, at 23:59|
-37 | 2 | Network security, risk | Network and websecurity | Wednesday, 19.09.2018, at 23:59
-38 | 3 | Cybercrime, botnets, malware  | Botnets and malwares | Wednesday, 26.09.2018, at 23:59
-39 | 4 | Software vulnerabilities and exploits | Shellcoding | Wednesday, 03.10.2018, at 23:59
+36 | 1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing | Wednesday, 12.09.2018, at 23:55|
+37 | 2 | Network security, risk | Network and websecurity | Wednesday, 19.09.2018, at 23:55
+38 | 3 | Cybercrime, botnets, malware  | Botnets and malwares | Wednesday, 26.09.2018, at 23:55
+39 | 4 | Software vulnerabilities and exploits | Shellcoding | Wednesday, 03.10.2018, at 23:55
 40 | 5 | Hardware security | HW and side channels / Possibility to improve or make missing labs | -
-41 | 6 | IoT, product security | HW and side channels / Possibility to improve or make missing labs |Wednesday, 17.10.2018, at 23:59
-42 | 7 | Privacy, GDPR, future challenges | Demo of course projects |  **Sunday, 21.10.2018, at 23:59 
+41 | 6 | IoT, product security | HW and side channels / Possibility to improve or make missing labs |Wednesday, 17.10.2018, at 23:55
+42 | 7 | Privacy, GDPR, future challenges | Demo of course projects |  **Sunday, 21.10.2018, at 23:55 
 
 ***This is deadline of final coursework as well.*
 
@@ -155,6 +156,8 @@ git push
 ```
 
 ## Virtual machines
+
+Note: If you are using following virtual machines in your own pc, they are preconfigured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your pc, you might want to reduce this preconfigured RAM. 
 
 Each lab utilizes one of the virtual machines below:
 
@@ -217,6 +220,49 @@ If you don't mind that changes are lost on shutdown, machines can be run directl
 ```
 
 When the virtual machine asks if you have copied or moved the machine, press __"I copied it"__.
+
+## Getting virtual machines remotely
+
+
+If you are not able to get in to University to copy virtual machines from network drive, you can do it remotely as well.
+This requires setting up *VPN - connection* to University network.
+This can be aquired by following guidlines presented [here.](http://www.oulu.fi/ict/vpn)
+
+Looks like two factor authentication(Authentication via SMS) is not enabled by default. You have to enable it by following instructions here: [http://www.oulu.fi/ict/authentication#vpn](http://www.oulu.fi/ict/authentication#vpn)
+
+**Shortly:**
+ * Download suitable VPN client here: [https://www.oulu.fi/jakelu/vpn/](https://www.oulu.fi/jakelu/vpn/)
+ * Login with student creadentials is required
+ * Once you have installed the correct client, start it
+ * Use *sa.oulu.fi* as server URL.
+ * Connect by using your student username and selecting Student (SMS) authentication method. You have to use strong authentication (Student (SMS)) to be able to mount the drive.
+
+After you have successfully connected to network, you can mount network drive as following. If any credentials are asked, username is username@student.oulu.fi
+
+### Windows
+Open Windows cmd:
+
+```shell
+net use z: "\\kaappi\Virtuaalikoneet$"
+```
+Drive should be mounted after giving correct credentials.
+
+### Linux (Debian - based)
+If you have mnt folder in root directory, and package *cifs-utils* is installed, you can:
+
+```shell
+sudo mount -t cifs //kaappi/Virtuaalikoneet$ /mnt/ -o user=username@student.oulu.fi
+```
+Depending on your versions, you might need to play with 'sec' -variable, for example Ubuntu 16.04 might require:
+```shell
+sudo mount -t cifs //kaappi/Virtuaalikoneet$ /mnt/ -o user=username@student.oulu.fi,sec=ntlm
+```
+
+Passwords should be prompted.
+
+Virtual machines are located in:
+
+Virtuaalikoneet$ -> VMware -> CompSec
 
 ## Contribution
 
