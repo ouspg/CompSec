@@ -64,7 +64,7 @@ Grade 1 can be aquired by doing lecture questionnaires from the corresponding le
 
 You can find the target program sourcecode following this link: [unrtf0.21.5.tar.gz](https://ftp.gnu.org/gnu/unrtf/unrtf-0.21.5.tar.gz). This tool can be used to convert .rtf files into other, more readable formats (see README for more). Extract the package, **_configure_** it to use AFL's wrappers and then **_compile_**. 
 
-When source code is available, you should instrument the program for use with AFL by using AFL's own compilers that work as drop-in replacements for **gcc/g++** (NOTE: afl-gcc might not work properly in all systems, better use clang) and **clang/clang++**. You can do as following, leave the quotations and modify *add_here* fields:
+When source code is available, you should instrument the program for use with AFL by using AFL's own wrappers that work as drop-in replacements for **gcc/g++** (NOTE: afl-gcc might not work properly in all systems, better use clang) and **clang/clang++**. You can do as following, leave the quotations and modify *add_here* fields:
 ```
 ~$ ./configure CC="add_here" CXX="add_here" --prefix=$HOME/unrtf
 ~$ make
