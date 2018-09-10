@@ -62,15 +62,32 @@ Grade 1 can be aquired by doing lecture questionnaires from the corresponding le
 
 **B)** In the following task you will be using American Fuzzy Lop (AFL), it is installed in the Kali Linux virtual machine. 
 
-You can find the target program sourcecode following this link: [unrtf0.21.5.tar.gz](https://ftp.gnu.org/gnu/unrtf/unrtf-0.21.5.tar.gz). This tool can be used to convert .rtf files into other, more readable formats (see README for more). Extract the package, **_configure_** it to use AFL's wrappers and then **_compile_**. 
+You can find the target program sourcecode following this link: [unrtf0.21.5.tar.xz](misc/unrtf-0.21.5.tar.xz). (URL fixed for better source 10.9.2018) This tool can be used to convert .rtf files into other, more readable formats (see README for more). Extract the package, **_configure_** it to use AFL's wrappers and then **_compile_**. 
 
-When source code is available, you should instrument the program for use with AFL by using AFL's own wrappers that work as drop-in replacements for **gcc/g++** (NOTE: afl-gcc might not work properly in all systems, better use clang) and **clang/clang++**. You can do as following, leave the quotations and modify *add_here* fields:
+When source code is available, you should instrument the program for use with AFL by using AFL's own wrappers that work as drop-in replacements for **gcc/g++** (NOTE: afl-gcc might not work properly in all systems, works with provided Kali) and **clang/clang++**. 
+
+---
+
+**Update:** 
+
+*It appeared, that there is a bug in unrtf source. clang notices it in some cases but gcc does not. To be able to compile unrtf with  with clang, unrtf source file line 352 must be edited in file:*
+```
+unrtf-0.21.5/src/attr.c
+```
+*"return;" should be changed to -> "return NULL;"*
+
+*There is new package for soure [here](misc/unrtf-0.21.5.tar.xz) as well.*
+
+---
+
+You can do as following, leave the quotations and modify *add_here* fields:
 ```
 ~$ ./configure CC="add_here" CXX="add_here" --prefix=$HOME/unrtf
 ~$ make
 ~$ make install
 ```
 __Hint__: See AFL [documentation](http://lcamtuf.coredump.cx/afl/README.txt) how to instrument programs to use AFL compilers.
+
 
  This way, with --prefix flag, you are installing the binary into your home directory, instead of giving it root access to do whatever the installer likes, which is not recommended to every binary you can find.
 
