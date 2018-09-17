@@ -175,6 +175,8 @@ The *ADC Freq* should show **29.5 MHz** (which is 4x 7.37 MHz), and the *DCM Loc
 
 Press capture button and you should see the power trace which was captured. We can make power trace look nicer by adjusting some settings.
 
+**HINT:** If there is red light burning on the capture device, it means that failure has happened with ADC and you can not capture anything. Run **setup_cwlite_xmega.py** and it should be removing error.
+
 Under *Gain Setting* set the *Mode* to high. Increase the *Gain Setting* to about 25. You'll be able to adjust this further during experimentations, you may need to increase this depending on your hardware and target device. Under *Trigger Setup* set the *Total Samples* to 500, because we do not need big amount of samples to be taken to inspect power consumption.
 
 Press capture button again and you should see captured power trace.
@@ -217,6 +219,8 @@ Task should be doable by following instructions below, but feel free to look the
 9. Switch to *Results settings* tab on the left side
 10. You can play around with the Traces(s) to plot windows in order to draw different traces(for example 0-10 draws traces 0-10). In order to redraw the traces press Redraw button below the Traces(s) to plot. Consult http://wiki.newae.com/Plotting_Widget for different options
 11. Switch to Results tab and execute the attack_cpa-py script
+
+**HINT:** You can see traces that you have selected/recorded at menu Project->Trace Management
 
 __What to do to complete this task?__
 
