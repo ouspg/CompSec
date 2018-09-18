@@ -212,7 +212,7 @@ Task should be doable by following instructions below, but feel free to look the
 2. Build the file simpleserial-aes to the target board the same way you did in the previous task. File can be found from *chipwhisperer\hardware\victims\firmware\simpleserial-aes*
 3. Execute  **setup_cwlite_xmega_aes.py** script from the script list. This changes the settings of the scope. You can use the “Script view”-window to see what settings are set
 4. Press the *Capture many*-button on the top left(green triangle with the symbol ”M”). 
-5. Save the project with *File --> Save Project* option, give it any name you want.
+5. Save the project with *File --> Save Project* option, give it any name you want. **NOTICE:** After you have managed to save your traces correctly you do not need chipwhisperer device on this task anymore. You can work at home with only analyzer software and still finish this task.
 6. Open the Analyzer software
 7. Open the file you saved in the step 5
 8. Switch to *Trace output Plot* tab on the right side
@@ -404,7 +404,7 @@ First, we setup target board, capture multiple power traces with different keys 
 15. Save the project.
 16. Check from *Project --> Trace management* that you have successfully saved 8 different traces to this project.
 
-Now we have successfully saved power traces for different private keys and next we analyze those with Python scripts. Capture sofware and ChipWhisperer board are not needed anymore if you have saved correct power traces successfully.
+Now we have successfully saved power traces for different private keys and next we analyze those with Python scripts. **NOTICE:** Capture sofware and ChipWhisperer board are not needed anymore if you have saved correct power traces successfully. You can work without them at home and still finish this task.
 
 Technically it could be possible to determine private key by examinging power traces just by looking at them and plotting them carefully on top of each other (feel free to try using different *Fixed plaintexts* and draving multiple traces to same image with different colors!), but we of course want automated attack instead of manual attack.
 
