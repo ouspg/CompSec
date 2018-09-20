@@ -435,7 +435,7 @@ show()
 
 By looking at image you should be seeing power trace "as-it-is". You should be easily see certain pattern that repeats itself (example image below). If you do not then your power traces might not be valid ones.
 
-![alt text](pictures/rsa_sample_trace.PNG "Example plot")
+![alt text](pictures/rsa_sample_trace.png "Example plot")
 
 Next step is to take suitable reference pattern from power trace. Extend your code.
 
@@ -465,9 +465,9 @@ Notice that in this example code reference pattern `rsa_one` is taken from sampl
 
 **Examples of possible difference plots you might see during your testing**
 
-![alt text](pictures/difference_plot_horrible.PNG "Example difference plot")
-![alt text](pictures/difference_plot_not_good.PNG "Example difference plot")
-![alt text](pictures/difference_plot_better.PNG "Example difference plot")
+![alt text](pictures/difference_plot_horrible.png "Example difference plot")
+![alt text](pictures/difference_plot_not_good.png "Example difference plot")
+![alt text](pictures/difference_plot_better.png "Example difference plot")
 
 
 __HINT__: Remember that your ending goal is to find execution time differences between processed bits of secret key. This means that you have to find trace pattern that is found in every bit. Expect that you might have to use some time for finding good one. You can consider that you have good reference pattern when your difference plot has clear and stable set of close-to-zero spikes.
