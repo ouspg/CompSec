@@ -433,7 +433,11 @@ plot(trace_ref)
 show()
 ```
 
-By looking at image you should be seeing power trace "as-it-is". Next step is to take suitable reference pattern from power trace. Extend your code.
+By looking at image you should be seeing power trace "as-it-is". You should be easily see certain pattern that repeats itself (example image below). If you do not then your power traces might not be valid ones.
+
+![alt text](pictures/rsa_sample_trace.PNG "Example plot")
+
+Next step is to take suitable reference pattern from power trace. Extend your code.
 
 ```Python
 #The target trace we will attack
@@ -457,6 +461,15 @@ Above script takes reference pattern from trace 0 and then uses it to trace 3 to
 
 Values of this script might not work. You are expected to find suitable reference pattern yourself by inspecting power trace and difference plot.
 
+Notice that in this example code reference pattern `rsa_one` is taken from sample 3600 (starting point) to 4100 (because its length is 500). These starting sample and pattern length are things that you want to modify to find your own good reference sample.
+
+**Examples of possible difference plots you might see during your testing**
+
+![alt text](pictures/difference_plot_horrible.PNG "Example difference plot")
+![alt text](pictures/difference_plot_not_good.PNG "Example difference plot")
+![alt text](pictures/difference_plot_better.PNG "Example difference plot")
+
+
 __HINT__: Remember that your ending goal is to find execution time differences between processed bits of secret key. This means that you have to find trace pattern that is found in every bit. Expect that you might have to use some time for finding good one. You can consider that you have good reference pattern when your difference plot has clear and stable set of close-to-zero spikes.
 
 __EXTRA__: You are not limited to use sum of differences as metric if you dont want to. For example, using this kind of correlation might be useful tool.
@@ -469,7 +482,7 @@ show()
 
 When you have nice reference pattern, we can calculate sample distance (which is technically also time distance) between occured patterns.
 
-This is sample how you can print the distance between found matches.
+This is sample how you can print the distance between found matches (in this example "match" is seen as any place where difference plot falls under 10).
 ```Python
 diffs = np.array(diffs)
 loc = np.where(diffs < 10)
@@ -479,10 +492,11 @@ loc = loc[0]
 
 for i in range(0, len(loc)-1):
     delta = loc[i+1]-loc[i]
-    print diff
+    print delta
 ```
+Do you remember what we said about execution times in theory part? We noticed in the code that every time bit in key is 1, it results additional multiplication operation executed in algorithm. Therefore when bit is 1 in secret key, loop round in algorithm takes much more time to execute.
 
-And this is example how key could be solved from time distance of matches.
+Based on this knowledge this is example how key could be solved from time distance of matches.
 ```Python
 recovered_key = 0x0000
 bitnum = 17
@@ -507,7 +521,7 @@ __What to do to complete this task?__
 
 **Take screenshot of your difference plot when you found the nice reference pattern and explain why you selected it.**
 
-**Combine those scripts above to one program which automatically solves the key for you from recorded traces.** Notice that you will most likely change several hardcoded values and make small modifications to given code pieces to make it work. This task would be too easy if it was only simple copy-pasting.
+**Combine all those scripts above to one program which automatically solves the key for you from recorded traces.** Notice that you will most likely change several hardcoded values and make small modifications to given code pieces to make it work. This task would be too easy if it was only simple copy-pasting.
 
 Your complete program should be able to solve correct keys `8140` and `ABE2` from corresponding traces. **Copy your working program to return template. Tell which modifications to existing values you had to make and which modifications you had to make to make your script work correctly.**
 
