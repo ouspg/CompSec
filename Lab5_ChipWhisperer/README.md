@@ -88,6 +88,8 @@ Complete ChipWhisperer basic tutorial B1 http://wiki.newae.com/Tutorial_B1_Build
 4. Use capture software to connect the device
 5. Upload built example to the target device and test it
 
+Notice that in tutorial instructions after building program are hardware-specific. You have to click "Completing Tutorial witch CW1173 (Lite)"-button to see rest of the tutorial with right hardware.
+
 __TIPS & TRICKS__
 * You might have to unplug/plug USB cable again if computer or the capture software does not recognize the device. You also might have to unplug/plug device from virtual machine top right corner to make it detect it.
 
