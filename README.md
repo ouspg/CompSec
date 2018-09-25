@@ -64,18 +64,19 @@ As described earlier, you can get up to 5 points in each week during the first f
 
 For last two weeks, there is still possibility earn total of 2  points from weekly lecture questionnaires (one (1) each), even if you have completed five labs already.
 
-From final coursework, points can be obtained as following. Grade from 1 to 5 is multiplied with three (3):
-
-Topic|Grade/Points*
--|-
-Academic survey (essay)|1 - 3 (3 - 9)
-Small own project or project from given topics| 2 - 4 (6 - 12)
-Challenging own project | 3 - 5 (9 - 15)
-
-*This table might still change. TBA final coursework topics
+From final coursework, points can be obtained as following.
+There are four (4) different tiers for final course work.
 
 
-*As result, we get following table for total grade:*
+Tier|Topic|Grade/Points
+-|-|-
+1 | BE AWARE - Personal risk analysis (non-technical)|1 (2 - 4)
+2 | FIND OUT - Survey paper (non-technical)|  2 - 3 (5 - 10)
+3 | Implement - Simple technical project report | 2 - 4 (5 - 13)
+4 | Contribute - Advanced project report | 3 - 5 (8 - 15)
+
+
+
 
 Total Points|Total Grade
 :-:|:-:
@@ -90,13 +91,21 @@ Total Points|Total Grade
 
 ## Final coursework topics
 
-Note, that all topics are not equal in maximum points they are offering.
+Note, that all topics are not equal in maximum points they are offering. More information can be found in Final Project lecture slides.
 
-* Academic survey (cybersecurity essay/literature review)
-* Trivial own project or predefined task
-* Advanced non-trivial own project
+1.  BE AWARE - Personal risk analysis (non-technical)
+    * Write a personal risk analysis according to template
 
-*Predefined topics to be announced later...*
+2. FIND OUT - Survey paper (non-technical)
+    * Write a scientific survey article on a security topic for points up to good level. No technical implementation needed.
+
+3. IMPLEMENT - Simple technical project report
+   * Using one of the provided topics, perform a short technical project and write an associated report for points from satisfactory to laudable.
+   * The expected level is: repeat and demonstrate something known.
+4. CONTRIBUTE - Advanced project report
+    * Choosing your own topic, and perform a technical project and write  a report
+    * The guideline for choosing topics is: the topic should have the potential of having a positive contribution to security. 
+
 
 In each lab, there is option to make grade 5 task to be more challenging and comprehensive, and make it as final coursework. This has to be approved by assistant.
 
