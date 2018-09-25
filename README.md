@@ -72,8 +72,8 @@ Tier|Topic|Grade/Points
 -|-|-
 1 | BE AWARE - Personal risk analysis (non-technical)|1 (2 - 4)
 2 | FIND OUT - Survey paper (non-technical)|  2 - 3 (5 - 10)
-3 | Implement - Simple technical project report | 2 - 4 (5 - 13)
-4 | Contribute - Advanced project report | 3 - 5 (8 - 15)
+3 | IMPLEMENT - Simple technical project report | 2 - 4 (5 - 13)
+4 | CONTRIBUTE - Advanced project report | 3 - 5 (8 - 15)
 
 
 
