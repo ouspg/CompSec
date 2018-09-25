@@ -65,7 +65,7 @@ As described earlier, you can get up to 5 points in each week during the first f
 For last two weeks, there is still possibility earn total of 2  points from weekly lecture questionnaires (one (1) each), even if you have completed five labs already.
 
 From final coursework, points can be obtained as following.
-There are four (4) different tiers for final course work.
+There are four (4) different tiers for final coursework.
 
 
 Tier|Topic|Grade/Points
