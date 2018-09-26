@@ -230,7 +230,13 @@ In this case, more likely the problem is to find  out the address of the beginni
 
 2. Another choice is just to guess the location of shellcode. We have disabled some protections, so we know, that in every program, stack starts from same address. We just need to guess the correct offset from it. Manually this could be very hard. You could try create script, which finds base address, changes address, and tries to run payload each time on it.
 
-In gdb, ASLR is not enabled by default. When you want to spawn shell outside of gdb, you have to disable ASLR manually. This can be done with:
+You can do this task at first inside GDB, to run your arbitrary code, and open shell.
+
+To get full points from this task, you should execute it outside of GDB.
+
+More information can be found [here][0], how to succeed.
+
+In GDB, ASLR is not enabled by default. When you want to spawn shell outside of gdb, you have to disable ASLR manually. This can be done with:
 ```
 echo 0 | sudo tee /proc/sys/kernel/randomize_va_space 
 ```
