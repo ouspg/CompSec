@@ -48,6 +48,7 @@ There will be answer template or more instructions.*
 
 Some prerequisites
 ---
+This exercise is recommended to do with Kali Linux.
 
 You have to use C/C++ programming language in cases, when you want to create program with buffer overflow vulneralibity.
 
@@ -131,7 +132,9 @@ Illegal instruction
 ```
 Note, that using script like above expects that program is taking input as argument. Also, the way how memory address is actually used as input, is not so straightforward. (Is your system Little- or Big-endian?)
 
-You probably have to disable protections meantioned in prerequisities to be able to succeed.
+You probably have to disable protections meantioned in prerequisities to be able to succeed. In this case, stack canaries might cause problems, if you are using other distribution than Kali Linux.
+
+You can do this task as 32 - bit or 64 - bit versions. By default, program is compiled as 64-bit in provided Kali Linux. By changing compiler flags, program can be compiled as 32-bit as well.
 
 > ***Find a way to disable these protections. Use gdb or similar program to analyze your program. Disassembling might be helpful. Find suitable address, and figure out what should be overflowed with it and how to get correct values into it, and finally execute function this way.***
 
