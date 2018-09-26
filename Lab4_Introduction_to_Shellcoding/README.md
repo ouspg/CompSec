@@ -180,7 +180,7 @@ This program represents functionality of our later arbitary code.
 
  To be able to execute arbitary code in our vulnerable program we made in Task 1, we need to transfer payload functionality to direct machine instructions.
  
- This means that we are going to turn code into assembly code, and further transforming it into shellcode. In the other words, rewriting previous functionality from A task into IA-32 assembly. (Or other instruction set, if system does not support this.)
+ This means that we are going to turn code into assembly code, and further transforming it into shellcode. In the other words, **rewriting** (do not try to generate automatically with gcc for example) previous functionality from A task into IA-32 assembly. (Or other instruction set, if system does not support this.)
 
 You can find short introduction to assembly and shellcoding here: https://0x00sec.org/t/linux-shellcoding-part-1-0/289 
 
