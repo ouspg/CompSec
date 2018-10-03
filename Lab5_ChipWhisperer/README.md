@@ -3,7 +3,7 @@ Computer Security Lab 5: ChipWhisperer
 
 ## About the lab
 This lab works a little bit different than the others due to it using an external device.
-* Work is done in groups of 2-4 depending on how many people attent
+* Work is done in groups of 2-3 depending on how many people attend in lab session
 * After the lab hours you are allowed to continue working on the tasks with different people (or alone depending on how many people want to borrow the board). In these cases __mark down clearly who participated in which tasks__
 * You can borrow the ChipWhisperers and finish the task at home. Details on how to borrow the board will depend on how many people attend and want to continue the work at home. For up to date information check moodle and Slack. 
 * You can use ChipWhisperer in your coursework. Please contact the assistants if you are interested on doing so. This way we can put one aside for you.  
@@ -220,7 +220,7 @@ Task should be doable by following instructions below, but feel free to look the
 8. Switch to *Trace output Plot* tab on the right side
 9. Switch to *Results settings* tab on the left side
 10. You can play around with the Traces(s) to plot windows in order to draw different traces(for example 0-10 draws traces 0-10). In order to redraw the traces press Redraw button below the Traces(s) to plot. Consult http://wiki.newae.com/Plotting_Widget for different options
-11. Switch to Results tab and execute the attack_cpa-py script
+11. Switch to Results tab and execute the attack_cpa.py script
 
 **HINT:** You can see traces that you have selected/recorded at menu Project->Trace Management
 
