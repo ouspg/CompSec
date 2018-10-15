@@ -126,8 +126,6 @@ Week | Course week|Lecture Topics|Laboratory| Assignment Deadline|
 42 | 7 | Privacy, GDPR, future challenges | Demo of course projects |  Wednesday, 24.10.2018, at 23:55 
 43 | 8 | No lecture | No lab | Coursework deadline Sunday, 28.10.2018, at 23:55
 
-***This is deadline of final coursework as well.*
-
 ***NOTE:***  Week 5 and 6 have been mixed, because there are limited amount of devices which are required for ChipWhisperer lab.
 
 ## Instructions
