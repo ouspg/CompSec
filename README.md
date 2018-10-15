@@ -109,7 +109,7 @@ Note, that all topics are not equal in maximum points they are offering. More in
 
 In each lab, there is option to make grade 5 task to be more challenging and comprehensive, and make it as final coursework. This has to be approved by assistant.
 
-*Deadline for final course work is in the end of week 42. (End of course week 7.)*
+*Deadline for final course work is in the end of week 43. (End of course week 8.)*
 
 ## Deadlines
 
