@@ -123,7 +123,8 @@ Week | Course week|Lecture Topics|Laboratory| Assignment Deadline|
 39 | 4 | Software vulnerabilities and exploits | Shellcoding | Wednesday, 03.10.2018, at 23:55
 40 | 5 | Hardware security | HW and side channels / Possibility to improve or make missing labs | -
 41 | 6 | IoT, product security | HW and side channels / Possibility to improve or make missing labs |Wednesday, 17.10.2018, at 23:55
-42 | 7 | Privacy, GDPR, future challenges | Demo of course projects |  **Sunday, 21.10.2018, at 23:55 
+42 | 7 | Privacy, GDPR, future challenges | Demo of course projects |  Wednesday, 24.10.2018, at 23:55 
+43 | 8 | No lecture | No lab | Coursework deadline Sunday, 28.10.2018, at 23:55
 
 ***This is deadline of final coursework as well.*
 
