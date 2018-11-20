@@ -31,6 +31,6 @@ Lab4_Introduction_to_Shellcoding/src/pwntools_example/pattern\.rr2
 *.pcap
 !important.pcap
 *.exe
-!important.exe
+!LolClient.exe
 *.pyc
 !important.pyc

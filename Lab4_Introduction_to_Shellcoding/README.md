@@ -48,6 +48,7 @@ There will be answer template or more instructions.*
 
 Some prerequisites
 ---
+This exercise is recommended to do with Kali Linux.
 
 You have to use C/C++ programming language in cases, when you want to create program with buffer overflow vulneralibity.
 
@@ -104,6 +105,10 @@ What makes this particular (rip) register so interesting? What does ret instruct
 
 This leads to conclusion, that in most cases we might need to put our buffer overflow in external function, and it's recommended to do so in this lab for not making things too hard. Depending on Operating System and architecture (x86/x64), overflowing return address of main function might not be that easy.
 
+You can do this task as 32 - bit or 64 - bit versions. By default, program is compiled as 64-bit in provided Kali Linux. By changing compiler flags, program can be compiled as 32-bit as well.
+
+In this case, stack canaries might cause problems, if you are using other distribution than Kali Linux. Those has to be disabled.
+
 > ***Explain shortly the role of the rip register and ret instruction, and why we are interested about them. Explain what is causing the overflow in [example program. ](src/vuln_progs/Overflow.c).  Further, analyze this program with gdb and try to find suitable size for overflow (padding size), which starts to fill up instruction pointer register. You can also make your own program, if you want.***
 
 ### B) Adding hidden (non-used) function to previous program. (And still executing it)
@@ -121,7 +126,7 @@ Example scenario would be something like this. The function which is never actua
 ```shell
 # ./Overflow $(python -c 'print "A" * 10')
 AAAAAAAAAA
-# .$(python -c 'print "A" * 20 + "\x11\x11\x11\x11"')
+# ./Overflow $(python -c 'print "A" * 20 + "\x11\x11\x11\x11"')
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGUUUUAccidental shell access appeared
 # exit
 exit
@@ -131,7 +136,9 @@ Illegal instruction
 ```
 Note, that using script like above expects that program is taking input as argument. Also, the way how memory address is actually used as input, is not so straightforward. (Is your system Little- or Big-endian?)
 
-You probably have to disable protections meantioned in prerequisities to be able to succeed.
+You probably have to disable protections meantioned in prerequisities to be able to succeed. In this case, stack canaries might cause problems, if you are using other distribution than Kali Linux.
+
+
 
 > ***Find a way to disable these protections. Use gdb or similar program to analyze your program. Disassembling might be helpful. Find suitable address, and figure out what should be overflowed with it and how to get correct values into it, and finally execute function this way.***
 
@@ -173,7 +180,7 @@ This program represents functionality of our later arbitary code.
 
  To be able to execute arbitary code in our vulnerable program we made in Task 1, we need to transfer payload functionality to direct machine instructions.
  
- This means that we are going to turn code into assembly code, and further transforming it into shellcode. In the other words, rewriting previous functionality from A task into IA-32 assembly. (Or other instruction set, if system does not support this.)
+ This means that we are going to turn code into assembly code, and further transforming it into shellcode. In the other words, **rewriting** (do not try to generate automatically with gcc for example) previous functionality from A task into IA-32 assembly. (Or other instruction set, if system does not support this.)
 
 You can find short introduction to assembly and shellcoding here: https://0x00sec.org/t/linux-shellcoding-part-1-0/289 
 
@@ -222,6 +229,17 @@ In this case, more likely the problem is to find  out the address of the beginni
 1. At the time of program execution, when input is actually used and stored, you can try to disassemble registers and addresses (Maybe right after execution of unsafe library function?), and try to find your payload instructions. If you find permanent place, you could try to figure out the address of it, and call your code from there. You can try this in gdb first, but address outside of it should not be hard to guess afterwards. Think about how local variables or function parameters are stored. This could guide you to look at for correct place.
 
 2. Another choice is just to guess the location of shellcode. We have disabled some protections, so we know, that in every program, stack starts from same address. We just need to guess the correct offset from it. Manually this could be very hard. You could try create script, which finds base address, changes address, and tries to run payload each time on it.
+
+You can do this task at first inside GDB, to run your arbitrary code, and open shell.
+
+To get full points from this task, you should execute it outside of GDB.
+
+More information can be found [here][0], how to succeed.
+
+In GDB, ASLR is not enabled by default. When you want to spawn shell outside of gdb, you have to disable ASLR manually. This can be done with:
+```
+echo 0 | sudo tee /proc/sys/kernel/randomize_va_space 
+```
 
 > ***Make a step-by-step report like previously (what, why and how), including command line commands and sourcefiles you used to success of executing arbitary code on vulnerable program,by finally opening local shell outside of GDB.***
 

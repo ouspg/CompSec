@@ -67,18 +67,19 @@ As described earlier, you can get up to 5 points in each week during the first f
 
 For last two weeks, there is still possibility earn total of 2  points from weekly lecture questionnaires (one (1) each), even if you have completed five labs already.
 
-From final coursework, points can be obtained as following. Grade from 1 to 5 is multiplied with three (3):
-
-Topic|Grade/Points*
--|-
-Academic survey (essay)|1 - 3 (3 - 9)
-Small own project or project from given topics| 2 - 4 (6 - 12)
-Challenging own project | 3 - 5 (9 - 15)
-
-*This table might still change. TBA final coursework topics
+From final coursework, points can be obtained as following.
+There are four (4) different tiers for final coursework.
 
 
-*As result, we get following table for total grade:*
+Tier|Topic|Grade/Points
+-|-|-
+1 | BE AWARE - Personal risk analysis (non-technical)|1 (2 - 4)
+2 | FIND OUT - Survey paper (non-technical)|  2 - 3 (5 - 10)
+3 | IMPLEMENT - Simple technical project report | 2 - 4 (5 - 13)
+4 | CONTRIBUTE - Advanced project report | 3 - 5 (8 - 15)
+
+
+
 
 Total Points|Total Grade
 :-:|:-:
@@ -93,17 +94,25 @@ Total Points|Total Grade
 
 ## Final coursework topics
 
-Note, that all topics are not equal in maximum points they are offering.
+Note, that all topics are not equal in maximum points they are offering. More information can be found in Final Project lecture slides.
 
-* Academic survey (cybersecurity essay/literature review)
-* Trivial own project or predefined task
-* Advanced non-trivial own project
+1.  BE AWARE - Personal risk analysis (non-technical)
+    * Write a personal risk analysis according to template
 
-*Predefined topics to be announced later...*
+2. FIND OUT - Survey paper (non-technical)
+    * Write a scientific survey article on a security topic for points up to good level. No technical implementation needed.
+
+3. IMPLEMENT - Simple technical project report
+   * Using one of the provided topics, perform a short technical project and write an associated report for points from satisfactory to laudable.
+   * The expected level is: repeat and demonstrate something known.
+4. CONTRIBUTE - Advanced project report
+    * Choosing your own topic, and perform a technical project and write  a report
+    * The guideline for choosing topics is: the topic should have the potential of having a positive contribution to security. 
+
 
 In each lab, there is option to make grade 5 task to be more challenging and comprehensive, and make it as final coursework. This has to be approved by assistant.
 
-*Deadline for final course work is in the end of week 42. (End of course week 7.)*
+*Deadline for final course work is in the end of week 43. (End of course week 8.)*
 
 ## Deadlines
 
@@ -117,9 +126,8 @@ Week | Course week|Lecture Topics|Laboratory| Assignment Deadline|
 39 | 4 | Software vulnerabilities and exploits | Shellcoding | Wednesday, 03.10.2018, at 23:55
 40 | 5 | Hardware security | HW and side channels / Possibility to improve or make missing labs | -
 41 | 6 | IoT, product security | HW and side channels / Possibility to improve or make missing labs |Wednesday, 17.10.2018, at 23:55
-42 | 7 | Privacy, GDPR, future challenges | Demo of course projects |  **Sunday, 21.10.2018, at 23:55 
-
-***This is deadline of final coursework as well.*
+42 | 7 | Privacy, GDPR, future challenges | Demo of course projects |  Wednesday, 24.10.2018, at 23:55 
+43 | 8 | No lecture | No lab | Coursework deadline Sunday, 28.10.2018, at 23:55
 
 ***NOTE:***  Week 5 and 6 have been mixed, because there are limited amount of devices which are required for ChipWhisperer lab.
 
@@ -221,21 +229,9 @@ If you don't mind that changes are lost on shutdown, machines can be run directl
 
 When the virtual machine asks if you have copied or moved the machine, press __"I copied it"__.
 
-## Getting virtual machines remotely
+## Getting virtual machines over Eduroam (University WLAN)
 
-
-If you are not able to get in to University to copy virtual machines from network drive, you can do it remotely as well.
-This requires setting up *VPN - connection* to University network.
-This can be aquired by following guidlines presented [here.](http://www.oulu.fi/ict/vpn)
-
-Looks like two factor authentication(Authentication via SMS) is not enabled by default. You have to enable it by following instructions here: [http://www.oulu.fi/ict/authentication#vpn](http://www.oulu.fi/ict/authentication#vpn)
-
-**Shortly:**
- * Download suitable VPN client here: [https://www.oulu.fi/jakelu/vpn/](https://www.oulu.fi/jakelu/vpn/)
- * Login with student creadentials is required
- * Once you have installed the correct client, start it
- * Use *sa.oulu.fi* as server URL.
- * Connect by using your student username and selecting Student (SMS) authentication method. You have to use strong authentication (Student (SMS)) to be able to mount the drive.
+You can mount network drive into your own PC, if it has been connected to [Eduroam ](http://www.oulu.fi/ict/eduroam).
 
 After you have successfully connected to network, you can mount network drive as following. If any credentials are asked, username is username@student.oulu.fi
 
@@ -257,12 +253,30 @@ Depending on your versions, you might need to play with 'sec' -variable, for exa
 ```shell
 sudo mount -t cifs //kaappi/Virtuaalikoneet$ /mnt/ -o user=username@student.oulu.fi,sec=ntlm
 ```
-
 Passwords should be prompted.
 
 Virtual machines are located in:
 
 Virtuaalikoneet$ -> VMware -> CompSec
+
+## Getting virtual machines remotely
+
+
+If you are not able to get in to University to copy virtual machines from network drive by using Lab computer , you can do it remotely as well.
+This requires setting up *VPN - connection* to University network.
+This can be aquired by following guidlines presented [here.](http://www.oulu.fi/ict/vpn)
+
+Looks like two factor authentication(Authentication via SMS) is not enabled by default. You have to enable it by following instructions here: [http://www.oulu.fi/ict/authentication#vpn](http://www.oulu.fi/ict/authentication#vpn)
+
+**Shortly:**
+ * Download suitable VPN client here: [https://www.oulu.fi/jakelu/vpn/](https://www.oulu.fi/jakelu/vpn/)
+ * Login with student creadentials is required
+ * Once you have installed the correct client, start it
+ * Use *sa.oulu.fi* as server URL.
+ * Connect by using your student username and selecting Student (SMS) authentication method. You have to use strong authentication (Student (SMS)) to be able to mount the drive.
+
+After you have successfully connected to network, instructions are same as [here.](#getting-virtual-machines-over-eduroam-university-wlan)
+
 
 ## Contribution
 
