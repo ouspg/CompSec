@@ -1,16 +1,44 @@
 Computer Security Lab 5: ChipWhisperer
 ====
 
-## About the lab
-This lab works a little bit different than the others due to it using an external device.
-* Work is done in groups of 2-3 depending on how many people attend in lab session
-* After the lab hours you are allowed to continue working on the tasks with different people (or alone depending on how many people want to borrow the board). In these cases __mark down clearly who participated in which tasks__
-* You can borrow the ChipWhisperers and finish the task at home. Details on how to borrow the board will depend on how many people attend and want to continue the work at home. For up to date information check moodle and Slack. 
-* You can use ChipWhisperer in your coursework. Please contact the assistants if you are interested on doing so. This way we can put one aside for you.  
-* Handle the board with care and don't expose it to static electricity. 
+## ToC
 
-## Background
-This week’s theme is hardware security and this laboratory work digs deeper into the world of hardware security. In this lab you will be using ChipWhisperer hardware and tools to perform side channel attack experiments.
+* [Introduction]
+    * [Practical arrangements of this lab]
+    * [Background of power analysis]
+    * [Grading]
+    * [Setting up]
+        * [Hardware setup]
+        * [Software setup]
+* [Tasks]
+  * [Task 1]
+  * [Task 2]
+  * [Task 3]
+  * [Task 4]
+
+# Introduction
+
+Tähän yleislätinät lyhyesti aiheesta, grading ja common practises ja about the lab, mistä kohtaa dokumenttia löytyy mitäkin ja miten yleensä tästä odotetaan etenevän kaikki intro on samassa mutta muut kohdat on vaan alaotsikkoja
+
+This week’s theme is hardware security so also this lab considers hardware security by giving examples of side channel attacks. In this lab you will be using ChipWhisperer hardware and tools to perform side channel experiments.
+
+Basic idea of this lab is simple: We have device which runs secure operations...
+
+Lyhyesti selitetty idea, ei softapuolta vaan hardwarepuolta, yleisidea ja tavoitteet selitetty. Tarkemmin power analysis sitten toisessa kappaleessa
+
+## Practical arrangements of this lab
+
+Tämä osuus korvaa about the lab osuuden
+
+This lab is little bit different than others because tasks require the usage of external device. Number of devices are limited, so it causes some difficulties to arragements.
+* Students are encouraged/forced to do work in groups of 2-3 in lab sessions. Size of group heavily depends on how many students attend to lab sessions.
+* Students are encouraged to borrow device do the lab ahead of schedule to balance load on actual lab week
+* Students can borrow devices after/between lab sessions to continue working on tasks at home (alone, in same group or even with different people). In these cases pay close attention of **marking down clearly who participated on which tasks** because it is only way everybody can get the right amount of points when works are graded.
+* We try to arrange loaning times so that everyone would have chance to hold device at least couple of days if they want.
+* You may use ChipWhisperer device in your coursework, but notice that how long you can keep device yourself is heavily depending how much other people are wanting to borrow them. Discuss with course assistants as early as possible if you want to use ChipWhisperer in your coursework.
+
+## Background of power analysis
+Tänne yleistietoa power analysista
 
 Basic idea of this lab will be simple. Target device has secret information in its memory and we want to reveal it.
 
@@ -32,48 +60,73 @@ Boards are connected to each other with serial cable and measurement connector a
 
  More accurate documentation of it can be found from http://wiki.newae.com/CW1173_ChipWhisperer-Lite , but it should not be needed for basic tasks.
 
-## Prerequisites
+## Setting up your system
 
-#### Hardware
-In order for you to complete this lab you need a ChipWhisperer board + a target board. Boards are available at lab session and most likely you have to tasks in groups of 2 or 3. You can discuss with course assistants about lending the hardware after the lab session. It is also possible to lend hardware if you want to do ChipWhisperer related experiments as your coursework. Notice that there is also some tasks which do not require you to have hardware if you can get recorded traces from somewhere else.
+Tähän kaikki setuppiohjeet, prequisitet ja muut, laitteen lainaaminen
 
-#### Hardware connections to be made when using it
-* Connect ChipWhisperers and target boards "*Measure*" ports using SMA cable.
-* If you are doing task 4 (glitching) also connect "*Glitch*" ports
-* Connect the serial cable between boards
-* Connect micro-usb to the board and your computer
+## Setting up
 
-#### Software
-* We suggest that you use preconfigured virtual machine image of this laboratory exercise. It has everything installed and all scripts set ready.
-* If you do not want to do that, you may download clean image from manufacturer [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). After that clone this reposity and get setup scripts from scripts folder.
-* If you refuse to use virtual machines, you may install ChipWhisperer software your own machine [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). There is no reason why it would not work, but notice that we have not tested this option and therefore we might not be able to help you if you run into problems which are caused by your custom installation.
+#### Hardware setup
 
-#### Good-to-have skills for basic tasks
-* Basic understanding of C and Assembly code. Ability to code small and simple scripts with Python.
-* Basic understanding of mathematics, especially statistics.
-* Basic understanding of cryptographig systems.
+Kuva pakkauksen sisällöstä
 
+Device package should contain next items
+* ChipWhisperer Lite 1173 Main board
+* CW303 XMEGA Target board
+* Serial cable
+* 2 SMA cables
+* USB cable
 
-## Grading + other principles
-Task of this lab are divided to 4 different tasks which have corresponding grades in table below.
+Follow next instructions to prepare device for usage
+1. Connect serial cable to serial ports of main board and target board
+2. Connect SMA cable to measure ports of main board and target board
+3. If you are doing glitching-related tasks, you must connect also glitch ports with second SMA cable
+4. Connect USB cable to main board
 
-Start your work from Task 1 and proceed to harder ones without skipping tasks. Skills and experience from each task is needed in next tasks.
+Kuva valmiista laitteesta
 
-Completing task 1 and 2 should be taking about 4 hours so you are expected to do that during classroom lab session. You most likely do not have time to do more advanced tasks 3 and 4 during lab, so you if you want to continue working at home you can disscuss about lending the equipment with course assistants.
+**NOTICE: Handle device with carefully. Static electricity might be harful to board. Some ports might be little tight, but device still should be able to be assembled without excessive usage of force.**
 
-Read every task carefully before starting to work on it so you will have clear picture what you are expected to do and what you are expected to return. Every task will state clearly what you are expected to do. If you are in doubt, you can always ask further advise from lab assistants.
+#### Software setup
 
-It is also recommended to read background information about different issues from links that are offereded in tasks.
+To connect and use ChipWhisperer device and analyze power traces, you need ChipWhisperer software installed on your machine. There is 3 different ways to do that, choose the one that suits you best.
 
-Task| Grade/Level | Description
---|:--:|--
-1|2|Getting started with ChipWhisperer, inspecting power traces and breaking AES
-2|3|Password bypass with timing attack and breaking RSA with power and timing analysis
-3|4|Glitching
-4|5|Several alternatives for advanced experimenting
+* Option 1: We recommend that you use preconfigured virtual machine image (VMWare) of this laboratory exercise. It has everything installed and all scripts set ready. To get image, follow instuctions at xxx
+* Option 2: If you do not want to use ready image or can not use WMWare images, you may download clean image from manufacturer [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). After that clone this reposity and get setup scripts from scripts folder.
+* Option 3: If you refuse to use virtual machines, you may install ChipWhisperer software your own machine [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). There is no reason why it would not work, but notice that we have not tested this option and therefore we might not be able to help you if you run into problems which are caused by your custom installation.
+
+This lab tasks are tested with ChipWhisperer software version xxx. If you install your own system, pay attention that you get the right version of program...
+
+## Grading
+
+Task of this lab are divided to 4 different tasks which have corresponding grades in table below. Notice that *Good-to-have skills* are only directional descriptions about required skill levels.
+
+Task| Grade/Level | Description | Good-to-have skills
+--|:--:|--|
+1|2|Getting started with ChipWhisperer, inspecting power traces and breaking AES|Basic understanding of C and Assembly code, reading and understanding technical articles
+2|3|Password bypass with timing attack and breaking RSA with power and timing analysis|Simple Python coding
+3|4|Glitching|Slightly more complex Python coding
+4|5|Several alternatives for advanced experimenting|Different advanced skills depending on your project
 
 ---
-# Task 1
+# Tasks
+
+Tähän kohti yleistieto taskeista, mahdollisesti lyhyt kuvaus, arvatut vaaditut taitotasot?, ohjeet miten menetellä jne, ryhmät
+
+Start your work from Task 1 and proceed to harder ones without skipping any task. Every task is designed to require more skills and amount of work than previous one.
+
+Task 1 and 2 together are designed to take about 4+ hours to complete. Try to finish at least task 1 at lab session. You can borrow equipment if you want to continue working with those tasks at home.
+
+Tasks 3 and 4 are more laborous and it is likely that those can not be done in time limit of single lab session. You must discuss about borrowing equipment with lab assistants if you want to do those tasks.
+
+Read task instructions carefully before starting to work to have clear picture about what you are supposed to do. Every task should be clearly stating what you are expected to do and return.
+
+If you are doing this work in group, remember to mark down which of you participated on which tasks. (tai tää siis mainittava muuallakin/yleisohjeissa)
+
+Notice that some tasks do not require hardware to be completed (1C, 2B). This gives possibility to for example finish them at home without device if you just manage to save correct traces during lab session (mainittava myös taskeissa ja muuallakin ohjeissa)
+
+## Task 1
+
 
 Ok, let's begin.
 
