@@ -1,6 +1,3 @@
-Note: These instructions are not for active course.
-Look for here: [https://github.com/CompSec-2018/CompSec](https://github.com/CompSec-2018/CompSec)
-
 # 521155S Computer Security
 
 Exercises for computer security course in the University of Oulu.
@@ -9,6 +6,8 @@ The course covers the essential aspects of computer security and computer securi
 
 The course is intended for computer engineering masters students and additionally to any student interested in computer security that has *the sufficient* technical background to complete the course exercises.
 
+The lectures and place for returning assignments can be found from University Moodle: [https://oystack.oulu.fi](https://oystack.oulu.fi)
+Course is under Computer Engineering and Science.
 
 <p align="center">
 <img src="lib/images/oulun yliopisto_logo_eng_black_rgb.png" alt="University of Oulu" height="300px" align="right"/>
@@ -16,22 +15,45 @@ The course is intended for computer engineering masters students and additionall
 
 ## Contents
 
-This repository contains a folder for following labs. Each folder contains tasks and instructions on how to complete them. 
+* [The Course](#The-Course)
 
-1. Fuzzing lab
+* [Grading](#Grading)
 
-2. Network lab
+* [Final coursework topics](#Final-coursework-topics)
 
-3. Botnets and malwares lab
+* [Instructions](#Instructions)
 
-4. Shellcoding lab
+* [Virtual machines](#Virtual-machines)
 
-5. ChipWhisperer lab
+  * [Copy machine and run locally](#Copy-machine-and-run-locally)
 
-The lectures and place for returning assignments can be found from University Moodle: [https://oystack.oulu.fi](https://oystack.oulu.fi)
-Course is under Computer Engineering and Science.
+  * [Run machine directly from network drive](#Run-machine-directly-from-network-drive)
+
+  * [Getting virtual machines over Eduroam (University WLAN)](#Getting-virtual-machines-over-Eduroam-(University-WLAN))
+
+  * [Getting virtual machines remotely](#Getting-virtual-machines-remotely)
+
+* [Contribution](#Contribution)
+
+* [License](#License)
+
+Lab materials are located in their corresponding folders: 
+
+1. [Fuzzing lab](Lab1_Fuzzing/README.md)
+
+2. [Network lab](Lab2_Network/README.md)
+
+3. [Botnets and malwares lab](Lab3_Botnets_and_malwares/README.md)
+
+4. [Shellcoding lab](Lab4_introduction_to_Shellcoding/README.md)
+
+5. [ChipWhisperer lab](Lab5_ChipWhisperer/README.md)
+
+
 
 ## The Course
+
+<details open>
 
 The course has seven (7) lectures, seven (7) weekly lecture questionnaires, five (5) laboratory exercises and final coursework (no exam).
 
@@ -61,7 +83,11 @@ Labs have been split to different tasks. **The amount of tasks which are require
 * __Level 4:__ Complete the above (excluding lecture questionnaires) and some extra work. This will earn you a grade of **4** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
 * __Level 5:__ Complete all the above (excluding lecture questionnaires) and the most challenging extra work. You will earn a grade of **5** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
 
+</details>
+
 ## Grading
+
+<details>
 
 As described earlier, you can get up to 5 points in each week during the first five weeks. (Total 25 points)
 
@@ -92,7 +118,11 @@ Total Points|Total Grade
 
 42 points are maximun.
 
+</details>
+
 ## Final coursework topics
+
+<details>
 
 Note, that all topics are not equal in maximum points they are offering. More information can be found in Final Project lecture slides.
 
@@ -114,7 +144,11 @@ In each lab, there is option to make grade 5 task to be more challenging and com
 
 *Deadline for final course work is in the end of week 43. (End of course week 8.)*
 
+</details>
+
 ## Deadlines
+
+<details>
 
 For each week you are expected to return assignments of corresponding lab OR corresponding lecture assignment.
 
@@ -131,7 +165,11 @@ Week | Course week|Lecture Topics|Laboratory| Assignment Deadline|
 
 ***NOTE:***  Week 5 and 6 have been mixed, because there are limited amount of devices which are required for ChipWhisperer lab.
 
+</details>
+
 ## Instructions
+
+<details open>
 
  * Enroll to the course
 
@@ -163,7 +201,11 @@ git commit -m "<message>"
 git push
 ```
 
+</details>
+
 ## Virtual machines
+
+<details open>
 
 Note: If you are using following virtual machines in your own pc, they are preconfigured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your pc, you might want to reduce this preconfigured RAM. 
 
@@ -183,7 +225,7 @@ These virtual machines are located on network drive.
 
  Machines can be run directly from there, *but all changes on virtual machines are lost, after shutting them down.*
 
-### **Method 1: copy machine, and run locally**
+### **Copy machine and run locally**
 
 If you have enough space on your lab computer, and you are not too hesitated to start, recommended way is to copy virtual machine from network drive, and then start it locally. This way changes are not lost in shutdown.
 
@@ -205,7 +247,7 @@ Run machine from .vmx file, which ***does not*** say 'copy and run'.
 
 When the virtual machine asks if you have copied or moved the machine, press __"I copied it"__.
 
-### **Method 2: run machine directly from network drive**
+### **Run machine directly from network drive**
 
 This is the fastest way to start working: you don't need to wait copy-process.
 
@@ -277,6 +319,7 @@ Looks like two factor authentication(Authentication via SMS) is not enabled by d
 
 After you have successfully connected to network, instructions are same as [here.](#getting-virtual-machines-over-eduroam-university-wlan)
 
+</details>
 
 ## Contribution
 
