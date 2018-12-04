@@ -28,9 +28,9 @@ This repository contains a folder for following labs. Each folder contains tasks
 The lectures and place for returning assignments can be found from University Moodle: [https://oystack.oulu.fi](https://oystack.oulu.fi)
 Course is under Computer Engineering and Science.
 
-<details>
+## The Course
 
-<summary>## The Course</summary>
+<details>
 
 The course has seven (7) lectures, seven (7) weekly lecture questionnaires, five (5) laboratory exercises and final coursework (no exam).
 
@@ -59,8 +59,12 @@ Labs have been split to different tasks. **The amount of tasks which are require
 * __Level 3:__ Complete the whole lab without extra work. This will earn you grade **3** from this week. You are expexted to do this during the lab hours but you are allowed to finish it on your own time
 * __Level 4:__ Complete the above (excluding lecture questionnaires) and some extra work. This will earn you a grade of **4** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
 * __Level 5:__ Complete all the above (excluding lecture questionnaires) and the most challenging extra work. You will earn a grade of **5** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
+
 </details>
+
 ## Grading
+
+<details>
 
 As described earlier, you can get up to 5 points in each week during the first five weeks. (Total 25 points)
 
@@ -91,7 +95,11 @@ Total Points|Total Grade
 
 42 points are maximun.
 
+</details>
+
 ## Final coursework topics
+
+<details>
 
 Note, that all topics are not equal in maximum points they are offering. More information can be found in Final Project lecture slides.
 
@@ -113,7 +121,11 @@ In each lab, there is option to make grade 5 task to be more challenging and com
 
 *Deadline for final course work is in the end of week 43. (End of course week 8.)*
 
+</details>
+
 ## Deadlines
+
+<details>
 
 For each week you are expected to return assignments of corresponding lab OR corresponding lecture assignment.
 
@@ -130,7 +142,11 @@ Week | Course week|Lecture Topics|Laboratory| Assignment Deadline|
 
 ***NOTE:***  Week 5 and 6 have been mixed, because there are limited amount of devices which are required for ChipWhisperer lab.
 
+</details>
+
 ## Instructions
+
+<details>
 
  * Enroll to the course
 
@@ -162,7 +178,11 @@ git commit -m "<message>"
 git push
 ```
 
+</details>
+
 ## Virtual machines
+
+<details>
 
 Note: If you are using following virtual machines in your own pc, they are preconfigured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your pc, you might want to reduce this preconfigured RAM. 
 
@@ -276,6 +296,7 @@ Looks like two factor authentication(Authentication via SMS) is not enabled by d
 
 After you have successfully connected to network, instructions are same as [here.](#getting-virtual-machines-over-eduroam-university-wlan)
 
+</details>
 
 ## Contribution
 
