@@ -25,11 +25,11 @@ Course is under Computer Engineering and Science.
 
 * [Virtual machines](#Virtual-machines)
 
-  * [Method 1: copy machine, and run locally](#Method-1:-copy-machine,-and-run-locally)
+  * [Copy machine and run locally](#Copy-machine-and-run-locally)
 
-  * [Method 2: run machine directly from network drive](#Method-2:-run-machine-directly-from-network-drive)
+  * [Run machine directly from network drive](#Run-machine-directly-from-network-drive)
 
-  * [Getting virtual machines over Eduroam (University WLAN)](#Getting-virtual-machines-over-Eduroam-\(University-WLAN\))
+  * [Getting virtual machines over Eduroam (University WLAN)](#Getting-virtual-machines-over-Eduroam-(University-WLAN))
 
   * [Getting virtual machines remotely](#Getting-virtual-machines-remotely)
 
@@ -225,7 +225,7 @@ These virtual machines are located on network drive.
 
  Machines can be run directly from there, *but all changes on virtual machines are lost, after shutting them down.*
 
-### **Method 1: copy machine, and run locally**
+### **Copy machine and run locally**
 
 If you have enough space on your lab computer, and you are not too hesitated to start, recommended way is to copy virtual machine from network drive, and then start it locally. This way changes are not lost in shutdown.
 
@@ -247,7 +247,7 @@ Run machine from .vmx file, which ***does not*** say 'copy and run'.
 
 When the virtual machine asks if you have copied or moved the machine, press __"I copied it"__.
 
-### **Method 2: run machine directly from network drive**
+### **Run machine directly from network drive**
 
 This is the fastest way to start working: you don't need to wait copy-process.
 
