@@ -6,6 +6,8 @@ The course covers the essential aspects of computer security and computer securi
 
 The course is intended for computer engineering masters students and additionally to any student interested in computer security that has *the sufficient* technical background to complete the course exercises.
 
+The lectures and place for returning assignments can be found from University Moodle: [https://oystack.oulu.fi](https://oystack.oulu.fi)
+Course is under Computer Engineering and Science.
 
 <p align="center">
 <img src="lib/images/oulun yliopisto_logo_eng_black_rgb.png" alt="University of Oulu" height="300px" align="right"/>
@@ -13,24 +15,45 @@ The course is intended for computer engineering masters students and additionall
 
 ## Contents
 
-This repository contains a folder for following labs. Each folder contains tasks and instructions on how to complete them. 
+* [The Course](#The-Course)
 
-1. Fuzzing lab
+* [Grading](#Grading)
 
-2. Network lab
+* [Final coursework topics](#Final-coursework-topics)
 
-3. Botnets and malwares lab
+* [Instructions](#Instructions)
 
-4. Shellcoding lab
+* [Virtual machines](#Virtual-machines)
 
-5. ChipWhisperer lab
+  * [Method 1: copy machine, and run locally](#Method-1:-copy-machine,-and-run-locally)
 
-The lectures and place for returning assignments can be found from University Moodle: [https://oystack.oulu.fi](https://oystack.oulu.fi)
-Course is under Computer Engineering and Science.
+  * [Method 2: run machine directly from network drive](#Method-2:-run-machine-directly-from-network-drive)
+
+  * [Getting virtual machines over Eduroam (University WLAN)](#Getting-virtual-machines-over-Eduroam-\(University-WLAN\))
+
+  * [Getting virtual machines remotely](#Getting-virtual-machines-remotely)
+
+* [Contribution](#Contribution)
+
+* [License](#License)
+
+Lab materials are located in their corresponding folders: 
+
+1. [Fuzzing lab](Lab1_Fuzzing/README.md)
+
+2. [Network lab](Lab2_Network/README.md)
+
+3. [Botnets and malwares lab](Lab3_Botnets_and_malwares/README.md)
+
+4. [Shellcoding lab](Lab4_introduction_to_Shellcoding/README.md)
+
+5. [ChipWhisperer lab](Lab5_ChipWhisperer/README.md)
+
+
 
 ## The Course
 
-<details>
+<details open>
 
 The course has seven (7) lectures, seven (7) weekly lecture questionnaires, five (5) laboratory exercises and final coursework (no exam).
 
@@ -146,7 +169,7 @@ Week | Course week|Lecture Topics|Laboratory| Assignment Deadline|
 
 ## Instructions
 
-<details>
+<details open>
 
  * Enroll to the course
 
@@ -182,7 +205,7 @@ git push
 
 ## Virtual machines
 
-<details>
+<details open>
 
 Note: If you are using following virtual machines in your own pc, they are preconfigured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your pc, you might want to reduce this preconfigured RAM. 
 
