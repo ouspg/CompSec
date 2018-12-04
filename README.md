@@ -1,6 +1,3 @@
-Note: These instructions are not for active course.
-Look for here: [https://github.com/CompSec-2018/CompSec](https://github.com/CompSec-2018/CompSec)
-
 # 521155S Computer Security
 
 Exercises for computer security course in the University of Oulu.
@@ -31,7 +28,9 @@ This repository contains a folder for following labs. Each folder contains tasks
 The lectures and place for returning assignments can be found from University Moodle: [https://oystack.oulu.fi](https://oystack.oulu.fi)
 Course is under Computer Engineering and Science.
 
-## The Course
+<details>
+
+<summary>## The Course</summary>
 
 The course has seven (7) lectures, seven (7) weekly lecture questionnaires, five (5) laboratory exercises and final coursework (no exam).
 
@@ -60,7 +59,7 @@ Labs have been split to different tasks. **The amount of tasks which are require
 * __Level 3:__ Complete the whole lab without extra work. This will earn you grade **3** from this week. You are expexted to do this during the lab hours but you are allowed to finish it on your own time
 * __Level 4:__ Complete the above (excluding lecture questionnaires) and some extra work. This will earn you a grade of **4** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
 * __Level 5:__ Complete all the above (excluding lecture questionnaires) and the most challenging extra work. You will earn a grade of **5** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
-
+</details>
 ## Grading
 
 As described earlier, you can get up to 5 points in each week during the first five weeks. (Total 25 points)
