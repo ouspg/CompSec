@@ -4,31 +4,47 @@ Computer Security Lab 5: ChipWhisperer
 ## ToC
 
 * [Introduction]
+
     * [Practical arrangements of this lab]
+
     * [Background of power analysis]
+
     * [Grading]
-    * [Setting up]
-        * [Hardware setup]
-        * [Software setup]
+
+* [Setting up]
+
+    * [Hardware setup]
+
+    * [Software setup]
+
 * [Tasks]
+
   * [Task 1]
+
   * [Task 2]
+
   * [Task 3]
+
   * [Task 4]
+
 
 # Introduction
 
-Tähän yleislätinät lyhyesti aiheesta, grading ja common practises ja about the lab, mistä kohtaa dokumenttia löytyy mitäkin ja miten yleensä tästä odotetaan etenevän kaikki intro on samassa mutta muut kohdat on vaan alaotsikkoja
-
 This week’s theme is hardware security so also this lab considers hardware security by giving examples of side channel attacks. In this lab you will be using ChipWhisperer hardware and tools to perform side channel experiments.
 
-Basic idea of this lab is simple: We have device which runs secure operations...
+[Chipshisperer](https://newae.com/tools/chipwhisperer/) is an open source toolchain dedicated to hardware security research. ChipWhisperer project intends to make easy start on hardware security experimenting for anybody who interested about it.
 
-Lyhyesti selitetty idea, ei softapuolta vaan hardwarepuolta, yleisidea ja tavoitteet selitetty. Tarkemmin power analysis sitten toisessa kappaleessa
+ChipWhisperer device consists of 2 parts:
+* Capture board is specialized hardware which is able to capture traces from target
+* Target board is just some kind of processor which is programmed to perform some kind of secure operation
+
+Basic idea of this lab is simple: We have target device which runs secure operations and we want to reveal information about those operations by measuring and analysing power consumption of target device. 
+
+This lab exercise intends to give examples of different ways to hack into hardware. There is no guarantee that exactly these hacking examples would be working or practical in real life situations, but main goal is to educate students about possibilities of hardware hacking.
+
+This "Introduction" section contains background information about power analysis, information of practical arrangements of this lab and information about grading information of different tasks. Next "Setting up" section contains all instructions what you are required to do before you can start making tasks. Section "Tasks" contains all 4 tasks and instructions how to do them.
 
 ## Practical arrangements of this lab
-
-Tämä osuus korvaa about the lab osuuden
 
 This lab is little bit different than others because tasks require the usage of external device. Number of devices are limited, so it causes some difficulties to arragements.
 * Students are encouraged/forced to do work in groups of 2-3 in lab sessions. Size of group heavily depends on how many students attend to lab sessions.
@@ -38,9 +54,13 @@ This lab is little bit different than others because tasks require the usage of 
 * You may use ChipWhisperer device in your coursework, but notice that how long you can keep device yourself is heavily depending how much other people are wanting to borrow them. Discuss with course assistants as early as possible if you want to use ChipWhisperer in your coursework.
 
 ## Background of power analysis
-Tänne yleistietoa power analysista
+Tänne yleistietoa power analysista, kirjoitettava uudelleen paremmin?
 
-Basic idea of this lab will be simple. Target device has secret information in its memory and we want to reveal it.
+Power analysis is a branch of side channel attacks where power consumption data is used as the side channel to attack the system.
+
+Basic idea of power analysis could be described next way:
+
+Target device has secret information in its memory and we want to reveal it...
 
 We know the source code of device and inputs and outputs, but secret information like encryption keys and passwords are used only in internal execution and those cannot be seen by outsider.
 
@@ -52,21 +72,25 @@ Idea of power analysis attack is simple. Every operation on target chip consumes
 
 More information about principles of power analysis can be found from [Wikipedia](https://en.wikipedia.org/wiki/Power_analysis) and more ChipWhisperer-related information about CPA can be found from manufacturers [wiki](http://wiki.newae.com/Correlation_Power_Analysis)
 
-In this lab you will be using ChipWhisperer Lite 1173 hardware. It consists two parts: Capture board and target board (can be seen in picture below). Capture board is basically boosted oscilloscope, which is able to capture accurately small power traces or glitch target board. Target board (XMEGA CW303) is just basic microcontroller that is used as victim of our experiments.
 
-Boards are connected to each other with serial cable and measurement connector and glitch connector. Notice that only measurement connector is needed to complete this lab and glitch connector are used only in advanced tasks. When you start doing these tasks you connect capture board to your computer with USB-cable.
+## Grading
 
-![alt text](pictures/chipwhisperer.jpg " ChipWhisperer CW1173 Lite (2 part version) with serial cable and glitch ports connected. ")
+Task of this lab are divided to 4 different tasks which have corresponding grades in table below. Notice that *Good-to-have skills* are only directional descriptions about required skill levels.
 
- More accurate documentation of it can be found from http://wiki.newae.com/CW1173_ChipWhisperer-Lite , but it should not be needed for basic tasks.
+Task| Grade/Level | Description | Good-to-have skills
+--|:--:|--|
+1|2|Getting started with ChipWhisperer, inspecting power traces and breaking AES|Basic understanding of C and Assembly code, reading and understanding technical articles
+2|3|Password bypass with timing attack and breaking RSA with power and timing analysis|Simple Python coding
+3|4|Glitching|Slightly more complex Python coding
+4|5|Several alternatives for advanced experimenting|Different advanced skills depending on your project
 
-## Setting up your system
+---
 
-Tähän kaikki setuppiohjeet, prequisitet ja muut, laitteen lainaaminen
+# Setting up
 
-## Setting up
+Due to external device and specialized software, this lab needs some extra work to set everything up.
 
-#### Hardware setup
+## Hardware setup
 
 ![Image of ChipWhisperer package](pictures/chipwhisperer_package.jpg "ChipWhisperer package items")
 
@@ -92,10 +116,11 @@ Numbers in image are marking next ports:
 3. Serial cable ports
 4. USB port
 
-
 **NOTICE: Handle device with carefully. Static electricity might be harful to board. Some ports might be little tight, but device still should be able to be assembled without excessive usage of force.**
 
-#### Software setup
+More detailed documentation of the device can be found from http://wiki.newae.com/CW1173_ChipWhisperer-Lite , but it should not be needed for basic tasks.
+
+## Software setup
 
 To connect and use ChipWhisperer device and analyze power traces, you need ChipWhisperer software installed on your machine. There is 3 different ways to do that, choose the one that suits you best.
 
@@ -105,18 +130,8 @@ To connect and use ChipWhisperer device and analyze power traces, you need ChipW
 
 This lab tasks are tested with ChipWhisperer software version xxx. If you install your own system, pay attention that you get the right version of program...
 
-## Grading
-
-Task of this lab are divided to 4 different tasks which have corresponding grades in table below. Notice that *Good-to-have skills* are only directional descriptions about required skill levels.
-
-Task| Grade/Level | Description | Good-to-have skills
---|:--:|--|
-1|2|Getting started with ChipWhisperer, inspecting power traces and breaking AES|Basic understanding of C and Assembly code, reading and understanding technical articles
-2|3|Password bypass with timing attack and breaking RSA with power and timing analysis|Simple Python coding
-3|4|Glitching|Slightly more complex Python coding
-4|5|Several alternatives for advanced experimenting|Different advanced skills depending on your project
-
 ---
+
 # Tasks
 
 Tähän kohti yleistieto taskeista, mahdollisesti lyhyt kuvaus, arvatut vaaditut taitotasot?, ohjeet miten menetellä jne, ryhmät
