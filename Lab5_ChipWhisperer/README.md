@@ -68,7 +68,7 @@ Tähän kaikki setuppiohjeet, prequisitet ja muut, laitteen lainaaminen
 
 #### Hardware setup
 
-Kuva pakkauksen sisällöstä
+![Image of ChipWhisperer package](pictures/chipwhisperer_package.jpg "ChipWhisperer package items")
 
 Device package should contain next items
 * ChipWhisperer Lite 1173 Main board
@@ -77,13 +77,21 @@ Device package should contain next items
 * 2 SMA cables
 * USB cable
 
-Follow next instructions to prepare device for usage
-1. Connect serial cable to serial ports of main board and target board
-2. Connect SMA cable to measure ports of main board and target board
-3. If you are doing glitching-related tasks, you must connect also glitch ports with second SMA cable
-4. Connect USB cable to main board
+Do next steps to prepare device for usage
+* Connect serial cable to serial ports of main board and target board
+* Connect SMA cable to measure ports of main board and target board
+    * If you are doing glitching-related tasks, you must connect also glitch ports with second SMA cable
+* Connect USB cable to main board
 
-Kuva valmiista laitteesta
+Ending result should look like next (if you do not need glitch ports)
+![Image of ChipWhisperer package](pictures/chipwhisperer_connected.jpg "ChipWhisperer ready to use")
+
+Numbers in image are marking next ports:
+1. Measure ports
+2. Glitch ports
+3. Serial cable ports
+4. USB port
+
 
 **NOTICE: Handle device with carefully. Static electricity might be harful to board. Some ports might be little tight, but device still should be able to be assembled without excessive usage of force.**
 
