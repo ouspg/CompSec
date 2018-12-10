@@ -134,19 +134,17 @@ This lab tasks are tested with ChipWhisperer software version xxx. If you instal
 
 # Tasks
 
-Tähän kohti yleistieto taskeista, mahdollisesti lyhyt kuvaus, arvatut vaaditut taitotasot?, ohjeet miten menetellä jne, ryhmät
-
 Start your work from Task 1 and proceed to harder ones without skipping any task. Every task is designed to require more skills and amount of work than previous one.
 
-Task 1 and 2 together are designed to take about 4+ hours to complete. Try to finish at least task 1 at lab session. You can borrow equipment if you want to continue working with those tasks at home.
+Task 1 and 2 together are designed to take about 4+ hours to complete. Try to finish those at lab session. You can borrow equipment if you want to continue working with those tasks at home.
 
 Tasks 3 and 4 are more laborous and it is likely that those can not be done in time limit of single lab session. You must discuss about borrowing equipment with lab assistants if you want to do those tasks.
 
 Read task instructions carefully before starting to work to have clear picture about what you are supposed to do. Every task should be clearly stating what you are expected to do and return.
 
-If you are doing this work in group, remember to mark down which of you participated on which tasks. (tai tää siis mainittava muuallakin/yleisohjeissa)
+**If you are doing this work in group, remember to mark down clearly which of you participated on which tasks**
 
-Notice that some tasks do not require hardware to be completed (1C, 2B). This gives possibility to for example finish them at home without device if you just manage to save correct traces during lab session (mainittava myös taskeissa ja muuallakin ohjeissa)
+Notice that some tasks (1C and 2B) require ChipWhisperer device only in early stages of task for recording power traces. This gives possibility to for example finish them at home without device if you manage to save correct traces during lab session or your friend records traces and sends them to you.
 
 ## Task 1
 
