@@ -532,7 +532,11 @@ Basically we will do next:
 2. Find good reference pattern from power trace
 3. By using reference pattern, calculate execution times for every loop over private key bits in order to find out if processed bit of private key was 0 or 1
 
-Lets start with loading power trace and plotting it to the image. Write your own script and run it from command line.
+Virtual machine has already Python 2 installed and those code examples are created for it.
+
+Lets start with loading power trace and plotting it to the image.
+
+Create new .py file and use next example code to plot first trace to image. You can run your scripts in terminal by simply with `python yourscript.py`.
 
 ```Python
 from chipwhisperer.common.api.CWCoreAPI import CWCoreAPI
@@ -577,6 +581,8 @@ show()
 ```
 
 Above script takes reference pattern from trace 0 and then uses it to trace 3 to look for places that are matching to it. Notice that above code produces "difference plot" so every time plot falls close to zero it means that match is found.
+
+So what is this "difference plot"?...
 
 Values of this script might not work. You are expected to find suitable reference pattern yourself by inspecting power trace and difference plot.
 
@@ -636,7 +642,7 @@ for i in range(0, len(loc)-1):
 print("Key = %04x"%recovered_key)
 ```
 
-__What to do to complete this task?__
+### What to do to complete this task?
 
 **Take screenshot of your difference plot when you found the nice reference pattern and explain why you selected it.**
 
