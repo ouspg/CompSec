@@ -394,13 +394,17 @@ __What to do to complete this task?__
 ## B) Breaking RSA
 In this task you will explore the principles of breaking RSA implementation by analysing power traces. Basic idea is to detect conditional code branch execution from power trace and then deduct the private key that device uses internally.
 
-This task is based on and example scripts are taken from on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B11_Breaking_RSA. This task should be able to be completed by following instructions below, but feel free to look at original tutorial because pictures, scripts and other related information it contains might be helpful when you do this task.
-
-First, if you do not know what is RSA, you can find basic information about if from https://en.wikipedia.org/wiki/RSA_(cryptosystem).
+This task is based on and example scripts are taken from on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B11_Breaking_RSA. This task should be able to be completed by following instructions below, but feel free to read original tutorial as supplementary information.
 
 Notice that you can complete this task even if you dont have device or cannot attend lab class. Main point of this task is not to capture traces so you can ask saved traces from your friend and complete task by analyzing them.
 
+This task is divided into three parts. First part is theory introduction to this task, second part contains instructions how to capture traces for analysis and third part consists of writing analysis code for those traces.
+
+Third part of task does not require you to have device, so you can complete task at home if you have saved traces successfully (or ask your friend to save those for you).
+
 ### Theory
+
+First, if you do not know what is RSA, you can find basic information about if from https://en.wikipedia.org/wiki/RSA_(cryptosystem).
 
 This is some code from RSA implementation from avr-crypto-lib
 ```C
