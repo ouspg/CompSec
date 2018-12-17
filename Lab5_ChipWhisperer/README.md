@@ -396,11 +396,9 @@ In this task you will explore the principles of breaking RSA implementation by a
 
 This task is based on and example scripts are taken from on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B11_Breaking_RSA. This task should be able to be completed by following instructions below, but feel free to read original tutorial as supplementary information.
 
-Notice that you can complete this task even if you dont have device or cannot attend lab class. Main point of this task is not to capture traces so you can ask saved traces from your friend and complete task by analyzing them.
+This task is divided into three parts. First part is theory introduction to this task, second part contains instructions how to capture traces for analysis and third part consists of writing analysis code for those traces. Fist 2 parts should be fast and easily done. Third part can be considered as actual task and it contains the majority of work.
 
-This task is divided into three parts. First part is theory introduction to this task, second part contains instructions how to capture traces for analysis and third part consists of writing analysis code for those traces.
-
-Third part of task does not require you to have device, so you can complete task at home if you have saved traces successfully (or ask your friend to save those for you).
+Third part of task does not require you to have device, so you can complete task at home if you have saved traces successfully or ask your friend to save those for you. Or find and download those from internet, you decide how to do it.
 
 ### Theory
 
@@ -500,11 +498,11 @@ This is execution dependent on our private key, and if we can deduce which branc
 
 ### Task instructions
 
-ChipWhisperer RSA demo what we will be using in this task has 2 modes: Real RSA algorithm (which is way too slow for our testing purposes) and "faked" stripped version of RSA algorithm (which is using last 16 bits of private key and executing only the vulnerable part of RSA implementation). We will be using latter one version to demonstrate RSA vulnerability against power analysis.
+ChipWhisperer RSA demo what we will be using in this task has 2 modes: Real RSA decryption algorithm (which is way too slow for our testing purposes) and "faked" stripped version of RSA decryption algorithm. We will be using latter one version with only 16 bits of key material to demonstrate RSA vulnerability against power analysis. You can read source code from *simpleserial-rsa-xmega.c* before you compile it if you want to have deeper understanding of inner workings of real and faked algorithms.
 
-When we use demo script (simplified version), we send *Fixed plaintext* to algorithm. This is actually misleading, because send plaintext is used as "fake private key" to decrypt message. We do not care about actual message or resulting plaintext at all because our analysis targets only on private key so actual message and plaintext are irrelevant.
+When we use demo script (simplified version), we send *Fixed plaintext* to algorithm. This is actually misleading, because send plaintext is used as "fake private key" to decrypt message. We do not care about actual encrypted message or resulting plaintext at all because our analysis targets only on private key so actual ciphertext and plaintext are irrelevant.
 
-First, we setup target board, capture multiple power traces with different keys and save them to project file.
+In this part we setup target board, capture multiple power traces with different decryption keys and save traces to project file.
 
 1. Start the Capture software
 2. Go to */home/cwuser/chipwhisperer/hardware/victims/firmware/simpleserial-rsa*
@@ -513,9 +511,31 @@ First, we setup target board, capture multiple power traces with different keys 
 5. Execute **setup_cwlite_xmega.py** script in Capture software.
 6. Load program that you just made to the target board similar way that you did in previous tasks.
 7. Run script **setup_breaking_rsa.py** to setup some initial values.
+
+**setup_breaking_rsa.py** just setups some predefined values. Notice that this is not factory-made script and this is only available in presetupped course virtual machine or this course pages scripts folder.
+
+Script contains next setups:
+```Python
+target.key_cmd = ""
+target.output_cmd = ""
+scope.clock.adc_src = "clkgen_x1"
+scope.adc.samples = 24000
+```
+
 8. On *Generic settings*, change plaintext to be fixed at value `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00` and press capture button to confirm that it works as expected
+
+You should see... (image here?)
+
+You can try also next to achieve better understanding: change plaintext to be fixed at value `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 10`, use trace percistence button and hit capture one button again. You should see...
+
 9. On *Generic settings*, change *Number of traces* and *Traces per set* to 2
+
+This is because that if you want to test reference patter from trace, you can test it with different one and not itself. (selvennä?)
+
 10. Save the project file as *rsa_test_2bytes.cwp* or any other name or location that you can find easily.
+
+Next four steps are actual trace captures. You will be saving 8 traces total. Notice that their indexing goes from 0-7.
+
 11. Set the *Fixed plaintext* to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00`, press *Capture M*.
 12. Set the *Fixed plaintext* to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 81 40`, press *Capture M*.
 13. Set the *Fixed plaintext* to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 AB E2`, press *Capture M*.
@@ -528,9 +548,12 @@ Now we have successfully saved power traces for different private keys and next 
 Technically it could be possible to determine private key by examinging power traces just by looking at them and plotting them carefully on top of each other (feel free to try using different *Fixed plaintexts* and draving multiple traces to same image with different colors!), but we of course want automated attack instead of manual attack.
 
 Basically we will do next:
-1. Load power trace to script
+1. Load power trace data to script
 2. Find good reference pattern from power trace
-3. By using reference pattern, calculate execution times for every loop over private key bits in order to find out if processed bit of private key was 0 or 1
+   * In trace there can be seen 16 rounds of looping (16 similar-looking blocks 1 for each bit of private key), and reference pattern should match to them
+3. Use reference pattern to calculate places of trace where reference pattern occurs
+4. Calculate distance between pattern occurences to determine how much time was consumed during single key bit processing (single loop execution time)
+5. Based on time information, determine if processed bit was 1 or 0 (long execution = 1, short execution = 0)
 
 Virtual machine has already Python 2 installed and those code examples are created for it.
 
@@ -564,7 +587,7 @@ Next step is to take suitable reference pattern from power trace. Extend your co
 
 ```Python
 #The target trace we will attack
-target_trace_number = 3
+target_trace_number = 3 # This is index 3 meaning that it should be responding trace with key 81 40
 
 start = 3600
 rsa_one = trace_ref[start:(start+500)]
