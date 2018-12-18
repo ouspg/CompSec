@@ -400,7 +400,7 @@ This task is divided into three parts. First part is theory introduction to this
 
 Third part of task does not require you to have device, so you can complete task at home if you have saved traces successfully or ask your friend to save those for you. Or find and download those from internet, you decide how to do it.
 
-### Theory
+### Breaking RSA theory
 
 First, if you do not know what is RSA, you can find basic information about if from https://en.wikipedia.org/wiki/RSA_(cryptosystem).
 
@@ -496,7 +496,7 @@ if(t & (1<<(BIGINT_WORD_SIZE-1))){
 
 This is execution dependent on our private key, and if we can deduce which branch is executed, we could determine the private key bits one by one!
 
-### Task instructions
+### Capturing power traces
 
 ChipWhisperer RSA demo what we will be using in this task has 2 modes: Real RSA decryption algorithm (which is way too slow for our testing purposes) and "faked" stripped version of RSA decryption algorithm. We will be using latter one version with only 16 bits of key material to demonstrate RSA vulnerability against power analysis. You can read source code from *simpleserial-rsa-xmega.c* before you compile it if you want to have deeper understanding of inner workings of real and faked algorithms.
 
@@ -507,7 +507,7 @@ In this part we setup target board, capture multiple power traces with different
 1. Start the Capture software
 2. Go to */home/cwuser/chipwhisperer/hardware/victims/firmware/simpleserial-rsa*
 3. Make the program with the command `make PLATFORM=CW303` like you did in previous tasks.
-4. Execute **connect_cwlite_simpleserial.py** in the Capture software to connect the device.
+4. Execute **connect_cwlite_simpleserial.py** in the Capture software to connect the device (if you are not connected).
 5. Execute **setup_cwlite_xmega.py** script in Capture software.
 6. Load program that you just made to the target board similar way that you did in previous tasks.
 7. Run script **setup_breaking_rsa.py** to setup some initial values.
@@ -522,11 +522,11 @@ scope.clock.adc_src = "clkgen_x1"
 scope.adc.samples = 24000
 ```
 
-8. On *Generic settings*, change plaintext to be fixed at value `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00` and press capture button to confirm that it works as expected
+8. On *Generic settings*, change plaintext to be fixed at value `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00` and press capture one button to confirm that it works as expected
 
-You should see... (image here?)
+You should see plot with 16 repeating distinguishable somewhat-similar "blocks". You might already guess that those 16 blocks are corresponding 16 bits of private key.
 
-You can try also next to achieve better understanding: change plaintext to be fixed at value `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 10`, use trace percistence button and hit capture one button again. You should see...
+You can try also next to achieve better understanding about what is happening: Change plaintext to be fixed at value `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 10`, press trace percistence button and press capture one button again. You should see slightly differing power trace being plotted over original trace. This is because key bit changes -> running time of single loop execution changes.
 
 9. On *Generic settings*, change *Number of traces* and *Traces per set* to 2
 
@@ -540,20 +540,29 @@ Next four steps are actual trace captures. You will be saving 8 traces total. No
 12. Set the *Fixed plaintext* to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 81 40`, press *Capture M*.
 13. Set the *Fixed plaintext* to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 AB E2`, press *Capture M*.
 14. Set the *Fixed plaintext* to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 AB E3`, press *Capture M*.
-15. Save the project.
-16. Check from *Project --> Trace management* that you have successfully saved 8 different traces to this project.
+15. Check from *Project --> Trace management* that you have successfully saved 8 different traces to this project.
 
-Now we have successfully saved power traces for different private keys and next we analyze those with Python scripts. **NOTICE:** Capture sofware and ChipWhisperer board are not needed anymore if you have saved correct power traces successfully. You can work without them at home and still finish this task.
+You already used *Trace Management* tool in task 1B to inspect that you have correct traces. Just check now that you have those traces and only those traces correctly in your project before saving it.
 
-Technically it could be possible to determine private key by examinging power traces just by looking at them and plotting them carefully on top of each other (feel free to try using different *Fixed plaintexts* and draving multiple traces to same image with different colors!), but we of course want automated attack instead of manual attack.
+16. Save the project to some place you can find.
+
+Now you should have successfully saved power traces for different private keys. **NOTICE:** Capture sofware and ChipWhisperer board are not needed anymore if you have saved correct power traces successfully. You can work without them at home and still finish this task.
+
+### Analyzing captured power traces with Python
+
+Ok, now the actual task begins.
+
+In this part we will write Python script that solves the secret private key by analyzing power traces.
+
+In theory it could be possible to determine private key by examinging power traces just by looking at them and plotting them carefully on top of each other (like you were hinted to experiment at capture phase), but we of course want automated attack instead of manual attack.
 
 Basically we will do next:
 1. Load power trace data to script
 2. Find good reference pattern from power trace
    * In trace there can be seen 16 rounds of looping (16 similar-looking blocks 1 for each bit of private key), and reference pattern should match to them
 3. Use reference pattern to calculate places of trace where reference pattern occurs
-4. Calculate distance between pattern occurences to determine how much time was consumed during single key bit processing (single loop execution time)
-5. Based on time information, determine if processed bit was 1 or 0 (long execution = 1, short execution = 0)
+4. Calculate distance between pattern occurences to determine how much time was consumed during single key bit processing (this solves single loop execution time)
+5. Based on loop execution time information, determine if processed bit was 1 or 0 (long execution = 1, short execution = 0)
 
 Virtual machine has already Python 2 installed and those code examples are created for it.
 
@@ -583,15 +592,19 @@ By looking at image you should be seeing power trace "as-it-is". You should be e
 
 ![alt text](pictures/rsa_sample_trace.png "Example plot")
 
-Next step is to take suitable reference pattern from power trace. Extend your code.
+Next step is to take suitable reference pattern from power trace. Extend your code with next snippet.
 
 ```Python
-#The target trace we will attack
+# The target trace we will attack
 target_trace_number = 3 # This is index 3 meaning that it should be responding trace with key 81 40
 
+# This cuts pattern of 500 samples out of  trace_ref
 start = 3600
 rsa_one = trace_ref[start:(start+500)]
-        
+
+
+# This calculates the difference plot
+# You can consider this like that reference pattern is moved as "window" over target trace and then absolute sum of difference for each plot point is calculated
 diffs = []
 
 for i in range(0, 23499):
@@ -603,30 +616,29 @@ plot(diffs)
 show()
 ```
 
-Above script takes reference pattern from trace 0 and then uses it to trace 3 to look for places that are matching to it. Notice that above code produces "difference plot" so every time plot falls close to zero it means that match is found.
+To conclude: Above code snippet takes reference pattern from trace 0 and then uses it to trace 3 to look for places that are matching to it by producing difference plot.
 
-So what is this "difference plot"?...
+Meaning of difference plot is next: When plot drops close to zero, it simply means that difference between target plot and reference pattern is zero in that point which means the close match is found.
 
-Values of this script might not work. You are expected to find suitable reference pattern yourself by inspecting power trace and difference plot.
+**Your next task is to find suitable reference pattern which produces good difference plot for further calculations. Experiment with different values until you find satisfiable difference plot.**
 
-Notice that in this example code reference pattern `rsa_one` is taken from sample 3600 (starting point) to 4100 (because its length is 500). These starting sample and pattern length are things that you want to modify to find your own good reference sample.
-
-**Examples of possible difference plots you might see during your testing**
-
-![alt text](pictures/difference_plot_horrible.png "Example difference plot")
-![alt text](pictures/difference_plot_not_good.png "Example difference plot")
-![alt text](pictures/difference_plot_better.png "Example difference plot")
-
-
-__HINT__: Remember that your ending goal is to find execution time differences between processed bits of secret key. This means that you have to find trace pattern that is found in every bit. Expect that you might have to use some time for finding good one. You can consider that you have good reference pattern when your difference plot has clear and stable set of close-to-zero spikes.
-
-__EXTRA__: You are not limited to use sum of differences as metric if you dont want to. For example, using this kind of correlation might be useful tool.
+Couple of hints for this part
+* Values of this example snippet most likely do not work for you. You have to find your own pattern by inspecting traces and by trial and error. Expect that you might have to spend some time to find good one.
+  * Try different starting positions and lengths about where you cut your reference pattern (values in snippet are 3600 and 500).
+* Remember that your ending goal is to find clean reference plot with easily distinguishable close-to-zero spikes. Otherwise further calculations for that difference plot would be harder.
+* You are not limited to use sum of differences as metric. You can also use for example correlation if you want to.
 
 ```Python
 corr_data = np.correlate(rsa_one,  tm.getTrace(target_trace_number), mode='full')
 plot(corr_data, 'r')
 show()
 ```
+
+**Examples of possible difference plots you might see during your testing**
+
+![alt text](pictures/difference_plot_horrible.png "Example difference plot")
+![alt text](pictures/difference_plot_not_good.png "Example difference plot")
+![alt text](pictures/difference_plot_better.png "Example difference plot")
 
 When you have nice reference pattern, we can calculate sample distance (which is technically also time distance) between occured patterns.
 
