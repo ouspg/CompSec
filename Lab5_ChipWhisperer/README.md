@@ -576,7 +576,7 @@ from matplotlib.pylab import *
 import numpy as np
 
 cwapi = CWCoreAPI()
-cwapi.openProject(r'c:\examplelocation\rsa_test.cwp')
+cwapi.openProject(r'/home/cwuser/examplelocation/yoursavedproject.cwp')
 
 tm = cwapi.project().traceManager()
 ntraces = tm.numTraces()
@@ -592,7 +592,7 @@ By looking at image you should be seeing power trace "as-it-is". You should be e
 
 ![alt text](pictures/rsa_sample_trace.png "Example plot")
 
-Next step is to take suitable reference pattern from power trace. Extend your code with next snippet.
+Next step is to take suitable reference pattern from power trace. Extend your code by applying next snippet.
 
 ```Python
 # The target trace we will attack
@@ -616,15 +616,16 @@ plot(diffs)
 show()
 ```
 
-To conclude: Above code snippet takes reference pattern from trace 0 and then uses it to trace 3 to look for places that are matching to it by producing difference plot.
+To conclude: Above code snippet takes reference pattern from trace indexed 0 and then uses it to trace indexed 3 to look for places that are matching to it by producing difference plot.
 
-Meaning of difference plot is next: When plot drops close to zero, it simply means that difference between target plot and reference pattern is zero in that point which means the close match is found.
+Meaning of difference plot is next: When plot drops close to zero, it simply means that difference between target plot and reference pattern is almost zero in that point which means the close match is found.
 
 **Your next task is to find suitable reference pattern which produces good difference plot for further calculations. Experiment with different values until you find satisfiable difference plot.**
 
 Couple of hints for this part
 * Values of this example snippet most likely do not work for you. You have to find your own pattern by inspecting traces and by trial and error. Expect that you might have to spend some time to find good one.
   * Try different starting positions and lengths about where you cut your reference pattern (values in snippet are 3600 and 500).
+  * Consider inspecting original traces closely to find suitable repeating part to be used as reference pattern.
 * Remember that your ending goal is to find clean reference plot with easily distinguishable close-to-zero spikes. Otherwise further calculations for that difference plot would be harder.
 * You are not limited to use sum of differences as metric. You can also use for example correlation if you want to.
 
@@ -640,26 +641,36 @@ show()
 ![alt text](pictures/difference_plot_not_good.png "Example difference plot")
 ![alt text](pictures/difference_plot_better.png "Example difference plot")
 
-When you have nice reference pattern, we can calculate sample distance (which is technically also time distance) between occured patterns.
+When you have nice reference pattern and difference plot, we can calculate sample distance (which is technically also time distance) between occured patterns.
 
-This is sample how you can print the distance between found matches (in this example "match" is seen as any place where difference plot falls under 10).
+This is snippet how you can print the distance between found matches (in this example "match" is considered to be any place where difference plot falls under 10, you most likely have to modify this value). Extend your code by applying this snippet to it.
 ```Python
+
+# Put difference plot to numpy array
 diffs = np.array(diffs)
+
+# Get any index where value is under 10, you most likely have to modify this value according your results in difference plot
 loc = np.where(diffs < 10)
 
-#Get actual list
+# Get actual list
 loc = loc[0]
 
+# Print distances (times) between matches
 for i in range(0, len(loc)-1):
     delta = loc[i+1]-loc[i]
     print delta
 ```
-Do you remember what we said about execution times in theory part? We noticed in the code that every time bit in key is 1, it results additional multiplication operation executed in algorithm. Therefore when bit is 1 in secret key, loop round in algorithm takes much more time to execute.
 
-Based on this knowledge this is example how key could be solved from time distance of matches.
+After your code prints time differences, you should consider next things while you are inspecting those values:
+* Notice that there is big delay at first run but other runs are staying in about constant times.
+* There is little extra delay when algorithm finishes processing 8-bit "chunk" of private key.
+* Remember what we concluded about execution times in theory part? When key bit is 1, additional multiplication operation should result longer execution time.
+
+Based on all previous knowledge combined, this is example code snippet how key could be calculted bit by bit. Extend your code by applying snippet to it. You most likely have to modify some values or add some extra code according to your own analysis of execution times you just printed.
+
 ```Python
 recovered_key = 0x0000
-bitnum = 17
+bitnum = 16
 
 diffs = np.array(diffs)
 loc = np.where(diffs < 10)
@@ -677,21 +688,20 @@ for i in range(0, len(loc)-1):
 print("Key = %04x"%recovered_key)
 ```
 
-### What to do to complete this task?
+Run your attack code against trace with secret key 8140 and ABE2. Those should be at indexes 2-3 and 4-5 if you have saved your traces in order that was instructed.
 
-**Take screenshot of your difference plot when you found the nice reference pattern and explain why you selected it.**
+Your attack is successful if your code output correct end result, for example ```Key = abe2```. Otherwise something is wrong and you should reconsider your attack script or trace captures.
 
-**Combine all those scripts above to one program which automatically solves the key for you from recorded traces.** Notice that you will most likely change several hardcoded values and make small modifications to given code pieces to make it work. This task would be too easy if it was only simple copy-pasting.
+When you have ensured that your code successfully solves keys 8140 and ABE2, try to solve key ABE3 from index 6-7 (if you have saved traces in instructed order). What happens?
 
-Your complete program should be able to solve correct keys `8140` and `ABE2` from corresponding traces. **Copy your working program to return template. Tell which modifications to existing values you had to make and which modifications you had to make to make your script work correctly.**
+### What to return in this task?
 
-**Answer the next question:** Can program solve key `ABE3` from corresponding trace? If not, tell why it does not work. How you could fix that? (*You do not have to implement your answer, just tell how you would do it.*)
+All practical work is done, only final push left to finish this task. Fill next answers to return template and you are ready.
 
-**TIPS & TRICKS**
-
-Notice that quality of your “difference plot” is highly dependent of your reference sample. Do not choose it hastily.
-
-Pay attention to the number of close-to-zero spikes in difference plot. Think how many of those spikes are needed to calculate 16-bit key.
+**Next items/answers must be returned to gain points from this task**
+1. Screenshot of suitable difference plot and explanation how you found suitable reference pattern
+2. Your complete attack code and screenshots how it successfully solves secrect keys specified earlier (8140 and ABE2)
+3. Sufficient answer to next question: *You were instructed earlier to try to solve key ABE3 from corresponding trace with your attack code. Did you succeed? If not, tell why it did not work. How would you make it work? Note that you do not have to implement your answer, just telling that how you would do it is enough.*
 
 ---
 # Task 3
