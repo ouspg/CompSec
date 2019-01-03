@@ -358,7 +358,7 @@ In this tutorial you will be doing next main steps:
 1. Build password program and load it to the device (like you did in previous tasks).
 2. Test that program is working with terminal emulator. Record couple of power traces manually to see how amount of different characters affects to the trace.
 3. Learn what is resetter auxiliary module and use it manually to see that it is working.
-4. Create your own attack script which automatically does setup, tries password, analyses resulting trace and resets device before every try.
+4. Use your own attack script which automatically does setup, tries password, analyses resulting trace and resets device before every try.
 
 This lab is a modified version of http://wiki.newae.com/Tutorial_B3-1_Timing_Analysis_with_Power_for_Password_Bypass tutorial. Instead of manually setting most of the values we use ready made scripts to set different scope values etc. You may check original tutorial because it might have screenshots and other helpful information which can make it easier to understand what is happening here. However you can complete this lab by following these steps:
 
@@ -396,9 +396,9 @@ In this task you will explore the principles of breaking RSA implementation by a
 
 This task is based on and example scripts are taken from on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B11_Breaking_RSA. This task should be able to be completed by following instructions below, but feel free to read original tutorial as supplementary information.
 
-This task is divided into three parts. First part is theory introduction to this task, second part contains instructions how to capture traces for analysis and third part consists of writing analysis code for those traces. Fist 2 parts should be fast and easily done. Third part can be considered as actual task and it contains the majority of work.
+This task is divided into three parts. First part is theory introduction to this task, second part contains instructions how to capture traces for analysis and third part consists of writing analysis code for those traces. First 2 parts should be fast and easily done. Third part can be considered as actual task and it contains the majority of work.
 
-Third part of task does not require you to have device, so you can complete task at home if you have saved traces successfully or ask your friend to save those for you. Or find and download those from internet, you decide how to do it.
+Third part of task does not require you to have device, so you can complete task at home if you have saved traces successfully or ask your friend to save those for you. Or find and download those from internet (might be tricky to find traces with correct keys, but if you do, it is ok to use them).
 
 ### Breaking RSA theory
 
@@ -498,7 +498,7 @@ This is execution dependent on our private key, and if we can deduce which branc
 
 ### Capturing power traces
 
-ChipWhisperer RSA demo what we will be using in this task has 2 modes: Real RSA decryption algorithm (which is way too slow for our testing purposes) and "faked" stripped version of RSA decryption algorithm. We will be using latter one version with only 16 bits of key material to demonstrate RSA vulnerability against power analysis. You can read source code from *simpleserial-rsa-xmega.c* before you compile it if you want to have deeper understanding of inner workings of real and faked algorithms.
+ChipWhisperer RSA demo is used in this task. It has 2 modes: Real RSA decryption algorithm (which is way too slow for our testing purposes) and "faked" stripped version of RSA decryption algorithm, which is running only the vulnerable part of decryption algorithm. We will be using latter one version with only 16 bits of key material (to make analysis easier and capture too long) to demonstrate RSA vulnerability against power analysis. You can read source code from *simpleserial-rsa-xmega.c* before you compile it if you want to have deeper understanding of inner workings of real and faked algorithms.
 
 When we use demo script (simplified version), we send *Fixed plaintext* to algorithm. This is actually misleading, because send plaintext is used as "fake private key" to decrypt message. We do not care about actual encrypted message or resulting plaintext at all because our analysis targets only on private key so actual ciphertext and plaintext are irrelevant.
 
@@ -530,8 +530,6 @@ You can try also next to achieve better understanding about what is happening: C
 
 9. On *Generic settings*, change *Number of traces* and *Traces per set* to 2
 
-This is because that if you want to test reference patter from trace, you can test it with different one and not itself. (selvennä?)
-
 10. Save the project file as *rsa_test_2bytes.cwp* or any other name or location that you can find easily.
 
 Next four steps are actual trace captures. You will be saving 8 traces total. Notice that their indexing goes from 0-7.
@@ -554,7 +552,7 @@ Ok, now the actual task begins.
 
 In this part we will write Python script that solves the secret private key by analyzing power traces.
 
-In theory it could be possible to determine private key by examinging power traces just by looking at them and plotting them carefully on top of each other (like you were hinted to experiment at capture phase), but we of course want automated attack instead of manual attack.
+In theory it could be possible to determine private key by examinging power traces just by looking at them and plotting them carefully on top of each other (like you were hinted to experiment at capture phase), but of course we want computer to do work for us automatically instead of parforming manual labor.
 
 Basically we will do next:
 1. Load power trace data to script
