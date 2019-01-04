@@ -47,7 +47,7 @@ This "Introduction" section contains background information about power analysis
 ## Practical arrangements of this lab
 
 This lab is little bit different than others because tasks require the usage of external device. Number of devices are limited, so it causes some difficulties to arragements.
-* Students are encouraged/forced to do work in groups of 2-3 in lab sessions. Size of group heavily depends on how many students attend to lab sessions.
+* Students are encouraged/forced to do work in groups of 2 or 3 persons in lab sessions. Size of group heavily depends on how many students attend to lab sessions.
 * Students are encouraged to borrow device do the lab ahead of schedule to balance load on actual lab week
 * Students can borrow devices after/between lab sessions to continue working on tasks at home (alone, in same group or even with different people). In these cases pay close attention of **marking down clearly who participated on which tasks** because it is only way everybody can get the right amount of points when works are graded.
 * We try to arrange loaning times so that everyone would have chance to hold device at least couple of days if they want.
@@ -348,23 +348,36 @@ Your answer does not have to be in any certain "format" or any minimum length, b
 ---
 # Task 2
 
-In task 2, there is 2 harder tasks which require closer analysing of power traces with small Python scripts. Task 2 is significantly harder than previous task so expect that you will most likely use rest of the lab session for this task. Notice that you can easily continue working on task B at home after lab session without device if you manage to capture and save power traces for yourself.
+In task 2, there is 2 tasks which require closer analysing of power traces with small Python scripts. Task 2 is significantly harder than previous task so expect that you will most likely use rest of the lab session for this task. Notice that you can easily continue working on task B at home after lab session without device if you manage to capture and save power traces for yourself.
 
 ## A) Password bypass with power analysis
-In this task you will extract password from secure device by analyzing the power traces of device when it processes your login attempts. You will also learn how to use Python scripts to control ChipWhisperer software. 
+In this task you will break in to secure device by analyzing the power traces of device when it processes your login attempts. You will also learn how to use Python scripts to control ChipWhisperer software. 
 
-In this tutorial you will be doing next main steps:
+Target program on victim device is simple. It prints initial information, waits for user to input login password and check if it is right. If it is, program prints welcome text and lights up green led. If not, program reports failure and red led turns on. (kuvaus laitteesta ohjelmasta ja periaatteesta). Feel free to read C-code for ...
 
-1. Build password program and load it to the device (like you did in previous tasks).
-2. Test that program is working with terminal emulator. Record couple of power traces manually to see how amount of different characters affects to the trace.
-3. Learn what is resetter auxiliary module and use it manually to see that it is working.
-4. Use your own attack script which automatically does setup, tries password, analyses resulting trace and resets device before every try.
+Target program compares inputted password against correct password character by character and ends comparing if wrong character is encountered. This kind of process is obviously vulnerable against timing attacks. In this program, timing attack is countered by adding random wait time after failed password input. Catch here is that login system is still vulnerable to power analysis, which will be utilized here. With power analysis, we can see every character being processed and therefore we can determine when program hits the wrong character.
 
-This lab is a modified version of http://wiki.newae.com/Tutorial_B3-1_Timing_Analysis_with_Power_for_Password_Bypass tutorial. Instead of manually setting most of the values we use ready made scripts to set different scope values etc. You may check original tutorial because it might have screenshots and other helpful information which can make it easier to understand what is happening here. However you can complete this lab by following these steps:
+Feel free to read source code of program before building it as supplementary information.
+
+This task is based on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B3-1_Timing_Analysis_with_Power_for_Password_Bypass. Original tutorial is not needed for this task, but you are free to look it as supplementary information.
+
+This task can be divided to 2 different parts: Setup & warm-up and running attack.
+
+In setup & warm-up phase you will be doing next things:
+* Building and uploading program to device
+* Setup initial settings by running setup scripts
+* Test that target program is working
+* Learn to use auxilary module for resetting target device
+* Test multiple different passwords to see how power trace is affected
+
+In running attack script part, you will modify attack script based on knowledge you aquired earlier to make attack run automatically and produce successful result.
+
+### Setup & warm-up
+Instead of manually setting most of the values we use ready made scripts to set different scope values etc. You may check original tutorial because it might have screenshots and other helpful information which can make it easier to understand what is happening here. However you can complete this lab by following these steps:
 
 1. Restart the Capture software.
-2. Go to *\home\cwuser\Desktop\chipwhisperer\hardware\victims\firmware\basic-passwdcheck*.
-3. Make the program with the command `make PLATFORM=CW303`.
+2. Navigate to *\home\cwuser\Desktop\chipwhisperer\hardware\victims\firmware\basic-passwdcheck*.
+3. Build the program with the command `make PLATFORM=CW303`, as you did in previous tasks.
 4. Execute **connect_cwlite_simpleserial.py** in the Capture software to connect the device.
 5. Execute **setup_password_check_delay.py** in the Capture software to set the parametres. Check the Script preview window to see what values were changed.
 6. Program the file you made earlier to the target board using XMEGA Programmer. Keep the programmer window open.
@@ -386,6 +399,10 @@ __HINT__: Use password guesses where the first letter is wrong, then the second 
 
 16. Now with this knowledge modify the **PASSWORD_BYPASS.py** script in the */home/cwuser/Desktop/chipwhisperer/software/chipwhisperer/capture/scripts* folder so that it guesses the password correctly. Script should also be visible in the Capture Software.
 It is advised that you learn what each of the lines in this code do. It will be helpful if you are planning on working more with the ChipWhisperer. However for this exercise you only have to modify the commented part of the code.
+
+### Running attack
+
+Tähän ohje 16
 
 __What to do to complete this task?__
 
