@@ -373,7 +373,8 @@ In setup & warm-up phase you will be doing next things:
 In running attack script part, you will modify attack script based on knowledge you aquired earlier to make attack run automatically and produce successful result.
 
 ### Setup & warm-up
-Instead of manually setting most of the values we use ready made scripts to set different scope values etc. You may check original tutorial because it might have screenshots and other helpful information which can make it easier to understand what is happening here. However you can complete this lab by following these steps:
+
+First, we will setup device and do some simple experimenting with inputting different passwords. You are not required to return anything on this phase, but setupping the device and knowledge you will be acquiring in this part is crucial for the second part of the task.
 
 1. Restart the Capture software.
 2. Navigate to *\home\cwuser\Desktop\chipwhisperer\hardware\victims\firmware\basic-passwdcheck*.
@@ -402,11 +403,35 @@ It is advised that you learn what each of the lines in this code do. It will be 
 
 ### Running attack
 
-Tähän ohje 16
+Now its time for actual automated attack.
 
-__What to do to complete this task?__
+**PASSWORD_BYPASS.py** script in the */home/cwuser/Desktop/chipwhisperer/software/chipwhisperer/capture/scripts* folder is your attack code. It automatically does the setups, resets device between login attempts, tries every character from specified character list and then analyzes if password character was correct or not. If character was wrong, script tries next character in list and if character was right, script locks that character and starts guessing next character of password string.
 
-**Return your working code (your modified PASSWORD_BYPASS.py) and screenshot of the Python console (which shows output when correct password is guessed).**
+Script should be visible in the Capture Software script list. If you are not using virtual machine given on this course, you must get the script from scrips-folder of this repository.
+
+Attack script is almost ready, but if you run it, you can see that the part determining if character was correct or not is not working.
+
+```Python
+if nextTrace[153 + 72*i] < -0.2:
+    continue
+```
+
+You already probably guessed that your task is to modify this part of the code to make script work automatically. You must most likely modify all hard-coded values and possibly also boolean operator comparing them.
+
+Use your knowledge acquired from previous task and do more experimenting to see how power trace behaves with different amount of correct characters. By that knowledge you should be able to construct logical rule which can separate whether tried character was correct or incorrect.
+
+Your ending result (and requirement to gain points from this task) should be script which automatically solves whole password for you.
+
+Some tips which might be helpful
+* During your experimenting most important thing is to find some point of power trace which is always different depending if character was correct or incorrect. (percistence?)
+* Second important thing is to find out how long is the processing time of single correct character. Every time correct character is found, comparision point must be shifted forward that amount.
+* You might speed up testing some amount by putting known correct characters earlier to testing list. Notice that you should still put some incorrect character as first of the testlist. Otherwise you might end up in the situation during testing that your wrong code selects always the first character of your list, but because it happens to be correct one, you might think that code is right.
+
+### What to return in this task?
+
+You must return next 2 items to to return template to gain points from this task:
+1. Your working attack script (your modified PASSWORD_BYPASS.py). Return whole script or just the part(s) you modified.
+2. Screenshot of the python console after you have successfully solved correct password with your script.
 
 ## B) Breaking RSA
 In this task you will explore the principles of breaking RSA implementation by analysing power traces. Basic idea is to detect conditional code branch execution from power trace and then deduct the private key that device uses internally.
