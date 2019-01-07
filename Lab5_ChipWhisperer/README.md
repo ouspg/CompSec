@@ -1,18 +1,66 @@
 Computer Security Lab 5: ChipWhisperer
 ====
 
-## About the lab
-This lab works a little bit different than the others due to it using an external device.
-* Work is done in groups of 2-3 depending on how many people attend in lab session
-* After the lab hours you are allowed to continue working on the tasks with different people (or alone depending on how many people want to borrow the board). In these cases __mark down clearly who participated in which tasks__
-* You can borrow the ChipWhisperers and finish the task at home. Details on how to borrow the board will depend on how many people attend and want to continue the work at home. For up to date information check moodle and Slack. 
-* You can use ChipWhisperer in your coursework. Please contact the assistants if you are interested on doing so. This way we can put one aside for you.  
-* Handle the board with care and don't expose it to static electricity. 
+## ToC
 
-## Background
-This week’s theme is hardware security and this laboratory work digs deeper into the world of hardware security. In this lab you will be using ChipWhisperer hardware and tools to perform side channel attack experiments.
+* [Introduction]
 
-Basic idea of this lab will be simple. Target device has secret information in its memory and we want to reveal it.
+    * [Practical arrangements of this lab]
+
+    * [Background of power analysis]
+
+    * [Grading]
+
+* [Setting up]
+
+    * [Hardware setup]
+
+    * [Software setup]
+
+* [Tasks]
+
+  * [Task 1]
+
+  * [Task 2]
+
+  * [Task 3]
+
+  * [Task 4]
+
+
+# Introduction
+
+This week’s theme is hardware security so also this lab considers hardware security by giving examples of side channel attacks. In this lab you will be using ChipWhisperer hardware and tools to perform side channel experiments.
+
+[Chipshisperer](https://newae.com/tools/chipwhisperer/) is an open source toolchain dedicated to hardware security research. ChipWhisperer project intends to make easy start on hardware security experimenting for anybody who interested about it.
+
+ChipWhisperer device consists of 2 parts:
+* Capture board is specialized hardware which is able to capture traces from target
+* Target board is just some kind of processor which is programmed to perform some kind of secure operation
+
+Basic idea of this lab is simple: We have target device which runs secure operations and we want to reveal information about those operations by measuring and analysing power consumption of target device. 
+
+This lab exercise intends to give examples of different ways to hack into hardware. There is no guarantee that exactly these hacking examples would be working or practical in real life situations, but main goal is to educate students about possibilities of hardware hacking.
+
+This "Introduction" section contains background information about power analysis, information of practical arrangements of this lab and information about grading information of different tasks. Next "Setting up" section contains all instructions what you are required to do before you can start making tasks. Section "Tasks" contains all 4 tasks and instructions how to do them.
+
+## Practical arrangements of this lab
+
+This lab is little bit different than others because tasks require the usage of external device. Number of devices are limited, so it causes some difficulties to arragements.
+* Students are encouraged/forced to do work in groups of 2 or 3 persons in lab sessions. Size of group heavily depends on how many students attend to lab sessions.
+* Students are encouraged to borrow device do the lab ahead of schedule to balance load on actual lab week
+* Students can borrow devices after/between lab sessions to continue working on tasks at home (alone, in same group or even with different people). In these cases pay close attention of **marking down clearly who participated on which tasks** because it is only way everybody can get the right amount of points when works are graded.
+* We try to arrange loaning times so that everyone would have chance to hold device at least couple of days if they want.
+* You may use ChipWhisperer device in your coursework, but notice that how long you can keep device yourself is heavily depending how much other people are wanting to borrow them. Discuss with course assistants as early as possible if you want to use ChipWhisperer in your coursework.
+
+## Background of power analysis
+Tänne yleistietoa power analysista, kirjoitettava uudelleen paremmin?
+
+Power analysis is a branch of side channel attacks where power consumption data is used as the side channel to attack the system.
+
+Basic idea of power analysis could be described next way:
+
+Target device has secret information in its memory and we want to reveal it...
 
 We know the source code of device and inputs and outputs, but secret information like encryption keys and passwords are used only in internal execution and those cannot be seen by outsider.
 
@@ -24,56 +72,82 @@ Idea of power analysis attack is simple. Every operation on target chip consumes
 
 More information about principles of power analysis can be found from [Wikipedia](https://en.wikipedia.org/wiki/Power_analysis) and more ChipWhisperer-related information about CPA can be found from manufacturers [wiki](http://wiki.newae.com/Correlation_Power_Analysis)
 
-In this lab you will be using ChipWhisperer Lite 1173 hardware. It consists two parts: Capture board and target board (can be seen in picture below). Capture board is basically boosted oscilloscope, which is able to capture accurately small power traces or glitch target board. Target board (XMEGA CW303) is just basic microcontroller that is used as victim of our experiments.
 
-Boards are connected to each other with serial cable and measurement connector and glitch connector. Notice that only measurement connector is needed to complete this lab and glitch connector are used only in advanced tasks. When you start doing these tasks you connect capture board to your computer with USB-cable.
+## Grading
 
-![alt text](pictures/chipwhisperer.jpg " ChipWhisperer CW1173 Lite (2 part version) with serial cable and glitch ports connected. ")
+Task of this lab are divided to 4 different tasks which have corresponding grades in table below. Notice that *Good-to-have skills* are only directional descriptions about required skill levels.
 
- More accurate documentation of it can be found from http://wiki.newae.com/CW1173_ChipWhisperer-Lite , but it should not be needed for basic tasks.
-
-## Prerequisites
-
-#### Hardware
-In order for you to complete this lab you need a ChipWhisperer board + a target board. Boards are available at lab session and most likely you have to tasks in groups of 2 or 3. You can discuss with course assistants about lending the hardware after the lab session. It is also possible to lend hardware if you want to do ChipWhisperer related experiments as your coursework. Notice that there is also some tasks which do not require you to have hardware if you can get recorded traces from somewhere else.
-
-#### Hardware connections to be made when using it
-* Connect ChipWhisperers and target boards "*Measure*" ports using SMA cable.
-* If you are doing task 4 (glitching) also connect "*Glitch*" ports
-* Connect the serial cable between boards
-* Connect micro-usb to the board and your computer
-
-#### Software
-* We suggest that you use preconfigured virtual machine image of this laboratory exercise. It has everything installed and all scripts set ready.
-* If you do not want to do that, you may download clean image from manufacturer [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). After that clone this reposity and get setup scripts from scripts folder.
-* If you refuse to use virtual machines, you may install ChipWhisperer software your own machine [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). There is no reason why it would not work, but notice that we have not tested this option and therefore we might not be able to help you if you run into problems which are caused by your custom installation.
-
-#### Good-to-have skills for basic tasks
-* Basic understanding of C and Assembly code. Ability to code small and simple scripts with Python.
-* Basic understanding of mathematics, especially statistics.
-* Basic understanding of cryptographig systems.
-
-
-## Grading + other principles
-Task of this lab are divided to 4 different tasks which have corresponding grades in table below.
-
-Start your work from Task 1 and proceed to harder ones without skipping tasks. Skills and experience from each task is needed in next tasks.
-
-Completing task 1 and 2 should be taking about 4 hours so you are expected to do that during classroom lab session. You most likely do not have time to do more advanced tasks 3 and 4 during lab, so you if you want to continue working at home you can disscuss about lending the equipment with course assistants.
-
-Read every task carefully before starting to work on it so you will have clear picture what you are expected to do and what you are expected to return. Every task will state clearly what you are expected to do. If you are in doubt, you can always ask further advise from lab assistants.
-
-It is also recommended to read background information about different issues from links that are offereded in tasks.
-
-Task| Grade/Level | Description
---|:--:|--
-1|2|Getting started with ChipWhisperer, inspecting power traces and breaking AES
-2|3|Password bypass with timing attack and breaking RSA with power and timing analysis
-3|4|Glitching
-4|5|Several alternatives for advanced experimenting
+Task| Grade/Level | Description | Good-to-have skills
+--|:--:|--|--
+1|2|Getting started with ChipWhisperer, inspecting power traces and breaking AES|Basic understanding of C and Assembly code, reading and understanding technical articles, basic understanding of statistics
+2|3|Password bypass with timing attack and breaking RSA with power and timing analysis|Simple Python coding
+3|4|Glitching|Slightly more complex Python coding
+4|5|Several alternatives for advanced experimenting|Different advanced skills depending on your project
 
 ---
-# Task 1
+
+# Setting up
+
+Due to external device and specialized software, this lab needs some extra work to set everything up.
+
+## Hardware setup
+
+![Image of ChipWhisperer package](pictures/chipwhisperer_package.jpg "ChipWhisperer package items")
+
+Device package should contain next items
+* ChipWhisperer Lite 1173 Main board
+* CW303 XMEGA Target board
+* Serial cable
+* 2 SMA cables
+* USB cable
+
+Do next steps to prepare device for usage
+* Connect serial cable to serial ports of main board and target board
+* Connect SMA cable to measure ports of main board and target board
+    * If you are doing glitching-related tasks, you must connect also glitch ports with second SMA cable
+* Connect USB cable to main board
+
+Ending result should look like next (if you do not need glitch ports)
+![Image of ChipWhisperer package](pictures/chipwhisperer_connected.jpg "ChipWhisperer ready to use")
+
+Numbers in image are marking next ports:
+1. Measure ports
+2. Glitch ports
+3. Serial cable ports
+4. USB port
+
+**NOTICE: Handle device with carefully. Static electricity might be harful to board. Some ports might be little tight, but device still should be able to be assembled without excessive usage of force.**
+
+More detailed documentation of the device can be found from http://wiki.newae.com/CW1173_ChipWhisperer-Lite , but it should not be needed for basic tasks.
+
+## Software setup
+
+To connect and use ChipWhisperer device and analyze power traces, you need ChipWhisperer software installed on your machine. There is 3 different ways to do that, choose the one that suits you best.
+
+* Option 1: We recommend that you use preconfigured virtual machine image (VMWare) of this laboratory exercise. It has everything installed and all scripts set ready. To get image, follow instuctions at xxx
+* Option 2: If you do not want to use ready image or can not use WMWare images, you may download clean image from manufacturer [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). After that clone this reposity and get setup scripts from scripts folder.
+* Option 3: If you refuse to use virtual machines, you may install ChipWhisperer software your own machine [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). There is no reason why it would not work, but notice that we have not tested this option and therefore we might not be able to help you if you run into problems which are caused by your custom installation.
+
+This lab tasks are tested with ChipWhisperer software version xxx. If you install your own system, pay attention that you get the right version of program...
+
+---
+
+# Tasks
+
+Start your work from Task 1 and proceed to harder ones without skipping any task. Every task is designed to require more skills and amount of work than previous one.
+
+Task 1 and 2 together are designed to take about 4+ hours to complete. Try to finish those at lab session. You can borrow equipment if you want to continue working with those tasks at home.
+
+Tasks 3 and 4 are more laborous and it is likely that those can not be done in time limit of single lab session. You must discuss about borrowing equipment with lab assistants if you want to do those tasks.
+
+Read task instructions carefully before starting to work to have clear picture about what you are supposed to do. Every task should be clearly stating what you are expected to do and return.
+
+**If you are doing this work in group, remember to mark down clearly which of you participated on which tasks**
+
+Notice that some tasks (1C and 2B) require ChipWhisperer device only in early stages of task for recording power traces. This gives possibility to for example finish them at home without device if you manage to save correct traces during lab session or your friend records traces and sends them to you.
+
+## Task 1
+
 
 Ok, let's begin.
 
@@ -183,7 +257,7 @@ Under *Gain Setting* set the *Mode* to high. Increase the *Gain Setting* to abou
 
 Press capture button again and you should see captured power trace.
 
-__What to do to complete this task?__
+### What to do to complete this task?
 
 Modify your code by adding more nop and mul instructions to code and inspect how power trace changes. Remember that you have to rebuild and reload program to target device every time you change it.
 
@@ -202,56 +276,109 @@ It is advisable to try least of couple different amounts of muls and nops and pl
 * Picture of at least 40 x ASM nop or mul (or your custom operation). Do not use same operation for all 40 ASM instructions. Add explanation where any used operation happens.
 
 ## C) Breaking AES
-In this task we are going to break AES with attack scripts that already exist in ChipWhisperer software. This task is based on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B5_Breaking_AES_(Straightforward).
+In this task we are going to break AES with Correlation Power Analysis attack scripts that already exist in ChipWhisperer software. This task is modified version of ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B5_Breaking_AES_(Straightforward). You should not need original tutorial for this task, but feel free to read it as supplementary information.
 
-Idea of this task is to familiarize you with the Analyzer software and theory of statistical analysis of power traces.
+Idea of this task is to break AES implementation by analyzing power traces captured from the device. You will be using capture software to aquire traces and analyzer software to run Correlation Power Analysis attack script.
 
-First, read the theoretical basis of CPA so you can understand better what is idea of this task. http://wiki.newae.com/Correlation_Power_Analysis 
+This task is divided into 2 parts.
+
+Fist part is very straightforward: You will compile program (which is AES 128-bit algorithm implementation) and then you flash it to the target device like you did in previous task. After that you will execute setup script for AES and then run trace capture so that it captures 50 power traces with different plaintexts.
+
+Second part is more interesting: You will analyze captured traces with given attack scripts and find out the inner workings of scripts and Correlation Power Analysis principles.
 
 Task should be doable by following instructions below, but feel free to look the original tutorial for hints. Especially pictures of it can be useful to help you understand what is supposed to happen during the steps.
 
-1. Make sure your Chipwhisperer is still connected(Master, Scope and Target buttons on the top panel are green) If this is not the case execute the **connect_cwlite_simpleserial.py** script
-2. Build the file simpleserial-aes to the target board the same way you did in the previous task. File can be found from *chipwhisperer\hardware\victims\firmware\simpleserial-aes*
-3. Execute  **setup_cwlite_xmega_aes.py** script from the script list. This changes the settings of the scope. You can use the “Script view”-window to see what settings are set
-4. Press the *Capture many*-button on the top left(green triangle with the symbol ”M”). 
-5. Save the project with *File --> Save Project* option, give it any name you want. **NOTICE:** After you have managed to save your traces correctly you do not need chipwhisperer device on this task anymore. You can work at home with only analyzer software and still finish this task.
-6. Open the Analyzer software
-7. Open the file you saved in the step 5
-8. Switch to *Trace output Plot* tab on the right side
-9. Switch to *Results settings* tab on the left side
-10. You can play around with the Traces(s) to plot windows in order to draw different traces(for example 0-10 draws traces 0-10). In order to redraw the traces press Redraw button below the Traces(s) to plot. Consult http://wiki.newae.com/Plotting_Widget for different options
-11. Switch to Results tab and execute the attack_cpa.py script
+Ok, lets start with first easy part.
 
-**HINT:** You can see traces that you have selected/recorded at menu Project->Trace Management
+1. Make sure your Chipwhisperer is still connected (Master, Scope and Target buttons on the top panel are green). If this is not the case execute the **connect_cwlite_simpleserial.py** script.
+2. Build the file simpleserial-aes and load it to the target board the same way you did in the previous task. File can be found from *chipwhisperer\hardware\victims\firmware\simpleserial-aes*.
 
-__What to do to complete this task?__
+This program is the AES implementation we are going to attack. It holds secrect encryption key (128 bit) in it and it encrypts incoming data (plaintext) and returns ciphertext via SimpleSerial. 
+
+More common information about AES can be found at https://en.wikipedia.org/wiki/Advanced_Encryption_Standard
+
+Remember that procedure for making new programs is building program with `make PLATFORM=CW303`, then uploading resulting binary to target device with XMEGA programmer. Observation from last year showed that it is surprisingly common that mistake happens during those 2 steops so do those carefully.
+
+3. Execute  **setup_cwlite_xmega_aes.py** script from the script list.
+
+This setup script just makes configuration easier because it automatically configures every value (rather than you would have to do it manually via GUI). You can see what values script sets by looking at *Script Preview*-window when you select the script.
+
+4. Press the *Capture many*-button on the top left (green triangle with the symbol ”M”).
+
+*Capture many*-action differs from earlier used *Capture* so that it captures multiple traces at once to single set (all amounts are specified at *General Settings* tab).
+
+5. Save the project with *File --> Save Project* option, give it any sensible name you want.
+
+Now you have completed easy part. Next part will be more interesting.
+
+Notice that if you managed to save correct traces in this part, you will not need ChipWhisperer device anymore because the rest of the task is considering only about saved data and not the device.
+
+First, read the theoretical basis of CPA so you can understand better what is idea of this task. http://wiki.newae.com/Correlation_Power_Analysis Try to understand at least the major steps which are performed during attack, because it makes easier for you to understand what happens next.
+
+6. Open the ChipWhisperer Analyzer software (shortcut is at desktop of the machine)
+7. Open the file you saved in the step 5. Check from *Trace Management* (Project -> Trace Management) that you have those 50 traces you saved there.
+
+If you do not have any traces there, something has gone wrong during capture. If you have more than 50 traces which are not in mapped range 0-49, it may cause calculations fail as some cases from last year indicated. To remove unneccessary traces, click the row and then click small minus button in the bottom of the window.
+
+8. If everything seems to be in order, you are ready to execute actual attack script. Run script *attack_cpa.py* and wait for its execution to end.
+
+9. After execution of script *Results Table* and other tabs should be populated with data. Inspect carefully data on every tab while considering next information
+* *Results Table* contains the final output of the algorithm which is maximum correlation found on every subkey guess. It orders best quesses to top of the table. You should see the correct key bytes at first row of the table. Notice that when you saved your project in capture software the project contained also information about correct encryption key. These correct key bytes are now marked as red in the *Results Table*. Of course in normal situations this kind of cheating would not be possible and you would have to trust only calculated correlation values.
+* *PGE vs Trace Plot* consideres Partial Guessing Entropy of calculations. Basically this plot tells that how high on ranking was each correct subkey when analysis of traces was continuing. It is easy to see how many traces were required before that correct subkey gained highest rank. Notice that these calculations need that correct key is known beforehand.
+* *Correlation vs Traces in Attack* is very similar than above. You can see how each subkey guess correlation was developing when more traces were analysis were progressing. Notice that if there is correct key information available, program hilights correct subkey guess correlation plot as red.
+* *Output vs Point Plot* shows CPA output for every point sample point for every guessed subkey. Notice that known correct subkey is marked on red (because the correct key information came with the project). Also you should notice that correct known guess also seems to have highest maximum correlation "spike".
+
+
+### What to do to complete this task?
 
 **Explain shortly how the correlation power analysis that you just performed works.**
 
-**Add picture of "Output vs Point plot"-tab to return template**
+Theoretical information about the attack you just performed can be found here http://wiki.newae.com/Correlation_Power_Analysis 
 
-**TIPS & TRICKS**
-* If you are interested logic behind breaking AES encryption, look at tutorial http://wiki.newae.com/Tutorial_B6_Breaking_AES_(Manual_CPA_Attack) which explains how to perform this task manually.
+Deeper technical insight and actual example code of attack can be found here http://wiki.newae.com/Tutorial_B6_Breaking_AES_(Manual_CPA_Attack) 
+
+All answers should be found in those two articles.
+
+Your answer does not have to be in any certain "format" or any minimum length, but is expected to contain answers to next questions:
+* What are major steps of the attack you just performed? Explain each phase shortly
+* What kind of power leakage model is used and how it is utilized at correlation calculations? (improve this...)
+* What sensitive point of AES algorithm implementation is targeted in this attack? Why it works?
+* Did you manage to find out correct encryption key? Was answer completely right or were some subkey guesses wrong? If yes, consider how could it be possible to fix
+
 ---
 # Task 2
 
-In task 2, there is 2 harder tasks which require closer analysing of power traces with small Python scripts. Task 2 is significantly harder than previous task so expect that you will most likely use rest of the lab session for this task. Notice that you can easily continue working on task B at home after lab session without device if you manage to capture and save power traces for yourself.
+In task 2, there is 2 tasks which require closer analysing of power traces with small Python scripts. Task 2 is significantly harder than previous task so expect that you will most likely use rest of the lab session for this task. Notice that you can easily continue working on task B at home after lab session without device if you manage to capture and save power traces for yourself.
 
 ## A) Password bypass with power analysis
-In this task you will extract password from secure device by analyzing the power traces of device when it processes your login attempts. You will also learn how to use Python scripts to control ChipWhisperer software. 
+In this task you will break in to secure device by analyzing the power traces of device when it processes your login attempts. You will also learn how to use Python scripts to control ChipWhisperer software. 
 
-In this tutorial you will be doing next main steps:
+Target program on victim device is simple. It prints initial information, waits for user to input login password and check if it is right. If it is, program prints welcome text and lights up green led. If not, program reports failure and red led turns on. (kuvaus laitteesta ohjelmasta ja periaatteesta). Feel free to read C-code for ...
 
-1. Build password program and load it to the device (like you did in previous tasks).
-2. Test that program is working with terminal emulator. Record couple of power traces manually to see how amount of different characters affects to the trace.
-3. Learn what is resetter auxiliary module and use it manually to see that it is working.
-4. Create your own attack script which automatically does setup, tries password, analyses resulting trace and resets device before every try.
+Target program compares inputted password against correct password character by character and ends comparing if wrong character is encountered. This kind of process is obviously vulnerable against timing attacks. In this program, timing attack is countered by adding random wait time after failed password input. Catch here is that login system is still vulnerable to power analysis, which will be utilized here. With power analysis, we can see every character being processed and therefore we can determine when program hits the wrong character.
 
-This lab is a modified version of http://wiki.newae.com/Tutorial_B3-1_Timing_Analysis_with_Power_for_Password_Bypass tutorial. Instead of manually setting most of the values we use ready made scripts to set different scope values etc. You may check original tutorial because it might have screenshots and other helpful information which can make it easier to understand what is happening here. However you can complete this lab by following these steps:
+Feel free to read source code of program before building it as supplementary information.
+
+This task is based on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B3-1_Timing_Analysis_with_Power_for_Password_Bypass. Original tutorial is not needed for this task, but you are free to look it as supplementary information.
+
+This task can be divided to 2 different parts: Setup & warm-up and running attack.
+
+In setup & warm-up phase you will be doing next things:
+* Building and uploading program to device
+* Setup initial settings by running setup scripts
+* Test that target program is working
+* Learn to use auxilary module for resetting target device
+* Test multiple different passwords to see how power trace is affected
+
+In running attack script part, you will modify attack script based on knowledge you aquired earlier to make attack run automatically and produce successful result.
+
+### Setup & warm-up
+
+First, we will setup device and do some simple experimenting with inputting different passwords. You are not required to return anything on this phase, but setupping the device and knowledge you will be acquiring in this part is crucial for the second part of the task.
 
 1. Restart the Capture software.
-2. Go to *\home\cwuser\Desktop\chipwhisperer\hardware\victims\firmware\basic-passwdcheck*.
-3. Make the program with the command `make PLATFORM=CW303`.
+2. Navigate to *\home\cwuser\Desktop\chipwhisperer\hardware\victims\firmware\basic-passwdcheck*.
+3. Build the program with the command `make PLATFORM=CW303`, as you did in previous tasks.
 4. Execute **connect_cwlite_simpleserial.py** in the Capture software to connect the device.
 5. Execute **setup_password_check_delay.py** in the Capture software to set the parametres. Check the Script preview window to see what values were changed.
 6. Program the file you made earlier to the target board using XMEGA Programmer. Keep the programmer window open.
@@ -274,20 +401,50 @@ __HINT__: Use password guesses where the first letter is wrong, then the second 
 16. Now with this knowledge modify the **PASSWORD_BYPASS.py** script in the */home/cwuser/Desktop/chipwhisperer/software/chipwhisperer/capture/scripts* folder so that it guesses the password correctly. Script should also be visible in the Capture Software.
 It is advised that you learn what each of the lines in this code do. It will be helpful if you are planning on working more with the ChipWhisperer. However for this exercise you only have to modify the commented part of the code.
 
-__What to do to complete this task?__
+### Running attack
 
-**Return your working code (your modified PASSWORD_BYPASS.py) and screenshot of the Python console (which shows output when correct password is guessed).**
+Now its time for actual automated attack.
+
+**PASSWORD_BYPASS.py** script in the */home/cwuser/Desktop/chipwhisperer/software/chipwhisperer/capture/scripts* folder is your attack code. It automatically does the setups, resets device between login attempts, tries every character from specified character list and then analyzes if password character was correct or not. If character was wrong, script tries next character in list and if character was right, script locks that character and starts guessing next character of password string.
+
+Script should be visible in the Capture Software script list. If you are not using virtual machine given on this course, you must get the script from scrips-folder of this repository.
+
+Attack script is almost ready, but if you run it, you can see that the part determining if character was correct or not is not working.
+
+```Python
+if nextTrace[153 + 72*i] < -0.2:
+    continue
+```
+
+You already probably guessed that your task is to modify this part of the code to make script work automatically. You must most likely modify all hard-coded values and possibly also boolean operator comparing them.
+
+Use your knowledge acquired from previous task and do more experimenting to see how power trace behaves with different amount of correct characters. By that knowledge you should be able to construct logical rule which can separate whether tried character was correct or incorrect.
+
+Your ending result (and requirement to gain points from this task) should be script which automatically solves whole password for you.
+
+Some tips which might be helpful
+* During your experimenting most important thing is to find some point of power trace which is always different depending if character was correct or incorrect. (percistence?)
+* Second important thing is to find out how long is the processing time of single correct character. Every time correct character is found, comparision point must be shifted forward that amount.
+* You might speed up testing some amount by putting known correct characters earlier to testing list. Notice that you should still put some incorrect character as first of the testlist. Otherwise you might end up in the situation during testing that your wrong code selects always the first character of your list, but because it happens to be correct one, you might think that code is right.
+
+### What to return in this task?
+
+You must return next 2 items to to return template to gain points from this task:
+1. Your working attack script (your modified PASSWORD_BYPASS.py). Return whole script or just the part(s) you modified.
+2. Screenshot of the python console after you have successfully solved correct password with your script.
 
 ## B) Breaking RSA
 In this task you will explore the principles of breaking RSA implementation by analysing power traces. Basic idea is to detect conditional code branch execution from power trace and then deduct the private key that device uses internally.
 
-This task is based on and example scripts are taken from on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B11_Breaking_RSA. This task should be able to be completed by following instructions below, but feel free to look at original tutorial because pictures, scripts and other related information it contains might be helpful when you do this task.
+This task is based on and example scripts are taken from on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B11_Breaking_RSA. This task should be able to be completed by following instructions below, but feel free to read original tutorial as supplementary information.
+
+This task is divided into three parts. First part is theory introduction to this task, second part contains instructions how to capture traces for analysis and third part consists of writing analysis code for those traces. First 2 parts should be fast and easily done. Third part can be considered as actual task and it contains the majority of work.
+
+Third part of task does not require you to have device, so you can complete task at home if you have saved traces successfully or ask your friend to save those for you. Or find and download those from internet (might be tricky to find traces with correct keys, but if you do, it is ok to use them).
+
+### Breaking RSA theory
 
 First, if you do not know what is RSA, you can find basic information about if from https://en.wikipedia.org/wiki/RSA_(cryptosystem).
-
-Notice that you can complete this task even if you dont have device or cannot attend lab class. Main point of this task is not to capture traces so you can ask saved traces from your friend and complete task by analyzing them.
-
-### Theory
 
 This is some code from RSA implementation from avr-crypto-lib
 ```C
@@ -381,41 +538,77 @@ if(t & (1<<(BIGINT_WORD_SIZE-1))){
 
 This is execution dependent on our private key, and if we can deduce which branch is executed, we could determine the private key bits one by one!
 
-### Task instructions
+### Capturing power traces
 
-ChipWhisperer RSA demo what we will be using in this task has 2 modes: Real RSA algorithm (which is way too slow for our testing purposes) and "faked" stripped version of RSA algorithm (which is using last 16 bits of private key and executing only the vulnerable part of RSA implementation). We will be using latter one version to demonstrate RSA vulnerability against power analysis.
+ChipWhisperer RSA demo is used in this task. It has 2 modes: Real RSA decryption algorithm (which is way too slow for our testing purposes) and "faked" stripped version of RSA decryption algorithm, which is running only the vulnerable part of decryption algorithm. We will be using latter one version with only 16 bits of key material (to make analysis easier and capture too long) to demonstrate RSA vulnerability against power analysis. You can read source code from *simpleserial-rsa-xmega.c* before you compile it if you want to have deeper understanding of inner workings of real and faked algorithms.
 
-When we use demo script (simplified version), we send *Fixed plaintext* to algorithm. This is actually misleading, because send plaintext is used as "fake private key" to decrypt message. We do not care about actual message or resulting plaintext at all because our analysis targets only on private key so actual message and plaintext are irrelevant.
+When we use demo script (simplified version), we send *Fixed plaintext* to algorithm. This is actually misleading, because send plaintext is used as "fake private key" to decrypt message. We do not care about actual encrypted message or resulting plaintext at all because our analysis targets only on private key so actual ciphertext and plaintext are irrelevant.
 
-First, we setup target board, capture multiple power traces with different keys and save them to project file.
+In this part we setup target board, capture multiple power traces with different decryption keys and save traces to project file.
 
 1. Start the Capture software
 2. Go to */home/cwuser/chipwhisperer/hardware/victims/firmware/simpleserial-rsa*
 3. Make the program with the command `make PLATFORM=CW303` like you did in previous tasks.
-4. Execute **connect_cwlite_simpleserial.py** in the Capture software to connect the device.
+4. Execute **connect_cwlite_simpleserial.py** in the Capture software to connect the device (if you are not connected).
 5. Execute **setup_cwlite_xmega.py** script in Capture software.
 6. Load program that you just made to the target board similar way that you did in previous tasks.
 7. Run script **setup_breaking_rsa.py** to setup some initial values.
-8. On *Generic settings*, change plaintext to be fixed at value `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00` and press capture button to confirm that it works as expected
+
+**setup_breaking_rsa.py** just setups some predefined values. Notice that this is not factory-made script and this is only available in presetupped course virtual machine or this course pages scripts folder.
+
+Script contains next setups:
+```Python
+target.key_cmd = ""
+target.output_cmd = ""
+scope.clock.adc_src = "clkgen_x1"
+scope.adc.samples = 24000
+```
+
+8. On *Generic settings*, change plaintext to be fixed at value `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00` and press capture one button to confirm that it works as expected
+
+You should see plot with 16 repeating distinguishable somewhat-similar "blocks". You might already guess that those 16 blocks are corresponding 16 bits of private key.
+
+You can try also next to achieve better understanding about what is happening: Change plaintext to be fixed at value `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 10`, press trace percistence button and press capture one button again. You should see slightly differing power trace being plotted over original trace. This is because key bit changes -> running time of single loop execution changes.
+
 9. On *Generic settings*, change *Number of traces* and *Traces per set* to 2
+
 10. Save the project file as *rsa_test_2bytes.cwp* or any other name or location that you can find easily.
+
+Next four steps are actual trace captures. You will be saving 8 traces total. Notice that their indexing goes from 0-7.
+
 11. Set the *Fixed plaintext* to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00`, press *Capture M*.
 12. Set the *Fixed plaintext* to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 81 40`, press *Capture M*.
 13. Set the *Fixed plaintext* to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 AB E2`, press *Capture M*.
 14. Set the *Fixed plaintext* to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 AB E3`, press *Capture M*.
-15. Save the project.
-16. Check from *Project --> Trace management* that you have successfully saved 8 different traces to this project.
+15. Check from *Project --> Trace management* that you have successfully saved 8 different traces to this project.
 
-Now we have successfully saved power traces for different private keys and next we analyze those with Python scripts. **NOTICE:** Capture sofware and ChipWhisperer board are not needed anymore if you have saved correct power traces successfully. You can work without them at home and still finish this task.
+You already used *Trace Management* tool in task 1B to inspect that you have correct traces. Just check now that you have those traces and only those traces correctly in your project before saving it.
 
-Technically it could be possible to determine private key by examinging power traces just by looking at them and plotting them carefully on top of each other (feel free to try using different *Fixed plaintexts* and draving multiple traces to same image with different colors!), but we of course want automated attack instead of manual attack.
+16. Save the project to some place you can find.
+
+Now you should have successfully saved power traces for different private keys. **NOTICE:** Capture sofware and ChipWhisperer board are not needed anymore if you have saved correct power traces successfully. You can work without them at home and still finish this task.
+
+### Analyzing captured power traces with Python
+
+Ok, now the actual task begins.
+
+In this part we will write Python script that solves the secret private key by analyzing power traces.
+
+In theory it could be possible to determine private key by examinging power traces just by looking at them and plotting them carefully on top of each other (like you were hinted to experiment at capture phase), but of course we want computer to do work for us automatically instead of parforming manual labor.
 
 Basically we will do next:
-1. Load power trace to script
+1. Load power trace data to script
 2. Find good reference pattern from power trace
-3. By using reference pattern, calculate execution times for every loop over private key bits in order to find out if processed bit of private key was 0 or 1
+   * In trace there can be seen 16 rounds of looping (16 similar-looking blocks 1 for each bit of private key), and reference pattern should match to them
+3. Use reference pattern to calculate places of trace where reference pattern occurs
+4. Calculate distance between pattern occurences to determine how much time was consumed during single key bit processing (this solves single loop execution time)
+5. Based on loop execution time information, determine if processed bit was 1 or 0 (long execution = 1, short execution = 0)
 
-Lets start with loading power trace and plotting it to the image. Write your own script and run it from command line.
+Virtual machine has already Python 2 installed and those code examples are created for it.
+
+Lets start with loading power trace and plotting it to the image.
+
+Create new .py file and use next example code to plot first trace to image. You can run your scripts in terminal by simply with `python yourscript.py`.
 
 ```Python
 from chipwhisperer.common.api.CWCoreAPI import CWCoreAPI
@@ -423,7 +616,7 @@ from matplotlib.pylab import *
 import numpy as np
 
 cwapi = CWCoreAPI()
-cwapi.openProject(r'c:\examplelocation\rsa_test.cwp')
+cwapi.openProject(r'/home/cwuser/examplelocation/yoursavedproject.cwp')
 
 tm = cwapi.project().traceManager()
 ntraces = tm.numTraces()
@@ -439,15 +632,19 @@ By looking at image you should be seeing power trace "as-it-is". You should be e
 
 ![alt text](pictures/rsa_sample_trace.png "Example plot")
 
-Next step is to take suitable reference pattern from power trace. Extend your code.
+Next step is to take suitable reference pattern from power trace. Extend your code by applying next snippet.
 
 ```Python
-#The target trace we will attack
-target_trace_number = 3
+# The target trace we will attack
+target_trace_number = 3 # This is index 3 meaning that it should be responding trace with key 81 40
 
+# This cuts pattern of 500 samples out of  trace_ref
 start = 3600
 rsa_one = trace_ref[start:(start+500)]
-        
+
+
+# This calculates the difference plot
+# You can consider this like that reference pattern is moved as "window" over target trace and then absolute sum of difference for each plot point is calculated
 diffs = []
 
 for i in range(0, 23499):
@@ -459,22 +656,18 @@ plot(diffs)
 show()
 ```
 
-Above script takes reference pattern from trace 0 and then uses it to trace 3 to look for places that are matching to it. Notice that above code produces "difference plot" so every time plot falls close to zero it means that match is found.
+To conclude: Above code snippet takes reference pattern from trace indexed 0 and then uses it to trace indexed 3 to look for places that are matching to it by producing difference plot.
 
-Values of this script might not work. You are expected to find suitable reference pattern yourself by inspecting power trace and difference plot.
+Meaning of difference plot is next: When plot drops close to zero, it simply means that difference between target plot and reference pattern is almost zero in that point which means the close match is found.
 
-Notice that in this example code reference pattern `rsa_one` is taken from sample 3600 (starting point) to 4100 (because its length is 500). These starting sample and pattern length are things that you want to modify to find your own good reference sample.
+**Your next task is to find suitable reference pattern which produces good difference plot for further calculations. Experiment with different values until you find satisfiable difference plot.**
 
-**Examples of possible difference plots you might see during your testing**
-
-![alt text](pictures/difference_plot_horrible.png "Example difference plot")
-![alt text](pictures/difference_plot_not_good.png "Example difference plot")
-![alt text](pictures/difference_plot_better.png "Example difference plot")
-
-
-__HINT__: Remember that your ending goal is to find execution time differences between processed bits of secret key. This means that you have to find trace pattern that is found in every bit. Expect that you might have to use some time for finding good one. You can consider that you have good reference pattern when your difference plot has clear and stable set of close-to-zero spikes.
-
-__EXTRA__: You are not limited to use sum of differences as metric if you dont want to. For example, using this kind of correlation might be useful tool.
+Couple of hints for this part
+* Values of this example snippet most likely do not work for you. You have to find your own pattern by inspecting traces and by trial and error. Expect that you might have to spend some time to find good one.
+  * Try different starting positions and lengths about where you cut your reference pattern (values in snippet are 3600 and 500).
+  * Consider inspecting original traces closely to find suitable repeating part to be used as reference pattern.
+* Remember that your ending goal is to find clean reference plot with easily distinguishable close-to-zero spikes. Otherwise further calculations for that difference plot would be harder.
+* You are not limited to use sum of differences as metric. You can also use for example correlation if you want to.
 
 ```Python
 corr_data = np.correlate(rsa_one,  tm.getTrace(target_trace_number), mode='full')
@@ -482,26 +675,42 @@ plot(corr_data, 'r')
 show()
 ```
 
-When you have nice reference pattern, we can calculate sample distance (which is technically also time distance) between occured patterns.
+**Examples of possible difference plots you might see during your testing**
 
-This is sample how you can print the distance between found matches (in this example "match" is seen as any place where difference plot falls under 10).
+![alt text](pictures/difference_plot_horrible.png "Example difference plot")
+![alt text](pictures/difference_plot_not_good.png "Example difference plot")
+![alt text](pictures/difference_plot_better.png "Example difference plot")
+
+When you have nice reference pattern and difference plot, we can calculate sample distance (which is technically also time distance) between occured patterns.
+
+This is snippet how you can print the distance between found matches (in this example "match" is considered to be any place where difference plot falls under 10, you most likely have to modify this value). Extend your code by applying this snippet to it.
 ```Python
+
+# Put difference plot to numpy array
 diffs = np.array(diffs)
+
+# Get any index where value is under 10, you most likely have to modify this value according your results in difference plot
 loc = np.where(diffs < 10)
 
-#Get actual list
+# Get actual list
 loc = loc[0]
 
+# Print distances (times) between matches
 for i in range(0, len(loc)-1):
     delta = loc[i+1]-loc[i]
     print delta
 ```
-Do you remember what we said about execution times in theory part? We noticed in the code that every time bit in key is 1, it results additional multiplication operation executed in algorithm. Therefore when bit is 1 in secret key, loop round in algorithm takes much more time to execute.
 
-Based on this knowledge this is example how key could be solved from time distance of matches.
+After your code prints time differences, you should consider next things while you are inspecting those values:
+* Notice that there is big delay at first run but other runs are staying in about constant times.
+* There is little extra delay when algorithm finishes processing 8-bit "chunk" of private key.
+* Remember what we concluded about execution times in theory part? When key bit is 1, additional multiplication operation should result longer execution time.
+
+Based on all previous knowledge combined, this is example code snippet how key could be calculted bit by bit. Extend your code by applying snippet to it. You most likely have to modify some values or add some extra code according to your own analysis of execution times you just printed.
+
 ```Python
 recovered_key = 0x0000
-bitnum = 17
+bitnum = 16
 
 diffs = np.array(diffs)
 loc = np.where(diffs < 10)
@@ -519,21 +728,20 @@ for i in range(0, len(loc)-1):
 print("Key = %04x"%recovered_key)
 ```
 
-__What to do to complete this task?__
+Run your attack code against trace with secret key 8140 and ABE2. Those should be at indexes 2-3 and 4-5 if you have saved your traces in order that was instructed.
 
-**Take screenshot of your difference plot when you found the nice reference pattern and explain why you selected it.**
+Your attack is successful if your code output correct end result, for example ```Key = abe2```. Otherwise something is wrong and you should reconsider your attack script or trace captures.
 
-**Combine all those scripts above to one program which automatically solves the key for you from recorded traces.** Notice that you will most likely change several hardcoded values and make small modifications to given code pieces to make it work. This task would be too easy if it was only simple copy-pasting.
+When you have ensured that your code successfully solves keys 8140 and ABE2, try to solve key ABE3 from index 6-7 (if you have saved traces in instructed order). What happens?
 
-Your complete program should be able to solve correct keys `8140` and `ABE2` from corresponding traces. **Copy your working program to return template. Tell which modifications to existing values you had to make and which modifications you had to make to make your script work correctly.**
+### What to return in this task?
 
-**Answer the next question:** Can program solve key `ABE3` from corresponding trace? If not, tell why it does not work. How you could fix that? (*You do not have to implement your answer, just tell how you would do it.*)
+All practical work is done, only final push left to finish this task. Fill next answers to return template and you are ready.
 
-**TIPS & TRICKS**
-
-Notice that quality of your “difference plot” is highly dependent of your reference sample. Do not choose it hastily.
-
-Pay attention to the number of close-to-zero spikes in difference plot. Think how many of those spikes are needed to calculate 16-bit key.
+**Next items/answers must be returned to gain points from this task**
+1. Screenshot of suitable difference plot and explanation how you found suitable reference pattern
+2. Your complete attack code and screenshots how it successfully solves secrect keys specified earlier (8140 and ABE2)
+3. Sufficient answer to next question: *You were instructed earlier to try to solve key ABE3 from corresponding trace with your attack code. Did you succeed? If not, tell why it did not work. How would you make it work? Note that you do not have to implement your answer, just telling that how you would do it is enough.*
 
 ---
 # Task 3
