@@ -572,6 +572,8 @@ You can try also next to achieve better understanding about what is happening: C
 
 9. On *Generic settings*, change *Number of traces* and *Traces per set* to 2
 
+By taking 2 trace captures per key, we can avoid situation where later in this task reference pattern would be tested against trace it was taken from if same key is wanted to be tested. Not big flaw, but because we can avoid it easily, there is no reason to not to do it.
+
 10. Save the project file as *rsa_test_2bytes.cwp* or any other name or location that you can find easily.
 
 Next four steps are actual trace captures. You will be saving 8 traces total. Notice that their indexing goes from 0-7.
@@ -706,7 +708,7 @@ After your code prints time differences, you should consider next things while y
 * There is little extra delay when algorithm finishes processing 8-bit "chunk" of private key.
 * Remember what we concluded about execution times in theory part? When key bit is 1, additional multiplication operation should result longer execution time.
 
-Based on all previous knowledge combined, this is example code snippet how key could be calculted bit by bit. Extend your code by applying snippet to it. You most likely have to modify some values or add some extra code according to your own analysis of execution times you just printed.
+Based on all previous knowledge combined, this is example code snippet how key could be calculted bit by bit. Extend your code by applying snippet to it. You most likely have to modify some hard-coded values or even add some extra code according to your own analysis of execution times you just printed.
 
 ```Python
 recovered_key = 0x0000
@@ -741,7 +743,7 @@ All practical work is done, only final push left to finish this task. Fill next 
 **Next items/answers must be returned to gain points from this task**
 1. Screenshot of suitable difference plot and explanation how you found suitable reference pattern
 2. Your complete attack code and screenshots how it successfully solves secrect keys specified earlier (8140 and ABE2)
-3. Sufficient answer to next question: *You were instructed earlier to try to solve key ABE3 from corresponding trace with your attack code. Did you succeed? If not, tell why it did not work. How would you make it work? Note that you do not have to implement your answer, just telling that how you would do it is enough.*
+3. Thought-out answer to next question: *You were instructed earlier to try to solve key ABE3 from corresponding trace with your attack code. Did you succeed? If not, tell why it did not work. How would you make it work? Note that you do not have to implement your answer, just telling that how you would do it is enough.* (HINT: Consider the amount of close-zero spikes you have in your difference plot)
 
 ---
 # Task 3
