@@ -353,7 +353,7 @@ In task 2, there is 2 tasks which require closer analysing of power traces with 
 ## A) Password bypass with power analysis
 In this task you will break in to secure device by analyzing the power traces of device when it processes your login attempts. You will also learn how to use Python scripts to control ChipWhisperer software. 
 
-Target program on victim device is simple. It prints initial information, waits for user to input login password and check if it is right. If it is, program prints welcome text and lights up green led. If not, program reports failure and red led turns on. (kuvaus laitteesta ohjelmasta ja periaatteesta). Feel free to read C-code for ...
+Target program on victim device is simple. It prints initial information, waits for user to input login password and check if it is right. If it is, program prints welcome text and lights up green led. If not, program reports failure and red led turns on.
 
 Target program compares inputted password against correct password character by character and ends comparing if wrong character is encountered. This kind of process is obviously vulnerable against timing attacks. In this program, timing attack is countered by adding random wait time after failed password input. Catch here is that login system is still vulnerable to power analysis, which will be utilized here. With power analysis, we can see every character being processed and therefore we can determine when program hits the wrong character.
 
@@ -376,12 +376,14 @@ In running attack script part, you will modify attack script based on knowledge 
 
 First, we will setup device and do some simple experimenting with inputting different passwords. You are not required to return anything on this phase, but setupping the device and knowledge you will be acquiring in this part is crucial for the second part of the task.
 
+If you are not doing this task with virtual machine provided by this course, you need to grab scripts **setup_password_check_delay.py**, **setup_password_check.py** and **PASSWORD_BYPASS.py** from this repositorys scripts-folder yourself.
+
 1. Restart the Capture software.
 2. Navigate to *\home\cwuser\Desktop\chipwhisperer\hardware\victims\firmware\basic-passwdcheck*.
 3. Build the program with the command `make PLATFORM=CW303`, as you did in previous tasks.
 4. Execute **connect_cwlite_simpleserial.py** in the Capture software to connect the device.
 5. Execute **setup_password_check_delay.py** in the Capture software to set the parametres. Check the Script preview window to see what values were changed.
-6. Program the file you made earlier to the target board using XMEGA Programmer. Keep the programmer window open.
+6. Program the file you made earlier to the target board using XMEGA Programmer as you did in previous tasks. Keep the programmer window open.
 7. Open terminal from *Tools --> Terminal*.
 8. Press *Connect* in the Terminal. 
 9. Press Check signature from Programmer window. This will reset the software in the target board and you should see text that asks for your password. Correct password is h0px3.
@@ -423,8 +425,8 @@ Use your knowledge acquired from previous task and do more experimenting to see 
 Your ending result (and requirement to gain points from this task) should be script which automatically solves whole password for you.
 
 Some tips which might be helpful
-* During your experimenting most important thing is to find some point of power trace which is always different depending if character was correct or incorrect. (percistence?)
-* Second important thing is to find out how long is the processing time of single correct character. Every time correct character is found, comparision point must be shifted forward that amount.
+* During your experimenting most important thing is to find some point of power trace which is always different depending if character was correct or incorrect. Consider using "Enable percistance"-button to draw traces top of each other for easier analysis.
+* Second important thing is to find out how long is the processing time of single correct character. Every time correct character is found, comparision point must be shifted forward that amount (which is done by the increasing value of variable `i`).
 * You might speed up testing some amount by putting known correct characters earlier to testing list. Notice that you should still put some incorrect character as first of the testlist. Otherwise you might end up in the situation during testing that your wrong code selects always the first character of your list, but because it happens to be correct one, you might think that code is right.
 
 ### What to return in this task?
