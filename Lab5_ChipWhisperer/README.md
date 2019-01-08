@@ -175,9 +175,17 @@ __TIPS & TRICKS__
 
 * Beware of static electricity. Discharge of static electricity can be harmful to board.
 
-## B) Inspecting power differences of operations
+## B) Inspecting power differences of simple operations
 
-In this task, we will look at how the different operations on microcontroller affect to the power consumption of it. This task is simplified version of ChipWhisperer wiki B2 tutorial http://wiki.newae.com/Tutorial_B2_Viewing_Instruction_Power_Differences and you are free to search for help there (especially some screenshots of program might be helpfult to understand what is supposed to happen and what kind of waveforms might be corresponding to different operations), but this task should be doable without it.
+In this task, we will inspect how the different operations on victim affect to the power consumption of it. As you already know, not every operation processor performs is equal: Some operations are more complex than others, causing them to consume more power and clock cycles than other operations. By measuring power consumption from target, therefore we can deduce what operation is performed and when.
+
+You will be capturing and analyzing traces which will reveal operations which are running on victim, simply by looking at power consumption of target. (toisto?)
+
+This task is based on information in ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B2_Viewing_Instruction_Power_Differences. You should not need original tutorial for this task, but you are free to read it as supplementary information.
+
+Follow next instructions:
+
+1. 
 
 First we have to make program that performs different operations. Create new folder similarly how you made it in previous introduction tutorial and make next modifications to code:
 
@@ -274,6 +282,14 @@ It is advisable to try least of couple different amounts of muls and nops and pl
 * Picture of 30 x ASM mul instructions
 * Picture of 30 x ASM nop instructions
 * Picture of at least 40 x ASM nop or mul (or your custom operation). Do not use same operation for all 40 ASM instructions. Add explanation where any used operation happens.
+
+### What to return on this task?
+
+
+
+Next items must be returned to gain points from this task.
+
+
 
 ## C) Breaking AES
 In this task we are going to break AES with Correlation Power Analysis attack scripts that already exist in ChipWhisperer software. This task is modified version of ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B5_Breaking_AES_(Straightforward). You should not need original tutorial for this task, but feel free to read it as supplementary information.
