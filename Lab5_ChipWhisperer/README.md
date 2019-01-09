@@ -124,7 +124,7 @@ More detailed documentation of the device can be found from http://wiki.newae.co
 
 To connect and use ChipWhisperer device and analyze power traces, you need ChipWhisperer software installed on your machine. There is 3 different ways to do that, choose the one that suits you best.
 
-* Option 1: We recommend that you use preconfigured virtual machine image (VMWare) of this laboratory exercise. It has everything installed and all scripts set ready. To get image, follow instuctions at xxx
+* Option 1: We recommend that you use preconfigured virtual machine image (VMWare) of this laboratory exercise. It has everything installed and all scripts set ready. To get image, follow instuctions at main page of this course.
 * Option 2: If you do not want to use ready image or can not use WMWare images, you may download clean image from manufacturer [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). After that clone this reposity and get setup scripts from scripts folder.
 * Option 3: If you refuse to use virtual machines, you may install ChipWhisperer software your own machine [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). There is no reason why it would not work, but notice that we have not tested this option and therefore we might not be able to help you if you run into problems which are caused by your custom installation.
 
@@ -177,17 +177,23 @@ __TIPS & TRICKS__
 
 ## B) Inspecting power differences of simple operations
 
-In this task, we will inspect how the different operations on victim affect to the power consumption of it. As you already know, not every operation processor performs is equal: Some operations are more complex than others, causing them to consume more power and clock cycles than other operations. By measuring power consumption from target, therefore we can deduce what operation is performed and when.
+In this task, we will inspect how the different operations on victim affect to the power consumption of it. As you already intuitively know, not every operation processor performs is equal: Some operations are more complex than others, causing them to consume more power and clock cycles than other operations. By measuring power consumption from target, therefore we can deduce what operation is performed and when.
 
-You will be capturing and analyzing traces which will reveal operations which are running on victim, simply by looking at power consumption of target. (toisto?)
+In this task you will be creating programs which repeats different types of assembly operations and capture power traces from the device to inspect them.
+
+This task is divided 2 parts: First part considers setting everything up and understanding what is happening, and second part tells you what kind of tests you should do and items return.
 
 This task is based on information in ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B2_Viewing_Instruction_Power_Differences. You should not need original tutorial for this task, but you are free to read it as supplementary information.
 
+### Setup & testing
+
+In this part.... (you are not required to return nothing)
+
 Follow next instructions:
 
-1. 
+1. Create new copy of folder ``simpleserial-base`` like you did in previous tutorial task. You can rename it for example ``simpleserial-base-task-1b`` or anything you want.
 
-First we have to make program that performs different operations. Create new folder similarly how you made it in previous introduction tutorial and make next modifications to code:
+2. Next, we will modify the copied simpleserial example that it performs different basic operations. Make next modifications to code:
 
 Find next code
 ```c
@@ -204,8 +210,11 @@ trigger_high();
 trigger_low();
 /* End user-specific code here. *
  ********************************/
+```
 
-And add next changes to it
+And apply next changes to it
+
+```c
 /**********************************
  * Start user-specific code here. */
 trigger_high();
@@ -249,6 +258,50 @@ trigger_low();
  ********************************/
 
 ```
+
+When looking at code above, you can see that program performs first 10 NOP (no-operation) instructions and after thet 10 MUL (multiplication between registers r0 and r1).
+
+3. Ensure that you are connected to the device. Run script **setup_cwlite_xmega.py** to setup initial settings.
+
+If you are not connected to device, connect device with instructions of previous tutorial. Or simply open capture software and run scripts **connect_cwlite_simpleserial.py** and **setup_cwlite_xmega.py**.
+
+4. Build your new program with command `make PLATFORM=CW303` as you did in tutorial. Upload your new program to the device with XMEGA programmer like you did in tutorial.
+
+Remember always that anytime you make modifications to program, you have to rebuild it and reupload it to the device. Also make sure that you are uploading correct program to device (it was surprisingly common mistake last year!).
+
+5. Make sure that there is no red error light burning in capture board. Red led burning means that failure has happened with ADC and you can not capture anything. Run **setup_cwlite_xmega.py** and it should be removing error.
+
+6. TODO: clock or script stuff
+
+7. Time for your first capture! Hit the capture button and see power trace appearing.
+
+Interesting part of trace is actually in just in the beginning of trace, rest is futile clutter. You can zoom in to inspect the first 500 samples of trace.
+
+8. Trace is not looking very nice, so next we will adjust settings little bit. Under *Gain Setting* set the *Mode* to high. Increase the *Gain Setting* to about 25. You'll be able to adjust this further during experimentations, you may need to increase this depending on your hardware and target device. Under *Trigger Setup* set the *Total Samples* to 500, because we do not need big amount of samples to be taken to inspect power consumption.
+
+9. Hit capture button again to ensure that trace looks more sensible now.
+
+10. Time to do some initial testing. Modify your program to run different amount amount of NOP and MUL instructions. Inspect how traces change. Try to detect on which points execution changes to different instruction. Also pay attention how long different instruction blocks take to execute.
+
+You can use "Trace persistance"-button to draw traces top of each other. This should make comparing different runs easier. Consider for example adding either NOP or MUL blocks one by one to program to see how trace changes.
+
+When you think you have managed to detect different instructions and have good understanding what is happening, you can proceed to next part which describes what you must return on this task.
+
+### What to return in this task?
+
+Now it is time to make your actual returnable items for this task.
+
+Make 3 different programs and one trace capture for each of them. Take screenshot of trace capture and describe with text where which operation happens or draw the places of different instruction blocks to screenshot with some image editor.
+
+Make 3 test runs with next instructions executing, take screenshots and mark down/describe which instructions are executing and where:
+* 30 x NOP instructions
+* 30 x MUL instructions
+* Some amount of 10-sized instruction blocks and some amount of other 10-sized instruction block mixed. Total amount of them should be at least 40 (for example, 10 x NOP, 10 x MUL, 10 x NOP, 10 x MUL fulfills this requirement).
+
+Add those 3 required items (+ possible textual explanations) to your return template to gain points from this task.
+
+(clean next)
+
 Build your modified program like you did in previous introduction tutorial and program it to the target device like you did earlier.
 
 We expect that you are able to connect to device by the same way that you did in previous task. In the place of **setup_cwlite_xmega_aes.py** you should use **setup_cwlite_xmega.py** setup script. If you have device already up and running from the previous task, you can simply run **setup_cwlite_xmega.py** and it will setup everything for you.
@@ -265,34 +318,12 @@ Under *Gain Setting* set the *Mode* to high. Increase the *Gain Setting* to abou
 
 Press capture button again and you should see captured power trace.
 
-### What to do to complete this task?
-
-Modify your code by adding more nop and mul instructions to code and inspect how power trace changes. Remember that you have to rebuild and reload program to target device every time you change it.
-
-**Try at least next ones:**
-* 30 x ASM mul instructions
-* 30 x ASM nop instructions
-* Some amount of 10-sized instruction blocks and some amount of other 10-sized instruction block mixed
-
-It is advisable to try least of couple different amounts of muls and nops and plot traces to same image to notice easily that what is happening.
-
-**Take screenshots from power trace and mark down the places where you think that you can see different instructions to be executed.** You can draw those markings to pictures or tell those by your own words (for example: “From sample x to y target is running operation A and from y to z target runs operation B).
-
-**Add next pictures and explanations where operation happens to return template (requirements are also stated in return template):**
-* Picture of 30 x ASM mul instructions
-* Picture of 30 x ASM nop instructions
-* Picture of at least 40 x ASM nop or mul (or your custom operation). Do not use same operation for all 40 ASM instructions. Add explanation where any used operation happens.
-
-### What to return on this task?
-
-
-
-Next items must be returned to gain points from this task.
-
-
 
 ## C) Breaking AES
-In this task we are going to break AES with Correlation Power Analysis attack scripts that already exist in ChipWhisperer software. This task is modified version of ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B5_Breaking_AES_(Straightforward). You should not need original tutorial for this task, but feel free to read it as supplementary information.
+
+Previous task considered power differences between single operations, which might not be very practical itself. However this task will be hopefully more interesting and related to real world than basic inspection of single operations.
+
+In this task we are going to break AES with Correlation Power Analysis attack scripts that already exist in ChipWhisperer software. This task is based on ChipWhisperer tutorial http://wiki.newae.com/Tutorial_B5_Breaking_AES_(Straightforward). You should not need original tutorial for this task, but feel free to read it as supplementary information.
 
 Idea of this task is to break AES implementation by analyzing power traces captured from the device. You will be using capture software to aquire traces and analyzer software to run Correlation Power Analysis attack script.
 
