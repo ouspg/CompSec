@@ -166,14 +166,11 @@ Notice that in tutorial instructions after building program are hardware-specifi
 
 __TIPS & TRICKS__
 * You might have to unplug/plug USB cable again if computer or the capture software does not recognize the device. You also might have to unplug/plug device from virtual machine top right corner to make it detect it.
-
 * Notice that you have to be connecting serial cable and measure ports, glitch port is not needed in this task.
-
 * Notice that machines default username is **cwuser** and password is **cwpassword** in case you happen to need it.
-
 * Notice that chipwhisperer folder location is different what is mentioned in tutorial! Chipwhisperer files are located on the desktop.
-
 * Beware of static electricity. Discharge of static electricity can be harmful to board.
+* You can open terminal on current folder from *Tools -> Open terminal* when using file explorer
 
 ## B) Inspecting power differences of simple operations
 
@@ -187,7 +184,7 @@ This task is based on information in ChipWhisperer tutorial http://wiki.newae.co
 
 ### Setup & testing
 
-In this part.... (you are not required to return nothing)
+In this part you will do setups and simple testing. You are not required to return anything yet, but making setups and initial testing experience is crucial for making returnable items.
 
 Follow next instructions:
 
@@ -267,19 +264,19 @@ If you are not connected to device, connect device with instructions of previous
 
 4. Build your new program with command `make PLATFORM=CW303` as you did in tutorial. Upload your new program to the device with XMEGA programmer like you did in tutorial.
 
-Remember always that anytime you make modifications to program, you have to rebuild it and reupload it to the device. Also make sure that you are uploading correct program to device (it was surprisingly common mistake last year!).
+Remember always that anytime you make modifications to program, you have to rebuild it and reupload it to the device. Also make sure that you are uploading correct program to device (forgotting it was surprisingly common mistake last year!).
 
 5. Make sure that there is no red error light burning in capture board. Red led burning means that failure has happened with ADC and you can not capture anything. Run **setup_cwlite_xmega.py** and it should be removing error.
 
-6. TODO: clock or script stuff
+6. In order to be able to capture power traces we must make capture boards clock work faster. Navigate to the *Scope settings* tab in the capture software and set *Source* of *ADC Clock* to be **CLKGEN x4 via DCM**. The *ADC Freq* should show **29.5 MHz** (which is 4x 7.37 MHz), and the *DCM Locked* checkbox must be checked. If the DCM Locked checkbox is NOT checked, try hitting the *Reset ADC DCM* button again.
 
 7. Time for your first capture! Hit the capture button and see power trace appearing.
 
 Interesting part of trace is actually in just in the beginning of trace, rest is futile clutter. You can zoom in to inspect the first 500 samples of trace.
 
-8. Trace is not looking very nice, so next we will adjust settings little bit. Under *Gain Setting* set the *Mode* to high. Increase the *Gain Setting* to about 25. You'll be able to adjust this further during experimentations, you may need to increase this depending on your hardware and target device. Under *Trigger Setup* set the *Total Samples* to 500, because we do not need big amount of samples to be taken to inspect power consumption.
+8. Trace is not looking very nice, so next we will adjust settings little bit. On *Scope Settings* tab, under *Gain Setting* set the *Mode* to high. Increase the *Gain Setting* to about 25. You'll be able to adjust this further during experimentations, you may need to increase this depending on your hardware and target device. Under *Trigger Setup* set the *Total Samples* to 500, because everything interesting seems to be happening in first 500 samples of captured trace.
 
-9. Hit capture button again to ensure that trace looks more sensible now.
+9. Hit capture button again to see that unneccessary parts are removed from trace plot.
 
 10. Time to do some initial testing. Modify your program to run different amount amount of NOP and MUL instructions. Inspect how traces change. Try to detect on which points execution changes to different instruction. Also pay attention how long different instruction blocks take to execute.
 
@@ -287,11 +284,11 @@ You can use "Trace persistance"-button to draw traces top of each other. This sh
 
 When you think you have managed to detect different instructions and have good understanding what is happening, you can proceed to next part which describes what you must return on this task.
 
-### What to return in this task?
+### Making returnable items
 
 Now it is time to make your actual returnable items for this task.
 
-Make 3 different programs and one trace capture for each of them. Take screenshot of trace capture and describe with text where which operation happens or draw the places of different instruction blocks to screenshot with some image editor.
+Make 3 different programs and one trace capture for each of them. Take screenshot of trace capture and describe with text where which operation happens (like next: From sample x to y there executes 10 instructions of z etc) or draw the places of different instruction blocks to screenshot with some image editor. It is up to you decide how you tell it, as long as you show somehow that you have detected different instruction executions.
 
 Make 3 test runs with next instructions executing, take screenshots and mark down/describe which instructions are executing and where:
 * 30 x NOP instructions
@@ -299,25 +296,6 @@ Make 3 test runs with next instructions executing, take screenshots and mark dow
 * Some amount of 10-sized instruction blocks and some amount of other 10-sized instruction block mixed. Total amount of them should be at least 40 (for example, 10 x NOP, 10 x MUL, 10 x NOP, 10 x MUL fulfills this requirement).
 
 Add those 3 required items (+ possible textual explanations) to your return template to gain points from this task.
-
-(clean next)
-
-Build your modified program like you did in previous introduction tutorial and program it to the target device like you did earlier.
-
-We expect that you are able to connect to device by the same way that you did in previous task. In the place of **setup_cwlite_xmega_aes.py** you should use **setup_cwlite_xmega.py** setup script. If you have device already up and running from the previous task, you can simply run **setup_cwlite_xmega.py** and it will setup everything for you.
-
-In order to be able to capture power traces we must make capture boards clock work faster. Navigate to the *Scope settings* tab in the capture software and set *Source* to be **CLKGEN x4 via DCM**.
-
-The *ADC Freq* should show **29.5 MHz** (which is 4x 7.37 MHz), and the *DCM Locked* checkbox must be checked. If the DCM Locked checkbox is NOT checked, try hitting the *Reset ADC DCM* button again.
-
-Press capture button and you should see the power trace which was captured. We can make power trace look nicer by adjusting some settings.
-
-**HINT:** If there is red light burning on the capture device, it means that failure has happened with ADC and you can not capture anything. Run **setup_cwlite_xmega.py** and it should be removing error.
-
-Under *Gain Setting* set the *Mode* to high. Increase the *Gain Setting* to about 25. You'll be able to adjust this further during experimentations, you may need to increase this depending on your hardware and target device. Under *Trigger Setup* set the *Total Samples* to 500, because we do not need big amount of samples to be taken to inspect power consumption.
-
-Press capture button again and you should see captured power trace.
-
 
 ## C) Breaking AES
 
@@ -398,7 +376,7 @@ Your answer does not have to be in any certain "format" or any minimum length, b
 In task 2, there is 2 tasks which require closer analysing of power traces with small Python scripts. Task 2 is significantly harder than previous task so expect that you will most likely use rest of the lab session for this task. Notice that you can easily continue working on task B at home after lab session without device if you manage to capture and save power traces for yourself.
 
 ## A) Password bypass with power analysis
-In this task you will break in to secure device by analyzing the power traces of device when it processes your login attempts. You will also learn how to use Python scripts to control ChipWhisperer software. 
+In this task you will break in to secure device by analysis of the power traces of device when it processes your login attempts. You will also learn how to use Python scripts to control ChipWhisperer software. 
 
 Target program on victim device is simple. It prints initial information, waits for user to input login password and check if it is right. If it is, program prints welcome text and lights up green led. If not, program reports failure and red led turns on.
 
@@ -423,32 +401,39 @@ In running attack script part, you will modify attack script based on knowledge 
 
 First, we will setup device and do some simple experimenting with inputting different passwords. You are not required to return anything on this phase, but setupping the device and knowledge you will be acquiring in this part is crucial for the second part of the task.
 
-If you are not doing this task with virtual machine provided by this course, you need to grab scripts **setup_password_check_delay.py**, **setup_password_check.py** and **PASSWORD_BYPASS.py** from this repositorys scripts-folder yourself.
+If you are not doing this task with virtual machine provided by this course, you need to grab scripts **setup_password_check_delay.py**, **setup_password_check.py** and **PASSWORD_BYPASS.py** from this repository scripts-folder yourself.
 
 1. Restart the Capture software.
 2. Navigate to *\home\cwuser\Desktop\chipwhisperer\hardware\victims\firmware\basic-passwdcheck*.
 3. Build the program with the command `make PLATFORM=CW303`, as you did in previous tasks.
 4. Execute **connect_cwlite_simpleserial.py** in the Capture software to connect the device.
-5. Execute **setup_password_check_delay.py** in the Capture software to set the parametres. Check the Script preview window to see what values were changed.
+5. Execute **setup_password_check_delay.py** in the Capture software to set the parametres. You can see from *Script Preview* window which values changed.
 6. Program the file you made earlier to the target board using XMEGA Programmer as you did in previous tasks. Keep the programmer window open.
 7. Open terminal from *Tools --> Terminal*.
 8. Press *Connect* in the Terminal. 
 9. Press Check signature from Programmer window. This will reset the software in the target board and you should see text that asks for your password. Correct password is h0px3.
 10. Type it to the terminal and press send. Terminal should say "Access granted, Welcome!"
-11. Reset the software and try a different password.
+11. Reset the software by pressing *Check signature* button again and try a different password to behaviour of device when wrong password is entered.
 
-12.  Next we capture a power trace of this operation. Have the terminal and XMEGA Programmer open. Write the correct password to the terminal but do not press send. Then press the *Check Signature* button to reset the device.  After that press the capture trace button and  right after the send on the terminal window. Try this with the correct password and with a incorrect password. Examine the traces and try to spot the differences. 
-Idea behind this lab is to spot how the power trace changes with different passwords. Then you make a script that will abuse that fact and guess the correct password. Examining the power traces with the above mentioned method is tedious due to you needing to reset the device manually and having to press multiple buttons to capture a single trace. Luckily for you there is a simpler way to do it using aux modules. With it we reset the target board when we press the capture trace button and simultaneously send the password guess to the target.
+12.  Next we capture a power trace of this operation. Have the terminal and XMEGA Programmer open. Write the correct password to the terminal but do not press send yet. Then press the *Check Signature* button to reset the device.  After that press the capture trace button and then you have to press fastly send on terminal window. Try this with the correct password and with a incorrect password.
+
+You should see that correct password power trace and wrong password power trace were different, which is main point of this task. Testing different password this way is quite tedious (because you have to manually do everything), so next we will make capture program reset device and send password automatically by using auxilary modules.
 
 13. Execute the following scipts **setup_password_check.py** and **aux_reset_cw1173.py**.
 
-14. Now put your password guess to the *Go command* field at the Target Settings tab. **Remember to add `\n` at the end of your guess**.
+These script will setup resetting auxilary module.
+
+14. Now put your password guess to the *Go command* field at the *Target Settings* tab. **Remember to add `\n` at the end of your guess**.
 
 15. Now when you press Capture Trace button the target should automatically reset, send your guess to the target board and capture a trace. Now input different passwords and observe the differences between the traces.
-__HINT__: Use password guesses where the first letter is wrong, then the second etc. This should give you an idea how the power trace differ with different inputs.
 
-16. Now with this knowledge modify the **PASSWORD_BYPASS.py** script in the */home/cwuser/Desktop/chipwhisperer/software/chipwhisperer/capture/scripts* folder so that it guesses the password correctly. Script should also be visible in the Capture Software.
-It is advised that you learn what each of the lines in this code do. It will be helpful if you are planning on working more with the ChipWhisperer. However for this exercise you only have to modify the commented part of the code.
+__HINT__: You can use password guesses where the first letter is wrong, then the second etc. This should give you an idea how the power trace differ with different inputs.
+
+Try different passwords to gain understanding how trace behaves. For example, try password with first character wrong, then first character right but second wrong, then 2 characters right but third wrong etc. Consider using "Enable percistance"-button when drawing traces of different passwords.
+
+In the example trace below, there is 2 correct characters in password.
+
+![alt text](pictures/task_2_a_2_right_example.jpg "Example plot")
 
 ### Running attack
 
