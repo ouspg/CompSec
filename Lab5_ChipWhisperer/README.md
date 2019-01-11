@@ -5,19 +5,20 @@ Computer Security Lab 5: ChipWhisperer
 
 * [Introduction](#Introduction)
     * [Practical arrangements of this lab](#Practical-arrangements-of-this-lab)
-    * [Background of power analysis]
-    * [Grading]
+    * [Background of power analysis](#Background-of-power-analysis)
+    * [Grading](#Grading)
 
-* [Setting up]
-    * [Hardware setup]
-    * [Software setup]
+* [Setting up](#Setting-up)
+    * [Hardware setup](#Hardware-setup)
+    * [Software setup](#Software-setup)
 
-* [Tasks]
-  * [Task 1]
-  * [Task 2]
-  * [Task 3]
-  * [Task 4]
+* [Tasks](#Tasks)
+  * [Task 1](#Task-1)
+  * [Task 2](#Task-2)
+  * [Task 3](#Task-3)
+  * [Task 4](#Task-4)
 
+* [Ideas for coursework](#Ideas-for-coursework)
 
 # Introduction
 
