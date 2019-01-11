@@ -3,28 +3,19 @@ Computer Security Lab 5: ChipWhisperer
 
 ## ToC
 
-* [Introduction]
-
-    * [Practical arrangements of this lab]
-
+* [Introduction](#Introduction)
+    * [Practical arrangements of this lab](##Practical%20arrangements%20of%20this%20lab)
     * [Background of power analysis]
-
     * [Grading]
 
 * [Setting up]
-
     * [Hardware setup]
-
     * [Software setup]
 
 * [Tasks]
-
   * [Task 1]
-
   * [Task 2]
-
   * [Task 3]
-
   * [Task 4]
 
 
