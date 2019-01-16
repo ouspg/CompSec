@@ -348,7 +348,7 @@ If you do not have any traces there, something has gone wrong during capture. If
 
 ### What to do to complete this task?
 
-**Explain shortly how the correlation power analysis that you just performed works.**
+**Explain how the correlation power analysis that you just performed works.**
 
 Theoretical information about the attack you just performed can be found here http://wiki.newae.com/Correlation_Power_Analysis 
 
@@ -356,11 +356,14 @@ Deeper technical insight and actual example code of attack can be found here htt
 
 All answers should be found in those two articles.
 
-Your answer does not have to be in any certain "format" or any minimum length, but is expected to contain answers to next questions:
-* What are major steps of the attack you just performed? Explain each phase shortly
-* What kind of power leakage model is used and how it is utilized at correlation calculations? (improve this...)
-* What sensitive point of AES algorithm implementation is targeted in this attack? Why it works?
-* Did you manage to find out correct encryption key? Was answer completely right or were some subkey guesses wrong? If yes, consider how could it be possible to fix
+Your answer does not have to be in any certain "format" or any minimum length. Only requirement is that it explains issue well and shows that you have really investigated the issue deeper than surface level.
+
+If you have troubles in your writing, you can consider next list of questions as your checklist. If you answer them all, your answer should be fine.
+* What are major steps of the correlation power analysis attack you just performed? Explain each phase shortly.
+* What kind of power leakage model is used?
+* What sensitive point of AES algorithm implementation targeted in this attack? (improve this and above one)
+* How is single subkey solved? Describe the calculations performed when attack tries to solve single subkey.
+* Did you manage to find out correct encryption key as end result? Was end result completely right or were some subkey guesses wrong? If yes, discuss reasons of it and how could it be possible to fix.
 
 ---
 # Task 2
