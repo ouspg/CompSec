@@ -40,6 +40,8 @@ In many places the Juice Shop is [improperly validating its inputs](https://cwe.
 
  Usually shops like Juice Shop, are made to be used by multiple users. In these cases different users have different privileges and are therefore able to access different places. For example you are able to access your basket but not other users baskets. In the same fashion only admin should be able to access the administration panel. However Juice Shops [access control is broken](https://en.wikipedia.org/wiki/Privilege_escalation) and users can access places that they should not be able.  
 
+We also delve to the basics of cross site request forgery. Short explanation on the concept taken from [OWASP](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))."Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web application in which they're currently authenticated. CSRF attacks specifically target state-changing requests, not theft of data, since the attacker has no way to see the response to the forged request. With a little help of social engineering (such as sending a link via email or chat), an attacker may trick the users of a web application into executing actions of the attacker's choosing. If the victim is a normal user, a successful CSRF attack can force the user to perform state changing requests like transferring funds, changing their email address, and so forth. If the victim is an administrative account, CSRF can compromise the entire web application. "
+
 The final thing we focus on by using the Juice Shop, is Cross-Site Scripting. Short explanation on what Cross-Site Scripting mean taken from [OWASP: ](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)) "Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user. Flaws that allow these attacks to succeed are quite widespread and occur anywhere a web application uses input from a user within the output it generates without validating or encoding it.
 
 An attacker can use XSS to send a malicious script to an unsuspecting user. The end user’s browser has no way to know that the script should not be trusted, and will execute the script. Because it thinks the script came from a trusted source, the malicious script can access any cookies, session tokens, or other sensitive information retained by the browser and used with that site. These scripts can even rewrite the content of the HTML page ". During this lab you will see XSS in action and will create your own attack. 
@@ -131,6 +133,7 @@ Task| Grade/Level | Description
 
 Grade 1 can be aquired by doing lecture questionnaires from the corresponding lecture.
 </details>
+
 ## Particularly in tasks 1 and 2:
 
 ***To be able to complete these tasks,*** you will need to explain *why things are happening*. Each answer, which is giving only pure commands or code is automatically though as incompleted or insufficient.
@@ -159,7 +162,7 @@ __Note__ In Firefox's devtools, in the "Headers" section of packet information, 
 
 **Noticing errors**
 
-Search field of the JuiceShop is vulnerable to SQL injection. Server is also set up in such a way that it will return an SQL error message if you cause one. Error is viewable from browsers developertools. Inject some SQL to the searchfield and cause an __SQL__ error. 
+Searchfield of the JuiceShop is vulnerable to SQL injection. Server is also set up in such a way that it will return an SQL error message if you cause one. Error is viewable from browsers developertools. Inject some SQL to the searchfield and cause an __SQL__ error. 
 
 __Hint__ Try different SQL symbols like statement terminators, comments, quotation marks. Check the network tab for servers response 
 
@@ -198,27 +201,9 @@ __Why it is working/what is happening?__
 
 __What user did you log in as?__
 
----
-
-
 
 ---
-**Another's basket**
 
-But anyway, could we control other users a bit?
-
-This site's access control is lacking and users can in some cases access into places where they should not be able to. One example is the user's basket. Find a way to access another users basket *and add some products into it*.
-
-You don't need to know anything about another users, we are using just some random victim. There are atleast two ways to solve this. You have to be able to **some way gain other users baskets content** and **some way add product to other users basket.**
-
-**Here are hints on two different ways to solve this.** 
-1.  Log in as admin or as a user you created and check the traffic that happens when you add products to your basket. Can I modify the packets so that the system returns some other users information? Can I use same logic to add products to other users basket? It is enough if you can see the other users basket content in the return packets. You don't have to see it visually in the webpage.
-2. How does the system know who is logged in? Do you possess some kind of a token that indetifies you as you? Can you change it? With this solution it is possible to acces someone elses basket through "My Basket" button and visually see the contents and edit them.
-
-
-__How did you do it? Why you were able to?__
-
----
 **Scoreboard**
 
 At this point we might have seen some notifications about challenges we have completed. There is actually board about challenges you have completed and... it is behind of challenge.
@@ -228,31 +213,6 @@ __Hint__ You can edit the fields in "Inspector" tab
 
 __How did you make it visible?__
 
-
-
-
-
-## Task 2 
-
-**'These are not my credentials'**
-
-Use SQL injection to the searchfield using [UNION](http://www.sqlinjection.net/union/) command to get all the users emails and passwordhashes and make them visible on the shop page.
-
- __Hint__ In this exercise you need to know the name of the users table, its column number and the name of the email and password fields. These values can be **guessed**. Table and column names are obvious. Try guessing them and check the error messages if you got it right.
- 
- First form a statement that attempts to select all the columns from the users table. If the server returns "table does not exist" you guessed it wrong. If you receive the following error "SQLITE_ERROR: SELECTs to the left and right of UNION do not have the same number of result columns" you are on the right track. 
- 
- After you know the table name, you have to find out how many columns the Products table has, so you can select that many columns from the users table. 
- 
- You can guess this if you want to, but the column amount can also be found from the response you get from a product search. 
- Now select that many columns from the users table where atleast two of them are email and password. If the values are not visible, you might have put it to a field that is not rendered visible. Try putting it to a different field.
- 
-
-__What SQL command did you use?__
-
-__Explain shortly the logic behind your attack. Why and how does it work?__
-
----
 
 **Annoying pop-up**
 
@@ -279,8 +239,64 @@ After this go to the administration panel while you have netcat on. Administrati
 
 __*Paste a screenshot of the administration panel and netcat when the exploit is active.*__  
 
----
 
+
+## Task 2 
+
+---
+**Cross site request forgery**
+
+Next we create a basic cross site request forgery attack. We are trying to emulate a case where a user is browsing a site and during this browsing opens a malicious web site that does something harmful. Basically we are going to create a site that changes the currently logged in users password when they visit this webpage while logged in to the Juice Shop. For this purpose you have a apache2 server running in your virtual machine. If you access www.csrfattack.org you should see a placeholder site that you can modify. Do the following:
+
+* Change any accounts password and observe what type of request is sent and to where
+    * Use firefox developer tools
+* Create a webpage that, when accessed by someone who is logged in to the Juice Shop, changes their password to "compsec". 
+    * Site doesn't have to have anything other than the attack. No need to make it look fancy.
+    * If you are not sure where to start check [this](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) for more info on CSRF. Pay special attention to the fake image example. *Similar attack should work*.
+* Log in as any user. Then open your malicious site www.csrfattack.org in another tab. 
+* Log out and see if the password changed  
+
+Few helpful commands
+
+ If the site is not visible at www.csrfattack.org not start the apache2 service with the command
+```
+sudo service apache2 restart
+```
+ You can modify the site by editing the file found in 
+```
+/var/www/html/index.html
+```
+After you modify the site restart the apache2 service with the command
+```
+sudo service apache2 restart
+```
+
+Returns:
+
+* index.html
+
+
+
+---
+**'These are not my credentials'**
+
+Use SQL injection to the searchfield using [UNION](http://www.sqlinjection.net/union/) command to get all the users emails and passwordhashes and make them visible on the shop page.
+
+ __Hint__ In this exercise you need to know the name of the users table, its column number and the name of the email and password fields. These values can be **guessed**. Table and column names are obvious. Try guessing them and check the error messages if you got it right.
+ 
+ First form a statement that attempts to select all the columns from the users table. If the server returns "table does not exist" you guessed it wrong. If you receive the following error "SQLITE_ERROR: SELECTs to the left and right of UNION do not have the same number of result columns" you are on the right track. 
+ 
+ After you know the table name, you have to find out how many columns the Products table has, so you can select that many columns from the users table. 
+ 
+ You can guess this if you want to, but the column amount can also be found from the response you get from a product search. 
+ Now select that many columns from the users table where atleast two of them are email and password. If the values are not visible, you might have put it to a field that is not rendered visible. Try putting it to a different field.
+ 
+
+__What SQL command did you use?__
+
+__Explain shortly the logic behind your attack. Why and how does it work?__
+
+---
 ### Brute forcing
 
 Now lets do something different and try some basic brute forcing. 
@@ -304,16 +320,14 @@ Let's get back to Juice Shop.
 
 The XSS attack you did in the previous task was mostly just annoying. It could however have been way more malicious. For next, we are actually doing that and modify it to be way more dangerous. Lets create a XSS-attack that replaces the Juice Shop administration panel with Juice shops login page. Then when the users inputs their credentials the site sends this information to your own server. So your task is the following:
 
-* **Setup a server.** No need to do anything fancy. Basic python [flask](http://flask.pocoo.org/)/[BaseHttpServer](https://docs.python.org/2/library/basehttpserver.html) that can receive post requests is fine. Server can print or save the information to a file. Anything goes as long as it shows that the data entered the server.  
+* **Setup a server.** No need to do anything fancy. Basic python [flask](http://flask.pocoo.org/)/[BaseHttpServer](https://docs.python.org/2/library/basehttpserver.html) that can receive POST requests is fine. Server can print or save the information to a file. Anything goes as long as it shows that the data entered the server.  
 * **When the user accesses the Juice Shop's administration panel, the page will look like the Juice Shops login page.** Page should be as similiar as possbile but small differences are fine. For example slightly different size login fields, email field not checking for @ sign etc.
+
 * **When the user inputs anything to the email and password fields and presses the *Login*-button all the information in the email and password fields are sent to your server.** The way you send/show the information is up to you. You just have to demostrate in the server side that the data has entered and that it is the same as inputted to the email and password fields.
 
 We are actually creating something very phishy, just by using XSS vulneralibity.
 
-## Rewrite
-Lets return to the Juice Shop for a moment. Earlier we did some basic XSS-attacks to demonstrate how they work. Now lets build on that. Lets create a situation where when someone accesses the Juice Shops administration panel they are shown the loging screen. When the user inputs their 
 
-#######
 
 
 ### Returns
