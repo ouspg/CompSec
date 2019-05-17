@@ -65,7 +65,30 @@ SELECT * FROM table_name WHERE condition LIKE '%user_input%'
 Modified
 SELECT * FROM table_name WHERE condition LIKE '%'INJECTION--'
 ```
-The "--" symbols make everything after them into a comment. Now we are free to change the INJECTION part in to some type of SQL command that can cause harm. 
+The "--" symbols make everything after them into a comment. Now we are free to change the INJECTION part in to some type of SQL command that can have malicious implications. 
+
+### UNION
+
+UNION-command combines result sets of multiple SQL SELECT commands. Example below
+
+```sql
+UNION example
+SELECT * FROM table_name WHERE condition LIKE '%user_input%'
+UNION
+SELECT * FROM table_name2 WHERE condition LIKE '%anything%'
+```
+
+This example returns the results of both SELECT commands. There are few requirements however:
+
+* Each SELECT statement within UNION must have the same number of columns
+
+* The columns must also have similar data types
+
+* The columns in each SELECT statement must also be in the same order
+
+These requirements make utilizing UNION in SQL injection harder. It is unlikely that the attacker knows the exact structure of the SQL tables so forming an UNION command that returns something it shouldn't can require some educated guesswork. In the exercise you will see that the server returns error messages that you can use to guess the tarble structures.
+
+
 
 ### References
 https://www.w3schools.com/sql/sql_injection.asp
@@ -75,3 +98,5 @@ https://www.owasp.org/index.php/SQL_Injection
 https://www.tutorialspoint.com/sql/sql-wildcards.htm
 
 https://www.w3schools.com/sql/
+
+https://www.w3schools.com/sql/sql_union.asp
