@@ -776,10 +776,17 @@ All practical work is done, only final push left to finish this task. Fill next 
 
 ---
 # Task 3
-## Glitching
-In the next section we go over clock glitching and voltage glitching. These excercises are build on existing Chipwhisperer tutorials found in https://wiki.newae.com/Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer) and https://wiki.newae.com/Tutorial_A3_VCC_Glitch_Attacks. For more detailed guide on how to glitch and the concept how ChipWhisperer generates glitches please check them out. Unlike the tutorials we generally use scripts to configure the ChipWhisperer. We advice that you check what variables are changed when we execute these scripts.
+In this task you will be performing some experiments with glitching. This task is somewhat harder and more time-consuming than previous ones, so you most likely have to do it outside of lab session.
 
-## Background
+This task is divided 2 parts: Theory part and practical part. Theory part intends to give you knowledge background of glitching and practical part considers actual instructions about how to setup and run experiments + what items you have to return.
+
+This task is based on and theory + example scripts are taken from ChipWhisperer tutorials https://wiki.newae.com/Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer) and https://wiki.newae.com/Tutorial_A3_VCC_Glitch_Attacks. Those tutorials should not be needed for doing this task, but feel free to read them as supplementary information.
+
+## Glitching
+(taitaa olla nyt turha)
+In the next section we go over clock glitching and voltage glitching. These excercises are build on existing Chipwhisperer tutorials found in For more detailed guide on how to glitch and the concept how ChipWhisperer generates glitches please check them out. Unlike the tutorials we generally use scripts to configure the ChipWhisperer. We advice that you check what variables are changed when we execute these scripts.
+
+## Theory
 A glitching attack is an intentional fault introduced to undermine device 
 security. These faults can for example cause instruction skipping,malformed data reads/write backs and instruction decoding errors.
 Below is a picture of the ChipWhisperers glitch generating process. Note that the clock can be either the target devices clock (clock glitching) or ChipWhisperers own clock(power glithching).
@@ -858,17 +865,35 @@ This is the login code for the Linux OS. Note that if we could skip the check of
 Power glitching works similiar to clock glitching instead we modify the voltage of the device, causing for example a failure to correctly read a memory location or otherwise cause havoc with the proper functioning. 
 
 
-## Task
-First we start with and example.
-1. Go to */home/cwuser/Desktop/chipwhisperer/hardware/victims/firmware/glitch-simple* and open *glitchsimple.c* with any text editor. Scroll to the main function and make sure that it executes glitch_infinite() function and nothing else. Then check the glitch_infinite() function so you understand what you are planning on programming to the target. 
-2. make it ```make PLATFORM=CW303```
-3. Open capture software
-4. Execute **connect_cw_lite_simpleserial.py** and **SETUP_GLITCH_SIMPLE.py** 
-4. Program the file you made in step 1 to the target
-5. Open terminal and press connect. You should see "40000 200 200 x" where the x keeps increasing. 
-6. Go to *Scope Settings* > *Glitch Module* and Press the *Manual Trigger/ Single-Shot Arm* button. You should see something going wrong with the prints. If not press the button multiple times in a row. Take a screenshot of the terminal window with glitched output.  __Note__ That you can reset the target with the XMEGA programmer by pressing *Check Signature*. This might come in handy if you crashed the target
-7. Manual glitching can be handy. However it can be tricky to target your glitch to a specific part of execution. By resetting the target prior to sending the glitch we can control in which part of the execution the glitch happens with more accuracy. For this purpose we use the reset module that we utilized in earlier tasks. First however we change the code in the target. Edit the *glitchsimple.c* so that it executes the function glitch1().
-8. Make and reprogram the target. Check that the target behaves as it should
+## Practical task
+
+(turha?)Ok, lets start doing actual stuff.
+
+Follow next instuctions to setup and perform your experiments. Some experiments require you just to take screenshots of successfull results, others require you to write your own code to run them. When your work is done, remember to doulble-check from "What to return on this task?" of this section that you have aquired everything relevant for your return template.
+
+Most of the setupping of this task is done by running setup scripts instead of manually using GUI to set parameters. Consider looking inside of those scripts to see what variables they are changing when you encounter them. Notice that if you are not doing this task on preconfigured virtual machine, you must grab scripts **SETUP_GLITCH_SIMPLE.py**, **REST.py** and **setup_password_glitch.py** from scripts folder of this repository.
+
+1. Go to */home/cwuser/Desktop/chipwhisperer/hardware/victims/firmware/glitch-simple* and open *glitchsimple.c* with any text editor. Scroll to the main function and make sure that it executes glitch_infinite() function and nothing else. Check the glitch_infinite() function so that you understand what is it doing. 
+2. Build your program with ```make PLATFORM=CW303``` as usual
+3. Open capture software and execute**connect_cw_lite_simpleserial.py** and **SETUP_GLITCH_SIMPLE.py** 
+
+(some comments about setupping simple glitch)
+
+4. Upload your program to target as usual
+5. Open terminal and press connect. You should see "40000 200 200 x" where the x keeps increasing
+
+(some notes about that?)
+
+6. Go to *Scope Settings* > *Glitch Module* and Press the *Manual Trigger/ Single-Shot Arm* button. This sends single glitch to target and you should see something going wrong with the prints. You might need multiple attempts to cause successfull glitch. You can try hitting the button multiple times in fast pace. Take a screenshot of the terminal window which shows glitched output.
+
+You can reset the target with the XMEGA programmer by pressing *Check Signature* if you crash target so badly that it becomes unresponsive.
+
+(tell that this part might be tedious, and what to do if it does not succeed)
+
+Manual glitching can be handy. However it can be tricky to target your glitch to a specific part of execution. By resetting the target prior to sending the glitch we can control in which part of the execution the glitch happens with more accuracy. For this purpose we use the reset module that we utilized in earlier tasks.
+
+7. First, change the code in the target. Edit your *glitchsimple.c* so that it executes the function glitch1() and read what happens in that function.
+8. Build program and reprogram it to the target as usual. Check that the target behaves as it should.
 9. Execute **REST.py** . Check that the module loads to *Aux settings*
 10. Go to *Scope Settings* > *Glitch Module* and change *Glitch Trigger* to **Ext Trigger: Single-Shot** 
 11. Connect the terminal and reset the target. It should print "hello" upon reset.
@@ -893,6 +918,8 @@ If you start to look for a glitch at repeat = 5 you should be able to find set o
 
 __Tips & Tricks__
 It is very likely that you have to loop through many values. Change the value *Number of Traces* at the *Generic Settings* so that you capture more traces with *Capture Many* button. Feel free to tweak any values you like. It is possible that it will take really long time to find any glitches especially at lower repeat counts. This task can be passed without finding the glitch if you return a working program and proof of effort in a from of glitch explorer logs.
+
+### What to return on this task?
 
 
 ---
