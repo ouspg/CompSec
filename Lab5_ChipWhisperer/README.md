@@ -120,7 +120,11 @@ To connect and use ChipWhisperer device and analyze power traces, you need ChipW
 * Option 2: If you do not want to use ready image or can not use WMWare images, you may download clean image from manufacturer [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). After that clone this reposity and get setup scripts from scripts folder.
 * Option 3: If you refuse to use virtual machines, you may install ChipWhisperer software your own machine [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). There is no reason why it would not work, but notice that we have not tested this option and therefore we might not be able to help you if you run into problems which are caused by your custom installation.
 
-This lab tasks are tested with ChipWhisperer software version xxx. If you install your own system, pay attention that you get the right version of program...
+If you want go go for option 2 or 3, software packages are downloadable here [here](https://github.com/newaetech/chipwhisperer/releases).
+
+This lab tasks are tested with ChipWhisperer software version 4.0.1. If you install your own system, pay attention that you get the right version of program. Tasks should be doable with 4.0.x versions of software but this is not guaranteed by any means by anybody.
+
+Version 5.0 of ChipWhisperer software was published recently, but ...
 
 ---
 
@@ -157,7 +161,7 @@ Complete ChipWhisperer basic tutorial B1 http://wiki.newae.com/Tutorial_B1_Build
 Notice that in tutorial instructions after building program are hardware-specific. You have to click "Completing Tutorial witch CW1173 (Lite)"-button to see rest of the tutorial with right hardware.
 
 __TIPS & TRICKS__
-* You might have to unplug/plug USB cable again if computer or the capture software does not recognize the device. You also might have to unplug/plug device from virtual machine top right corner to make it detect it.
+* You might have to unplug & plug USB cable again if computer or the capture software does not recognize the device. You also might have to unplug & plug device from virtual machine top right corner to make it detect it.
 * Notice that you have to be connecting serial cable and measure ports, glitch port is not needed in this task.
 * Notice that machines default username is **cwuser** and password is **cwpassword** in case you happen to need it.
 * Notice that chipwhisperer folder location is different what is mentioned in tutorial! Chipwhisperer files are located on the desktop.
@@ -782,10 +786,6 @@ This task is divided 2 parts: Theory part and practical part. Theory part intend
 
 This task is based on and theory + example scripts are taken from ChipWhisperer tutorials https://wiki.newae.com/Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer) and https://wiki.newae.com/Tutorial_A3_VCC_Glitch_Attacks. Those tutorials should not be needed for doing this task, but feel free to read them as supplementary information.
 
-## Glitching
-(taitaa olla nyt turha)
-In the next section we go over clock glitching and voltage glitching. These excercises are build on existing Chipwhisperer tutorials found in For more detailed guide on how to glitch and the concept how ChipWhisperer generates glitches please check them out. Unlike the tutorials we generally use scripts to configure the ChipWhisperer. We advice that you check what variables are changed when we execute these scripts.
-
 ## Theory
 A glitching attack is an intentional fault introduced to undermine device 
 security. These faults can for example cause instruction skipping,malformed data reads/write backs and instruction decoding errors.
@@ -864,25 +864,23 @@ This is the login code for the Linux OS. Note that if we could skip the check of
 
 Power glitching works similiar to clock glitching instead we modify the voltage of the device, causing for example a failure to correctly read a memory location or otherwise cause havoc with the proper functioning. 
 
-
 ## Practical task
 
-(turha?)Ok, lets start doing actual stuff.
+Ok, now actual work begins.
 
 Follow next instuctions to setup and perform your experiments. Some experiments require you just to take screenshots of successfull results, others require you to write your own code to run them. When your work is done, remember to doulble-check from "What to return on this task?" of this section that you have aquired everything relevant for your return template.
 
 Most of the setupping of this task is done by running setup scripts instead of manually using GUI to set parameters. Consider looking inside of those scripts to see what variables they are changing when you encounter them. Notice that if you are not doing this task on preconfigured virtual machine, you must grab scripts **SETUP_GLITCH_SIMPLE.py**, **REST.py** and **setup_password_glitch.py** from scripts folder of this repository.
 
+Remember to connect glitch ports of the device with SMA cable for this task.
+
 1. Go to */home/cwuser/Desktop/chipwhisperer/hardware/victims/firmware/glitch-simple* and open *glitchsimple.c* with any text editor. Scroll to the main function and make sure that it executes glitch_infinite() function and nothing else. Check the glitch_infinite() function so that you understand what is it doing. 
 2. Build your program with ```make PLATFORM=CW303``` as usual
-3. Open capture software and execute**connect_cw_lite_simpleserial.py** and **SETUP_GLITCH_SIMPLE.py** 
-
-(some comments about setupping simple glitch)
-
+3. Open capture software and execute **connect_cw_lite_simpleserial.py** and **SETUP_GLITCH_SIMPLE.py** 
 4. Upload your program to target as usual
 5. Open terminal and press connect. You should see "40000 200 200 x" where the x keeps increasing
 
-(some notes about that?)
+When you inspected the program, you saw simple code executing loop inside loop. Now your task is to glitch device to cause code execution to jump another position and skip some loop executions.
 
 6. Go to *Scope Settings* > *Glitch Module* and Press the *Manual Trigger/ Single-Shot Arm* button. This sends single glitch to target and you should see something going wrong with the prints. You might need multiple attempts to cause successfull glitch. You can try hitting the button multiple times in fast pace. Take a screenshot of the terminal window which shows glitched output.
 
@@ -921,6 +919,17 @@ It is very likely that you have to loop through many values. Change the value *N
 
 ### What to return on this task?
 
+In order to gain points of this task, next items must be returned:
+
+ * Screenshot of the successfull glitching of function *glitch_infinite()* (performed in step 6)
+ * Screenshot of the successfull glitching of function *glitch1()* (performed in step 12)
+ * Screenshot of the successfull glitching showing in *Glitch Explorer* (performed in step 16)
+ * Screenshot of the successfull glitching showing in *Glitch Explorer* when your own program is doing glitching
+ * Your custom python program you created which glitches through the password check
+ * Your setup script (if you made modifications to it)
+ * Glitch explorer logs which your program produced
+
+Fill your answers into the return template
 
 ---
 # Task 4 
@@ -942,10 +951,9 @@ Complete two tutorials listed below. You are expected to document the process. E
 
 Note that if you want to complete the [Breaking AES bootloader extended](https://wiki.newae.com/Tutorial_A5-Bonus_Breaking_AES-256_Bootloader) tutorial you have to do [Breaking AES bootleader](https://wiki.newae.com/Tutorial_A5_Breaking_AES-256_Bootloader) before it.
 
-
 ## Option 2. Glitch or analyze your own target hardware
 
-Alternatively you can attempt to glitch or analyze your own device. For example there is a [tutorial how to glitch raspberry pi](https://wiki.newae.com/Tutorial_A3_VCC_Glitch_Attacks#Glitching_More_Advanced_Targets:_Raspberry_Pi) or how to [glitch LPC1114.](http://wiki.newae.com/Tutorial_A9_Bypassing_LPC1114_Read_Protect) Feel free to seach examples from internet or ChipWhisperer wiki for ideas for additional targets. Document your process. Tell what kind of own experiments you tried / tutorial (or blog posts etc) you tried to repeat, how you did it and did you succeeded or not.
+Alternatively you can attempt to glitch or analyze your own device. For example there is a [tutorial how to glitch raspberry pi](https://wiki.newae.com/Tutorial_A3_VCC_Glitch_Attacks#Glitching_More_Advanced_Targets:_Raspberry_Pi) or how to [glitch LPC1114.](http://wiki.newae.com/Tutorial_A9_Bypassing_LPC1114_Read_Protect) Feel free to seach examples from internet or ChipWhisperer wiki for ideas for additional targets. Document your process. Tell what kind of own experiments you tried or tutorial/blog post/etc you tried to repeat, how you did it and did you succeeded or not.
 
 __Note:__ **If you decide to glitch/analyze external device you are responsible for the chipwhisperer and for the target device. We are not responsible if you break either of the devices during your experiments**
 
@@ -953,7 +961,6 @@ __Note:__ **If you decide to glitch/analyze external device you are responsible 
 If you have some other topic that uses ChipWhisperer or is related to hardware security and you are interested on trying it you can do it and document the process and the results. For example, you could look for ideas presented in ChipWhisperer tutorials and theory articles and think how you could use them in your experiments. Notice that to be accepted as task 4 your own idea must be about equal level of required skill and workload than option 1 and 2 are. __REMEMBER:__ before you do your specia idea please contact the assistants and make sure that the topic is ok. If idea is too large for lab task it is possbile to do it later as a course work. Of course your task 4 can be also initial experiments of your large idea and your coursework could be the rest of the work. You can discuss with course assistants about
 
 Notice that you can also just go and ask any additional ideas from course assistans. They might have some interesting basic ideas which are yet not so refined that those could be proposed in this documentation. But they are happy to share them with you and it is up to you to further refine idea.
-
 
 # Ideas for coursework
 
