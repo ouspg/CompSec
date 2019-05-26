@@ -38,7 +38,7 @@ This "Introduction" section contains background information about power analysis
 
 ## Practical arrangements of this lab
 
-This lab is little bit different than others because tasks require the usage of external device. Number of devices are limited, so it causes some difficulties to arragements.
+This lab is little bit different than others because tasks require the usage of external device. Number of devices are limited which causes some difficulties to arragements.
 * Students are encouraged/forced to do work in groups of 2 or 3 persons in lab sessions. Size of group heavily depends on how many students attend to lab sessions.
 * Students are encouraged to borrow device do the lab ahead of schedule to balance load on actual lab week
 * Students can borrow devices after/between lab sessions to continue working on tasks at home (alone, in same group or even with different people). In these cases pay close attention of **marking down clearly who participated on which tasks** because it is only way everybody can get the right amount of points when works are graded.
@@ -46,13 +46,10 @@ This lab is little bit different than others because tasks require the usage of 
 * You may use ChipWhisperer device in your coursework, but notice that how long you can keep device yourself is heavily depending how much other people are wanting to borrow them. Discuss with course assistants as early as possible if you want to use ChipWhisperer in your coursework.
 
 ## Background of power analysis
-Tänne yleistietoa power analysista, kirjoitettava uudelleen paremmin?
 
 Power analysis is a branch of side channel attacks where power consumption data is used as the side channel to attack the system.
 
-Basic idea of power analysis could be described next way:
-
-Target device has secret information in its memory and we want to reveal it...
+Target device has secret information in its memory and we want to reveal it. How could we do that?
 
 We know the source code of device and inputs and outputs, but secret information like encryption keys and passwords are used only in internal execution and those cannot be seen by outsider.
 
@@ -352,20 +349,19 @@ If you do not have any traces there, something has gone wrong during capture. If
 
 ### What to do to complete this task?
 
-**Explain how the correlation power analysis that you just performed works.**
+**Explain how the correlation power analysis attack that you just performed works.**
 
 Theoretical information about the attack you just performed can be found here http://wiki.newae.com/Correlation_Power_Analysis 
 
 Deeper technical insight and actual example code of attack can be found here http://wiki.newae.com/Tutorial_B6_Breaking_AES_(Manual_CPA_Attack) 
 
-All answers should be found in those two articles.
+All information needed should be found in those two articles.
 
-Your answer does not have to be in any certain "format" or any minimum length. Only requirement is that it explains issue well and shows that you have really investigated the issue deeper than surface level.
+Your answer does not have to be in any certain "format" or any minimum length. Only requirement is that it explains issue well and shows that you have really investigated attack you performed deeper than surface level.
 
-If you have troubles in your writing, you can consider next list of questions as your checklist. If you answer them all, your answer should be fine.
+If you have troubles in your writing, you can consider next list of questions as your checklist. Finding answers to those questions should produce decent overall result.
 * What are major steps of the correlation power analysis attack you just performed? Explain each phase shortly.
-* What kind of power leakage model is used?
-* What sensitive point of AES algorithm implementation targeted in this attack? (improve this and above one)
+* What sensitive point of AES algorithm implementation targeted in this attack? Describe sensitive point and the power leakage model used to attack it.
 * How is single subkey solved? Describe the calculations performed when attack tries to solve single subkey.
 * Did you manage to find out correct encryption key as end result? Was end result completely right or were some subkey guesses wrong? If yes, discuss reasons of it and how could it be possible to fix.
 
@@ -787,9 +783,7 @@ This task is divided 2 parts: Theory part and practical part. Theory part intend
 This task is based on and theory + example scripts are taken from ChipWhisperer tutorials https://wiki.newae.com/Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer) and https://wiki.newae.com/Tutorial_A3_VCC_Glitch_Attacks. Those tutorials should not be needed for doing this task, but feel free to read them as supplementary information.
 
 ## Theory
-A glitching attack is an intentional fault introduced to undermine device 
-security. These faults can for example cause instruction skipping,malformed data reads/write backs and instruction decoding errors.
-Below is a picture of the ChipWhisperers glitch generating process. Note that the clock can be either the target devices clock (clock glitching) or ChipWhisperers own clock(power glithching).
+A glitching attack is an intentional fault introduced to undermine device security. These faults can for example cause instruction skipping,malformed data reads/write backs and instruction decoding errors. Below is a picture of the ChipWhisperers glitch generating process. Note that the clock can be either the target devices clock (clock glitching) or ChipWhisperers own clock(power glithching).
 
 ![alt text](pictures/glitch4.png "Chipwhisperers glith generation ")
 
@@ -896,8 +890,7 @@ Manual glitching can be handy. However it can be tricky to target your glitch to
 10. Go to *Scope Settings* > *Glitch Module* and change *Glitch Trigger* to **Ext Trigger: Single-Shot** 
 11. Connect the terminal and reset the target. It should print "hello" upon reset.
 12. Now press *"Capture one"* button. Did the program glitch? Take a screenshot of the terminal window with glitched output. If you did not trigger a glitch, double check that you have executed all the above steps correctly. If that doesn't help increase your repeat count in *Glitch Module* settings
-13. Next we go over briefly some basics of the *Glitch Explorer*. For more detailed look check https://wiki.newae.com/Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer)#Using_the_Glitch_Explorer
-Open the *Glitch Explorer* from *Tools* > *Glitch Explorer*. 
+13. Next we go over briefly some basics of the *Glitch Explorer*. For more detailed look check https://wiki.newae.com/Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer) (Go to the part "Using the Glitch Explorer"). Open the *Glitch Explorer* from *Tools* > *Glitch Explorer*.
 14. Go to *Target Settings* and set *Output Format* to ```$GLITCH$```
 15. Now press *Capture Trace* button. You should see something in the *Glitch Explorer*. Like you probably realized the *Glitch Explorer* gets the output from the terminal. By modifying *Normal Response* and *Succesful Response* you can set which types of outputs the *Glitch Explorer* considers normal and succesful. Check the above link for information on the syntax of *Normal Response* and *Succesful Response*
 16. Modify the *Normal Response* and *Succesful Response* fields so that the *Glitch Explorer* considers a glitch succesful and a non glitch normal. Then capture few glitches and non glitches and take a screenshot of the *Glitch Explorer* screen.
@@ -919,7 +912,7 @@ It is very likely that you have to loop through many values. Change the value *N
 
 ### What to return on this task?
 
-In order to gain points of this task, next items must be returned:
+**Next items must be returned to gain points from this task:**
 
  * Screenshot of the successfull glitching of function *glitch_infinite()* (performed in step 6)
  * Screenshot of the successfull glitching of function *glitch1()* (performed in step 12)
@@ -929,7 +922,7 @@ In order to gain points of this task, next items must be returned:
  * Your setup script (if you made modifications to it)
  * Glitch explorer logs which your program produced
 
-Fill your answers into the return template
+Fill your answers into the return template and return scripts/logs to separate folder.
 
 ---
 # Task 4 
