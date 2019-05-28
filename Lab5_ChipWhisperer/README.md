@@ -878,7 +878,7 @@ When you inspected the program, you saw simple code executing loop inside loop. 
 
 You can reset the target with the XMEGA programmer by pressing *Check Signature* if you crash target so badly that it becomes unresponsive.
 
-(tell that this part might be tedious, and what to do if it does not succeed)
+Finding correct glitch parameters might be very tedious task, so do not give up easily! If you still find no success, you can proceed further and return back here because in later part you will be coding your own program which searches better glitch parameters.
 
 Manual glitching can be handy. However it can be tricky to target your glitch to a specific part of execution. By resetting the target prior to sending the glitch we can control in which part of the execution the glitch happens with more accuracy. For this purpose we use the reset module that we utilized in earlier tasks.
 
@@ -895,13 +895,54 @@ Manual glitching can be handy. However it can be tricky to target your glitch to
 17. Now you have the tools to try something trickier. We are going to glitch through a password check. Obviously you don't know how large glitch you need and where to execute it. Therefore you are going to create a script that executes a glitch, resets the device and then changes the glitching parameters. Then you loop until you find a set of variables that cause a glitch.
 18. First we start by programming the target with a program that asks for password. Modify the previously used .c file so that it executes function glitch3(). Then make and program it. Check the terminal that the program works as intended
 19. Execute **setup_password_glitch.py**. This will change ChipWhisperers settings. Check the scripts content so you understand what has changed. __Helpful tip__ executing "*scope*" or "*target*" in the ChipWhisperers python command line shows you how to change different variables through scripts.
-20. For your last task create a program that glitches through the password check. You basically have to create a looping program that changes the glitching parameters.
+20. For your last task create a program that glitches through the password check. You basically have to create a looping program that changes the glitching parameters (width, offset and repeat).
 
 * Create a program that resets the software, causes a glitch, changes glitching variables and glitches through the password check. Your program should change atleast width, offset and repeat. You can also loop through fine adjusts if you like. You can use program at https://wiki.newae.com/Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer)#Example_Running_the_Glitch_Explorer as your base. 
 * Check *Glitch Explorer* on where its logs are saved. You are expected to return atleast some of these.
 * Take a screenshot of the glitch explorer with a succesful glitch visible. Make sure that you change atleast the "*Succesful Response*" condition so that the succesful glitch is highlighted green. 
 * When you change any settings in the Scope and Target Settings tab modify these changes to setup_password_glitch.py or any script you like.
 
+You may use next code example from https://wiki.newae.com/Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer) as basis of your code.
+
+```Python
+class IterateGlitchWidthOffset(object):
+    def __init__(self, ge_window):
+        self._starting_offset = -40
+        self._starting_width = 5
+        self.ge_window = ge_window
+
+    def reset_glitch_to_default(self, scope, target, project):
+        """ Set glitch settings to defaults. """
+        self.offset = self._starting_offset
+        self.width = self._starting_width
+
+    def change_glitch_parameters(self, scope, target, project):
+        """ Example of simple glitch parameter modification function. """
+        # This value is minimum clock offset/width increment
+        self.offset += 0.390625
+
+        if self.offset > 40:
+            self.offset = self._starting_offset
+            self.width += 0.390625
+
+        if self.width > 40:
+            self.width = self._starting_width
+
+        # Write data to scope
+        scope.glitch.width = self.width
+        scope.glitch.offset = self.offset
+
+        #You MUST tell the glitch explorer about the updated settings
+        if self.ge_window:
+            self.ge_window.add_data("Glitch Width", scope.glitch.width)
+            self.ge_window.add_data("Glitch Offset",scope.glitch.offset)
+
+glitch_iterator = IterateGlitchWidthOffset(self.glitch_explorer)
+self.aux_list.register(glitch_iterator.change_glitch_parameters, "before_trace")
+self.aux_list.register(glitch_iterator.reset_glitch_to_default, "before_capture")
+```
+
+Running this code file should add those functions to your auxilary modules tab, and allow you just to press "Capture many" and then just wait and see how program automatically changes parameters of glitching itself (you may try it out and see that it is already changing width and offset).
 
 If you start to look for a glitch at repeat = 5 you should be able to find set of working glitching parameters quite fast. Check if you can find any at lower amount of repeats.
 
@@ -916,7 +957,7 @@ It is very likely that you have to loop through many values. Change the value *N
  * Screenshot of the successfull glitching of function *glitch1()* (performed in step 12)
  * Screenshot of the successfull glitching showing in *Glitch Explorer* (performed in step 16)
  * Screenshot of the successfull glitching showing in *Glitch Explorer* when your own program is doing glitching
- * Your custom python program you created which glitches through the password check
+ * Your custom python program you created which glitches through the password check and loops through width, offset and repeat parameters sensibly (**All 3 required**)
  * Your setup script (if you made modifications to it)
  * Glitch explorer logs which your program produced
 
