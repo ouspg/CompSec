@@ -108,7 +108,7 @@ To connect and use ChipWhisperer device and analyze power traces, you need ChipW
 
 If you want go go for option 2 or 3, software packages are downloadable [here](https://github.com/newaetech/chipwhisperer/releases).
 
-This lab tasks are tested with ChipWhisperer software version 4.0.1. If you install your own system, pay attention that you get the right version of program. Tasks should be doable with 4.0.x versions of software but this is not guaranteed by any means by anybody.
+This lab tasks are tested with ChipWhisperer software version 4.0.1 (which is already on this course virtual machine, no need to change anything). If you install your own system, pay attention that you get the right version of program. Tasks should be doable with 4.0.x versions of software but this is not guaranteed by any means by anybody.
 
 Version 5.0 of ChipWhisperer software was published recently, but using it would most likely break this lab completely because changes in new version are quite massive. Changing this lab to fully support 5.0 in this timeframe was not feasible to do, so this year still uses version 4.0.
 
@@ -144,13 +144,20 @@ Complete ChipWhisperer basic tutorial B1 http://wiki.newae.com/Tutorial_B1_Build
 4. Use capture software to connect the device
 5. Upload built example to the target device and test it
 
-Notice that in tutorial instructions after building program are hardware-specific. You have to click "Completing Tutorial witch CW1173 (Lite)"-button to see rest of the tutorial with right hardware.
+Notice that in tutorial instructions after building program are hardware-specific. Remember that your device is CW1173 (Lite) and target is XMEGA target, so you must only need corresponding sections of tutorial.
+
+Tutorial migh have some inconsistensies, mistakes and unclear instructions, so next is very short description of main the main points of it (some of which might have stated quite unclear in that tutorial):
+
+1. Copy, modify and build your ``simpleserial-base`` example and build it with command ``make PLATFORM=CW303``
+2. Àssemble device, connect it to computer with USB, open Capture software and connect to device by running scripts **connect_cwlite_simpleserial.py** and **setup_cwlite_xmega_aes.py**
+3. Program device with *Tools -> Xmega programmer*
+4. Open *Tools -> Encryption Status Monitor* and hit capture 1 button couple of times to ensure that your everything is working
 
 __TIPS & TRICKS__
 * You might have to unplug & plug USB cable again if computer or the capture software does not recognize the device. You also might have to unplug & plug device from virtual machine top right corner to make it detect it.
 * Notice that you have to be connecting serial cable and measure ports, glitch port is not needed in this task.
 * Notice that machines default username is **cwuser** and password is **cwpassword** in case you happen to need it.
-* Notice that chipwhisperer folder location is different what is mentioned in tutorial! Chipwhisperer files are located on the desktop.
+* Notice that chipwhisperer folder location may be different what is mentioned in tutorial! Chipwhisperer files are located on the desktop.
 * Beware of static electricity. Discharge of static electricity can be harmful to board.
 * You can open terminal on current folder from *Tools -> Open terminal* when using file explorer
 
@@ -254,6 +261,8 @@ Remember always that anytime you make modifications to program, you have to rebu
 
 7. Time for your first capture! Hit the capture button and see power trace appearing.
 
+> **HINT:** In some cases, ChipWhisperer software has some malfunction when this part is performed and it does not show any traces. You can try just simply restarting Capture software and running **connect_cwlite_simpleserial.py** and **setup_cwlite_xmega.py** again.
+
 Interesting part of trace is actually in just in the beginning of trace, rest is futile clutter. You can zoom in to inspect the first 500 samples of trace.
 
 8. Trace is not looking very nice, so next we will adjust settings little bit. On *Scope Settings* tab, under *Gain Setting* set the *Mode* to high. Increase the *Gain Setting* to about 25. You'll be able to adjust this further during experimentations, you may need to increase this depending on your hardware and target device. Under *Trigger Setup* set the *Total Samples* to 500, because everything interesting seems to be happening in first 500 samples of captured trace.
@@ -262,7 +271,7 @@ Interesting part of trace is actually in just in the beginning of trace, rest is
 
 10. Time to do some initial testing. Modify your program to run different amount amount of NOP and MUL instructions. Inspect how traces change. Try to detect on which points execution changes to different instruction. Also pay attention how long different instruction blocks take to execute.
 
-You can use "Trace persistance"-button to draw traces top of each other. This should make comparing different runs easier. Consider for example adding either NOP or MUL blocks one by one to program to see how trace changes.
+You can use "Enable percistence"-button to draw traces top of each other. This should make comparing different runs easier. Consider for example adding either NOP or MUL blocks one by one to program to see how trace changes. You may also test other gain settings than in earlier setup in hope of achieving more clear differences between instructions.
 
 When you think you have managed to detect different instructions and have good understanding what is happening, you can proceed to next part which describes what you must return on this task.
 
@@ -558,7 +567,7 @@ This is execution dependent on our private key, and if we can deduce which branc
 
 ### Capturing power traces
 
-ChipWhisperer RSA demo is used in this task. It has 2 modes: Real RSA decryption algorithm (which is way too slow for our testing purposes) and "faked" stripped version of RSA decryption algorithm, which is running only the vulnerable part of decryption algorithm. We will be using latter one version with only 16 bits of key material (to make analysis easier and capture too long) to demonstrate RSA vulnerability against power analysis. You can read source code from *simpleserial-rsa-xmega.c* before you compile it if you want to have deeper understanding of inner workings of real and faked algorithms.
+ChipWhisperer RSA demo is used in this task. It has 2 modes: Real RSA decryption algorithm (which is way too slow for our testing purposes) and "faked" stripped version of RSA decryption algorithm, which is running only the vulnerable part of decryption algorithm. We will be using latter one version with only 16 bits of key material (to make analysis easier and capture not too long) to demonstrate RSA vulnerability against power analysis. You can read source code from *simpleserial-rsa-xmega.c* before you compile it if you want to have deeper understanding of inner workings of real and faked algorithms.
 
 When we use demo script (simplified version), we send *Fixed plaintext* to algorithm. This is actually misleading, because send plaintext is used as "fake private key" to decrypt message. We do not care about actual encrypted message or resulting plaintext at all because our analysis targets only on private key so actual ciphertext and plaintext are irrelevant.
 
@@ -614,7 +623,7 @@ Ok, now the actual task begins.
 
 In this part we will write Python script that solves the secret private key by analyzing power traces.
 
-In theory it could be possible to determine private key by examinging power traces just by looking at them and plotting them carefully on top of each other (like you were hinted to experiment at capture phase), but of course we want computer to do work for us automatically instead of parforming manual labor.
+In theory it could be possible to determine private key by examinging power traces just by looking at them and plotting them carefully on top of each other (like you were hinted to experiment at capture phase), but of course we want computer to do work for us automatically instead of performing manual labor.
 
 Basically we will do next:
 1. Load power trace data to script
