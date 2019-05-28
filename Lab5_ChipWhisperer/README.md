@@ -5,7 +5,7 @@ Computer Security Lab 5: ChipWhisperer
 
 * [Introduction](#Introduction)
     * [Practical arrangements of this lab](#Practical-arrangements-of-this-lab)
-    * [Background of power analysis](#Background-of-power-analysis)
+    * [Short intro to power analysis](#Short-intro-to-power-analysis)
     * [Grading](#Grading)
 
 * [Setting up](#Setting-up)
@@ -45,22 +45,11 @@ This lab is little bit different than others because tasks require the usage of 
 * We try to arrange loaning times so that everyone would have chance to hold device at least couple of days if they want.
 * You may use ChipWhisperer device in your coursework, but notice that how long you can keep device yourself is heavily depending how much other people are wanting to borrow them. Discuss with course assistants as early as possible if you want to use ChipWhisperer in your coursework.
 
-## Background of power analysis
+## Short intro to power analysis
 
-Power analysis is a branch of side channel attacks where power consumption data is used as the side channel to attack the system.
-
-Target device has secret information in its memory and we want to reveal it. How could we do that?
-
-We know the source code of device and inputs and outputs, but secret information like encryption keys and passwords are used only in internal execution and those cannot be seen by outsider.
-
-What can we do to reveal secrets? We could approach problem from software viewpoint and for example try to find bug in the source code and then exploit that by constructing malformed input which causes device to function unexpectedly. But this time we are not going to play by the ruleset that only software gives us.
-
-Because we have access to hardware, we can utilize that in our attack. We can attach our measurement device to the target board and perform side-channel attack in the form of power analysis.
-
-Idea of power analysis attack is simple. Every operation on target chip consumes different amount of energy and therefore it produces different power trace. Because we know what source code is, we know every possible operation that chip will perform and when it will perform it. We also can see from source code when the secret data affects execution and we can see the logic how secret data affects the execution and causes different energy consumption. By knowing all of that, we can deduce secret information that target contains by simply analyzing captured power traces from the device.
+Power analysis is a branch of side channel attacks where power consumption data is used to study hardware device to extract some secret information from it. Power analysis attact is non-invasive by nature because it usually consists of sending varying but valid input data to the device and then comparing the power consumption of different runs with each other or power consumption models.
 
 More information about principles of power analysis can be found from [Wikipedia](https://en.wikipedia.org/wiki/Power_analysis) and more ChipWhisperer-related information about CPA can be found from manufacturers [wiki](http://wiki.newae.com/Correlation_Power_Analysis)
-
 
 ## Grading
 
@@ -117,11 +106,11 @@ To connect and use ChipWhisperer device and analyze power traces, you need ChipW
 * Option 2: If you do not want to use ready image or can not use WMWare images, you may download clean image from manufacturer [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). After that clone this reposity and get setup scripts from scripts folder.
 * Option 3: If you refuse to use virtual machines, you may install ChipWhisperer software your own machine [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). There is no reason why it would not work, but notice that we have not tested this option and therefore we might not be able to help you if you run into problems which are caused by your custom installation.
 
-If you want go go for option 2 or 3, software packages are downloadable here [here](https://github.com/newaetech/chipwhisperer/releases).
+If you want go go for option 2 or 3, software packages are downloadable [here](https://github.com/newaetech/chipwhisperer/releases).
 
 This lab tasks are tested with ChipWhisperer software version 4.0.1. If you install your own system, pay attention that you get the right version of program. Tasks should be doable with 4.0.x versions of software but this is not guaranteed by any means by anybody.
 
-Version 5.0 of ChipWhisperer software was published recently, but ...
+Version 5.0 of ChipWhisperer software was published recently, but using it would most likely break this lab completely because changes in new version are quite massive. Changing this lab to fully support 5.0 in this timeframe was not feasible to do, so this year still uses version 4.0.
 
 ---
 
@@ -277,7 +266,7 @@ You can use "Trace persistance"-button to draw traces top of each other. This sh
 
 When you think you have managed to detect different instructions and have good understanding what is happening, you can proceed to next part which describes what you must return on this task.
 
-### Making returnable items
+### What to return in this task?
 
 Now it is time to make your actual returnable items for this task.
 
