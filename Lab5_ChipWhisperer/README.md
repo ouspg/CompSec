@@ -868,39 +868,43 @@ Remember to connect glitch ports of the device with SMA cable for this task.
 
 1. Go to */home/cwuser/Desktop/chipwhisperer/hardware/victims/firmware/glitch-simple* and open *glitchsimple.c* with any text editor. Scroll to the main function and make sure that it executes glitch_infinite() function and nothing else. Check the glitch_infinite() function so that you understand what is it doing. 
 2. Build your program with ```make PLATFORM=CW303``` as usual
-3. Open capture software and execute **connect_cw_lite_simpleserial.py** and **SETUP_GLITCH_SIMPLE.py** 
+3. Open capture software and execute **connect_cw_lite_simpleserial.py** and **SETUP_GLITCH_SIMPLE.py**
+
+In setup script you can see offset, repeat and width parameters which should be working for this device.
+
 4. Upload your program to target as usual
-5. Open terminal and press connect. You should see "40000 200 200 x" where the x keeps increasing
+5. Open terminal (*Tools -> Terminal*) and press connect. You should see "40000 200 200 x" where the x keeps increasing
 
 When you inspected the program, you saw simple code executing loop inside loop. Now your task is to glitch device to cause code execution to jump another position and skip some loop executions.
 
-6. Go to *Scope Settings* > *Glitch Module* and Press the *Manual Trigger/ Single-Shot Arm* button. This sends single glitch to target and you should see something going wrong with the prints. You might need multiple attempts to cause successfull glitch. You can try hitting the button multiple times in fast pace. Take a screenshot of the terminal window which shows glitched output.
+6. Go to *Scope Settings* > *Glitch Module* and Press the *Manual Trigger/ Single-Shot Arm* button. This sends single glitch to target and you should see something going wrong with the prints. You might need multiple attempts to cause successfull glitch. You can try hitting the button multiple times in fast pace. Take a screenshot of the terminal window which shows glitched output. Glitching might be very tedious task, so do not give up easily! You may also change parameters defined in setup script if you need to.
 
 You can reset the target with the XMEGA programmer by pressing *Check Signature* if you crash target so badly that it becomes unresponsive.
-
-Finding correct glitch parameters might be very tedious task, so do not give up easily! If you still find no success, you can proceed further and return back here because in later part you will be coding your own program which searches better glitch parameters.
 
 Manual glitching can be handy. However it can be tricky to target your glitch to a specific part of execution. By resetting the target prior to sending the glitch we can control in which part of the execution the glitch happens with more accuracy. For this purpose we use the reset module that we utilized in earlier tasks.
 
 7. First, change the code in the target. Edit your *glitchsimple.c* so that it executes the function glitch1() and read what happens in that function.
 8. Build program and reprogram it to the target as usual. Check that the target behaves as it should.
-9. Execute **REST.py** . Check that the module loads to *Aux settings*
+9. Execute **REST.py**. Check that it has loaded module to *Aux settings* page
 10. Go to *Scope Settings* > *Glitch Module* and change *Glitch Trigger* to **Ext Trigger: Single-Shot** 
-11. Connect the terminal and reset the target. It should print "hello" upon reset.
+11. Connect the terminal and reset the target (with *Check Signature* button in *XMEGA Programmer*). It should print "hello" upon reset.
 12. Now press *"Capture one"* button. Did the program glitch? Take a screenshot of the terminal window with glitched output. If you did not trigger a glitch, double check that you have executed all the above steps correctly. If that doesn't help increase your repeat count in *Glitch Module* settings
 13. Next we go over briefly some basics of the *Glitch Explorer*. For more detailed look check https://wiki.newae.com/Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer) (Go to the part "Using the Glitch Explorer"). Open the *Glitch Explorer* from *Tools* > *Glitch Explorer*.
 14. Go to *Target Settings* and set *Output Format* to ```$GLITCH$```
 15. Now press *Capture Trace* button. You should see something in the *Glitch Explorer*. Like you probably realized the *Glitch Explorer* gets the output from the terminal. By modifying *Normal Response* and *Succesful Response* you can set which types of outputs the *Glitch Explorer* considers normal and succesful. Check the above link for information on the syntax of *Normal Response* and *Succesful Response*
-16. Modify the *Normal Response* and *Succesful Response* fields so that the *Glitch Explorer* considers a glitch succesful and a non glitch normal. Then capture few glitches and non glitches and take a screenshot of the *Glitch Explorer* screen.
-17. Now you have the tools to try something trickier. We are going to glitch through a password check. Obviously you don't know how large glitch you need and where to execute it. Therefore you are going to create a script that executes a glitch, resets the device and then changes the glitching parameters. Then you loop until you find a set of variables that cause a glitch.
-18. First we start by programming the target with a program that asks for password. Modify the previously used .c file so that it executes function glitch3(). Then make and program it. Check the terminal that the program works as intended
-19. Execute **setup_password_glitch.py**. This will change ChipWhisperers settings. Check the scripts content so you understand what has changed. __Helpful tip__ executing "*scope*" or "*target*" in the ChipWhisperers python command line shows you how to change different variables through scripts.
-20. For your last task create a program that glitches through the password check. You basically have to create a looping program that changes the glitching parameters (width, offset and repeat).
+16. Modify the *Normal Response* and *Succesful Response* fields so that the *Glitch Explorer* considers a glitch succesful and a non glitch normal. Then capture few glitches and non glitches and take a screenshot of the *Glitch Explorer* screen. As you know because you read code, device should respond with ``1234`` and red LED on board when successful glitch occurs.
 
-* Create a program that resets the software, causes a glitch, changes glitching variables and glitches through the password check. Your program should change atleast width, offset and repeat. You can also loop through fine adjusts if you like. You can use program at https://wiki.newae.com/Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer)#Example_Running_the_Glitch_Explorer as your base. 
+Now you will try something trickier: Glitching through the password checking. You are in unknown situation and you obviously you don't know beforehand with what parameters you must glitch and how long glitch should be. Trying thousands of combinations manually is not sensible, so you are going to create a script that executes a glitch, resets the device and then changes the glitching parameters. Then you loop until you find a set of variables that causes a glitch with hoped response from the victim.
+
+18. First we start by programming the target with a program that asks for password. Modify the previously used .c file so that it executes function glitch3(). Then make and program it. Check the terminal that the program works as intended
+19. Execute **setup_password_glitch.py**. This will change ChipWhisperers settings. Check the scripts content so you understand what has changed.
+20. Create the script which automatically changes the parameters of glitching. You basically have to create a looping that changes the glitching parameters (width, offset and repeat).
+
+* Create a script that makes ChipWhisperer Capture software reset target, cause a glitch, changes glitching variables and repeat everything again. Your program should change width, offset and repeat.
+* Your script should successfully glitch you through the password check
 * Check *Glitch Explorer* on where its logs are saved. You are expected to return atleast some of these.
 * Take a screenshot of the glitch explorer with a succesful glitch visible. Make sure that you change atleast the "*Succesful Response*" condition so that the succesful glitch is highlighted green. 
-* When you change any settings in the Scope and Target Settings tab modify these changes to setup_password_glitch.py or any script you like.
+* If you change any settings in the Scope and Target Settings tab modify these changes to setup_password_glitch.py or to your custom script.
 
 You may use next code example from https://wiki.newae.com/Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer) as basis of your code.
 
@@ -942,12 +946,12 @@ self.aux_list.register(glitch_iterator.change_glitch_parameters, "before_trace")
 self.aux_list.register(glitch_iterator.reset_glitch_to_default, "before_capture")
 ```
 
-Running this code file should add those functions to your auxilary modules tab, and allow you just to press "Capture many" and then just wait and see how program automatically changes parameters of glitching itself (you may try it out and see that it is already changing width and offset).
+Running this code file should add those functions to your auxilary modules tab, and allow you just to press "Capture many" and then just wait and see how it automatically changes parameters of glitching and show them in *Glitch Explorer* (you may try it out and see that it is already changing width and offset).
 
-If you start to look for a glitch at repeat = 5 you should be able to find set of working glitching parameters quite fast. Check if you can find any at lower amount of repeats.
+You already should know good parameters which are causing glitches (because you saw those in setup files when you first time glitched simple loop in beginning in this task), but do this script with assumption that you dont know the glitch parameters yet.
 
 __Tips & Tricks__
-It is very likely that you have to loop through many values. Change the value *Number of Traces* at the *Generic Settings* so that you capture more traces with *Capture Many* button. Feel free to tweak any values you like. It is possible that it will take really long time to find any glitches especially at lower repeat counts. This task can be passed without finding the glitch if you return a working program and proof of effort in a from of glitch explorer logs.
+It is very likely that you have to loop through many values. Change the value *Number of Traces* at the *Generic Settings* so that you capture more traces with *Capture Many* button. Feel free to tweak any values you like. It is possible that it will take really long time to find any glitches especially at lower repeat counts. This task can be passed without finding the glitch if you return a working script and proof of effort in a from of glitch explorer logs.
 
 ### What to return on this task?
 
