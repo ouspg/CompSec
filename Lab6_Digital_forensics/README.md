@@ -145,12 +145,52 @@ Find out what browser Mallory is using and then search for URLs which you want t
 * TBA: Mallorys OS version or correct volatility profile
 
 
-### C) Data recovery
+### C) Data hiding & password recovery
 
 TBA: Background story, task descriptions, tools
 
+> *Interrogator: We have started investigating that USB memory stick. Would you be nice enough to bother telling what data is on that stick?*
+> 
+> *Mallory: Of course. I am totally innocent so I can tell that on that stick was couple of totally useless RTF and PDF documents. And I kept some lorem ipsum flle and bunch of random strings there too.*
+> 
+> *Interrogator: "Was" and "kept". What do you mean?*
+> 
+> *Mallory: Well, I deleted everything. And formatted that stick too. Sadly everything is gone, otherwise I would have given everything to you because I totally have nothing to hide.*
+> 
+> *Interrogator: Well, I see. When you cleared that stick then?*
+> 
+> *Mallory: Just 15 seconds before you burst in through my door. What a coincidence!*
+> 
+> *Interrogator: Sure*
+
+
+Technical investigator attachs Mallorys memory stick to his machine by using write-blocker device. Stick seems to be empty and freshly formatted as Mallory implied. Techincal investigator utilizes his tools to create raw disk-dump of that USB-stick and then gives it to you.
+
+Your task is next:
+* Recover RTF and PDF documents (4 of them total) and all of the content of them.
+  * You must independently utilize your skills and creativity to unencrypt PDF document content
+* Raw disk image can be found from TBA
+
 #### Hints and links
 
+Carve out deleted documents from disk and proceed your task as you find small hints in them. Good luck.
+
+Useful tools
+* `foremost`, common tool for finding information inside files
+* `scalpel`, another tool based on foremost
+  * Learn to use custom configuring of it to carve files that foremost can not
+* Any hex editors/readers (for example Ghex and hexdump)
+* `hashcat`
+  * Brute-force utility for solving passwords from hashes, high amount of features targeting different types of passwords and encyptions
+* `rockyou.txt`
+  * Enormous collection of commonly used passwords
+* `pdf2john.py` is utility for extracting hash information from PDF files.
+
+Some hints:
+* Scalpel might sometimes produce broken files, try with another configurations or foremost
+* Some PDF-readers might not handle AES-256 encrypted PDF well. They claim that the password is incorrect even when it is not. Try with another reader (for example internet browser plugin reader).
+* Hashcat might require some other libraries to be installed before it runs correctly
+* Feel free to utilize any other tool you can find to solve these tasks
 
 ### F) Detecting and analyzing steganography
 
