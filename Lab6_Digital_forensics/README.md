@@ -244,7 +244,6 @@ Useful info
 Hints:
 * Simplest form of hiding text in image is simply writing it straight to the image data, as plain text or encoded text
   * Tools like `strings` and `hexdump` are useful in these cases
-  * When analyzing large group of images, writing your own bash script to execute commands could be useful
   * Somebody could encode their message before injecting it to the image file, so you must decode it too
 * More advanced image steganography includes modification of least-significant-bits (LSB) of image.
   * Statistical tools exists to detect if image is tampered somehow
