@@ -155,9 +155,7 @@ Find out what browser Mallory is using and then search for URLs which you want t
 
 ### C) Data hiding & password recovery
 
-TBA: Background story, task descriptions, tools
-
-> *Interrogator: We have started investigating that USB memory stick. Would you be nice enough to bother telling what data is on that stick?*
+> *Interrogator: We have started investigating that USB memory stick found next to your computer. Would you be nice enough to bother telling what data is on that stick?*
 > 
 > *Mallory: Of course. I am totally innocent so I can tell that on that stick was couple of totally useless RTF and PDF documents. And I kept some lorem ipsum flle and bunch of random strings there too.*
 > 
@@ -176,12 +174,12 @@ Technical investigator attachs Mallorys memory stick to his machine by using wri
 
 Your task is next:
 * Recover RTF and PDF documents (4 of them total) and all of the content of them.
-  * You must independently utilize your skills and creativity to unencrypt PDF document content
+  * You must independently utilize your skills, creativity and hints from memory dump to decrypt PDF document content
 * Raw disk image can be found from TBA
 
 #### Hints and links
 
-Carve out deleted documents from disk and proceed your task as you find small hints in them. Good luck.
+Carve out deleted documents from disk and proceed on your task as you see fit.
 
 Useful tools
 * `foremost`, common tool for finding information inside files
@@ -226,13 +224,13 @@ Some hints:
 > 
 > *You: I'll see what I can do*
 
-Your task is to find 4 different suspicious images, and then extract the messages hidden into them.
-
-Files can be found in the folder x
+Your task is to find 4 different suspicious images, and then extract the clear-text of the messages hidden into them. 
 
 #### Hints and links
 
-Steganography is practice of concealing actual information inside innocous-looking information. TBA: short description of usage
+Steganography is practice of concealing actual information inside innocous-looking information.
+
+TBA: Short background description of where it is used and why it is useful
 
 First problem is to identify image which is holding secret information, second problem is to find how to extract it.
 
@@ -242,26 +240,24 @@ Useful info
 * [StegExpose](https://github.com/b3dk7/StegExpose) - Tool for detecting LSB steganography
 * [zsteg](https://github.com/zed-0xff/zsteg) - Tool for detecting and extracting steganography
 * steghide and its counterpart [StegCracker](https://github.com/Paradoxis/StegCracker)
-* TBA: Link to bash tutorial
 
-TODO: Rewrite needed for this part
 Hints:
-* As you probably already quessed, images are the likely carriers of hidden information in this task
-* Simplest form of hiding text in image is simply writing it straight to the image with for example hex editor
-  * Consider investigating image with tools like hexdump and strings to find out if image has pure textual context embedded
-  * There is quite many images there, so running commands one-by-one to them is kinda laborous. Consider writing bash script to yourself like
+* Simplest form of hiding text in image is simply writing it straight to the image data, as plain text or encoded text
+  * Tools like `strings` and `hexdump` are useful in these cases
+  * When analyzing large group of images, writing your own bash script to execute commands could be useful
   * Somebody could encode their message before injecting it to the image file, so you must decode it too
-* More advanced image steganography includes modification of least-significant-bits (LSB) of image. This type of hiding can easily hide data from human eye because changing LSB of each pixel does not make noticeable difference to humans.
+* More advanced image steganography includes modification of least-significant-bits (LSB) of image.
   * Statistical tools exists to detect if image is tampered somehow
-  * You may use tools StegExpose and zsteg to detect and extract LSB-hidden information from images
+  * Tools like StegExpose and zsteg can detect and extract LSB-hidden information from images
 * It is possible to include file into another file
-  * Obviously file with hidden information is bigger than it should be
-  * Consider tools like foremost and/or binwalk to inspect suspicious files
-  * Image steganography tool steghide has countertool named StegCracker
+  * Obviously it makes file bigger than it should be
+  * Tools like foremost and/or binwalk can detect this kind of file-in-file tampering
+  * Image steganography tool steghide can encrypt and hide information to image very efficiently
+    * That tool has counter named StegCracker
 
-> *Interrogator: "By the way, if you encryped your information, would you use some leetspeak version of your own name as password? Like `m4lL0rY`*
+> *Interrogator: By the way, if you hid your secret data to image with some tool supporting encryption, would you use some leetspeak version of your own name as password? Like `m4lL0rY`*
 > 
-> *Mallory: "H-h-haha, of couse not - I am not obviously that stupid!*
+> *Mallory: H-h-haha, of couse not - I am not obviously that stupid!*
 > 
 > *Irrogators note: Mallory starts to sweat visibly*
 
