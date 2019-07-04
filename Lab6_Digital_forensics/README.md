@@ -15,19 +15,25 @@ Computer Security Lab 6: Digital forensics
 
 Digital forensics (aka digital forensic science) is field committed to recovering and investigating evidence found in digital devices.
 
-TBA: Utilization on public and private sectors
+TBA: Tell more about utilization on public and private sectors and common cases
 
-Field is too large to cover in single lab (many different forensic fields) and this lab this lab only intends to give you slight into the world of forensic investigation.
+Field is too large to cover in single lab (there exist many different digital forensic subfields) so this lab this lab only intends to give you slight intro to the world of digital forensic investigation.
 
-You will learn to use tools like TBA:
-
-TBA: List of useful links to tools and communities
+You can find further reading from TBA: List of useful links to tools and digital forensic communities/web pages
 
 ## Practical arrangements of this lab
 
-This lab utilizes the same Kali virtual machine you used in earlier labs. 2 raw dumps are available at TBA: Folder
+This lab does not require any spesific Linux distribution to be used. You are required to install quite many tools yourself, so anything you can install them on is good enough. Kali image used earlier in this course should work reasonably for this lab (and it has large set of needed tools already installed).
 
-TBA: Common info of lab practices
+Volatile memory dump, USB-stick dump, images of task 1D are available at same place than virtual machines. Server logs of task 2 are available in folder TBA of this lab repository.
+
+TBA: Common info of lab practices (fill this later if needed)
+
+TBA: Explain more clearly the ideas and principles of this lab and why it differs others so much
+
+This lab will be differing from others some extent: Instuctions are not always clear, you are expected to install (and solve occasional installation probles) and learn usage of every tool by yourself, creative thinking and problem solving is encouraged. There might be several ways to solve each task so students are not limited any way by forcing them to solve problems only certain paths.
+
+Good luck. You might really need it too with this lab.
 
 ## Grading
 
@@ -35,7 +41,7 @@ Task of this lab are divided to 3 different tasks which have corresponding grade
 
 Task| Grade/Level | Description | Good-to-have skills
 --|:--:|--|--
-1|3|Memory, disk image and steganography investigation|Basic understanding of working of RAM, disk storage system and steganography
+1|3|Memory, disk image and steganography investigation|Basic understanding of working of RAM, disk storage systems and steganography
 2|4|DDoS attack investigation|Fluent usage of command line tools, visualization tools and understanding of DDoS attack principles
 3|5|Advanced experiments|Different skills depending on your project
 
@@ -49,8 +55,7 @@ Read task instructions carefully before starting to work to have clear picture a
 
 ## Task 1
 
-TBA: Better opening statement
-Welcome to the imaginary day of digital forensic investigator. Task 1 has highly fictional backstory which tries to give meaningful context to tasks. Notice that also any task or skill you will be using might or might not be useful in real life, because this lab was not created by real digital forensic police/military official.
+Welcome to the imaginary day of digital forensic investigator. This task has highly fictional backstory which tries to give meaningful context to tasks. Notice that also any task or skill you will be using might or might not be useful in real life, because this lab does not equal to any official digital forensic training. Also, because this story is purely fictional, any possible connections to the real life events or people are coincidental.
 
 Story starts here.
 
@@ -70,7 +75,7 @@ Mallory is caught by surprise when police storms into his apartment and immediat
 Police officers start to search Mallorys apartment and technican begins to investigate Mallorys computer which is turned on and logged on. After discussing with leading investigator, techican decides to start with dumping volatile memory of computer to his external hard drive.
 Next to Mallorys computer is ordinary USB-memory stick. That stick is securely bagged to the evidence box for later inspection.
 
-But Mallory has some brutal surprise to digital forensic technican: Just as memory dump from volatile memory is secured to investigators external drive, Mallorys computer starts to smoke and soon catches on fire explosively. Technican grabs his drive containing memory dump and runs out of apartment because toxic smoke from melting components is starting to spread fastly.
+But Mallory has some brutal surprise for digital forensic technican: Just as memory dump from volatile memory is secured to investigators external drive, Mallorys computer starts to smoke and soon catches on fire explosively. Technican grabs his drive containing memory dump and runs out of apartment because toxic smoke from melting components is starting to spread fastly.
 Apartment is evacuated fastly and any human casualities are avoided, but Mallorys improvised dead-man-switch - timed icendiary bomb inside computer which he supposedly managed to trigger when he heard police breaking in - has rendered whole machine totally unsalvageable.
 
 Investigators know that there was so much critical information gone with Mallorys computer, and any hope they have left lies in single memory dump of Mallorys machine and ordinary USB memory stick.
@@ -114,7 +119,7 @@ Windows stores all kind of activity of machine to the event log which can greatl
 > 
 > *Mallory: I want to chek different locations before I-, uh- I mean I like hiking too.*
 
-While exact location remains unknown, intel gathered from other sources suggests that Mallorys organization has been using codenames for those 2 caches: *Lake* and *Coast*.
+While exact location remains unknown, intel gathered from other sources suggests that Mallorys organization has been using codenames for those 2 caches: *LAKE* and *COAST*.
 
 Your first task is to find 2 different GPS locations where police officers should start for looking hidden stashes.
 
@@ -130,7 +135,9 @@ Your first task is to find 2 different GPS locations where police officers shoul
 > 
 > *You: I see. So we have only this memory dump right now. I'll see what I can do.*
 
-Your second task is to retrieve any email Mallory sent to his criminal partners. You must extract address and content of that mail so investigators could have more leads about Mallorys criminal contacts.
+Intel from unconfirmed sources claims there is rumors about Mallory having also third hidden cache. Nothing about it is known but its codename: *FOREST*
+
+Your second task is to retrieve any email Mallory sent to or received from his criminal partners. Extract the name of Mallorys criminal partner and solve where third cache may be hidden.
 
 Fill your answers and reasoning to the return template.
 
@@ -141,8 +148,9 @@ Volatility is tool for volatile memory inspection.
 Find out what browser Mallory is using and then search for URLs which you want to find from its process memory.
 
 * [Volatility wiki](https://github.com/volatilityfoundation/volatility/wiki)
-* Possibly useful commands, `pslist`, `psscan`, `yarascan` 
+  * Possibly useful commands, `pslist`, `psscan`, `yarascan` 
 * TBA: Mallorys OS version or correct volatility profile
+* TBA: hints of exiftool and file carving
 
 
 ### C) Data hiding & password recovery
@@ -192,7 +200,7 @@ Some hints:
 * Hashcat might require some other libraries to be installed before it runs correctly
 * Feel free to utilize any other tool you can find to solve these tasks
 
-### F) Detecting and analyzing steganography
+### D) Detecting and analyzing steganography
 
 > *Investigator: Hey, I found something interesting*
 > 
@@ -259,7 +267,7 @@ Hints:
 
 ## Task 2
 
-TBA: DDoS investigation task
+That DDoS investigation task with hardened requirements
 
 ## Task 3
 
