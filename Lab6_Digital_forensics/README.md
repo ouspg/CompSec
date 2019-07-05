@@ -121,7 +121,7 @@ Windows stores all kind of activity of machine to the event log which can greatl
 > 
 > *Mallory: I want to chek different locations before I-, uh- I mean I like hiking too.*
 
-While exact location remains unknown, intel gathered from other sources suggests that Mallorys organization has been using codenames for those 2 caches: *LAKE* and *COAST*. Leading investicator suspects that those codenames are most likely describing also the places themselves.
+While exact location remains unknown, intel gathered from other sources suggests that Mallorys organization has been using codenames for those 2 caches: *LAKE* and *COAST*. Leading investicator suspects that those codenames are most likely describing also the places themselves. Leading investigator also suspects, that hidden caches are mostly located not too far from city and those should not require too long distance to be travelled by foot. Also caches can not obviously locate on densely populated area.
 
 Your first task is to find 2 different GPS locations where police officers should start for looking hidden stashes.
 
