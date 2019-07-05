@@ -13,6 +13,8 @@ Computer Security Lab 6: Digital forensics
 
 # Introduction
 
+**THIS IS LAB IS PARTIALLY WIP**
+
 Digital forensics (aka digital forensic science) is field committed to recovering and investigating evidence found in digital devices.
 
 TBA: Tell more about utilization on public and private sectors and common cases
@@ -25,9 +27,9 @@ You can find further reading from TBA: List of useful links to tools and digital
 
 This lab does not require any spesific Linux distribution to be used. You are required to install quite many tools yourself, so anything you can install them on is good enough. Kali image used earlier in this course should work reasonably for this lab (and it has large set of needed tools already installed).
 
-Volatile memory dump, USB-stick dump, images of task 1D are available at same place than virtual machines. Server logs of task 2 are available in folder TBA of this lab repository.
+Volatile memory dump, USB-stick dump, images of task 1D are available at same place than virtual machines (packages are stored under folder "Digital_Forensics"). Server logs of task 2 are available in folder TBA of this lab repository.
 
-TBA: Common info of lab practices (fill this later if needed)
+TBA: Common info of lab practices
 
 TBA: Explain more clearly the ideas and principles of this lab and why it differs others so much
 
@@ -59,13 +61,13 @@ Welcome to the imaginary day of digital forensic investigator. This task has hig
 
 Story starts here.
 
-Mallory is notorious member of criminal underworld. He is known for illeagal drug and weapon trade, and he is rumored to have very cheap and reliable suppliers on both which have made him easy to gain foothold of black market.
+Mallory is notorious member of criminal underworld. He is known for illeagal items, and he is rumored to have very large network of contacts which have made him easy to gain foothold of black market.
 
 Mallory have been successfull in his criminal activities lately, giving large influx of money and letting him expand his network, which have made him one of the "big players" of criminal underworld.
 
 Unfortunately for him, also law enforcement at national level agencies have noticed his success. Mallory has reputation of being faster talker than thinker and because rumors spread fast, becoming known by law enforcement was only matter of time.
 
-Big wheels start to turn, and large surveillance operation against Mallory and his minions is started. After 3 monts of fruitless efforts intel from trusted source apprears: Mallorys gang is going to do drug deal next day.
+Big wheels start to turn, and large surveillance operation against Mallory and his minions was started started. After 3 monts of fruitless efforts intel from trusted source apprears: Mallorys gang is going to do drug deal next day.
 
 Intel turns out to be correct and leading investigator decides that this is correct moment to strike. This would not be major victory, because only couple of Mallorys men would be caught red-handed, but it still could result Mallorys conviction if enough evidence is found about his involvement. Situation is not optimal, but small success is better than fruitless waiting of 3 months.
 
@@ -80,18 +82,18 @@ Apartment is evacuated fastly and any human casualities are avoided, but Mallory
 
 Investigators know that there was so much critical information gone with Mallorys computer, and any hope they have left lies in single memory dump of Mallorys machine and ordinary USB memory stick.
 
-### A) Inspecting Windows event logs
+### A) Inspecting Windows event logs (NOTICE: THIS TASK MIGHT BE UNFEASIBLE AND IT MIGHT BE REMOVED LATER)
 
 While other Investigations starts with interrogation of Mallory goes on.
 
-Intel gathered from multiple sources during surveillance phase of operation suggests that there has been underworld meeting of criminal bosses at neighbouring city at day xxx.
+Intel gathered from multiple sources during surveillance phase of operation suggests that there has been underworld meeting of criminal bosses at neighbouring city at day TBA.
 Leading investigator does not know if Mallory attended that "conference" or not and he is unsure if he should continue that line of investigation or rule that out.
 
 Mallory claims that he has been home all time on that day:
 
-> *Interrogator: What you were doing on xxx*
+> *Interrogator: What you were doing on last thursday night, 4th of July 2019*
 > 
-> *Mallory: Oh, xxx , I was at home watching cat videos with my computer. I definately was not committing anything shady business at another city because I sat front of my computer all day!*
+> *Mallory: Oh, last thursday night , I was at home watching cat videos with my computer. I definately was not committing anything shady business at another city because I sat front of my computer all night!*
 
 Your task is to find out if any other evidence supports or conflicts with Mallorys alibi. You must tell to the leading investigator whether he should keep that line of investigation open (evidence does not support Mallorys alibi) or cut it out and redirect resources to other matters (evidence does support Mallorys alibi).
 
@@ -119,7 +121,7 @@ Windows stores all kind of activity of machine to the event log which can greatl
 > 
 > *Mallory: I want to chek different locations before I-, uh- I mean I like hiking too.*
 
-While exact location remains unknown, intel gathered from other sources suggests that Mallorys organization has been using codenames for those 2 caches: *LAKE* and *COAST*.
+While exact location remains unknown, intel gathered from other sources suggests that Mallorys organization has been using codenames for those 2 caches: *LAKE* and *COAST*. Leading investicator suspects that those codenames are most likely describing also the places themselves.
 
 Your first task is to find 2 different GPS locations where police officers should start for looking hidden stashes.
 
@@ -131,7 +133,7 @@ Your first task is to find 2 different GPS locations where police officers shoul
 > 
 > *You: Oh. Thats bad. But eventually we will get it.*
 > 
-> *Leading investigator: Yes we will. But this is urgent because any useful intel we could get from his email might be irrelevant next week because word about Mallorys arrest is spreading and his contacts are going to flee any moment.*
+> *Leading investigator: Yes we will. But this is urgent because any useful intel we could get from his email might be irrelevant next week because word about Mallorys arrest is spreading and his contacts are going to flee any moment with hidden caches.*
 > 
 > *You: I see. So we have only this memory dump right now. I'll see what I can do.*
 
@@ -148,10 +150,12 @@ Volatility is tool for volatile memory inspection.
 Find out what browser Mallory is using and then search for URLs which you want to find from its process memory.
 
 * [Volatility wiki](https://github.com/volatilityfoundation/volatility/wiki)
-  * Possibly useful commands, `pslist`, `psscan`, `yarascan` 
-* TBA: Mallorys OS version or correct volatility profile
-* TBA: hints of exiftool and file carving
+  * Useful volatility commands, `pslist`, `yarascan`, `memdump`
+  * Correct profile for Mallorys machine is `Win7SP1x64_23418`
+* Exiftool is tool for inspecting image metadata
+* Foremost can extract files of specified type from other files, for example memory dumps of processes
 
+**NOTICE: Last cache FOREST coordinates are not right, so ignore that inconsistency for now, it will be fixed later**
 
 ### C) Data hiding & password recovery
 
@@ -169,34 +173,33 @@ Find out what browser Mallory is using and then search for URLs which you want t
 > 
 > *Interrogator: Sure*
 
-
 Technical investigator attachs Mallorys memory stick to his machine by using write-blocker device. Stick seems to be empty and freshly formatted as Mallory implied. Techincal investigator utilizes his tools to create raw disk-dump of that USB-stick and then gives it to you.
 
 Your task is next:
 * Recover RTF and PDF documents (4 of them total) and all of the content of them.
   * You must independently utilize your skills, creativity and hints from memory dump to decrypt PDF document content
-* Raw disk image can be found from TBA
 
 #### Hints and links
 
 Carve out deleted documents from disk and proceed on your task as you see fit.
 
 Useful tools
-* `foremost`, common tool for finding information inside files
+* `foremost`, common tool for recovering files
 * `scalpel`, another tool based on foremost
   * Learn to use custom configuring of it to carve files that foremost can not
 * Any hex editors/readers (for example Ghex and hexdump)
 * `hashcat`
-  * Brute-force utility for solving passwords from hashes, high amount of features targeting different types of passwords and encyptions
+  * Utility for recovering passwords, high amount of features for different situations
 * `rockyou.txt`
   * Enormous collection of commonly used passwords
-* `pdf2john.py` is utility for extracting hash information from PDF files.
+* `pdf2john.py` is utility for extracting hash information from PDF files
 
 Some hints:
 * Scalpel might sometimes produce broken files, try with another configurations or foremost
-* Some PDF-readers might not handle AES-256 encrypted PDF well. They claim that the password is incorrect even when it is not. Try with another reader (for example internet browser plugin reader).
+* Some PDF-readers might not handle AES-256 encrypted PDF well. They claim that the password is incorrect even when it is not. Try with another PDF-capable program (for example with internet browser).
 * Hashcat might require some other libraries to be installed before it runs correctly
 * Feel free to utilize any other tool you can find to solve these tasks
+
 
 ### D) Detecting and analyzing steganography
 
@@ -235,7 +238,7 @@ TBA: Short background description of where it is used and why it is useful
 First problem is to identify image which is holding secret information, second problem is to find how to extract it.
 
 Useful info
-* [Userful overwiev to steganography](https://en.wikipedia.org/wiki/Steganography)
+* [Userful overview to steganography](https://en.wikipedia.org/wiki/Steganography)
 * Useful command line commands: `strings`, `hexdump`, `foremost`, `binwalk`
 * [StegExpose](https://github.com/b3dk7/StegExpose) - Tool for detecting LSB steganography
 * [zsteg](https://github.com/zed-0xff/zsteg) - Tool for detecting and extracting steganography
@@ -262,7 +265,7 @@ Hints:
 
 ## Task 2
 
-That DDoS investigation task with hardened requirements
+That DDoS investigation task from lab 3 with hardened requirements
 
 ## Task 3
 
@@ -278,6 +281,10 @@ TBA: Initial info and links to research
 
 TBA: Task description, requirements and links to tools
 
-### Option 3: Your own invention
+### Option 3: Filesystem slack data hiding and extraction experiments
+
+TBA: Description what kind of experiments should be tryed filesystem slack (because file slack utilized earlier was not enough)
+
+### Option 4: Your own invention
 
 TBA: Generic description
