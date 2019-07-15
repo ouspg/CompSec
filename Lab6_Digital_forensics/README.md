@@ -61,7 +61,9 @@ Welcome to the imaginary day of digital forensic investigator. This task has hig
 
 Story starts here.
 
-Mallory is notorious member of criminal underworld. He is known for illeagal items, and he is rumored to have very large network of contacts which have made him easy to gain foothold of black market.
+Mallory is notorious member of criminal underworld. He is known for illegal items trade, and he is rumored to have multiple shady contacs supplying him with high-quality "stuff", which have made him easy to gain foothold of black market.
+
+Mallory has also reputation of being faster talker than thinker.
 
 Mallory have been successfull in his criminal activities lately, giving large influx of money and letting him expand his network, which have made him one of the "big players" of criminal underworld.
 
@@ -71,7 +73,7 @@ Big wheels start to turn, and large surveillance operation against Mallory and h
 
 Intel turns out to be correct and leading investigator decides that this is correct moment to strike. This would not be major victory, because only couple of Mallorys men would be caught red-handed, but it still could result Mallorys conviction if enough evidence is found about his involvement. Situation is not optimal, but small success is better than fruitless waiting of 3 months.
 
-Moment to stirke has come: Special units of police crash into the place of meeting and find 2 of Mallorys crooks with huge stash of illeagal weapons and drugs. Simultaneously multiple carefully coordinated house raids are performed to all known members of Mallorys gang, including Mallorys home himself.
+Moment to stirke has come: Special units of police crash into the place of meeting and find 2 of Mallorys crooks with huge stash of illegal weapons and drugs. Simultaneously multiple carefully coordinated house raids are performed to all known members of Mallorys gang, including Mallorys home himself.
 
 Mallory is caught by surprise when police storms into his apartment and immediately arrests him.
 Police officers start to search Mallorys apartment and technican begins to investigate Mallorys computer which is turned on and logged on. After discussing with leading investigator, techican decides to start with dumping volatile memory of computer to his external hard drive.
@@ -82,30 +84,7 @@ Apartment is evacuated fastly and any human casualities are avoided, but Mallory
 
 Investigators know that there was so much critical information gone with Mallorys computer, and any hope they have left lies in single memory dump of Mallorys machine and ordinary USB memory stick.
 
-### A) Inspecting Windows event logs (NOTICE: THIS TASK MIGHT BE UNFEASIBLE AND IT MIGHT BE REMOVED LATER)
-
-While other Investigations starts with interrogation of Mallory goes on.
-
-Intel gathered from multiple sources during surveillance phase of operation suggests that there has been underworld meeting of criminal bosses at neighbouring city at day TBA.
-Leading investigator does not know if Mallory attended that "conference" or not and he is unsure if he should continue that line of investigation or rule that out.
-
-Mallory claims that he has been home all time on that day:
-
-> *Interrogator: What you were doing on last thursday night, 4th of July 2019*
-> 
-> *Mallory: Oh, last thursday night , I was at home watching cat videos with my computer. I definately was not committing anything shady business at another city because I sat front of my computer all night!*
-
-Your task is to find out if any other evidence supports or conflicts with Mallorys alibi. You must tell to the leading investigator whether he should keep that line of investigation open (evidence does not support Mallorys alibi) or cut it out and redirect resources to other matters (evidence does support Mallorys alibi).
-
-Fill your answer and reasoning to the return template.
-
-#### Hints and links
-
-Windows stores all kind of activity of machine to the event log which can greatly help investigating what has been happening with machine.
-
-* TBA: Link to event log info
-* There exists tool named [EVTXtract](https://github.com/williballenthin/EVTXtract) This tool can search for event logs from memory and recover them if possible
-
+### A) Inspecting Windows event logs (REMOVED BECAUSE PROVED TO BE UNFEASIBLE TASK)
 
 ### B) Inspecting memory with Volatility
 
@@ -155,7 +134,6 @@ Find out what browser Mallory is using and then search for URLs which you want t
 * Exiftool is tool for inspecting image metadata
 * Foremost can extract files of specified type from other files, for example memory dumps of processes
 
-**NOTICE: Last cache FOREST coordinates are not right, so ignore that inconsistency for now, it will be fixed later**
 
 ### C) Data hiding & password recovery
 
