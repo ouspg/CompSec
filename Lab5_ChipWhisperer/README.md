@@ -177,7 +177,7 @@ In this part you will do setups and simple testing. You are not required to retu
 
 Follow next instructions:
 
-1. Create new copy of folder ``simpleserial-base`` like you did in previous tutorial task. You can rename it for example ``simpleserial-base-task-1b`` or anything you want.
+1. Create new copy of folder ``simpleserial-base`` like you did in previous tutorial task and keep it in the same folder than original. You can rename it for example ``simpleserial-base-task-1b`` or anything you want.
 
 2. Next, we will modify the copied simpleserial example that it performs different basic operations. Make next modifications to code:
 
@@ -896,9 +896,9 @@ Manual glitching can be handy. However it can be tricky to target your glitch to
 
 Now you will try something trickier: Glitching through the password checking. You are in unknown situation and you obviously you don't know beforehand with what parameters you must glitch and how long glitch should be. Trying thousands of combinations manually is not sensible, so you are going to create a script that executes a glitch, resets the device and then changes the glitching parameters. Then you loop until you find a set of variables that causes a glitch with hoped response from the victim.
 
-18. First we start by programming the target with a program that asks for password. Modify the previously used .c file so that it executes function glitch3(). Then make and program it. Check the terminal that the program works as intended
-19. Execute **setup_password_glitch.py**. This will change ChipWhisperers settings. Check the scripts content so you understand what has changed.
-20. Create the script which automatically changes the parameters of glitching. You basically have to create a looping that changes the glitching parameters (width, offset and repeat).
+17. First we start by programming the target with a program that asks for password. Modify the previously used .c file so that it executes function glitch3(). Then make and program it. Check the terminal that the program works as intended
+18. Execute **setup_password_glitch.py**. This will change ChipWhisperers settings. Check the scripts content so you understand what has changed.
+19. Create the script which automatically changes the parameters of glitching. You basically have to create a looping that changes the glitching parameters (width, offset and repeat).
 
 * Create a script that makes ChipWhisperer Capture software reset target, cause a glitch, changes glitching variables and repeat everything again. Your program should change width, offset and repeat.
 * Your script should successfully glitch you through the password check
