@@ -13,7 +13,7 @@ Computer Security Lab 6: Digital forensics
 
 # Introduction
 
-**THIS IS LAB IS PARTIALLY WIP**
+**TASKS 2 and 3 WIP**
 
 Digital forensics (aka digital forensic science) is field committed to recovering and investigating evidence found in digital devices.
 
@@ -149,7 +149,7 @@ Find out what browser Mallory is using and then search for URLs which you want t
 > 
 > *Mallory: Just 15 seconds before you burst in through my door. What a coincidence!*
 > 
-> *Interrogator: Sure*
+> *Interrogator: Sure.*
 
 Technical investigator attachs Mallorys memory stick to his machine by using write-blocker device. Stick seems to be empty and freshly formatted as Mallory implied. Techincal investigator utilizes his tools to create raw disk-dump of that USB-stick and then gives it to you.
 
@@ -165,7 +165,7 @@ Useful tools
 * `foremost`, common tool for recovering files
 * `scalpel`, another tool based on foremost
   * Learn to use custom configuring of it to carve files that foremost can not
-* Any hex editors/readers (for example Ghex and hexdump)
+* Any hex editors/readers (for example Ghex and hexdump) for investigating raw memory
 * `hashcat`
   * Utility for recovering passwords, high amount of features for different situations
 * `rockyou.txt`
@@ -232,8 +232,8 @@ Hints:
 * It is possible to include file into another file
   * Obviously it makes file bigger than it should be
   * Tools like foremost and/or binwalk can detect this kind of file-in-file tampering
-  * Image steganography tool steghide can encrypt and hide information to image very efficiently
-    * That tool has counter named StegCracker
+  * Image steganography tool `steghide` can encrypt and hide information to image very efficiently
+    * That tool has counter named `StegCracker`, which bruteforces information hidden with `steghide` out of the image (but you have to provide wordlist for it)
 
 > *Interrogator: By the way, if you hid your secret data to image with some tool supporting encryption, would you use some leetspeak version of your own name as password? Like `m4lL0rY`*
 > 
@@ -255,13 +255,13 @@ Multiple varying options available
 
 TBA: Initial info and links to research
 
-### Option 2: OSINT
+### Option 2: OSINT, that facebook image id hiding thing
 
 TBA: Task description, requirements and links to tools
 
 ### Option 3: Filesystem slack data hiding and extraction experiments
 
-TBA: Description what kind of experiments should be tryed filesystem slack (because file slack utilized earlier was not enough)
+TBA: Description what kind of experiments should be tried filesystem slack (because file slack utilized earlier was not enough)
 
 ### Option 4: Your own invention
 
