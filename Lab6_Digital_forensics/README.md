@@ -1,4 +1,4 @@
-Computer Security Lab 6: Digital forensics
+Computer Security Lab 6: Bonus Challenge: Digital Forensics
 ====
 
 ## ToC
@@ -6,6 +6,7 @@ Computer Security Lab 6: Digital forensics
 * [Introduction](#Introduction)
   * [Practical arrangements of this lab](#Practical-arrangements-of-this-lab)
   * [Grading](#Grading)
+  * [Important reminder](#Important-reminder)
 * [Tasks](#Tasks)
   * [Task 1](#Task-1)
   * [Task 2](#Task-2)
@@ -13,29 +14,35 @@ Computer Security Lab 6: Digital forensics
 
 # Introduction
 
-**TASKS 2 and 3 WIP**
+**TASK 3 WIP**
 
 Digital forensics (aka digital forensic science) is field committed to recovering and investigating evidence found in digital devices.
 
 TBA: Tell more about utilization on public and private sectors and common cases
 
-Field is too large to cover in single lab (there exist many different digital forensic subfields) so this lab this lab only intends to give you slight intro to the world of digital forensic investigation.
+Field is too large to cover in single lab (there exist many different digital forensic subfields) so this lab this lab only intends to give you slight intro to the digital forensic investigation related issues.
 
 You can find further reading from TBA: List of useful links to tools and digital forensic communities/web pages
 
 ## Practical arrangements of this lab
 
-This lab does not require any spesific Linux distribution to be used. You are required to install quite many tools yourself, so anything you can install them on is good enough. Kali image used earlier in this course should work reasonably for this lab (and it has large set of needed tools already installed).
+This lab does not require any spesific Linux distribution to be used. You are required to install quite many tools yourself, so anything you can install them on is good enough. Kali image used earlier in this course should work reasonably well with this lab (and it has large set of needed tools already installed).
 
-Volatile memory dump, USB-stick dump, images of task 1D are available at same place than virtual machines (packages are stored under folder "Digital_Forensics"). Server logs of task 2 are available in folder TBA of this lab repository.
+All memory and image dumps are available at same place than virtual machines (packages are stored under folder "Digital_Forensics"). Server logs of Task 2 are available in there too.
 
-TBA: Common info of lab practices
+TBA: Common info of lab practices, if there is anything extra to add
 
-TBA: Explain more clearly the ideas and principles of this lab and why it differs others so much
+## Important reminder
 
-This lab will be differing from others some extent: Instuctions are not always clear, you are expected to install (and solve occasional installation probles) and learn usage of every tool by yourself, creative thinking and problem solving is encouraged. There might be several ways to solve each task so students are not limited any way by forcing them to solve problems only certain paths.
+This is not like other labs. This is bonus challenge. It means that this lab is harder than the others, instructions and directions where you should go are purposefully more unclear than in the other labs and change of tool usage problems and other irritating errors is higher than in the other labs.
 
-Good luck. You might really need it too with this lab.
+There may or may not be multiple ways to solve each task. You must use your own judgement to determine what ways could or should be pursued to gain success. Independent out-of-the-box thinking and creative problem solving is highly encouraged.
+
+You are required to install all needed tools of yourself and if there happens to be some problems with them - well, hopefully Google helps you then.
+
+So basically this lab is more like real life. Or some obscure CTF-competition.
+
+Consider yourself to be properly warned after reading this. Good luck. You might really need it too.
 
 ## Grading
 
@@ -44,7 +51,7 @@ Task of this lab are divided to 3 different tasks which have corresponding grade
 Task| Grade/Level | Description | Good-to-have skills
 --|:--:|--|--
 1|3|Memory, disk image and steganography investigation|Basic understanding of working of RAM, disk storage systems and steganography
-2|4|DDoS attack investigation|Fluent usage of command line tools, visualization tools and understanding of DDoS attack principles
+2|4|DDoS attack investigation|Fluent usage of log basic linux commands and coding, understanding of DDoS attack principles
 3|5|Advanced experiments|Different skills depending on your project
 
 # Tasks
