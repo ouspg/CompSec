@@ -100,7 +100,7 @@ Investigators know that there was so much critical information gone with Mallory
 > 
 > *Mallory: I want to chek different locations before I-, uh- I mean I like hiking too.*
 
-While exact location remains unknown, intel gathered from other sources suggests that Mallorys organization has been using codenames for those 2 caches: *LAKE* and *COAST*. Leading investicator suspects that those codenames are most likely describing also the places themselves. Leading investigator also suspects, that hidden caches are mostly located not too far from city and those should not require too long distance to be travelled by foot. Also caches can not obviously locate on densely populated area.
+While exact location remains unknown, intel gathered from other sources suggests that Mallorys organization has been using codenames for those 2 caches: *LAKE* and *COAST*. Leading investicator suspects that those codenames are most likely describing also the places themselves. Leading investigator also suspects, that hidden caches are mostly located not too far from city and those should not require too long distance to be travelled by foot. Also caches can not obviously be located on densely populated areas.
 
 Your first task is to find 2 different GPS locations where police officers should start for looking hidden stashes.
 
@@ -241,9 +241,32 @@ Hints:
 > 
 > *Irrogators note: Mallory starts to sweat visibly*
 
-## Task 2
+## Task 2: Analyzing DDoS attack
 
-That DDoS investigation task from lab 3 with hardened requirements
+Your next task is to make analysis and report of the real world DDoS attack.
+
+TBA: Any extra background info of that attack? Malware from lab 3?
+
+You will find server log file from same place than memory dumps of earlier tasks.
+
+After unzipping log, you may find out that opening log file (which contains over 6 million lines of data) may crash regular text editor so you most likely have to utilize other tools to initial investigation of log file. Commands `grep`, `less`, `sort`, `cut`, `awk` and `uniq` might be helpful.
+
+Calculate next things from attack: Start time(s) and end time(s) (different parts in attack can exist), attack intensity charts/tables (requests per second and per minute) and IP addresses (bots) participating attack and analysis of them (times new bots entered in, how many bots were total, request counts per bot).
+
+Feel free to use any tool/scripting language/existing solution to calculate your analysis.
+
+Analyze how server was burdened. Obviously by sending overload of requests to it, but why just that kind of request was used? You do not know inner workings of server, but make educated guess based on what you see and know.
+
+Can you find person who hypotetically was behind the whole attack? That person made one mistake, and his/hers IP address could be reasoned out from the logs.
+
+### What to return
+
+Your carefully thought out analysis of attack containing **at least** next items:
+* Careful analysis of attack start/end time, intensities and bots participating it (analysis targets described above). Your style of reporting is free-formed, but depth quality of analysis is expected to be sufficient.
+* Well-reasoned explanation why certain type of request were used in DDoS attack.
+* IP address which points towards the real person controlling the botnet, and reasoning why you ended up to that conclusion.
+
+Fill your answers to the return template.
 
 ## Task 3
 
