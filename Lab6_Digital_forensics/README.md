@@ -226,7 +226,7 @@ Hints:
 * Simplest form of hiding text in image is simply writing it straight to the image data, as plain text or encoded text
   * Tools like `strings` and `hexdump` are useful in these cases
   * Somebody could encode their message before injecting it to the image file, so you must decode it too
-* More advanced image steganography includes modification of least-significant-bits (LSB) of image.
+* More advanced image steganography includes modification of least-significant-bits (LSB) of PNG images.
   * Statistical tools exists to detect if image is tampered somehow
   * Tools like StegExpose and zsteg can detect and extract LSB-hidden information from images
 * It is possible to include file into another file
@@ -270,22 +270,51 @@ Fill your answers to the return template.
 
 ## Task 3
 
-TBA: Description
+Last stage of this lab is more free-formed experimenting. Pick your option and start to explore issue and write report what your found/tried and what were the results.
 
-Multiple varying options available
+Some ideas presented below are quite large ones, so there may be room to expand those to be also your coursework. Discuss that option with course assistants before starting to work with your idea.
 
-### Option 1: TBA (browser private mode investigation)
+### Option 1: Internet Browser Private Mode Forensics
 
-TBA: Initial info and links to research
+We already touched little bit of investigating browser volatile memory in earlier tasks. It was not extremely hard to extract URLs of visited sites that way.
 
-### Option 2: OSINT, that facebook image id hiding thing
+But how about private browsing? How is it viewed from the standpoint of digital forensics?
+
+Familiarize yourself with next articles (you can find them in Google Scholar):
+* *Do Private and Portable Web Browsers Leave Incriminating Evidence? - D Ohana, N Shashidhar*
+* *A Process-Level Analysis of Private Browsing Behavior: A Focus on Google Chromes Incognito Mode - G Horsman*
+* *On the Privacy of Private Browsing - A Forensic Approach - K Satvat, M Forshaw, F Hao, E Toreini*
+* *Forensic Analysis of Private Browsing Artifacts - H Said, N Al Mutawa, I Al Awadhi*
+* *Forensic Analysis and Evidence Collection for Web Browser Activity - A Nalawade, S Bharne, V Mane*
+
+TBA: "There might be need to login with student account to uni network to gain access to research articles"
+
+Do not limit yourself to the information above. Simply googling the issues can provide more interesting information and possibilities for experimentation.
+
+Now it is your time to invent your own experiments. You can for example run different browsers in virtual machine, then take memory dumps or disk dumps of those machines and start digging around to find sensitive information.
+
+Consider trying next:
+* Do you manage replicate results which were presented in those research papers?
+* What if you try with newer versions of browsers which produced some recoverable artifacts? Are problems fixed in newer versions or are they still present?
+
+Write free-formed report of what kind of experiments you tried and what kind of results you achieved.
+
+### Option 2: OSINT or that facebook image tracking thing
 
 TBA: Task description, requirements and links to tools
 
 ### Option 3: Filesystem slack data hiding and extraction experiments
 
-TBA: Description what kind of experiments should be tried filesystem slack (because file slack utilized earlier was not enough)
+TBA: Still WIP, I dont know if these are feasible
+
+We encountered file slack earlier in this lab, but how about filesystem slack?
+
+Investigate how different filesystems are working, then perform filesystem slack space experiments in **at least 2** of them.
+
+You can for example format memory stick with different filesystems/use virtual machines with different filesystems and try to data hiding/extraction there.
+
+Write free-formed report of what kind of experiments you tried and what kind of results you achieved.
 
 ### Option 4: Your own invention
 
-TBA: Generic description
+TBA: Generic description, name dropping? osint? privacy orientated? notice that must be about the equal level of difficulity than other options
