@@ -177,7 +177,7 @@ The shop has an item that has been deleted and therefore does not show on search
 Examine the SQL-query that the server returned in the last part. How does this query exclude deleted items? Remove that part of the query using comments. 
 </details>
 
-__What variable is used for "deleting" items?__
+__How are the items "deleted"?__
 
 __How did you make the server to return all the items?__
  
@@ -238,6 +238,8 @@ Next, we attempt some cross-site scripting attacks. While you are logged in as a
 Attack on the "Order ID" is an [reflected XSS attack](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)#Reflected_XSS_Attacks) and the attack on the searchfield is [DOM based XSS](https://www.owasp.org/index.php/DOM_Based_XSS).
 
 __What is the difference between these two types of attacks? How can you protect your applications against both types of attacks?__
+
+**Cookie thief**
 
 XSS attacks above are relatively harmless, as they affect only you. It would be more harmful if you could get a damaging code snippet inside the database or make the results of the script otherwise visible to other users. One way to do this is to create a user that has a malicious script as its name.
 
@@ -331,7 +333,7 @@ sudo service apache2 restart
 
 
 ---
-### Brute forcing
+**Brute forcing**
 
 Now we will do something different and try some basic brute forcing. Do the following:
 
@@ -417,7 +419,7 @@ video.style.visibility = 'hidden';
 #### Returns
 
 * Your own server code.
-* Your own HTML/Javascript/etc. code that is uploaded to Juice Shop **without directory traversal characters in its name**.
+* Your own HTML/Javascrip **without directory traversal characters in its name**.
 * The *zip* archive that you uploaded to overwrite the subtitle file.
 * **Clear** instructions on how to start your own server, send the XSS attack and how to verify that the information was sent to your server from Juice Shop.
 
