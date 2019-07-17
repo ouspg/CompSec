@@ -161,14 +161,14 @@ Find out what browser Mallory is using and then search for URLs which you want t
 Technical investigator attachs Mallorys memory stick to his machine by using write-blocker device. Stick seems to be empty and freshly formatted as Mallory implied. Techincal investigator utilizes his tools to create raw disk-dump of that USB-stick and then gives it to you.
 
 Your task is next:
-* Recover RTF and PDF documents (4 of them total) and all of the content of them.
+* Recover RTF and PDF documents (1 RTF, 2 PDFs) and all of the content of them.
   * You must independently utilize your skills, creativity and hints from memory dump to decrypt PDF document content
 
 #### Hints and links
 
 Carve out deleted documents from disk and proceed on your task as you see fit.
 
-Useful tools
+Useful tools and utilities
 * `foremost`, common tool for recovering files
 * `scalpel`, another tool based on foremost
   * Learn to use custom configuring of it to carve files that foremost can not
@@ -184,6 +184,7 @@ Some hints:
 * Some PDF-readers might not handle AES-256 encrypted PDF well. They claim that the password is incorrect even when it is not. Try with another PDF-capable program (for example with internet browser).
 * Hashcat might require some other libraries to be installed before it runs correctly
 * Feel free to utilize any other tool you can find to solve these tasks
+* Files with strong encryption and long enough passwords are unfeasible to be bruteforced
 
 
 ### D) Detecting and analyzing steganography
