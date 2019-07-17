@@ -18,19 +18,15 @@ Computer Security Lab 6: Bonus Challenge: Digital Forensics
 
 Digital forensics (aka digital forensic science) is field committed to recovering and investigating evidence found in digital devices.
 
-TBA: Tell more about utilization on public and private sectors and common cases
-
 Field is too large to cover in single lab (there exist many different digital forensic subfields) so this lab this lab only intends to give you slight intro to the digital forensic investigation related issues.
 
-You can find further reading from TBA: List of useful links to tools and digital forensic communities/web pages
+You can find good overview of the fied from [Wikipedia](https://en.wikipedia.org/wiki/Digital_forensics)
 
 ## Practical arrangements of this lab
 
 This lab does not require any spesific Linux distribution to be used. You are required to install quite many tools yourself, so anything you can install them on is good enough. Kali image used earlier in this course should work reasonably well with this lab (and it has large set of needed tools already installed).
 
 All memory and image dumps are available at same place than virtual machines (packages are stored under folder "Digital_Forensics"). Server logs of Task 2 are available in there too.
-
-TBA: Common info of lab practices, if there is anything extra to add
 
 ## Important reminder
 
@@ -219,8 +215,6 @@ Your task is to find 4 different suspicious images, and then extract the clear-t
 
 Steganography is practice of concealing actual information inside innocous-looking information.
 
-TBA: Short background description of where it is used and why it is useful
-
 First problem is to identify image which is holding secret information, second problem is to find how to extract it.
 
 Useful info
@@ -253,9 +247,7 @@ Hints:
 
 Your next task is to make analysis and report of the real world DDoS attack.
 
-TBA: Any extra background info of that attack? Malware from lab 3?
-
-You will find server log file from same place than memory dumps of earlier tasks.
+Remember malware presented in lab 3? That malware was responsible of causing this DDoS attack. You will find server log file from same place than memory dumps of earlier tasks.
 
 After unzipping log, you may find out that opening log file (which contains over 6 million lines of data) may crash regular text editor so you most likely have to utilize other tools to initial investigation of log file. Commands `grep`, `less`, `sort`, `cut`, `awk` and `uniq` might be helpful.
 
@@ -295,7 +287,7 @@ Familiarize yourself with next articles (you can find them in Google Scholar):
 * *Forensic Analysis of Private Browsing Artifacts - H Said, N Al Mutawa, I Al Awadhi*
 * *Forensic Analysis and Evidence Collection for Web Browser Activity - A Nalawade, S Bharne, V Mane*
 
-TBA: "There might be need to login with student account to uni network to gain access to research articles"
+You might have to use your university account/use machines on university network to gain access to certain articles.
 
 Do not limit yourself to the information above. Simply googling the issues can provide more interesting information and possibilities for experimentation.
 
