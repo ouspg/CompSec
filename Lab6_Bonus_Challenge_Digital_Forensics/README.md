@@ -14,17 +14,15 @@ Computer Security Lab 6: Bonus Challenge: Digital Forensics
 
 # Introduction
 
-**TASK 3 WIP**
-
 Digital forensics (aka digital forensic science) is field committed to recovering and investigating evidence found in digital devices.
 
-Field is too large to cover in single lab (there exist many different digital forensic subfields) so this lab this lab only intends to give you slight intro to the digital forensic investigation related issues.
+Field is too large to cover in single lab (there exist multiple different digital forensic subfields) so this lab this lab only intends to give you slight intro to the digital forensic investigation related issues.
 
 You can find good overview of the fied from [Wikipedia](https://en.wikipedia.org/wiki/Digital_forensics)
 
 ## Practical arrangements of this lab
 
-This lab does not require any spesific Linux distribution to be used. You are required to install quite many tools yourself, so anything you can install them on is good enough. Kali image used earlier in this course should work reasonably well with this lab (and it has large set of needed tools already installed).
+This lab does not require any specific Linux distribution to be used. You are required to install quite many tools yourself, so anything you can install them on is good enough. Kali image used earlier in this course should work reasonably well with this lab (and it has large set of needed tools already installed).
 
 All memory and image dumps are available at same place than virtual machines (packages are stored under folder "Digital_Forensics"). Server logs of Task 2 are available in there too.
 
@@ -52,7 +50,7 @@ Task| Grade/Level | Description | Good-to-have skills
 
 # Tasks
 
-Start working on task 1 and proceed to harder ones after you complete that. Task 1 is designed to take about 4 hours to complete so try to do it at lab session. Task 2 and 3 are more harder and laborous so you most likely do not have time to make all tasks in lab session.
+Start working on task 1 and proceed to harder ones after you complete that. Task 1 is designed to take about 4 hours to complete so try to do it at lab session. Task 2 and 3 are more harder and laborious so you most likely do not have time to make all tasks in lab session.
 
 Read task instructions carefully before starting to work to have clear picture about what you are supposed to do. Every task should be clearly stating what you are expected to do and return.
 
@@ -64,26 +62,26 @@ Welcome to the imaginary day of digital forensic investigator. This task has hig
 
 Story starts here.
 
-Mallory is notorious member of criminal underworld. He is known for illegal items trade, and he is rumored to have multiple shady contacs supplying him with high-quality "stuff", which have made him easy to gain foothold of black market.
+Mallory is notorious member of criminal underworld. He is known for illegal items trade, and he is rumored to have multiple shady contacts supplying him with high-quality "stuff", which have made him easy to gain foothold of black market.
 
 Mallory has also reputation of being faster talker than thinker.
 
-Mallory have been successfull in his criminal activities lately, giving large influx of money and letting him expand his network, which have made him one of the "big players" of criminal underworld.
+Mallory have been successful in his criminal activities lately, giving large influx of money and letting him expand his network, which have made him one of the "big players" of criminal underworld.
 
 Unfortunately for him, also law enforcement at national level agencies have noticed his success. Mallory has reputation of being faster talker than thinker and because rumors spread fast, becoming known by law enforcement was only matter of time.
 
-Big wheels start to turn, and large surveillance operation against Mallory and his minions was started started. After 3 monts of fruitless efforts intel from trusted source apprears: Mallorys gang is going to do drug deal next day.
+Big wheels start to turn, and large surveillance operation against Mallory and his minions was started started. After 3 months of fruitless efforts intel from trusted source appears: Mallorys gang is going to do drug deal next day.
 
 Intel turns out to be correct and leading investigator decides that this is correct moment to strike. This would not be major victory, because only couple of Mallorys men would be caught red-handed, but it still could result Mallorys conviction if enough evidence is found about his involvement. Situation is not optimal, but small success is better than fruitless waiting of 3 months.
 
-Moment to stirke has come: Special units of police crash into the place of meeting and find 2 of Mallorys crooks with huge stash of illegal weapons and drugs. Simultaneously multiple carefully coordinated house raids are performed to all known members of Mallorys gang, including Mallorys home himself.
+Moment to strike has come: Special units of police crash into the place of meeting and find 2 of Mallorys crooks with huge stash of illegal weapons and drugs. Simultaneously multiple carefully coordinated house raids are performed to all known members of Mallorys gang, including Mallorys home himself.
 
 Mallory is caught by surprise when police storms into his apartment and immediately arrests him.
-Police officers start to search Mallorys apartment and technican begins to investigate Mallorys computer which is turned on and logged on. After discussing with leading investigator, techican decides to start with dumping volatile memory of computer to his external hard drive.
+Police officers start to search Mallorys apartment and technician begins to investigate Mallorys computer which is turned on and logged on. After discussing with leading investigator, technician decides to start with dumping volatile memory of computer to his external hard drive.
 Next to Mallorys computer is ordinary USB-memory stick. That stick is securely bagged to the evidence box for later inspection.
 
-But Mallory has some brutal surprise for digital forensic technican: Just as memory dump from volatile memory is secured to investigators external drive, Mallorys computer starts to smoke and soon catches on fire explosively. Technican grabs his drive containing memory dump and runs out of apartment because toxic smoke from melting components is starting to spread fastly.
-Apartment is evacuated fastly and any human casualities are avoided, but Mallorys improvised dead-man-switch - timed icendiary bomb inside computer which he supposedly managed to trigger when he heard police breaking in - has rendered whole machine totally unsalvageable.
+But Mallory has some brutal surprise for digital forensic technician: Just as memory dump from volatile memory is secured to investigators external drive, Mallorys computer starts to smoke and soon catches on fire explosively. Technician grabs his drive containing memory dump and runs out of apartment because toxic smoke from melting components is starting to spread fastly.
+Apartment is evacuated fastly and any human casualties are avoided, but Mallorys improvised dead-man-switch - timed incendiary bomb inside computer which he supposedly managed to trigger when he heard police breaking in - has rendered whole machine totally unsalvageable.
 
 Investigators know that there was so much critical information gone with Mallorys computer, and any hope they have left lies in single memory dump of Mallorys machine and ordinary USB memory stick.
 
@@ -101,9 +99,9 @@ Investigators know that there was so much critical information gone with Mallory
 > 
 > *Interrogator: Ok, sounds nice. For what purpose are you using it?*
 > 
-> *Mallory: I want to chek different locations before I-, uh- I mean I like hiking too.*
+> *Mallory: I want to check different locations before I-, uh- I mean I like hiking too.*
 
-While exact location remains unknown, intel gathered from other sources suggests that Mallorys organization has been using codenames for those 2 caches: *LAKE* and *COAST*. Leading investicator suspects that those codenames are most likely describing also the places themselves. Leading investigator also suspects, that hidden caches are mostly located not too far from city and those should not require too long distance to be travelled by foot. Also caches can not obviously be located on densely populated areas.
+While exact location remains unknown, intel gathered from other sources suggests that Mallorys organization has been using codenames for those 2 caches: *LAKE* and *COAST*. Leading investigator suspects that those codenames are most likely describing also the places themselves. Leading investigator also suspects, that hidden caches are mostly located not too far from city and those should not require too long distance to be travelled by foot. Also caches can not obviously be located on densely populated areas.
 
 Your first task is to find 2 different GPS locations where police officers should start for looking hidden stashes.
 
@@ -111,9 +109,9 @@ Your first task is to find 2 different GPS locations where police officers shoul
 > 
 > *You: How so? In this case we have court order for service provider to give us access to Mallorys email-account.*
 > 
-> *Leading investigator: Yes we do, but seems like they all have gone on holiday or something. I did not succeed connecting to anybody who could give us accees right now. Typical corporate bureaucratics...*
+> *Leading investigator: Yes we do, but seems like they all have gone on holiday or something. I did not succeed connecting to anybody who could give us access right now. Typical corporate bureaucratics...*
 > 
-> *You: Oh. Thats bad. But eventually we will get it.*
+> *You: Oh. That's bad. But eventually we will get it.*
 > 
 > *Leading investigator: Yes we will. But this is urgent because any useful intel we could get from his email might be irrelevant next week because word about Mallorys arrest is spreading and his contacts are going to flee any moment with hidden caches.*
 > 
@@ -154,7 +152,7 @@ Find out what browser Mallory is using and then search for URLs which you want t
 > 
 > *Interrogator: Sure.*
 
-Technical investigator attachs Mallorys memory stick to his machine by using write-blocker device. Stick seems to be empty and freshly formatted as Mallory implied. Techincal investigator utilizes his tools to create raw disk-dump of that USB-stick and then gives it to you.
+Technical investigator attaches Mallorys memory stick to his machine by using write-blocker device. Stick seems to be empty and freshly formatted as Mallory implied. Technical investigator utilizes his tools to create raw disk-dump of that USB-stick and then gives it to you.
 
 Your task is next:
 * Recover RTF and PDF documents (1 RTF, 2 PDFs) and all of the content of them.
@@ -201,7 +199,7 @@ Some hints:
 > 
 > *You: Odd, but could be explained by that he just joined group and then forgot its existence. Happens to everybody sometimes*
 > 
-> *Investigator: So I thought. Until I went to the statistics page of that group. Obviously Mallory is not on those highly wanted "TOP 10 Poster of month"-listings at all, but some miscellaneous staticstics show that he has been amongst TOP 100 frequent visitors during last 2 years. That is more than 99% of whole group.*
+> *Investigator: So I thought. Until I went to the statistics page of that group. Obviously Mallory is not on those highly wanted "TOP 10 Poster of month"-listings at all, but some miscellaneous statistics show that he has been amongst TOP 100 frequent visitors during last 2 years. That is more than 99% of whole group.*
 > 
 > *You: That is weird. So what is your conclusion?*
 > 
@@ -213,12 +211,12 @@ Your task is to find 4 different suspicious images, and then extract the clear-t
 
 #### Hints and links
 
-Steganography is practice of concealing actual information inside innocous-looking information.
+Steganography is practice of concealing actual information inside innocuous-looking information.
 
 First problem is to identify image which is holding secret information, second problem is to find how to extract it.
 
 Useful info
-* [Userful overview to steganography](https://en.wikipedia.org/wiki/Steganography)
+* [Useful overview to steganography](https://en.wikipedia.org/wiki/Steganography)
 * Useful command line commands: `strings`, `hexdump`, `foremost`, `binwalk`
 * [StegExpose](https://github.com/b3dk7/StegExpose) - Tool for detecting LSB steganography
 * [zsteg](https://github.com/zed-0xff/zsteg) - Tool for detecting and extracting steganography
@@ -241,7 +239,7 @@ Hints:
 > 
 > *Mallory: H-h-haha, of couse not - I am not obviously that stupid!*
 > 
-> *Irrogators note: Mallory starts to sweat visibly*
+> *Interrogators note: Mallory starts to sweat visibly*
 
 ## Task 2: Analyzing DDoS attack
 
@@ -257,7 +255,7 @@ Feel free to use any tool/scripting language/existing solution to calculate your
 
 Analyze how server was burdened. Obviously by sending overload of requests to it, but why just that kind of request was used? You do not know inner workings of server, but make educated guess based on what you see and know.
 
-Can you find person who hypotetically was behind the whole attack? That person made one mistake, and his/hers IP address could be reasoned out from the logs.
+Can you find person who hypothetically was behind the whole attack? That person made one mistake, and his/hers IP address could be reasoned out from the logs.
 
 ### What to return
 
@@ -303,11 +301,11 @@ Write free-formed report of what kind of experiments you tried and what kind of 
 
 Invent your own experiments connected somehow to digital forensics and tell your idea to course assistant before starting to work.
 
-Notice that your own idea should be about same difficulity level than option 1. If your idea happens to be too large you may return initial results here and continue to work with it and return finished project as your course work. Discuss with course assistants if you want to pursue that option.
+Notice that your own idea should be about same difficulty level than option 1. If your idea happens to be too large you may return initial results here and continue to work with it and return finished project as your course work. Discuss with course assistants if you want to pursue that option.
 
 You may consider next vague ideas as examples of what kind of stuff could be tried:
 * Filesystem/volume slack space experimenting - What kind of data can be hidden there for example with different filesystems
 * OSINT tools - Multiple interesting tools exists, choose some of those and start your own investigation
-* Android forensics - Acquire image of your own phone and start digging with common or smartphone-spesific forensic tools
+* Android forensics - Acquire image of your own phone and start digging with common or smartphone-specific forensic tools
 
 Write free-formed report of what kind of experiments you tried and what kind of results you achieved.
