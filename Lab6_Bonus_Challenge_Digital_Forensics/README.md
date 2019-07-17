@@ -299,22 +299,15 @@ Consider trying next:
 
 Write free-formed report of what kind of experiments you tried and what kind of results you achieved.
 
-### Option 2: OSINT or that facebook image tracking thing
+### Option 2: Your own project
 
-TBA: Task description, requirements and links to tools
+Invent your own experiments connected somehow to digital forensics and tell your idea to course assistant before starting to work.
 
-### Option 3: Filesystem slack data hiding and extraction experiments
+Notice that your own idea should be about same difficulity level than option 1. If your idea happens to be too large you may return initial results here and continue to work with it and return finished project as your course work. Discuss with course assistants if you want to pursue that option.
 
-TBA: Still WIP, I dont know if these are feasible
-
-We encountered file slack earlier in this lab, but how about filesystem slack?
-
-Investigate how different filesystems are working, then perform filesystem slack space experiments in **at least 2** of them.
-
-You can for example format memory stick with different filesystems/use virtual machines with different filesystems and try to data hiding/extraction there.
+You may consider next vague ideas as examples of what kind of stuff could be tried:
+* Filesystem/volume slack space experimenting - What kind of data can be hidden there for example with different filesystems
+* OSINT tools - Multiple interesting tools exists, choose some of those and start your own investigation
+* Android forensics - Acquire image of your own phone and start digging with common or smartphone-spesific forensic tools
 
 Write free-formed report of what kind of experiments you tried and what kind of results you achieved.
-
-### Option 4: Your own invention
-
-TBA: Generic description, name dropping? osint? privacy orientated? notice that must be about the equal level of difficulity than other options
