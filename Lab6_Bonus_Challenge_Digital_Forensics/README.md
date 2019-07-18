@@ -305,7 +305,7 @@ Notice that your own idea should be about same difficulty level than option 1. I
 
 You may consider next vague ideas as examples of what kind of stuff could be tried:
 * Filesystem/volume slack space experimenting - What kind of data can be hidden there for example with different filesystems
-* OSINT tools - Multiple interesting tools exists, choose some of those and start your own investigation
+* OSINT tools - Multiple interesting tools exists (even already installed in default Kali linux), choose multiple of those and start making experiments with them.
 * Android forensics - Acquire image of your own phone and start digging with common or smartphone-specific forensic tools
 
 Write free-formed report of what kind of experiments you tried and what kind of results you achieved.
