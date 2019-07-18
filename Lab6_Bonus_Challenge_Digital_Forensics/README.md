@@ -50,7 +50,7 @@ Task| Grade/Level | Description | Good-to-have skills
 
 # Tasks
 
-Start working on task 1 and proceed to harder ones after you complete that. Task 1 is designed to take about 4 hours to complete so try to do it at lab session. Task 2 and 3 are more harder and laborious so you most likely do not have time to make all tasks in lab session.
+Start working on Task 1 and proceed to harder ones after you complete that.
 
 Read task instructions carefully before starting to work to have clear picture about what you are supposed to do. Every task should be clearly stating what you are expected to do and return.
 
