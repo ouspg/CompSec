@@ -1,26 +1,36 @@
 Computer Security Lab 1: Fuzzing
 ====
 
-This week’s theme is fuzzing. Tasks can be done with Kali Linux, see the [course mainpage](https://github.com/ouspg/CompSec) for instructions how to run the virtual machine (VM). Kali VM provided has all the required tools installed already. If you have your own computer with Ubuntu for example, you can use it too, just install all the required tools.
- 
-In a nutshell, fuzzing is a software testing method that feeds malformed and unexpected input data to a program, device or system. The programs that are used to perform fuzz testing are commonly called fuzzers. The main goal of fuzzing is to make the target system behave *unexpectedly*. From the security perspective, the goal is to analyze those found flaws for possible exploits (estimate the size of risk) and finally figure out a way to fix it.
+## About the lab
+
+* This document contains task descriptions and theory for the fuzz testing lab. If there are any differences between the return template and this file, consider this to be the up-to-date document.
+* **You can use your own computer if you want.** Check the chapter "Prerequisities" for information on what you need to install. This lab has been made to be completed in a Linux environment and tested to work in the provided Kali Linux virtual machine.
+* It is estimated, that you are able to do Tasks 1,2 & 3 during the lab session (4 hours). Upper grade requires that all previous ones have been done as well. You are not expected to be able to finish all the tasks during the lab session, so feel free to continue them at your own time.
+* Check the deadline from Moodle and __remember that you have to return your name and GitHub repository information to Moodle before deadline.__
+
+
+## Background
+
+This week’s theme is fuzzing. Tasks are designed to be done with the provided Kali Linux virtual machine, see the [course mainpage](https://github.com/ouspg/CompSec) for instructions how to run the virtual machine (VM). The provided Kali VM has all the required tools preinstalled, but if you have your own computer with some othe Linux distribution, you are free to use it, just install all the required tools.
+
+In a nutshell, fuzz testing a.k.a. fuzzing is a software testing method that includes feeding malformed and unexpected input data to a program, device or system. The programs that are used to perform fuzz testing are commonly called fuzzers. The main goal of fuzzing is to make the target system behave *unexpectedly*. From the security perspective, the goal is to find and analyze those unexpected behaviours for possible exploits and figure out a way to fix it.
 
 In this exercise you will learn basic usage of 2 common fuzzers; Radamsa and American Fuzzy Lop (AFL). You will also use AddressSanitizer, a memory error detection tool, and Valgrind, a debugging tool (and memory error detector as well), which are often used alongside different fuzzers.
 
-## Some prerequisities & tools
+## Prerequisites
+
 Basic understanding of C programming language is required.
 
 Make yourself familiar with the tools used to complete the exercises:
 
-### **Radamsa** - https://gitlab.com/akihe/radamsa
+* **Radamsa** - https://gitlab.com/akihe/radamsa
+* **AFL** (American Fuzzy Lop) - http://lcamtuf.coredump.cx/afl/
+* **AddressSanitizer** (ASan) - https://github.com/google/sanitizers/wiki/AddressSanitizer
+* **Valgrind** - http://valgrind.org/docs/manual/quick-start.html
 
-### **AFL** (American Fuzzy Lop) - http://lcamtuf.coredump.cx/afl/
+## Grading
 
-### **AddressSanitizer** (ASan) - https://github.com/google/sanitizers/wiki/AddressSanitizer
-
-### **Valgrind** - http://valgrind.org/docs/manual/quick-start.html
-
-It is estimated, that you are able to do Tasks 1,2 & 3 during the lab session (4 hours). Upper grade requires that all previous ones have been done as well.
+<details>
 
 Task #|Grade/Level|Description|
 -----|:---:|-----------|
@@ -28,29 +38,35 @@ Task 1 |   | Mutated test case generation with Radamsa
 Task 2 | 2 | Analyzing a C-program with AddressSanitizer, fuzztesting with AFL
 Task 3 | 3 | Creating your own small C-program and fuzztesting it
 Task 4 | 4/5 | Contribute to a existing open-source project. Set up a fuzzer and report findings.
+
+Grade 1 can be acquired by doing lecture questionnaires from the corresponding lecture.
+</details>
+
 ---
 
-Grade 1 can be aquired by doing lecture questionnaires from the corresponding lectures.
+## Task 1
 
-## **Task 1**: Mutated test case generation with Radamsa
+### Mutated test case generation with Radamsa
 
-**A)** Try out Radamsa using command line tool. Print 10 malformed samples of "Fuzztest 1337" using _echo_.
+**A)** Make yourself familiar with [Radamsa](https://gitlab.com/akihe/radamsa). Try it out in a terminal and print 10 malformed samples of ```Fuzztest 1337``` using *echo*.
 
 **Provide the command line you used to do this.**
 
+Radamsa can also handle various types of files. Next, you have to generate a bunch of *.txt* test samples for later usage. 
 
- **B)** What you just did can be done to various types of files too. Next, generate a bunch of .txt test samples for later usage. Create a .txt file, that contains text: "12 EF" and nothing more. Use radamsa to generate 100 fuzzed samples of the file and to name them fuzz1, fuzz2, fuzz3,...etc.
-
- __Hint__: Create a new, separate folder for the samples.
+**B)** Create a *.txt* file that contains only the text ```12 EF``` and nothing more. Use Radamsa to generate 100 fuzzed samples of the file that are named ```fuzz1.txt```, ```fuzz2.txt```, ```fuzz3.txt```... etc. You should create a separate folder for the samples.
 
 **Provide the content of 2 different samples that radamsa created**
-
 
 **Command line used to create the samples**
 
 ---
-## **Task 2**: Analyzing a C-program with AddressSanitizer, fuzztesting with AFL
-**A)** Your task is to analyze an example c-program *example.c*. Compile the code with appropriate sanitizer flags to enable AddressSanitizer. Run the compiled program and analyze what happens.
+
+## Task 2 
+
+### Analyzing a C-program with AddressSanitizer
+
+**A)** This repository contains an example C program called [example.c](misc/example.c). Your task is to analyze it using [AddressSanitizer (ASan)](https://github.com/google/sanitizers/wiki/AddressSanitizer). Compile the code with ```gcc``` and appropriate [sanitizer flags](https://github.com/google/sanitizers/wiki/AddressSanitizerFlags#compiler-flags) to enable the AddressSanitizer and to leave frame pointers. Run the compiled program and analyze what happens.
 
 **Command line used to compile the program**
 
@@ -59,70 +75,82 @@ Grade 1 can be aquired by doing lecture questionnaires from the corresponding le
 **What is the error and what is causing it in this program?**
 
 ---
+### Fuzztesting with AFL
 
-**B)** In the following task you will be using American Fuzzy Lop (AFL), it is installed in the Kali Linux virtual machine. 
-
-You can find the target program sourcecode following this link: [unrtf0.21.5.tar.xz](misc/unrtf-0.21.5.tar.xz). (URL fixed for better source 10.9.2018) This tool can be used to convert .rtf files into other, more readable formats (see README for more). Extract the package, **_configure_** it to use AFL's wrappers and then **_compile_**. 
-
-When source code is available, you should instrument the program for use with AFL by using AFL's own wrappers that work as drop-in replacements for **gcc/g++** (NOTE: afl-gcc might not work properly in all systems, works with provided Kali) and **clang/clang++**. 
-
----
-
-**Update:** 
-
-*It appeared, that there is a bug in unrtf source. clang notices it in some cases but gcc does not. To be able to compile unrtf with  with clang, unrtf source file line 352 must be edited in file:*
-```
-unrtf-0.21.5/src/attr.c
-```
-*"return;" should be changed to -> "return NULL;"*
-
-*There is new package for soure [here](misc/unrtf-0.21.5.tar.xz) as well.*
-
----
-
-You can do as following, leave the quotations and modify *add_here* fields:
-```
-~$ ./configure CC="add_here" CXX="add_here" --prefix=$HOME/unrtf
-~$ make
-~$ make install
-```
-__Hint__: See AFL [documentation](http://lcamtuf.coredump.cx/afl/README.txt) how to instrument programs to use AFL compilers.
+**B)** In the following task, you will be using [American Fuzzy Lop (AFL)](http://lcamtuf.coredump.cx/afl/) to fuzz test a program called UnRTF. UnRTF is a tool that can be used to convert *.rtf* files to HTML, LaTeX etc. 
 
 
- This way, with --prefix flag, you are installing the binary into your home directory, instead of giving it root access to do whatever the installer likes, which is not recommended to every binary you can find.
+AFL is already installed in the provided Kali Linux virtual machine and the target program's source code is included in this repository ([unrtf0.21.5.tar.xz](misc/unrtf-0.21.5.tar.xz)). When the source code is available, you should instrument the program by using AFL's own wrappers that work as drop-in replacements for **gcc/g++** and **clang/clang++** (NOTE: afl-gcc might not work properly in all systems, but it works with the provided Kali Linux vm). 
 
+So, here's what you need to do:
 
-During this task, use the example .rtf file from AFL folder (**/usr/share/afl/testcases/others/rtf/small_document.rtf**). You can try that your unrtf is working properly using command line:
-```
-~$ ~/unrtf/bin/unrtf --html /path/to/testfile
-```
-Start fuzzing unrtf with AFL using the example .rtf file as input. You need to create 2 folders, one for input files and one for results output. Input folder must include the small-document.rtf file mentioned above. See AFL [documentation](http://lcamtuf.coredump.cx/afl/README.txt) for instructions on how to start the fuzzer. 
+1. **Extract** the source code package ([unrtf0.21.5.tar.xz](misc/unrtf-0.21.5.tar.xz)) and ```cd``` you way to the extracted directory.
 
-Run the fuzzer, see what happens in the status window. Good description of the status window can be found [here](http://lcamtuf.coredump.cx/afl/status_screen.txt).
+2. **Configure** it to use AFL's wrappers:
+    ```shell
+    ~$ ./configure CC="<add_here>" CXX="<add_here>" --prefix=$HOME/unrtf
+    ```
+    The ```--prefix=HOME$/unrtf``` flag sets the installation location of the binary file to be your home directory. This is recommended, so you don't have to give it access to the root directory.
+
+3. **Compile and build** the program:
+    ```shell
+    ~$ make
+    ~$ make install
+    ```
+
+__Hint__: See AFL [documentation](http://lcamtuf.coredump.cx/afl/README.txt) to learn about instrumenting programs to use AFL compilers.
+
+4. Use AFL's example *.rtf* file located at ```/usr/share/afl/testcases/others/rtf/small_document.rtf``` to test that your UnRTF works by converting it to HTML:
+    ```shell
+    ~$ ~/unrtf/bin/unrtf --html /<path>/<to>/<testfile>
+    ```
+
+5. Create two folders, one for input files and one for result output. Copy the ```small_document.rtf``` into your input folder.
+
+6. Start fuzzing UnRTF with AFL using the example ```small_document.rtf``` file as input:
+    ```shell
+    afl-fuzz -i <input_folder> -o <output_folder> /<path>/<to>/<target_program>
+    ```
+
+__Hint__: See AFL [documentation](http://lcamtuf.coredump.cx/afl/README.txt) on how to start the fuzzer. 
+
+7. Run the fuzzer and see what happens in the status window. Good description of the status window can be found [here](http://lcamtuf.coredump.cx/afl/status_screen.txt).
 
 __Hint__: You are fuzzing a binary. To copy your input file into in/ folder for AFL to use, you can do for example:
 ```
-~$ cp /path/to/testfile /path/to/whereyouwanttocopyit
+~$ cp /<path>/<to>/<test_file> /<path>/<to>/<where_you_want_to_copy_it>
 ```
+
 **Command line used to configure unrtf**
 
 **Command line used to run AFL**
 
 **Screenshot of the AFL status screen after stopping the fuzzer**
 
-**What do you think are the most significant pieces of information in the status screen? Why are they?**
+**What do you think are the most significant pieces of information in the status screen? Why are they important?**
 
 ---
-Did you find any crashes (you should)? Awesome! Next you need to reproduce one crash to see what went wrong. You can find the crashes where you specified the output folder when starting AFL fuzzer. Browse into the .../out/crashes folder, and take one .rtf file that caused crash under inspection. Runt unrtf with this file as you did with the example file earlier, but this time under Valgrind. Take a look at the Valgrind [documentation](http://valgrind.org/docs/manual/quick-start.html) for help.
+### Reproducing crashes with Valgrind
+
+**C)** You should now have found some crashes with the AFL. Next, you need to reproduce one of them to see, what exactly went wrong. You can find the crashes from the output folder you created previously. Make your way into the ```.../<output_folder>/crashes``` and take one of the *.rtf* files that caused a crash under inspection.
+
+Run UnRTF with this file under Valgrind:
+
+```shell
+~$ valgrind --leak-check=yes <program> <arg1> <arg2>
+```
+
+__Hint__: See the Valgrind [documentation](http://valgrind.org/docs/manual/quick-start.html) for help.
 
 **Take a screenshot of the Valgrind result after running the program**
 
 **What can you tell about the crash?**
 
 ---
+
 ## **Task 3**: Creating your own small C-program and fuzztesting it
 
-In this task you will write a small C program of your own and fuzztest it. In task 1 you created a .txt file containing "12 EF" and fuzzed samples of it, in this task we will use them. Your program must take a text file as an input and check the file for following requirements:
+In this task you will write a small C program and fuzztest it. In task 1, you created a *.txt* file containing ```12 EF``` and 100 fuzzed samples of it. We will use them in this task. Your program must take a text file as an input and check the file for following requirements:
 - First token is an **integer**
 - Second token is a **string**
 - Only two tokens are present
