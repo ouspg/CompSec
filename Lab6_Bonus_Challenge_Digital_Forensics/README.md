@@ -24,7 +24,7 @@ You can find good overview of the fied from [Wikipedia](https://en.wikipedia.org
 
 This lab does not require any specific Linux distribution to be used. You are required to install quite many tools yourself, so anything you can install them on is good enough. Kali image used earlier in this course should work reasonably well with this lab (and it has large set of needed tools already installed).
 
-All memory and image dumps are available at same place than virtual machines (packages are stored under folder "Digital_Forensics"). Server logs of Task 2 are available in there too.
+All memory and image dumps are available at same place than virtual machines (packages are stored under folder "Lab6_Digital_Forensics"). Server logs of Task 2 are available in there too.
 
 ## Important reminder
 
@@ -85,9 +85,7 @@ Apartment is evacuated fastly and any human casualties are avoided, but Mallorys
 
 Investigators know that there was so much critical information gone with Mallorys computer, and any hope they have left lies in single memory dump of Mallorys machine and ordinary USB memory stick.
 
-### A) Inspecting Windows event logs (REMOVED BECAUSE PROVED TO BE UNFEASIBLE TASK)
-
-### B) Inspecting memory with Volatility
+### A) Inspecting memory with Volatility
 
 > *Interrogator: You just would not mind telling where have you hidden your delivery caches?*
 > 
@@ -136,7 +134,7 @@ Find out what browser Mallory is using and then search for URLs which you want t
 * Foremost can extract files of specified type from other files, for example memory dumps of processes
 
 
-### C) Data hiding & password recovery
+### B) Data hiding & password recovery
 
 > *Interrogator: We have started investigating that USB memory stick found next to your computer. Would you be nice enough to bother telling what data is on that stick?*
 > 
@@ -181,7 +179,7 @@ Some hints:
 * Files with strong encryption and long enough passwords are unfeasible to be bruteforced
 
 
-### D) Detecting and analyzing steganography
+### C) Detecting and analyzing steganography
 
 > *Investigator: Hey, I found something interesting*
 > 
