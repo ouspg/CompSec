@@ -28,11 +28,11 @@ All memory and image dumps are available at same place than virtual machines (pa
 
 ## Important reminder
 
-This is not like other labs. This is bonus challenge. It means that this lab is harder than the others, instructions and directions where you should go are purposefully more unclear than in the other labs and change of tool usage problems and other irritating errors is higher than in the other labs.
+This is not like other labs. This is bonus challenge. It means that this lab is harder than the others, instructions and directions where you should go are more unclear than in the other labs and change of tool usage problems and other irritating errors is higher than in the other labs. Basically you will be kicked to the deep end of the pool and expected to learn to swim yourself.
 
-There may or may not be multiple ways to solve each task. You must use your own judgement to determine what ways could or should be pursued to gain success. Independent out-of-the-box thinking and creative problem solving is highly encouraged.
+There may or may not be multiple ways to solve each task. You must use your own judgement to determine what ways could or should be pursued to gain success. Independent thinking/researching of problem and creative problem solving is highly encouraged.
 
-You are required to install all needed tools of yourself and if there happens to be some problems with them - well, hopefully Google helps you then.
+You are required to install all needed tools yourself and if there happens to be some problems with them - well, hopefully Google helps you then.
 
 So basically this lab is more like real life. Or some obscure CTF-competition.
 
@@ -44,8 +44,8 @@ Task of this lab are divided to 3 different tasks which have corresponding grade
 
 Task| Grade/Level | Description | Good-to-have skills
 --|:--:|--|--
-1|3|Memory, disk image and steganography investigation|Basic understanding of working of RAM, disk storage systems and steganography
-2|4|DDoS attack investigation|Fluent usage of log basic linux commands and coding, understanding of DDoS attack principles
+1|3 (A, B and C 1 point each)|Memory, disk image and steganography investigation|Basic understanding of working of RAM, disk storage systems and steganography
+2|4|DDoS attack investigation|Fluent usage of basic linux commands and coding, understanding of DDoS attack principles
 3|5|Advanced experiments|Different skills depending on your project
 
 # Tasks
@@ -115,9 +115,9 @@ Your first task is to find 2 different GPS locations where police officers shoul
 > 
 > *You: I see. So we have only this memory dump right now. I'll see what I can do.*
 
-Intel from unconfirmed sources claims there is rumors about Mallory having also third hidden cache. Nothing about it is known but its codename: *FOREST*
+Intel from unconfirmed sources says that there is rumors about Mallory having also third hidden cache. Nothing about it is known but its codename: *FOREST*
 
-Your second task is to retrieve any email Mallory sent to or received from his criminal partners. Extract the name of Mallorys criminal partner and solve where third cache may be hidden.
+Your second task is to retrieve any email exchange of Mallory and his criminal partner. Extract content of the messages and solve location of third hidden cache.
 
 Fill your answers and reasoning to the return template.
 
@@ -127,9 +127,12 @@ Volatility is tool for volatile memory inspection.
 
 Find out what browser Mallory is using and then search for URLs which you want to find from its process memory.
 
+Similar approach can be used to e-mail task: Determine what program Mallory is using for mail and start digging the process memory of it.
+
 * [Volatility wiki](https://github.com/volatilityfoundation/volatility/wiki)
   * Useful volatility commands, `pslist`, `yarascan`, `memdump`
   * Correct profile for Mallorys machine is `Win7SP1x64_23418`
+  * There exist lots of different Volatility plugins: Some may make your life lots of easier with this task
 * Exiftool is tool for inspecting image metadata
 * Foremost can extract files of specified type from other files, for example memory dumps of processes
 
@@ -232,7 +235,7 @@ Hints:
   * Tools like foremost and/or binwalk can detect this kind of file-in-file tampering
   * Image steganography tool `steghide` can encrypt and hide information to image very efficiently
     * That tool has counter named `StegCracker`, which bruteforces information hidden with `steghide` out of the image (but you have to provide wordlist for it)
-
+* Final hint for this task 1C comes from interrogation log:
 > *Interrogator: By the way, if you hid your secret data to image with some tool supporting encryption, would you use some leetspeak version of your own name as password? Like `m4lL0rY`*
 > 
 > *Mallory: H-h-haha, of couse not - I am not obviously that stupid!*
