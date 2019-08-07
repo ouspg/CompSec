@@ -183,7 +183,7 @@ Your task is to do the following:
     Since TLS/SSL handshake takes longer than just reading input from stdin, we have to raise the timeout limit with ```-t 5000```. You should be able to find the crash in less than 10 minutes.
 * To see more clearly why the crash occurred, you can convert the crash file into a *.pcap* file using ```od``` and Wireshark's ```text2pcap```:
     ```shell
-    od -A x -t x1z -v <input_file> | text2pcap -T 443,443 - <output_file>
+    ~$ od -A x -t x1z -v <input_file> | text2pcap -T 443,443 - <output_file>
     ```
 
 **What is the more widely recognized name for this CVE-2014-0160 vulnerability?**
