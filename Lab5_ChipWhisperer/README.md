@@ -110,7 +110,7 @@ If you want go go for option 2 or 3, software packages are downloadable [here](h
 
 This lab tasks are tested with ChipWhisperer software version 4.0.1 (which is already on this course virtual machine, no need to change anything). If you install your own system, pay attention that you get the right version of program. Tasks should be doable with 4.0.x versions of software but this is not guaranteed by any means by anybody.
 
-Version 5.0 of ChipWhisperer software was published recently, but using it would most likely break this lab completely because changes in new version are quite massive. Changing this lab to fully support 5.0 in this timeframe was not feasible to do, so this year still uses version 4.0.
+First stable version of ChipWhisperer v5 software was published in the end of July. Unfortunately using it would most likely break this lab completely because changes in new version are quite massive. Changing this lab to fully support v5 in this timeframe was not feasible to do, so this year we still use version 4.
 
 ---
 
@@ -129,7 +129,6 @@ Read task instructions carefully before starting to work to have clear picture a
 Notice that some tasks (1C and 2B) require ChipWhisperer device only in early stages of task for recording power traces. This gives possibility to for example finish them at home without device if you manage to save correct traces during lab session or your friend records traces and sends them to you.
 
 ## Task 1
-
 
 Ok, let's begin.
 
