@@ -11,9 +11,9 @@ Computer Security Lab 1: Fuzzing
 
 ## Background
 
-This week’s theme is fuzzing. Tasks are designed to be done with the provided Kali Linux virtual machine, see the [course mainpage](https://github.com/ouspg/CompSec) for instructions how to run the virtual machine (VM). The provided Kali VM has all the required tools preinstalled, but if you have your own computer with some othe Linux distribution, you are free to use it, just install all the required tools.
+This week’s theme is fuzzing. Tasks are designed to be done with the provided Kali Linux virtual machine, see the [course mainpage](https://github.com/ouspg/CompSec) for instructions on how to run the virtual machine (VM). The provided Kali VM has all the required tools preinstalled, but if you have your own computer with some other Linux distribution, you are free to use it, just install all the required tools.
 
-In a nutshell, fuzz testing a.k.a. fuzzing is a software testing method that includes feeding malformed and unexpected input data to a program, device or system. The programs that are used to perform fuzz testing are commonly called fuzzers. The main goal of fuzzing is to make the target system behave *unexpectedly*. From the security perspective, the goal is to find and analyze those unexpected behaviours for possible exploits and figure out a way to fix it.
+In a nutshell, fuzz testing a.k.a. fuzzing is a software testing method that includes feeding malformed and unexpected input data to a program, device or system. The programs that are used to perform fuzz testing are commonly called fuzzers. The main goal of fuzzing is to make the target system behave *unexpectedly*. From the security perspective, the goal is to find and analyze those unexpected behaviors for possible exploits and figure out a way to fix it.
 
 In this exercise you will learn basic usage of 2 common fuzzers; Radamsa and American Fuzzy Lop (AFL). You will also use AddressSanitizer, a memory error detection tool, and Valgrind, a debugging tool (and memory error detector as well), which are often used alongside different fuzzers.
 
@@ -34,10 +34,10 @@ Make yourself familiar with the tools used to complete the exercises:
 
 Task #|Grade/Level|Description|
 -----|:---:|-----------|
-Task 1 |   | Mutated test case generation with Radamsa
+Task 1 | | Mutated test case generation with Radamsa
 Task 2 | 2 | Analyzing a C-program with AddressSanitizer, fuzztesting with AFL
-Task 3 | 3 | Creating your own small C-program and fuzztesting it
-Task 4 | 4/5 | Contribute to a existing open-source project. Set up a fuzzer and report findings.
+Task 3 | 3/4 | Creating your own small C-program and fuzztesting it
+Task 4 | 5 | Contribute to an existing open-source project. Set up a fuzzer and report findings.
 
 Grade 1 can be acquired by doing lecture questionnaires from the corresponding lecture.
 </details>
@@ -46,7 +46,7 @@ Grade 1 can be acquired by doing lecture questionnaires from the corresponding l
 
 ## Task 1
 
-### Mutated test case generation with Radamsa
+### Generating mutated test cases with Radamsa
 
 **A)** Make yourself familiar with [Radamsa](https://gitlab.com/akihe/radamsa). Try it out in a terminal and print 10 malformed samples of ```Fuzztest 1337``` using *echo*.
 
@@ -64,9 +64,9 @@ Radamsa can also handle various types of files. Next, you have to generate a bun
 
 ## Task 2 
 
-### Analyzing a C-program with AddressSanitizer
+### Analyzing C program with AddressSanitizer
 
-**A)** This repository contains an example C program called [example.c](misc/example.c). Your task is to analyze it using [AddressSanitizer (ASan)](https://github.com/google/sanitizers/wiki/AddressSanitizer). Compile the code with ```gcc``` and appropriate [sanitizer flags](https://github.com/google/sanitizers/wiki/AddressSanitizerFlags#compiler-flags) to enable the AddressSanitizer and to leave frame pointers. Run the compiled program and analyze what happens.
+**A)** This repository contains an example C program called [example.c](misc/example.c). Your task is to analyze it using [AddressSanitizer (ASan)](https://github.com/google/sanitizers/wiki/AddressSanitizer). Compile the code with ```clang``` and appropriate [sanitizer flags](https://github.com/google/sanitizers/wiki/AddressSanitizerFlags#compiler-flags). Run the compiled program and analyze what happens.
 
 **Command line used to compile the program**
 
@@ -75,10 +75,9 @@ Radamsa can also handle various types of files. Next, you have to generate a bun
 **What is the error and what is causing it in this program?**
 
 ---
-### Fuzztesting with AFL
+### Fuzzing with AFL
 
-**B)** In the following task, you will be using [American Fuzzy Lop (AFL)](http://lcamtuf.coredump.cx/afl/) to fuzz test a program called UnRTF. UnRTF is a tool that can be used to convert *.rtf* files to HTML, LaTeX etc. 
-
+**B)** In the following task, you will be using [American Fuzzy Lop (AFL)](http://lcamtuf.coredump.cx/afl/) to fuzz test a program called UnRTF. UnRTF is a tool that can be used to convert *.rtf* files to *HTML*, *LaTeX* etc. 
 
 AFL is already installed in the provided Kali Linux virtual machine and the target program's source code is included in this repository ([unrtf0.21.5.tar.xz](misc/unrtf-0.21.5.tar.xz)). When the source code is available, you should instrument the program by using AFL's own wrappers that work as drop-in replacements for **gcc/g++** and **clang/clang++** (NOTE: afl-gcc might not work properly in all systems, but it works with the provided Kali Linux vm). 
 
@@ -98,7 +97,7 @@ So, here's what you need to do:
     ~$ make install
     ```
 
-__Hint__: See AFL [documentation](http://lcamtuf.coredump.cx/afl/README.txt) to learn about instrumenting programs to use AFL compilers.
+    __Hint__: See AFL [documentation](http://lcamtuf.coredump.cx/afl/README.txt) to learn about instrumenting programs to use AFL compilers.
 
 4. Use AFL's example *.rtf* file located at ```/usr/share/afl/testcases/others/rtf/small_document.rtf``` to test that your UnRTF works by converting it to HTML:
     ```shell
@@ -106,20 +105,20 @@ __Hint__: See AFL [documentation](http://lcamtuf.coredump.cx/afl/README.txt) to 
     ```
 
 5. Create two folders, one for input files and one for result output. Copy the ```small_document.rtf``` into your input folder.
+    ```
+    ~$ mkdir <input_folder> <output_folder>
+    ~$ cp /<path>/<to>/<testfile> /<path>/<to>/<input_floder>
+    ```
+
 
 6. Start fuzzing UnRTF with AFL using the example ```small_document.rtf``` file as input:
     ```shell
     afl-fuzz -i <input_folder> -o <output_folder> /<path>/<to>/<target_program>
     ```
 
-__Hint__: See AFL [documentation](http://lcamtuf.coredump.cx/afl/README.txt) on how to start the fuzzer. 
+    __Hint__: See AFL [documentation](http://lcamtuf.coredump.cx/afl/README.txt) on how to start the fuzzer. You are fuzzing the UnRTF binary, which is located at ```~/unrtf/bin/unrtf```.
 
-7. Run the fuzzer and see what happens in the status window. Good description of the status window can be found [here](http://lcamtuf.coredump.cx/afl/status_screen.txt).
-
-__Hint__: You are fuzzing a binary. To copy your input file into in/ folder for AFL to use, you can do for example:
-```
-~$ cp /<path>/<to>/<test_file> /<path>/<to>/<where_you_want_to_copy_it>
-```
+7. Run the fuzzer until you get at least 50 unique crashes and observe the status window to see what is happening. A good description of the status window can be found [here](http://lcamtuf.coredump.cx/afl/status_screen.txt).
 
 **Command line used to configure unrtf**
 
@@ -127,7 +126,7 @@ __Hint__: You are fuzzing a binary. To copy your input file into in/ folder for 
 
 **Screenshot of the AFL status screen after stopping the fuzzer**
 
-**What do you think are the most significant pieces of information in the status screen? Why are they important?**
+**What do you think are the most significant pieces of information on the status screen? Why are they important?**
 
 ---
 ### Reproducing crashes with Valgrind
@@ -148,9 +147,56 @@ __Hint__: See the Valgrind [documentation](http://valgrind.org/docs/manual/quick
 
 ---
 
-## **Task 3**: Creating your own small C-program and fuzztesting it
+## Task 3
 
-In this task you will write a small C program and fuzztest it. In task 1, you created a *.txt* file containing ```12 EF``` and 100 fuzzed samples of it. We will use them in this task. Your program must take a text file as an input and check the file for following requirements:
+### Finding a well-known vulnerability in OpenSSL with fuzzing
+
+[OpenSSL](https://www.openssl.org/) is a widely-used open source cryptographic software library for Transport Layer Security and Secure Socket Layer protocols. In 2014, a buffer over-read vulnerability [CVE-2014-0160](https://nvd.nist.gov/vuln/detail/CVE-2014-0160) was found in the Heartbeat Extension of OpenSSL (up to version 1.0.1f) two years after the feature was introduced. The vulnerability allowed attackers to obtain memory contents from process memory remotely, and as a result, it compromised the integrity of secure communications.
+
+Since the cause of this vulnerability is a memory handling related bug, it is possible to find it using fuzzing tools like AddressSanitizer and AFL. In this task, you will have to find the vulnerability by fuzz testing OpenSSL 1.0.1f. Instructions on how to do this with AFL and AddressSanitizer are listed below.
+
+Since OpenSSL is a library instead of an executable binary, we have to use the provided [target.c](misc/target.c) as our fuzzing target. The target program uses OpenSSL to create a server-client TLS/SSL handshake by starting two OpenSSL instances. By default, the program creates and outputs the packets it sends, but it can also accept specified packets that will be sent:
+```shell
+~$ ./target <step_of_the_handshake> <packet_to_send>
+```
+
+Your task is to do the following:
+* **Download and extract the source code** for [OpenSSL 1.0.1f](misc/openssl-1.0.1f.tar.xz).
+* Use AFL to **instrument, compile and build the OpenSSL** and enable the AddressSanitizer:
+    ```shell
+    ~$ AFL_USE_ASAN=1 CC=afl-clang-fast CXX=afl-clang-fast++ ./config -d -g
+    ~$ make
+    ```
+* **Instrument and compile the fuzzing target** and enable AddressSanitizer:
+    ```shell
+    ~$ AFL_USE_ASAN=1 afl-clang-fast target.c -o target openssl/libssl.a openssl/libcrypto.a -I openssl/include -ldl
+    ```
+* **Create a dummy certificate**. Use OpenSSL to create a 512 bit RSA key (fuzzing target's security isn't the first priority):
+    ```
+    ~$ openssl req -x509 -newkey rsa:512 -keyout server.key -out server.pem -days 9999 -nodes -subj /CN=a/
+    ```
+* **Run the target program** to create a packet that will be used as a seed for AFL. Create a separate directory and move ```packet-1``` to it. You can remove the rest.
+* **Fuzz the target program** with AFL:
+    ```shell
+    ~$ afl-fuzz -i in -o out -m none -t 5000 ./target 1 @@
+    ```
+    Since TLS/SSL handshake takes longer than just reading input from stdin, we have to raise the timeout limit with ```-t 5000```. You should be able to find the crash in less than 10 minutes.
+* To see more clearly why the crash occurred, you can convert the crash file into a *.pcap* file using ```od``` and Wireshark's ```text2pcap```:
+    ```shell
+    ~$ od -A x -t x1z -v <input_file> | text2pcap -T 443,443 - <output_file>
+    ```
+
+**What is the more widely recognized name for this CVE-2014-0160 vulnerability?**
+
+**What caused the vulnerability?**
+
+**Take a screenshot of the AFL/ASAN results**
+
+---
+
+### Creating your own small C-program and fuzzing it
+
+In this task, you will write a small C program and fuzz test it. In task 1, you created a *.txt* file containing ```12 EF``` and 100 fuzzed samples of it. We will use them in this task. Your program must take a text file as an input and check the file for the following requirements:
 - First token is an **integer**
 - Second token is a **string**
 - Only two tokens are present
@@ -158,34 +204,36 @@ In this task you will write a small C program and fuzztest it. In task 1, you cr
 
 Compile and link your program with AddressSanitizer using appropriate flags.
 
-Run your program with the previously generated 100 test cases. A simple shell script loop for example is an easy way to run the test cases.
+Run your program with the previously generated 100 test cases. A simple shell script loop, for example, is an easy way to run the test cases.
 
 **Provide the C-code of your program**
 
-**Take a screenshot of the AddressSanitizer results after running your program with the testcases. Show at least 3 ASan outputs.**
+**Take a screenshot of the AddressSanitizer results after running your program with the test cases. Show at least 3 ASan outputs.**
 
 ---
-## **Task 4**: Contribute to a existing open-source project. Set up a fuzzer and report whole process and possible findings.
 
-Contribute to an existing open-source software (OSS) project by setting up a fuzzing environment and documenting the total process and results. You can choose the target software by yourself and use one of the 2 fuzzers introduced during the lab exercise, or pick some other that you think serves the purpose better. **You should do all the testing inside a virtual machine in case there are potentially malicious files being handled.**
+## Task 4
 
-You should read for example [this guide](https://github.com/ouspg/fuzz-testing-beginners-guide) to get started. Please note that in case a real bug is found from the software, it is very important to document the findings in a way that the issue can be easily reproduced. The guide has some good points of what information you should provide. It is not mandatory for the student to file a "real" bug report, but if you find something new, we highly recommend to do so.
+### Contribute to an existing open-source project. Set up a fuzzer and report the whole process and possible findings.
 
-You should grab the most recent vesion of the source code. Few open-source projects as an example:
+Contribute to existing open-source software (OSS) project by setting up a fuzzing environment and documenting the total process and results. You can choose the target software by yourself and use one of the 2 fuzzers introduced during the lab exercise, or pick some other that you think serves the purpose better. **You should do all the testing inside a virtual machine in case there are potentially malicious files being handled.**
+
+You should read for example [this guide](https://github.com/ouspg/fuzz-testing-beginners-guide) to get started. Please note that in case a real bug is found from the software, it is very important to document the findings in a way that the issue can be easily reproduced. The guide has some good points about what information you should provide. It is not mandatory for the student to file a "real" bug report, but if you find something new, we highly recommend to do so.
+
+You should grab the most recent version of the source code. Few open-source projects as an example:
 
 - [Chromium](https://www.chromium.org/Home) - An open-source browser project started by Google.
-- [VLC media player](https://www.videolan.org/vlc/index.html) - A common open-source media player from VideoLAN. Vast attack-surface as the player uses many different libraries to hande audio/video encoding. See [features](https://www.videolan.org/vlc/features.html).
-- [ImageMagick](https://www.imagemagick.org/script/index.php) - An open-source suite for displaying, converting and editing image, supporting over 200 file formats.
+- [VLC media player](https://www.videolan.org/vlc/index.html) - A common open-source media player from VideoLAN. Vast attack-surface as the player uses many different libraries to handle audio/video encoding. See [features](https://www.videolan.org/vlc/features.html).
+- [ImageMagick](https://www.imagemagick.org/script/index.php) - An open-source suite for displaying, converting and editing images, supporting over 200 file formats.
 - See [American Fuzzy Lop](http://lcamtuf.coredump.cx/afl/) main page for a comprehensive list of tools it has found bugs on. Newer versions of software can spawn new bugs, but the most common tools are usually tested the most so they might not be the best to start with.
 
 You should at minimum to provide the following information in the documentation:
 - Which fuzzer was used
-- Brief explanation of the target software and why you chose it
-  - Are you fuzzing the whole software or some specific part of it? 
-  - Is software using some libraries? Are those fuzzed as well?
+- A brief explanation of the target software and why you chose it
+ - Are you fuzzing the whole software or some specific part of it? 
+ - Is software using some libraries? Are those fuzzed as well?
 - Operating system and version information. Version numbers of target software, target software libraries, fuzzer and operating system are very important! Can you explain why?
 - Compiler and debugger flags
-- Initial testcase(s) and the one(s) producing a possible crash
-  - Necessary steps to reproduce the crash
+- Initial test case(s) and the one(s) producing a possible crash
+ - Necessary steps to reproduce the crash
 - It is not necessary to find any bugs. It is enough, if you can prove that you have fuzzed with good code-coverage and they way how input was mutated (=what kind of input fuzzer created overall))
-

@@ -158,7 +158,7 @@ Use your browser's developer tools to edit and resend this request, and cause an
 The GET request is sent to http://localhost:3000/rest/products/search?q=. Try different SQL symbols like statement terminators, comments and quotation marks. Check the network tab for servers response.
 </details>
 
-__What command did you use?__
+__What did you use as the search argument?__
 
 __Why did it cause an error?__
  
@@ -168,12 +168,11 @@ __Paste here the command that the SQL server attempts to execute and replace the
 
 **Deleted item?**
 
-The shop has an item that has been deleted and therefore does not show on searches. For some reason, the shop doesn't just remove the item but instead uses another way to set the item as deleted. Do a SQLi-attack that returns all the items (including the deleted one).
-
+The shop has an item that has been deleted and therefore does not show on searches. For some reason, the shop doesn't just remove the item but instead uses another way to set the item as deleted. Do a SQLi-attack that returns all the items (including the deleted one). Use your browser's developer tools to observe the response from the server.
 
 <details>
 <summary>Hint</summary>
-Examine the SQL-query that the server returned in the last part. How does this query exclude deleted items? Remove that part of the query using comments. 
+Examine the SQL-query that the server returned in the last part. How does this query exclude deleted items? Remove that part of the query using comments.
 </details>
 
 __How are the items "deleted"?__
@@ -238,10 +237,11 @@ Attack on the "Order ID" is an [reflected XSS attack](https://www.owasp.org/inde
 
 __What is the difference between these two types of attacks? How can you protect your applications against both types of attacks?__
 
+---
+
 **Cookie thief**
 
 XSS attacks above are relatively harmless, as they affect only you. It would be more harmful if you could get a damaging code snippet inside the database or make the results of the script otherwise visible to other users. One way to do this is to create a user that has a malicious script as its name.
-
 
 For this example we are going to use the following code snippet: 
 ```javascript
@@ -349,7 +349,16 @@ You can use any tools you find online. If you want to, you can code your own mut
 
 <details>
 <summary>Hint</summary>
-The Internet is full of tools to create wordlists. It is potentially easier to combine multiple tools to create the wordlist. If you plan to create your own, check python itertools. You can use existing tools to do the attack if you don't feel like creating your own script. OWASP ZAP, for example, can do the attack easily if you have a list containing all the mutations. Burp Suite Community edition doesn't allow you to use files as payloads, so don't try to do the attack with it.
+The Internet is full of tools to create wordlists, but if you plan to create your own, check python itertools. You can use existing tools to do the attack if you don't feel like creating your own script. OWASP ZAP, for example, can do the attack easily if you have a list containing all the mutations. Burp Suite Community edition doesn't allow you to use files as payloads, so don't try to do the attack with it.
+</details>
+
+<details>
+<summary>Sending HTTP requests with ZAP</summary>
+If you are using the provided Kali Linux vm, you can find owasp-zap in the Applications menu under Web Application Analysis.
+
+Send a POST request manually to your target using Manual request editor in Tools. Select the request from the history and use the Fuzzer to attack your server (Attack > Fuzz...).
+
+Highlight the part of the request that you want to modify in the attack and add it as a fuzzing location. Add the wordlist file as the payload for that specific fuzzing location and start the attack.
 </details>
 
 ---
