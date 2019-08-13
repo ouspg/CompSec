@@ -118,6 +118,12 @@ Total Points|Total Grade
 
 46 points are maximun.
 
+### Imaginary grading examples
+
+**Alice** is student with very basic technical skills and limited time due to many other courses demanding her attention. She manages to do lecture questionnaire and easiest laboratory task at weeks 1,2 and 3. On fourth week she is too busy to do anything for this course, but on week 5 she manages to do lecture questionnaire and easiest lab task again. On week 6 and 7 she decides to do only lecture tasks and then concentrates on writing survey paper as her coursework, because lack of available time. Hers coursework passes the minimum requirements, resulting 5 points and her other accomplishments give her (2+2+2+0+2+1+1) 10 points, so she receives final grade of 2 from this course.
+
+**Bob** is student with some technical experience and some background knowledge of computer security issues. He manages to grab 3 points from first 3 weeks by doing lecture questionnaire and basic level of laboratory tasks. On weeks 4 and 5 he steps up and does labs with some extra tasks, resulting 4 points from each lab. On week 6 he does lecture task and easiest level of lab. On week 7 he does not do weekly assignments at all and concentrates on doing his technical coursework which he intends to do properly. Technical coursework turns to be nice one, resulting 10 points, and with other points (3+3+3+4+4+2+0=19) he receives grade 4 from this course.
+
 </details>
 
 ## Final coursework topics
