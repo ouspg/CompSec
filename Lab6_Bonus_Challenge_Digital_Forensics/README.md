@@ -20,6 +20,8 @@ Field is too large to cover in single lab (there exist multiple different digita
 
 You can find good overview of the fied from [Wikipedia](https://en.wikipedia.org/wiki/Digital_forensics)
 
+Notice that this lab does not make you actually any kind of certified digigal forensics expert. There exist actual training for those jobs which may include also lot of evicence chain-of-custody and legal issues which are not paid attention in this lab at all. This lab tries to concentrate on interesting problem-solving situations which could theoretically be part of forensic investigation in real life.
+
 ## Practical arrangements of this lab
 
 This lab does not require any specific Linux distribution to be used. You are required to install quite many tools yourself, so anything you can install them on is good enough. Kali image used earlier in this course should work reasonably well with this lab (and it has large set of needed tools already installed).
@@ -28,15 +30,19 @@ All memory and image dumps are available at same place than virtual machines (pa
 
 ## Important reminder
 
-This is not like other labs. This is bonus challenge. It means that this lab is harder than the others, instructions and directions where you should go are more unclear than in the other labs and change of tool usage problems and other irritating errors is higher than in the other labs. Basically you will be kicked to the deep end of the pool and expected to learn to swim yourself.
+This is not like other labs, this is bonus lab. The nature of tasks are little different than in the other labs and this lab features first time on this course so "maturity" of this lab can be classified as "experimental" rather than "stable" like other labs.
+
+Basically this means that this lab may be little harder than the others, instructions and directions where you should go are more unclear than in the other labs and change of tool usage problems and other irritating errors is higher than in the other labs.
+
+Other labs might have had simple tutorials/instructions how to use certain tools during them. This lab does not do such a thing. You are expected to determine yourself what tools you have to use and learn usage of them yourself.
 
 There may or may not be multiple ways to solve each task. You must use your own judgement to determine what ways could or should be pursued to gain success. Independent thinking/researching of problem and creative problem solving is highly encouraged.
 
-You are required to install all needed tools yourself and if there happens to be some problems with them - well, hopefully Google helps you then.
+You are required to install all needed tools yourself and if there happens to be some problems with them - well, hopefully Google and your own troubleshooting skills can help you then.
 
-So basically this lab is more like real life. Or some obscure CTF-competition.
+Consider yourself to be properly warned after reading this.
 
-Consider yourself to be properly warned after reading this. Good luck. You might really need it too.
+If you still want to take this challenge, good luck. You might really need it too.
 
 ## Grading
 
@@ -44,7 +50,8 @@ Task of this lab are divided to 3 different tasks which have corresponding grade
 
 Task| Grade/Level | Description | Good-to-have skills
 --|:--:|--|--
-1|3 (A, B and C 1 point each)|Memory, disk image and steganography investigation|Basic understanding of working of RAM, disk storage systems and steganography
+1A|2|Memory investigation|Basic understanding of working of RAM and Volatility usage
+1B+C|3| Data recovery and steganography investigation | Basic understanding of disk storage systems and steganography
 2|4|DDoS attack investigation|Fluent usage of basic linux commands and coding, understanding of DDoS attack principles
 3|5|Advanced experiments|Different skills depending on your project
 
