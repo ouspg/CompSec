@@ -145,8 +145,7 @@ Note, that all topics are not equal in maximum points they are offering. More in
     * Choosing your own topic, and perform a technical project and write  a report
     * The guideline for choosing topics is: the topic should have the potential of having a positive contribution to security. 
 
-
-In each lab, there is option to make grade 5 task to be more challenging and comprehensive, and make it as final coursework. This has to be approved by assistant.
+In some labs, there might be possibility to extend grade 5 task to be more challenging and comprehensive, and then return it as your coursework. Send message to course assistant about your idea and lets have a look at it before you start your work.
 
 *Deadline for final course work is in the end of week 43. (End of course week 8.)*
 
@@ -162,10 +161,10 @@ Each week assignment has 2 deadlines: Early bird and final deadlines.
 
 **Early bird deadline** is at next sunday of each laboratory session. If you return your lab assignments before that deadline, we will try to grade your work ASAP during monday and give feedback to you. Benefit of this is next: If you happened to make mistake which cuts off points from your answers, you will have change to fix mistakes and re-return your work before final deadline.
 
-**Final deadline** is final. Period. No change to fix your answers or make late submissions after this point, unless some extraordinary conditions apply and course director grants you permission to do so. These type of exceptional situations are handled case-by-case.
+**Final deadline** is... final deadline. No change to fix your answers or make late submissions after this point.
 
 Week | Course week|Lecture Topics|Laboratory|Early bird deadline|Final deadline|
-:-:|:-:|:-:|:-:|:--:
+:-:|:-:|:-:|:-:|:--:|:--:
 36 | 1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing |Sunday, 08.09.2019, at 23:55|Wednesday, 11.09.2019, at 23:55|
 37 | 2 | Network security, risk | Network and websecurity |Sunday, 15.09.2019, at 23:55| Wednesday, 18.09.2019, at 23:55
 38 | 3 | Cybercrime, botnets, malware  | Botnets and malwares |Sunday, 22.09.2019, at 23:55| Wednesday, 25.09.2019, at 23:55
