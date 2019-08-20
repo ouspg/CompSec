@@ -6,11 +6,11 @@ Background
 
 Input validation and sanitization is one of the major challenges in software development. Improperly implemented validation and sanitization could lead to unexpected or unwanted situations, which have negative effect for functionality and thus security of software.
 
-Buffer overflows and buffer over-reads should be familiar topic from the lectures. These are some of the results from invalid input validation, and could lead in the worst case to possibility of arbitrary code execution in the system of vulnerable program.
+Buffer overflows and buffer over-reads should be a familiar topic from the lectures. These are some of the results from invalid input validation, and could lead in the worst case to possibility of arbitrary code execution in the system of vulnerable program.
 
-Misusing these flaws with specified payloads has been used as a classic way to get unauthorized shell access to compromised system. This method can be called as 'shellcoding', as **traditionally** shellcoding refers to anything, when piece of code is used as 'payload'  to get local or remote shell access. The meaning of this term has evolved: nowadays goal could be any imaginable task. 
+Misusing these flaws with specified payloads has been used as a classic way to get unauthorized shell access to compromised system. This method can be called as 'shellcoding', as **traditionally** shellcoding refers to anything, when piece of code is used as 'payload'  to get local or remote [shell](https://en.wikipedia.org/wiki/Shell_(computing)) access. The meaning of this term has evolved: today goal could be any imaginable task.
 
-Executing payloads in vulnerable program could lead to privilege escalation. Vulnerable program which is running with system privileges, could execute arbitary code with same privileges. Therefore if payload is able to spawn shell, it's done with system privileges. Aquiring shell access this way usually leads to full control of the system. This has lead shell spawning to be one of the most common goals of attackers.
+Executing payloads in vulnerable program could lead to privilege escalation. Vulnerable program which is running with system privileges, could execute arbitrary code with same privileges. Therefore if payload is able to spawn shell, it's done with system privileges. Acquiring shell access this way usually leads to full control of the system. This has led shell spawning to be one of the most common goals of attackers. History of shellcoding traces back to explanation in the article of Alpeh One, introduced in [here.](http://phrack.org/issues/49/14.html#article)
 
 The intention of this exercise is to achieve hands-on experience by exploring software with improperly validated input. Further, by taking advantage of shellcoding, we should be aware of dangers what unintended behaviour of software could inflict to overall system.
 
@@ -31,7 +31,7 @@ Tasks 3 & 4 are more advanced than earlier ones. Implementation will very likely
 Task|Grade/Level|Description|
 ----|:---:|-----------|
 [Task 1](#task-1--basics-of-buffer-overflows "Task 1 : Basics of buffer overflows") | - |  Analyzing buffer overflow and changing execution flow
-[Task 2](#task-2--arbitary-code-execution "Task 2 : Arbitary code execution") | 2 - 3| Arbitary code execution in vulnerable program
+[Task 2](#task-2--arbitrary-code-execution "Task 2 : Arbitrary code execution") | 2 - 3| Arbitrary code execution in vulnerable program
 [Task 3](#task-3--defeating-no-execute "Task 3 : Defeating No-eXecute") | 4 | Code reuse attack techniques: ret2libc & ROP
 [Task 4](#task-4--a-bit-more-advanced-rop-implementation "Task 4 : A bit more advanced ROP implementation") | 5 | Taking ROP to next level
 
@@ -146,9 +146,9 @@ Tip: If your hidden function contains printing - add newline ending to string. O
 
 
 ---
-Task 2 : Arbitary code execution
+Task 2 : Arbitrary code execution
 ----
-The goal of this task is to create bit more advanced payload: some arbitary code that we are willing to execute, by passing it to our previously created vulnerable program. Notably this means execution of our own program inside of another program.
+The goal of this task is to create bit more advanced payload: some arbitrary code that we are willing to execute, by passing it to our previously created vulnerable program. Notably this means execution of our own program inside of another program.
 
 In practise, first we need functionality for payload in C/C++ code, and then it should be transformed to machine code. Transform means in this case rewriting: it is not good idea to get assembly code from your binary, which you made earlier.
 
@@ -173,12 +173,12 @@ Extra: Maybe the most known white paper about this method can be found [here][0]
 # exit
 # 
 ```
-This program represents functionality of our later arbitary code.
+This program represents functionality of our later arbitrary code.
 
 
 ### B) Transforming functionality to machine instructions
 
- To be able to execute arbitary code in our vulnerable program we made in Task 1, we need to transfer payload functionality to direct machine instructions.
+ To be able to execute arbitrary code in our vulnerable program we made in Task 1, we need to transfer payload functionality to direct machine instructions.
  
  This means that we are going to turn code into assembly code, and further transforming it into shellcode. In the other words, **rewriting** (do not try to generate automatically with gcc for example) previous functionality from A task into IA-32 assembly. (Or other instruction set, if system does not support this.)
 
@@ -209,7 +209,7 @@ Previously in Task 1 we have executed specific function from vulnerable program 
 
 We can probably still use same vulnerable program again for executing payload. You still have to compile vulnerable program correctly to disable some protections.
 
-This time we are executing arbitary code, which is probably totally unrelated to vulnerable program. We are using virtual space of other program to run our own program.
+This time we are executing arbitrary code, which is probably totally unrelated to vulnerable program. We are using virtual space of other program to run our own program.
 
 Once we have confirmed, that executable payload is working (should have been done in the end of 2B ), we can go forward.
 
@@ -241,14 +241,14 @@ In GDB, ASLR is not enabled by default. When you want to spawn shell outside of 
 echo 0 | sudo tee /proc/sys/kernel/randomize_va_space 
 ```
 
-> ***Make a step-by-step report like previously (what, why and how), including command line commands and sourcefiles you used to success of executing arbitary code on vulnerable program,by finally opening local shell outside of GDB.***
+> ***Make a step-by-step report like previously (what, why and how), including command line commands and sourcefiles you used to success of executing arbitrary code on vulnerable program,by finally opening local shell outside of GDB.***
 
 Tip: *Does NOP sled sound familiar?*
 
 ---
 Task 3 : Defeating No-eXecute
 ----
-In previous task we have executed some arbitary code straight from the stack. This is bit simple and old method, and has been prevented some (long) time ago.
+In previous task we have executed some arbitrary code straight from the stack. This is bit simple and old method, and has been prevented some (long) time ago.
 
 NX - bit (no-eXecute) [was created][1] to separate areas in memory for storage of instructions and for storage of data.
 Processors will not execute data marked by NX - bit; in practice data which is just 'data'.

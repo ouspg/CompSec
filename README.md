@@ -49,13 +49,13 @@ Lab materials are located in their corresponding folders:
 
 5. [ChipWhisperer lab](Lab5_ChipWhisperer/README.md)
 
-
+6. [Bonus lab: Digital forensics challenge](Lab6_Bonus_Challenge_Digital_Forensics/README.md)
 
 ## The Course
 
 <details open>
 
-The course has seven (7) lectures, seven (7) weekly lecture questionnaires, five (5) laboratory exercises and final coursework (no exam).
+The course has seven (7) lectures, seven (7) weekly lecture questionnaires, five (5) laboratory exercises, one (1) bonus laboratory exercise and final coursework (no exam).
 
 Lectures are handling topics from high perspective and they are not going technically deep. Lecture questionnaires are based on lectures (surprisingly!).
 
@@ -63,13 +63,11 @@ Laboratory exercises are thought as individual packages: containing theory and e
 
 To pass the course, you have to get enough points *totally* from exercises/questionnaires and final coursework. From the beginning, you should be able to see, what you have to do for earning some specific grade. 
 
-**This means: as long as you get enough points from somewhere, you can skip even final coursework. Grading table is presented [here.](#grading)**
+**This means: as long as you get enough points from somewhere to pass the course, you can skip any lab/lecture task and even final coursework. All tasks on this course are optional, but the amount of points will determine your grade. Grading table is presented [here.](#grading)**
 
-*Generally, every week there is a choice: Make lecture questionnaires sufficiently and you will get grade 1 from that week **OR** participate for lab and complete tasks as described to get grade 2 or more from that week. You can't get points from both lecture questionnaires and labs in the same week.*
+*Generally, every week there is a decision to be made how many steps you want to take: Make lecture questionnaires sufficiently and you will get grade 1 from that week. After making lecture task, participate for lab and complete tasks as described to get grade 2 or more from that week.*
 
 Grades from the labs are equal to amount of points they are offering.
-
-Everyone can make weekly questionnaires from lectures in last two weeks, and earn total of two (2) points, even if all of the five labs has been completed.
 
 In practise, exercises of the course have been divided to five (5) different levels. Level is indicating for grade/points you are able to achieve by reaching that level.
 
@@ -77,11 +75,11 @@ When level rises, so does workload/difficulty.
 
 Labs have been split to different tasks. **The amount of tasks which are required for each level/grade is defined in the grading section of corresponding lab.**
 
-* __Level 1:__ You don't have to participate in the lab. You earn grade 1 from that week by attending lectures and answering to lecture questionnaires of corresponding topic
-* __Level 2:__ Complete the bare minimum of the lab. This will earn you grade **2** from that week. You are expected to do this during lab hours.
-* __Level 3:__ Complete the whole lab without extra work. This will earn you grade **3** from this week. You are expexted to do this during the lab hours but you are allowed to finish it on your own time
-* __Level 4:__ Complete the above (excluding lecture questionnaires) and some extra work. This will earn you a grade of **4** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
-* __Level 5:__ Complete all the above (excluding lecture questionnaires) and the most challenging extra work. You will earn a grade of **5** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
+* __Level 1:__ You earn grade 1 from that week by attending lectures and answering to lecture questionnaires of corresponding topic
+* __Level 2:__ Complete above and the bare minimum of the lab. This will earn you grade **2** from that week.
+* __Level 3:__ Complete above and the whole lab without extra work. This will earn you grade **3** from this week.
+* __Level 4:__ Complete the above and some extra work. This will earn you a grade of **4** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
+* __Level 5:__ Complete all the above and the most challenging extra work. You will earn a grade of **5** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
 
 </details>
 
@@ -91,7 +89,9 @@ Labs have been split to different tasks. **The amount of tasks which are require
 
 As described earlier, you can get up to 5 points in each week during the first five weeks. (Total 25 points)
 
-For last two weeks, there is still possibility earn total of 2  points from weekly lecture questionnaires (one (1) each), even if you have completed five labs already.
+On sixth week, you may still get 5 points totally, but be acknowledged that lab 6 is more experimental bonus challenge which is quite different (and possibly lot more difficult!) than other labs.
+
+For last week (week 7), there is still possibility earn 1 point from weekly lecture questionnaire (there is no lab on week 7).
 
 From final coursework, points can be obtained as following.
 There are four (4) different tiers for final coursework.
@@ -116,7 +116,13 @@ Total Points|Total Grade
 28+ | 4
 35+ | 5
 
-42 points are maximun.
+46 points are maximun.
+
+### Imaginary grading examples
+
+**Alice** is student with very basic technical skills and limited time due to many other courses demanding her attention. She manages to do lecture questionnaire and easiest laboratory task at weeks 1,2 and 3. On fourth week she is too busy to do anything for this course, but on week 5 she manages to do lecture questionnaire and easiest lab task again. On week 6 and 7 she decides to do only lecture tasks and then concentrates on writing survey paper as her coursework, because lack of available time. Hers coursework passes the minimum requirements, resulting 5 points and her other accomplishments give her (2+2+2+0+2+1+1) 10 points, so she receives final grade of 2 from this course.
+
+**Bob** is student with some technical experience and some background knowledge of computer security issues. He manages to grab 3 points from first 3 weeks by doing lecture questionnaire and basic level of laboratory tasks. On weeks 4 and 5 he steps up and does labs with some extra tasks, resulting 4 points from each lab. On week 6 he does lecture task and easiest level of lab. On week 7 he does not do weekly assignments at all and concentrates on doing his technical coursework which he intends to do properly. Technical coursework turns to be nice one, resulting 10 points, and with other points (3+3+3+4+4+2+0=19) he receives grade 4 from this course.
 
 </details>
 
@@ -133,14 +139,13 @@ Note, that all topics are not equal in maximum points they are offering. More in
     * Write a scientific survey article on a security topic for points up to good level. No technical implementation needed.
 
 3. IMPLEMENT - Simple technical project report
-   * Using one of the provided topics, perform a short technical project and write an associated report for points from satisfactory to laudable.
-   * The expected level is: repeat and demonstrate something known.
+    * Using one of the provided topics, perform a short technical project and write an associated report for points from satisfactory to laudable.
+    * The expected level is: repeat and demonstrate something known.
 4. CONTRIBUTE - Advanced project report
     * Choosing your own topic, and perform a technical project and write  a report
     * The guideline for choosing topics is: the topic should have the potential of having a positive contribution to security. 
 
-
-In each lab, there is option to make grade 5 task to be more challenging and comprehensive, and make it as final coursework. This has to be approved by assistant.
+In some labs, there might be possibility to extend grade 5 task to be more challenging and comprehensive, and then return it as your coursework. Send message to course assistant about your idea and lets have a look at it before you start your work.
 
 *Deadline for final course work is in the end of week 43. (End of course week 8.)*
 
@@ -150,20 +155,25 @@ In each lab, there is option to make grade 5 task to be more challenging and com
 
 <details>
 
-For each week you are expected to return assignments of corresponding lab OR corresponding lecture assignment.
+For each week you are expected to return assignments of corresponding week before specified deadline.
 
-Week | Course week|Lecture Topics|Laboratory| Assignment Deadline|
-:-:|:-:|:-:|:-:|:--:
-36 | 1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing | Wednesday, 12.09.2018, at 23:55|
-37 | 2 | Network security, risk | Network and websecurity | Wednesday, 19.09.2018, at 23:55
-38 | 3 | Cybercrime, botnets, malware  | Botnets and malwares | Wednesday, 26.09.2018, at 23:55
-39 | 4 | Software vulnerabilities and exploits | Shellcoding | Wednesday, 03.10.2018, at 23:55
-40 | 5 | Hardware security | HW and side channels / Possibility to improve or make missing labs | -
-41 | 6 | IoT, product security | HW and side channels / Possibility to improve or make missing labs |Wednesday, 17.10.2018, at 23:55
-42 | 7 | Privacy, GDPR, future challenges | Demo of course projects |  Wednesday, 24.10.2018, at 23:55 
-43 | 8 | No lecture | No lab | Coursework deadline Sunday, 28.10.2018, at 23:55
+Each week assignment has 2 deadlines: Early bird and final deadlines.
 
-***NOTE:***  Week 5 and 6 have been mixed, because there are limited amount of devices which are required for ChipWhisperer lab.
+**Early bird deadline** is at next sunday of each laboratory session. If you return your lab assignments before that deadline, we will try to grade your work ASAP during monday and give feedback to you. Benefit of this is next: If you happened to make mistake which cuts off points from your answers, you will have change to fix mistakes and re-return your work before final deadline.
+
+**Final deadline** is... final deadline. No change to fix your answers or make late submissions after this point.
+
+Week | Course week|Lecture Topics|Laboratory|Early bird deadline|Final deadline|
+:-:|:-:|:-:|:-:|:--:|:--:
+36 | 1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing |Sunday, 08.09.2019, at 23:55|Wednesday, 11.09.2019, at 23:55|
+37 | 2 | Network security, risk | Network and websecurity |Sunday, 15.09.2019, at 23:55| Wednesday, 18.09.2019, at 23:55
+38 | 3 | Cybercrime, botnets, malware  | Botnets and malwares |Sunday, 22.09.2019, at 23:55| Wednesday, 25.09.2019, at 23:55
+39 | 4 | Software vulnerabilities and exploits | Shellcoding |Sunday, 29.09.2019, at 23:55| Wednesday, 02.10.2019, at 23:55
+40 | 5 | Hardware security | HW and side channels |Sunday, 06.10.2019, at 23:55| Wednesday, 09.10.2019, at 23:55
+41 | 6 | ??? | Bonus lab: Digital forensics challenge|Sunday, 13.10.2019, at 23:55|Wednesday, 16.10.2019, at 23:55
+42 | 7 | Privacy, GDPR, future challenges | Demo of course projects |No EB DL for only lecture task| Wednesday, 23.10.2019, at 23:55 
+43 | 8 | No lecture | No lab |No EB DL for coursework|Coursework deadline Sunday, 27.10.2019, at 23:55
+
 
 </details>
 
@@ -189,7 +199,6 @@ Week | Course week|Lecture Topics|Laboratory| Assignment Deadline|
    * Your name(s) (There is group work in ChipWhisperer lab)
    * Link to your private GitHub repository
    * *Remember to do this for each lab, if you want to get things reviewed!*
-   * Additionally for Week 6/Lab6, if you are returning some improvements for previous labs, mention what have you improved or done.
 
 
 
