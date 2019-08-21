@@ -275,11 +275,17 @@ Run your program with the previously generated 100 test cases. A simple shell sc
 
 ### Fuzzing libraries
 
-In order to fuzz test a library, you need a separate fuzzing target binary that uses the library. In this task, you will be creating a fuzzing target for OpenSSL 1.0.1f. [OpenSSL](https://www.openssl.org/) is a widely-used open source cryptographic software library for Transport Layer Security and Secure Socket Layer protocols. In 2014, a buffer over-read vulnerability [CVE-2014-0160](https://nvd.nist.gov/vuln/detail/CVE-2014-0160) was found in the Heartbeat Extension of OpenSSL (up to version 1.0.1f) two years after the feature was introduced. The vulnerability allowed attackers to obtain memory contents from process memory remotely, and as a result, it compromised the integrity of secure communications.
+In order to fuzz test a library, you need a separate fuzzing target binary that uses the library. In this task, you will be modifying a fuzzing target for OpenSSL 1.0.1f. [OpenSSL](https://www.openssl.org/) is a widely-used open source cryptographic software library for Transport Layer Security and Secure Socket Layer protocols. In 2014, a buffer over-read vulnerability [CVE-2014-0160](https://nvd.nist.gov/vuln/detail/CVE-2014-0160) was found in the Heartbeat Extension of OpenSSL (up to version 1.0.1f) two years after the feature was introduced. The vulnerability allowed attackers to obtain memory contents from process memory remotely, and as a result, it compromised the integrity of secure communications.
 
 Since this vulnerability is caused by a memory handling related bug, it is possible to find it using fuzzing tools like AddressSanitizer and AFL. In this task, you will have to find the vulnerability by creating a fuzzing target for it and fuzzing it. The target program must use OpenSSL to simulate a TLS handshake.
 
-In order to fuzz test the OpenSSL library, we have to have a binary file that uses the library as a fuzzing target. For that, we are going to use the provided [target.c](misc/target.c). The target program uses OpenSSL to create a server-client TLS handshake. There are two options on how you can do this task:
+In order to fuzz test the OpenSSL library, we have to have a binary file that uses the library as a fuzzing target. For that, we are going to use the provided [target.c](misc/target.c). The target program uses OpenSSL to initiate a server-client TLS handshake. 
+
+
+
+
+
+There are two options on how you can do this task:
 1. modify the program, so you can give it a malformed message that will be sent at some point of the handshake. You can even specify the locations where you want the AFL to fuzz to make the testing faster. Check [AFL documentation](https://github.com/mirrorer/afl/tree/master/llvm_mode) for more information about deferred instrumentation.
 2. get familiar with the target.c and use AFL to fuzz it as it is without modifications. You should notice that this takes **a lot** longer.
 
