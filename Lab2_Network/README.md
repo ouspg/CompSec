@@ -2,9 +2,8 @@ Computer Security Lab 2: Networks and web security
 ====
 ## Preliminary tasks
 
-* Read the theory part from this document
-* 
-* 
+* Read the sections ```Background``` and ```Theory``` from this document
+* If you are not using the course's Kali VM, make sure that all of this lab's prerequisites are met on your own system
 
 ## About the lab
 
@@ -15,7 +14,7 @@ Computer Security Lab 2: Networks and web security
 
 ## Background
 
-Most of us browse the Internet daily. We are using a wide variety of platforms and browsers to access different kind websites or web applications. In many cases, users can give some kind of *input* to these websites or applications, regardless of their platform or browser. A lot of things could go wrong, if this user input is not properly validated or sanitized.
+Most of us browse the Internet daily. We are using a wide variety of platforms and browsers to access different kind websites or web applications. In many cases, users can give some kind of *input* to these websites or applications, regardless of their platform or browser. A lot of things could go wrong if this user input is not properly validated or sanitized.
 
 In this lab, we will go over some basic network and web-related security issues with the help of [OWASP Juice Shop](https://github.com/bkimminich/juice-shop).
 
@@ -76,7 +75,7 @@ Below are the steps to set it up on your own system, in case you want to use you
 
 ### Task 1
 
-Get [Docker](https://www.docker.com/) instance for Juice Shop (preferrably v8.7.2)
+Get [Docker](https://www.docker.com/) instance for Juice Shop (preferably v8.7.2 or newer)
 ```shell
 ~$ docker pull bkimminich/juice-shop
 ```
@@ -85,11 +84,13 @@ All the tasks are doable using your browsers developer tools. Tasks were tested 
 
 ### Task 2
 
-* For the brute-forcing task, the tools vary depending on how you choose to do it. Read the instructions and proceed to get the tools you want. There are some hints in the task description.
+For the brute-forcing task, the tools vary depending on how you choose to do it. Read the instructions and proceed to get the tools you want. There are some hints in the task description.
+
+In the CSRF task, you will need to host a website locally. Course's Kali Linux vm uses apache2, but you are free to choose your own method.
 
 ### Task 3
 
-You are expected to set up a basic server so having something like python and [flask](http://flask.pocoo.org/)/[BaseHttpServer](https://docs.python.org/2/library/basehttpserver.html) is can be useful. You are free to set up the server any way you wish.
+Depending on the way you choose to complete this task, you might need to set up a basic python and [flask](http://flask.pocoo.org/)/[BaseHttpServer](https://docs.python.org/2/library/basehttpserver.html) server. You are free to set up the server any way you wish.
 
 ### Task 4
 
@@ -117,7 +118,7 @@ It is estimated, that you are able to do Tasks 1 & possibly 2 during lab session
 Task| Grade/Level | Description
 :--:|:--:|--
 1|2|Basic SQL injections, Client-Side resource manipulation and basics of Cross-Site Scripting
-2|3|More complicated SQL injections, Cross-Site Request Forgery and Brute Forcing
+2|3|More complicated SQL injections, Cross-Site Request Forgery, and Brute Forcing
 3|4| Arbitrary file upload and Cross-Site Scripting
 4|5| Network traffic analysis and a security experiment
 
@@ -163,7 +164,7 @@ Use your browser's developer tools to edit and resend this request, and cause an
 The GET request is sent to http://localhost:3000/rest/products/search?q=. Try different SQL symbols like statement terminators, comments and quotation marks. Check the network tab for servers response.
 </details>
 
-__What did you use as the search argument?__
+__What did you use as the search argument to cause an error?__
 
 __Why did it cause an error?__
  
@@ -173,7 +174,7 @@ __Paste here the command that the SQL server attempts to execute and replace the
 
 **Deleted item?**
 
-The shop has an item that has been deleted and therefore does not show on searches. For some reason, the shop doesn't just remove the item but instead uses another way to set the item as deleted. Do a SQLi-attack that returns all the items (including the deleted one). Use your browser's developer tools to observe the response from the server.
+The shop has an item that has been deleted and therefore does not show on searches. For some reason, the shop doesn't just remove the item but instead uses another way to set the item as deleted. Do an SQLi-attack that returns all the items (including the deleted one). Use your browser's developer tools to observe the response from the server.
 
 <details>
 <summary>Hint</summary>
@@ -234,31 +235,31 @@ __What is the administration panel's URL?__
 
 **Annoying pop-up**
 
-Next, we attempt some cross-site scripting attacks. While you are logged in as any user, insert the following code snippet to the "Order ID" field in the "Track Orders" tab and to the search field. This should trigger the XSS.
+Next, we attempt some cross-site scripting attacks. While you are logged in as any user, insert the following code snippet to the "Order ID" field in the "Track Orders" tab and to the search field. This should trigger the XSS:
 
-```<iframe src="javascript:alert(`xss`)">```
+```js
+<iframe src="javascript:alert(`xss`)">
+```
 
 Attack on the "Order ID" is an [reflected XSS attack](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)#Reflected_XSS_Attacks) and the attack on the searchfield is [DOM based XSS](https://www.owasp.org/index.php/DOM_Based_XSS).
 
-__What is the difference between these two types of attacks? How can you protect your applications against both types of attacks?__
+__What is the difference between these two types of attacks?__
 
 ---
 
-**Cookie thief**
+**Persistent XSS**
 
 XSS attacks above are relatively harmless, as they affect only you. It would be more harmful if you could get a damaging code snippet inside the database or make the results of the script otherwise visible to other users. One way to do this is to create a user that has a malicious script as its name.
 
-For this example we are going to use the following code snippet: 
-```javascript
-<iframe src=\"http://localhost:5555\" onload=\"alert(document.cookie)\"></iframe>
+In this example, we are going to create a user with the following as it's email address: 
+
+```js
+<iframe src="javascript:alert(`xss`)">
 ```
 
-This will make the server attempt to fetch an image from a server we control and when it fails the server will send back the users cookies. This means we need a server. For this, we can utilize netcat. Use the following command to start a TCP server which listens to port 5555.
-```shell
-~$ nc -l -p 5555 -v
-```
+This will show the alert popup for anyone visiting the administration panel. 
 
-You can't create a user with the previously mentioned ```iframe``` object as its name using the site's own create account page. This is because Juice Shop validates the input in the client-side **but** not on the server-side. For this reason, we are going to use curl to send the user creation packet directly to the API, this way bypassing the site's input validation. In order to do this, we need to know what type of packet the API expects.
+You can't create a user with the previously mentioned ```iframe``` object as its name using the create account page. This is because Juice Shop validates the input in the client-side **but** not on the server-side. For this reason, we are going to use curl to send the user creation packet directly to the API, this way bypassing the site's input validation (browser's developer tools should also work). In order to do this, we need to know what type of packet the API expects.
 
 We can find out the type of packet we need in the following way:
 
@@ -269,9 +270,9 @@ We can find out the type of packet we need in the following way:
 ```shell
 ~$ curl -d @<your_json_file_name>.json -H "Content-Type: application/json" -X POST <API_url>
 ```
-After this, log in as the administrator and go to the administration panel while you have netcat on. The administration panel should have a weird looking user and the netcat should show your cookie information.
+After this, log in as the administrator and go to the administration panel. You should be welcomed by an alert popup and the administration panel should have a weird looking user entry.
 
-__*Paste a screenshot of the administration panel and netcat when the exploit is active.*__  
+__How can you protect your applications against XSS attacks?__
 
 ---
 
@@ -316,7 +317,7 @@ Do the following:
 
 Few helpful commands
 
- If the site is not visible at www.csrfattack.org, restart the apache2 service with the command
+If the site is not visible at www.csrfattack.org, restart the apache2 service with the command:
 ```
 ~$ sudo service apache2 restart
 ```
@@ -324,15 +325,11 @@ You can modify the site by editing the file found in
 ```
 /var/www/html/index.html
 ```
-After you have modified the site, restart the apache2 service with the command
-```
-~$ sudo service apache2 restart
-```
+If your modified HTML doesn't show up on the site, try to restart apache2.
 
 #### Returns
 
 * index.html
-
 
 ---
 **Brute forcing**
@@ -385,7 +382,7 @@ Juice Shop allows its customers to upload *zip* files with the site's *File Comp
 
 **Your task is to use the file upload vulnerability to overwrite the subtitle file and create an XSS attack that makes the promotional page look like Juice Shop's login page, and when a user inputs their credentials, the site should send those credentials to your own server.** So, do the following:
 
-* **Setup a server.** Just a basic Python [Flask](http://flask.pocoo.org/)/[BaseHttpServer](https://docs.python.org/2/library/basehttpserver.html) that can receive POST requests is fine. The server can either print or save the information to a file. Anything goes as long as it shows that the data entered the server.
+* **Setup a server.** There's no need to do anything too fancy, you just need to be able to show that you received the POST request data from the fake login page. For example, you can create a basic Python [Flask](http://flask.pocoo.org/)/[BaseHttpServer](https://docs.python.org/2/library/basehttpserver.html) or just set up a ```netcat``` listener. Anything goes as long as it shows that the data entered the server.
 
 * **Create the payload.** The payload should be a *.zip* archive that contains your *.vtt* file that has directory traversal characters added to its filename, so when the server unpacks the archive, your *.vtt* file will overwrite the original subtitle file. 
     * The filename should include traversal characters to go up two directories to get to the root folder before the path.
@@ -429,7 +426,7 @@ video.style.visibility = 'hidden';
 
 #### Returns
 
-* Your own server code.
+* Your own server code or a description of how you showed the received data.
 * Your own HTML/Javascript **without directory traversal characters in its name**.
 * The *zip* archive that you uploaded to overwrite the subtitle file.
 * **Clear** instructions on how to start your own server, send the XSS attack and how to verify that the information was sent to your server from Juice Shop.
@@ -439,8 +436,6 @@ video.style.visibility = 'hidden';
 ## Task 4
 
 You can complete this task in two ways. You can do the predefined task explained below or you can suggest a task that interests you and do that. __Contact the course assistants__ and describe them what you are interested in doing/trying to do. If they say it is good you can do that as your task 4.
-
-## Predefined task
 
 ### Setup
 

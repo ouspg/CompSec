@@ -4,7 +4,7 @@ Computer Security Lab 1: Fuzzing
 ## Preliminary tasks
 
 * Create Github account (although you probably already have one)
-* Fork the CompSec-2019-AnswerTemplate as instructed [here]()
+* Fork the CompSec-2019-AnswerTemplate as instructed [here](../README.md)
 * Check the instructions on how to download and use the course's Kali Linux virtual machine
     * Download and install VMWare Player to run the virtual machine. Virtualbox should work also.
 * Get familiar with the documentation for following tools:
@@ -255,10 +255,10 @@ You should at minimum to provide the following information in the documentation:
 
 ## Task 3 revisited
 
-### Fuzz testing your own programs
+### Fuzz testing your own program
 
 In this task, you will write a small C program and fuzz test it. In task 1, you created a *.txt* file containing ```12 EF``` and 100 malformed samples of it. We will use them in this task. Your program must take a text file as an input and check the file for the following requirements:
-- The file contains **two and only tokens** that are separated with a space (token legth not defined)
+- The file contains **two and only tokens** that are separated with a space
 - First token is an **integer**
 - Second token is a **string**
 - If the content of the text file is as specified above, return 1, otherwise 0
