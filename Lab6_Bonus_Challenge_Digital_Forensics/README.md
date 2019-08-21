@@ -268,7 +268,7 @@ Can you find person who hypothetically was behind the whole attack? That person 
 ### What to return
 
 Your carefully thought out analysis of attack containing **at least** next items:
-* Careful analysis of attack start/end time, intensities and bots participating it (analysis targets described above). Your style of reporting is free-formed, but depth quality of analysis is expected to be sufficient.
+* Careful analysis of attack start/end time, intensities and bots participating it (analysis targets described above). Your style of reporting is free-formed, but depth and quality of analysis is expected to be sufficient.
 * Well-reasoned explanation why certain type of request were used in DDoS attack.
 * IP address which points towards the real person controlling the botnet, and reasoning why you ended up to that conclusion.
 
