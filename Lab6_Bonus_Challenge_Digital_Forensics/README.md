@@ -1,4 +1,4 @@
-Computer Security Lab 6: Bonus Challenge: Digital Forensics
+Computer Security Lab 6: Digital Forensics
 ====
 
 ## ToC
@@ -30,9 +30,11 @@ All memory and image dumps are available at same place than virtual machines (pa
 
 ## Important reminder
 
-This is not like other labs, this is bonus lab. The nature of tasks are little different than in the other labs and this lab features first time on this course so "maturity" of this lab can be classified as "experimental" rather than "stable" like other labs.
+As you (hopefully!) already know, this lab is somewhat different than the others.
 
-Basically this means that this lab may be little harder than the others, instructions and directions where you should go are more unclear than in the other labs and change of tool usage problems and other irritating errors is higher than in the other labs.
+This lab features tasks being little similar than tasks in CTF-challenges. There is specified type of information hidden in somewhere and it is up to you to figure it out.
+
+Basically this means that this lab may be harder than the others, instructions and directions where you should go are more unclear than in the other labs and change of tool usage problems and other irritating errors is higher than in the other labs. This lab is first time on this course so "maturity" of this lab could be classified as "experimental" rather than "stable" like other labs.
 
 Other labs might have had simple tutorials/instructions how to use certain tools during them. This lab does not do such a thing. You are expected to determine yourself what tools you have to use and learn usage of them yourself.
 
@@ -40,7 +42,7 @@ There may or may not be multiple ways to solve each task. You must use your own 
 
 You are required to install all needed tools yourself and if there happens to be some problems with them - well, hopefully Google and your own troubleshooting skills can help you then.
 
-Consider yourself to be properly warned after reading this.
+Consider yourself to be properly informed after reading this.
 
 If you still want to take this challenge, good luck. You might really need it too.
 
@@ -163,7 +165,7 @@ Similar approach can be used to e-mail task: Determine what program Mallory is u
 Technical investigator attaches Mallorys memory stick to his machine by using write-blocker device. Stick seems to be empty and freshly formatted as Mallory implied. Technical investigator utilizes his tools to create raw disk-dump of that USB-stick and then gives it to you.
 
 Your task is next:
-* Recover RTF and PDF documents (1 RTF, 2 PDFs) and all of the content of them.
+* Recover RTF and PDF documents (1 RTF, 2 PDFs)
   * You must independently utilize your skills, creativity and hints from memory dump to decrypt PDF document content
 
 #### Hints and links
@@ -187,6 +189,8 @@ Some hints:
 * Hashcat might require some other libraries to be installed before it runs correctly
 * Feel free to utilize any other tool you can find to solve these tasks
 * Files with strong encryption and long enough passwords are unfeasible to be bruteforced
+* Mallory might have kept some unneccessary file clutter on his USB-stick just to annoy anybody else who happens to read it.
+* [File slack space](https://www.google.com/search?q=file+slack+space)
 
 
 ### C) Detecting and analyzing steganography
