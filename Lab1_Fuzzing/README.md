@@ -162,58 +162,14 @@ __Hint__: See the Valgrind [documentation](http://valgrind.org/docs/manual/quick
 
 ## Task 3
 
-### Finding a well-known vulnerability in OpenSSL with fuzzing
 
-[OpenSSL](https://www.openssl.org/) is a widely-used open source cryptographic software library for Transport Layer Security and Secure Socket Layer protocols. In 2014, a buffer over-read vulnerability [CVE-2014-0160](https://nvd.nist.gov/vuln/detail/CVE-2014-0160) was found in the Heartbeat Extension of OpenSSL (up to version 1.0.1f) two years after the feature was introduced. The vulnerability allowed attackers to obtain memory contents from process memory remotely, and as a result, it compromised the integrity of secure communications.
+### Fuzz testing your own program
 
-Since the cause of this vulnerability is a memory handling related bug, it is possible to find it using fuzzing tools like AddressSanitizer and AFL. In this task, you will have to find the vulnerability by fuzz testing OpenSSL 1.0.1f. Instructions on how to do this with AFL and AddressSanitizer are listed below.
-
-In order to fuzz test the OpenSSL library, we have to have a binary file that uses the library as a fuzzing target. For that, we are going to use the provided [target.c](misc/target.c). The target program uses OpenSSL to create a server-client TLS handshake. By default, the program creates and outputs the raw data of the messages it sends, but we can also use it to send specified packets:
-```shell
-~$ ./target <step_of_the_handshake> <packet_to_send>
-```
-
-Your task is to do the following:
-* **Download and extract the source code** for [OpenSSL 1.0.1f](misc/openssl-1.0.1f.tar.xz).
-* Use AFL to **instrument, compile and build the OpenSSL** and enable the AddressSanitizer:
-    ```shell
-    ~$ AFL_USE_ASAN=1 CC=afl-clang-fast CXX=afl-clang-fast++ ./config -d -g
-    ~$ make
-    ```
-* **Instrument and compile the fuzzing target** and enable AddressSanitizer:
-    ```shell
-    ~$ AFL_USE_ASAN=1 afl-clang-fast target.c -o target openssl/libssl.a openssl/libcrypto.a -I openssl/include -ldl
-    ```
-* **Create a dummy certificate**. Use OpenSSL to create a 512 bit RSA key (fuzzing target's security isn't the first priority):
-    ```
-    ~$ openssl req -x509 -newkey rsa:512 -keyout server.key -out server.pem -days 9999 -nodes -subj /CN=a/
-    ```
-* **Run the target program** to create a packet that will be used as a seed for AFL. Create a separate directory and move ```packet-1``` to it. You can remove the rest.
-* **Fuzz the target program** with AFL:
-    ```shell
-    ~$ afl-fuzz -i in -o out -m none -t 5000 ./target 1 @@
-    ```
-    Since TLS/SSL handshake takes longer than just reading input from stdin, we have to raise the timeout limit with ```-t 5000```. You should be able to find the crash in less than 10 minutes.
-* To see more clearly why the crash occurred, you can convert the crash file into a *.pcap* file using ```od``` and Wireshark's ```text2pcap```:
-    ```shell
-    ~$ od -A x -t x1z -v <input_file> | text2pcap -T 443,443 - <output_file>
-    ```
-
-**What is the more widely recognized name for this CVE-2014-0160 vulnerability?**
-
-**What caused the vulnerability?**
-
-**Take a screenshot of the AFL/ASAN results**
-
----
-
-### Creating your own small C-program and fuzzing it
-
-In this task, you will write a small C program and fuzz test it. In task 1, you created a *.txt* file containing ```12 EF``` and 100 fuzzed samples of it. We will use them in this task. Your program must take a text file as an input and check the file for the following requirements:
+In this task, you will write a small C program and fuzz test it. In task 1, you created a *.txt* file containing ```12 EF``` and 100 malformed samples of it. We will use them in this task. Your program must take a text file as an input and check the file for the following requirements:
+- The file contains **two and only tokens** that are separated with a space
 - First token is an **integer**
 - Second token is a **string**
-- Only two tokens are present
-- If the content of the text file is as specified above, return code 0, otherwise 1
+- If the content of the text file is as specified above, return 1, otherwise 0
 
 Compile and link your program with AddressSanitizer using appropriate flags.
 
@@ -222,6 +178,45 @@ Run your program with the previously generated 100 test cases. A simple shell sc
 **Provide the C-code of your program**
 
 **Take a screenshot of the AddressSanitizer results after running your program with the test cases. Show at least 3 ASan outputs.**
+
+---
+
+### Fuzzing libraries
+
+[OpenSSL](https://www.openssl.org/) is a widely-used open source cryptographic software library for Transport Layer Security and Secure Socket Layer protocols. In 2014, a buffer over-read vulnerability [CVE-2014-0160](https://nvd.nist.gov/vuln/detail/CVE-2014-0160) was found in the Heartbeat Extension of OpenSSL (up to version 1.0.1f) two years after the feature was introduced. The vulnerability allowed attackers to obtain memory contents from process memory remotely, and as a result, it compromised the integrity of secure communications.
+
+Since this vulnerability is caused by a memory handling related bug, it is possible to find it using fuzzing tools like AddressSanitizer and AFL. In order to fuzz test the OpenSSL library, we have to have a binary file that uses the library as a fuzzing target. For that, we are going to use the provided [target.c](misc/target.c), which uses OpenSSL to simulate a server-client TLS handshake.
+
+Your task is to do the following:
+* **Download and extract the source code** for [OpenSSL 1.0.1f](misc/openssl-1.0.1f.tar.xz).
+* **Instrument, compile and build OpenSSL and enable the AddressSanitizer**:
+    ```shell
+    ~$ AFL_USE_ASAN=1 CC=afl-clang-fast CXX=afl-clang-fast++ ./config -d -g
+    ~$ make
+    ```
+* **Instrument and compile the fuzzing target** and enable AddressSanitizer:
+    ```shell
+    ~$ AFL_USE_ASAN=1 afl-clang-fast target.c -o target openssl/libssl.a openssl/libcrypto.a -I openssl/include -ldl
+    ```
+* **Create a dummy certificate**. Use OpenSSL to create for example a 512 bit RSA key. The certificate is only used during fuzzing, so it doesn't matter how secure it is:
+    ```
+    ~$ openssl req -x509 -newkey rsa:512 -keyout server.key -out server.pem -days 365 -nodes -subj /CN=a/
+    ```
+* After you have tested that the target program works, **start fuzzing the target program** with AFL:
+    ```shell
+    ~$ afl-fuzz -i in -o out -m none -t 5000 ./target
+    ```
+    The bug is rather easy to find, so just create a small text file as the first input for AFL. TLS/SSL handshake takes longer than just reading input from stdin, so raise the memory limit with ```-m none``` and the timeout limit with ```-t 5000``` just in case. You should be able to find a crash in less than 10 minutes.
+* To see more clearly why the crash occurred, you can convert the crash file into a *.pcap* file using ```od``` and Wireshark's ```text2pcap```:
+    ```shell
+    ~$ od -A x -t x1z -v <input_file> | text2pcap -T 443,443 - <output_file>
+    ```
+
+**What is the more widely recognized name for this CVE-2014-0160 vulnerability?**
+
+**Find out and explain what caused the vulnerability?**
+
+**Take a screenshot of the AFL/ASAN results**
 
 ---
 
@@ -254,70 +249,3 @@ You should at minimum to provide the following information in the documentation:
 # WORK IN PROGRESS
 
 ## Task 3 revisited
-
-### Fuzz testing your own program
-
-In this task, you will write a small C program and fuzz test it. In task 1, you created a *.txt* file containing ```12 EF``` and 100 malformed samples of it. We will use them in this task. Your program must take a text file as an input and check the file for the following requirements:
-- The file contains **two and only tokens** that are separated with a space
-- First token is an **integer**
-- Second token is a **string**
-- If the content of the text file is as specified above, return 1, otherwise 0
-
-Compile and link your program with AddressSanitizer using appropriate flags.
-
-Run your program with the previously generated 100 test cases. A simple shell script loop, for example, is an easy way to run the test cases.
-
-**Provide the C-code of your program**
-
-**Take a screenshot of the AddressSanitizer results after running your program with the test cases. Show at least 3 ASan outputs.**
-
----
-
-### Fuzzing libraries
-
-In order to fuzz test a library, you need a separate fuzzing target binary that uses the library. In this task, you will be modifying a fuzzing target for OpenSSL 1.0.1f. [OpenSSL](https://www.openssl.org/) is a widely-used open source cryptographic software library for Transport Layer Security and Secure Socket Layer protocols. In 2014, a buffer over-read vulnerability [CVE-2014-0160](https://nvd.nist.gov/vuln/detail/CVE-2014-0160) was found in the Heartbeat Extension of OpenSSL (up to version 1.0.1f) two years after the feature was introduced. The vulnerability allowed attackers to obtain memory contents from process memory remotely, and as a result, it compromised the integrity of secure communications.
-
-Since this vulnerability is caused by a memory handling related bug, it is possible to find it using fuzzing tools like AddressSanitizer and AFL. In this task, you will have to find the vulnerability by creating a fuzzing target for it and fuzzing it. The target program must use OpenSSL to simulate a TLS handshake.
-
-In order to fuzz test the OpenSSL library, we have to have a binary file that uses the library as a fuzzing target. For that, we are going to use the provided [target.c](misc/target.c). The target program uses OpenSSL to initiate a server-client TLS handshake. 
-
-
-
-
-
-There are two options on how you can do this task:
-1. modify the program, so you can give it a malformed message that will be sent at some point of the handshake. You can even specify the locations where you want the AFL to fuzz to make the testing faster. Check [AFL documentation](https://github.com/mirrorer/afl/tree/master/llvm_mode) for more information about deferred instrumentation.
-2. get familiar with the target.c and use AFL to fuzz it as it is without modifications. You should notice that this takes **a lot** longer.
-
-
-Your task is to do the following:
-* **Download and extract the source code** for [OpenSSL 1.0.1f](misc/openssl-1.0.1f.tar.xz).
-* Use AFL to **instrument, compile and build the OpenSSL** and enable the AddressSanitizer:
-    ```shell
-    ~$ AFL_USE_ASAN=1 CC=afl-clang-fast CXX=afl-clang-fast++ ./config -d -g
-    ~$ make
-    ```
-* **Instrument and compile the fuzzing target** and enable AddressSanitizer:
-    ```shell
-    ~$ AFL_USE_ASAN=1 afl-clang-fast target.c -o target openssl/libssl.a openssl/libcrypto.a -I openssl/include -ldl
-    ```
-* **Create a dummy certificate**. Use OpenSSL to create a 512 bit RSA key (fuzzing target's security isn't the first priority):
-    ```
-    ~$ openssl req -x509 -newkey rsa:512 -keyout server.key -out server.pem -days 9999 -nodes -subj /CN=a/
-    ```
-* **Run the target program** to create a packet that will be used as a seed for AFL. Create a separate directory and move ```packet-1``` to it. You can remove the rest.
-* **Fuzz the target program** with AFL:
-    ```shell
-    ~$ afl-fuzz -i in -o out -m none -t 5000 ./target 1 @@
-    ```
-    Since TLS/SSL handshake takes longer than just reading input from stdin, we have to raise the timeout limit with ```-t 5000```. You should be able to find the crash in less than 10 minutes.
-* To see more clearly why the crash occurred, you can convert the crash file into a *.pcap* file using ```od``` and Wireshark's ```text2pcap```:
-    ```shell
-    ~$ od -A x -t x1z -v <input_file> | text2pcap -T 443,443 - <output_file>
-    ```
-
-**What is the more widely recognized name for this CVE-2014-0160 vulnerability?**
-
-**What caused the vulnerability?**
-
-**Take a screenshot of the AFL/ASAN results**
