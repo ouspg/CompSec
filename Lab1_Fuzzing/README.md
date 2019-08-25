@@ -245,7 +245,3 @@ You should at minimum to provide the following information in the documentation:
 - Initial test case(s) and the one(s) producing a possible crash
  - Necessary steps to reproduce the crash
 - It is not necessary to find any bugs. It is enough, if you can prove that you have fuzzed with good code-coverage and they way how input was mutated (=what kind of input fuzzer created overall))
-
-# WORK IN PROGRESS
-
-## Task 3 revisited
