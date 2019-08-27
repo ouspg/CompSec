@@ -2,7 +2,7 @@ Computer Security Lab 2: Networks and web security
 ====
 ## Preliminary tasks
 
-* Read the sections ```Background``` and ```Theory``` from this document
+* Read the sections ```Background``` and ```Theory``` from this document and ```SQL.md```
 * If you are not using the course's Kali VM, make sure that all of this lab's prerequisites are met on your own system
 
 ## About the lab
