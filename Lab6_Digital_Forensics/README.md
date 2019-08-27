@@ -19,7 +19,9 @@ Get familiar with the documentation of following tools / useful background info 
 * [Steganography on Wikipedia](https://en.wikipedia.org/wiki/Steganography)
 * [Data recovery on Wikipedia](https://en.wikipedia.org/wiki/Data_recovery)
 * [Volatility wiki](https://github.com/volatilityfoundation/volatility/wiki)
-* Optional - Search basic information about next tools: foremost, scalpel, exiftool, hashcat, binwalk, strings, steghide, zsteg
+* Search information about different tools which could be used in forensical investigation
+  * Examples: foremost, scalpel, exiftool, binwalk, strings
+  * Simply writing "Digital forensics tools" to Google should provide huge load of information
 * Image metadata and criminals [The Register](https://www.theregister.co.uk/2016/09/19/dark_web_drug_sellers_shutter_locationtracking_exif_data_from_photos/)
 
 ## Introduction
