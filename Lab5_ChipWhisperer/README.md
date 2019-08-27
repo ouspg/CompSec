@@ -2,7 +2,7 @@ Computer Security Lab 5: ChipWhisperer
 ====
 
 ## ToC
-
+* [Preliminary tasks](#Preliminary-tasks)
 * [Introduction](#Introduction)
     * [Practical arrangements of this lab](#Practical-arrangements-of-this-lab)
     * [Short intro to power analysis](#Short-intro-to-power-analysis)
@@ -19,6 +19,17 @@ Computer Security Lab 5: ChipWhisperer
   * [Task 4](#Task-4)
 
 * [Ideas for coursework](#Ideas-for-coursework)
+
+# Preliminary tasks
+
+Get familiar with following background information
+* [Power analysis on wikipedia](https://en.wikipedia.org/wiki/Power_analysis)
+* [ChipWhisperer's Introduction to Side-Channel Power Analysis training video](https://newae.com/training/online-training/)
+  * 00:00-20:00, very basic things about what is encryption (You can easily skip this if you already handle the basics)
+  * About 20:00-30:00, encryption and hardware
+  * About 30:00-55:00, very detailed explanation how power analysis attack against AES works
+  * About 55:00-end, explanation how this attack applies to real world and demonstration of the usage of ChipWhisperer tools and software
+  * If you cannot watch the video, about same information than important parts of this video can be found in heavily compressed form at next article [Correlation Power Analysis](http://wiki.newae.com/Correlation_Power_Analysis)
 
 # Introduction
 
@@ -996,7 +1007,3 @@ __Note:__ **If you decide to glitch/analyze external device you are responsible 
 If you have some other topic that uses ChipWhisperer or is related to hardware security and you are interested on trying it you can do it and document the process and the results. For example, you could look for ideas presented in ChipWhisperer tutorials and theory articles and think how you could use them in your experiments. Notice that to be accepted as task 4 your own idea must be about equal level of required skill and workload than option 1 and 2 are. __REMEMBER:__ before you do your special idea please contact the assistants and make sure that the topic is ok. If idea is too large for lab task it is possible to do it later as a course work. Of course your task 4 can be also initial experiments of your large idea and your coursework could be the rest of the work. You can discuss with course assistants about
 
 Notice that you can also just go and ask any additional ideas from course assistants. They might have some interesting basic ideas which are yet not so refined that those could be proposed in this documentation. But they are happy to share them with you and it is up to you to further refine idea.
-
-# Ideas for coursework
-
-TBA
