@@ -20,8 +20,6 @@ Course is under Faculty of Information Technology and Electrical Engineering.
 
 * [Instructions](#Instructions)
 
-* [Laboratory Exercises](#Laboratory-Exercises)
-
 * [Grading](#Grading)
 
 * [Final coursework topics](#Final-coursework-topics)
@@ -53,15 +51,33 @@ Lectures are handling topics from high perspective and they are not going techni
 
 Laboratory exercises are thought as individual packages: containing theory and exercises, and going technologically very deep.
 
+Lab materials are located in their corresponding folders: 
+
+1. [Fuzzing lab](Lab1_Fuzzing/README.md)
+
+2. [Network lab](Lab2_Network/README.md)
+
+3. [Botnets and malwares lab](Lab3_Botnets_and_malwares/README.md)
+
+4. [Shellcoding lab](Lab4_Introduction_to_Shellcoding/README.md)
+
+5. [ChipWhisperer lab](Lab5_ChipWhisperer/README.md)
+
+6. [Digital forensics lab](Lab6_Digital_Forensics/README.md)
+
+See section about [virtual machines](#Virtual-machines) to setup laboratory environment in the University classes or at home.
+
+Final coursework topics can be seen in [here.](#Final-coursework-topics)
+
 To pass the course, you have to get enough points *totally* from exercises/questionnaires and final coursework. From the beginning, you should be able to see, what you have to do for earning some specific grade. 
 
-**This means: as long as you get enough points from somewhere to pass the course, you can skip any lab/lecture task and even final coursework. All tasks on this course are optional, but the amount of points will determine your grade. Grading table is presented [here.](#grading)**
+**This means: as long as you get enough points from somewhere to pass the course, you can skip any lab/lecture task and even final coursework. All tasks on this course are optional, but the amount of points will determine your grade. Grading section is presented [here.](#grading)**
 
 *Generally, every week there is a decision to be made how many steps you want to take: Make lecture questionnaires sufficiently and you will get grade 1 from that week. After making lecture task, participate for lab and complete tasks as described to get grade 2 or higher from that week.*
 
 Grades from the labs are equal to amount of points they are offering.
 
-In practise, exercises of the course have been divided to five (5) different levels. Level is indicating for grade/points you are able to achieve by reaching that level.
+In practice, exercises of the course have been divided to five (5) different levels. Level is indicating for grade/points you are able to achieve by reaching that level.
 
 When level rises, so does workload/difficulty.
 
@@ -72,6 +88,8 @@ Labs have been split to different tasks. **The amount of tasks which are require
 * __Level 3:__ Complete above and the whole lab without extra work. This will earn you grade **3** from this week.
 * __Level 4:__ Complete the above and some extra work. This will earn you a grade of **4** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
 * __Level 5:__ Complete all the above and the most challenging extra work. You will earn a grade of **5** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
+
+See [deadlines](#deadlines) section for more information about how much you have time to work with lab depending on level you want to reach.
 
 </details>
 
@@ -85,11 +103,11 @@ Labs have been split to different tasks. **The amount of tasks which are require
 
  * Find course's Moodle page from University's [Moodle](https://moodle.oulu.fi/course/search.php?search=computer+security)
  
- * Find a link whereof you can receive and create a private repository containing all the return folders.
+ * Find a link whereof you can receive and create a private repository containing all the return template folders. You are expected to answer for given templates and store your actual work in this repository. 
 
  * Create GitHub account, if you don't have one already, and create this private repository from the link.
 
- * You can see deadlines above. They are same in the Moodle. There might be exceptions for ChipWhisperer.
+ * You can see deadlines below. They are same in the Moodle. There might be exceptions for ChipWhisperer.
 
  * Complete as many tasks as you wish and update your repository accordingly. Check the grading table found in each labs instructions on what you have to complete in order to earn the grade of your choosing
 
@@ -109,30 +127,10 @@ git push
 
 </details>
 
-## Laboratory Exercises
-
-<details><summary>Details</summary>
-
-
-Lab materials are located in their corresponding folders: 
-
-1. [Fuzzing lab](Lab1_Fuzzing/README.md)
-
-2. [Network lab](Lab2_Network/README.md)
-
-3. [Botnets and malwares lab](Lab3_Botnets_and_malwares/README.md)
-
-4. [Shellcoding lab](Lab4_Introduction_to_Shellcoding/README.md)
-
-5. [ChipWhisperer lab](Lab5_ChipWhisperer/README.md)
-
-6. [Digital forensics lab](Lab6_Digital_Forensics/README.md)
-
-</details>
 
 ## Grading
 
-<details><summary>Details</summary>
+<details><summary>Details (Click to collapse!)</summary>
 
   
 
@@ -161,7 +159,7 @@ Total Points|Total Grade
 27+ | 4
 35+ | 5
 
-46 points are maximun.
+46 points are maximum.
 
 ### Imaginary grading examples
 
@@ -174,7 +172,7 @@ Total Points|Total Grade
 
 ## Final coursework topics
 
-<details><summary>Details</summary>
+<details><summary>Details (Click to collapse!)</summary>
 
   
 
@@ -201,13 +199,15 @@ In some labs, there might be possibility to extend grade 5 task to be more chall
 
 ## Deadlines
 
-<details><summary>Details</summary>
+<details><summary>Details (Click to collapse!)</summary>
 
   
 
 For each week you are expected to return assignments of corresponding week before specified deadline.
 
-If you reach at least 3 points level by that deadline, you may submit your work to return box and ask for extra time to do more difficult tasks. In that case your work is attempted to be graded ASAP on Tuesday and if it is sufficient you will be given short feedback and extended deadline (same week Thursday 12:00, before new laboratory exercise).
+If you reach at least 3 points/level by that deadline, you may submit your work to return box and ask for extra time to do more difficult tasks if you think that given time is not enough for more challenging tasks. 
+
+In that case your work is attempted to be graded ASAP on Tuesday and if it is sufficient you will be given short feedback and extended deadline (same week Thursday 12:00, before new laboratory exercise). Note, that this offers possibility for improvements as well!
 
 Week | Course week|Lecture Topics|Laboratory|Deadline
 :-:|:-:|:-:|:-:|:--:
@@ -227,7 +227,7 @@ Week | Course week|Lecture Topics|Laboratory|Deadline
 
 ## Virtual machines
 
-<details><summary>Details</summary>
+<details><summary>Details (Click to collapse!)</summary>
 
   
 
@@ -352,7 +352,7 @@ Fork repository, and make a pull request. Let's have a look!
 
 This might have positive effect for your grade as well.
 
-Current contributors for the course (orderer by last name):
+Current contributors for the course (order by last name):
 
   * Aku Haataja (as course assistant)
   * Lauri Haverinen (as course assistant)
