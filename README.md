@@ -44,9 +44,9 @@ Course is under Computer Engineering and Science.
 
 <details open><summary>Details</summary>
 
-The course has seven (7) lectures, seven (7) weekly lecture questionnaires, five (5) laboratory exercises, one (1) bonus laboratory exercise and final coursework (no exam).
+The course has seven (7) lectures, seven (7) weekly lecture questionnaires, six (6) laboratory exercises and final coursework (no exam).
 
-Lectures are handling topics from high perspective and they are not going technically deep. Lecture questionnaires are based on lectures (surprisingly!).
+Lectures are handling topics from high perspective and they are not going technically deep. Lecture questionnaires are based on the topic of the lectures (surprisingly!).
 
 Laboratory exercises are thought as individual packages: containing theory and exercises, and going technologically very deep.
 
@@ -54,7 +54,7 @@ To pass the course, you have to get enough points *totally* from exercises/quest
 
 **This means: as long as you get enough points from somewhere to pass the course, you can skip any lab/lecture task and even final coursework. All tasks on this course are optional, but the amount of points will determine your grade. Grading table is presented [here.](#grading)**
 
-*Generally, every week there is a decision to be made how many steps you want to take: Make lecture questionnaires sufficiently and you will get grade 1 from that week. After making lecture task, participate for lab and complete tasks as described to get grade 2 or more from that week.*
+*Generally, every week there is a decision to be made how many steps you want to take: Make lecture questionnaires sufficiently and you will get grade 1 from that week. After making lecture task, participate for lab and complete tasks as described to get grade 2 or higher from that week.*
 
 Grades from the labs are equal to amount of points they are offering.
 
@@ -131,15 +131,13 @@ Lab materials are located in their corresponding folders:
 
 <details><summary>Details</summary>
 
-As described earlier, you can get up to 5 points in each week during the first five weeks. (Total 25 points)
-
-On sixth week, you may still get 5 points totally, but be acknowledged that lab 6 is more experimental bonus challenge which is quite different (and possibly lot more difficult!) than other labs.
+As described earlier, you can get up to 5 points in each week during the first six weeks. (Total 30 points)
 
 For last week (week 7), there is still possibility earn 1 point from weekly lecture questionnaire (there is no lab on week 7).
 
 From final coursework, points can be obtained as following.
-There are four (4) different tiers for final coursework.
 
+There are four (4) different tiers for final coursework.
 
 Tier|Topic|Grade/Points
 -|-|-
@@ -149,15 +147,13 @@ Tier|Topic|Grade/Points
 4 | CONTRIBUTE - Advanced project report | 3 - 5 (8 - 15)
 
 
-
-
 Total Points|Total Grade
 :-:|:-:
-<10 | failed
-10+ | 1
-15+ | 2
-21+ | 3
-28+ | 4
+<9 | failed
+9+ | 1
+14+ | 2
+20+ | 3
+27+ | 4
 35+ | 5
 
 46 points are maximun.
@@ -202,22 +198,18 @@ In some labs, there might be possibility to extend grade 5 task to be more chall
 
 For each week you are expected to return assignments of corresponding week before specified deadline.
 
-Each week assignment has 2 deadlines: Early bird and final deadlines.
+If you reach at least 3 points level by that deadline, you may submit your work to return box and ask for extra time to do more difficult tasks. In that case your work is attempted to be graded ASAP on Tuesday and if it is sufficient you will be given short feedback and extended deadline (same week Thursday 12:00).
 
-**Early bird deadline** is at next sunday of each laboratory session. If you return your lab assignments before that deadline, we will try to grade your work ASAP during monday and give feedback to you. Benefit of this is next: If you happened to make mistake which cuts off points from your answers, you will have change to fix mistakes and re-return your work before final deadline.
-
-**Final deadline** is... final deadline. No change to fix your answers or make late submissions after this point.
-
-Week | Course week|Lecture Topics|Laboratory|Early bird deadline|Final deadline|
-:-:|:-:|:-:|:-:|:--:|:--:
-36 | 1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing |Sunday, 08.09.2019, at 23:55|Wednesday, 11.09.2019, at 23:55|
-37 | 2 | Network security, risk | Network and websecurity |Sunday, 15.09.2019, at 23:55| Wednesday, 18.09.2019, at 23:55
-38 | 3 | Cybercrime, botnets, malware  | Botnets and malwares |Sunday, 22.09.2019, at 23:55| Wednesday, 25.09.2019, at 23:55
-39 | 4 | Software vulnerabilities and exploits | Shellcoding |Sunday, 29.09.2019, at 23:55| Wednesday, 02.10.2019, at 23:55
-40 | 5 | Hardware security | HW and side channels |Sunday, 06.10.2019, at 23:55| Wednesday, 09.10.2019, at 23:55
-41 | 6 | ??? | Bonus lab: Digital forensics challenge|Sunday, 13.10.2019, at 23:55|Wednesday, 16.10.2019, at 23:55
-42 | 7 | Privacy, GDPR, future challenges | Demo of course projects |No EB DL for only lecture task| Wednesday, 23.10.2019, at 23:55 
-43 | 8 | No lecture | No lab |No EB DL for coursework|Coursework deadline Sunday, 27.10.2019, at 23:55
+Week | Course week|Lecture Topics|Laboratory|Deadline
+:-:|:-:|:-:|:-:|:--:
+36 | 1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing |Monday, 09.09.2019, at 23:55
+37 | 2 | Network security, risk | Network and websecurity |Monday, 16.09.2019, at 23:55
+38 | 3 | Cybercrime, botnets, malware  | Botnets and malwares |Monday, 23.09.2019, at 23:55
+39 | 4 | Software vulnerabilities and exploits | Shellcoding |Monday, 30.09.2019, at 23:55
+40 | 5 | Hardware security | HW and side channels |Monday, 07.10.2019, at 23:55
+41 | 6 | Production security, IoT security | Digital forensics|Monday, 14.10.2019, at 23:55
+42 | 7 | Privacy, GDPR, future challenges | Demo of course projects |Monday, 21.10.2019, at 23:55
+43 | 8 | No lecture | No lab |Coursework deadline Sunday, 27.10.2019, at 23:55
 
 
 </details>
