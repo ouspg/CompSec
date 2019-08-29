@@ -2,7 +2,7 @@ Computer Security Lab 6: Digital Forensics
 ====
 
 ## ToC
-
+* [Preliminary tasks](#Preliminary-tasks)
 * [Introduction](#Introduction)
   * [Practical arrangements of this lab](#Practical-arrangements-of-this-lab)
   * [Grading](#Grading)
@@ -12,7 +12,19 @@ Computer Security Lab 6: Digital Forensics
   * [Task 2](#Task-2)
   * [Task 3](#Task-3)
 
-# Introduction
+## Preliminary tasks
+
+Get familiar with the documentation of following tools / useful background info articles
+* [Digital forensics on Wikipedia](https://en.wikipedia.org/wiki/Digital_forensics)
+* [Steganography on Wikipedia](https://en.wikipedia.org/wiki/Steganography)
+* [Data recovery on Wikipedia](https://en.wikipedia.org/wiki/Data_recovery)
+* [Volatility wiki](https://github.com/volatilityfoundation/volatility/wiki)
+* Search information about different tools which could be used in forensical investigation
+  * Examples: foremost, scalpel, exiftool, binwalk, strings
+  * Simply writing "Digital forensics tools" to Google should provide huge load of information
+* Image metadata and criminals [The Register](https://www.theregister.co.uk/2016/09/19/dark_web_drug_sellers_shutter_locationtracking_exif_data_from_photos/)
+
+## Introduction
 
 Digital forensics (aka digital forensic science) is field committed to recovering and investigating evidence found in digital devices.
 
@@ -309,7 +321,7 @@ Consider trying next:
 
 Write free-formed report of what kind of experiments you tried and what kind of results you achieved.
 
-### Option 2: Your own project
+### Option 2: Your own small project
 
 Invent your own experiments connected somehow to digital forensics and tell your idea to course assistant before starting to work.
 
