@@ -206,7 +206,7 @@ Your task is to do the following:
     ```shell
     ~$ afl-fuzz -i in -o out -m none -t 5000 ./target
     ```
-    The bug is rather easy to find, so just create a small text file as the first input for AFL. TLS/SSL handshake takes longer than just reading input from stdin, so raise the memory limit with ```-m none``` and the timeout limit with ```-t 5000``` just in case. You should be able to find a crash in less than 10 minutes.
+    The bug is rather easy to find, so you should be able to find a crash in less than 10 minutes. Use the ```clienthello``` file as seed for AFL. The file is just a standard SSL hello message that the client sends to the server to initialize a secure session. Create an input folder for AFL and place the file there. TLS/SSL handshake takes longer than just reading input from stdin, so raise the memory limit with ```-m none``` and the timeout limit with ```-t 5000``` just in case.
 * **Run the target program with the crash file** you got from the AFL:
     ```shell
     ./target < <crash_file>
@@ -215,6 +215,7 @@ Your task is to do the following:
     ```shell
     ~$ od -A x -t x1z -v <input_file> | text2pcap -T 443,443 - <output_file>
     ```
+    This command can also be used to convert ```clienthello``` to *.pcap*.
 
 **What is the more widely recognized name for this CVE-2014-0160 vulnerability?**
 
