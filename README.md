@@ -55,7 +55,7 @@ Lab materials are located in their corresponding folders:
 
 <details open>
 
-The course has seven (7) lectures, seven (7) weekly lecture questionnaires, six (5) laboratory exercises and final coursework (no exam).
+The course has seven (7) lectures, seven (7) weekly lecture questionnaires, six (6) laboratory exercises and final coursework (no exam).
 
 Lectures are handling topics from high perspective and they are not going technically deep. Lecture questionnaires are based on the topic of the lectures (surprisingly!).
 
@@ -92,8 +92,8 @@ As described earlier, you can get up to 5 points in each week during the first s
 For last week (week 7), there is still possibility earn 1 point from weekly lecture questionnaire (there is no lab on week 7).
 
 From final coursework, points can be obtained as following.
-There are four (4) different tiers for final coursework.
 
+There are four (4) different tiers for final coursework.
 
 Tier|Topic|Grade/Points
 -|-|-
@@ -101,8 +101,6 @@ Tier|Topic|Grade/Points
 2 | FIND OUT - Survey paper (non-technical)|  2 - 3 (5 - 10)
 3 | IMPLEMENT - Simple technical project report | 2 - 4 (5 - 13)
 4 | CONTRIBUTE - Advanced project report | 3 - 5 (8 - 15)
-
-
 
 
 Total Points|Total Grade
@@ -190,11 +188,9 @@ Week | Course week|Lecture Topics|Laboratory|Deadline
  * Push your changes to your repository before deadline.
 
  * Return a document to Moodle's return box with following content:
-   * Your name(s) (There is group work in ChipWhisperer lab)
+   * Your name(s)
    * Link to your private GitHub repository
    * *Remember to do this for each lab, if you want to get things reviewed!*
-
-
 
 
 Check [cheat sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) if you need a refresher on how to use Git. Some basic commands below  
