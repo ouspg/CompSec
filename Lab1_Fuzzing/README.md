@@ -77,9 +77,9 @@ Radamsa can also handle various types of files. Next, you have to generate a bun
 
 ## Task 2 
 
-### Analyzing C program with AddressSanitizer
+### A) Analyzing C program with AddressSanitizer
 
-**A)** This repository contains an example C program called [example.c](misc/example.c). Your task is to analyze it using [AddressSanitizer (ASan)](https://github.com/google/sanitizers/wiki/AddressSanitizer). Compile the code with ```clang``` and appropriate [sanitizer flags](https://github.com/google/sanitizers/wiki/AddressSanitizerFlags#compiler-flags). Run the compiled program and analyze what happens.
+This repository contains an example C program called [example.c](misc/example.c). Your task is to analyze it using [AddressSanitizer (ASan)](https://github.com/google/sanitizers/wiki/AddressSanitizer). Compile the code with ```clang``` and appropriate [sanitizer flags](https://github.com/google/sanitizers/wiki/AddressSanitizerFlags#compiler-flags). Run the compiled program and analyze what happens.
 
 **Command line used to compile the program**
 
@@ -88,11 +88,11 @@ Radamsa can also handle various types of files. Next, you have to generate a bun
 **What is the error and what is causing it in this program?**
 
 ---
-### Fuzzing with AFL
+### B) Fuzzing with AFL
 
-**B)** In the following task, you will be using [American Fuzzy Lop (AFL)](http://lcamtuf.coredump.cx/afl/) to fuzz test a program called UnRTF. UnRTF is a tool that can be used to convert *.rtf* files to *HTML*, *LaTeX* etc. 
+In the following task, you will be using [American Fuzzy Lop (AFL)](http://lcamtuf.coredump.cx/afl/) to fuzz test a program called UnRTF. UnRTF is a tool that can be used to convert *.rtf* files to *HTML*, *LaTeX* etc. 
 
-AFL is already installed in the provided Kali Linux virtual machine and the target program's source code is included in this repository ([unrtf0.21.5.tar.xz](misc/unrtf-0.21.5.tar.xz)). When the source code is available, you should instrument the program by using AFL's own wrappers that work as drop-in replacements for **gcc/g++** and **clang/clang++** (NOTE: afl-gcc might not work properly in all systems, but it works with the provided Kali Linux vm). 
+AFL is already installed in the provided Kali Linux virtual machine and the target program's source code is included in this repository ([unrtf0.21.5.tar.xz](misc/unrtf-0.21.5.tar.xz)). When the source code is available, you should instrument the program by using AFL's own wrappers that work as drop-in replacements for **gcc** and **clang** (NOTE: afl-gcc might not work properly in all systems, but it works with the provided Kali Linux vm). 
 
 So, here's what you need to do:
 
@@ -100,7 +100,7 @@ So, here's what you need to do:
 
 2. **Configure** it to use AFL's wrappers:
     ```shell
-    ~$ ./configure CC="<add_here>" CXX="<add_here>" --prefix=$HOME/unrtf
+    ~$ ./configure CC="<add_here>" --prefix=$HOME/unrtf
     ```
     The ```--prefix=HOME$/unrtf``` flag sets the installation location of the binary file to be your home directory. This is recommended, so you don't have to give it access to the root directory.
 
@@ -142,17 +142,17 @@ So, here's what you need to do:
 **What do you think are the most significant pieces of information on the status screen? Why are they important?**
 
 ---
-### Reproducing crashes with Valgrind
+### C) Reproducing crashes with Valgrind
 
-**C)** You should now have found some crashes with the AFL. Next, you need to reproduce one of them to see, what exactly went wrong. You can find the crashes from the output folder you created previously. Make your way into the ```.../<output_folder>/crashes``` and take one of the *.rtf* files that caused a crash under inspection.
+You should now have found some crashes with the AFL. Next, you need to reproduce one of them to see, what exactly went wrong. You can find the crashes from the output folder you created previously. Make your way into the ```.../<output_folder>/crashes``` and take one of the *.rtf* files that caused a crash under inspection.
 
 Run UnRTF with this file under Valgrind:
 
 ```shell
-~$ valgrind --leak-check=yes <program> <arg1> <arg2>
+~$ valgrind --leak-check=yes ~/unrtf/bin/unrtf --html /<path>/<to>/<crashfile>
 ```
 
-__Hint__: See the Valgrind [documentation](http://valgrind.org/docs/manual/quick-start.html) for help.
+__Hint__: Make sure that you are actually running the UnRTF with a crash file! If you get "Error: Cannot open input file" before Valgrind's actual memory analysis output, you are trying to run the program without any input. See the Valgrind [documentation](http://valgrind.org/docs/manual/quick-start.html) for help.
 
 **Take a screenshot of the Valgrind result after running the program**
 
@@ -163,7 +163,7 @@ __Hint__: See the Valgrind [documentation](http://valgrind.org/docs/manual/quick
 ## Task 3
 
 
-### Fuzz testing your own program
+### A) Fuzz testing your own program
 
 In this task, you will write a small C program and fuzz test it. In task 1, you created a *.txt* file containing ```12 EF``` and 100 malformed samples of it. We will use them in this task. Your program must take a text file as an input and check the file for the following requirements:
 - The file contains **two and only tokens** that are separated with a space
@@ -173,15 +173,15 @@ In this task, you will write a small C program and fuzz test it. In task 1, you 
 
 Compile and link your program with AddressSanitizer using appropriate flags.
 
-Run your program with the previously generated 100 test cases. A simple shell script loop, for example, is an easy way to run the test cases.
+Run your program with the previously generated 100 test cases. A simple shell script loop, for example, is an easy way to run the test cases. If you don't get enough ASAN outputs with the 100 test cases, try to do the test with 1 000 or 10 000 malformed inputs.
 
 **Provide the C-code of your program**
 
-**Take a screenshot of the AddressSanitizer results after running your program with the test cases. Show at least 3 ASan outputs.**
+**Take a screenshot of the AddressSanitizer results after running your program with the test cases. Show at least 3 ASAN outputs.**
 
 ---
 
-### Fuzzing libraries
+### B) Fuzzing libraries
 
 [OpenSSL](https://www.openssl.org/) is a widely-used open source cryptographic software library for Transport Layer Security and Secure Socket Layer protocols. In 2014, a buffer over-read vulnerability [CVE-2014-0160](https://nvd.nist.gov/vuln/detail/CVE-2014-0160) was found in the Heartbeat Extension of OpenSSL (up to version 1.0.1f) two years after the feature was introduced. The vulnerability allowed attackers to obtain memory contents from process memory remotely, and as a result, it compromised the integrity of secure communications.
 
@@ -206,15 +206,20 @@ Your task is to do the following:
     ```shell
     ~$ afl-fuzz -i in -o out -m none -t 5000 ./target
     ```
-    The bug is rather easy to find, so just create a small text file as the first input for AFL. TLS/SSL handshake takes longer than just reading input from stdin, so raise the memory limit with ```-m none``` and the timeout limit with ```-t 5000``` just in case. You should be able to find a crash in less than 10 minutes.
-* To see more clearly why the crash occurred, you can convert the crash file into a *.pcap* file using ```od``` and Wireshark's ```text2pcap```:
+    The bug is rather easy to find, so you should be able to find a crash in less than 10 minutes. Use the ```clienthello``` file as seed for AFL. The file is just a standard SSL hello message that the client sends to the server to initialize a secure session. Create an input folder for AFL and place the file there. TLS/SSL handshake takes longer than just reading input from stdin, so raise the memory limit with ```-m none``` and the timeout limit with ```-t 5000``` just in case.
+* **Run the target program with the crash file** you got from the AFL:
+    ```shell
+    ./target < <crash_file>
+    ```
+* To see more clearly why the crash occurred, convert the crash file into a *.pcap* file using ```od``` and Wireshark's ```text2pcap```:
     ```shell
     ~$ od -A x -t x1z -v <input_file> | text2pcap -T 443,443 - <output_file>
     ```
+    This command can also be used to convert ```clienthello``` to *.pcap*.
 
 **What is the more widely recognized name for this CVE-2014-0160 vulnerability?**
 
-**Find out and explain what caused the vulnerability?**
+**What can you tell about the crash based on ASAN results and the pcap file? What is causing the vulnerability?**
 
 **Take a screenshot of the AFL/ASAN results**
 
