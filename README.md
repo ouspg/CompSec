@@ -7,7 +7,8 @@ The course covers the essential aspects of computer security and computer securi
 The course is intended for computer engineering masters students and additionally to any student interested in computer security that has *the sufficient* technical background to complete the course exercises.
 
 The lectures and place for returning assignments can be found from University Moodle: [https://moodle.oulu.fi](https://moodle.oulu.fi)
-Course is under Computer Engineering and Science.
+
+Course is under Faculty of Information Technology and Electrical Engineering.
 
 <p align="center">
 <img src="lib/images/oulun yliopisto_logo_eng_black_rgb.png" alt="University of Oulu" height="300px" align="right"/>
@@ -44,6 +45,8 @@ Course is under Computer Engineering and Science.
 
 <details open><summary>Details</summary>
 
+---
+
 The course has seven (7) lectures, seven (7) weekly lecture questionnaires, six (6) laboratory exercises and final coursework (no exam).
 
 Lectures are handling topics from high perspective and they are not going technically deep. Lecture questionnaires are based on the topic of the lectures (surprisingly!).
@@ -76,6 +79,8 @@ Labs have been split to different tasks. **The amount of tasks which are require
 
 <details open><summary>Details</summary>
 
+---
+
  * Enroll to the course
 
  * Find course's Moodle page from University's [Moodle](https://moodle.oulu.fi/course/search.php?search=computer+security)
@@ -95,9 +100,6 @@ Labs have been split to different tasks. **The amount of tasks which are require
    * Link to your private GitHub repository
    * *Remember to do this for each lab, if you want to get things reviewed!*
 
-
-
-
 Check [cheat sheet](https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf) if you need a refresher on how to use Git. Some basic commands below  
 ```git
 git add </path/filename>
@@ -111,6 +113,8 @@ git push
 
 <details><summary>Details</summary>
 
+---
+
 Lab materials are located in their corresponding folders: 
 
 1. [Fuzzing lab](Lab1_Fuzzing/README.md)
@@ -119,7 +123,7 @@ Lab materials are located in their corresponding folders:
 
 3. [Botnets and malwares lab](Lab3_Botnets_and_malwares/README.md)
 
-4. [Shellcoding lab](Lab4_introduction_to_Shellcoding/README.md)
+4. [Shellcoding lab](Lab4_Introduction_to_Shellcoding/README.md)
 
 5. [ChipWhisperer lab](Lab5_ChipWhisperer/README.md)
 
@@ -130,6 +134,8 @@ Lab materials are located in their corresponding folders:
 ## Grading
 
 <details><summary>Details</summary>
+
+---
 
 As described earlier, you can get up to 5 points in each week during the first six weeks. (Total 30 points)
 
@@ -171,6 +177,8 @@ Total Points|Total Grade
 
 <details><summary>Details</summary>
 
+---
+
 Note, that all topics are not equal in maximum points they are offering. More information can be found in Final Project lecture slides.
 
 1.  BE AWARE - Personal risk analysis (non-technical)
@@ -196,6 +204,8 @@ In some labs, there might be possibility to extend grade 5 task to be more chall
 
 <details><summary>Details</summary>
 
+---
+
 For each week you are expected to return assignments of corresponding week before specified deadline.
 
 If you reach at least 3 points level by that deadline, you may submit your work to return box and ask for extra time to do more difficult tasks. In that case your work is attempted to be graded ASAP on Tuesday and if it is sufficient you will be given short feedback and extended deadline (same week Thursday 12:00, before new laboratory exercise).
@@ -219,6 +229,8 @@ Week | Course week|Lecture Topics|Laboratory|Deadline
 ## Virtual machines
 
 <details><summary>Details</summary>
+
+---
 
 Note: If you are using following virtual machines in your own pc, they are preconfigured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your pc, you might want to reduce this preconfigured RAM. 
 
@@ -340,6 +352,14 @@ Do you have a lot of ideas or suggestions to improve course?
 Fork repository, and make a pull request. Let's have a look!
 
 This might have positive effect for your grade as well.
+
+Current contributors for the course (orderer by last name):
+
+  * Aku Haataja (as course assistant)
+  * Lauri Haverinen (as course assistant)
+  * Ville Kemppainen (as course assistant)
+  * Jukka Pajukangas (as course assistant)
+  * Niklas Saari (as course assistant)
 
 ## License
 

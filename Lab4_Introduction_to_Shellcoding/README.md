@@ -24,7 +24,7 @@ The intention of this exercise is to achieve hands-on experience by exploring so
 ---
 Grading
 ---
-<details><summary>Details (Click to collapse)</summary>
+<details open><summary>Details </summary>
 Make a short step-by-step report (what, why and how) of following tasks, and include source codes and the most important command line commands used in those tasks. It's recommended to read all tasks before starting. Actual instruction for what to do, is ***in bold and italics*** on each task.
 
 You are eligible to following grades in this exercise by doing tasks as defined. Great ideas and implementations could compensate some poorly implemented ones.
@@ -51,6 +51,7 @@ Difficulty on tasks is expected to be exponentially raising as you go forward wi
 There will be answer template or more instructions.*
 
 </details>
+
 ---
 
 Some prerequisites
