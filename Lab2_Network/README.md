@@ -71,7 +71,7 @@ then everything should be already installed to your machine.
 
 Below are the steps to set it up on your own system, in case you want to use your own computer, or you are otherwise unable to acquire the provided virtual machine.
 
-<details>
+<details> <summary>By tasks (Click to collapse)</summary>
 
 ### Task 1
 
@@ -105,11 +105,11 @@ For the security experiment, you can use Burp, ZAP or any other tool you wish.
 
 ---
 
-</details>
+</details> 
 
 ## Grading
 
-<details>
+<details> <summary>Details (Click to collapse)</summary>
 You are eligible to following grades in this exercise by doing tasks as defined. Great ideas and implementations could compensate for some poorly implemented ones.
 Upper grade requires that all previous ones have been done as well.
 

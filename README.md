@@ -6,7 +6,7 @@ The course covers the essential aspects of computer security and computer securi
 
 The course is intended for computer engineering masters students and additionally to any student interested in computer security that has *the sufficient* technical background to complete the course exercises.
 
-The lectures and place for returning assignments can be found from University Moodle: [https://oystack.oulu.fi](https://oystack.oulu.fi)
+The lectures and place for returning assignments can be found from University Moodle: [https://moodle.oulu.fi](https://moodle.oulu.fi)
 Course is under Computer Engineering and Science.
 
 <p align="center">
@@ -17,11 +17,13 @@ Course is under Computer Engineering and Science.
 
 * [The Course](#The-Course)
 
+* [Instructions](#Instructions)
+
+* [Laboratory Exercises](#Laboratory-Exercises)
+
 * [Grading](#Grading)
 
 * [Final coursework topics](#Final-coursework-topics)
-
-* [Instructions](#Instructions)
 
 * [Virtual machines](#Virtual-machines)
 
@@ -37,23 +39,10 @@ Course is under Computer Engineering and Science.
 
 * [License](#License)
 
-Lab materials are located in their corresponding folders: 
-
-1. [Fuzzing lab](Lab1_Fuzzing/README.md)
-
-2. [Network lab](Lab2_Network/README.md)
-
-3. [Botnets and malwares lab](Lab3_Botnets_and_malwares/README.md)
-
-4. [Shellcoding lab](Lab4_introduction_to_Shellcoding/README.md)
-
-5. [ChipWhisperer lab](Lab5_ChipWhisperer/README.md)
-
-6. [Bonus lab: Digital forensics challenge](Lab6_Bonus_Challenge_Digital_Forensics/README.md)
 
 ## The Course
 
-<details open>
+<details open><summary>Details</summary>
 
 The course has seven (7) lectures, seven (7) weekly lecture questionnaires, five (5) laboratory exercises, one (1) bonus laboratory exercise and final coursework (no exam).
 
@@ -83,9 +72,64 @@ Labs have been split to different tasks. **The amount of tasks which are require
 
 </details>
 
+## Instructions
+
+<details open><summary>Details</summary>
+
+ * Enroll to the course
+
+ * Find course's Moodle page from University's [Moodle](https://moodle.oulu.fi/course/search.php?search=computer+security)
+ 
+ * Find a link whereof you can receive and create a private repository containing all the return folders.
+
+ * Create GitHub account, if you don't have one already, and create this private repository from the link.
+
+ * You can see deadlines above. They are same in the Moodle. There might be exceptions for ChipWhisperer.
+
+ * Complete as many tasks as you wish and update your repository accordingly. Check the grading table found in each labs instructions on what you have to complete in order to earn the grade of your choosing
+
+ * Push your changes to your repository before deadline.
+
+ * Return a document to Moodle's return box with following content:
+   * Your name(s) (There is group work in ChipWhisperer lab)
+   * Link to your private GitHub repository
+   * *Remember to do this for each lab, if you want to get things reviewed!*
+
+
+
+
+Check [cheat sheet](https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf) if you need a refresher on how to use Git. Some basic commands below  
+```git
+git add </path/filename>
+git commit -m "<message>"
+git push
+```
+
+</details>
+
+## Laboratory Exercises
+
+<details><summary>Details</summary>
+
+Lab materials are located in their corresponding folders: 
+
+1. [Fuzzing lab](Lab1_Fuzzing/README.md)
+
+2. [Network lab](Lab2_Network/README.md)
+
+3. [Botnets and malwares lab](Lab3_Botnets_and_malwares/README.md)
+
+4. [Shellcoding lab](Lab4_introduction_to_Shellcoding/README.md)
+
+5. [ChipWhisperer lab](Lab5_ChipWhisperer/README.md)
+
+6. [Bonus lab: Digital forensics challenge](Lab6_Bonus_Challenge_Digital_Forensics/README.md)
+
+</details>
+
 ## Grading
 
-<details>
+<details><summary>Details</summary>
 
 As described earlier, you can get up to 5 points in each week during the first five weeks. (Total 25 points)
 
@@ -126,9 +170,10 @@ Total Points|Total Grade
 
 </details>
 
+
 ## Final coursework topics
 
-<details>
+<details><summary>Details</summary>
 
 Note, that all topics are not equal in maximum points they are offering. More information can be found in Final Project lecture slides.
 
@@ -153,7 +198,7 @@ In some labs, there might be possibility to extend grade 5 task to be more chall
 
 ## Deadlines
 
-<details>
+<details><summary>Details</summary>
 
 For each week you are expected to return assignments of corresponding week before specified deadline.
 
@@ -177,44 +222,10 @@ Week | Course week|Lecture Topics|Laboratory|Early bird deadline|Final deadline|
 
 </details>
 
-## Instructions
-
-<details open>
-
- * Enroll to the course
-
- * Find course's Moodle page from University's [Moodle](https://oystack.oulu.fi/course/index.php?categoryid=16)
- 
- * Find a link whereof you can receive and create a private repository containing all the return folders.
-
- * Create GitHub account, if you don't have one already, and create this private repository from the link.
-
- * You can see deadlines above. They are same in Moodle. There might be exceptions for ChipWhisperer.
-
- * Complete as many tasks as you wish and update your repository accordingly. Check the grading table found in each labs instructions on what you have to complete in order to earn the grade of your choosing
-
- * Push your changes to your repository before deadline.
-
- * Return a document to Moodle's return box with following content:
-   * Your name(s) (There is group work in ChipWhisperer lab)
-   * Link to your private GitHub repository
-   * *Remember to do this for each lab, if you want to get things reviewed!*
-
-
-
-
-Check [cheat sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) if you need a refresher on how to use Git. Some basic commands below  
-```git
-git add </path/filename>
-git commit -m "<message>"
-git push
-```
-
-</details>
 
 ## Virtual machines
 
-<details open>
+<details open><summary>Details</summary>
 
 Note: If you are using following virtual machines in your own pc, they are preconfigured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your pc, you might want to reduce this preconfigured RAM. 
 
