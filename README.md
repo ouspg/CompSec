@@ -91,7 +91,7 @@ Labs have been split to different tasks. **The amount of tasks which are require
  * Push your changes to your repository before deadline.
 
  * Return a document to Moodle's return box with following content:
-   * Your name(s) (There is group work in ChipWhisperer lab)
+   * Your name(s)
    * Link to your private GitHub repository
    * *Remember to do this for each lab, if you want to get things reviewed!*
 
@@ -123,7 +123,7 @@ Lab materials are located in their corresponding folders:
 
 5. [ChipWhisperer lab](Lab5_ChipWhisperer/README.md)
 
-6. [Bonus lab: Digital forensics challenge](Lab6_Bonus_Challenge_Digital_Forensics/README.md)
+6. [Digital forensics lab](Lab6_Digital_Forensics/README.md)
 
 </details>
 
@@ -198,7 +198,7 @@ In some labs, there might be possibility to extend grade 5 task to be more chall
 
 For each week you are expected to return assignments of corresponding week before specified deadline.
 
-If you reach at least 3 points level by that deadline, you may submit your work to return box and ask for extra time to do more difficult tasks. In that case your work is attempted to be graded ASAP on Tuesday and if it is sufficient you will be given short feedback and extended deadline (same week Thursday 12:00).
+If you reach at least 3 points level by that deadline, you may submit your work to return box and ask for extra time to do more difficult tasks. In that case your work is attempted to be graded ASAP on Tuesday and if it is sufficient you will be given short feedback and extended deadline (same week Thursday 12:00, before new laboratory exercise).
 
 Week | Course week|Lecture Topics|Laboratory|Deadline
 :-:|:-:|:-:|:-:|:--:
@@ -212,12 +212,13 @@ Week | Course week|Lecture Topics|Laboratory|Deadline
 43 | 8 | No lecture | No lab |Coursework deadline Sunday, 27.10.2019, at 23:55
 
 
+
 </details>
 
 
 ## Virtual machines
 
-<details open><summary>Details</summary>
+<details><summary>Details</summary>
 
 Note: If you are using following virtual machines in your own pc, they are preconfigured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your pc, you might want to reduce this preconfigured RAM. 
 
