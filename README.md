@@ -45,7 +45,7 @@ Course is under Faculty of Information Technology and Electrical Engineering.
 
 <details open><summary>Details</summary>
 
----
+  
 
 The course has seven (7) lectures, seven (7) weekly lecture questionnaires, six (6) laboratory exercises and final coursework (no exam).
 
@@ -79,7 +79,7 @@ Labs have been split to different tasks. **The amount of tasks which are require
 
 <details open><summary>Details</summary>
 
----
+  
 
  * Enroll to the course
 
@@ -113,7 +113,6 @@ git push
 
 <details><summary>Details</summary>
 
----
 
 Lab materials are located in their corresponding folders: 
 
@@ -135,7 +134,7 @@ Lab materials are located in their corresponding folders:
 
 <details><summary>Details</summary>
 
----
+  
 
 As described earlier, you can get up to 5 points in each week during the first six weeks. (Total 30 points)
 
@@ -177,7 +176,7 @@ Total Points|Total Grade
 
 <details><summary>Details</summary>
 
----
+  
 
 Note, that all topics are not equal in maximum points they are offering. More information can be found in Final Project lecture slides.
 
@@ -204,7 +203,7 @@ In some labs, there might be possibility to extend grade 5 task to be more chall
 
 <details><summary>Details</summary>
 
----
+  
 
 For each week you are expected to return assignments of corresponding week before specified deadline.
 
@@ -230,7 +229,7 @@ Week | Course week|Lecture Topics|Laboratory|Deadline
 
 <details><summary>Details</summary>
 
----
+  
 
 Note: If you are using following virtual machines in your own pc, they are preconfigured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your pc, you might want to reduce this preconfigured RAM. 
 
