@@ -1,6 +1,11 @@
 Computer Security Lab 4: Introduction to Shellcoding and a bit more
 ====
 
+## Preliminary tasks
+It would be good to read Background and Prerequisites sections beforehand.
+
+Particularly, article presented by Aleph One offers good introduction to stacks and their legacy (and current) vulnerabilities. This can be found from [here.](http://phrack.org/issues/49/14.html#article)
+
 Background
 ---
 
@@ -10,18 +15,19 @@ Buffer overflows and buffer over-reads should be a familiar topic from the lectu
 
 Misusing these flaws with specified payloads has been used as a classic way to get unauthorized shell access to compromised system. This method can be called as 'shellcoding', as **traditionally** shellcoding refers to anything, when piece of code is used as 'payload'  to get local or remote [shell](https://en.wikipedia.org/wiki/Shell_(computing)) access. The meaning of this term has evolved: today goal could be any imaginable task.
 
-Executing payloads in vulnerable program could lead to privilege escalation. Vulnerable program which is running with system privileges, could execute arbitrary code with same privileges. Therefore if payload is able to spawn shell, it's done with system privileges. Acquiring shell access this way usually leads to full control of the system. This has led shell spawning to be one of the most common goals of attackers. History of shellcoding traces back to explanation in the article of Alpeh One, introduced in [here.](http://phrack.org/issues/49/14.html#article)
+Executing payloads in vulnerable program could lead to privilege escalation. Vulnerable program which is running with system privileges, could execute arbitrary code with same privileges. Therefore if payload is able to spawn shell, it's done with system privileges. Acquiring shell access this way usually leads to full control of the system. This has led shell spawning to be one of the most common goals of attackers. History of shellcoding traces back to explanation in the article of Aleph One, introduced in [here.](http://phrack.org/issues/49/14.html#article)
 
-The intention of this exercise is to achieve hands-on experience by exploring software with improperly validated input. Further, by taking advantage of shellcoding, we should be aware of dangers what unintended behaviour of software could inflict to overall system.
+The intention of this exercise is to achieve hands-on experience by exploring software with improperly validated input. Further, by taking advantage of shellcoding, we should be aware of dangers what unintended behavior of software could inflict to overall system.
 
  *The goal or intention of this exercise is **not** to courage to abuse or instruct these skills for something inappropriate. Can systems be truly secure, if they can't handle open discuss and testing?*
 
 ---
 Grading
 ---
+<details open><summary>Details </summary>
 Make a short step-by-step report (what, why and how) of following tasks, and include source codes and the most important command line commands used in those tasks. It's recommended to read all tasks before starting. Actual instruction for what to do, is ***in bold and italics*** on each task.
 
-You are elgible to following grades in this exercise by doing tasks as defined. Great ideas and implementations could compensate some poorly implemented ones.
+You are eligible to following grades in this exercise by doing tasks as defined. Great ideas and implementations could compensate some poorly implemented ones.
 *Upper grade requires that all previous tasks have been done as well.*
 
 It is estimated, that you are able to do Tasks 1 & 2 during lab session (4 hours).
@@ -35,14 +41,16 @@ Task|Grade/Level|Description|
 [Task 3](#task-3--defeating-no-execute "Task 3 : Defeating No-eXecute") | 4 | Code reuse attack techniques: ret2libc & ROP
 [Task 4](#task-4--a-bit-more-advanced-rop-implementation "Task 4 : A bit more advanced ROP implementation") | 5 | Taking ROP to next level
 
-By completing Task 1 and Task 2 A&B, you are eglible for passing the lab and getting minimum grade 2 from this lab. Completion of C part increases grade to 3.
+By completing Task 1 and Task 2 A&B, you are eligible for passing the lab and getting minimum grade 2 from this lab. Completion of C part increases grade to 3.
 
-Grade 1 can be aquired by doing lecture questionnaires from the corresponding lectures.
+Grade 1 can be acquired by doing lecture questionnaires from the corresponding lectures.
 
 Difficulty on tasks is expected to be exponentially raising as you go forward with them. Without understanding of previous task, next one could be very ambiguous.
 
 *Return completed tasks to your private GitHub repository!
 There will be answer template or more instructions.*
+
+</details>
 
 ---
 
@@ -50,13 +58,13 @@ Some prerequisites
 ---
 This exercise is recommended to do with Kali Linux.
 
-You have to use C/C++ programming language in cases, when you want to create program with buffer overflow vulneralibity.
+You have to use C/C++ programming language in cases, when you want to create program with buffer overflow vulnerability.
 
 At this point, you should have basic knowledge about how computer stack/memory and registers are working.
 
 Tasks are possible to do in both 32 - and 64 bit machine instructions as long as machine has support for them. Implementation will differ and be more challenging depending on version. It's recommended to use 32 - bit version, as you can find more examples from it: it could be generally easier to start with.
 
-Tasks have been tested in Kali Linux x86_64 (Debian 4.14.12) and Ubuntu 18.04 LTS. Task 3A is not possible to do with latest Ubuntu.
+Tasks have been tested in Kali Linux x86_64 (Debian 4.14.12) and Ubuntu 18.04 LTS (as 32 - bit. 64 -bit version is more challenging in Ubuntu). Task 3A is not possible to do with latest Ubuntu.
 
 You might have to note following Linux protections
 

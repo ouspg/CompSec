@@ -6,8 +6,9 @@ The course covers the essential aspects of computer security and computer securi
 
 The course is intended for computer engineering masters students and additionally to any student interested in computer security that has *the sufficient* technical background to complete the course exercises.
 
-The lectures and place for returning assignments can be found from University Moodle: [https://oystack.oulu.fi](https://oystack.oulu.fi)
-Course is under Computer Engineering and Science.
+The lectures and place for returning assignments can be found from University Moodle: [https://moodle.oulu.fi](https://moodle.oulu.fi)
+
+Course is under Faculty of Information Technology and Electrical Engineering.
 
 <p align="center">
 <img src="lib/images/oulun yliopisto_logo_eng_black_rgb.png" alt="University of Oulu" height="300px" align="right"/>
@@ -17,11 +18,11 @@ Course is under Computer Engineering and Science.
 
 * [The Course](#The-Course)
 
+* [Instructions](#Instructions)
+
 * [Grading](#Grading)
 
 * [Final coursework topics](#Final-coursework-topics)
-
-* [Instructions](#Instructions)
 
 * [Virtual machines](#Virtual-machines)
 
@@ -37,6 +38,19 @@ Course is under Computer Engineering and Science.
 
 * [License](#License)
 
+
+## The Course
+
+<details open><summary>Details</summary>
+
+  
+
+The course has seven (7) lectures, seven (7) weekly lecture questionnaires, six (6) laboratory exercises and final coursework (no exam).
+
+Lectures are handling topics from high perspective and they are not going technically deep. Lecture questionnaires are based on the topic of the lectures (surprisingly!).
+
+Laboratory exercises are thought as individual packages: containing theory and exercises, and going technologically very deep.
+
 Lab materials are located in their corresponding folders: 
 
 1. [Fuzzing lab](Lab1_Fuzzing/README.md)
@@ -45,31 +59,25 @@ Lab materials are located in their corresponding folders:
 
 3. [Botnets and malwares lab](Lab3_Botnets_and_malwares/README.md)
 
-4. [Shellcoding lab](Lab4_introduction_to_Shellcoding/README.md)
+4. [Shellcoding lab](Lab4_Introduction_to_Shellcoding/README.md)
 
 5. [ChipWhisperer lab](Lab5_ChipWhisperer/README.md)
 
 6. [Digital forensics lab](Lab6_Digital_Forensics/README.md)
 
-## The Course
+See section about [virtual machines](#Virtual-machines) to setup laboratory environment in the University classes or at home.
 
-<details open>
-
-The course has seven (7) lectures, seven (7) weekly lecture questionnaires, six (6) laboratory exercises and final coursework (no exam).
-
-Lectures are handling topics from high perspective and they are not going technically deep. Lecture questionnaires are based on the topic of the lectures (surprisingly!).
-
-Laboratory exercises are thought as individual packages: containing theory and exercises, and going technologically very deep.
+Final coursework topics can be seen in [here.](#Final-coursework-topics)
 
 To pass the course, you have to get enough points *totally* from exercises/questionnaires and final coursework. From the beginning, you should be able to see, what you have to do for earning some specific grade. 
 
-**This means: as long as you get enough points from somewhere to pass the course, you can skip any lab/lecture task and even final coursework. All tasks on this course are optional, but the amount of points will determine your grade. Grading table is presented [here.](#grading)**
+**This means: as long as you get enough points from somewhere to pass the course, you can skip any lab/lecture task and even final coursework. All tasks on this course are optional, but the amount of points will determine your grade. Grading section is presented [here.](#grading)**
 
 *Generally, every week there is a decision to be made how many steps you want to take: Make lecture questionnaires sufficiently and you will get grade 1 from that week. After making lecture task, participate for lab and complete tasks as described to get grade 2 or higher from that week.*
 
 Grades from the labs are equal to amount of points they are offering.
 
-In practise, exercises of the course have been divided to five (5) different levels. Level is indicating for grade/points you are able to achieve by reaching that level.
+In practice, exercises of the course have been divided to five (5) different levels. Level is indicating for grade/points you are able to achieve by reaching that level.
 
 When level rises, so does workload/difficulty.
 
@@ -81,11 +89,50 @@ Labs have been split to different tasks. **The amount of tasks which are require
 * __Level 4:__ Complete the above and some extra work. This will earn you a grade of **4** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
 * __Level 5:__ Complete all the above and the most challenging extra work. You will earn a grade of **5** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
 
+See [deadlines](#deadlines) section for more information about how much you have time to work with lab depending on level you want to reach.
+
 </details>
+
+## Instructions
+
+<details open><summary>Details</summary>
+
+  
+
+ * Enroll to the course
+
+ * Find course's Moodle page from University's [Moodle](https://moodle.oulu.fi/course/search.php?search=computer+security)
+ 
+ * Find a link whereof you can receive and create a private repository containing all the return template folders. You are expected to answer for given templates and store your actual work in this repository. 
+
+ * Create GitHub account, if you don't have one already, and create this private repository from the link.
+
+ * You can see deadlines below. They are same in the Moodle. There might be exceptions for ChipWhisperer.
+
+ * Complete as many tasks as you wish and update your repository accordingly. Check the grading table found in each labs instructions on what you have to complete in order to earn the grade of your choosing
+
+ * Push your changes to your repository before deadline.
+
+ * Return a document to Moodle's return box with following content:
+   * Your name(s)
+   * Link to your private GitHub repository
+   * *Remember to do this for each lab, if you want to get things reviewed!*
+
+Check [cheat sheet](https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf) if you need a refresher on how to use Git. Some basic commands below  
+```git
+git add </path/filename>
+git commit -m "<message>"
+git push
+```
+
+</details>
+
 
 ## Grading
 
-<details>
+<details><summary>Details (Click to collapse!)</summary>
+
+  
 
 As described earlier, you can get up to 5 points in each week during the first six weeks. (Total 30 points)
 
@@ -112,7 +159,7 @@ Total Points|Total Grade
 27+ | 4
 35+ | 5
 
-46 points are maximun.
+46 points are maximum.
 
 ### Imaginary grading examples
 
@@ -122,9 +169,12 @@ Total Points|Total Grade
 
 </details>
 
+
 ## Final coursework topics
 
-<details>
+<details><summary>Details (Click to collapse!)</summary>
+
+  
 
 Note, that all topics are not equal in maximum points they are offering. More information can be found in Final Project lecture slides.
 
@@ -149,11 +199,15 @@ In some labs, there might be possibility to extend grade 5 task to be more chall
 
 ## Deadlines
 
-<details>
+<details><summary>Details (Click to collapse!)</summary>
+
+  
 
 For each week you are expected to return assignments of corresponding week before specified deadline.
 
-If you reach at least 3 points level by that deadline, you may submit your work to return box and ask for extra time to do more difficult tasks. In that case your work is attempted to be graded ASAP on Tuesday and if it is sufficient you will be given short feedback and extended deadline (same week Thursday 12:00).
+If you reach at least 3 points/level by that deadline, you may submit your work to return box and ask for extra time to do more difficult tasks if you think that given time is not enough for more challenging tasks. 
+
+In that case your work is attempted to be graded ASAP on Tuesday and if it is sufficient you will be given short feedback and extended deadline (same week Thursday 12:00, before new laboratory exercise). Note, that this offers possibility for improvements as well!
 
 Week | Course week|Lecture Topics|Laboratory|Deadline
 :-:|:-:|:-:|:-:|:--:
@@ -167,44 +221,15 @@ Week | Course week|Lecture Topics|Laboratory|Deadline
 43 | 8 | No lecture | No lab |Coursework deadline Sunday, 27.10.2019, at 23:55
 
 
-</details>
-
-## Instructions
-
-<details open>
-
- * Enroll to the course
-
- * Find course's Moodle page from University's [Moodle](https://oystack.oulu.fi/course/index.php?categoryid=16)
- 
- * Find a link whereof you can receive and create a private repository containing all the return folders.
-
- * Create GitHub account, if you don't have one already, and create this private repository from the link.
-
- * You can see deadlines above. They are same in Moodle. There might be exceptions for ChipWhisperer.
-
- * Complete as many tasks as you wish and update your repository accordingly. Check the grading table found in each labs instructions on what you have to complete in order to earn the grade of your choosing
-
- * Push your changes to your repository before deadline.
-
- * Return a document to Moodle's return box with following content:
-   * Your name(s)
-   * Link to your private GitHub repository
-   * *Remember to do this for each lab, if you want to get things reviewed!*
-
-
-Check [cheat sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) if you need a refresher on how to use Git. Some basic commands below  
-```git
-git add </path/filename>
-git commit -m "<message>"
-git push
-```
 
 </details>
+
 
 ## Virtual machines
 
-<details open>
+<details><summary>Details (Click to collapse!)</summary>
+
+  
 
 Note: If you are using following virtual machines in your own pc, they are preconfigured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your pc, you might want to reduce this preconfigured RAM. 
 
@@ -256,7 +281,7 @@ If you don't mind that changes are lost on shutdown, machines can be run directl
 
 ### For Kali Linux:
 ```shell
-(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$")) && (if exist "C:\Temp\Kali" (rd /s /q "C:\Temp\Kali" && mkdir "C:\Temp\Kali") else (mkdir "C:\Temp\Kali")) && copy "Z:\VMware\CompSec\Kalix64\Kali_copy_and_run_me.vmx" "C:\Temp\Kali\Kali_copy_and_run_me.vmx" && start "" "C:\Temp\Kali\Kali_copy_and_run_me.vmx"
+(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$")) && (if exist "C:\Temp\Kali" (rd /s /q "C:\Temp\Kali" && mkdir "C:\Temp\Kali") else (mkdir "C:\Temp\Kali")) && copy "Z:\VMware\CompSec\Kalix64_2019\Kali_copy_and_run_me.vmx" "C:\Temp\Kali\Kali_copy_and_run_me.vmx" && start "" "C:\Temp\Kali\Kali_copy_and_run_me.vmx"
 ```
 ### For Ubuntu 16.04: 
 
@@ -326,6 +351,14 @@ Do you have a lot of ideas or suggestions to improve course?
 Fork repository, and make a pull request. Let's have a look!
 
 This might have positive effect for your grade as well.
+
+Current contributors for the course (order by last name):
+
+  * Aku Haataja (as course assistant)
+  * Lauri Haverinen (as course assistant)
+  * Ville Kemppainen (as course assistant)
+  * Jukka Pajukangas (as course assistant)
+  * Niklas Saari (as course assistant)
 
 ## License
 
