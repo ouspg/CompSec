@@ -53,17 +53,17 @@ Laboratory exercises are thought as individual packages: containing theory and e
 
 Lab materials are located in their corresponding folders: 
 
-1. [Fuzzing lab](Lab1_Fuzzing/README.md)
+1. [Fuzzing lab](Lab1_Fuzzing)
 
-2. [Network lab](Lab2_Network/README.md)
+2. [Network lab](Lab2_Network)
 
-3. [Botnets and malwares lab](Lab3_Botnets_and_malwares/README.md)
+3. [Botnets and malwares lab](Lab3_Botnets_and_malwares)
 
-4. [Shellcoding lab](Lab4_Introduction_to_Shellcoding/README.md)
+4. [Shellcoding lab](Lab4_Introduction_to_Shellcoding)
 
-5. [ChipWhisperer lab](Lab5_ChipWhisperer/README.md)
+5. [ChipWhisperer lab](Lab5_ChipWhisperer)
 
-6. [Digital forensics lab](Lab6_Digital_Forensics/README.md)
+6. [Digital forensics lab](Lab6_Digital_Forensics)
 
 See section about [virtual machines](#Virtual-machines) to setup laboratory environment in the University classes or at home.
 
