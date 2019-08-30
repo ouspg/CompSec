@@ -335,15 +335,15 @@ Virtuaalikoneet$ -> VMware -> CompSec
 ## Getting virtual machines remotely
 
 
-If you are not able to get in to University to copy virtual machines from network drive by using Lab computer , you can do it remotely as well.
+If you are not able to get in to University to copy virtual machines from network drive by using Lab computer, you can do it remotely as well.
 This requires setting up *VPN - connection* to University network.
-This can be aquired by following guidlines presented [here.](http://www.oulu.fi/ict/vpn)
+This can be acquired by following guidelines presented [here.](http://www.oulu.fi/ict/vpn)
 
 Looks like two factor authentication(Authentication via SMS) is not enabled by default. You have to enable it by following instructions here: [http://www.oulu.fi/ict/authentication#vpn](http://www.oulu.fi/ict/authentication#vpn)
 
 **Shortly:**
  * Download suitable VPN client here: [https://www.oulu.fi/jakelu/vpn/](https://www.oulu.fi/jakelu/vpn/)
- * Login with student creadentials is required
+ * Login with student credentials is required
  * Once you have installed the correct client, start it
  * Use *sa.oulu.fi* as server URL.
  * Connect by using your student username and selecting Student (SMS) authentication method. You have to use strong authentication (Student (SMS)) to be able to mount the drive.
@@ -371,6 +371,6 @@ Current contributors for the course (order by last name):
 
 Any information, guidelines, tutorials, examples or code pieces here are for teaching purposes, under MIT license, unless otherwise declared.
 
-This repository contains tutorials and examples for how to use some spefic tools
+This repository contains tutorials and examples for how to use some specific tools
 
 * The licence of corresponding tool should be applied for the usage of tool
