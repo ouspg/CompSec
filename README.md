@@ -10,15 +10,15 @@ The course covers the essential aspects of computer security and computer securi
 
 The course is intended for computer engineering masters students and additionally to any student interested in computer security that has *the sufficient* technical background to complete the course exercises.
 
-
 The lectures and place for returning assignments can be found from University Moodle: [https://moodle.oulu.fi](https://moodle.oulu.fi)
-
 
 Course is under Faculty of Information Technology and Electrical Engineering.
 
-
 The course is organized by Oulu University Secure Programming Group (OUSPG)
 
+<p align="center">
+<img src="lib/images/oulun yliopisto_logo_eng_black_rgb.png" alt="University of Oulu" height="300px" align="right"/>
+</p>
 
 
 
@@ -32,15 +32,7 @@ The course is organized by Oulu University Secure Programming Group (OUSPG)
 
 * [Final coursework topics](#Final-coursework-topics)
 
-* [Virtual machines](#Virtual-machines)
-
-  * [Copy machine and run locally](#Copy-machine-and-run-locally)
-
-  * [Run machine directly from network drive](#Run-machine-directly-from-network-drive)
-
-  * [Getting virtual machines over Eduroam (University WLAN)](#Getting-virtual-machines-over-Eduroam-(University-WLAN))
-
-  * [Getting virtual machines remotely](#Getting-virtual-machines-remotely)
+* [Virtual machines (Lab environment)](#Virtual-machines)
 
 * [Contribution](#Contribution)
 
