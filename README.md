@@ -1,9 +1,10 @@
-<p align="right">
-<img src="lib/images/ouspglogo4.png" alt="University of Oulu" height="100px" align="right"/>
-</p>
 
 
 # 521155S Computer Security
+
+<p align="right">
+<img src="lib/images/ouspglogo4.png" alt="University of Oulu" height="100px" align="right"/>
+</p>
 
 
 Exercises for computer security course in the University of Oulu.
