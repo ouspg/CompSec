@@ -2,10 +2,6 @@
 
 # 521155S Computer Security
 
-<p align="right">
-<img src="lib/images/ouspglogo4.png" alt="University of Oulu" height="100px" align="right"/>
-</p>
-
 
 Exercises for computer security course in the University of Oulu.
 
@@ -17,7 +13,13 @@ The lectures and place for returning assignments can be found from University Mo
 
 Course is under Faculty of Information Technology and Electrical Engineering.
 
+<p align="right">
+<img src="lib/images/ouspglogo4.png" alt="University of Oulu" height="100px" align="right"/>
+</p>
+
 The course is organized by Oulu University Secure Programming Group (OUSPG)
+
+
 
 <p align="center">
 <img src="lib/images/oulun yliopisto_logo_eng_black_rgb.png" alt="University of Oulu" height="300px" align="right"/>
