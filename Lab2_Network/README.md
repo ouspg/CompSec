@@ -75,9 +75,9 @@ Below are the steps to set it up on your own system, in case you want to use you
 
 ### Task 1
 
-Get [Docker](https://www.docker.com/) instance for Juice Shop (preferably v8.7.2 or newer)
+Get [Docker](https://www.docker.com/) instance for Juice Shop v8.7.2:
 ```shell
-~$ docker pull bkimminich/juice-shop
+~$ docker pull bkimminich/juice-shop:v8.7.2
 ```
 
 All the tasks are doable using your browsers developer tools. Tasks were tested and created by using Firefox, but other browsers should work just as well.
