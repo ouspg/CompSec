@@ -4,7 +4,7 @@ Computer Security Lab 1: Fuzzing
 ## Preliminary tasks
 
 * Create Github account (although you probably already have one)
-* Create your own fork of the CompSec-2019-AnswerTemplate **as instructed [here](../README.md)**
+* Create your own fork of the CompSec-2019-AnswerTemplate **as instructed [here](../README.md#instructions)**
 * Check the instructions on how to download and use the course's Kali Linux virtual machine
     * Download and install VMWare Player to run the virtual machine. Virtualbox should work also.
 * Get familiar with the documentation for following tools:
