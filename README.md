@@ -84,7 +84,7 @@ When level rises, so does workload/difficulty.
 Labs have been split to different tasks. **The amount of tasks which are required for each level/grade is defined in the grading section of corresponding lab.**
 
 * __Level 1:__ You earn grade 1 from that week by attending lectures and answering to lecture questionnaires of corresponding topic
-* __Level 2:__ Complete above and the bare minimum of the lab. This will earn you grade **2** from that week.
+* __Level 2:__ Complete the bare minimum of the lab. This will earn you grade **2** from that week.
 * __Level 3:__ Complete above and the whole lab without extra work. This will earn you grade **3** from this week.
 * __Level 4:__ Complete the above and some extra work. This will earn you a grade of **4** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
 * __Level 5:__ Complete all the above and the most challenging extra work. You will earn a grade of **5** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
