@@ -281,16 +281,29 @@ If you don't mind that changes are lost on shutdown, machines can be run directl
 
 ### For Kali Linux:
 ```shell
-(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$")) && (if exist "C:\Temp\Kali" (rd /s /q "C:\Temp\Kali" && mkdir "C:\Temp\Kali") else (mkdir "C:\Temp\Kali")) && copy "Z:\VMware\CompSec\Kalix64_2019\Kali_copy_and_run_me.vmx" "C:\Temp\Kali\Kali_copy_and_run_me.vmx" && start "" "C:\Temp\Kali\Kali_copy_and_run_me.vmx"
+(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$"))^
+ && (if exist "C:\Temp\Kali" (rd /s /q "C:\Temp\Kali"^
+ && mkdir "C:\Temp\Kali") else (mkdir "C:\Temp\Kali"))^
+ && copy "Z:\VMware\CompSec\Kalix64_2019\Kali_copy_and_run_me.vmx" "C:\Temp\Kali\Kali_copy_and_run_me.vmx"^
+ && start "" "C:\Temp\Kali\Kali_copy_and_run_me.vmx"
 ```
 ### For Ubuntu 16.04: 
 
 ```shell
-(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$")) && (if exist "C:\Temp\Ubuntux64" (rd /s /q "C:\Temp\Ubuntux64" && mkdir "C:\Temp\Ubuntux64") else (mkdir "C:\Temp\Ubuntux64")) && copy "Z:\VMware\CompSec\Ubuntu16.04_64-bit\Ubuntu64_copy_and_run.vmx" "C:\Temp\Ubuntux64\Ubuntu64_copy_and_run.vmx" && start "" "C:\Temp\Ubuntux64\Ubuntu64_copy_and_run.vmx"
+(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$"))^
+ && (if exist "C:\Temp\Ubuntux64" (rd /s /q "C:\Temp\Ubuntux64"^
+ && mkdir "C:\Temp\Ubuntux64") else (mkdir "C:\Temp\Ubuntux64"))^
+ && copy "Z:\VMware\CompSec\Ubuntu16.04_64-bit\Ubuntu64_copy_and_run.vmx" "C:\Temp\Ubuntux64\Ubuntu64_copy_and_run.vmx"^
+ && start "" "C:\Temp\Ubuntux64\Ubuntu64_copy_and_run.vmx"
 ```
+
 ### For Lubuntu 17.04:
 ```shell
-(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$")) && (if exist "C:\Temp\LUbuntu64" (rd /s /q "C:\Temp\LUbuntu64" && mkdir "C:\Temp\LUbuntu64") else (mkdir "C:\Temp\LUbuntu64")) && copy "Z:\VMware\CompSec\ChipWhisperer\LUbuntu64-bit_copy_and_run.vmx" "C:\Temp\LUbuntu64\LUbuntu64_copy_and_run.vmx" && start "" "C:\Temp\LUbuntu64\LUbuntu64_copy_and_run.vmx"
+(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$"))^
+ && (if exist "C:\Temp\LUbuntu64" (rd /s /q "C:\Temp\LUbuntu64"^
+ && mkdir "C:\Temp\LUbuntu64") else (mkdir "C:\Temp\LUbuntu64"))^
+ && copy "Z:\VMware\CompSec\ChipWhisperer\LUbuntu64-bit_copy_and_run.vmx" "C:\Temp\LUbuntu64\LUbuntu64_copy_and_run.vmx"^
+ && start "" "C:\Temp\LUbuntu64\LUbuntu64_copy_and_run.vmx"
 ```
 
 When the virtual machine asks if you have copied or moved the machine, press __"I copied it"__.
