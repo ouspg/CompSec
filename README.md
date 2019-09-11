@@ -286,7 +286,7 @@ If you don't mind that changes are lost on shutdown, machines can be run directl
 ### For Ubuntu 16.04: 
 
 ```shell
-(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$")) && (if exist "C:\Temp\Ubuntux64" (rd /s /q "C:\Temp\Ubuntux64" && mkdir "C:\Temp\Ubuntux64") else (mkdir "C:\Temp\Ubuntux64")) && copy "Z:\VMware\CompSec\Ubuntu 64-bit\Ubuntu64_copy_and_run.vmx" "C:\Temp\Ubuntux64\Ubuntu64_copy_and_run.vmx" && start "" "C:\Temp\Ubuntux64\Ubuntu64_copy_and_run.vmx"
+(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$")) && (if exist "C:\Temp\Ubuntux64" (rd /s /q "C:\Temp\Ubuntux64" && mkdir "C:\Temp\Ubuntux64") else (mkdir "C:\Temp\Ubuntux64")) && copy "Z:\VMware\CompSec\Ubuntu16.04_64-bit\Ubuntu64_copy_and_run.vmx" "C:\Temp\Ubuntux64\Ubuntu64_copy_and_run.vmx" && start "" "C:\Temp\Ubuntux64\Ubuntu64_copy_and_run.vmx"
 ```
 ### For Lubuntu 17.04:
 ```shell
