@@ -45,7 +45,7 @@ The course is organized by Oulu University Secure Programming Group (OUSPG)
 
   
 
-The course has seven (7) lectures, seven (7) weekly lecture questionnaires, six (6) laboratory exercises and final coursework (no exam).
+The course has seven (7) lectures, seven (7) weekly lecture questionnaires, six (6) laboratory exercises and final coursework (no exam!).
 
 Lectures are handling topics from high perspective and they are not going technically deep. Lecture questionnaires are based on the topic of the lectures (surprisingly!).
 
