@@ -73,6 +73,8 @@ You might have to note following Linux protections
 * Address Space Layout Randomization (ASLR)
 * Less known, no need to note unless specified in task: (ASCII ARMOR, RELRO, PIE, D_FORTIFY_SOURCE, PTR_MANGLE)
 
+> Check from [here](https://www.win.tue.nl/~aeb/linux/hh/protection.html) for some compiler flags.
+
 Find a way to disable them if needed.
 The most are compiler options.
 
@@ -97,13 +99,13 @@ These can be used in first tasks as well, but it is not necessary.
 ---
 Task 1 : Basics of buffer overflows
 ------
-In this first task, we are using simple program with buffer overflow vulneralibity for analyzing the behaviour of system. With specifically crafted input, we will change the behaviour to something unintended for purpose of the program, but intended to us.
+In this first task, we are using simple program with buffer overflow vulnerability for analyzing the behavior of system. With specifically crafted input, we will change the behavior to something unintended for purpose of the program, but intended to us.
 
 ### A) Using program with improper input validation and analyzing overflow.
  
 We want to understand very basics of what is actually happening in the stack and in the registers of the machine at the time when overflow occurs.
 
-Short intro to buffer overflows and analyzing tutorial can be found [here](Tutorials/Tutorial1A_Analyzing_overflow.md).
+> Short intro to buffer overflows and analyzing tutorial can be found [here](Tutorials/Tutorial1A_Analyzing_overflow.md).
 
 Try it out by yourself. It is not necessary, if you are already very familiar with topic and able to answer to bolded questions.
 
