@@ -283,7 +283,7 @@ Breakpoint 1 at 0x555555554758
 Breakpoint 2 at 0x55555555475d
 (gdb) b * 0x555555554770
 Breakpoint 3 at 0x555555554770
-Starting program: /root/Desktop/Shellcode Lab/Overflow $(python -c 'print "A" * 20')
+Starting program: /root/Desktop/Shellcode Lab/Overflow $(python -c 'print("A" * 20)')
 ```
 Execute, and after first breakpoint:
 Let's have a look for current stack of the program.
@@ -331,8 +331,8 @@ What is the content of stack if we the execute program, by causing the buffer ov
 
 Stack information in first breakpoint should stay same, but let's have a look on second breakpoint again, which is right after when overflow occurs.
 ```shell
-(gdb) r $(python -c 'print "A" * 26')
-Starting program: /root/Desktop/Shellcode Lab2/Overflow $(python -c 'print "A" * 26')
+(gdb) r $(python -c 'print("A" * 26)')
+Starting program: /root/Desktop/Shellcode Lab2/Overflow $(python -c 'print("A" * 26)')
 
 Breakpoint 1, 0x0000555555554758 in stackoverflow ()
 (gdb) x/20x $rsp
