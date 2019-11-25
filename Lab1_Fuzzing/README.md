@@ -49,8 +49,9 @@ Task #|Grade/Level|Description|
 -----|:---:|-----------|
 Task 1 | | Mutated test case generation with Radamsa
 Task 2 | 2 | Analyzing a C-program with AddressSanitizer, fuzztesting with AFL
-Task 3 | 3 | Library fuzzing and creating your own small C-program and fuzztesting it
-Task 4 | 4/5 | Contribute to an existing open-source project. Set up a fuzzer and report findings.
+Task 3 | 3 | Creating your own small C-program and fuzztesting it
+Task 4 | 4 | Library fuzzing
+Task 5 | 5 | Contribute to an existing open-source project. Set up a fuzzer and report findings.
 
 Grade 1 can be acquired by doing lecture questionnaires from the corresponding lecture.
 </details>
@@ -162,8 +163,7 @@ __Hint__: Make sure that you are actually running the UnRTF with a crash file! I
 
 ## Task 3
 
-
-### A) Fuzz testing your own program
+### Fuzz testing your own program
 
 In this task, you will write a small C program and fuzz test it. In task 1, you created a *.txt* file containing ```12 EF``` and 100 malformed samples of it. We will use them in this task. Your program must take a text file as an input and check the file for the following requirements:
 - The file contains **two and only tokens** that are separated with a space
@@ -181,7 +181,9 @@ Run your program with the previously generated 100 test cases. A simple shell sc
 
 ---
 
-### B) Fuzzing libraries
+## Task 4
+
+### Fuzzing libraries
 
 [OpenSSL](https://www.openssl.org/) is a widely-used open source cryptographic software library for Transport Layer Security and Secure Socket Layer protocols. In 2014, a buffer over-read vulnerability [CVE-2014-0160](https://nvd.nist.gov/vuln/detail/CVE-2014-0160) was found in the Heartbeat Extension of OpenSSL (up to version 1.0.1f) two years after the feature was introduced. The vulnerability allowed attackers to obtain memory contents from process memory remotely, and as a result, it compromised the integrity of secure communications.
 
@@ -225,7 +227,7 @@ Your task is to do the following:
 
 ---
 
-## Task 4
+## Task 5
 
 ### Contribute to an existing open-source project. Set up a fuzzer and report the whole process and possible findings.
 
