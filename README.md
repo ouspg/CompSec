@@ -1,8 +1,5 @@
 # 521155S Computer Security
 
-
-**NOTE:** See https://github.com/CompSec-2019 for latest course repostirory
-
 <p align="right">
 <img src="lib/images/ouspglogo4.png" alt="University of Oulu" height="100px" align="right"/>
 </p>
