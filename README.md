@@ -338,6 +338,14 @@ Virtual machines are located in:
 
 Virtuaalikoneet$ -> VMware -> CompSec
 
+#### Running the Virtual machines under QEMU
+If you are using QEMU/KVM, you cannot directly load the .vmdk file to run the virtual machines as-is due to lack of support for split .vmdk files.
+
+In order to combine the .vmdk disk parts into a format QEMU can load you need to convert them into a .qcow2 disk file using qemu-img: 
+```shell
+qemu-img convert Kali.vmdk Kali.qcow2
+```
+
 ## Getting virtual machines remotely
 
 
