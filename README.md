@@ -1,8 +1,5 @@
 # 521155S Computer Security
 
-
-**NOTE:** See https://github.com/CompSec-2019 for latest course repostirory
-
 <p align="right">
 <img src="lib/images/ouspglogo4.png" alt="University of Oulu" height="100px" align="right"/>
 </p>
@@ -48,7 +45,7 @@ The course is organized by Oulu University Secure Programming Group (OUSPG)
 
   
 
-The course has seven (7) lectures, seven (7) weekly lecture questionnaires, six (6) laboratory exercises and final coursework (no exam).
+The course has seven (7) lectures, seven (7) weekly lecture questionnaires, six (6) laboratory exercises and final coursework (no exam!).
 
 Lectures are handling topics from high perspective and they are not going technically deep. Lecture questionnaires are based on the topic of the lectures (surprisingly!).
 
@@ -76,7 +73,7 @@ To pass the course, you have to get enough points *totally* from exercises/quest
 
 **This means: as long as you get enough points from somewhere to pass the course, you can skip any lab/lecture task and even final coursework. All tasks on this course are optional, but the amount of points will determine your grade. Grading section is presented [here.](#grading)**
 
-*Generally, every week there is a decision to be made how many steps you want to take: Make lecture questionnaires sufficiently and you will get grade 1 from that week. After making lecture task, participate for lab and complete tasks as described to get grade 2 or higher from that week.*
+*Generally, every week there is a decision to be made how many steps you want to take: Make lecture questionnaires sufficiently and you will get grade 1 from that week or participate for lab and complete tasks as described to get grade 2 or higher from that week.* You *cannot* get points from lecture questionnaires and laboratory exercises both, but if there be case when your lab work is not enough for grade 1, and questionnaire might help with that.
 
 Grades from the labs are equal to amount of points they are offering.
 
@@ -87,10 +84,10 @@ When level rises, so does workload/difficulty.
 Labs have been split to different tasks. **The amount of tasks which are required for each level/grade is defined in the grading section of corresponding lab.**
 
 * __Level 1:__ You earn grade 1 from that week by attending lectures and answering to lecture questionnaires of corresponding topic
-* __Level 2:__ Complete above and the bare minimum of the lab. This will earn you grade **2** from that week.
-* __Level 3:__ Complete above and the whole lab without extra work. This will earn you grade **3** from this week.
-* __Level 4:__ Complete the above and some extra work. This will earn you a grade of **4** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
-* __Level 5:__ Complete all the above and the most challenging extra work. You will earn a grade of **5** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
+* __Level 2:__ Complete the bare minimum of the lab. This will earn you grade **2** from that week.
+* __Level 3:__ Complete above (excluding lecture task) and the whole lab without extra work. This will earn you grade **3** from this week.
+* __Level 4:__ Complete the above (excluding lecture task) and some extra work. This will earn you a grade of **4** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
+* __Level 5:__ Complete all the above (excluding lecture task) and the most challenging extra work. You will earn a grade of **5** from that week. It is likely that you don't have time to complete this during lab hours so you are expected to do this extra work on your own time, and return it before deadline.
 
 See [deadlines](#deadlines) section for more information about how much you have time to work with lab depending on level you want to reach.
 
@@ -166,9 +163,9 @@ Total Points|Total Grade
 
 ### Imaginary grading examples
 
-**Alice** is student with very basic technical skills and limited time due to many other courses demanding her attention. She manages to do lecture questionnaire and easiest laboratory task at weeks 1,2 and 3. On fourth week she is too busy to do anything for this course, but on week 5 she manages to do lecture questionnaire and easiest lab task again. On week 6 and 7 she decides to do only lecture tasks and then concentrates on writing survey paper as her coursework, because lack of available time. Hers coursework passes the minimum requirements, resulting 5 points and her other accomplishments give her (2+2+2+0+2+1+1) 10 points, so she receives final grade of 2 from this course.
+**Alice** is student with very basic technical skills and limited time due to many other courses demanding her attention. She manages to do easiest laboratory task at weeks 1,2 and 3. On fourth week she is too busy to do anything for this course, but on week 5 she manages to do easiest lab task again. On week 6 and 7 she decides to do only lecture tasks and then concentrates on writing survey paper as her coursework, because lack of available time. Hers coursework passes the minimum requirements, resulting 5 points and her other accomplishments give her (2+2+2+0+2+1+1) 10 points, so she receives final grade of 2 from this course.
 
-**Bob** is student with some technical experience and some background knowledge of computer security issues. He manages to grab 3 points from first 3 weeks by doing lecture questionnaire and basic level of laboratory tasks. On weeks 4 and 5 he steps up and does labs with some extra tasks, resulting 4 points from each lab. On week 6 he does lecture task and easiest level of lab. On week 7 he does not do weekly assignments at all and concentrates on doing his technical coursework which he intends to do properly. Technical coursework turns to be nice one, resulting 10 points, and with other points (3+3+3+4+4+2+0=19) he receives grade 4 from this course.
+**Bob** is student with some technical experience and some background knowledge of computer security issues. He manages to grab 3 points from first 3 weeks by doing basic level of laboratory tasks. On weeks 4 and 5 he steps up and does labs with some extra tasks, resulting 4 points from each lab. On week 6 he does easiest level of lab. On week 7 he does not do weekly assignments at all and concentrates on doing his technical coursework which he intends to do properly. Technical coursework turns to be nice one, resulting 10 points, and with other points (3+3+3+4+4+2+0=19) he receives grade 4 from this course.
 
 </details>
 
@@ -284,16 +281,29 @@ If you don't mind that changes are lost on shutdown, machines can be run directl
 
 ### For Kali Linux:
 ```shell
-(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$")) && (if exist "C:\Temp\Kali" (rd /s /q "C:\Temp\Kali" && mkdir "C:\Temp\Kali") else (mkdir "C:\Temp\Kali")) && copy "Z:\VMware\CompSec\Kalix64_2019\Kali_copy_and_run_me.vmx" "C:\Temp\Kali\Kali_copy_and_run_me.vmx" && start "" "C:\Temp\Kali\Kali_copy_and_run_me.vmx"
+(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$"))^
+ && (if exist "C:\Temp\Kali" (rd /s /q "C:\Temp\Kali"^
+ && mkdir "C:\Temp\Kali") else (mkdir "C:\Temp\Kali"))^
+ && copy "Z:\VMware\CompSec\Kalix64_2019\Kali_copy_and_run_me.vmx" "C:\Temp\Kali\Kali_copy_and_run_me.vmx"^
+ && start "" "C:\Temp\Kali\Kali_copy_and_run_me.vmx"
 ```
 ### For Ubuntu 16.04: 
 
 ```shell
-(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$")) && (if exist "C:\Temp\Ubuntux64" (rd /s /q "C:\Temp\Ubuntux64" && mkdir "C:\Temp\Ubuntux64") else (mkdir "C:\Temp\Ubuntux64")) && copy "Z:\VMware\CompSec\Ubuntu 64-bit\Ubuntu64_copy_and_run.vmx" "C:\Temp\Ubuntux64\Ubuntu64_copy_and_run.vmx" && start "" "C:\Temp\Ubuntux64\Ubuntu64_copy_and_run.vmx"
+(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$"))^
+ && (if exist "C:\Temp\Ubuntux64" (rd /s /q "C:\Temp\Ubuntux64"^
+ && mkdir "C:\Temp\Ubuntux64") else (mkdir "C:\Temp\Ubuntux64"))^
+ && copy "Z:\VMware\CompSec\Ubuntu16.04_64-bit\Ubuntu64_copy_and_run.vmx" "C:\Temp\Ubuntux64\Ubuntu64_copy_and_run.vmx"^
+ && start "" "C:\Temp\Ubuntux64\Ubuntu64_copy_and_run.vmx"
 ```
+
 ### For Lubuntu 17.04:
 ```shell
-(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$")) && (if exist "C:\Temp\LUbuntu64" (rd /s /q "C:\Temp\LUbuntu64" && mkdir "C:\Temp\LUbuntu64") else (mkdir "C:\Temp\LUbuntu64")) && copy "Z:\VMware\CompSec\ChipWhisperer\LUbuntu64-bit_copy_and_run.vmx" "C:\Temp\LUbuntu64\LUbuntu64_copy_and_run.vmx" && start "" "C:\Temp\LUbuntu64\LUbuntu64_copy_and_run.vmx"
+(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$"))^
+ && (if exist "C:\Temp\LUbuntu64" (rd /s /q "C:\Temp\LUbuntu64"^
+ && mkdir "C:\Temp\LUbuntu64") else (mkdir "C:\Temp\LUbuntu64"))^
+ && copy "Z:\VMware\CompSec\ChipWhisperer\LUbuntu64-bit_copy_and_run.vmx" "C:\Temp\LUbuntu64\LUbuntu64_copy_and_run.vmx"^
+ && start "" "C:\Temp\LUbuntu64\LUbuntu64_copy_and_run.vmx"
 ```
 
 When the virtual machine asks if you have copied or moved the machine, press __"I copied it"__.
@@ -327,6 +337,14 @@ Passwords should be prompted.
 Virtual machines are located in:
 
 Virtuaalikoneet$ -> VMware -> CompSec
+
+#### Running the Virtual machines under QEMU
+If you are using QEMU/KVM, you cannot directly load the .vmdk file to run the virtual machines as-is due to lack of support for split .vmdk files.
+
+In order to combine the .vmdk disk parts into a format QEMU can load you need to convert them into a .qcow2 disk file using qemu-img: 
+```shell
+qemu-img convert Kali.vmdk Kali.qcow2
+```
 
 ## Getting virtual machines remotely
 

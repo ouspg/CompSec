@@ -72,18 +72,18 @@ child stopped with signal 11
 [0x41414c41]>
 ```
 
-We can see that binary has buffer overflow vulneralibity.
+We can see that binary has buffer overflow vulnerability.
 More precisely, we can override instruction pointer register after 32 characters. For next we should know, what we are going to do with that.
 
 ## Hello world!
 
-Our binary is NX - protected, and we want to print 'Hello, word!", by exploiting vulneralibity with usage of ROP - technique. 
+Our binary is NX - protected, and we want to print 'Hello, word!", by exploiting vulnerability with usage of ROP - technique. 
 
 Yes, every way of programming needs proper 'Hello, world!' example!
 
-Shortly, return-oriented proramming is literally programming the code we want to execute.
+Shortly, return-oriented programming is literally programming the code we want to execute.
 
-At this point, it might be still unclear, what return-oriented programming actually is in practise.
+At this point, it might be still unclear, what return-oriented programming actually is in practice.
 
 First, we need to remember how function calls are usually handled in 32 bit system.
 

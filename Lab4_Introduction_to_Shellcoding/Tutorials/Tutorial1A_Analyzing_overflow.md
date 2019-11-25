@@ -1,8 +1,8 @@
 # Buffer overflow problems
 
-There is a quite descriptive phrase on [CWE](http://cwe.mitre.org/top25/#CWE-120) website about the problem: "Buffer overflows are Mother Nature's little reminder of that law of physics that says: if you try to put more stuff into a container than it can hold, you're going to make a mess."
+There is a quite descriptive phrase about the problem: "Buffer overflows are Mother Nature's little reminder of that law of physics that says: if you try to put more stuff into a container than it can hold, you're going to make a mess."
 
-In practise, *software* buffer overflow means that the space reserved for data is insufficient for the data being stored.
+In practice, *software* buffer overflow means that the space reserved for data is insufficient for the data being stored.
 
 Conversely, buffer over-read means that read processing might read more than it should.
 
@@ -31,9 +31,9 @@ Each function contains data of local variables, possible called function paramet
 
 More precise information is provided [here.](http://www.tenouk.com/Bufferoverflowc/Bufferoverflow2a.html)
 
-The place or reason, why stack overflow happens, is usually local variable. The size for variable is defined as smaller than it is possible to aquire data for it.
+The place or reason, why stack overflow happens, is usually local variable. The size for variable is defined as smaller than it is possible to acquire data for it.
 
-Let's have a look on stack. Each line in the folowing table describes data in correct order inside stack. The structure of stack can vary based on operating system.
+Let's have a look on stack. Each line in the following table describes data in correct order inside stack. The structure of stack can vary based on operating system.
 
 *higher memory address* :arrow_up:
 
@@ -139,7 +139,7 @@ Segmentation fault (core dumped)
 
 * What if the overflow could reach an area of memory, where the execution will branch to later?
 * Then, the malevolent input could be crafted to include machine language instructions, that the unwitting buggy program would then execute.
-* Or what if the program allows to read more data than intended? This could lead information leak of unpriviledged areas, and maybe even enabling new attack vectors.
+* Or what if the program allows to read more data than intended? This could lead information leak of unprivileged areas, and maybe even enabling new attack vectors.
 
 
 How easy is it to change execution flow of this program? Let's have a look in following chapter.
@@ -161,9 +161,9 @@ int main(int argc, char** argv) {
     return 0;
 }
 ```
-# Analyzing simple program with buffer overflow vulneralibity
+# Analyzing simple program with buffer overflow vulnerability
 
-Usually, when overflow occurs, we are just seeing 'Segmentation Fault' error or strange behaviour in program... or maybe nothing at all. That is not too precise information.
+Usually, when overflow occurs, we are just seeing 'Segmentation Fault' error or strange behavior in program... or maybe nothing at all. That is not too precise information.
 We can use GNU Debugger for example to see, what's actually happening, when we are executing the program.
 
 Some parts in this tutorial are not revealed nor fully explained, in purpose of to readers to find out or explain themselves. Buffer size of program is different in above code example.
@@ -173,7 +173,7 @@ Example of overflowing program with input, which is actually limited to some siz
 This 64-bit example is using Python script to generate argument for actual
 program. We will have a look for register contents.
 
-Here is short intro to the usage of gdb, if it is not familiar beforehand:
+Here is a short intro to the usage of gdb, if it is not familiar beforehand:
 https://mohit.io/blog/gdb-assembly-language-debugging-101/
 
 
@@ -182,11 +182,11 @@ https://mohit.io/blog/gdb-assembly-language-debugging-101/
 # gcc -o test Overflow.c
 # gdb -q test
 Reading symbols from test...(no debugging symbols found)...done.
-(gdb) r "$(python -c 'print "A" * 9')"
-Starting program: /root/Desktop/Shellcode/test "$(python -c 'print "A" * 9')"
+(gdb) r "$(python -c 'print("A" * 9)')"
+Starting program: /root/Desktop/Shellcode/test "$(python -c 'print("A" * 9)')"
 [Inferior 1 (process 9552) exited normally]
-(gdb) r "$(python -c 'print "A" * 10')"
-Starting program: /root/Desktop/Shellcode/test "$(python -c 'print "A" * 10')"
+(gdb) r "$(python -c 'print("A" * 10)')"
+Starting program: /root/Desktop/Shellcode/test "$(python -c 'print("A" * 10)')"
 
 Program received signal SIGSEGV, Segmentation fault.
 0x0000004000000100 in ?? ()
@@ -217,10 +217,10 @@ If we go little bit further and overflow some more...
 
 
 ```shell
-(gdb) r "$(python -c 'print "A" * 20')"
+(gdb) r "$(python -c 'print("A" * 20)')"
 The program being debugged has been started already.
 Start it from the beginning? (y or n) y
-Starting program: /root/Desktop/Shellcode/test "$(python -c 'print "A" * 20')"
+Starting program: /root/Desktop/Shellcode/test "$(python -c 'print("A" * 20)')"
 
 #Looking rip register with input size of 20x A characters
 rip            0x555555004141	0x555555004141
@@ -283,7 +283,7 @@ Breakpoint 1 at 0x555555554758
 Breakpoint 2 at 0x55555555475d
 (gdb) b * 0x555555554770
 Breakpoint 3 at 0x555555554770
-Starting program: /root/Desktop/Shellcode Lab/Overflow $(python -c 'print "A" * 20')
+Starting program: /root/Desktop/Shellcode Lab/Overflow $(python -c 'print("A" * 20)')
 ```
 Execute, and after first breakpoint:
 Let's have a look for current stack of the program.
@@ -331,8 +331,8 @@ What is the content of stack if we the execute program, by causing the buffer ov
 
 Stack information in first breakpoint should stay same, but let's have a look on second breakpoint again, which is right after when overflow occurs.
 ```shell
-(gdb) r $(python -c 'print "A" * 26')
-Starting program: /root/Desktop/Shellcode Lab2/Overflow $(python -c 'print "A" * 26')
+(gdb) r $(python -c 'print("A" * 26)')
+Starting program: /root/Desktop/Shellcode Lab2/Overflow $(python -c 'print("A" * 26)')
 
 Breakpoint 1, 0x0000555555554758 in stackoverflow ()
 (gdb) x/20x $rsp
@@ -388,4 +388,4 @@ Program received signal SIGSEGV, Segmentation fault.
 $1 = 0x555500414141
 ```
 
-Rip register contains data, which we passed as input. What in practise this could mean?
+Rip register contains data, which we passed as input. What in practice this could mean?

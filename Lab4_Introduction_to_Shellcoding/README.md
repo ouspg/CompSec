@@ -73,6 +73,8 @@ You might have to note following Linux protections
 * Address Space Layout Randomization (ASLR)
 * Less known, no need to note unless specified in task: (ASCII ARMOR, RELRO, PIE, D_FORTIFY_SOURCE, PTR_MANGLE)
 
+> Check from [here](https://www.win.tue.nl/~aeb/linux/hh/protection.html) for some compiler flags.
+
 Find a way to disable them if needed.
 The most are compiler options.
 
@@ -97,13 +99,13 @@ These can be used in first tasks as well, but it is not necessary.
 ---
 Task 1 : Basics of buffer overflows
 ------
-In this first task, we are using simple program with buffer overflow vulneralibity for analyzing the behaviour of system. With specifically crafted input, we will change the behaviour to something unintended for purpose of the program, but intended to us.
+In this first task, we are using simple program with buffer overflow vulnerability for analyzing the behavior of system. With specifically crafted input, we will change the behavior to something unintended for purpose of the program, but intended to us.
 
 ### A) Using program with improper input validation and analyzing overflow.
  
 We want to understand very basics of what is actually happening in the stack and in the registers of the machine at the time when overflow occurs.
 
-Short intro to buffer overflows and analyzing tutorial can be found [here](Tutorials/Tutorial1A_Analyzing_overflow.md).
+> Short intro to buffer overflows and analyzing tutorial can be found [here](Tutorials/Tutorial1A_Analyzing_overflow.md).
 
 Try it out by yourself. It is not necessary, if you are already very familiar with topic and able to answer to bolded questions.
 
@@ -144,7 +146,7 @@ Illegal instruction
 ```
 Note, that using script like above expects that program is taking input as argument. Also, the way how memory address is actually used as input, is not so straightforward. (Is your system Little- or Big-endian?)
 
-You probably have to disable protections meantioned in prerequisities to be able to succeed. In this case, stack canaries might cause problems, if you are using other distribution than Kali Linux.
+You probably have to disable protections mentioned in prerequisites to be able to succeed. In this case, stack canaries might cause problems, if you are using other distribution than Kali Linux.
 
 
 
@@ -158,7 +160,7 @@ Task 2 : Arbitrary code execution
 ----
 The goal of this task is to create bit more advanced payload: some arbitrary code that we are willing to execute, by passing it to our previously created vulnerable program. Notably this means execution of our own program inside of another program.
 
-In practise, first we need functionality for payload in C/C++ code, and then it should be transformed to machine code. Transform means in this case rewriting: it is not good idea to get assembly code from your binary, which you made earlier.
+In practice, first we need functionality for payload in C/C++ code, and then it should be transformed to machine code. Transform means in this case rewriting: *it is NOT good idea to get assembly code automatically from your binary*, which you made earlier.
 
  Later this machine code should be combined with other instructions to be suitable as payload. 
 
@@ -170,7 +172,7 @@ Extra: Maybe the most known white paper about this method can be found [here][0]
 
 ### A) Making a simple program to open Shell.
 
- The origin of shellcoding was to access to shell with usage of speficially crafted payloads.
+ The origin of shellcoding was to access to shell with usage of specifically crafted payloads.
  Let's respect the traditions. It should be easy to understand.
 
 > ***Make a simple program, which opens local shell. Example would be in execution like this:***
@@ -215,7 +217,7 @@ At this point our executable part of payload should be ready-to-go. The question
 
 Previously in Task 1 we have executed specific function from vulnerable program by using crafted payload, which contained just one address in addition of padding, which filled the input buffer.
 
-We can probably still use same vulnerable program again for executing payload. You still have to compile vulnerable program correctly to disable some protections.
+We can probably still use the same vulnerable program again for executing payload. You still have to compile vulnerable program correctly to disable some protections.
 
 This time we are executing arbitrary code, which is probably totally unrelated to vulnerable program. We are using virtual space of other program to run our own program.
 
@@ -226,7 +228,7 @@ The idea for executing this payload:
 1. Store executable instructions to memory space of the program
 2. Somehow make machine to execute payload as program from the start of this location.
 
-Storing itself isn't a problem, payload goes as input to the program. As we are storing payload inside the program, *executable instructions should not overflow*. Your program's size for input should be enough: your executable instructions can fit there.
+Storing itself isn't a problem, payload goes as input to the program. As we are storing payload inside the program, *executable instructions should not overflow, as otherwise code might be split and it won't work*. Your program's size for input should be enough: your executable instructions can fit there.
 
 At this point you should know the size of your payload in bytes. Increase the buffer size of vulnerable program if needed.
 
@@ -266,7 +268,7 @@ This makes execution of our payload in the stack very hard, in case when it is s
 But what if we are *not* executing code in the stack?
 Previous prevention method has lead to forming of *code reuse attack techniques* (ret2libc, ROP, JOP, COOP etc.). These techniques are focusing on to using existing code to build required functionality. But from where to get code for reusing?
 
-*Presence of ASLR could be bypassed with speficic implementation and combination of these techniques as well, but that will be left outside of this exercice, as it makes things a bit more complicated. Usually it requires information leak aswell. By default it will probably prevent everything what we are doing next.*
+*Presence of ASLR could be bypassed with specific implementation and combination of these techniques as well, but that will be left outside of this exercise, as it makes things a bit more complicated. Usually it requires information leak as well. By default it will probably prevent everything what we are doing next.*
 
 From previously mentioned techniques, we are taking short glance to ret2libc and ROP, which are some basic and original techniques.
 
@@ -280,7 +282,7 @@ We could craft our payload in intention of using functions from libraries by ove
 Reusing functions of vulnerable program is possible as well, but it might not be that beneficial.
 
 One very common library is **libc** (which probably named this method as 'ret2libc'), which grants a lot of flexibility. And the most useful function from there, could be *system()*. By giving */bin/sh* as an argument, we could start a shell.
-If we somehow can pass correct argument to system() function, code isn't executed in stack, it's executed in the address of system(). This was one of the eariliest methods to bypass NX protection.
+If we somehow can pass correct argument to system() function, code isn't executed in stack, it's executed in the address of system(). This was one of the earliest methods to bypass NX protection.
 
 > ***In this task, you should make example implementation of this ret2libc method. It could be for example spawning local shell. This time, **do not** disable NX protection (do not use -z execstack flag in compiler). Disabling other protections is still required. Like previously, make step by step report(what, why, how) including possible source files and command line commands which lead you to get shell access.***
 
@@ -290,7 +292,7 @@ To be noted:
 
 One simple implementation can be found from [this][2] paper for example.
 
-Extra: Method was firstly introduced [here][3].
+Extra: Method was firstly introduced in [here][3].
 
 ### B) Return-oriented programming (aka ROP)
 
