@@ -77,6 +77,8 @@ Task| Grade/Level | Description | Good-to-have skills
 
 # Setting up
 
+TODO: Setup explaining: simple jupyter vm that contains everything, minimal setup should be possible
+
 Due to external device and specialized software, this lab needs some extra work to set everything up.
 
 ## Hardware setup
@@ -145,31 +147,27 @@ Ok, let's begin.
 
 Task 1 tasks are meant to be relatively simple tasks to help you understand that what is the Chipwhisperer device and what can be done with it. You will learn how to connect the board, inspect power traces and use ChipWhisperer analyzer program.
 
-## A) Getting started with device, capture program and SimpleSerial protocol
-Complete ChipWhisperer basic tutorial B1 [Tutorial B1: Building a SimpleSerial Project](http://wiki.newae.com/V4:Tutorial_B1_Building_a_SimpleSerial_Project) Purpose of this part is simply to give you some experience of the basic usage of ChipWhisperer which is required in later tasks of this lab exercise. **You are not required to return anything for this task**, but it is critical that you learn to use ChipWhisperer on basic level because otherwise all other tasks are impossible to complete. Basically important things what you will be doing in that tutorial are next:
+TODO: how to setup jupyter + vm etc
+
+TODO: if you have not used jupyter before, suggest completing jupyter tutorial !!Introduction_to_Jupyter!!.ipynb
+
+## A) Getting started with device, jupyter and SimpleSerial protocol
+Complete ChipWhisperer basic tutorial named *PA_Intro_1-Firmware_Build_Setup.ipynb* under jupyter folder of main page. Purpose of this part is simply to give you some experience of the basic usage of ChipWhisperer which is required in later tasks of this lab exercise. **You are not required to return anything for this task**, but it is critical that you learn to use ChipWhisperer on basic level because otherwise all other tasks are very difficult to complete. Basically important things what you will be doing in that tutorial are next:
 
 1. Learn what is SimpleSerial
-2. Build basic example (Notice that ChipWhisperer device is referred as CW1173, but target chip platform is type CW303 and you have to build program for that platform)
+2. Build basic example (Notice that target chip platform is type CW303 and you have to build program for that platform)
 3. Modify basic example and rebuild it
-4. Use capture software to connect the device
-5. Upload built example to the target device and test it
+4. Use scripts to connect (and disconnect) the device
+5. Upload built example to the target device and capture traces and input&output text
 
-Notice that in tutorial instructions after building program are hardware-specific. Remember that your device is CW1173 (Lite) and target is XMEGA target, so you must only need corresponding sections of tutorial.
+Tutorial is rather straightforward and self-explanatory, so most likely failing point might be only
 
-Tutorial might have some inconsistencies, mistakes and unclear instructions, so next is very short description of main the main points of it (some of which might have stated quite unclear in that tutorial):
-
-1. Copy, modify and build your ``simpleserial-base`` example and build it with command ``make PLATFORM=CW303``
-2. Assemble device, connect it to computer with USB, open Capture software and connect to device by running scripts **connect_cwlite_simpleserial.py** and **setup_cwlite_xmega_aes.py**
-3. Program device with *Tools -> Xmega programmer*
-4. Open *Tools -> Encryption Status Monitor* and hit capture 1 button couple of times to ensure that your everything is working
+TODO: assembe device? tell new to jupyter to make intro tutorial first
 
 __TIPS & TRICKS__
 * You might have to unplug & plug USB cable again if computer or the capture software does not recognize the device. You also might have to unplug & plug device from virtual machine top right corner to make it detect it.
 * Notice that you have to be connecting serial cable and measure ports, glitch port is not needed in this task.
-* Notice that machines default username is **cwuser** and password is **cwpassword** in case you happen to need it.
-* Notice that chipwhisperer folder location may be different what is mentioned in tutorial! Chipwhisperer files are located on the desktop.
 * Beware of static electricity. Discharge of static electricity can be harmful to board.
-* You can open terminal on current folder from *Tools -> Open terminal* when using file explorer
 
 ## B) Inspecting power differences of simple operations
 
