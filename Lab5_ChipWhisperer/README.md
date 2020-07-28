@@ -171,15 +171,22 @@ __TIPS & TRICKS__
 
 ## B) Inspecting power differences of simple operations
 
+TODO: rewrite based on this PA_Intro_2-Instruction_Differences.ipynb
+
 In this task, we will inspect how the different operations on victim affect to the power consumption of it. As you already intuitively know, not every operation processor performs is equal: Some operations are more complex than others, causing them to consume more power and clock cycles than other operations. By measuring power consumption from target, therefore we can deduce what operation is performed and when.
 
 In this task you will be creating programs which repeats different types of assembly operations and capture power traces from the device to inspect them.
 
-This task is divided 2 parts: First part considers setting everything up and understanding what is happening, and second part tells you what kind of tests you should do and items return.
-
 This task is based on information in ChipWhisperer tutorial [Tutorial B2: Viewing Instruction Power Differences](http://wiki.newae.com/V4:Tutorial_B2_Viewing_Instruction_Power_Differences). You should not need original tutorial for this task, but you are free to read it as supplementary information.
 
-### Setup & testing
+In this task you will capture traces by completing tutorial PA_Intro_2-Instruction_Differences.ipynb and then you are required to analyze results.
+
+### Setup and capture traces
+
+TODO: Start following tutorial...
+TODO: tips: remember always to recompile and reprogram device when you change your code
+TODO: you can navigate to code file and edit in within jupyter, location is for example hardware/victims/firmware/simpleserial-base-lab2/simpleserial-base.c
+
 
 In this part you will do setups and simple testing. You are not required to return anything yet, but making setups and initial testing experience is crucial for making returnable items.
 
@@ -189,6 +196,7 @@ Follow next instructions:
 
 2. Next, we will modify the copied simpleserial example that it performs different basic operations. Make next modifications to code:
 
+TODO: edit next code by example
 Find next code
 ```c
 /**********************************
@@ -298,60 +306,23 @@ Add those 3 required items (+ possible textual explanations) to your return temp
 
 ## C) Breaking AES
 
+TODO: make sure that your are building it on correct platform
+TODO: some instructions how data could be imported?
+
+
 Previous task considered power differences between single operations, which might not be very practical itself. However this task will be hopefully more interesting and related to real world than basic inspection of single operations.
 
-In this task we are going to break AES with Correlation Power Analysis attack scripts that already exist in ChipWhisperer software. This task is based on ChipWhisperer tutorial [Tutorial B5: Breaking AES (Straightforward)](http://wiki.newae.com/V4:Tutorial_B5_Breaking_AES_(Straightforward)). You should not need original tutorial for this task, but feel free to read it as supplementary information.
+In this task we are going to break AES with Correlation Power Analysis attack scripts that already exist in ChipWhisperer software. This task is based on ChipWhisperer tutorial PA_CPA_1-Using_CW-Analyzer_for_CPA_Attack.ipynb.
 
-Idea of this task is to break AES implementation by analyzing power traces captured from the device. You will be using capture software to acquire traces and analyzer software to run Correlation Power Analysis attack script.
+Idea of this task is to break AES implementation by analyzing power traces captured from the device. After completing tutorial you are required to explain the theory behind these attack.
 
-This task is divided into 2 parts.
-
-Fist part is very straightforward: You will compile program (which is AES 128-bit algorithm implementation) and then you flash it to the target device like you did in previous task. After that you will execute setup script for AES and then run trace capture so that it captures 50 power traces with different plaintexts.
-
-Second part is more interesting: You will analyze captured traces with given attack scripts and find out the inner workings of scripts and Correlation Power Analysis principles.
-
-Task should be doable by following instructions below, but feel free to look the original tutorial for hints. Especially pictures of it can be useful to help you understand what is supposed to happen during the steps.
-
-Ok, lets start with first easy part.
-
-1. Make sure your Chipwhisperer is still connected (Master, Scope and Target buttons on the top panel are green). If this is not the case execute the **connect_cwlite_simpleserial.py** script.
-2. Build the file simpleserial-aes and load it to the target board the same way you did in the previous task. File can be found from *chipwhisperer\hardware\victims\firmware\simpleserial-aes*.
-
-This program is the AES implementation we are going to attack. It holds secret encryption key (128 bit) in it and it encrypts incoming data (plaintext) and returns ciphertext via SimpleSerial. 
+This task is divided into 2 parts. Capturing traces with different input given to encryption implementation and then performing CPA attack to reveal the encryption key.
 
 More common information about AES can be found at https://en.wikipedia.org/wiki/Advanced_Encryption_Standard
 
-Remember that procedure for making new programs is building program with `make PLATFORM=CW303`, then uploading resulting binary to target device with XMEGA programmer. Observation from last year showed that it is surprisingly common that mistake happens during those 2 steps so do those carefully.
-
-3. Execute  **setup_cwlite_xmega_aes.py** script from the script list.
-
-This setup script just makes configuration easier because it automatically configures every value (rather than you would have to do it manually via GUI). You can see what values script sets by looking at *Script Preview*-window when you select the script.
-
-4. Press the *Capture many*-button on the top left (green triangle with the symbol ”M”).
-
-*Capture many*-action differs from earlier used *Capture* so that it captures multiple traces at once to single set (all amounts are specified at *General Settings* tab).
-
-5. Save the project with *File --> Save Project* option, give it any sensible name you want.
-
-Now you have completed easy part. Next part will be more interesting.
-
-Notice that if you managed to save correct traces in this part, you will not need ChipWhisperer device anymore because the rest of the task is considering only about saved data and not the device.
+NOTICE: Remember to ensure that you build code on correct platform
 
 First, read the theoretical basis of CPA so you can understand better what is idea of this task. http://wiki.newae.com/Correlation_Power_Analysis Try to understand at least the major steps which are performed during attack, because it makes easier for you to understand what happens next.
-
-6. Open the ChipWhisperer Analyzer software (shortcut is at desktop of the machine)
-7. Open the file you saved in the step 5. Check from *Trace Management* (Project -> Trace Management) that you have those 50 traces you saved there.
-
-If you do not have any traces there, something has gone wrong during capture. If you have more than 50 traces which are not in mapped range 0-49, it may cause calculations fail as some cases from last year indicated. To remove unneccessary traces, click the row and then click small minus button in the bottom of the window.
-
-8. If everything seems to be in order, you are ready to execute actual attack script. Run script *attack_cpa.py* and wait for its execution to end.
-
-9. After execution of script *Results Table* and other tabs should be populated with data. Inspect carefully data on every tab while considering next information
-* *Results Table* contains the final output of the algorithm which is maximum correlation found on every subkey guess. It orders best guesses to top of the table. You should see the correct key bytes at first row of the table. Notice that when you saved your project in capture software the project contained also information about correct encryption key. These correct key bytes are now marked as red in the *Results Table*. Of course in normal situations this kind of cheating would not be possible and you would have to trust only calculated correlation values.
-* *PGE vs Trace Plot* considers Partial Guessing Entropy of calculations. Basically this plot tells that how high on ranking was each correct subkey when analysis of traces was continuing. It is easy to see how many traces were required before that correct subkey gained highest rank. Notice that these calculations need that correct key is known beforehand.
-* *Correlation vs Traces in Attack* is very similar than above. You can see how each subkey guess correlation was developing when more traces were analysis were progressing. Notice that if there is correct key information available, program highlights correct subkey guess correlation plot as red.
-* *Output vs Point Plot* shows CPA output for every point sample point for every guessed subkey. Notice that known correct subkey is marked on red (because the correct key information came with the project). Also you should notice that correct known guess also seems to have highest maximum correlation "spike".
-
 
 ### What to do to complete this task?
 
@@ -359,7 +330,9 @@ If you do not have any traces there, something has gone wrong during capture. If
 
 Theoretical information about the attack you just performed can be found here http://wiki.newae.com/Correlation_Power_Analysis 
 
-Deeper technical insight and actual example code of attack can be found here [Tutorial B6 Breaking AES (Manual CPA Attack)](http://wiki.newae.com/V4:Tutorial_B6_Breaking_AES_(Manual_CPA_Attack))
+Deeper technical insight and actual example code of attack can be found in tutorial PA_CPA_2-Manual_CPA_Attack.ipynb
+
+TODO: should it be added that feel free to try also manual one?
 
 All information needed should be found in those two articles.
 
