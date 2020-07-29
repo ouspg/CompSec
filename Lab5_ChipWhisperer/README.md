@@ -347,10 +347,14 @@ If you have troubles in your writing, you can consider next list of questions as
 ---
 # Task 2
 
-In task 2, there is 2 tasks which require closer analysing of power traces with small Python scripts. Task 2 is significantly harder than previous task so expect that you will most likely use rest of the lab session for this task. Notice that you can easily continue working on task B at home after lab session without device if you manage to capture and save power traces for yourself.
+TODO: complete rewrite and simplification
+
+TODO: intro paragraph might be wrong
+
+In task 2, there is 2 tasks which require closer analysing of power traces with small Python scripts. Notice that you can easily continue working on task B at home after lab session without device if you manage to capture and save power traces for yourself.
 
 ## A) Password bypass with power analysis
-In this task you will break in to secure device by analysis of the power traces of device when it processes your login attempts. You will also learn how to use Python scripts to control ChipWhisperer software. 
+In this task you will break in to secure device by analysis of the power traces of device when it processes your login attempts.
 
 Target program on victim device is simple. It prints initial information, waits for user to input login password and check if it is right. If it is, program prints welcome text and lights up green led. If not, program reports failure and red led turns on.
 
@@ -358,88 +362,35 @@ Target program compares inputted password against correct password character by 
 
 Feel free to read source code of program before building it as supplementary information.
 
-This task is based on ChipWhisperer tutorial [Tutorial B3-1: Timing Analysis with Power for Password Bypass](http://wiki.newae.com/V4:Tutorial_B3-1_Timing_Analysis_with_Power_for_Password_Bypass). Original tutorial is not needed for this task, but you are free to look it as supplementary information.
+This task is completed by completing tutorial PA_SPA_1-Timing_Analysis_with_Power_for_Password_Bypass.ipynb and succeeding in the breaking full password with simple power analysis. Notice: You do not have to do part 1.8 of the same tutorial considering SAD approach to this task.
 
-This task can be divided to 2 different parts: Setup & warm-up and running attack.
+Scripts for making password bypass attack are provided in tutorial, but values in them are not correct for your device, and you have to solve those yourself to make your attack working.
 
-In setup & warm-up phase you will be doing next things:
-* Building and uploading program to device
-* Setup initial settings by running setup scripts
-* Test that target program is working
-* Learn to use auxiliary module for resetting target device
-* Test multiple different passwords to see how power trace is affected
+TODO: hints about remembering to disconnet and like that simple notebook cannot be connected if another notebook is already
 
-In running attack script part, you will modify attack script based on knowledge you acquired earlier to make attack run automatically and produce successful result.
-
-### Setup & warm-up
-
-First, we will setup device and do some simple experimenting with inputting different passwords. You are not required to return anything on this phase, but setupping the device and knowledge you will be acquiring in this part is crucial for the second part of the task.
-
-If you are not doing this task with virtual machine provided by this course, you need to grab scripts **setup_password_check_delay.py**, **setup_password_check.py** and **PASSWORD_BYPASS.py** from this repository scripts-folder yourself.
-
-1. Restart the Capture software.
-2. Navigate to *\home\cwuser\Desktop\chipwhisperer\hardware\victims\firmware\basic-passwdcheck*.
-3. Build the program with the command `make PLATFORM=CW303`, as you did in previous tasks.
-4. Execute **connect_cwlite_simpleserial.py** in the Capture software to connect the device.
-5. Execute **setup_password_check_delay.py** in the Capture software to set the parameters. You can see from *Script Preview* window which values changed.
-6. Program the file you made earlier to the target board using XMEGA Programmer as you did in previous tasks. Keep the programmer window open.
-7. Open terminal from *Tools --> Terminal*.
-8. Press *Connect* in the Terminal. 
-9. Press Check signature from Programmer window. This will reset the software in the target board and you should see text that asks for your password. Correct password is h0px3.
-10. Type it to the terminal and press send. Terminal should say "Access granted, Welcome!"
-11. Reset the software by pressing *Check signature* button again and try a different password to behaviour of device when wrong password is entered.
-
-12.  Next we capture a power trace of this operation. Have the terminal and XMEGA Programmer open. Write the correct password to the terminal but do not press send yet. Then press the *Check Signature* button to reset the device.  After that press the capture trace button and then you have to press fastly send on terminal window. Try this with the correct password and with a incorrect password.
-
-You should see that correct password power trace and wrong password power trace were different, which is main point of this task. Testing different password this way is quite tedious (because you have to manually do everything), so next we will make capture program reset device and send password automatically by using auxiliary modules.
-
-13. Execute the following scripts **setup_password_check.py** and **aux_reset_cw1173.py**.
-
-These script will setup resetting auxiliary module.
-
-14. Now put your password guess to the *Go command* field at the *Target Settings* tab. **Remember to add `\n` at the end of your guess**.
-
-15. Now when you press Capture Trace button the target should automatically reset, send your guess to the target board and capture a trace. Now input different passwords and observe the differences between the traces.
-
-__HINT__: You can use password guesses where the first letter is wrong, then the second etc. This should give you an idea how the power trace differ with different inputs.
-
-Try different passwords to gain understanding how trace behaves. For example, try password with first character wrong, then first character right but second wrong, then 2 characters right but third wrong etc. Consider using "Enable percistance"-button when drawing traces of different passwords.
-
-In the example trace below, there is 2 correct characters in password.
-
-![alt text](pictures/task_2_a_2_right_example.jpg "Example plot")
-
-### Running attack
-
-Now its time for actual automated attack.
-
-**PASSWORD_BYPASS.py** script in the */home/cwuser/Desktop/chipwhisperer/software/chipwhisperer/capture/scripts* folder is your attack code. It automatically does the setups, resets device between login attempts, tries every character from specified character list and then analyzes if password character was correct or not. If character was wrong, script tries next character in list and if character was right, script locks that character and starts guessing next character of password string.
-
-Script should be visible in the Capture Software script list. If you are not using virtual machine given on this course, you must get the script from scripts-folder of this repository.
-
-Attack script is almost ready, but if you run it, you can see that the part determining if character was correct or not is not working.
+__HINT__: You can use password guesses where the first letter is wrong, then the second etc. This should give you an idea how the power trace differ with different inputs. You can easily compare traces with different inputs by modifying next provided code:
 
 ```Python
-if nextTrace[153 + 72*i] < -0.2:
-    continue
+%matplotlib notebook
+import matplotlib.pylab as plt
+
+trace_correct = cap_pass_trace("h0px3\n")
+trace_wrong   = cap_pass_trace("xxxxx\n")
+
+     
+plt.plot(trace_wrong, 'r')
+plt.plot(trace_correct, 'g')
 ```
 
-You already probably guessed that your task is to modify this part of the code to make script work automatically. You must most likely modify all hard-coded values and possibly also boolean operator comparing them.
-
-Use your knowledge acquired from previous task and do more experimenting to see how power trace behaves with different amount of correct characters. By that knowledge you should be able to construct logical rule which can separate whether tried character was correct or incorrect.
+__HINT__: Notice that you might speed up testing some amount by putting known correct characters earlier to testing list. Notice that you should still put some incorrect character as first of the testlist. Otherwise you might end up in the situation during testing that your wrong code selects always the first character of your list, but because it happens to be correct one, you might think that code is right.
 
 Your ending result (and requirement to gain points from this task) should be script which automatically solves whole password for you.
-
-Some tips which might be helpful
-* During your experimenting most important thing is to find some point of power trace which is always different depending if character was correct or incorrect. Consider using "Enable percistance"-button to draw traces top of each other for easier analysis.
-* Second important thing is to find out how long is the processing time of single correct character. Every time correct character is found, comparison point must be shifted forward that amount (which is done by the increasing value of variable `i`).
-* You might speed up testing some amount by putting known correct characters earlier to testing list. Notice that you should still put some incorrect character as first of the testlist. Otherwise you might end up in the situation during testing that your wrong code selects always the first character of your list, but because it happens to be correct one, you might think that code is right.
 
 ### What to return in this task?
 
 You must return next 2 items to return template to gain points from this task:
-1. Your working attack script (your modified PASSWORD_BYPASS.py). Return whole script or just the part(s) you modified.
-2. Screenshot of the python console after you have successfully solved correct password with your script.
+1. Your working attack script. You can just return just the part(s) you modified in that provided attack code.
+2. Screenshot of output after your code has successfully solved correct password.
 
 ## B) Breaking RSA
 In this task you will explore the principles of breaking RSA implementation by analysing power traces. Basic idea is to detect conditional code branch execution from power trace and then deduct the private key that device uses internally.
