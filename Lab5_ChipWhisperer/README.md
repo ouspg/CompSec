@@ -395,11 +395,13 @@ You must return next 2 items to return template to gain points from this task:
 ## B) Breaking RSA
 In this task you will explore the principles of breaking RSA implementation by analysing power traces. Basic idea is to detect conditional code branch execution from power trace and then deduct the private key that device uses internally.
 
-This task is based on and example scripts are taken from on ChipWhisperer tutorial [Tutorial B11 Breaking RSA](http://wiki.newae.com/V4:Tutorial_B11_Breaking_RSA). This task should be able to be completed by following instructions below, but feel free to read original tutorial as supplementary information.
+TODO: PA_SPA_2-RSA_on_XMEGA_8bit.ipynb complete first section, not 1.5 anymore
+
+TODO: remove intro?
 
 This task is divided into three parts. First part is theory introduction to this task, second part contains instructions how to capture traces for analysis and third part consists of writing analysis code for those traces. First 2 parts should be fast and easily done. Third part can be considered as actual task and it contains the majority of work.
 
-Third part of task does not require you to have device, so you can complete task at home if you have saved traces successfully or ask your friend to save those for you. Or find and download those from internet (might be tricky to find traces with correct keys, but if you do, it is ok to use them).
+TODO: pre-recorded trace possibility? How made? Some fast project and snippet to copy traces
 
 ### Breaking RSA theory
 
@@ -499,55 +501,15 @@ This is execution dependent on our private key, and if we can deduce which branc
 
 ### Capturing power traces
 
+TODO: these still correct?
+
 ChipWhisperer RSA demo is used in this task. It has 2 modes: Real RSA decryption algorithm (which is way too slow for our testing purposes) and "faked" stripped version of RSA decryption algorithm, which is running only the vulnerable part of decryption algorithm. We will be using latter one version with only 16 bits of key material (to make analysis easier and capture not too long) to demonstrate RSA vulnerability against power analysis. You can read source code from *simpleserial-rsa-xmega.c* before you compile it if you want to have deeper understanding of inner workings of real and faked algorithms.
 
 When we use demo script (simplified version), we send *Fixed plaintext* to algorithm. This is actually misleading, because send plaintext is used as "fake private key" to decrypt message. We do not care about actual encrypted message or resulting plaintext at all because our analysis targets only on private key so actual ciphertext and plaintext are irrelevant.
 
 In this part we setup target board, capture multiple power traces with different decryption keys and save traces to project file.
 
-1. Start the Capture software
-2. Go to */home/cwuser/chipwhisperer/hardware/victims/firmware/simpleserial-rsa*
-3. Make the program with the command `make PLATFORM=CW303` like you did in previous tasks.
-4. Execute **connect_cwlite_simpleserial.py** in the Capture software to connect the device (if you are not connected).
-5. Execute **setup_cwlite_xmega.py** script in Capture software.
-6. Load program that you just made to the target board similar way that you did in previous tasks.
-7. Run script **setup_breaking_rsa.py** to setup some initial values.
-
-**setup_breaking_rsa.py** just setups some predefined values. Notice that this is not factory-made script and this is only available in presetupped course virtual machine or this course pages scripts folder.
-
-Script contains next setups:
-```Python
-target.key_cmd = ""
-target.output_cmd = ""
-scope.clock.adc_src = "clkgen_x1"
-scope.adc.samples = 24000
-```
-
-8. On *Generic settings*, change plaintext to be fixed at value `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00` and press capture one button to confirm that it works as expected
-
-You should see plot with 16 repeating distinguishable somewhat-similar "blocks". You might already guess that those 16 blocks are corresponding 16 bits of private key.
-
-You can try also next to achieve better understanding about what is happening: Change plaintext to be fixed at value `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 10`, press trace persistence button and press capture one button again. You should see slightly differing power trace being plotted over original trace. This is because key bit changes -> running time of single loop execution changes.
-
-9. On *Generic settings*, change *Number of traces* and *Traces per set* to 2
-
-By taking 2 trace captures per key, we can avoid situation where later in this task reference pattern would be tested against trace it was taken from if same key is wanted to be tested. Not big flaw, but because we can avoid it easily, there is no reason to not to do it.
-
-10. Save the project file as *rsa_test_2bytes.cwp* or any other name or location that you can find easily.
-
-Next four steps are actual trace captures. You will be saving 8 traces total. Notice that their indexing goes from 0-7.
-
-11. Set the *Fixed plaintext* to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 00`, press *Capture M*.
-12. Set the *Fixed plaintext* to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 81 40`, press *Capture M*.
-13. Set the *Fixed plaintext* to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 AB E2`, press *Capture M*.
-14. Set the *Fixed plaintext* to `00 00 00 00 00 00 00 00 00 00 00 00 00 00 AB E3`, press *Capture M*.
-15. Check from *Project --> Trace management* that you have successfully saved 8 different traces to this project.
-
-You already used *Trace Management* tool in task 1B to inspect that you have correct traces. Just check now that you have those traces and only those traces correctly in your project before saving it.
-
-16. Save the project to some place you can find.
-
-Now you should have successfully saved power traces for different private keys. **NOTICE:** Capture software and ChipWhisperer board are not needed anymore if you have saved correct power traces successfully. You can work without them at home and still finish this task.
+TODO: should one image of all loop blocks be here?
 
 ### Analyzing captured power traces with Python
 
@@ -557,8 +519,6 @@ In this part we will write Python script that solves the secret private key by a
 
 In theory it could be possible to determine private key by examining power traces just by looking at them and plotting them carefully on top of each other (like you were hinted to experiment at capture phase), but of course we want computer to do work for us automatically instead of performing manual labor.
 
-Basically we will do next:
-1. Load power trace data to script
 2. Find good reference pattern from power trace
    * In trace there can be seen 16 rounds of looping (16 similar-looking blocks 1 for each bit of private key), and reference pattern should match to them
 3. Use reference pattern to calculate places of trace where reference pattern occurs
@@ -571,23 +531,6 @@ Lets start with loading power trace and plotting it to the image.
 
 Create new .py file and use next example code to plot first trace to image. You can run your scripts in terminal by simply with `python yourscript.py`.
 
-```Python
-from chipwhisperer.common.api.CWCoreAPI import CWCoreAPI
-from matplotlib.pylab import *
-import numpy as np
-
-cwapi = CWCoreAPI()
-cwapi.openProject(r'/home/cwuser/examplelocation/yoursavedproject.cwp')
-
-tm = cwapi.project().traceManager()
-ntraces = tm.numTraces()
-
-#Reference trace
-trace_ref = tm.getTrace(0)
-
-plot(trace_ref)
-show()
-```
 
 By looking at image you should be seeing power trace "as-it-is". You should be easily see certain pattern that repeats itself (example image below). If you do not then your power traces might not be valid ones.
 
