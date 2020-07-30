@@ -399,7 +399,7 @@ TODO: PA_SPA_2-RSA_on_XMEGA_8bit.ipynb complete first section, not 1.5 anymore
 
 TODO: remove intro?
 
-This task is divided into three parts. First part is theory introduction to this task, second part contains instructions how to capture traces for analysis and third part consists of writing analysis code for those traces. First 2 parts should be fast and easily done. Third part can be considered as actual task and it contains the majority of work.
+First we discuss about theory of attack against RSA implementation and after that instructions for this task and what to return are given.
 
 TODO: pre-recorded trace possibility? How made? Some fast project and snippet to copy traces
 
@@ -499,138 +499,34 @@ if(t & (1<<(BIGINT_WORD_SIZE-1))){
 
 This is execution dependent on our private key, and if we can deduce which branch is executed, we could determine the private key bits one by one!
 
-### Capturing power traces
+### Breaking RSA
 
-TODO: these still correct?
+TODO: say that no need for last part
 
-ChipWhisperer RSA demo is used in this task. It has 2 modes: Real RSA decryption algorithm (which is way too slow for our testing purposes) and "faked" stripped version of RSA decryption algorithm, which is running only the vulnerable part of decryption algorithm. We will be using latter one version with only 16 bits of key material (to make analysis easier and capture not too long) to demonstrate RSA vulnerability against power analysis. You can read source code from *simpleserial-rsa-xmega.c* before you compile it if you want to have deeper understanding of inner workings of real and faked algorithms.
+ChipWhisperer RSA demo is used in this task. It has stripped version of RSA decryption algorithm, which is running only the vulnerable part of decryption algorithm and using only last 16 bits of private key. You may read *hardware/victims/firmware/simpleserial-rsa/simpleserial-rsa-xmega.c* to see faked version of code.
 
-When we use demo script (simplified version), we send *Fixed plaintext* to algorithm. This is actually misleading, because send plaintext is used as "fake private key" to decrypt message. We do not care about actual encrypted message or resulting plaintext at all because our analysis targets only on private key so actual ciphertext and plaintext are irrelevant.
+In this task you will be doing ChipWhisperer tutorial PA_SPA_2-RSA_on_XMEGA_8bit.ipynb. You will be doing only SAD-based attack part of it.
 
-In this part we setup target board, capture multiple power traces with different decryption keys and save traces to project file.
+Follow the tutorial and solve encryption key by finding reference sample and measuring execution time of encryption loops as instructed.
 
-TODO: should one image of all loop blocks be here?
+Notice that sample and delta values in tutorial are most likely producing bad SAD match plot and wrong overall results. You are required to inspect traces yourself as you see fit and find correct values yourself.
 
-### Analyzing captured power traces with Python
+TODO: Using correlation as calcualtion
 
-Ok, now the actual task begins.
-
-In this part we will write Python script that solves the secret private key by analyzing power traces.
-
-In theory it could be possible to determine private key by examining power traces just by looking at them and plotting them carefully on top of each other (like you were hinted to experiment at capture phase), but of course we want computer to do work for us automatically instead of performing manual labor.
-
-2. Find good reference pattern from power trace
-   * In trace there can be seen 16 rounds of looping (16 similar-looking blocks 1 for each bit of private key), and reference pattern should match to them
-3. Use reference pattern to calculate places of trace where reference pattern occurs
-4. Calculate distance between pattern occurences to determine how much time was consumed during single key bit processing (this solves single loop execution time)
-5. Based on loop execution time information, determine if processed bit was 1 or 0 (long execution = 1, short execution = 0)
-
-Virtual machine has already Python 2 installed and those code examples are created for it.
-
-Lets start with loading power trace and plotting it to the image.
-
-Create new .py file and use next example code to plot first trace to image. You can run your scripts in terminal by simply with `python yourscript.py`.
+Hints:
+* Closely inspect to try find nice reference pattern for SAD calculation. Easily distinguishable close-to-zero spikes mean that good match is found.
 
 
-By looking at image you should be seeing power trace "as-it-is". You should be easily see certain pattern that repeats itself (example image below). If you do not then your power traces might not be valid ones.
-
-![alt text](pictures/rsa_sample_trace.png "Example plot")
-
-Next step is to take suitable reference pattern from power trace. Extend your code by applying next snippet.
-
-```Python
-# The target trace we will attack
-target_trace_number = 3 # This is index 3 meaning that it should be responding trace with key 81 40
-
-# This cuts pattern of 500 samples out of  trace_ref
-start = 3600
-rsa_one = trace_ref[start:(start+500)]
-
-
-# This calculates the difference plot
-# You can consider this like that reference pattern is moved as "window" over target trace and then absolute sum of difference for each plot point is calculated
-diffs = []
-
-for i in range(0, 23499):
-    
-    diff = tm.getTrace(target_trace_number)[i:(i+len(rsa_one))] - rsa_one    
-    diffs.append(np.sum(abs(diff)))
-
-plot(diffs)
-show()
-```
-
-To conclude: Above code snippet takes reference pattern from trace indexed 0 and then uses it to trace indexed 3 to look for places that are matching to it by producing difference plot.
-
-Meaning of difference plot is next: When plot drops close to zero, it simply means that difference between target plot and reference pattern is almost zero in that point which means the close match is found.
-
-**Your next task is to find suitable reference pattern which produces good difference plot for further calculations. Experiment with different values until you find satisfiable difference plot.**
-
-Couple of hints for this part
-* Values of this example snippet most likely do not work for you. You have to find your own pattern by inspecting traces and by trial and error. Expect that you might have to spend some time to find good one.
-  * Try different starting positions and lengths about where you cut your reference pattern (values in snippet are 3600 and 500).
-  * Consider inspecting original traces closely to find suitable repeating part to be used as reference pattern.
-* Remember that your ending goal is to find clean reference plot with easily distinguishable close-to-zero spikes. Otherwise further calculations for that difference plot would be harder.
-* You are not limited to use sum of differences as metric. You can also use for example correlation if you want to.
-
-```Python
-corr_data = np.correlate(rsa_one,  tm.getTrace(target_trace_number), mode='full')
-plot(corr_data, 'r')
-show()
-```
-
-**Examples of possible difference plots you might see during your testing**
-
-![alt text](pictures/difference_plot_horrible.png "Example difference plot")
-![alt text](pictures/difference_plot_not_good.png "Example difference plot")
-![alt text](pictures/difference_plot_better.png "Example difference plot")
-
-When you have nice reference pattern and difference plot, we can calculate sample distance (which is technically also time distance) between occurred patterns.
-
-This is snippet how you can print the distance between found matches (in this example "match" is considered to be any place where difference plot falls under 10, you most likely have to modify this value). Extend your code by applying this snippet to it.
-```Python
-
-# Put difference plot to numpy array
-diffs = np.array(diffs)
-
-# Get any index where value is under 10, you most likely have to modify this value according your results in difference plot
-loc = np.where(diffs < 10)
-
-# Get actual list
-loc = loc[0]
-
-# Print distances (times) between matches
-for i in range(0, len(loc)-1):
-    delta = loc[i+1]-loc[i]
-    print delta
-```
+TODO: simple hint about deltas needed? big=long ect?
 
 After your code prints time differences, you should consider next things while you are inspecting those values:
 * Notice that there is big delay at first run but other runs are staying in about constant times.
 * There is little extra delay when algorithm finishes processing 8-bit "chunk" of private key.
 * Remember what we concluded about execution times in theory part? When key bit is 1, additional multiplication operation should result longer execution time.
 
-Based on all previous knowledge combined, this is example code snippet how key could be calculated bit by bit. Extend your code by applying snippet to it. You most likely have to modify some hard-coded values or even add some extra code according to your own analysis of execution times you just printed.
-
-```Python
-recovered_key = 0x0000
-bitnum = 16
-
-diffs = np.array(diffs)
-loc = np.where(diffs < 10)
-
-#Get actual list
-loc = loc[0]
-
-for i in range(0, len(loc)-1):
-    delta = loc[i+1]-loc[i]
-    bitnum -= 1
-
-    if delta > 1300:
-       recovered_key |= 1<<bitnum
-    
-print("Key = %04x"%recovered_key)
-```
+TODO: trying with dirrerent keys too?
+TODO: "pay attention to amount of spikes"
+TODO: also spike height might be thing
 
 Run your attack code against trace with secret key 8140 and ABE2. Those should be at indexes 2-3 and 4-5 if you have saved your traces in order that was instructed.
 
@@ -643,9 +539,9 @@ When you have ensured that your code successfully solves keys 8140 and ABE2, try
 All practical work is done, only final push left to finish this task. Fill next answers to return template and you are ready.
 
 **Next items/answers must be returned to gain points from this task**
-1. Screenshot of suitable difference plot and explanation how you found suitable reference pattern
-2. Your complete attack code and screenshots how it successfully solves secret keys specified earlier (8140 and ABE2)
-3. Thought-out answer to next question: *You were instructed earlier to try to solve key ABE3 from corresponding trace with your attack code. Did you succeed? If not, tell why it did not work. How would you make it work? Note that you do not have to implement your answer, just telling that how you would do it is enough.* (HINT: Consider the amount of close-zero spikes you have in your difference plot)
+ 
+1. Your attack code (parts you had to modify yourself are enough) and screenshot demonstrating it outputting correct result.
+2. Thought-out answer to next question: *Can you solve the last bit of 16-bit key with provided code? You can try re-record trace with key ABE3 and try to solve key from that trace. If not, tell why it did not work. How would you make it work? Note that you do not have to implement your answer, just telling that how you would do it is enough.* (HINT: Consider the amount of close-zero spikes you have in your SAD plot)
 
 ---
 # Task 3
