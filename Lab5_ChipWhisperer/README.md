@@ -350,6 +350,8 @@ If you have troubles in your writing, you can consider next list of questions as
 TODO: complete rewrite and simplification
 
 TODO: intro paragraph might be wrong
+TODO: hints about remembering to disconnet and like that simple notebook cannot be connected if another notebook is already
+
 
 In task 2, there is 2 tasks which require closer analysing of power traces with small Python scripts. Notice that you can easily continue working on task B at home after lab session without device if you manage to capture and save power traces for yourself.
 
@@ -366,7 +368,6 @@ This task is completed by completing tutorial PA_SPA_1-Timing_Analysis_with_Powe
 
 Scripts for making password bypass attack are provided in tutorial, but values in them are not correct for your device, and you have to solve those yourself to make your attack working.
 
-TODO: hints about remembering to disconnet and like that simple notebook cannot be connected if another notebook is already
 
 __HINT__: You can use password guesses where the first letter is wrong, then the second etc. This should give you an idea how the power trace differ with different inputs. You can easily compare traces with different inputs by modifying next provided code:
 
@@ -394,10 +395,6 @@ You must return next 2 items to return template to gain points from this task:
 
 ## B) Breaking RSA
 In this task you will explore the principles of breaking RSA implementation by analysing power traces. Basic idea is to detect conditional code branch execution from power trace and then deduct the private key that device uses internally.
-
-TODO: PA_SPA_2-RSA_on_XMEGA_8bit.ipynb complete first section, not 1.5 anymore
-
-TODO: remove intro?
 
 First we discuss about theory of attack against RSA implementation and after that instructions for this task and what to return are given.
 
@@ -501,44 +498,21 @@ This is execution dependent on our private key, and if we can deduce which branc
 
 ### Breaking RSA
 
-TODO: say that no need for last part
-
 ChipWhisperer RSA demo is used in this task. It has stripped version of RSA decryption algorithm, which is running only the vulnerable part of decryption algorithm and using only last 16 bits of private key. You may read *hardware/victims/firmware/simpleserial-rsa/simpleserial-rsa-xmega.c* to see faked version of code.
 
-In this task you will be doing ChipWhisperer tutorial PA_SPA_2-RSA_on_XMEGA_8bit.ipynb. You will be doing only SAD-based attack part of it.
+In this task you will be doing ChipWhisperer tutorial PA_SPA_2-RSA_on_XMEGA_8bit.ipynb. You will be doing only SAD-based attack part of it ( So you do not have to do part 1.5).
 
 Follow the tutorial and solve encryption key by finding reference sample and measuring execution time of encryption loops as instructed.
 
 Notice that sample and delta values in tutorial are most likely producing bad SAD match plot and wrong overall results. You are required to inspect traces yourself as you see fit and find correct values yourself.
 
-TODO: Using correlation as calcualtion
-
 Hints:
 * Closely inspect to try find nice reference pattern for SAD calculation. Easily distinguishable close-to-zero spikes mean that good match is found.
-
-
-TODO: simple hint about deltas needed? big=long ect?
-
-After your code prints time differences, you should consider next things while you are inspecting those values:
-* Notice that there is big delay at first run but other runs are staying in about constant times.
-* There is little extra delay when algorithm finishes processing 8-bit "chunk" of private key.
-* Remember what we concluded about execution times in theory part? When key bit is 1, additional multiplication operation should result longer execution time.
-
-TODO: trying with dirrerent keys too?
-TODO: "pay attention to amount of spikes"
-TODO: also spike height might be thing
-
-Run your attack code against trace with secret key 8140 and ABE2. Those should be at indexes 2-3 and 4-5 if you have saved your traces in order that was instructed.
-
-Your attack is successful if your code output correct end result, for example ```Key = abe2```. Otherwise something is wrong and you should reconsider your attack script or trace captures.
-
-When you have ensured that your code successfully solves keys 8140 and ABE2, try to solve key ABE3 from index 6-7 (if you have saved traces in instructed order). What happens?
+* Pay attention how many matches are found/needed
 
 ### What to return in this task?
 
-All practical work is done, only final push left to finish this task. Fill next answers to return template and you are ready.
-
-**Next items/answers must be returned to gain points from this task**
+**After you have working attack, fill next answers to return template**
  
 1. Your attack code (parts you had to modify yourself are enough) and screenshot demonstrating it outputting correct result.
 2. Thought-out answer to next question: *Can you solve the last bit of 16-bit key with provided code? You can try re-record trace with key ABE3 and try to solve key from that trace. If not, tell why it did not work. How would you make it work? Note that you do not have to implement your answer, just telling that how you would do it is enough.* (HINT: Consider the amount of close-zero spikes you have in your SAD plot)
