@@ -712,6 +712,24 @@ It is very likely that you have to loop through many values. Change the value *N
 
 Fill your answers into the return template and return scripts/logs to separate folder.
 
+
+## Differential Fault Analysis on AES
+
+You already broke AES implementation key in task 1C, but there is more ways to steal private key from the device.
+
+In this task you will inject faults into specific place of running algorithm and compare outputs to non-faulty encryption runs in order to determine private key information
+
+Main steps of AES are nicely described in [Wikipedia article](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).
+
+In this task you will be completing tutorial *Fault_4-AES_Differential_Fault_Analysis_Attacks.ipynb*. Tutorial contains rather straightforward descriptions and scripts for this attack, but glitch parameters and the correct place of execution to be glitched are wrong. You must find correct places to glitch yourself (8th and 9th round key between MixColumn step as described in tutorial) and you can use values of width and offset for the glitch from the previous task when you find out those for your device.
+
+TODO: Glitching is rather tedious process, so expect that you may have to...
+
+TODO: Better questions?
+
+When you have completed tutorial, take screeshot/copy script output to return sheet to show that you have calculated correct key by injecting faults to correct places of code. Specify also the glitch parameters you used in your attack script. Also answer shortly to next question **Describe shortly how the attack you performed is working. What kind of glitches are hoped to happen? Why certain point for the attack? What is the difference between 8th and 9th round attack? Why solving the round key is interesting?**'
+
+
 ---
 # Task 4 
 
