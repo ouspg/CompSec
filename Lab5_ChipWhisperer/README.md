@@ -712,6 +712,12 @@ It is very likely that you have to loop through many values. Change the value *N
 
 Fill your answers into the return template and return scripts/logs to separate folder.
 
+## Introduction to clock glitch attacks
+
+TODO: possibly better script for second part because its broken
+
+## Buffer glitch attack
+
 
 ## Differential Fault Analysis on AES
 
