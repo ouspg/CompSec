@@ -714,7 +714,14 @@ Fill your answers into the return template and return scripts/logs to separate f
 
 ## Introduction to clock glitch attacks
 
-TODO: possibly better script for second part because its broken
+Fist task of this section is to pass simple clock glitching tutorial *Fault_1-Introduction_to_Clock_Glitch_Attacks.ipynb* In this tutorial you will learn what is clock glitching and you will find suitable glitching parameters for your device to be used in later tasks.
+
+Tutorial is rather straightforward, but searching of the glitch parameters can take some time. Go and grab cup of coffee while search is running.
+
+Tutorial offers working attack code for function `glitch3()`, but code uses tnrange function that does not support decimal step ranges. You can modify code to support smaller steps easily by using `arange` from `numpy` instead of `tnrange`. Add additional print inside loop to follow execution of code in this case. 
+
+You can consider yourself successful when you manage to glitch trough functions `glitch1()` and `glitch3()`. Take screenshots of your success and put those in the return template. Important in this tutorial is to find correct parameters for glitching for the future usage and accustome yourself to clock glitching.
+
 
 ## Buffer glitch attack
 
