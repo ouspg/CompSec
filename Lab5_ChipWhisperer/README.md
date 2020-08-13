@@ -306,35 +306,25 @@ Add those 3 required items (+ possible textual explanations) to your return temp
 
 ## C) Breaking AES
 
-TODO: make sure that your are building it on correct platform
-TODO: some instructions how data could be imported?
-
+TODO: Instructing how to do without device, it seems that tutorial 1 loads from project and that project could be given as saved...
 
 Previous task considered power differences between single operations, which might not be very practical itself. However this task will be hopefully more interesting and related to real world than basic inspection of single operations.
 
-In this task we are going to break AES with Correlation Power Analysis attack scripts that already exist in ChipWhisperer software. This task is based on ChipWhisperer tutorial PA_CPA_1-Using_CW-Analyzer_for_CPA_Attack.ipynb.
+In this task we are going to break AES with Correlation Power Analysis attack.
 
-Idea of this task is to break AES implementation by analyzing power traces captured from the device. After completing tutorial you are required to explain the theory behind these attack.
-
-This task is divided into 2 parts. Capturing traces with different input given to encryption implementation and then performing CPA attack to reveal the encryption key.
+This task is done by completing ChipWhisperer tutorial PA_CPA_2-Manual_CPA_Attack.ipynb and explaining theory behind attack. There exists also tutorial PA_CPA_1-Using_CW-Analyzer_for_CPA_Attack.ipynb which uses pre-existing utility scripts of ChipWhisperer Analyzer software, but we will do this task more low-level way (feel free to complete that tutorial too if you like fancier outputs!).
 
 More common information about AES can be found at https://en.wikipedia.org/wiki/Advanced_Encryption_Standard
 
-NOTICE: Remember to ensure that you build code on correct platform
-
-First, read the theoretical basis of CPA so you can understand better what is idea of this task. http://wiki.newae.com/Correlation_Power_Analysis Try to understand at least the major steps which are performed during attack, because it makes easier for you to understand what happens next.
+TODO: NOTICE: Remember to build code on correct platform (CW303)
 
 ### What to do to complete this task?
 
+**Screenshot of your attack successfully solving the key**
+
 **Explain how the correlation power analysis attack that you just performed works.**
 
-Theoretical information about the attack you just performed can be found here http://wiki.newae.com/Correlation_Power_Analysis 
-
-Deeper technical insight and actual example code of attack can be found in tutorial PA_CPA_2-Manual_CPA_Attack.ipynb
-
-TODO: should it be added that feel free to try also manual one?
-
-All information needed should be found in those two articles.
+Theoretical information about the attack you just performed can be found here http://wiki.newae.com/Correlation_Power_Analysis Tutorial you just completed contain already quite technical description what is happening in attack.
 
 Your answer does not have to be in any certain "format" or any minimum length. Only requirement is that it explains issue well and shows that you have really investigated attack you performed deeper than surface level.
 
@@ -519,200 +509,16 @@ Hints:
 
 ---
 # Task 3
-In this task you will be performing some experiments with glitching. This task is somewhat harder and more time-consuming than previous ones, so you most likely have to do it outside of lab session.
+TODO: intro sentence
 
-This task is divided 2 parts: Theory part and practical part. Theory part intends to give you knowledge background of glitching and practical part considers actual instructions about how to setup and run experiments + what items you have to return.
-
-This task is based on and theory + example scripts are taken from ChipWhisperer tutorials [Tutorial A2: Introduction to Glitch Attacks (including Glitch Explorer)](https://wiki.newae.com/V4:Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer)) and [Tutorial A3: VCC Glitch Attacks](https://wiki.newae.com/V4:Tutorial_A3_VCC_Glitch_Attacks). Those tutorials should not be needed for doing this task, but feel free to read them as supplementary information.
-
-## Theory
+TODO: no need for mentioning power glitching
 A glitching attack is an intentional fault introduced to undermine device security. These faults can for example cause instruction skipping,malformed data reads/write backs and instruction decoding errors. Below is a picture of the ChipWhisperers glitch generating process. Note that the clock can be either the target devices clock (clock glitching) or ChipWhisperers own clock(power glithching).
 
-![alt text](pictures/glitch4.png "Chipwhisperers glith generation ")
-
-### Clock glitching
-Following is the background to clock glitching taken from [chipwhisperers glitching tutorial](https://wiki.newae.com/V4:Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer))
-
-Digital hardware devices almost always expect some form of reliable clock. We can manipulate the clock being presented to the device to cause unintended behaviour. We'll be concentrating on microcontrollers here, however other digital devices (e.g. hardware encryption accelerators) can also have faults injected using this technique.
-
-Consider a microcontroller first. The following figure is an excerpt the Atmel AVR ATMega328P datasheet: 
-
-![alt text](pictures/glitch1.jpg " ")
-
-Rather than loading each instruction from FLASH and performing the entire execution, the system has a pipeline to speed up the execution process. This means that an instruction is being decoded while the next one is being retrieved, as the following diagram shows: 
-
-![alt text](pictures/glitch2.jpg " ")
-
-But if we modify the clock, we could have a situation where the system doesn't have enough time to actually perform an instruction. Consider the following, where Execute #1 is effectively skipped. Before the system has time to actually execute it another clock edge comes, causing the microcontroller to start execution of the next instruction: 
-
-![alt text](pictures/glitch3.jpg " ")
-This causes the microcontroller to skip an instruction. Such attacks can be immensely powerful in practice. Consider for example the following code from `linux-util-2.24`: 
-
-```c
-/*
- *   auth.c -- PAM authorization code, common between chsh and chfn
- *   (c) 2012 by Cody Maloney <cmaloney@theoreticalchaos.com>
- *
- *   this program is free software.  you can redistribute it and
- *   modify it under the terms of the gnu general public license.
- *   there is no warranty.
- *
- */
-
-#include "auth.h"
-#include "pamfail.h"
-
-int auth_pam(const char *service_name, uid_t uid, const char *username)
-{
-    if (uid != 0) {
-        pam_handle_t *pamh = NULL;
-        struct pam_conv conv = { misc_conv, NULL };
-        int retcode;
-
-        retcode = pam_start(service_name, username, &conv, &pamh);
-        if (pam_fail_check(pamh, retcode))
-            return FALSE;
-
-        retcode = pam_authenticate(pamh, 0);
-        if (pam_fail_check(pamh, retcode))
-            return FALSE;
-
-        retcode = pam_acct_mgmt(pamh, 0);
-        if (retcode == PAM_NEW_AUTHTOK_REQD)
-            retcode =
-                pam_chauthtok(pamh, PAM_CHANGE_EXPIRED_AUTHTOK);
-        if (pam_fail_check(pamh, retcode))
-            return FALSE;
-
-        retcode = pam_setcred(pamh, 0);
-        if (pam_fail_check(pamh, retcode))
-            return FALSE;
-
-        pam_end(pamh, 0);
-        /* no need to establish a session; this isn't a
-         * session-oriented activity...  */
-    }
-    return TRUE;
-}
-```
-This is the login code for the Linux OS. Note that if we could skip the check of if (uid != 0) and simply branch to the end, we could avoid having to enter a password. This is the power of glitch attacks - not that we are breaking encryption, but simply bypassing the entire authentication module! 
-
-### Power glitching
-
-Power glitching works similar to clock glitching instead we modify the voltage of the device, causing for example a failure to correctly read a memory location or otherwise cause havoc with the proper functioning. 
-
-## Practical task
-
-Ok, now actual work begins.
-
-Follow next instructions to setup and perform your experiments. Some experiments require you just to take screenshots of successful results, others require you to write your own code to run them. When your work is done, remember to double-check from "What to return on this task?" of this section that you have acquired everything relevant for your return template.
-
-Most of the setupping of this task is done by running setup scripts instead of manually using GUI to set parameters. Consider looking inside of those scripts to see what variables they are changing when you encounter them. Notice that if you are not doing this task on preconfigured virtual machine, you must grab scripts **SETUP_GLITCH_SIMPLE.py**, **REST.py** and **setup_password_glitch.py** from scripts folder of this repository.
-
-Remember to connect glitch ports of the device with SMA cable for this task.
-
-1. Go to */home/cwuser/Desktop/chipwhisperer/hardware/victims/firmware/glitch-simple* and open *glitchsimple.c* with any text editor. Scroll to the main function and make sure that it executes glitch_infinite() function and nothing else. Check the glitch_infinite() function so that you understand what is it doing. 
-2. Build your program with ```make PLATFORM=CW303``` as usual
-3. Open capture software and execute **connect_cw_lite_simpleserial.py** and **SETUP_GLITCH_SIMPLE.py**
-
-In setup script you can see offset, repeat and width parameters which should be working for this device.
-
-4. Upload your program to target as usual
-5. Open terminal (*Tools -> Terminal*) and press connect. You should see "40000 200 200 x" where the x keeps increasing
-
-When you inspected the program, you saw simple code executing loop inside loop. Now your task is to glitch device to cause code execution to jump another position and skip some loop executions.
-
-6. Go to *Scope Settings* > *Glitch Module* and Press the *Manual Trigger/ Single-Shot Arm* button. This sends single glitch to target and you should see something going wrong with the prints. You might need multiple attempts to cause successful glitch. You can try hitting the button multiple times in fast pace. Take a screenshot of the terminal window which shows glitched output. Glitching might be very tedious task, so do not give up easily! You may also change parameters defined in setup script if you need to.
-
-You can reset the target with the XMEGA programmer by pressing *Check Signature* if you crash target so badly that it becomes unresponsive.
-
-Manual glitching can be handy. However it can be tricky to target your glitch to a specific part of execution. By resetting the target prior to sending the glitch we can control in which part of the execution the glitch happens with more accuracy. For this purpose we use the reset module that we utilized in earlier tasks.
-
-7. First, change the code in the target. Edit your *glitchsimple.c* so that it executes the function glitch1() and read what happens in that function.
-8. Build program and reprogram it to the target as usual. Check that the target behaves as it should.
-9. Execute **REST.py**. Check that it has loaded module to *Aux settings* page
-10. Go to *Scope Settings* > *Glitch Module* and change *Glitch Trigger* to **Ext Trigger: Single-Shot** 
-11. Connect the terminal and reset the target (with *Check Signature* button in *XMEGA Programmer*). It should print "hello" upon reset.
-12. Now press *"Capture one"* button. Did the program glitch? Take a screenshot of the terminal window with glitched output. If you did not trigger a glitch, double check that you have executed all the above steps correctly. If that doesn't help increase your repeat count in *Glitch Module* settings
-13. Next we go over briefly some basics of the *Glitch Explorer*. For more detailed look check [Tutorial A2: Introduction to Glitch Attacks (including Glitch Explorer)](https://wiki.newae.com/V4:Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer)) (Go to the part "Using the Glitch Explorer"). Open the *Glitch Explorer* from *Tools* > *Glitch Explorer*.
-14. Go to *Target Settings* and set *Output Format* to ```$GLITCH$```
-15. Now press *Capture Trace* button. You should see something in the *Glitch Explorer*. Like you probably realized the *Glitch Explorer* gets the output from the terminal. By modifying *Normal Response* and *Succesful Response* you can set which types of outputs the *Glitch Explorer* considers normal and succesful. Check the above link for information on the syntax of *Normal Response* and *Succesful Response*
-16. Modify the *Normal Response* and *Succesful Response* fields so that the *Glitch Explorer* considers a glitch succesful and a non glitch normal. Then capture few glitches and non glitches and take a screenshot of the *Glitch Explorer* screen. As you know because you read code, device should respond with ``1234`` and red LED on board when successful glitch occurs.
-
-Now you will try something trickier: Glitching through the password checking. You are in unknown situation and you obviously you don't know beforehand with what parameters you must glitch and how long glitch should be. Trying thousands of combinations manually is not sensible, so you are going to create a script that executes a glitch, resets the device and then changes the glitching parameters. Then you loop until you find a set of variables that causes a glitch with hoped response from the victim.
-
-17. First we start by programming the target with a program that asks for password. Modify the previously used .c file so that it executes function glitch3(). Then make and program it. Check the terminal that the program works as intended
-18. Execute **setup_password_glitch.py**. This will change ChipWhisperers settings. Check the scripts content so you understand what has changed.
-19. Create the script which automatically changes the parameters of glitching. You basically have to create a looping that changes the glitching parameters (width, offset and repeat).
-
-* Create a script that makes ChipWhisperer Capture software reset target, cause a glitch, changes glitching variables and repeat everything again. Your program should change width, offset and repeat.
-* Your script should successfully glitch you through the password check
-* Check *Glitch Explorer* on where its logs are saved. You are expected to return at least some of these.
-* Take a screenshot of the glitch explorer with a succesful glitch visible. Make sure that you change at least the "*Succesful Response*" condition so that the succesful glitch is highlighted green. 
-* If you change any settings in the Scope and Target Settings tab modify these changes to setup_password_glitch.py or to your custom script.
-
-You may use next code example from [Tutorial A2: Introduction to Glitch Attacks (including Glitch Explorer)](https://wiki.newae.com/V4:Tutorial_A2_Introduction_to_Glitch_Attacks_(including_Glitch_Explorer)) as basis of your code.
-
-```Python
-class IterateGlitchWidthOffset(object):
-    def __init__(self, ge_window):
-        self._starting_offset = -40
-        self._starting_width = 5
-        self.ge_window = ge_window
-
-    def reset_glitch_to_default(self, scope, target, project):
-        """ Set glitch settings to defaults. """
-        self.offset = self._starting_offset
-        self.width = self._starting_width
-
-    def change_glitch_parameters(self, scope, target, project):
-        """ Example of simple glitch parameter modification function. """
-        # This value is minimum clock offset/width increment
-        self.offset += 0.390625
-
-        if self.offset > 40:
-            self.offset = self._starting_offset
-            self.width += 0.390625
-
-        if self.width > 40:
-            self.width = self._starting_width
-
-        # Write data to scope
-        scope.glitch.width = self.width
-        scope.glitch.offset = self.offset
-
-        #You MUST tell the glitch explorer about the updated settings
-        if self.ge_window:
-            self.ge_window.add_data("Glitch Width", scope.glitch.width)
-            self.ge_window.add_data("Glitch Offset",scope.glitch.offset)
-
-glitch_iterator = IterateGlitchWidthOffset(self.glitch_explorer)
-self.aux_list.register(glitch_iterator.change_glitch_parameters, "before_trace")
-self.aux_list.register(glitch_iterator.reset_glitch_to_default, "before_capture")
-```
-
-Running this code file should add those functions to your auxiliary modules tab, and allow you just to press "Capture many" and then just wait and see how it automatically changes parameters of glitching and show them in *Glitch Explorer* (you may try it out and see that it is already changing width and offset).
-
-You already should know good parameters which are causing glitches (because you saw those in setup files when you first time glitched simple loop in beginning in this task), but do this script with assumption that you dont know the glitch parameters yet.
-
-__Tips & Tricks__
-It is very likely that you have to loop through many values. Change the value *Number of Traces* at the *Generic Settings* so that you capture more traces with *Capture Many* button. Feel free to tweak any values you like. It is possible that it will take really long time to find any glitches especially at lower repeat counts. This task can be passed without finding the glitch if you return a working script and proof of effort in a form of glitch explorer logs.
-
-### What to return on this task?
-
-**Next items must be returned to gain points from this task:**
-
- * Screenshot of the successful glitching of function *glitch_infinite()* (performed in step 6)
- * Screenshot of the successful glitching of function *glitch1()* (performed in step 12)
- * Screenshot of the successful glitching showing in *Glitch Explorer* (performed in step 16)
- * Screenshot of the successful glitching showing in *Glitch Explorer* when your own program is doing glitching
- * Your custom python program you created which glitches through the password check and loops through width, offset and repeat parameters sensibly (**All 3 required**)
- * Your setup script (if you made modifications to it)
- * Glitch explorer logs which your program produced
-
-Fill your answers into the return template and return scripts/logs to separate folder.
+TODO: remember to attach sma cable glitch ports
 
 ## Introduction to clock glitch attacks
+
+TODO: remember always platform CW303 and stuff
 
 Fist task of this section is to pass simple clock glitching tutorial *Fault_1-Introduction_to_Clock_Glitch_Attacks.ipynb* In this tutorial you will learn what is clock glitching and you will find suitable glitching parameters for your device to be used in later tasks.
 
@@ -724,6 +530,14 @@ You can consider yourself successful when you manage to glitch trough functions 
 
 
 ## Buffer glitch attack
+
+TODO: doing basic stuff?
+
+TODO: you can tune values based on last taks
+
+TODO: assembly question?
+
+TODO: this too other than tnrange?
 
 
 ## Differential Fault Analysis on AES
