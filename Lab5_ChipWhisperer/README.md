@@ -113,6 +113,9 @@ More detailed documentation of the device can be found from http://wiki.newae.co
 
 ## Software setup
 
+TODO: rewrite or redo this section
+TODO: converting vmware image from virtual box image?
+
 To connect and use ChipWhisperer device and analyze power traces, you need ChipWhisperer software installed on your machine. There is 3 different ways to do that, choose the one that suits you best.
 
 * Option 1: We recommend that you use preconfigured virtual machine image (VMWare) of this laboratory exercise. It has everything installed and all scripts set ready. To get image, follow instructions at main page of this course.
@@ -129,7 +132,7 @@ First stable version of ChipWhisperer v5 software was published in the end of Ju
 
 # Tasks
 
-Start your work from Task 1 and proceed to harder ones without skipping any task. Every task is designed to require more skills and amount of work than previous one.
+Start your work from Task 1 and proceed to harder ones. Every task is designed to require more skills and amount of work than previous one.
 
 Task 1 and 2 together are designed to take about 4+ hours to complete. Try to finish those at lab session. You can borrow equipment if you want to continue working with those tasks at home.
 
@@ -143,11 +146,17 @@ Notice that some tasks (1C and 2B) require ChipWhisperer device only in early st
 
 ## Task 1
 
+TODO: say how to login to jupyter and that all data is in jupyter folder and hardware/victims/firmware contais device code
+
 Ok, let's begin.
 
 Task 1 tasks are meant to be relatively simple tasks to help you understand that what is the Chipwhisperer device and what can be done with it. You will learn how to connect the board, inspect power traces and use ChipWhisperer analyzer program.
 
 TODO: how to setup jupyter + vm etc
+
+ChipWhisperer software and tutorials utilize Jupyter Notebook. Everything is packed in ready-to-run virtual machine which can be found on university drive or Chipwhisperer github page.
+
+If you have not used Jupyter Notebook before, it can be beneficial to complete tutorial !!Introduction_to_Jupyter!!.ipynb
 
 TODO: if you have not used jupyter before, suggest completing jupyter tutorial !!Introduction_to_Jupyter!!.ipynb
 
@@ -171,50 +180,18 @@ __TIPS & TRICKS__
 
 ## B) Inspecting power differences of simple operations
 
-TODO: rewrite based on this PA_Intro_2-Instruction_Differences.ipynb
-
 In this task, we will inspect how the different operations on victim affect to the power consumption of it. As you already intuitively know, not every operation processor performs is equal: Some operations are more complex than others, causing them to consume more power and clock cycles than other operations. By measuring power consumption from target, therefore we can deduce what operation is performed and when.
 
 In this task you will be creating programs which repeats different types of assembly operations and capture power traces from the device to inspect them.
 
-This task is based on information in ChipWhisperer tutorial [Tutorial B2: Viewing Instruction Power Differences](http://wiki.newae.com/V4:Tutorial_B2_Viewing_Instruction_Power_Differences). You should not need original tutorial for this task, but you are free to read it as supplementary information.
+In this task you will capture traces by completing tutorial PA_Intro_2-Instruction_Differences.ipynb and analyze produced results.
 
-In this task you will capture traces by completing tutorial PA_Intro_2-Instruction_Differences.ipynb and then you are required to analyze results.
+Do the sections 1.1-1.4 of the tutorial to familiarize yourself with modifying code and plotting and inspecting traces.
 
-### Setup and capture traces
+After completing simple loop comparison tests, we will inspect power differences between single instructions:
 
-TODO: Start following tutorial...
-TODO: tips: remember always to recompile and reprogram device when you change your code
-TODO: you can navigate to code file and edit in within jupyter, location is for example hardware/victims/firmware/simpleserial-base-lab2/simpleserial-base.c
+Edit previously modified code (all codes for the victims are located at *hardware/victims/firmware/*) to contain single NOP an MUL instructions like this:
 
-
-In this part you will do setups and simple testing. You are not required to return anything yet, but making setups and initial testing experience is crucial for making returnable items.
-
-Follow next instructions:
-
-1. Create new copy of folder ``simpleserial-base`` like you did in previous tutorial task and keep it in the same folder than original. You can rename it for example ``simpleserial-base-task-1b`` or anything you want.
-
-2. Next, we will modify the copied simpleserial example that it performs different basic operations. Make next modifications to code:
-
-TODO: edit next code by example
-Find next code
-```c
-/**********************************
- * Start user-specific code here. */
-trigger_high();
-
-//16 hex bytes held in 'pt' were sent
-//from the computer. Store your response
-//back into 'pt', which will send 16 bytes
-//back to computer. Can ignore of course if
-//not needed
-
-trigger_low();
-/* End user-specific code here. *
- ********************************/
-```
-
-And apply next changes to it
 
 ```c
 /**********************************
@@ -261,48 +238,32 @@ trigger_low();
 
 ```
 
-When looking at code above, you can see that program performs first 10 NOP (no-operation) instructions and after that 10 MUL (multiplication between registers r0 and r1).
+Above code performs first 10 NOP (no-operation) instructions and after that 10 MUL (multiplication between registers r0 and r1).
 
-3. Ensure that you are connected to the device. Run script **setup_cwlite_xmega.py** to setup initial settings.
+Remember always that anytime you make modifications to program, you have to rebuild it and reupload it to the device. Also make sure that you are uploading correct program to device.
 
-If you are not connected to device, connect device with instructions of previous tutorial. Or simply open capture software and run scripts **connect_cwlite_simpleserial.py** and **setup_cwlite_xmega.py**.
-
-4. Build your new program with command `make PLATFORM=CW303` as you did in tutorial. Upload your new program to the device with XMEGA programmer like you did in tutorial.
-
-Remember always that anytime you make modifications to program, you have to rebuild it and reupload it to the device. Also make sure that you are uploading correct program to device (it was surprisingly common mistake last year!).
-
-5. Make sure that there is no red error light burning in capture board. Red led burning means that failure has happened with ADC and you can not capture anything. Run **setup_cwlite_xmega.py** and it should be removing error.
-
-6. In order to be able to capture power traces we must make capture boards clock work faster. Navigate to the *Scope settings* tab in the capture software and set *Source* of *ADC Clock* to be **CLKGEN x4 via DCM**. The *ADC Freq* should show **29.5 MHz** (which is 4x 7.37 MHz), and the *DCM Locked* checkbox must be checked. If the DCM Locked checkbox is NOT checked, try hitting the *Reset ADC DCM* button again.
-
-7. Time for your first capture! Hit the capture button and see power trace appearing.
-
-> **HINT:** In some cases, ChipWhisperer software has some malfunction when this part is performed and it does not show any traces. You can try just simply restarting Capture software and running **connect_cwlite_simpleserial.py** and **setup_cwlite_xmega.py** again.
-
-Interesting part of trace is actually in just in the beginning of trace, rest is futile clutter. You can zoom in to inspect the first 500 samples of trace.
-
-8. Trace is not looking very nice, so next we will adjust settings little bit. On *Scope Settings* tab, under *Gain Setting* set the *Mode* to high. Increase the *Gain Setting* to about 25. You'll be able to adjust this further during experimentations, you may need to increase this depending on your hardware and target device. Under *Trigger Setup* set the *Total Samples* to 500, because everything interesting seems to be happening in first 500 samples of captured trace.
-
-9. Hit capture button again to see that unneccessary parts are removed from trace plot.
-
-10. Time to do some initial testing. Modify your program to run different amount amount of NOP and MUL instructions. Inspect how traces change. Try to detect on which points execution changes to different instruction. Also pay attention how long different instruction blocks take to execute.
-
-You can use "Enable percistence"-button to draw traces top of each other. This should make comparing different runs easier. Consider for example adding either NOP or MUL blocks one by one to program to see how trace changes. You may also test other gain settings than in earlier setup in hope of achieving more clear differences between instructions.
-
-When you think you have managed to detect different instructions and have good understanding what is happening, you can proceed to next part which describes what you must return on this task.
+Inspect results when you change amount of instructions / add more blocks of different instructions. Try to detect different instructions executing from the trace.
 
 ### What to return in this task?
 
-Now it is time to make your actual returnable items for this task.
+Make program consisting of varying amounts of NOP and MUL blocks containing at least 40 instructions of total and several instruction blocks mixed.
 
-Make 3 different programs and one trace capture for each of them. Take screenshot of trace capture and describe with text where which operation happens (like next: From sample x to y there executes 10 instructions of z etc) or draw the places of different instruction blocks to screenshot with some image editor. It is up to you decide how you tell it, as long as you show somehow that you have detected different instruction executions.
+For example 15 x NOP, 15 x MUL, 10 x NOP, 10 x MUL could be complex enough.
 
-Make 3 test runs with next instructions executing, take screenshots and mark down/describe which instructions are executing and where:
-* 30 x NOP instructions
-* 30 x MUL instructions
-* Some amount of 10-sized instruction blocks and some amount of other 10-sized instruction block mixed. Total amount of them should be at least 40 (for example, 10 x NOP, 10 x MUL, 10 x NOP, 10 x MUL fulfills this requirement).
+Take screenshot of resulting trace and add textual description / draw on image where are those instructions happening ("From sample x to y there executes 10 instructions of z" etc).
 
-Add those 3 required items (+ possible textual explanations) to your return template to gain points from this task.
+Add answer to return template.
+
+TODO: you can navigate to code file and edit in within jupyter, location is for example hardware/victims/firmware/simpleserial-base-lab2/simpleserial-base.c
+
+TODO: first in tutorial you will be trying simple loops and seeing those in pt
+TODO: hint how to put 2 traces in one image?
+
+TODO: hints about magick reboot? is it necessary?
+
+TODO: remember platform?
+TODO: remember gain setting (25 should be ok)
+TODO: hint that things happen beginning and rest is futile clutter
 
 ## C) Breaking AES
 
