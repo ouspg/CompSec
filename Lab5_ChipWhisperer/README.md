@@ -18,8 +18,6 @@ Computer Security Lab 5: ChipWhisperer
   * [Task 3](#Task-3)
   * [Task 4](#Task-4)
 
-* [Ideas for coursework](#Ideas-for-coursework)
-
 # Preliminary tasks
 
 Get familiar with following background information
@@ -124,9 +122,7 @@ To connect and use ChipWhisperer device and analyze power traces, you need ChipW
 
 If you want go go for option 2 or 3, software packages are downloadable [here](https://github.com/newaetech/chipwhisperer/releases).
 
-This lab tasks are tested with ChipWhisperer software version 4.0.1 (which is already on this course virtual machine, no need to change anything). If you install your own system, pay attention that you get the right version of program. Tasks should be doable with 4.0.x versions of software but this is not guaranteed by any means by anybody.
-
-First stable version of ChipWhisperer v5 software was published in the end of July. Unfortunately using it would most likely break this lab completely because changes in new version are quite massive. Changing this lab to fully support v5 in this timeframe was not feasible to do, so this year we still use version 4.
+This lab tasks are tested with ChipWhisperer software version 5.2.1 (which is already on this course virtual machine, no need to change anything). If you install your own system, pay attention that you get the right version of program.
 
 ---
 
@@ -147,8 +143,6 @@ Notice that some tasks (1C and 2B) require ChipWhisperer device only in early st
 ## Task 1
 
 TODO: say how to login to jupyter and that all data is in jupyter folder and hardware/victims/firmware contais device code
-
-Ok, let's begin.
 
 Task 1 tasks are meant to be relatively simple tasks to help you understand that what is the Chipwhisperer device and what can be done with it. You will learn how to connect the board, inspect power traces and use ChipWhisperer analyzer program.
 
@@ -351,7 +345,7 @@ First we discuss about theory of attack against RSA implementation and after tha
 
 TODO: pre-recorded trace possibility? How made? Some fast project and snippet to copy traces
 
-### Breaking RSA theory
+### Theory
 
 First, if you do not know what is RSA, you can find basic information about if from https://en.wikipedia.org/wiki/RSA_(cryptosystem).
 
@@ -447,7 +441,7 @@ if(t & (1<<(BIGINT_WORD_SIZE-1))){
 
 This is execution dependent on our private key, and if we can deduce which branch is executed, we could determine the private key bits one by one!
 
-### Breaking RSA
+### Task
 
 ChipWhisperer RSA demo is used in this task. It has stripped version of RSA decryption algorithm, which is running only the vulnerable part of decryption algorithm and using only last 16 bits of private key. You may read *hardware/victims/firmware/simpleserial-rsa/simpleserial-rsa-xmega.c* to see faked version of code.
 
@@ -470,14 +464,14 @@ Hints:
 
 ---
 # Task 3
-TODO: intro sentence
 
-TODO: no need for mentioning power glitching
-A glitching attack is an intentional fault introduced to undermine device security. These faults can for example cause instruction skipping,malformed data reads/write backs and instruction decoding errors. Below is a picture of the ChipWhisperers glitch generating process. Note that the clock can be either the target devices clock (clock glitching) or ChipWhisperers own clock(power glithching).
+A glitching attack is an intentional fault introduced to undermine device security. These faults can for example cause instruction skipping, malformed data reads / write backs and instruction decoding errors.
 
-TODO: remember to attach sma cable glitch ports
+In this task you will learn basic fault injection to device to make it behave unintended way: Skipping login prompts, overreading buffers and injecting faults to encryption algorithms to reveal private key are all possible with skilled glitching!
 
-## Introduction to clock glitch attacks
+Remember to attach SMA cable tod glitch ports of the device before starting.
+
+## A) Introduction to clock glitch attacks
 
 TODO: remember always platform CW303 and stuff
 
@@ -490,18 +484,25 @@ Tutorial offers working attack code for function `glitch3()`, but code uses tnra
 You can consider yourself successful when you manage to glitch trough functions `glitch1()` and `glitch3()`. Take screenshots of your success and put those in the return template. Important in this tutorial is to find correct parameters for glitching for the future usage and accustome yourself to clock glitching.
 
 
-## Buffer glitch attack
+## B) Buffer glitch attack
 
-TODO: doing basic stuff?
+In this task you will be attacking unsafe assembly code as tutorial Fault_3-Glitch_Buffer_Attacks.ipynb instructs. Do parts 1.1-1.3, take screenshot of your successful attack and answer questions in your return template.
 
-TODO: you can tune values based on last taks
+> You can tune tried glitch parameters to the ones that you retrieved in the last task
 
-TODO: assembly question?
+> You can improve glitch parameter testing by using `arange` from `numpy` instead of `tnrange` as you probably did in last task.
 
-TODO: this too other than tnrange?
+When you manage to glitch decrypted data out of the device with given attack code, consider next:
 
+Attack is based on the vulnerable code created by compiler optimizations. What happens when you turn loop counting variable ``i`` to form
 
-## Differential Fault Analysis on AES
+```c
+volatile int i;
+```
+
+Look at file `bootloader-CW303.lss` after recompilation. How does the assembly code change? Is similar attack against this kind of code possible anymore? If not, how attack could be evolved?
+
+## C) Differential Fault Analysis on AES
 
 You already broke AES implementation key in task 1C, but there is more ways to steal private key from the device.
 
@@ -516,7 +517,6 @@ TODO: Glitching is rather tedious process, so expect that you may have to...
 TODO: Better questions?
 
 When you have completed tutorial, take screeshot/copy script output to return sheet to show that you have calculated correct key by injecting faults to correct places of code. Specify also the glitch parameters you used in your attack script. Also answer shortly to next question **Describe shortly how the attack you performed is working. What kind of glitches are hoped to happen? Why certain point for the attack? What is the difference between 8th and 9th round attack? Why solving the round key is interesting?**'
-
 
 ---
 # Task 4 
