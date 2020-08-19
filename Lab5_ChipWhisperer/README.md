@@ -47,6 +47,8 @@ This "Introduction" section contains background information about power analysis
 
 ## Practical arrangements of this lab
 
+TODO: rewrite needed
+
 This lab is little bit different than others because tasks require the usage of external device. Number of devices are limited which causes some difficulties to arrangements.
 * Students are encouraged/forced to do work in groups of 2 or 3 persons in lab sessions. Size of group heavily depends on how many students attend to lab sessions.
 * Students are encouraged to borrow device do the lab ahead of schedule to balance load on actual lab week
@@ -152,26 +154,23 @@ Tasks 3 and 4 are more laborous and it is likely that those can not be done in t
 
 Read task instructions carefully before starting to work to have clear picture about what you are supposed to do. Every task should be clearly stating what you are expected to do and return.
 
+Most of the tasks are based on ChipWhisperer tutorials which are located in folder */jupyter/*. Programs running on the target device are located at */hardware/victims/firmware*.
+
 **If you are doing this work in group, remember to mark down clearly which of you participated on which tasks**
 
-Notice that some tasks (1C and 2B) require ChipWhisperer device only in early stages of task for recording power traces. This gives possibility to for example finish them at home without device if you manage to save correct traces during lab session or your friend records traces and sends them to you.
+TODO: Should those traces be provided in ready package or something?
 
 ## Task 1
 
-TODO: say how to login to jupyter and that all data is in jupyter folder and hardware/victims/firmware contais device code
-
 Task 1 tasks are meant to be relatively simple tasks to help you understand that what is the Chipwhisperer device and what can be done with it. You will learn how to connect the board, inspect power traces and use ChipWhisperer analyzer program.
-
-TODO: how to setup jupyter + vm etc
 
 ChipWhisperer software and tutorials utilize Jupyter Notebook. Everything is packed in ready-to-run virtual machine which can be found on university drive or Chipwhisperer github page.
 
 If you have not used Jupyter Notebook before, it can be beneficial to complete tutorial !!Introduction_to_Jupyter!!.ipynb
 
-TODO: if you have not used jupyter before, suggest completing jupyter tutorial !!Introduction_to_Jupyter!!.ipynb
-
 ## A) Getting started with device, jupyter and SimpleSerial protocol
-Complete ChipWhisperer basic tutorial named *PA_Intro_1-Firmware_Build_Setup.ipynb* under jupyter folder of main page. Purpose of this part is simply to give you some experience of the basic usage of ChipWhisperer which is required in later tasks of this lab exercise. **You are not required to return anything for this task**, but it is critical that you learn to use ChipWhisperer on basic level because otherwise all other tasks are very difficult to complete. Basically important things what you will be doing in that tutorial are next:
+Complete ChipWhisperer basic tutorial named *PA_Intro_1-Firmware_Build_Setup.ipynb* under jupyter folder of main page. Purpose of this part is simply to give you some experience of the basic usage of ChipWhisperer which is required in later tasks of this lab exercise.
+**You are not required to return anything for this task**, but it is critical that you learn to use ChipWhisperer on basic level because otherwise all other tasks are very difficult to complete. Basically important things what you will be doing in that tutorial are next:
 
 1. Learn what is SimpleSerial
 2. Build basic example (Notice that target chip platform is type CW303 and you have to build program for that platform)
@@ -181,7 +180,7 @@ Complete ChipWhisperer basic tutorial named *PA_Intro_1-Firmware_Build_Setup.ipy
 
 Tutorial is rather straightforward and self-explanatory, so most likely failing point might be only
 
-TODO: assembe device? tell new to jupyter to make intro tutorial first
+If you have never used Jupyter Notebook before, consider doing tutorial *!!Introduction_to_Jupyter!!.ipynb* first.
 
 __TIPS & TRICKS__
 * You might have to unplug & plug USB cable again if computer or the capture software does not recognize the device. You also might have to unplug & plug device from virtual machine top right corner to make it detect it.
@@ -190,9 +189,7 @@ __TIPS & TRICKS__
 
 ## B) Inspecting power differences of simple operations
 
-In this task, we will inspect how the different operations on victim affect to the power consumption of it. As you already intuitively know, not every operation processor performs is equal: Some operations are more complex than others, causing them to consume more power and clock cycles than other operations. By measuring power consumption from target, therefore we can deduce what operation is performed and when.
-
-In this task you will be creating programs which repeats different types of assembly operations and capture power traces from the device to inspect them.
+Next we will inspect how the different operations on victim affect to the power consumption of it. As you already intuitively know, not every operation processor performs is equal: Some operations are more complex than others, causing them to consume more power and clock cycles than other operations. By measuring power consumption from target, therefore we can deduce what operation is performed and when.
 
 In this task you will capture traces by completing tutorial PA_Intro_2-Instruction_Differences.ipynb and analyze produced results.
 
@@ -264,32 +261,39 @@ Take screenshot of resulting trace and add textual description / draw on image w
 
 Add answer to return template.
 
-TODO: you can navigate to code file and edit in within jupyter, location is for example hardware/victims/firmware/simpleserial-base-lab2/simpleserial-base.c
-
-TODO: first in tutorial you will be trying simple loops and seeing those in pt
 TODO: hint how to put 2 traces in one image?
 
 TODO: hints about magick reboot? is it necessary?
 
-TODO: remember platform?
 TODO: remember gain setting (25 should be ok)
 TODO: hint that things happen beginning and rest is futile clutter
 
-## C) Breaking AES
+> Remember that your device is ChipWhisperer Lite and target CW303, so always use `SCOPETYPE = 'OPENADC'` and `PLATFORM = 'CW303'` as settings
 
-TODO: Instructing how to do without device, it seems that tutorial 1 loads from project and that project could be given as saved...
+> Remember also that you must disconnect device from one notebook with
+> ```Python
+> scope.dis()
+> target.dis()
+> ```
+> before using device with next tutorial
+
+
+## C) Breaking AES
 
 Previous task considered power differences between single operations, which might not be very practical itself. However this task will be hopefully more interesting and related to real world than basic inspection of single operations.
 
 In this task we are going to break AES with Correlation Power Analysis attack.
 
-This task is done by completing ChipWhisperer tutorial PA_CPA_2-Manual_CPA_Attack.ipynb and explaining theory behind attack. There exists also tutorial PA_CPA_1-Using_CW-Analyzer_for_CPA_Attack.ipynb which uses pre-existing utility scripts of ChipWhisperer Analyzer software, but we will do this task more low-level way (feel free to complete that tutorial too if you like fancier outputs!).
+This task is done by completing ChipWhisperer tutorial *PA_CPA_2-Manual_CPA_Attack.ipynb* and explaining theory behind attack.
+There exists also tutorial *PA_CPA_1-Using_CW-Analyzer_for_CPA_Attack.ipynb* which uses pre-existing utility scripts of 
+ChipWhisperer Analyzer software, but we will do this task more low-level way (feel free to complete that tutorial too if you like fancier outputs!).
 
-More common information about AES can be found at https://en.wikipedia.org/wiki/Advanced_Encryption_Standard
+More common information about AES can be found [here](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 
-TODO: NOTICE: Remember to build code on correct platform (CW303)
+If you have no access to device, you can ask saved project containing necessary traces from your friend or course assistant.
 
-### What to do to complete this task?
+### What to return in this task?
+Next 2 things:
 
 **Screenshot of your attack successfully solving the key**
 
@@ -308,13 +312,9 @@ If you have troubles in your writing, you can consider next list of questions as
 ---
 # Task 2
 
-TODO: complete rewrite and simplification
+In task 2, there is 2 tasks which require closer analysing of power traces with small Python scripts.
 
-TODO: intro paragraph might be wrong
-TODO: hints about remembering to disconnet and like that simple notebook cannot be connected if another notebook is already
-
-
-In task 2, there is 2 tasks which require closer analysing of power traces with small Python scripts. Notice that you can easily continue working on task B at home after lab session without device if you manage to capture and save power traces for yourself.
+You will learn how to pass simple password check by power analysis and how to solve RSA private key bits by measuring execution time.
 
 ## A) Password bypass with power analysis
 In this task you will break in to secure device by analysis of the power traces of device when it processes your login attempts.
@@ -325,10 +325,9 @@ Target program compares inputted password against correct password character by 
 
 Feel free to read source code of program before building it as supplementary information.
 
-This task is completed by completing tutorial PA_SPA_1-Timing_Analysis_with_Power_for_Password_Bypass.ipynb and succeeding in the breaking full password with simple power analysis. Notice: You do not have to do part 1.8 of the same tutorial considering SAD approach to this task.
+This task is completed by completing tutorial *PA_SPA_1-Timing_Analysis_with_Power_for_Password_Bypass.ipynb* and succeeding in the breaking full password with simple power analysis. Notice: You do not have to do part 1.8 of the same tutorial considering SAD approach to this task.
 
 Scripts for making password bypass attack are provided in tutorial, but values in them are not correct for your device, and you have to solve those yourself to make your attack working.
-
 
 __HINT__: You can use password guesses where the first letter is wrong, then the second etc. This should give you an idea how the power trace differ with different inputs. You can easily compare traces with different inputs by modifying next provided code:
 
@@ -359,7 +358,7 @@ In this task you will explore the principles of breaking RSA implementation by a
 
 First we discuss about theory of attack against RSA implementation and after that instructions for this task and what to return are given.
 
-TODO: pre-recorded trace possibility? How made? Some fast project and snippet to copy traces
+TODO: pre-recorded trace possibility? How made? Some fast project and snippet to copy traces, must be rethink if possible
 
 ### Theory
 
