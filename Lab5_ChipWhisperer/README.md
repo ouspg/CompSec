@@ -68,7 +68,7 @@ Task| Grade/Level | Description | Good-to-have skills
 --|:--:|--|--
 1|2|Getting started with ChipWhisperer, inspecting power traces and breaking AES|Basic understanding of C and Assembly code, reading and understanding technical articles, basic understanding of statistics
 2|3|Password bypass with timing attack and breaking RSA with power and timing analysis|Simple Python coding
-3|4|Glitching|Slightly more complex Python coding
+3|4|Glitching|Python skills, patience, C and Assembly
 4|5|Several alternatives for advanced experimenting|Different advanced skills depending on your project
 
 ---
@@ -111,18 +111,34 @@ More detailed documentation of the device can be found from http://wiki.newae.co
 
 ## Software setup
 
-TODO: rewrite or redo this section
-TODO: converting vmware image from virtual box image?
+In this lab we will use ChipWhisperer software version 5.2.1. VMWare virtual machine containing Jupyter Notebook which is used to run ChipWhisperer tutorials.
+Just run virtual machine and access localhost:8888 from your browser.
 
-To connect and use ChipWhisperer device and analyze power traces, you need ChipWhisperer software installed on your machine. There is 3 different ways to do that, choose the one that suits you best.
+You can use VirtualBox too if it is necessary. Download virtual machine from [GitHub](https://github.com/newaetech/chipwhisperer/releases/tag/5.2.1)
+and run it (you may have to set up password yourself on first startup). WMWare machine was just converted from this image, so both should be exactly same.
 
-* Option 1: We recommend that you use preconfigured virtual machine image (VMWare) of this laboratory exercise. It has everything installed and all scripts set ready. To get image, follow instructions at main page of this course.
-* Option 2: If you do not want to use ready image or can not use WMWare images, you may download clean image from manufacturer [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). After that clone this repository and get setup scripts from scripts folder.
-* Option 3: If you refuse to use virtual machines, you may install ChipWhisperer software your own machine [by following these instructions](https://wiki.newae.com/Installing_ChipWhisperer). There is no reason why it would not work, but notice that we have not tested this option and therefore we might not be able to help you if you run into problems which are caused by your custom installation.
+On first start, virtual machine may require you to login and specify password for Jupyter Notebook and restart virtual machine to it take effect. User/Password: vagrant/vagrant.
 
-If you want go go for option 2 or 3, software packages are downloadable [here](https://github.com/newaetech/chipwhisperer/releases).
+After successful run you can connect to Jupyter Notebook with your browser.
 
-This lab tasks are tested with ChipWhisperer software version 5.2.1 (which is already on this course virtual machine, no need to change anything). If you install your own system, pay attention that you get the right version of program.
+### VMWare virtual machine
+
+Notice:
+
+* Device might not connect correctly if you do not give correct USB Controller setting on virtual machine settings (Use USB Compatibility 2.0)
+* On first run, you must login virtual machine (user/password: vagrant/vagrant) and run command `ip address` to get the connectable address of Jupyter Notebook. Port is 8888.
+
+### VirtualBox machine
+
+TODO: verify if some additions to plain vbox installation needed
+
+* Address to connect Jupyter Notebook is localhost:8888
+
+### Other
+
+If you already have instance of Jupyter Notebook running on your system, then feel free just to install ChipWhisperer software on it.
+
+If you want to make custom installation on your machine (native, follow instructions [here](https://chipwhisperer.readthedocs.io/en/latest/installing.html).
 
 ---
 
@@ -470,6 +486,8 @@ A glitching attack is an intentional fault introduced to undermine device securi
 In this task you will learn basic fault injection to device to make it behave unintended way: Skipping login prompts, overreading buffers and injecting faults to encryption algorithms to reveal private key are all possible with skilled glitching!
 
 Remember to attach SMA cable tod glitch ports of the device before starting.
+
+> Remember to use `PLATFORM = 'CW303'` as platform setting when you compile your code for the target
 
 ## A) Introduction to clock glitch attacks
 
