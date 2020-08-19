@@ -265,8 +265,6 @@ Take screenshot of resulting trace and add textual description / draw on image w
 
 Add answer to return template.
 
-TODO: hint how to put 2 traces in one image?
-
 > Remember also that you must disconnect device from one notebook with
 > ```Python
 > scope.dis()
@@ -522,7 +520,9 @@ In this task you will inject faults into specific place of running algorithm and
 
 Main steps of AES are nicely described in [Wikipedia article](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).
 
-In this task you will be completing tutorial *Fault_4-AES_Differential_Fault_Analysis_Attacks.ipynb*. Tutorial contains rather straightforward descriptions and scripts for this attack, but glitch parameters and the correct place of execution to be glitched are wrong. You must find correct places to glitch yourself (8th and 9th round key between MixColumn step as described in tutorial) and you can use values of width and offset for the glitch from the previous task when you find out those for your device.
+In this task you will be completing tutorial *Fault_4-AES_Differential_Fault_Analysis_Attacks.ipynb*.
+Tutorial contains rather straightforward descriptions and scripts for this attack, but glitch parameters and the correct place of execution to be glitched are wrong.
+You must find correct places to glitch yourself (8th and 9th round key between MixColumn step as described in tutorial) and you can use values of width and offset for the glitch from the previous task when you find out those for your device.
 
 TODO: Better questions?
 
