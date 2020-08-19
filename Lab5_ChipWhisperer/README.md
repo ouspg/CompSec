@@ -251,6 +251,10 @@ Remember always that anytime you make modifications to program, you have to rebu
 
 Inspect results when you change amount of instructions / add more blocks of different instructions. Try to detect different instructions executing from the trace.
 
+> You can use different gain setting (25 should be fine) to make trace more readable
+
+> Remember that your device is ChipWhisperer Lite and target CW303, so always use `SCOPETYPE = 'OPENADC'` and `PLATFORM = 'CW303'` as settings
+
 ### What to return in this task?
 
 Make program consisting of varying amounts of NOP and MUL blocks containing at least 40 instructions of total and several instruction blocks mixed.
@@ -262,13 +266,6 @@ Take screenshot of resulting trace and add textual description / draw on image w
 Add answer to return template.
 
 TODO: hint how to put 2 traces in one image?
-
-TODO: hints about magick reboot? is it necessary?
-
-TODO: remember gain setting (25 should be ok)
-TODO: hint that things happen beginning and rest is futile clutter
-
-> Remember that your device is ChipWhisperer Lite and target CW303, so always use `SCOPETYPE = 'OPENADC'` and `PLATFORM = 'CW303'` as settings
 
 > Remember also that you must disconnect device from one notebook with
 > ```Python
@@ -490,8 +487,6 @@ Remember to attach SMA cable tod glitch ports of the device before starting.
 
 ## A) Introduction to clock glitch attacks
 
-TODO: remember always platform CW303 and stuff
-
 Fist task of this section is to pass simple clock glitching tutorial *Fault_1-Introduction_to_Clock_Glitch_Attacks.ipynb* In this tutorial you will learn what is clock glitching and you will find suitable glitching parameters for your device to be used in later tasks.
 
 Tutorial is rather straightforward, but searching of the glitch parameters can take some time. Go and grab cup of coffee while search is running.
@@ -528,8 +523,6 @@ In this task you will inject faults into specific place of running algorithm and
 Main steps of AES are nicely described in [Wikipedia article](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).
 
 In this task you will be completing tutorial *Fault_4-AES_Differential_Fault_Analysis_Attacks.ipynb*. Tutorial contains rather straightforward descriptions and scripts for this attack, but glitch parameters and the correct place of execution to be glitched are wrong. You must find correct places to glitch yourself (8th and 9th round key between MixColumn step as described in tutorial) and you can use values of width and offset for the glitch from the previous task when you find out those for your device.
-
-TODO: Glitching is rather tedious process, so expect that you may have to...
 
 TODO: Better questions?
 
