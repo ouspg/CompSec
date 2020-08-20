@@ -77,8 +77,6 @@ Task| Grade/Level | Description | Good-to-have skills
 
 # Setting up
 
-TODO: Setup explaining: simple jupyter vm that contains everything, minimal setup should be possible
-
 Due to external device and specialized software, this lab needs some extra work to set everything up.
 
 ## Hardware setup
@@ -150,7 +148,7 @@ Start your work from Task 1 and proceed to harder ones. Every task is designed t
 
 Task 1 and 2 together are designed to take about 4+ hours to complete. Try to finish those at lab session. You can borrow equipment if you want to continue working with those tasks at home.
 
-Tasks 3 and 4 are more laborous and it is likely that those can not be done in time limit of single lab session. You must discuss about borrowing equipment with lab assistants if you want to do those tasks.
+Tasks 3 and 4 are more laborious and it is likely that those can not be done in time limit of single lab session. You must discuss about borrowing equipment with lab assistants if you want to do those tasks.
 
 Read task instructions carefully before starting to work to have clear picture about what you are supposed to do. Every task should be clearly stating what you are expected to do and return.
 
@@ -169,7 +167,8 @@ ChipWhisperer software and tutorials utilize Jupyter Notebook. Everything is pac
 If you have not used Jupyter Notebook before, it can be beneficial to complete tutorial !!Introduction_to_Jupyter!!.ipynb
 
 ## A) Getting started with device, jupyter and SimpleSerial protocol
-Complete ChipWhisperer basic tutorial named *PA_Intro_1-Firmware_Build_Setup.ipynb* under jupyter folder of main page. Purpose of this part is simply to give you some experience of the basic usage of ChipWhisperer which is required in later tasks of this lab exercise.
+
+**Complete ChipWhisperer basic tutorial named *PA_Intro_1-Firmware_Build_Setup.ipynb*.** Purpose of this part is simply to give you some experience of the basic usage of ChipWhisperer which is required in later tasks of this lab exercise.
 **You are not required to return anything for this task**, but it is critical that you learn to use ChipWhisperer on basic level because otherwise all other tasks are very difficult to complete. Basically important things what you will be doing in that tutorial are next:
 
 1. Learn what is SimpleSerial
@@ -191,9 +190,7 @@ __TIPS & TRICKS__
 
 Next we will inspect how the different operations on victim affect to the power consumption of it. As you already intuitively know, not every operation processor performs is equal: Some operations are more complex than others, causing them to consume more power and clock cycles than other operations. By measuring power consumption from target, therefore we can deduce what operation is performed and when.
 
-In this task you will capture traces by completing tutorial PA_Intro_2-Instruction_Differences.ipynb and analyze produced results.
-
-Do the sections 1.1-1.4 of the tutorial to familiarize yourself with modifying code and plotting and inspecting traces.
+**This task is completed by doing tutorial *PA_Intro_2-Instruction_Differences.ipynb*** and analyzing produced results. Do the sections 1.1-1.4 of the tutorial to familiarize yourself with modifying code and plotting and inspecting traces.
 
 After completing simple loop comparison tests, we will inspect power differences between single instructions:
 
@@ -247,7 +244,7 @@ trigger_low();
 
 Above code performs first 10 NOP (no-operation) instructions and after that 10 MUL (multiplication between registers r0 and r1).
 
-Remember always that anytime you make modifications to program, you have to rebuild it and reupload it to the device. Also make sure that you are uploading correct program to device.
+Remember always that anytime you make modifications to program, you have to rebuild it and reprogram the device. Also make sure that you are uploading correct program to device.
 
 Inspect results when you change amount of instructions / add more blocks of different instructions. Try to detect different instructions executing from the trace.
 
@@ -279,7 +276,8 @@ Previous task considered power differences between single operations, which migh
 
 In this task we are going to break AES with Correlation Power Analysis attack.
 
-This task is done by completing ChipWhisperer tutorial *PA_CPA_2-Manual_CPA_Attack.ipynb* and explaining theory behind attack.
+**This task is done by completing ChipWhisperer tutorial *PA_CPA_2-Manual_CPA_Attack.ipynb*** and explaining theory behind attack.
+
 There exists also tutorial *PA_CPA_1-Using_CW-Analyzer_for_CPA_Attack.ipynb* which uses pre-existing utility scripts of 
 ChipWhisperer Analyzer software, but we will do this task more low-level way (feel free to complete that tutorial too if you like fancier outputs!).
 
@@ -314,13 +312,13 @@ You will learn how to pass simple password check by power analysis and how to so
 ## A) Password bypass with power analysis
 In this task you will break in to secure device by analysis of the power traces of device when it processes your login attempts.
 
-Target program on victim device is simple. It prints initial information, waits for user to input login password and check if it is right. If it is, program prints welcome text and lights up green led. If not, program reports failure and red led turns on.
+Program to be hacked is simple: It prints initial information, waits for user to input login password and check if it is right. If it is, program prints welcome text and lights up green led. If not, program reports failure and red led turns on.
 
-Target program compares inputted password against correct password character by character and ends comparing if wrong character is encountered. This kind of process is obviously vulnerable against timing attacks. In this program, timing attack is countered by adding random wait time after failed password input. Catch here is that login system is still vulnerable to power analysis, which will be utilized here. With power analysis, we can see every character being processed and therefore we can determine when program hits the wrong character.
+Program compares inputted password against correct password character by character and ends comparing if wrong character is encountered. This kind of process is obviously vulnerable against timing attacks. In this program, timing attack is countered by adding random wait time after failed password input.
 
-Feel free to read source code of program before building it as supplementary information.
+Catch here is that login system is still vulnerable to power analysis, which will be utilized here. With power analysis, we can see every character being processed and therefore we can determine when program hits the wrong character.
 
-This task is completed by completing tutorial *PA_SPA_1-Timing_Analysis_with_Power_for_Password_Bypass.ipynb* and succeeding in the breaking full password with simple power analysis. Notice: You do not have to do part 1.8 of the same tutorial considering SAD approach to this task.
+This task is completed by completing tutorial *PA_SPA_1-Timing_Analysis_with_Power_for_Password_Bypass.ipynb* and succeeding in the breaking full password with simple power analysis. You do not have to do part 1.8 of the same tutorial considering SAD approach to this task.
 
 Scripts for making password bypass attack are provided in tutorial, but values in them are not correct for your device, and you have to solve those yourself to make your attack working.
 
@@ -453,15 +451,15 @@ This is execution dependent on our private key, and if we can deduce which branc
 
 ### Task
 
-ChipWhisperer RSA demo is used in this task. It has stripped version of RSA decryption algorithm, which is running only the vulnerable part of decryption algorithm and using only last 16 bits of private key. You may read *hardware/victims/firmware/simpleserial-rsa/simpleserial-rsa-xmega.c* to see faked version of code.
+**This task is completed by doing ChipWhisperer tutorial *PA_SPA_2-RSA_on_XMEGA_8bit.ipynb***. You will be doing only SAD-based attack part of it (so you do not have to do part 1.5).
 
-In this task you will be doing ChipWhisperer tutorial PA_SPA_2-RSA_on_XMEGA_8bit.ipynb. You will be doing only SAD-based attack part of it ( So you do not have to do part 1.5).
+Custom version of RSA is used in this task. It has stripped version of RSA decryption algorithm, which is running only the vulnerable part of decryption algorithm and using only last 16 bits of private key. You may read code from *hardware/victims/firmware/simpleserial-rsa/simpleserial-rsa*.
 
 Follow the tutorial and solve encryption key by finding reference sample and measuring execution time of encryption loops as instructed.
 
 Notice that sample and delta values in tutorial are most likely producing bad SAD match plot and wrong overall results. You are required to inspect traces yourself as you see fit and find correct values yourself.
 
-Hints:
+**Hints:**
 * Closely inspect to try find nice reference pattern for SAD calculation. Easily distinguishable close-to-zero spikes mean that good match is found.
 * Pay attention how many matches are found/needed
 
@@ -485,7 +483,7 @@ Remember to attach SMA cable tod glitch ports of the device before starting.
 
 ## A) Introduction to clock glitch attacks
 
-Fist task of this section is to pass simple clock glitching tutorial *Fault_1-Introduction_to_Clock_Glitch_Attacks.ipynb* In this tutorial you will learn what is clock glitching and you will find suitable glitching parameters for your device to be used in later tasks.
+**Fist task is to pass simple clock glitching tutorial *Fault_1-Introduction_to_Clock_Glitch_Attacks.ipynb***. In this tutorial you will learn what is clock glitching and you will find suitable glitching parameters for your device to be used in later tasks.
 
 Tutorial is rather straightforward, but searching of the glitch parameters can take some time. Go and grab cup of coffee while search is running.
 
@@ -496,7 +494,8 @@ You can consider yourself successful when you manage to glitch trough functions 
 
 ## B) Buffer glitch attack
 
-In this task you will be attacking unsafe assembly code as tutorial Fault_3-Glitch_Buffer_Attacks.ipynb instructs. Do parts 1.1-1.3, take screenshot of your successful attack and answer questions in your return template.
+**In this task you will complete tutorial *Fault_3-Glitch_Buffer_Attacks.ipynb***. Do parts 1.1-1.3, which concentrate on attacking unsafe assebly code.
+After being successful, take screenshot of results and answer additional questions in your return template.
 
 > You can tune tried glitch parameters to the ones that you retrieved in the last task
 
@@ -510,7 +509,8 @@ Attack is based on the vulnerable code created by compiler optimizations. What h
 volatile int i;
 ```
 
-Look at file `bootloader-CW303.lss` after recompilation. How does the assembly code change? Is similar attack against this kind of code possible anymore? If not, how attack could be evolved?
+Look at file `bootloader-CW303.lss` after recompilation. Answer next questions to your return template:
+How does the assembly code change? Is similar attack against this kind of code possible anymore? If not, how attack could be evolved?
 
 ## C) Differential Fault Analysis on AES
 
@@ -520,13 +520,13 @@ In this task you will inject faults into specific place of running algorithm and
 
 Main steps of AES are nicely described in [Wikipedia article](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).
 
-In this task you will be completing tutorial *Fault_4-AES_Differential_Fault_Analysis_Attacks.ipynb*.
+**In this task you will be completing tutorial *Fault_4-AES_Differential_Fault_Analysis_Attacks.ipynb*.**
 Tutorial contains rather straightforward descriptions and scripts for this attack, but glitch parameters and the correct place of execution to be glitched are wrong.
 You must find correct places to glitch yourself (8th and 9th round key between MixColumn step as described in tutorial) and you can use values of width and offset for the glitch from the previous task when you find out those for your device.
 
-TODO: Better questions?
-
-When you have completed tutorial, take screeshot/copy script output to return sheet to show that you have calculated correct key by injecting faults to correct places of code. Specify also the glitch parameters you used in your attack script. Also answer shortly to next question **Describe shortly how the attack you performed is working. What kind of glitches are hoped to happen? Why certain point for the attack? What is the difference between 8th and 9th round attack? Why solving the round key is interesting?**'
+When you have completed tutorial, take screeshot/copy script output to return sheet to show that you have calculated correct key by injecting faults to correct places of code.
+Specify also the glitch parameters you used in your attack script.
+Also answer shortly to next questions: **Describe shortly how the attack you performed is working. What kind of glitches are hoped to happen? Why certain point for the attack? What is the difference between 8th and 9th round attack? Why solving the round key is interesting?**
 
 ---
 # Task 4 
