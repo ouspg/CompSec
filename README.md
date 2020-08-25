@@ -45,9 +45,9 @@ The course is organized by Oulu University Secure Programming Group (OUSPG)
 
   
 
-The course has seven (7) lectures, six (6) laboratory exercises and Moodle exam. Course does not contain final coursework this year because separate course considering it is planned.
+The course has six (6) lectures, six (6) laboratory exercises and 5 Moodle exams. Course does not contain final coursework this year because separate course considering it is planned.
 
-Lectures are handling topics from high perspective and they are not going technically deep. Moodle exam is based on the lectures.
+Lectures are handling topics from high perspective and they are not going technically deep. Moodle exams are based on the lectures.
 
 Laboratory exercises are thought as independent packages: containing theory and exercises, and going technologically very deep.
 
@@ -67,7 +67,7 @@ Lab materials are located in their corresponding folders:
 
 See section about [virtual machines](#Virtual-machines) to setup laboratory environment in the University classes or at home.
 
-To pass this course with grade 1, you have to pass the Moodle exam.
+To pass this course with grade 1, you have to pass the Moodle exams.
 
 To get better grade, you have to do some laboratory exercises.
 You can somewhat decide what grade you will earn on this course because you can (hopefully!) see from the beginning how much work is required to each grade.
@@ -129,7 +129,11 @@ Total Points|Total Grade
 
 </details>
 
-## Moodle exam (WIP)
+## Moodle exams (WIP)
+
+5 Moodle exams (every week but last one), are required to pass the course. Exams are based on lecture topics and additional material.
+
+WIP: Week time or restricted time? How many attempts? What kind of questions? Multiselect or essay questions? Points or binary pass/fail?
 
 ## Deadlines
 
@@ -139,15 +143,14 @@ Total Points|Total Grade
 
 Each week has deadline for corresponding lab exercise.
 
-Week | Course week|Lecture Topics|Laboratory|Deadline
+Course week|Lecture Topics|Laboratory|Deadline
 :-:|:-:|:-:|:-:|:--:
-36 | 1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing | WIP .09.2020, at 23:55
-37 | 2 | Network security, risk | Network and websecurity |WIP .09.2020, at 23:55
-38 | 3 | Cybercrime, botnets, malware  | Botnets and malwares |WIP .09.2020, at 23:55
-39 | 4 | Software vulnerabilities and exploits | Shellcoding |WIP .09.2020, at 23:55
-40 | 5 | Hardware security | HW and side channels |WIP .09.2020, at 23:55
-41 | 6 | Production security, IoT security | Digital forensics|WIP .09.2020, at 23:55
-42 | 7 | Privacy, GDPR, future challenges | - |
+1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing | WIP .09.2020, at 23:55
+2 | Network security, risk | Network and websecurity |WIP .09.2020, at 23:55
+3 | Cybercrime, botnets, malware  | Botnets and malwares |WIP .09.2020, at 23:55
+4 | Software vulnerabilities and exploits | Shellcoding |WIP .09.2020, at 23:55
+5 | Hardware security | HW and side channels |WIP .09.2020, at 23:55
+6 | Production security, IoT security | Digital forensics|WIP .09.2020, at 23:55
 
 
 
