@@ -8,8 +8,8 @@ Computer Security Lab 2: Networks and web security
 ## About the lab
 
 * This document contains task descriptions and theory for the network lab. If there are any differences between the return template and this file, consider this to be the up-to-date document.
-* **You can use your own computer if you want.** Check the chapter "Prerequisities" for information on what you need to install. This lab has been made to be completed in a Linux environment and tested to work in Ubuntu and Kali. However, it should work in any other operating system.
-* You are not expected to be able to finish all the tasks during the lab session. Feel free to continue them at your own time.
+* **You can use your own computer/virtual machine if you want.** Check the chapter "Prerequisities" for information on what you need to install. This lab has been made to be completed in a Linux environment and tested to work in the provided Kali Linux virtual machine.
+* It is estimated, that you are able to do Tasks 1-3 during a typical lab session (4 hours). **Upper grade requires that all previous ones have been done as well.**
 * Check the deadline from Moodle and __remember that you have to return your name and GitHub repository information to Moodle before deadline.__
 
 ## Background
@@ -337,7 +337,7 @@ If your modified HTML doesn't show up on the site, try to restart apache2.
 Now we will do something different and try some basic brute forcing. Do the following:
 
 * Start [muumitalo](https://github.com/Latsis/Muumitalo).  ```git clone https://github.com/Latsis/Muumitalo``` follow the instruction on the git page on how to start it. You will be brute forcing this server
-* Create a wordlist containing mutations of the word "torille". Create mutations where individual letters case changes between upper and lower case. Also make mutations where letter 'o' can be number '0', letter 'i' can be number '1' and letter 'e' can be number '3'. (For example 't0r1lL3'.)
+* Create a wordlist containing mutations of the word "vaapukkamehu". Create mutations where individual letters case changes between upper and lower case. Also make mutations where letter 'a' can be number '4' and letter 'e' can be number '3'. (For example 'va4pukK4m3Hu'.)
 * Brute force the right answer to the question posed by the server using the wordlist you created.
 You can use any tools you find online. If you want to, you can code your own mutator. Alternatively, you can search online for an existing mutator/mutators and use them to create the wordlist. Same thing with the actual attack. You can use programs like [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) to do the actual attack after you have created the wordlist.
 
