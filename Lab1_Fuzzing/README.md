@@ -3,8 +3,8 @@ Computer Security Lab 1: Fuzzing
 
 ## Preliminary tasks
 
-* Create Github account (although you probably already have one)
-* Create your own fork of the CompSec-2019-AnswerTemplate **as instructed [here](../README.md#instructions)**
+* Create Github account if you don't already have one
+* Create your own fork of the CompSec-2020-AnswerTemplate **as instructed [here](../README.md#instructions)**
 * Check the instructions on how to download and use the course's Kali Linux virtual machine
     * If you want to use your own computer, download and install VMWare Player to run the virtual machine. Virtualbox should work also.
 * Get familiar with the documentation for following tools:
@@ -17,8 +17,8 @@ Computer Security Lab 1: Fuzzing
 ## About the lab
 
 * This document contains task descriptions and theory for the fuzz testing lab. If there are any differences between the return template and this file, consider this to be the up-to-date document.
-* **You can use your own computer if you want.** Check the chapter "Prerequisities" for information on what you need to install. This lab has been made to be completed in a Linux environment and tested to work in the provided Kali Linux virtual machine.
-* It is estimated, that you are able to do Tasks 1,2 & 3 during the lab session (4 hours). Upper grade requires that all previous ones have been done as well. You are not expected to be able to finish all the tasks during the lab session, so feel free to continue them at your own time.
+* **You can use your own computer/virtual machine if you want.** Check the chapter "Prerequisities" for information on what you need to install. This lab has been made to be completed in a Linux environment and tested to work in the provided Kali Linux virtual machine.
+* It is estimated, that you are able to do Tasks 1-4 during a typical lab session (4 hours). **Upper grade requires that all previous ones have been done as well.**
 * Check the deadline from Moodle and __remember that you have to return your name and GitHub repository information to Moodle before deadline.__
 
 
