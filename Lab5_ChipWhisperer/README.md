@@ -140,6 +140,18 @@ If you already have instance of Jupyter Notebook running on your system, then fe
 
 If you want to make custom installation on your machine (native, follow instructions [here](https://chipwhisperer.readthedocs.io/en/latest/installing.html).
 
+
+## Remote ChipWhisperer machine
+
+This option is reserved for next students:
+
+* Students not living in Oulu so it would not be sensible to visit university and pick up device
+* Students can not visit university to pick up device due to the severe risk to health
+
+Course assistants provide one remote machine containing ChipWhisperer virtual machine and connected ChipWhisperer device.
+Contact course assistants to reserve time for the machine, SSH keys and more accurate instructions.
+Notice that you will be needing university account and working VPN connection to university network.
+
 ---
 
 # Tasks
