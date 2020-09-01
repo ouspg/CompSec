@@ -157,22 +157,27 @@ Course week|Lecture Topics|Laboratory|Deadline
 </details>
 
 
-## Virtual machines
+# Exercise environment (Virtual machines & other tools)
 
 <details><summary>Details (Click to collapse!)</summary>
 
-  
+Laboratory assignments utilize set of various tools and also handle potentially malicious files in Lab 3. Thus it is recommended to handle files in isolated environment, or at least the execution of tools happens in isolated environment at some level.
 
-Note: If you are using following virtual machines in your own pc, they are preconfigured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your pc, you might want to reduce this preconfigured RAM. 
+Straightforward solution for this are pre-configured virtual machines - if you have enough disk space and performance on your computer to use them. **For Windows user - this is the easiest way.**
+
+If you are already using Linux/macOS based operating system, the other option is to use specific tool called as [cincan-command](https://cincan.gitlab.io/cincan-command/).
+It is wrapper for Docker to run different kind of tools in isolated matter. The most of the tools provided here as examples, are usable with it.
+
+## Virtual machines
+
+Note: If you are using following virtual machines in your own pc, they are pre-configured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your pc, you might want to reduce this pre-configured RAM. 
 
 Each lab utilizes one of the virtual machines below:
 
-* Kali Linux - for shellcoding, fuzzing and web security lab
+* Kali Linux - for shellcoding, fuzzing, web security and malware lab
   * User: compsec
   * Password: course
-* Ubuntu 16.04 - for botnets and malware analysis
-  * User: compsec 
-  * Password: course
+
 * Lubuntu 17.04- side-channel attacks with ChipWhisperer
   * User: cwuser
   * Password. cwpassword
@@ -181,7 +186,12 @@ These virtual machines are located on network drive.
 
  Machines can be run directly from there, *but all changes on virtual machines are lost, after shutting them down.*
 
-### **Copy machine and run locally**
+
+### Classroom specific instructions (TS135/TS137/Any computer with VMware installed)
+
+If you are in the University premises and can access to laboratory computer which have VMware installed.
+
+#### **Copy machine and run locally**
 
 If you have enough space on your lab computer, and you are not too hesitated to start, recommended way is to copy virtual machine from network drive, and then start it locally. This way changes are not lost in shutdown.
 
@@ -199,7 +209,7 @@ Virtuaalikoneet$ -> VMware -> CompSec
 
 Copy selected virtual machine to C:\Temp folder.
 
-Run machine from .vmx file, which ***does not*** say 'copy and run'.
+Run machine from *.vmx* file, which ***does not*** say 'copy and run'.
 
 When the virtual machine asks if you have copied or moved the machine, press __"I copied it"__.
 
@@ -216,17 +226,8 @@ If you don't mind that changes are lost on shutdown, machines can be run directl
 (if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$"))^
  && (if exist "C:\Temp\Kali" (rd /s /q "C:\Temp\Kali"^
  && mkdir "C:\Temp\Kali") else (mkdir "C:\Temp\Kali"))^
- && copy "Z:\VMware\CompSec\Kalix64_2019\Kali_copy_and_run_me.vmx" "C:\Temp\Kali\Kali_copy_and_run_me.vmx"^
+ && copy "Z:\VMware\CompSec\Kalix64_2020\Kali_copy_and_run_me.vmx" "C:\Temp\Kali\Kali_copy_and_run_me.vmx"^
  && start "" "C:\Temp\Kali\Kali_copy_and_run_me.vmx"
-```
-### For Ubuntu 16.04: 
-
-```shell
-(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$"))^
- && (if exist "C:\Temp\Ubuntux64" (rd /s /q "C:\Temp\Ubuntux64"^
- && mkdir "C:\Temp\Ubuntux64") else (mkdir "C:\Temp\Ubuntux64"))^
- && copy "Z:\VMware\CompSec\Ubuntu16.04_64-bit\Ubuntu64_copy_and_run.vmx" "C:\Temp\Ubuntux64\Ubuntu64_copy_and_run.vmx"^
- && start "" "C:\Temp\Ubuntux64\Ubuntu64_copy_and_run.vmx"
 ```
 
 ### For Lubuntu 17.04:
@@ -270,7 +271,7 @@ Virtual machines are located in:
 
 Virtuaalikoneet$ -> VMware -> CompSec
 
-#### Running the Virtual machines under QEMU
+#### Running the Virtual machines under QEMU (Linux host)
 If you are using QEMU/KVM, you cannot directly load the .vmdk file to run the virtual machines as-is due to lack of support for split .vmdk files.
 
 In order to combine the .vmdk disk parts into a format QEMU can load you need to convert them into a .qcow2 disk file using qemu-img: 
