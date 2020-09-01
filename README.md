@@ -157,18 +157,18 @@ Course week|Lecture Topics|Laboratory|Deadline
 </details>
 
 
-# Exercise environment (Virtual machines & other tools)
+## Exercise environment (Virtual machines & other tools)
 
 <details><summary>Details (Click to collapse!)</summary>
 
 Laboratory assignments utilize set of various tools and also handle potentially malicious files in Lab 3. Thus it is recommended to handle files in isolated environment, or at least the execution of tools happens in isolated environment at some level.
 
-Straightforward solution for this are pre-configured virtual machines - if you have enough disk space and performance on your computer to use them. **For Windows user - this is the easiest way.**
+Straightforward solution for this are pre-configured virtual machines - if you have enough disk space and performance on your computer to use them. **For Windows users - this is the most convenient way.**
 
 If you are already using Linux/macOS based operating system, the other option is to use specific tool called as [cincan-command](https://cincan.gitlab.io/cincan-command/).
-It is wrapper for Docker to run different kind of tools in isolated matter. The most of the tools provided here as examples, are usable with it.
+It is wrapper for Docker to run different kind of tools in isolated matter. It makes installation of wide variety of tools easier while providing some level of isolation as well. The most of the tools used in exercises, are usable with it. It requires that Python 3.6+ and Docker are functioning in your system. Installation steps can be found from [documentation.](https://cincan.gitlab.io/cincan-command/installation.html)
 
-## Virtual machines
+### Virtual machines
 
 Note: If you are using following virtual machines in your own pc, they are pre-configured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your pc, you might want to reduce this pre-configured RAM. 
 
@@ -187,11 +187,11 @@ These virtual machines are located on network drive.
  Machines can be run directly from there, *but all changes on virtual machines are lost, after shutting them down.*
 
 
-### Classroom specific instructions (TS135/TS137/Any computer with VMware installed)
+## Classroom specific instructions (TS135/TS137/Any computer with VMware installed)
 
 If you are in the University premises and can access to laboratory computer which have VMware installed.
 
-#### **Copy machine and run locally**
+### **Copy machine and run locally**
 
 If you have enough space on your lab computer, and you are not too hesitated to start, recommended way is to copy virtual machine from network drive, and then start it locally. This way changes are not lost in shutdown.
 
