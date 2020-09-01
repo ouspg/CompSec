@@ -157,7 +157,7 @@ Course week|Lecture Topics|Laboratory|Deadline
 </details>
 
 
-## Exercise environment (Virtual machines & other tools)
+## Lab environment (Virtual machines & other tools)
 
 <details><summary>Details (Click to collapse!)</summary>
 
@@ -167,6 +167,8 @@ Straightforward solution for this are pre-configured virtual machines - if you h
 
 If you are already using Linux/macOS based operating system, the other option is to use specific tool called as [cincan-command](https://cincan.gitlab.io/cincan-command/).
 It is wrapper for Docker to run different kind of tools in isolated matter. It makes installation of wide variety of tools easier while providing some level of isolation as well. The most of the tools used in exercises, are usable with it. It requires that Python 3.6+ and Docker are functioning in your system. Installation steps can be found from [documentation.](https://cincan.gitlab.io/cincan-command/installation.html)
+
+If you want, you can install packages in normal way as well, or just to use provided virtual machine on Linux host as well.
 
 ### Virtual machines
 
@@ -189,7 +191,7 @@ These virtual machines are located on network drive.
 
 ## Classroom specific instructions (TS135/TS137/Any computer with VMware installed)
 
-If you are in the University premises and can access to laboratory computer which have VMware installed.
+If you are in the University premises and can access to laboratory computer which has VMware installed.
 
 ### **Copy machine and run locally**
 
