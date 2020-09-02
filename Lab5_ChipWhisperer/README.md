@@ -20,9 +20,10 @@ Computer Security Lab 5: ChipWhisperer
 
 # Preliminary tasks
 
-Get familiar with following background information
+Get familiar with following background information of ChipWhisperer and power analysis
+
 * [Power analysis on wikipedia](https://en.wikipedia.org/wiki/Power_analysis)
-* [ChipWhisperer's Introduction to Side-Channel Power Analysis training video](https://newae.com/training/online-training/)
+* [ChipWhisperer's Introduction to Side-Channel Power Analysis training video](https://www.youtube.com/watch?v=OlX-p4AGhWs)
   * 00:00-20:00, very basic things about what is encryption (You can easily skip this if you already handle the basics)
   * About 20:00-30:00, encryption and hardware
   * About 30:00-55:00, very detailed explanation how power analysis attack against AES works
