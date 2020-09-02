@@ -142,7 +142,7 @@ If you are rusty on your SQL injections check the following before you start: ht
 
 Start Juice Shop with the command
 ```shell
-~$ docker run --rm -p 3000:3000 bkimminich/juice-shop
+~$ docker run --rm -p 3000:3000 bkimminich/juice-shop:v8.7.2
 ```
 Site is hosted at ```localhost:3000```. Access it with your browser. Observe and modify the traffic with your browsers developer tools while browsing the site and do the following tasks.
 
