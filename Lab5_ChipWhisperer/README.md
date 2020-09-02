@@ -47,14 +47,11 @@ This "Introduction" section contains background information about power analysis
 
 ## Practical arrangements of this lab
 
-TODO: rewrite needed
-
 This lab is little bit different than others because tasks require the usage of external device. Number of devices are limited which causes some difficulties to arrangements.
-* Students are encouraged/forced to do work in groups of 2 or 3 persons in lab sessions. Size of group heavily depends on how many students attend to lab sessions.
+
+* Students are encouraged to do labwork in groups of 2 or 3 if possible. 
 * Students are encouraged to borrow device do the lab ahead of schedule to balance load on actual lab week
-* Students can borrow devices after/between lab sessions to continue working on tasks at home (alone, in same group or even with different people). In these cases pay close attention of **marking down clearly who participated on which tasks** because it is only way everybody can get the right amount of points when works are graded.
 * We try to arrange loaning times so that everyone would have chance to hold device at least couple of days if they want.
-* You may use ChipWhisperer device in your coursework, but notice that how long you can keep device yourself is heavily depending how much other people are wanting to borrow them. Discuss with course assistants as early as possible if you want to use ChipWhisperer in your coursework.
 
 ## Short intro to power analysis
 
@@ -169,8 +166,6 @@ Read task instructions carefully before starting to work to have clear picture a
 Most of the tasks are based on ChipWhisperer tutorials which are located in folder */jupyter/*. Programs running on the target device are located at */hardware/victims/firmware*.
 
 **If you are doing this work in group, remember to mark down clearly which of you participated on which tasks**
-
-TODO: Should those traces be provided in ready package or something?
 
 ## Task 1
 
@@ -364,8 +359,6 @@ You must return next 2 items to return template to gain points from this task:
 In this task you will explore the principles of breaking RSA implementation by analysing power traces. Basic idea is to detect conditional code branch execution from power trace and then deduct the private key that device uses internally.
 
 First we discuss about theory of attack against RSA implementation and after that instructions for this task and what to return are given.
-
-TODO: pre-recorded trace possibility? How made? Some fast project and snippet to copy traces, must be rethink if possible
 
 ### Theory
 
