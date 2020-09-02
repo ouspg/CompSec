@@ -144,13 +144,13 @@ WIP: Week time or restricted time? How many attempts? What kind of questions? Mu
 Each week has deadline for corresponding lab exercise.
 
 Course week|Lecture Topics|Laboratory|Deadline
-:-:|:-:|:-:|:-:|:--:
-1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing | WIP .09.2020, at 23:55
-2 | Network security, risk | Network and websecurity |WIP .09.2020, at 23:55
-3 | Cybercrime, botnets, malware  | Botnets and malwares |WIP .09.2020, at 23:55
-4 | Software vulnerabilities and exploits | Shellcoding |WIP .09.2020, at 23:55
-5 | Hardware security | HW and side channels |WIP .09.2020, at 23:55
-6 | Production security, IoT security | Digital forensics|WIP .09.2020, at 23:55
+:-:|:-:|:-:|:--:
+1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing | 14.09.2020, at 23:55
+2 | Network security, risk | Network and websecurity | 21.09.2020, at 23:55
+3 | Cybercrime, botnets, malware  | Botnets and malwares | 28.09.2020, at 23:55
+4 | Software vulnerabilities and exploits | Shellcoding | 5.10.2020, at 23:55
+5 | Hardware security | HW and side channels | 12.10.2020, at 23:55
+6 | Production security, IoT security | Digital forensics| 19.10.2020, at 23:55
 
 
 
