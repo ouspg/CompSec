@@ -200,6 +200,11 @@ You can mount network drive with following cmd command:
 ```
 net use z: "\\kaappi\Virtuaalikoneet$"
 ```
+If the domain `kaappi` is not found, try to use following instead:
+```shell
+net use z: "\\cifs.isi.oulu.fi\Virtuaalikoneet$" 
+```
+
 
 There should be now new Z: drive, named as Virtuaalikoneet$
 
@@ -246,6 +251,11 @@ Open Windows cmd:
 net use z: "\\kaappi\Virtuaalikoneet$"
 ```
 Drive should be mounted after giving correct credentials.
+
+If the domain `kaappi` is not found, try to use following instead:
+```shell
+net use z: "\\cifs.isi.oulu.fi\Virtuaalikoneet$" 
+```
 
 ### Linux (Debian - based)
 If you have mnt folder in root directory, and package *cifs-utils* is installed, you can:
