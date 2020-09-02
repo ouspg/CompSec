@@ -111,42 +111,44 @@ More detailed documentation of the device can be found from http://wiki.newae.co
 
 ## Software setup
 
-In this lab we will use ChipWhisperer software version 5.2.1. VMWare virtual machine containing Jupyter Notebook which is used to run ChipWhisperer tutorials.
-Just run virtual machine and access localhost:8888 from your browser.
+In this lab we will use ChipWhisperer software version 5.2.1, which runs in the Jupyter Notebook in the provided virtual machine.
 
-You can use VirtualBox too if it is necessary. Download virtual machine from [GitHub](https://github.com/newaetech/chipwhisperer/releases/tag/5.2.1)
-and run it (you may have to set up password yourself on first startup). WMWare machine was just converted from this image, so both should be exactly same.
+### Course VMWare virtual machine
 
-On first start, virtual machine may require you to login and specify password for Jupyter Notebook and restart virtual machine to it take effect. User/Password: vagrant/vagrant.
-
-After successful run you can connect to Jupyter Notebook with your browser.
-
-### VMWare virtual machine
-
-Notice:
+Download and start virtual machine. On first run, you must login virtual machine (user/password: vagrant/vagrant)
+and run command `ip address` to get the connectable address of Jupyter Notebook. Use that address in your browser
+with port 8888. Password for jupyter is "jupyter".
 
 * Device might not connect correctly if you do not give correct USB Controller setting on virtual machine settings (Use USB Compatibility 2.0)
-* On first run, you must login virtual machine (user/password: vagrant/vagrant) and run command `ip address` to get the connectable address of Jupyter Notebook. Port is 8888.
 
-### VirtualBox machine
+### Course VirtualBox machine
 
-TODO: verify if some additions to plain vbox installation needed
+Download and start virtual machine and connect localhost:8888 with your web browser. Password for jupyter is "jupyter".
 
-* Address to connect Jupyter Notebook is localhost:8888
+* If your connection fails when you try to connect your board first time, you may have to download and install VirtualBox extensions to make USB connection to work. 
+
+### Clear VirtualBox machine
+
+You can use clear virtual machine from ChipWhisperer GitHub too. Download virtual machine from [GitHub](https://github.com/newaetech/chipwhisperer/releases/tag/5.2.1)
+and run it (you may have to set up password yourself on first startup). Login to virtual machine (user/password: vagrant/vagrant),
+setup Jupyter password and reboot. Connect localhost:8888 with your web browser.
+
+* If your connection fails when you try to connect your board first time, you may have to download and install VirtualBox extensions to make USB connection to work. 
 
 ### Other
 
 If you already have instance of Jupyter Notebook running on your system, then feel free just to install ChipWhisperer software on it.
 
-If you want to make custom installation on your machine (native, follow instructions [here](https://chipwhisperer.readthedocs.io/en/latest/installing.html).
+If you want to make custom installation on your machine follow instructions [here](https://chipwhisperer.readthedocs.io/en/latest/installing.html).
 
+These options have not been tried, so no guarantees about those.
 
 ## Remote ChipWhisperer machine
 
 This option is reserved for next students:
 
 * Students not living in Oulu so it would not be sensible to visit university and pick up device
-* Students can not visit university to pick up device due to the severe risk to health
+* Students who can not visit university to pick up device due to the severe risk to their health
 
 Course assistants provide one remote machine containing ChipWhisperer virtual machine and connected ChipWhisperer device.
 Contact course assistants to reserve time for the machine, SSH keys and more accurate instructions.
