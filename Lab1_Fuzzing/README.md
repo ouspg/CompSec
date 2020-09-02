@@ -113,7 +113,7 @@ So, here's what you need to do:
 
     __Hint__: See AFL [documentation](http://lcamtuf.coredump.cx/afl/README.txt) to learn about instrumenting programs to use AFL compilers.
 
-4. Use AFL's example *.rtf* file located at ```/usr/share/afl/testcases/others/rtf/small_document.rtf``` to test that your UnRTF works by converting it to HTML:
+4. Use AFL's example *.rtf* file located at ```/usr/share/doc/afl++-doc/afl/testcases/others/rtf/small_document.rtf``` to test that your UnRTF works by converting it to HTML:
     ```shell
     ~$ ~/unrtf/bin/unrtf --html /<path>/<to>/<testfile>
     ```
