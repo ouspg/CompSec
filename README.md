@@ -32,7 +32,7 @@ The course is organized by Oulu University Secure Programming Group (OUSPG)
 
 * [Final coursework topics](#Final-coursework-topics)
 
-* [Virtual machines (Lab environment)](#Virtual-machines)
+* [Virtual machines (Lab environment)](#lab-environment)
 
 * [Contribution](#Contribution)
 
@@ -43,7 +43,6 @@ The course is organized by Oulu University Secure Programming Group (OUSPG)
 
 <details open><summary>Details</summary>
 
-  
 
 The course has six (6) lectures, six (6) laboratory exercises and 5 Moodle exams. Course does not contain final coursework this year because separate course considering it is planned.
 
@@ -157,7 +156,7 @@ Course week|Lecture Topics|Laboratory|Deadline
 </details>
 
 
-## Lab environment (Virtual machines & other tools)
+## Lab environment
 
 <details><summary>Details (Click to collapse!)</summary>
 
@@ -177,14 +176,15 @@ Note: If you are using following virtual machines in your own pc, they are pre-c
 Each lab utilizes one of the virtual machines below:
 
 * Kali Linux - for shellcoding, fuzzing, web security and malware lab
-  * User: compsec
-  * Password: course
+  * User: kali
+  * Password: kali
 
-* Lubuntu - (better information added later) for ChipWhisperer Lab
+* Lubuntu - (Precise information added later) for ChipWhisperer Lab
 
-These virtual machines are located on network drive.
+*Direct download links for these machines are provided in the Moodle page!*
+They are 7zip compressed. Run machine from *.vmx* file with VMware Player/VMware Workstation.
 
- Machines can be run directly from there, *but all changes on virtual machines are lost, after shutting them down.*
+These virtual machines are located on the University network drive, in case download speed on direct URLs are slow.
 
 
 ## Classroom specific instructions (TS135/TS137/Any computer with VMware installed)
@@ -215,26 +215,6 @@ Virtuaalikoneet$ -> VMware -> CompSec
 Copy selected virtual machine to C:\Temp folder.
 
 Run machine from *.vmx* file, which ***does not*** say 'copy and run'.
-
-When the virtual machine asks if you have copied or moved the machine, press __"I copied it"__.
-
-### **Run machine directly from network drive**
-
-This is the fastest way to start working: you don't need to wait copy-process.
-
-If you don't mind that changes are lost on shutdown, machines can be run directly from network drive.
-
- To run virtual machines from there, you have to use following commands. Open Windows cmd, and run them in there:
-
-### For Kali Linux:
-```shell
-(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$"))^
- && (if exist "C:\Temp\Kali" (rd /s /q "C:\Temp\Kali"^
- && mkdir "C:\Temp\Kali") else (mkdir "C:\Temp\Kali"))^
- && copy "Z:\VMware\CompSec\Kalix64_2020\Kali_copy_and_run_me.vmx" "C:\Temp\Kali\Kali_copy_and_run_me.vmx"^
- && start "" "C:\Temp\Kali\Kali_copy_and_run_me.vmx"
-```
-
 
 When the virtual machine asks if you have copied or moved the machine, press __"I copied it"__.
 
@@ -283,8 +263,7 @@ qemu-img convert Kali.vmdk Kali.qcow2
 
 ## Getting virtual machines remotely
 
-
-If you are not able to get in to University to copy virtual machines from network drive by using Lab computer, you can do it remotely as well.
+If direct download URLs are not functioning for any reason and if you are not able to get in to University to copy virtual machines from network drive by using Lab computer, you can do it remotely as well.
 This requires setting up *VPN - connection* to University network.
 This can be acquired by following guidelines presented [here.](https://www.oulu.fi/ict/openvpn) OpenVPN software is being used.
 
