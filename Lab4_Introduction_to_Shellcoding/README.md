@@ -338,7 +338,7 @@ Task 4 : To be released later
 
 [1]: https://www.scribd.com/document/60416747/NX-bit "Argento Daniele, Boschi Patrizio & Del Basso Luca - NX bit : A hardware-enforced BOF protection"
 
-[2]: https://www.shellblade.net/docs/ret2libc.pdf "InVoLuNTaRy - Performing a ret2libc Attack : Defeating a non-executable stack"
+[2]: https://shellblade.net/files/docs/ret2libc.pdf "InVoLuNTaRy - Performing a ret2libc Attack : Defeating a non-executable stack"
 
 [3]: http://seclists.org/bugtraq/1997/Aug/63 "Solar Designer (Alexander Peslyak) - Getting around non-executable stack (and fix)"
 
