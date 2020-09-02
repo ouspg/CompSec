@@ -181,7 +181,8 @@ Each lab utilizes one of the virtual machines below:
 
 * Lubuntu - (Precise information added later) for ChipWhisperer Lab
 
-*Direct download links for these machines are provided in the Moodle page!*
+**Direct download links for these machines are provided in the Moodle page!**
+
 They are 7zip compressed. Run machine from *.vmx* file with VMware Player/VMware Workstation.
 
 These virtual machines are located on the University network drive, in case download speed on direct URLs are slow.
