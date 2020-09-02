@@ -327,33 +327,8 @@ Extra: White paper introducing the ROP can be found [here][5].
 Tip: If you are being bit unlucky, and are facing some function addresses containing null bytes in non-Ascii-Armored system, try out some alternative functions. For example putchar function has putchar_unlocked alternative.
 
 ---
-Task 4 : A bit more advanced ROP implementation
+Task 4 : To be released later
 ----
-Ready for some challenge?
-
-Implement **one** of the described following tasks, and make step-by-step report (what,why and how) for what you did:
-
-* Complete *two* challenges here: https://ropemporium.com/
-It's recommended, that ret2win challenge is the first and another one of them. Especially in this task, we are more interested about explanations (what/why) than commands or payloads itself. Take care of doing report!
-
-
-* You can make simple example ROP implementation in **32-bit**(or in 64-bit, it's not restricted) system, which bypasses **ASLR**. (Is .text segment always randomized? Or is ret2plt method familiar?). You can create suitable vulnerable program yourself.
-
-* You can make simple example ROP implementation, which bypasses **stack canaries (aka cookies)**. (Compile with '-fstack-protector-all' - flag)
-You can create suitable vulnerable program yourself.
-
-* Do following pieces of code look familiar? This describes common way to open *remote* shell access. Make an attack implementation of remote shell with NX protected binary. You can find working assembly/C-code [here](src/remoteShell), which can help to understand, what payload could contain.
-
-``` c
-dup2(s, 0);
-dup2(s, 1);
-dup2(s, 2);
-execve("/bin/sh", 0, 0);
-```
-
-
-* **Something interesting** in shellcoding, but we haven't dealt with it yet?
-Feel free to implement and show us what you got. It does not necessary need to be related for ROP. **Your task has to be approved by assistant before you can start doing it.** Depending on estimated workload, this task could be extendable to final coursework.
 
 
 
