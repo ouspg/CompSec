@@ -36,19 +36,19 @@ Tasks 3 & 4 are more advanced than earlier ones. Implementation will very likely
 
 Task|Grade/Level|Description|
 ----|:---:|-----------|
-[Task 1](#task-1--basics-of-buffer-overflows "Task 1 : Basics of buffer overflows") | - |  Analyzing buffer overflow and changing execution flow
+[Task 1](#task-1--basics-of-buffer-overflows "Task 1 : Basics of buffer overflows") | 1 |  Analyzing buffer overflow and changing execution flow
 [Task 2](#task-2--arbitrary-code-execution "Task 2 : Arbitrary code execution") | 2 - 3| Arbitrary code execution in vulnerable program
 [Task 3](#task-3--defeating-no-execute "Task 3 : Defeating No-eXecute") | 4 | Code reuse attack techniques: ret2libc & ROP
 [Task 4](#task-4--a-bit-more-advanced-rop-implementation "Task 4 : A bit more advanced ROP implementation") | 5 | Taking ROP to next level
 
-By completing Task 1 and Task 2 A&B, you are eligible for passing the lab and getting minimum grade 2 from this lab. Completion of C part increases grade to 3.
+By completing Task 1, grade 1 can be achieved.
 
-Grade 1 can be acquired by doing lecture questionnaires from the corresponding lectures.
+By doing Task 2 A&B, you are eligible for grade 2 from this lab. Completion of C part increases grade to 3.
 
 Difficulty on tasks is expected to be exponentially raising as you go forward with them. Without understanding of previous task, next one could be very ambiguous.
 
 *Return completed tasks to your private GitHub repository!
-There will be answer template or more instructions.*
+There will be answer template.*
 
 </details>
 
