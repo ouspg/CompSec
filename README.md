@@ -168,7 +168,7 @@ Straightforward solution for this are pre-configured virtual machines - if you h
 If you are already using Linux/macOS based operating system, the other option is to use specific tool called as [cincan-command](https://cincan.gitlab.io/cincan-command/).
 It is wrapper for Docker to run different kind of tools in isolated matter. It makes installation of wide variety of tools easier while providing some level of isolation as well. The most of the tools used in exercises, are usable with it. It requires that Python 3.6+ and Docker are functioning in your system. Installation steps can be found from [documentation.](https://cincan.gitlab.io/cincan-command/installation.html)
 
-If you want, you can install packages in normal way as well, or just to use provided virtual machine on Linux host as well.
+If you want, you can install packages in normal way, or just to use provided virtual machine on Linux host as well.
 
 ### Virtual machines
 
@@ -180,9 +180,7 @@ Each lab utilizes one of the virtual machines below:
   * User: compsec
   * Password: course
 
-* Lubuntu 17.04- side-channel attacks with ChipWhisperer
-  * User: cwuser
-  * Password. cwpassword
+* Lubuntu - (better information added later) for ChipWhisperer Lab
 
 These virtual machines are located on network drive.
 
@@ -232,14 +230,6 @@ If you don't mind that changes are lost on shutdown, machines can be run directl
  && start "" "C:\Temp\Kali\Kali_copy_and_run_me.vmx"
 ```
 
-### For Lubuntu 17.04:
-```shell
-(if exist "Z:" (echo "Drive already mounted") else (net use z: "\\kaappi\Virtuaalikoneet$"))^
- && (if exist "C:\Temp\LUbuntu64" (rd /s /q "C:\Temp\LUbuntu64"^
- && mkdir "C:\Temp\LUbuntu64") else (mkdir "C:\Temp\LUbuntu64"))^
- && copy "Z:\VMware\CompSec\ChipWhisperer\LUbuntu64-bit_copy_and_run.vmx" "C:\Temp\LUbuntu64\LUbuntu64_copy_and_run.vmx"^
- && start "" "C:\Temp\LUbuntu64\LUbuntu64_copy_and_run.vmx"
-```
 
 When the virtual machine asks if you have copied or moved the machine, press __"I copied it"__.
 
