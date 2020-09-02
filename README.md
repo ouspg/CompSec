@@ -276,16 +276,7 @@ qemu-img convert Kali.vmdk Kali.qcow2
 
 If you are not able to get in to University to copy virtual machines from network drive by using Lab computer, you can do it remotely as well.
 This requires setting up *VPN - connection* to University network.
-This can be acquired by following guidelines presented [here.](http://www.oulu.fi/ict/vpn)
-
-Looks like two factor authentication(Authentication via SMS) is not enabled by default. You have to enable it by following instructions here: [http://www.oulu.fi/ict/authentication#vpn](http://www.oulu.fi/ict/authentication#vpn)
-
-**Shortly:**
- * Download suitable VPN client here: [https://www.oulu.fi/jakelu/vpn/](https://www.oulu.fi/jakelu/vpn/)
- * Login with student credentials is required
- * Once you have installed the correct client, start it
- * Use *sa.oulu.fi* as server URL.
- * Connect by using your student username and selecting Student (SMS) authentication method. You have to use strong authentication (Student (SMS)) to be able to mount the drive.
+This can be acquired by following guidelines presented [here.](https://www.oulu.fi/ict/openvpn) OpenVPN software is being used.
 
 After you have successfully connected to network, instructions are same as [here.](#getting-virtual-machines-over-eduroam-university-wlan)
 
