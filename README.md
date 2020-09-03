@@ -177,7 +177,8 @@ Each lab utilizes one of the virtual machines below:
   * User: kali
   * Password: kali
 
-* Lubuntu - (Precise information added later) for ChipWhisperer Lab
+* ChipWhisperer Jupyter virtual machine
+  * Both VMWare and VirtualBox versions available, more accurate information about setup on lab 5 page
 
 **Direct download links for these machines are provided in the Moodle page!**
 
