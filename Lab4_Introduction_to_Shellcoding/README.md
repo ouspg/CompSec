@@ -327,10 +327,73 @@ Extra: White paper introducing the ROP can be found [here][5].
 Tip: If you are being bit unlucky, and are facing some function addresses containing null bytes in non-Ascii-Armored system, try out some alternative functions. For example putchar function has putchar_unlocked alternative.
 
 ---
-Task 4 : To be released later
+
+Task 4 : Defeating ASLR (kinda)
 ----
 
+As the name implies, ASLR (Address Space Layout Randomization) randomizes locations in the virtual memory where modules are loaded.
 
+In this task, the executable is compiled with Position Independent Executable (PIE)
+disabled; therefore, ASLR is disabled for this executable. But hardcoding e.g., libc function addresses into the exploit is not possible in this task because of ASLR.
+
+Before starting working on this task confirm that ASLR is enabled:
+
+```console
+$ cat /proc/sys/kernel/randomize_va_space
+2
+```
+
+If not, enable ASLR:
+
+```console
+$ echo 2 | sudo tee /proc/sys/kernel/randomize_va_space
+2
+```
+
+Your objective is to:
+
+1. Find the buffer overflow vulnerability
+2. Figure out how it could be used to read memory. Hints:
+   1. Does the executable import functions that can print strings (or memory) to stdout?
+3. Use that to disclose imported libc function addresses. Hints:
+   1. Checkout .got.plt.
+   2. Remember to enter the main loop again after every read (ret back to loop start)
+      * Be careful that you ret to a correct place, otherwise, segfault is likely.
+4. Find libc version and base address using that information. Hints:
+   * Use libc database, such as https://libc.blukat.me/
+5. Compute your desired libc function (or gadget address) using that information
+6. Create a ROP chain that opens a local shell using e.g., system or execve
+
+See [task4.c](./src/vuln_progs/task4.c) for the vulnerable program source code.
+The 32-bit binary is in [bin/](./bin). The binary was compiled using:
+
+```console
+gcc task.c -m32 -no-pie -o task4
+```
+
+I recommend that you develop your exploit using pwntool script, similar to the one seen below. This one debugs the program using gdb and sets up breakpoints at locations `main` and `0x8049246`.
+In gdb, assembly can be viewed using `layout asm` and the stack can be printed using `x/20xw $esp`. Similarly, `x/20xw $ebp` prints current stack frame. See [GDB documentation](https://www.gnu.org/software/gdb/documentation/).
+
+```python
+#!/usr/bin/python3
+import pwn
+import pwnlib.util.packing as packing
+import struct
+
+pwn.context.terminal = ['/usr/bin/x-terminal-emulator', '-e']
+pwn.context.log_level = 'debug'
+
+io = pwn.pwnlib.gdb.debug('./program', '''
+break main
+break *0x8049246
+''')
+
+# put your exploit here
+
+io.interactive()
+```
+
+> ***Make step by step report. Explain in detail how you developed the exploit.***
 
 [//]: # (Hidden sourcelist for providing all the links.)
 
@@ -351,3 +414,4 @@ Microgadgets: Size Does Matter In Turing-complete Return-oriented
 Programming"
 
 [5]: https://cseweb.ucsd.edu/~hovav/dist/geometry.pdf "Hovav Shacham - The Geometry of Innocent Flesh on the Bone: Return-into-libc without Function Calls (on the x86)"
+
