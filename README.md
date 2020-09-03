@@ -128,11 +128,9 @@ Total Points|Total Grade
 
 </details>
 
-## Moodle exams (WIP)
+## Moodle exams
 
 5 Moodle exams (every week but last one), are required to pass the course. Exams are based on lecture topics and additional material.
-
-WIP: Week time or restricted time? How many attempts? What kind of questions? Multiselect or essay questions? Points or binary pass/fail?
 
 ## Deadlines
 
