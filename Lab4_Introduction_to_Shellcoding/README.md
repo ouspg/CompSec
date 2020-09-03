@@ -39,7 +39,7 @@ Task|Grade/Level|Description|
 [Task 1](#task-1--basics-of-buffer-overflows "Task 1 : Basics of buffer overflows") | 1 |  Analyzing buffer overflow and changing execution flow
 [Task 2](#task-2--arbitrary-code-execution "Task 2 : Arbitrary code execution") | 2 - 3| Arbitrary code execution in vulnerable program
 [Task 3](#task-3--defeating-no-execute "Task 3 : Defeating No-eXecute") | 4 | Code reuse attack techniques: ret2libc & ROP
-[Task 4](#task-4--defeating-aslr-kinda "Task 4 : A bit more advanced ROP implementation - ASLR bypass") | 5 | Taking ROP to next level - ASLR bypass
+[Task 4](#task-4--a-bit-more-advanced-rop-implementation "Task 4 : A bit more advanced ROP implementation") | 5 | A bit more advanced ROP implementation
 
 By completing Task 1, grade 1 can be achieved.
 
@@ -328,8 +328,11 @@ Tip: If you are being bit unlucky, and are facing some function addresses contai
 
 ---
 
-Task 4 : Defeating ASLR (kinda)
+Task 4 : A bit more advanced ROP implementation
 ----
+You have an option to do pre-defined task below **or** suggest some other task you would do. Something interesting in shellcoding, but we haven't dealt with it yet? Feel free to implement and show us what you got. It does not necessary need to be related for ROP particularly, but in the most cases it probably must. *Your task has to be approved by assistant before you can start doing it.*
+
+## Defeating ASLR (kinda) - pre-defined task
 
 As the name implies, ASLR (Address Space Layout Randomization) randomizes locations in the virtual memory where modules are loaded.
 
