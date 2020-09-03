@@ -128,7 +128,7 @@ Download and start virtual machine and connect localhost:8888 with your web brow
 ### Clear VirtualBox machine
 
 You can use clear virtual machine from ChipWhisperer GitHub too. Download virtual machine from [GitHub](https://github.com/newaetech/chipwhisperer/releases/tag/5.2.1)
-and run it (you may have to set up password yourself on first startup). Login to virtual machine (user/password: vagrant/vagrant),
+and run it (you may have to set up password yourself on first startup). New version (5.3) is released, but take version 5.2.1. Login to virtual machine (user/password: vagrant/vagrant),
 setup Jupyter password and reboot. Connect localhost:8888 with your web browser.
 
 * If your connection fails when you try to connect your board first time, you may have to download and install VirtualBox extensions to make USB connection to work. 
@@ -145,12 +145,12 @@ These options have not been tried, so no guarantees about those.
 
 This option is reserved for next students:
 
-* Students not living in Oulu so it would not be sensible to visit university and pick up device
+* Students not in Oulu so it would not be sensible to visit university and pick up device
 * Students who can not visit university to pick up device due to the severe risk to their health
 
 Course assistants provide one remote machine containing ChipWhisperer virtual machine and connected ChipWhisperer device.
-Contact course assistants to reserve time for the machine, SSH keys and more accurate instructions.
-Notice that you will be needing university account and working VPN connection to university network.
+Contact course assistants to reserve time for the machine, receive SSH keys and additional instructions.
+Notice that you need VPN connection to university network.
 
 ---
 
