@@ -365,7 +365,7 @@ Your objective is to:
 6. Create a ROP chain that opens a local shell using e.g., system or execve
 
 See [task4.c](./src/vuln_progs/task4.c) for the vulnerable program source code.
-The 32-bit binary is in [bin/](./bin). The binary was compiled using:
+The 32-bit binary is in [prog_bin/](./prog_bin). The binary was compiled using:
 
 ```console
 gcc task.c -m32 -no-pie -o task4
