@@ -32,14 +32,14 @@ You are eligible to following grades in this exercise by doing tasks as defined.
 
 It is estimated, that you are able to do Tasks 1 & 2 during lab session (4 hours).
 
-Tasks 3 & 4 are more advanced than earlier ones. Implementation will very likely take time outside of lab.
+Tasks 3 & 4 are more advanced than earlier ones. Implementation will very likely take much more time.
 
 Task|Grade/Level|Description|
 ----|:---:|-----------|
 [Task 1](#task-1--basics-of-buffer-overflows "Task 1 : Basics of buffer overflows") | 1 |  Analyzing buffer overflow and changing execution flow
 [Task 2](#task-2--arbitrary-code-execution "Task 2 : Arbitrary code execution") | 2 - 3| Arbitrary code execution in vulnerable program
 [Task 3](#task-3--defeating-no-execute "Task 3 : Defeating No-eXecute") | 4 | Code reuse attack techniques: ret2libc & ROP
-[Task 4](#task-4--a-bit-more-advanced-rop-implementation "Task 4 : A bit more advanced ROP implementation") | 5 | Taking ROP to next level
+[Task 4](#task-4--defeating-aslr-kinda "Task 4 : A bit more advanced ROP implementation - ASLR bypass") | 5 | Taking ROP to next level - ASLR bypass
 
 By completing Task 1, grade 1 can be achieved.
 
