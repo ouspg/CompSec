@@ -561,6 +561,9 @@ that will solve whole key and without Hamming Weight modeling. End of tutorial h
     * Your working attack code, which solves full key without Hamming Weight calculations
     * How many template traces are needed to solve key reliably with just single trace from target? Is amount feasible? Experiment yourself
 
+**NOTICE:** When capturing huge amount of traces (20k+), default 2GB RAM for virtual machine is most likely not enough (some crashes has occurred).
+Consider allocating at least 4GB or more RAM.
+
 These tasks do not have return template so you have to create your own. Do not limit yourself to above questions/items:
 You can tell anything that feels relevant in your return template (e.g. any problems encountered or other ideas about possible solutions).
 
