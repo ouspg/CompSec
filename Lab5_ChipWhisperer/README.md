@@ -539,30 +539,38 @@ Also answer shortly to next questions: **Describe shortly how the attack you per
 ---
 # Task 4 
 
-So you came this far and still want to continue working. Nice, because here begins the interesting stuff. Choose the option you like and start pushing forward. Notice that this task is most likely more challenging and laborius than previous ones (as you probably already guessed).
+Still want something more complex? Choose the option you like and start pushing forward and write report about it. Notice that this task is most likely more challenging and laborius than previous ones (as you probably already guessed).
 
-Advice about the report you will be making
+There is no answer template for these tasks. Option 1 has some more specific advice what to return, but remember next advice if you do other options:
  * Report must clearly show the all work you did. Otherwise it would be really hard to give you any kind of grade.
- * Also remember that even if long and exhaustive report is usually considered as good, you do not have to be *too* exhaustive. We would like to see students use their time to do interesting experiments rather than using time to write overly long reports. This is free-formed report and you can yourself decide what is important to tell and what is not.
+ * Also remember that even if long and exhaustive report is usually considered as good, you do not have to be *too* exhaustive. We would like to see students use their time to do interesting experiments rather than using time to write overly long reports. You yourself decide what is important to tell and what is not.
  * Notice that even failed attempts might give you some points if report shows that your try was well thought out.
- * Remember that clear report and good supplementary information (screenshots, instructions if your scripts needs something extra before running them etc) makes easy life for the person who grades your work :)
 
 ## Option 1. Tutorials
-Complete two tutorials listed below. You are expected to document the process. Explain what you did, what problems did you have, how did you solve them and what were the results.
-* [Breaking AES bootleader](https://wiki.newae.com/V4:Tutorial_A5_Breaking_AES-256_Bootloader)
-  * Notice that currently tutorial lacks some information about preprocessing settings and example code contains some code which does not work on ChipWhisperer Analyzer V 4.0.0. You have to figure out those problems yourself. Google, ChipWhisperer wiki pages and recoding couple of lines should solve these problems. If you dont manage to get valid traces yourself or dont have device, you can download example traces from link that is presented in tutorial.
-* [Breaking AES bootloader extended](https://wiki.newae.com/V4:Tutorial_A5-Bonus_Breaking_AES-256_Bootloader)
-  * First half of the tutorial is quite simple step-by-step example about how to solve IV. Second half (Attacking the signature) provides you example how to solve first byte of the secret signature on device, but tutorial leaves solving other 3 bytes of it as task for reader. Now your job is to create scripts or other means to solve whole secret signature (those still unsolved 3 bytes) of the device. Solve IV and then solve signature and document what you did. Notice that you must have device when doing this tutorial (or friend who is kind enough to send you recorded traces/run your capture scripts on device).
 
-Note that if you want to complete the [Breaking AES bootloader extended](https://wiki.newae.com/V4:Tutorial_A5-Bonus_Breaking_AES-256_Bootloader) tutorial you have to do [Breaking AES bootleader](https://wiki.newae.com/V4:Tutorial_A5_Breaking_AES-256_Bootloader) before it.
+* Complete tutorial *PA_DPA_3-AES_DPA_Attack.ipynb*. Tutorial explains quite well what is happening, but the code solving ghost peak problem is not working as intended.
+You have to find out why and then write working code (not huge amount of changes needed!). Return at least next items/answers:
+    * How this attack differs from AES CPA attack? Explain shortly
+    * Why do ghost peaks exist? Explain shortly
+    * Your working code (notice that it still might not be able to solve perfectly ALL bytes of key)
+    
+* Complete tutorial *PA_Profiling_1-Template_Attacks_HW_Assumption.ipynb*. Tutorial is rather straightforward and fast to complete,
+but it solves just first byte of the key and it uses Hamming Weight calculations. Your task is to create attack code
+that will solve whole key and without Hamming Weight modeling. End of tutorial has some advice to it. Return at least next items/answers:
+    * How this differs on DPA and CPA attacks against AES? Explain shortly
+    * Your working attack code, which solves full key without Hamming Weight calculations
+    * How many template traces are needed to solve key reliably with just single trace from target? Is amount feasible? Experiment yourself
+
+These tasks do not have return template so you have to create your own. Do not limit yourself to above questions/items:
+You can tell anything that feels relevant in your return template (e.g. any problems encountered or other ideas about possible solutions).
 
 ## Option 2. Glitch or analyze your own target hardware
 
 Alternatively you can attempt to glitch or analyze your own device. For example there is a [tutorial how to glitch raspberry pi](https://wiki.newae.com/V4:Tutorial_A3_VCC_Glitch_Attacks#Glitching_More_Advanced_Targets:_Raspberry_Pi) or how to [glitch LPC1114.](http://wiki.newae.com/Tutorial_A9_Bypassing_LPC1114_Read_Protect) Feel free to search examples from internet or ChipWhisperer wiki for ideas for additional targets. Document your process. Tell what kind of own experiments you tried or tutorial/blog post/etc you tried to repeat, how you did it and did you succeeded or not.
 
-__Note:__ **If you decide to glitch/analyze external device you are responsible for the chipwhisperer and for the target device. We are not responsible if you break either of the devices during your experiments**
+__Note:__ **If you decide to glitch/analyze external device you are responsible for the target device. We are not responsible if you brick your device by glitching it**
 
 ## Option 3. Your choice
-If you have some other topic that uses ChipWhisperer or is related to hardware security and you are interested on trying it you can do it and document the process and the results. For example, you could look for ideas presented in ChipWhisperer tutorials and theory articles and think how you could use them in your experiments. Notice that to be accepted as task 4 your own idea must be about equal level of required skill and workload than option 1 and 2 are. __REMEMBER:__ before you do your special idea please contact the assistants and make sure that the topic is ok. If idea is too large for lab task it is possible to do it later as a course work and use your initial results as level 5 of this lab.
+If you have some other topic that uses ChipWhisperer or is related to hardware security and you are interested on trying it you can do it and document the process and the results. For example, you could look for ideas presented in ChipWhisperer tutorials and theory articles and think how you could use them in your experiments. Notice that to be accepted as task 4 your own idea must be about equal level of required skill and workload than option 1 and 2 are. __REMEMBER:__ before you do your special idea please contact the assistants and make sure that the topic is ok.
 
 Notice that you can also just go and ask any additional ideas from course assistants. They might have some interesting basic ideas which are yet not so refined that those could be proposed in this documentation. But they are happy to share them with you and it is up to you to further refine idea.
