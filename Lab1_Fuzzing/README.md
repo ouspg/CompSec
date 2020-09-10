@@ -103,7 +103,7 @@ So, here's what you need to do:
     ```shell
     ~$ ./configure CC="<add_here>" --prefix=$HOME/unrtf
     ```
-    The ```--prefix=HOME$/unrtf``` flag sets the installation location of the binary file to be your home directory. This is recommended, so you don't have to give it access to the root directory.
+    The ```--prefix=$HOME/unrtf``` flag sets the installation location of the binary file to be your home directory. This is recommended, so you don't have to give it access to the root directory.
 
 3. **Compile and build** the program:
     ```shell
