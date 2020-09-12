@@ -495,7 +495,17 @@ Remember to attach SMA cable tod glitch ports of the device before starting.
 
 Tutorial is rather straightforward, but searching of the glitch parameters can take some time. Go and grab cup of coffee while search is running.
 
-Tutorial offers working attack code for function `glitch3()`, but code uses tnrange function that does not support decimal step ranges. You can modify code to support smaller steps easily by using `arange` from `numpy` instead of `tnrange`. Add additional print inside loop to follow execution of code in this case. 
+Tutorial offers working attack code for function `glitch3()`, but code uses tnrange function that does not support decimal step ranges.
+You likely have to modify code to support smaller steps to make attack work.
+This can be done easily by using `arange` from `numpy` instead of `tnrange`.
+Add additional print inside loop to follow execution of code in this case.
+
+Notice also that in provided attack code contains next:
+```Python
+if PLATFORM == "CW303" or PLATFORM == "CWLITEXMEGA":
+    pass
+```
+This is obviously not working and you have to add code to it yourself.
 
 You can consider yourself successful when you manage to glitch trough functions `glitch1()` and `glitch3()`. Take screenshots of your success and put those in the return template. Important in this tutorial is to find correct parameters for glitching for the future usage and accustome yourself to clock glitching.
 
