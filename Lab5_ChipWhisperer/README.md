@@ -513,6 +513,7 @@ You can consider yourself successful when you manage to glitch trough functions 
 ## B) Buffer glitch attack
 
 **In this task you will complete tutorial *Fault_3-Glitch_Buffer_Attacks.ipynb***. Do parts 1.1-1.3, which concentrate on attacking unsafe assebly code.
+Attack code is already provided and it most likely works without additional tweaking, so this part should be quite straightforward.
 After being successful, take screenshot of results and answer additional questions in your return template.
 
 > You can tune tried glitch parameters to the ones that you retrieved in the last task
@@ -528,7 +529,7 @@ volatile int i;
 ```
 
 Look at file `bootloader-CW303.lss` after recompilation. Answer next questions to your return template:
-How does the assembly code change? Is similar attack against this kind of code possible anymore? If not, how attack could be evolved?
+How does the assembly code change (how assembly look before/after)? What happens if you manage to find new loop ending place and make successfull glitch to it? Is similar attack against this kind of code possible anymore? If not, how attack could be evolved? (you do not have to implement your ideas)
 
 ## C) Differential Fault Analysis on AES
 
