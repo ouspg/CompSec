@@ -317,11 +317,11 @@ Do the following:
 
 Few helpful commands
 
-If the site is not visible at www.csrfattack.org, restart the apache2 service with the command:
+If the site is not visible at www.csrfattack.org, modify the ```/etc/hosts``` file by adding ```127.0.0.1    www.csrfattack.org``` after localhost and kali and then restart the apache2 service with the command:
 ```
 ~$ sudo service apache2 restart
 ```
-You can modify the site by editing the file found in 
+You can modify the template site by editing the file found in 
 ```
 /var/www/html/index.html
 ```
