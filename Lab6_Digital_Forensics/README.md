@@ -307,8 +307,6 @@ Fill your answers to the return template.
 
 Last stage of this lab is more free-formed experimenting. Pick your option and start to explore issue and write report what your found/tried and what were the results.
 
-Some ideas presented below are quite large ones, so there may be room to expand those to be also your coursework. Discuss that option with course assistants before starting to work with your idea.
-
 ### Option 1: Internet Browser Private Mode Forensics
 
 We already touched little bit of investigating browser volatile memory in earlier tasks. It was not extremely hard to extract URLs of visited sites that way.
@@ -338,7 +336,7 @@ Write free-formed report of what kind of experiments you tried and what kind of 
 
 Invent your own experiments connected somehow to digital forensics and tell your idea to course assistant before starting to work.
 
-Notice that your own idea should be about same difficulty level than option 1. If your idea happens to be too large you may return initial results here and continue to work with it and return finished project as your course work. Discuss with course assistants if you want to pursue that option.
+Notice that your own idea should be about same difficulty/workload level than option 1. 
 
 You may consider next vague ideas as examples of what kind of stuff could be tried:
 * Filesystem/volume slack space experimenting - What kind of data can be hidden there for example with different filesystems
