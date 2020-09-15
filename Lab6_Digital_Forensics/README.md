@@ -19,10 +19,11 @@ Get familiar with the documentation of following tools / useful background info 
 * [Steganography on Wikipedia](https://en.wikipedia.org/wiki/Steganography)
 * [Data recovery on Wikipedia](https://en.wikipedia.org/wiki/Data_recovery)
 * [Volatility wiki](https://github.com/volatilityfoundation/volatility/wiki)
-* Search information about different tools which could be used in forensical investigation
+* Search information about different tools which could be used in computer forensics
   * Examples: foremost, scalpel, exiftool, binwalk, strings
   * Simply writing "Digital forensics tools" to Google should provide huge load of information
 * Image metadata and criminals [The Register](https://www.theregister.co.uk/2016/09/19/dark_web_drug_sellers_shutter_locationtracking_exif_data_from_photos/)
+* [What is CTF?](https://dev.to/atan/what-is-ctf-and-how-to-get-started-3f04)
 
 ## Introduction
 
@@ -32,25 +33,37 @@ Field is too large to cover in single lab (there exist multiple different digita
 
 You can find good overview of the fied from [Wikipedia](https://en.wikipedia.org/wiki/Digital_forensics)
 
-Notice that this lab does not make you actually any kind of certified digigal forensics expert. There exist actual training for those jobs which may include also lot of evicence chain-of-custody and legal issues which are not paid attention in this lab at all. This lab tries to concentrate on interesting problem-solving situations which could theoretically be part of forensic investigation in real life.
+Notice that this lab does not make you actually any kind of certified digital forensics expert.
+There exist actual training for those jobs which may include also lot of evidence chain-of-custody and legal issues which are not paid attention in this lab at all.
+This lab tries to concentrate on interesting problem-solving situations which could theoretically be part of forensic investigation in real life.
 
 ## Practical arrangements of this lab
 
-This lab does not require any specific Linux distribution to be used. You are required to install quite many tools yourself, so anything you can install them on is good enough. Kali image used earlier in this course should work reasonably well with this lab (and it has large set of needed tools already installed).
+This lab does not require any specific Linux distribution to be used.
+You are required to install quite many tools yourself, so anything you can install them on is good enough.
+Kali image used earlier in this course should work reasonably well with this lab (and it has large set of needed tools already installed).
 
-All memory and image dumps are available at same place than virtual machines (packages are stored under folder "Lab6_Digital_Forensics"). Server logs of Task 2 are available in there too.
+All memory and image dumps are available at same place than virtual machines on university network drive (packages are stored under folder "Lab6_Digital_Forensics").
+There is also download link available in Moodle for that package.
 
 ## Important reminder
 
 As you (hopefully!) already know, this lab is somewhat different than the others.
 
-This lab features tasks being little similar than tasks in CTF-challenges. There is specified type of information hidden in somewhere and it is up to you to figure it out.
+This lab features tasks being little similar than tasks in CTF-challenges.
+There is specified type of information hidden in somewhere and it is up to you to figure it out.
 
-Basically this means that this lab may be harder than the others, instructions and directions where you should go are more unclear than in the other labs and change of tool usage problems and other irritating errors is higher than in the other labs. This lab is first time on this course so "maturity" of this lab could be classified as "experimental" rather than "stable" like other labs.
+Basically this means that this lab may be harder than the others,
+instructions and directions where you should go are more unclear than in the other labs and change of tool usage problems and other irritating errors is higher than in the other labs.
+This lab is arranged second time on this course.
+This means that some of the irritating points-of-failure from last year have been addressed, but this lab could still be described as more "experimental" than other labs.
 
-Other labs might have had simple tutorials/instructions how to use certain tools during them. This lab does not do such a thing. You are expected to determine yourself what tools you have to use and learn usage of them yourself.
+Other labs might have had simple tutorials/instructions how to use certain tools during them.
+This lab does not do such a thing. You are expected to determine yourself what tools you have to use and learn usage of them yourself.
 
-There may or may not be multiple ways to solve each task. You must use your own judgement to determine what ways could or should be pursued to gain success. Independent thinking/researching of problem and creative problem solving is highly encouraged.
+There may or may not be multiple ways to solve each task.
+You must use your own judgement to determine what ways could or should be pursued to gain success.
+Independent thinking/researching of problem and creative problem solving is highly encouraged.
 
 You are required to install all needed tools yourself and if there happens to be some problems with them - well, hopefully Google and your own troubleshooting skills can help you then.
 
