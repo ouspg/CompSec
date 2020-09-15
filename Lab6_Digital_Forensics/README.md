@@ -115,7 +115,7 @@ Police officers start to search Mallorys apartment and technician begins to inve
 Next to Mallorys computer is ordinary USB-memory stick. That stick is securely bagged to the evidence box for later inspection.
 
 But Mallory has some brutal surprise for digital forensic technician: Just as memory dump from volatile memory is secured to investigators external drive, Mallorys computer starts to smoke and soon catches on fire explosively. Technician grabs his drive containing memory dump and runs out of apartment because toxic smoke from melting components is starting to spread fastly.
-Apartment is evacuated fastly and any human casualties are avoided, but Mallorys improvised dead-man-switch - timed incendiary bomb inside computer which he supposedly managed to trigger when he heard police breaking in - has rendered whole machine totally unsalvageable.
+Apartment is evacuated in hurry and human casualties are avoided, but Mallorys improvised dead-man-switch - timed incendiary bomb inside computer which he supposedly managed to trigger when he heard police breaking in - has rendered whole machine unsalvageable.
 
 Investigators know that there was so much critical information gone with Mallorys computer, and any hope they have left lies in single memory dump of Mallorys machine and ordinary USB memory stick.
 
@@ -141,7 +141,7 @@ Your first task is to find 2 different GPS locations where police officers shoul
 > 
 > *You: How so? In this case we have court order for service provider to give us access to Mallorys email-account.*
 > 
-> *Leading investigator: Yes we do, but seems like they all have gone on holiday or something. I did not succeed connecting to anybody who could give us access right now. Typical corporate bureaucratics...*
+> *Leading investigator: Yes we do, but seems like they all have gone on holiday or something. I did not succeed connecting to anybody who could give us access right now. Typical corporate bureaucracy in action...*
 > 
 > *You: Oh. That's bad. But eventually we will get it.*
 > 
@@ -214,7 +214,7 @@ Some hints:
 * Hashcat might require some other libraries to be installed before it runs correctly
 * Feel free to utilize any other tool you can find to solve these tasks
 * Files with strong encryption and long enough passwords are unfeasible to be bruteforced
-* Mallory might have kept some unneccessary file clutter on his USB-stick just to annoy anybody else who happens to read it.
+* Mallory might have kept some unnecessary file clutter on his USB-stick just to annoy anybody else who happens to read it.
 * [File slack space](https://www.google.com/search?q=file+slack+space)
 
 
