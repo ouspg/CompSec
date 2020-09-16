@@ -260,23 +260,23 @@ Useful info
 * steghide and its counterpart [StegCracker](https://github.com/Paradoxis/StegCracker)
 
 Hints:
-* Simplest form of hiding text in image is simply writing it straight to the image data, as plain text or encoded text
+* Simplest form of hiding text in image is simply writing it straight to the image data, as plain text or encoded text (2 images)
   * Tools like `strings` and `hexdump` are useful in these cases
-  * Somebody could encode their message before injecting it to the image file, so you must decode it too
+  * Somebody could encode their message before injecting it to the image file, so you must decode it too (1 image)
 * More advanced image steganography includes modification of least-significant-bits (LSB) of PNG images.
   * Statistical tools exists to detect if image is tampered somehow
   * Tools like StegExpose and zsteg can detect and extract LSB-hidden information from images
-* It is possible to include file into another file
+* It is possible to include file into another file (1 image)
   * Obviously it makes file bigger than it should be
   * Tools like foremost and/or binwalk can detect this kind of file-in-file tampering
   * Image steganography tool `steghide` can encrypt and hide information to image very efficiently
     * That tool has counter named `StegCracker`, which bruteforces information hidden with `steghide` out of the image (but you have to provide wordlist for it)
-* Final hint for this task 1C comes from interrogation log:
+  * Last hint for this target comes from interrogation log:
 > *Interrogator: By the way, if you hid your secret data to image with some tool supporting encryption, would you use some leetspeak version of your own name as password? Like `m4lL0rY`*
 > 
 > *Mallory: H-h-haha, of couse not - I am not obviously that stupid!*
 > 
-> *Interrogators note: Mallory starts to sweat visibly*
+> *Mallory starts to sweat visibly*
 
 ## Task 2: Analyzing DDoS attack
 
