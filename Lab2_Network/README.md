@@ -144,7 +144,11 @@ Start Juice Shop with the command
 ```shell
 ~$ docker run --rm -p 3000:3000 bkimminich/juice-shop:v8.7.2
 ```
-Site is hosted at ```localhost:3000```. Access it with your browser. Observe and modify the traffic with your browsers developer tools while browsing the site and do the following tasks.
+Site is hosted at ```localhost:3000```. Access it with your browser. If you can't see the web page, terminate the container with ```Ctrl+C``` and try to restart docker with the command
+```shell
+~$ sudo systemctl restart docker
+```
+and run Juice Shop again. Observe and modify the traffic with your browsers developer tools while browsing the site and do the following tasks.
 
 __Note:__ In Firefox's dev tools, in the "Headers" section of packet information, there is a handy "Edit and Resend" button that can be used to modify packets.
 
@@ -317,11 +321,11 @@ Do the following:
 
 Few helpful commands
 
-If the site is not visible at www.csrfattack.org, restart the apache2 service with the command:
+If the site is not visible at www.csrfattack.org, modify the ```/etc/hosts``` file by adding ```127.0.0.1    www.csrfattack.org``` after localhost and kali and then restart the apache2 service with the command:
 ```
 ~$ sudo service apache2 restart
 ```
-You can modify the site by editing the file found in 
+You can modify the template site by editing the file found in 
 ```
 /var/www/html/index.html
 ```

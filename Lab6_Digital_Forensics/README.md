@@ -19,10 +19,11 @@ Get familiar with the documentation of following tools / useful background info 
 * [Steganography on Wikipedia](https://en.wikipedia.org/wiki/Steganography)
 * [Data recovery on Wikipedia](https://en.wikipedia.org/wiki/Data_recovery)
 * [Volatility wiki](https://github.com/volatilityfoundation/volatility/wiki)
-* Search information about different tools which could be used in forensical investigation
+* Search information about different tools which could be used in computer forensics
   * Examples: foremost, scalpel, exiftool, binwalk, strings
   * Simply writing "Digital forensics tools" to Google should provide huge load of information
 * Image metadata and criminals [The Register](https://www.theregister.co.uk/2016/09/19/dark_web_drug_sellers_shutter_locationtracking_exif_data_from_photos/)
+* [What is CTF?](https://dev.to/atan/what-is-ctf-and-how-to-get-started-3f04)
 
 ## Introduction
 
@@ -32,25 +33,37 @@ Field is too large to cover in single lab (there exist multiple different digita
 
 You can find good overview of the fied from [Wikipedia](https://en.wikipedia.org/wiki/Digital_forensics)
 
-Notice that this lab does not make you actually any kind of certified digigal forensics expert. There exist actual training for those jobs which may include also lot of evicence chain-of-custody and legal issues which are not paid attention in this lab at all. This lab tries to concentrate on interesting problem-solving situations which could theoretically be part of forensic investigation in real life.
+Notice that this lab does not make you actually any kind of certified digital forensics expert.
+There exist actual training for those jobs which may include also lot of evidence chain-of-custody and legal issues which are not paid attention in this lab at all.
+This lab tries to concentrate on interesting problem-solving situations which could theoretically be part of forensic investigation in real life.
 
 ## Practical arrangements of this lab
 
-This lab does not require any specific Linux distribution to be used. You are required to install quite many tools yourself, so anything you can install them on is good enough. Kali image used earlier in this course should work reasonably well with this lab (and it has large set of needed tools already installed).
+This lab does not require any specific Linux distribution to be used.
+You are required to install quite many tools yourself, so anything you can install them on is good enough.
+Kali image used earlier in this course should work reasonably well with this lab (and it has large set of needed tools already installed).
 
-All memory and image dumps are available at same place than virtual machines (packages are stored under folder "Lab6_Digital_Forensics"). Server logs of Task 2 are available in there too.
+All memory and image dumps are available at same place than virtual machines on university network drive (packages are stored under folder "Lab6_Digital_Forensics").
+There is also download link available in Moodle for that package.
 
 ## Important reminder
 
 As you (hopefully!) already know, this lab is somewhat different than the others.
 
-This lab features tasks being little similar than tasks in CTF-challenges. There is specified type of information hidden in somewhere and it is up to you to figure it out.
+This lab features tasks being little similar than tasks in CTF-challenges.
+There is specified type of information hidden in somewhere and it is up to you to figure it out.
 
-Basically this means that this lab may be harder than the others, instructions and directions where you should go are more unclear than in the other labs and change of tool usage problems and other irritating errors is higher than in the other labs. This lab is first time on this course so "maturity" of this lab could be classified as "experimental" rather than "stable" like other labs.
+Basically this means that this lab may be harder than the others,
+instructions and directions where you should go are more unclear than in the other labs and change of tool usage problems and other irritating errors is higher than in the other labs.
+This lab is arranged second time on this course.
+This means that some of the irritating points-of-failure from last year have been addressed, but this lab could still be described as more "experimental" than other labs.
 
-Other labs might have had simple tutorials/instructions how to use certain tools during them. This lab does not do such a thing. You are expected to determine yourself what tools you have to use and learn usage of them yourself.
+Other labs might have had simple tutorials/instructions how to use certain tools during them.
+This lab does not do such a thing. You are expected to determine yourself what tools you have to use and learn usage of them yourself.
 
-There may or may not be multiple ways to solve each task. You must use your own judgement to determine what ways could or should be pursued to gain success. Independent thinking/researching of problem and creative problem solving is highly encouraged.
+There may or may not be multiple ways to solve each task.
+You must use your own judgement to determine what ways could or should be pursued to gain success.
+Independent thinking/researching of problem and creative problem solving is highly encouraged.
 
 You are required to install all needed tools yourself and if there happens to be some problems with them - well, hopefully Google and your own troubleshooting skills can help you then.
 
@@ -102,7 +115,7 @@ Police officers start to search Mallorys apartment and technician begins to inve
 Next to Mallorys computer is ordinary USB-memory stick. That stick is securely bagged to the evidence box for later inspection.
 
 But Mallory has some brutal surprise for digital forensic technician: Just as memory dump from volatile memory is secured to investigators external drive, Mallorys computer starts to smoke and soon catches on fire explosively. Technician grabs his drive containing memory dump and runs out of apartment because toxic smoke from melting components is starting to spread fastly.
-Apartment is evacuated fastly and any human casualties are avoided, but Mallorys improvised dead-man-switch - timed incendiary bomb inside computer which he supposedly managed to trigger when he heard police breaking in - has rendered whole machine totally unsalvageable.
+Apartment is evacuated in hurry and human casualties are avoided, but Mallorys improvised dead-man-switch - timed incendiary bomb inside computer which he supposedly managed to trigger when he heard police breaking in - has rendered whole machine unsalvageable.
 
 Investigators know that there was so much critical information gone with Mallorys computer, and any hope they have left lies in single memory dump of Mallorys machine and ordinary USB memory stick.
 
@@ -128,7 +141,7 @@ Your first task is to find 2 different GPS locations where police officers shoul
 > 
 > *You: How so? In this case we have court order for service provider to give us access to Mallorys email-account.*
 > 
-> *Leading investigator: Yes we do, but seems like they all have gone on holiday or something. I did not succeed connecting to anybody who could give us access right now. Typical corporate bureaucratics...*
+> *Leading investigator: Yes we do, but seems like they all have gone on holiday or something. I did not succeed connecting to anybody who could give us access right now. Typical corporate bureaucracy in action...*
 > 
 > *You: Oh. That's bad. But eventually we will get it.*
 > 
@@ -201,7 +214,7 @@ Some hints:
 * Hashcat might require some other libraries to be installed before it runs correctly
 * Feel free to utilize any other tool you can find to solve these tasks
 * Files with strong encryption and long enough passwords are unfeasible to be bruteforced
-* Mallory might have kept some unneccessary file clutter on his USB-stick just to annoy anybody else who happens to read it.
+* Mallory might have kept some unnecessary file clutter on his USB-stick just to annoy anybody else who happens to read it.
 * [File slack space](https://www.google.com/search?q=file+slack+space)
 
 
@@ -247,23 +260,23 @@ Useful info
 * steghide and its counterpart [StegCracker](https://github.com/Paradoxis/StegCracker)
 
 Hints:
-* Simplest form of hiding text in image is simply writing it straight to the image data, as plain text or encoded text
+* Simplest form of hiding text in image is simply writing it straight to the image data, as plain text or encoded text (2 images)
   * Tools like `strings` and `hexdump` are useful in these cases
-  * Somebody could encode their message before injecting it to the image file, so you must decode it too
+  * Somebody could encode their message before injecting it to the image file, so you must decode it too (1 image)
 * More advanced image steganography includes modification of least-significant-bits (LSB) of PNG images.
   * Statistical tools exists to detect if image is tampered somehow
   * Tools like StegExpose and zsteg can detect and extract LSB-hidden information from images
-* It is possible to include file into another file
+* It is possible to include file into another file (1 image)
   * Obviously it makes file bigger than it should be
   * Tools like foremost and/or binwalk can detect this kind of file-in-file tampering
   * Image steganography tool `steghide` can encrypt and hide information to image very efficiently
     * That tool has counter named `StegCracker`, which bruteforces information hidden with `steghide` out of the image (but you have to provide wordlist for it)
-* Final hint for this task 1C comes from interrogation log:
+  * Last hint for this target comes from interrogation log:
 > *Interrogator: By the way, if you hid your secret data to image with some tool supporting encryption, would you use some leetspeak version of your own name as password? Like `m4lL0rY`*
 > 
 > *Mallory: H-h-haha, of couse not - I am not obviously that stupid!*
 > 
-> *Interrogators note: Mallory starts to sweat visibly*
+> *Mallory starts to sweat visibly*
 
 ## Task 2: Analyzing DDoS attack
 
@@ -294,8 +307,6 @@ Fill your answers to the return template.
 
 Last stage of this lab is more free-formed experimenting. Pick your option and start to explore issue and write report what your found/tried and what were the results.
 
-Some ideas presented below are quite large ones, so there may be room to expand those to be also your coursework. Discuss that option with course assistants before starting to work with your idea.
-
 ### Option 1: Internet Browser Private Mode Forensics
 
 We already touched little bit of investigating browser volatile memory in earlier tasks. It was not extremely hard to extract URLs of visited sites that way.
@@ -325,7 +336,7 @@ Write free-formed report of what kind of experiments you tried and what kind of 
 
 Invent your own experiments connected somehow to digital forensics and tell your idea to course assistant before starting to work.
 
-Notice that your own idea should be about same difficulty level than option 1. If your idea happens to be too large you may return initial results here and continue to work with it and return finished project as your course work. Discuss with course assistants if you want to pursue that option.
+Notice that your own idea should be about same difficulty/workload level than option 1. 
 
 You may consider next vague ideas as examples of what kind of stuff could be tried:
 * Filesystem/volume slack space experimenting - What kind of data can be hidden there for example with different filesystems

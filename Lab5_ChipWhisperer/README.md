@@ -513,6 +513,7 @@ You can consider yourself successful when you manage to glitch trough functions 
 ## B) Buffer glitch attack
 
 **In this task you will complete tutorial *Fault_3-Glitch_Buffer_Attacks.ipynb***. Do parts 1.1-1.3, which concentrate on attacking unsafe assebly code.
+Attack code is already provided and it most likely works without additional tweaking, so this part should be quite straightforward.
 After being successful, take screenshot of results and answer additional questions in your return template.
 
 > You can tune tried glitch parameters to the ones that you retrieved in the last task
@@ -528,7 +529,7 @@ volatile int i;
 ```
 
 Look at file `bootloader-CW303.lss` after recompilation. Answer next questions to your return template:
-How does the assembly code change? Is similar attack against this kind of code possible anymore? If not, how attack could be evolved?
+How does the assembly code change (how assembly look before/after)? What happens if you manage to find new loop ending place and make successfull glitch to it? Is similar attack against this kind of code possible anymore? If not, how attack could be evolved? (you do not have to implement your ideas)
 
 ## C) Differential Fault Analysis on AES
 
@@ -540,7 +541,9 @@ Main steps of AES are nicely described in [Wikipedia article](https://en.wikiped
 
 **In this task you will be completing tutorial *Fault_4-AES_Differential_Fault_Analysis_Attacks.ipynb*.**
 Tutorial contains rather straightforward descriptions and scripts for this attack, but glitch parameters and the correct place of execution to be glitched are wrong.
-You must find correct places to glitch yourself (8th and 9th round key between MixColumn step as described in tutorial) and you can use values of width and offset for the glitch from the previous task when you find out those for your device.
+You must find correct places to glitch yourself (for example between last 2 MixColumn steps for 9th round key as described in tutorial)
+and you can use values of width and offset for the glitch from the previous task when you find out those for your device.
+This task may take some time because analysis script needs enough different glitches to solve correct key.
 
 When you have completed tutorial, take screeshot/copy script output to return sheet to show that you have calculated correct key by injecting faults to correct places of code.
 Specify also the glitch parameters you used in your attack script.
