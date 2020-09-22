@@ -513,6 +513,10 @@ You can consider yourself successful when you manage to glitch trough functions 
 ## B) Buffer glitch attack
 
 **In this task you will complete tutorial *Fault_3-Glitch_Buffer_Attacks.ipynb***. Do parts 1.1-1.3, which concentrate on attacking unsafe assebly code.
+
+Sections 1.1 and 1.2 are just introduction to this task and you do not have to return or answer anything from them.
+Section 1.3 is considering actual attack and main point of this task.
+
 Attack code is already provided and it most likely works without additional tweaking, so this part should be quite straightforward.
 After being successful, take screenshot of results and answer additional questions in your return template.
 
@@ -520,16 +524,19 @@ After being successful, take screenshot of results and answer additional questio
 
 > You can improve glitch parameter testing by using `arange` from `numpy` instead of `tnrange` as you probably did in last task.
 
-When you manage to glitch decrypted data out of the device with given attack code, consider next:
+When you manage to glitch decrypted data out of the device with given attack code in section 1.3, consider next:
 
-Attack is based on the vulnerable code created by compiler optimizations. What happens when you turn loop counting variable ``i`` to form
+Attack is based on the vulnerable code created by compiler optimizations.
+
+Change loop counting variable ``i`` from line 140 of ``bootloader.c`` (the vulnerable part where glitch attack targets) to form
 
 ```c
 volatile int i;
 ```
 
-Look at file `bootloader-CW303.lss` after recompilation. Answer next questions to your return template:
-How does the assembly code change (how assembly look before/after)? What happens if you manage to find new loop ending place and make successfull glitch to it? Is similar attack against this kind of code possible anymore? If not, how attack could be evolved? (you do not have to implement your ideas)
+Look at file `bootloader-CW303.lss` before and after recompilation. Answer next questions to your return template:
+How does the assembly code change (how assembly look before/after) at changed part? What happens if you manage to find new loop ending place and make successful glitch to it?
+Is similar attack against this kind of code possible anymore? If not, how attack could be evolved? (you do not have to implement your ideas)
 
 ## C) Differential Fault Analysis on AES
 
