@@ -518,11 +518,13 @@ Sections 1.1 and 1.2 are just introduction to this task and you do not have to r
 Section 1.3 is considering actual attack and main point of this task.
 
 Attack code is already provided and it most likely works without additional tweaking, so this part should be quite straightforward.
-After being successful, take screenshot of results and answer additional questions in your return template.
+After being successful in attack (section 1.3), take screenshot of results and answer following additional questions in your return template.
 
 > You can tune tried glitch parameters to the ones that you retrieved in the last task
 
 > You can improve glitch parameter testing by using `arange` from `numpy` instead of `tnrange` as you probably did in last task.
+
+**Additional questions:**
 
 When you manage to glitch decrypted data out of the device with given attack code in section 1.3, consider next:
 
