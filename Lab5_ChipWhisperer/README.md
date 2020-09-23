@@ -184,7 +184,7 @@ If you have not used Jupyter Notebook before, it can be beneficial to complete t
 **You are not required to return anything for this task**, but it is critical that you learn to use ChipWhisperer on basic level because otherwise all other tasks are very difficult to complete. Basically important things what you will be doing in that tutorial are next:
 
 1. Learn what is SimpleSerial
-2. Build basic example (Notice that target chip platform is type CW303 and you have to build program for that platform)
+2. Build basic example (**Notice: Target platform is type CW303 and you have to build program for that platform. You have to ensure this in all of the tasks of this lab.**)
 3. Modify basic example and rebuild it
 4. Use scripts to connect (and disconnect) the device
 5. Upload built example to the target device and capture traces and input&output text
