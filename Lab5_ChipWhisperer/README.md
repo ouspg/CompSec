@@ -483,11 +483,11 @@ Notice that sample and delta values in tutorial are most likely producing bad SA
 ---
 # Task 3
 
-A glitching attack is an intentional fault introduced to undermine device security. These faults can for example cause instruction skipping, malformed data reads / write backs and instruction decoding errors.
+A glitching attacks utilize intentional faults to undermine device security. These faults can for example cause instruction skipping, malformed data reads / write backs and instruction decoding errors.
 
 In this task you will learn basic fault injection to device to make it behave unintended way: Skipping login prompts, overreading buffers and injecting faults to encryption algorithms to reveal private key are all possible with skilled glitching!
 
-Remember to attach SMA cable tod glitch ports of the device before starting.
+> **Remember to attach SMA cable to glitch ports of the device before starting.**
 
 > Remember to use `PLATFORM = 'CW303'` as platform setting when you compile your code for the target
 
