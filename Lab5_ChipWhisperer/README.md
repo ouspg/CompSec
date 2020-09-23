@@ -109,11 +109,13 @@ More detailed documentation of the device can be found from http://wiki.newae.co
 
 ## Software setup
 
-In this lab we will use ChipWhisperer software version 5.2.1, which runs in the Jupyter Notebook in the provided virtual machine.
+In this lab we will use ChipWhisperer software version 5.2.1, which runs in the Jupyter Notebook.
+There exists setup with virtual machine and that is recommended way to use it in this course.
+Download link(s) to that virtual machine can be found on Moodle.
 
 ### Course VMWare virtual machine
 
-Download and start virtual machine. On first run, you must login virtual machine (user/password: vagrant/vagrant)
+Download (link in Moodle) and start virtual machine. On first run, you must login virtual machine (user/password: vagrant/vagrant)
 and run command `ip address` to get the connectable address of Jupyter Notebook. Use that address in your browser
 with port 8888. Password for jupyter is "jupyter".
 
@@ -121,7 +123,7 @@ with port 8888. Password for jupyter is "jupyter".
 
 ### Course VirtualBox machine
 
-Download and start virtual machine and connect localhost:8888 with your web browser. Password for jupyter is "jupyter".
+Download (link in Moodle) and start virtual machine and connect localhost:8888 with your web browser. Password for jupyter is "jupyter".
 
 * If your connection fails when you try to connect your board first time, you may have to download and install VirtualBox extensions to make USB connection to work. 
 
@@ -139,7 +141,7 @@ If you already have instance of Jupyter Notebook running on your system, then fe
 
 If you want to make custom installation on your machine follow instructions [here](https://chipwhisperer.readthedocs.io/en/latest/installing.html).
 
-These options have not been tried, so no guarantees about those.
+These options have not been tried, so no guarantees about those (but there should not be any reason why that should not work either).
 
 ## Remote ChipWhisperer machine
 
