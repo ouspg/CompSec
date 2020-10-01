@@ -197,6 +197,7 @@ You can find short introduction to assembly and shellcoding here: https://0x00se
 And some more here:
 http://hackoftheday.securitytube.net/2013/04/demystifying-execve-shellcode-stack.html
 
+And one post more: https://dhavalkapil.com/blogs/Shellcode-Injection/
 
 It's possible to this for x86 or x64 machines, but x86 (32 - bit) version is recommended.
 
