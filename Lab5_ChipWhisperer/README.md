@@ -473,6 +473,8 @@ Follow the tutorial and solve encryption key by finding reference sample and mea
 
 Notice that sample and delta values in tutorial are most likely producing bad SAD match plot and wrong overall results. You are required to inspect traces yourself as you see fit and find correct values yourself.
 
+> **NOTICE:** Command ```fw_path = '../hardware/victims/firmware/simpleserial-rsa/simpleserial-rsa-CWLITEXMEGA.hex'``` in the beginning of the tutorial points to nonexistent binary when you use CW303 as platform. Change this command accordingly.
+
 **Hints:**
 * Closely inspect to try find nice reference pattern for SAD calculation. Easily distinguishable close-to-zero spikes mean that good match is found.
 * Pay attention how many matches are found/needed
