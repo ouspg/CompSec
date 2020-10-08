@@ -599,7 +599,8 @@ but it solves just first byte of the key and it uses Hamming Weight calculations
 that will solve whole key and without Hamming Weight modeling. End of tutorial has some advice to it. Return at least next items/answers:
     * How this differs on DPA and CPA attacks against AES? Explain shortly
     * Your working attack code, which solves full key without Hamming Weight calculations
-    * How many template traces are needed to solve key reliably with just single trace from target? Is amount feasible? Experiment yourself
+    * How many template traces are needed to solve key reliably with just single trace from target? Is amount feasible? Experiment yourself.
+        * Look what kind of results you will have with different amount of template traces and when more than single attack trace is used. Are guesses improving and how fast? Is it feasible to achieve "single trace capture success" in the sensible time?
 
 **NOTICE:** When capturing huge amount of traces (20k+), default 2GB RAM for virtual machine is most likely not enough (some crashes has occurred).
 Consider allocating at least 4GB or more RAM.
