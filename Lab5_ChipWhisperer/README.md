@@ -566,6 +566,16 @@ When you have completed tutorial, take screeshot/copy script output to return sh
 Specify also the glitch parameters you used in your attack script.
 Also answer shortly to next questions: **Describe shortly how the attack you performed is working. What kind of glitches are hoped to happen? Why certain point for the attack? What is the difference between 8th and 9th round attack? Why solving the round key is interesting?**
 
+> This task has been proven little tedious, so small hints could be needed:
+> 
+>Do not overextend amount of captures, under 1000 or even 500 from right place should be successful.
+>Most important thing to be right is to get ```extoffset_range``` right, because glitching must happen in right place to make this work at all.
+>About 500 samples wide area should be enough for that. For ```offset_range``` you could use previously found values which produce decent amount of glitches.
+>```glitch_repeat``` should be ok at 5 and for ``width_range`` something between 6\*MIN_STEP and 8\*MIN_STEP could be tried.
+>
+>Notice that glitching is tedious process and even these hints may not help you at all.
+>If even exhaustive attempts do not bring success, consider moving to task 4 instead. Those are not easy either, but doing those should be more "predictable" by nature.
+
 ---
 # Task 4 
 
