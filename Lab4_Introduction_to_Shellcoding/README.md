@@ -319,7 +319,7 @@ One very frequently updated and multipurpose tool - [radare2](https://github.com
 Let's use once again our vulnerable program as target what we created in Task 1. Tutorial for ROP and example for using radare2 (and pwntools) with it, is [here. ](Tutorials/Tutorial3B_Radare2_and_gadgets.md) 
 Pwntools is Python library, which helps to generate more controllable and readable payload.
 
-Simple, but practical demonstration of ROP technique can be found [here](https://tc.gtisc.gatech.edu/cs6265/2016/l/lab07-rop/README-tut.txt).
+Simple, but practical demonstration of ROP technique can be found [here](https://tc.gts3.org/cs6265/2016/l/lab07-rop/README-tut.txt).
 
 Extra: White paper introducing the ROP can be found [here][5].
 
