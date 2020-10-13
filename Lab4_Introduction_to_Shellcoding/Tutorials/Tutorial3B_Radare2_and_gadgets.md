@@ -111,7 +111,7 @@ Example gadget to remove top value from the stack:
 
 So, by executing this gadget, next instruction pointer could be actually the overflowed address after arguments in our payload, if function was using one argument.
 
-Excellent another example and explanation about ROP: https://tc.gtisc.gatech.edu/cs6265/2016/l/lab07-rop/README-tut.txt
+Excellent another example and explanation about ROP: https://tc.gts3.org/cs6265/2016/l/lab07-rop/README-tut.txt
 
 **Now back to the Hello, world! example**
 
