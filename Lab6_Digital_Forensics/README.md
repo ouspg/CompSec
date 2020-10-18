@@ -262,8 +262,8 @@ Useful info
 Hints:
 * Simplest form of hiding text in image is simply writing it straight to the image data, as plain text or encoded text (2 images)
   * Tools like `strings` and `hexdump` are useful in these cases
-  * Somebody could encode their message before injecting it to the image file, so you must decode it too (1 image)
-* More advanced image steganography includes modification of least-significant-bits (LSB) of PNG images.
+  * Somebody could encode their message before injecting it to the image file, so you must decode it too
+* More advanced image steganography includes modification of least-significant-bits (LSB) of PNG images (1 image)
   * Statistical tools exists to detect if image is tampered somehow
   * Tools like StegExpose and zsteg can detect and extract LSB-hidden information from images
 * It is possible to include file into another file (1 image)
