@@ -149,15 +149,13 @@ These options have not been tried, so no guarantees about those (but there shoul
 
 ## Remote ChipWhisperer machine
 
-This option is reserved for next students:
+This year we are testing for the first time remotely usable ChipWhisperer setup that can serve multiple users simultaneously.
 
-* Students not in Oulu so it would not be sensible to visit university and pick up device
-* Students who can not visit university to pick up device due to the severe risk to their health
+Contact course assistants to receive your username, private key and instructions to connect to the system.
 
-Course assistants provide one remote machine containing ChipWhisperer virtual machine and connected ChipWhisperer device.
-Contact course assistants to reserve time for the machine, receive SSH keys and additional instructions.
-Notice that you need VPN connection to university network.
+You need university account to perform SSH jump to reach the server.
 
+When you connect system, device is allocated to you and virtual machine using the device is automatically started for you. This means that you do not have to install anything or worry about borrowing device at all. Sounds great, right? This is tried first time so let's see how well it will work.
 ---
 
 # Tasks
