@@ -156,6 +156,7 @@ Contact course assistants to receive your username, private key and instructions
 You need university account to perform SSH jump to reach the server.
 
 When you connect system, device is allocated to you and virtual machine using the device is automatically started for you. This means that you do not have to install anything or worry about borrowing device at all. Sounds great, right? This is tried first time so let's see how well it will work.
+
 ---
 
 # Tasks
