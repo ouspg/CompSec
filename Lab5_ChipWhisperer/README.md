@@ -191,8 +191,6 @@ If you have not used Jupyter Notebook before, it can be beneficial to complete t
 4. Use scripts to connect (and disconnect) the device
 5. Upload built example to the target device and capture traces and input&output text
 
-Tutorial is rather straightforward and self-explanatory, so most likely failing point might be only
-
 If you have never used Jupyter Notebook before, consider doing tutorial *!!Introduction_to_Jupyter!!.ipynb* first.
 
 __TIPS & TRICKS__
