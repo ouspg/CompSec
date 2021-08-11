@@ -554,7 +554,7 @@ In this task you will inject faults into specific place of running algorithm and
 Main steps of AES are nicely described in [Wikipedia article](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).
 
 **In this task you will be completing tutorial *Fault_4-AES_Differential_Fault_Analysis_Attacks.ipynb*.**
-Tutorial contains rather straightforward descriptions and scripts for this attack, but glitch parameters and the correct place of execution to be glitched are wrong.
+Tutorial contains rather straightforward descriptions and scripts for this attack, but glitch parameters and the correct place of execution to be glitched are wrong (consecutively handy plot drawing places of 8th, 9th and 10th round execution is wrong too).
 You must find correct places to glitch yourself (for example between last 2 MixColumn steps for 9th round key as described in tutorial)
 and you can use values of width and offset for the glitch from the previous task when you find out those for your device.
 This task may take some time because analysis script needs enough different glitches to solve correct key.
