@@ -1,20 +1,22 @@
 Computer Security Lab 2: Networks and web security
 ====
+
 ## Preliminary tasks
 
-* Read the sections ```Background``` and ```Theory``` from this document and ```SQL.md```
+* Read the sections ```Background``` and ```Theory``` from this document and [```SQL.md```](misc/SQL.md)
 * If you are not using the course's Kali VM, make sure that all of this lab's prerequisites are met on your own system
 
 ## About the lab
 
 * This document contains task descriptions and theory for the network lab. If there are any differences between the return template and this file, consider this to be the up-to-date document.
 * **You can use your own computer/virtual machine if you want.** Check the chapter "Prerequisities" for information on what you need to install. This lab has been made to be completed in a Linux environment and tested to work in the provided Kali Linux virtual machine.
-* It is estimated, that you are able to do Tasks 1-3 during a typical lab session (4 hours). **Upper grade requires that all previous ones have been done as well.**
-* Check the deadline from Moodle and __remember that you have to return your name and GitHub repository information to Moodle before deadline.__
+* It is estimated, that you are able to do Tasks 1-3 during a typical lab session (4 hours).
+* __Upper grade requires that all previous ones have been done as well.__
+* Check the deadline from Moodle and __remember that you have to return your name (and possibly people you worked together with) and GitHub repository information to Moodle before the deadline.__
 
 ## Background
 
-Most of us browse the Internet daily. We are using a wide variety of platforms and browsers to access different kind websites or web applications. In many cases, users can give some kind of *input* to these websites or applications, regardless of their platform or browser. A lot of things could go wrong if this user input is not properly validated or sanitized.
+Most of us browse the Internet daily. We are using a wide variety of platforms and browsers to access different kinds of websites or web applications. In many cases, users can give some kind of *input* to these websites or applications, regardless of their platform or browser. A lot of things could go wrong if this user input is not properly validated or sanitized.
 
 In this lab, we will go over some basic network and web-related security issues with the help of [OWASP Juice Shop](https://github.com/bkimminich/juice-shop).
 
@@ -32,9 +34,9 @@ Juice Shop is vulnerable to multiple types of [injections](https://www.owasp.org
 
 In many places, the Juice Shop is [improperly validating its inputs](https://cwe.mitre.org/data/definitions/20.html). This gives the attacker the ability to give an input that the application is not expecting. You will see this in action when you cash out with a negative amount of items or when you leave a 0-star review of the store.
 
- Usually, shops like Juice Shop are made to be used by multiple users. In these cases, different users have different privileges and are therefore able to access different places. For example, you are able to access your basket but not other users' baskets. In the same fashion only admin should be able to access the administration panel. However, Juice Shop's [access control is broken](https://en.wikipedia.org/wiki/Privilege_escalation) and users can access places that they should not be able.  
+ Usually, shops like Juice Shop are made to be used by multiple users. In these cases, different users have different privileges and are therefore able to access different places. For example, you are able to access your basket but not other users' baskets. In the same fashion, only the admin should be able to access the administration panel. However, Juice Shop's [access control is broken](https://en.wikipedia.org/wiki/Privilege_escalation) and users can access places that they should not be able.  
 
-We also delve into the basics of cross-site request forgery. A short explanation of the concept taken from [OWASP](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))."Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web application in which they're currently authenticated. CSRF attacks specifically target state-changing requests, not theft of data since the attacker has no way to see the response to the forged request. With a little help of social engineering (such as sending a link via email or chat), an attacker may trick the users of a web application into executing actions of the attacker's choosing. If the victim is a normal user, a successful CSRF attack can force the user to perform state-changing requests like transferring funds, changing their email address, and so forth. If the victim is an administrative account, CSRF can compromise the entire web application."
+We also delve into the basics of cross-site request forgery. A short explanation of the concept taken from [OWASP](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))."Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web application in which they're currently authenticated. CSRF attacks specifically target state-changing requests, not theft of data since the attacker has no way to see the response to the forged request. With a little help from social engineering (such as sending a link via email or chat), an attacker may trick the users of a web application into executing actions of the attacker's choosing. If the victim is a normal user, a successful CSRF attack can force the user to perform state-changing requests like transferring funds, changing their email address, and so forth. If the victim is an administrative account, CSRF can compromise the entire web application."
 
 The final thing we focus on by using the Juice Shop is Cross-Site Scripting. A short explanation of what Cross-Site Scripting means taken from [OWASP:](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)) "Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end-user. Flaws that allow these attacks to succeed are quite widespread and occur anywhere a web application uses input from a user within the output it generates without validating or encoding it.
 
@@ -67,7 +69,7 @@ https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)
 
 
 If you are using the virtual machine provided to you by the course staff,
-then everything should be already installed to your machine. 
+then everything should be already installed on your machine. 
 
 Below are the steps to set it up on your own system, in case you want to use your own computer, or you are otherwise unable to acquire the provided virtual machine.
 
@@ -80,13 +82,13 @@ Get [Docker](https://www.docker.com/) instance for Juice Shop v8.7.2:
 ~$ docker pull bkimminich/juice-shop:v8.7.2
 ```
 
-All the tasks are doable using your browsers developer tools. Tasks were tested and created by using Firefox, but other browsers should work just as well.
+All the tasks are doable using your browser's developer tools. Tasks were tested and created by using Firefox, but other browsers should work just as well.
 
 ### Task 2
 
 For the brute-forcing task, the tools vary depending on how you choose to do it. Read the instructions and proceed to get the tools you want. There are some hints in the task description.
 
-In the CSRF task, you will need to host a website locally. Course's Kali Linux vm uses apache2, but you are free to choose your own method.
+In the CSRF task, you will need to host a website locally. Course's Kali Linux VM uses apache2, but you are free to choose your own method.
 
 ### Task 3
 
@@ -101,7 +103,7 @@ the example-voting app is located at
 
 Install Wireshark and Nmap. The method depends on your operating system.
 
-For the security experiment, you can use Burp, ZAP or any other tool you wish.
+For the security experiment, you can use Burp, ZAP, or any other tool you wish.
 
 ---
 
@@ -113,11 +115,11 @@ For the security experiment, you can use Burp, ZAP or any other tool you wish.
 You are eligible to following grades in this exercise by doing tasks as defined. Great ideas and implementations could compensate for some poorly implemented ones.
 Upper grade requires that all previous ones have been done as well.
 
-It is estimated, that you are able to do Tasks 1 & possibly 2 during lab session (4 hours).
+It is estimated, that you are able to do Tasks 1 & 2 during the lab session (4 hours).
 
 Task| Grade/Level | Description
 :--:|:--:|--
-1|2|Basic SQL injections, Client-Side resource manipulation and basics of Cross-Site Scripting
+1|2|Basic SQL injections, Client-Side resource manipulation, and basics of Cross-Site Scripting
 2|3|More complicated SQL injections, Cross-Site Request Forgery, and Brute Forcing
 3|4| Arbitrary file upload and Cross-Site Scripting
 4|5| Network traffic analysis and a security experiment
@@ -126,7 +128,7 @@ Grade 1 can be acquired by doing lecture questionnaires from the corresponding l
 
 ### Particularly in tasks 1 and 2:
 
-***To be able to complete these tasks,*** you will need to explain *why things are happening*. Each answer, which is giving only pure commands or code is automatically though as incompleted or insufficient.
+***To be able to complete these tasks,*** you will need to explain *why things are happening*. Each answer, which is giving only pure commands or code is automatically thought of as incompleted or insufficient.
 
 We are aware, that some answers are already available out there.
 
@@ -144,11 +146,11 @@ Start Juice Shop with the command
 ```shell
 ~$ docker run --rm -p 3000:3000 bkimminich/juice-shop:v8.7.2
 ```
-Site is hosted at ```localhost:3000```. Access it with your browser. If you can't see the web page, terminate the container with ```Ctrl+C``` and try to restart docker with the command
+The site is hosted at ```localhost:3000```. Access it with your browser. If you can't see the web page, terminate the container with ```Ctrl+C``` and try to restart docker with the command
 ```shell
 ~$ sudo systemctl restart docker
 ```
-and run Juice Shop again. Observe and modify the traffic with your browsers developer tools while browsing the site and do the following tasks.
+and run Juice Shop again. Observe and modify the traffic with your browser's developer tools while browsing the site and do the following tasks.
 
 __Note:__ In Firefox's dev tools, in the "Headers" section of packet information, there is a handy "Edit and Resend" button that can be used to modify packets.
 
@@ -165,7 +167,7 @@ Use your browser's developer tools to edit and resend this request, and cause an
 
 <details>
 <summary>Hint</summary>
-The GET request is sent to http://localhost:3000/rest/products/search?q=. Try different SQL symbols like statement terminators, comments and quotation marks. Check the network tab for servers response.
+The GET request is sent to http://localhost:3000/rest/products/search?q=. Try different SQL symbols like statement terminators, comments and quotation marks. Check the network tab for the server's response.
 </details>
 
 __What did you use as the search argument to cause an error?__
@@ -182,12 +184,12 @@ The shop has an item that has been deleted and therefore does not show on search
 
 <details>
 <summary>Hint</summary>
-Examine the SQL-query that the server returned in the last part. How does this query exclude deleted items? Remove that part of the query using comments.
+Examine the SQL query that the server returned in the last part. How does this query exclude deleted items? Remove that part of the query using comments.
 </details>
 
 __How are the items "deleted"?__
 
-__How did you make the server to return all the items?__
+__How did you make the server return all the items?__
  
 
 __Explain shortly the logic behind your attack. Why does it work?__
@@ -212,11 +214,11 @@ __What user did you login as?__
 
 **Scoreboard**
 
-Sometimes the HTML contains unwanted stuff. This site, for example, has a hidden scoreboard. Use your browsers developer tools and find the path to it.
+Sometimes the HTML contains unwanted stuff. This site, for example, has a hidden scoreboard. Use your browser's developer tools and find the path to it.
 
 <details>
 <summary>Hint</summary>
-Firefox's developer tools has debugger that shows sources. Try to find the path by using some guessed keywords.
+Firefox's developer tools has a debugger that shows sources. Try to find the path by using some guessed keywords.
 </details>
 
 __How did you find the path?__
@@ -255,7 +257,7 @@ __What is the difference between these two types of attacks?__
 
 XSS attacks above are relatively harmless, as they affect only you. It would be more harmful if you could get a damaging code snippet inside the database or make the results of the script otherwise visible to other users. One way to do this is to create a user that has a malicious script as its name.
 
-In this example, we are going to create a user with the following as it's email address: 
+In this example, we are going to create a user with the following as its email address: 
 
 ```js
 <iframe src="javascript:alert(`xss`)">
@@ -263,18 +265,18 @@ In this example, we are going to create a user with the following as it's email 
 
 This will show the alert popup for anyone visiting the administration panel. 
 
-You can't create a user with the previously mentioned ```iframe``` object as its name using the create account page. This is because Juice Shop validates the input in the client-side **but** not on the server-side. For this reason, we are going to use curl to send the user creation packet directly to the API, this way bypassing the site's input validation (browser's developer tools should also work). In order to do this, we need to know what type of packet the API expects.
+You can't create a user with the previously mentioned ```iframe``` object as its name using the create account page. This is because Juice Shop validates the input on the client-side **but** not on the server-side. For this reason, we are going to use curl to send the user creation packet directly to the API, this way bypassing the site's input validation (browser's developer tools should also work). In order to do this, we need to know what type of packet the API expects.
 
 We can find out the type of packet we need in the following way:
 
 * Create a user with whatever username and password you like.
 * Check the post packet that is sent when you press the create user button. From this packet, you see the location and the packet content that is needed to create an account.
-* Create a JSON file that is in the same format as in the POST request, change the email field to the code snippet mentioned above and send it to the user creation API using curl. Below is an example of the curl request.  
+* Create a JSON file that is in the same format as in the POST request, change the email field to the code snippet mentioned above, and send it to the user creation API using curl. Below is an example of the curl request.  
 
 ```shell
 ~$ curl -d @<your_json_file_name>.json -H "Content-Type: application/json" -X POST <API_url>
 ```
-After this, log in as the administrator and go to the administration panel. You should be welcomed by an alert popup and the administration panel should have a weird looking user entry.
+After this, log in as the administrator and go to the administration panel. You should be welcomed by an alert popup and the administration panel should have a weird-looking user entry.
 
 __How can you protect your applications against XSS attacks?__
 
@@ -284,18 +286,18 @@ __How can you protect your applications against XSS attacks?__
 
 **'These are not my credentials'**
 
-Use SQL injection in the GET request in a similar way as in Task 1, but this time use [UNION](http://www.sqlinjection.net/union/) command to get all the users emails and password hashes.
+Use SQL injection in the GET request in a similar way as in Task 1, but this time use [UNION](http://www.sqlinjection.net/union/) command to get all the users' emails and password hashes.
 
 <details>
 <summary>Hint</summary>
-In this exercise, you need to know the name of the users table, its column number and the name of the email and password fields. These values can be guessed. Table and column names are obvious. Try guessing them and check the error messages if you got it right.
+In this exercise, you need to know the name of the users table, its column number, and the name of the email and password fields. These values can be guessed. Table and column names are obvious. Try guessing them and check the error messages if you got it right.
 </details>
 
 First, form a statement that attempts to select all the columns from the users table. If the server returns "table does not exist" you guessed it wrong. If you receive the following error "SQLITE_ERROR: SELECTs to the left and right of UNION does not have the same number of result columns" you are on the right track. 
 
 After you know the table name, you have to find out how many columns the Products table has, so you can select that many columns from the users table. 
 
-You can guess this if you want to, but the column amount can also be found from the response you get from a product search. Now select that many columns from the users table where at least two of them are email and password. If the values are not visible, you might have put it to a field that is not rendered visible. Try putting it to a different field.
+You can guess this if you want to, but the column amount can also be found in the response you get from a product search. Now select that many columns from the users table where at least two of them are email and password. If the values are not visible, you might have put them in a field that is not rendered visible. Try putting them in a different field.
 
 
 __What SQL command did you use?__
@@ -307,7 +309,7 @@ __Explain shortly the logic behind your attack. Why and how does it work?__
 
 **Cross-site request forgery**
 
-Next, we create a basic example of a cross-site request forgery (CSRF) attack. We are trying to simulate a case, where a user is browsing a site and opens a malicious web site that does something harmful. We are going to create a site that changes the currently logged in user's nickname when they visit this webpage while logged in to the Juice Shop. For this purpose you have an apache2 server running in your virtual machine. If you access www.csrfattack.org you should see a placeholder site that you can modify.
+Next, we create a basic example of a cross-site request forgery (CSRF) attack. We are trying to simulate a case, where a user is browsing a site and opens a malicious website that does something harmful. We are going to create a site that changes the currently logged-in user's nickname when they visit this webpage while logged in to the Juice Shop. For this purpose you have an apache2 server running in your virtual machine. If you access www.csrfattack.org you should see a placeholder site that you can modify.
 
 Do the following:
 
@@ -338,10 +340,10 @@ If your modified HTML doesn't show up on the site, try to restart apache2.
 ---
 **Brute forcing**
 
-Now we will do something different and try some basic brute forcing. Do the following:
+Now we will do something different and try some basic brute-forcing. Do the following:
 
-* Start [muumitalo](https://github.com/Latsis/Muumitalo).  ```git clone https://github.com/Latsis/Muumitalo``` follow the instruction on the git page on how to start it. You will be brute forcing this server
-* Create a wordlist containing mutations of the word "vaapukkamehu". Create mutations where individual letters case changes between upper and lower case. Also make mutations where letter 'a' can be number '4' and letter 'e' can be number '3'. (For example 'va4pukK4m3Hu'.)
+* Start [muumitalo](misc/muumitalo) by following the instructions in the [readme](misc/muumitalo/README.md) in muumitalo. You will be brute forcing this (local) server.
+* Create a wordlist containing mutations of the word "vaapukkamehu". Create mutations where individual letters case changes between upper and lower case. Also make mutations where letter 'a' can be number '4' and letter 'e' can be number '3' (for example 'va4pukK4m3Hu').
 * Brute force the right answer to the question posed by the server using the wordlist you created.
 You can use any tools you find online. If you want to, you can code your own mutator. Alternatively, you can search online for an existing mutator/mutators and use them to create the wordlist. Same thing with the actual attack. You can use programs like [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) to do the actual attack after you have created the wordlist.
 
@@ -349,7 +351,7 @@ You can use any tools you find online. If you want to, you can code your own mut
 
 * Wordlist
 * Any code you created.
-* Detailed description on how you created the wordlist and how you did the brute force attack.
+* Detailed description of how you created the wordlist and how you did the brute force attack.
 
 <details>
 <summary>Hint</summary>
@@ -360,7 +362,7 @@ The Internet is full of tools to create wordlists, but if you plan to create you
 <summary>Sending HTTP requests with ZAP</summary>
 If you are using the provided Kali Linux vm, you can find owasp-zap in the Applications menu under Web Application Analysis.
 
-Send a POST request manually to your target using Manual request editor in Tools. Select the request from the history and use the Fuzzer to attack your server (Attack > Fuzz...).
+Send a POST request manually to your target using the Manual request editor in Tools. Select the request from the history and use the Fuzzer to attack your server (Attack > Fuzz...).
 
 Highlight the part of the request that you want to modify in the attack and add it as a fuzzing location. Add the wordlist file as the payload for that specific fuzzing location and start the attack.
 </details>
@@ -371,7 +373,7 @@ Highlight the part of the request that you want to modify in the attack and add 
 
 Let's get back to the Juice Shop.
 
-The XSS attack you did in the previous task was mostly just annoying, but combining the vulnerability with others can lead to some very phishy attacks. Next, we are going to create an XSS attack using arbitrary file upload vulnerability. 
+The XSS attack you did in the previous task was mostly just annoying, but combining the vulnerability with others can lead to some very phishy attacks. Next, we are going to create an XSS attack using an arbitrary file upload vulnerability. 
 
 ### Combining arbitrary file upload and XSS
 
@@ -380,7 +382,7 @@ Juice Shop has released its new marketing video at ```http://localhost:3000/prom
 * subtitles are embedded on the page itself and they are in *WebVTT* format.
 * subtitles are enclosed in a ```<script>``` tag.
 
-Use the Network tab in your browser's developer tools to inspect the response when visiting ```http://localhost:3000/video```. You should be able to see an interesting header: ```Content-Location: /<path>/<to>/<file>``` (if it doesn't show up on Firefox, try Chromium). You can access the video directly by using the path ```http://localhost:3000/<path>/<to>/<file>```. Since the subtitles are in *WebVTT* format, there should be a corresponding *.vtt* file alongside the video which you should also be able to access, just by changing the file extension. The promotion page source showed you that the subtitles are embedded to the page on the server-side, so if the subtitle file could be overwritten, you might be able to inject some javascript to that page.
+Use the Network tab in your browser's developer tools to inspect the response when visiting ```http://localhost:3000/video```. You should be able to see an interesting header: ```Content-Location: /<path>/<to>/<file>``` (if it doesn't show up on Firefox, try Chromium). You can access the video directly by using the path ```http://localhost:3000/<path>/<to>/<file>```. Since the subtitles are in *WebVTT* format, there should be a corresponding *.vtt* file alongside the video which you should also be able to access, just by changing the file extension. The promotion page source showed you that the subtitles are embedded in the page on the server-side, so if the subtitle file could be overwritten, you might be able to inject some javascript into that page.
 
 Juice Shop allows its customers to upload *zip* files with the site's *File Complaint* feature. However, they don't handle the file upload very well and their upload mechanism is vulnerable to [ZipSlip](https://snyk.io/research/zip-slip-vulnerability). If the uploaded *zip* archive contains files that have special directory traversal characters ("../", "..\\") and file paths in their names, the attacker can specify the location where those files will be placed on the server's filesystem when the archive is unpacked and even overwrite some existing files.
 
@@ -424,7 +426,7 @@ video.style.visibility = 'hidden';
 ```
 </li>
 </ul>
-<li>You can use <a href="https://github.com/Latsis/ZipSlipGen">ZipSlipGen</a> to create the <i>zip</i> archive that contains your <i>.vtt</i> file that has directory traversal characters added to its filename (<i>../../frontend/dist/frontend/path/to/file.vtt</i>).</li>
+<li>You can use <a href="https://github.com/ouspg/CompSec/blob/master/Lab2_Network/misc/zipslipgen.py">zipslipgen.py</a> found in folder misc to create the <i>zip</i> archive that contains your <i>.vtt</i> file that has directory traversal characters added to its filename (<i>../../frontend/dist/frontend/path/to/file.vtt</i>).</li>
 </details>
 
 
@@ -433,13 +435,13 @@ video.style.visibility = 'hidden';
 * Your own server code or a description of how you showed the received data.
 * Your own HTML/Javascript **without directory traversal characters in its name**.
 * The *zip* archive that you uploaded to overwrite the subtitle file.
-* **Clear** instructions on how to start your own server, send the XSS attack and how to verify that the information was sent to your server from Juice Shop.
+* **Clear** instructions on how to start your own server, send the XSS attack, and how to verify that the information was sent to your server from Juice Shop.
 
 ---
 
 ## Task 4
 
-You can complete this task in two ways. You can do the predefined task explained below or you can suggest a task that interests you and do that. __Contact the course assistants__ and describe them what you are interested in doing/trying to do. If they say it is good you can do that as your task 4.
+You can complete this task in two ways. You can do the predefined task explained below or you can suggest a task that interests you and do that. __Contact the course assistants__ and describe to them what you are interested in doing/trying to do. If they say it is good you can do that as your task 4.
 
 ### Setup
 
@@ -478,36 +480,6 @@ Return the following:
 
 * Data flow diagram or some other type of picture/written document that explains the dataflow in the situation where you cast a vote and when you check the results
 
-* Short explanation on the steps you took to analyze the network and create the diagram
+* Short explanation of the steps you took to analyze the network and create the diagram
 
-* Short explanation on what kind of security experiment you tried, how you did it and what was the result
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* Short explanation on what kind of security experiment you tried, how you did it, and what was the result

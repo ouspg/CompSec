@@ -3,11 +3,11 @@ Computer Security Lab 1: Fuzzing
 
 ## Preliminary tasks
 
-* Create Github account if you don't already have one
-* Create your own fork of the CompSec-2020-AnswerTemplate **as instructed [here](../README.md#instructions)**
+* Create a Github account if you don't already have one
+* Create your own fork of the CompSec-2021-AnswerTemplate **as instructed [here](../README.md#instructions)**
 * Check the instructions on how to download and use the course's Kali Linux virtual machine
     * If you want to use your own computer, download and install VMWare Player to run the virtual machine. Virtualbox should work also.
-* Get familiar with the documentation for following tools:
+* Get familiar with the documentation for the following tools:
     * [Radamsa](https://gitlab.com/akihe/radamsa)
     * [AFL (American Fuzzy Lop)](http://lcamtuf.coredump.cx/afl/)
     * [AddressSanitizer (ASan)](https://github.com/google/sanitizers/wiki/AddressSanitizer)
@@ -18,21 +18,22 @@ Computer Security Lab 1: Fuzzing
 
 * This document contains task descriptions and theory for the fuzz testing lab. If there are any differences between the return template and this file, consider this to be the up-to-date document.
 * **You can use your own computer/virtual machine if you want.** Check the chapter "Prerequisities" for information on what you need to install. This lab has been made to be completed in a Linux environment and tested to work in the provided Kali Linux virtual machine.
-* It is estimated, that you are able to do Tasks 1-4 during a typical lab session (4 hours). **Upper grade requires that all previous ones have been done as well.**
-* Check the deadline from Moodle and __remember that you have to return your name and GitHub repository information to Moodle before deadline.__
+* It is estimated that you are able to do Tasks 1-4 during a typical lab session (4 hours).
+* __Upper grades for this assignment require that all previous tasks in this assignment have been done as well__, so e.g. in order to get grade 4 you will have to complete tasks 1, 2, 3 & 4.
+* Check the deadline from Moodle and __remember that you have to return your name (and possibly people you worked together with) and GitHub repository information to Moodle before the deadline.__
 
 
 ## Background
 
 This week’s theme is fuzzing. Tasks are designed to be done with the provided Kali Linux virtual machine, see the [course mainpage](https://github.com/ouspg/CompSec) for instructions on how to run the virtual machine (VM). The provided Kali VM has all the required tools preinstalled, but if you have your own computer with some other Linux distribution, you are free to use it, just install all the required tools.
 
-In a nutshell, fuzz testing a.k.a. fuzzing is a software testing method that includes feeding malformed and unexpected input data to a program, device or system. The programs that are used to perform fuzz testing are commonly called fuzzers. The main goal of fuzzing is to make the target system behave *unexpectedly*. From the security perspective, the goal is to find and analyze those unexpected behaviors for possible exploits and figure out how to fix them.
+In a nutshell, fuzz testing a.k.a. fuzzing is a software testing method that includes feeding malformed and unexpected input data to a program, device, or system. The programs that are used to perform fuzz testing are commonly called fuzzers. The main goal of fuzzing is to make the target system behave *unexpectedly*. From the security perspective, the goal is to find and analyze those unexpected behaviors for possible exploits and figure out how to fix them.
 
 In this exercise you will learn basic usage of 2 common fuzzers; Radamsa and American Fuzzy Lop (AFL). You will also use AddressSanitizer, a memory error detection tool, and Valgrind, a debugging tool (and memory error detector as well), which are often used alongside different fuzzers.
 
 ## Prerequisites
 
-Basic understanding of C programming language is required.
+A basic understanding of the C programming language is required.
 
 Make yourself familiar with the tools used to complete the exercises:
 
@@ -48,12 +49,12 @@ Make yourself familiar with the tools used to complete the exercises:
 Task #|Grade/Level|Description|
 -----|:---:|-----------|
 Task 1 | | Mutated test case generation with Radamsa
-Task 2 | 2 | Analyzing a C-program with AddressSanitizer, fuzztesting with AFL
-Task 3 | 3 | Creating your own small C-program and fuzztesting it
-Task 4 | 4 | Library fuzzing
-Task 5 | 5 | Contribute to an existing open-source project. Set up a fuzzer and report findings.
+Task 2 | 2 | Analyzing a C-program with AddressSanitizer, fuzz testing with AFL
+Task 3 | 3 | Creating your own small C-program and fuzz testing it
+Task 4 | 4 | Library fuzzing
+Task 5 | 5 | Contribute to an existing open-source project. Set up a fuzzer and report findings.
 
-Grade 1 can be acquired by doing lecture questionnaires from the corresponding lecture.
+Grade 1 can be acquired by doing mini exam for the corresponding week.
 </details>
 
 ---
@@ -121,7 +122,7 @@ So, here's what you need to do:
 5. Create two folders, one for input files and one for result output. Copy the ```small_document.rtf``` into your input folder.
     ```
     ~$ mkdir <input_folder> <output_folder>
-    ~$ cp /<path>/<to>/<testfile> /<path>/<to>/<input_floder>
+    ~$ cp /<path>/<to>/<testfile> /<path>/<to>/<input_floder>
     ```
 
 
@@ -233,13 +234,13 @@ Your task is to do the following:
 
 Contribute to some existing open-source software (OSS) project by setting up a fuzzing environment and documenting the total process and results. You can choose the target software by yourself and use one of the 2 fuzzers introduced during the lab exercise, or pick some other that you think serves the purpose better. **You should do all the testing inside a virtual machine in case there are potentially malicious files being handled.**
 
-You should read for example [this guide](https://github.com/ouspg/fuzz-testing-beginners-guide) to get started. Please note that in case a real bug is found from the software, it is very important to document the findings in a way that the issue can be easily reproduced. The guide has some good points about what information you should provide. It is not mandatory for the student to file a "real" bug report, but if you find something new, we highly recommend to do so.
+You should read for example [this guide](https://github.com/ouspg/fuzz-testing-beginners-guide) to get started. Please note that in case a real bug is found in the software, it is very important to document the findings in a way that the issue can be easily reproduced. The guide has some good points about what information you should provide. It is not mandatory for the student to file a "real" bug report, but if you find something new, we highly recommend to do so.
 
 You should grab the most recent version of the source code. Few open-source projects as an example:
 
 - [Chromium](https://www.chromium.org/Home) - An open-source browser project started by Google.
-- [VLC media player](https://www.videolan.org/vlc/index.html) - A common open-source media player from VideoLAN. Vast attack-surface as the player uses many different libraries to handle audio/video encoding. See [features](https://www.videolan.org/vlc/features.html).
-- [ImageMagick](https://www.imagemagick.org/script/index.php) - An open-source suite for displaying, converting and editing images, supporting over 200 file formats.
+- [VLC media player](https://www.videolan.org/vlc/index.html) - A common open-source media player from VideoLAN. Vast attack surface as the player uses many different libraries to handle audio/video encoding. See [features](https://www.videolan.org/vlc/features.html).
+- [ImageMagick](https://www.imagemagick.org/script/index.php) - An open-source suite for displaying, converting, and editing images, supporting over 200 file formats.
 - See [American Fuzzy Lop](http://lcamtuf.coredump.cx/afl/) main page for a comprehensive list of tools it has found bugs on. Newer versions of software can spawn new bugs, but the most common tools are usually tested the most so they might not be the best to start with.
 
 You should at minimum to provide the following information in the documentation:
@@ -251,4 +252,4 @@ You should at minimum to provide the following information in the documentation:
 - Compiler and debugger flags
 - Initial test case(s) and the one(s) producing a possible crash
  - Necessary steps to reproduce the crash
-- It is not necessary to find any bugs. It is enough, if you can prove that you have fuzzed with good code-coverage and they way how input was mutated (=what kind of input fuzzer created overall))
+- It is not necessary to find any bugs. It is enough, if you can prove that you have fuzzed with good code coverage and they way how input was mutated (=what kind of input fuzzer created overall))
