@@ -4,15 +4,15 @@
 <img src="lib/images/ouspglogo4.png" alt="University of Oulu" height="100px" align="right"/>
 </p>
 
-Exercises for computer security course in the University of Oulu.
+Exercises for computer security course at the University of Oulu.
 
 The course covers the essential aspects of computer security and computer security research in theory and through practical examples.
 
-The course is intended for computer engineering masters students and additionally to any student interested in computer security that has *the sufficient* technical background to complete the course exercises.
+The course is intended for computer engineering master's students and additionally for any student interested in computer security that has * sufficient* technical background to complete the course exercises.
 
 The lectures and place for returning assignments can be found from University Moodle: [https://moodle.oulu.fi](https://moodle.oulu.fi)
 
-Course is under Faculty of Information Technology and Electrical Engineering.
+The course is under the Faculty of Information Technology and Electrical Engineering.
 
 The course is organized by Oulu University Secure Programming Group (OUSPG)
 
@@ -44,11 +44,11 @@ The course is organized by Oulu University Secure Programming Group (OUSPG)
 <details open><summary>Details</summary>
 
 
-The course has six (6) lectures, six (6) laboratory exercises and 5 Moodle exams. Course does not contain final coursework this year because separate course considering it is planned.
+The course has seven (7) lectures, six (6) laboratory exercises, and 6 Moodle exams. The course does not contain final coursework this year because separate course considering it is planned.
 
-Lectures are handling topics from high perspective and they are not going technically deep. Moodle exams are based on the lectures.
+Lectures are handling topics from a high perspective and they are not going technically deep. Moodle exams are based on the lectures.
 
-Laboratory exercises are thought as independent packages: containing theory and exercises, and going technologically very deep.
+Laboratory exercises are thought of as independent packages: containing theory and exercises, and going technologically very deep.
 
 Lab materials are located in their corresponding folders: 
 
@@ -56,7 +56,7 @@ Lab materials are located in their corresponding folders:
 
 2. [Network lab](Lab2_Network)
 
-3. [Botnets and malwares lab](Lab3_Botnets_and_malwares)
+3. [Botnets and malware lab](Lab3_Botnets_and_malwares)
 
 4. [Shellcoding lab](Lab4_Introduction_to_Shellcoding)
 
@@ -64,18 +64,18 @@ Lab materials are located in their corresponding folders:
 
 6. [Digital forensics lab](Lab6_Digital_Forensics)
 
-See section about [virtual machines](#Virtual-machines) to setup laboratory environment in the University classes or at home.
+See the section about [virtual machines](#Virtual-machines) to set up a laboratory environment in the University classes or at home.
 
 To pass this course with grade 1, you have to pass the Moodle exams.
 
-To get better grade, you have to do some laboratory exercises.
-You can somewhat decide what grade you will earn on this course because you can (hopefully!) see from the beginning how much work is required to each grade.
-All laboratory tasks are optional and total points from those will determine your grade. Grading section is presented [here.](#grading)
+To get a better grade, you have to do some laboratory exercises.
+You can somewhat decide what grade you will earn on this course because you can (hopefully!) see from the beginning how much work is required for each grade.
+All laboratory tasks are optional and total points from those will determine your grade. The grading section is presented [here.](#grading)
 
-Labs are divided to levels (which is corresponding grade/points on that lab), level may contain one or several tasks.
-**The amount of tasks which are required for each level/grade is defined in the grading section of corresponding lab.**
+Labs are divided into levels (which is the corresponding grade/points on that lab), level may contain one or several tasks.
+**The amount of tasks which are required for each level/grade is defined in the grading section of the corresponding lab.**
 Tasks are designed to become somewhat harder and time-consuming on each level.
-Getting 2-3 points from each lab doable for average student with reasonable amount of work, 4-5 points require lot more time and skill.
+Getting 2-3 points from each lab is doable for the average student with a reasonable amount of work, 4-5 points require a lot more time and skill.
 
 See [deadlines](#deadlines) section for information about deadlines of lab works.
 
@@ -85,19 +85,19 @@ See [deadlines](#deadlines) section for information about deadlines of lab works
 
 <details open><summary>Details</summary>
 
- * Enroll to the course
+ * Enroll in the course
 
  * Find course's Moodle page from University's [Moodle](https://moodle.oulu.fi/course/search.php?search=computer+security)
  
- * Find a link whereof you can receive and create a private repository containing all the return template folders. You are expected to answer for given templates and store your actual work in this repository. 
+ * Find a link where you can receive and create a private repository containing all the return template folders. You are expected to answer for given templates and store your actual work in this repository. 
 
- * Create GitHub account, if you don't have one already, and create this private repository from the link.
+ * Create a GitHub account, if you don't have one already, and create this private repository from the link.
 
- * You can see deadlines below. They are same in the Moodle. There might be exceptions for ChipWhisperer.
+ * You can see deadlines below. They are the same in Moodle. There might be exceptions for ChipWhisperer.
 
- * Complete as many tasks as you wish and update your repository accordingly. Check the grading table found in each labs instructions on what you have to complete in order to earn the grade of your choosing
+ * Complete as many tasks as you wish and update your repository accordingly. Check the grading table found in each labs instructions on what you have to complete to earn the grade of your choosing
 
- * Push your changes to your repository before deadline, and return link to your repository to corresponding return box of the lab in Moodle.
+ * Push your changes to your repository before the deadline, and return the link to your repository to the corresponding return box of the lab in Moodle.
 
 
 Check [cheat sheet](https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf) if you need a refresher on how to use Git. Some basic commands below  
@@ -115,9 +115,9 @@ git push
 <details><summary>Details (Click to collapse!)</summary>
 
   
-As described earlier, you have to pass Moodle exams to pass the course. You can have higher grade by doing labworks.
+As described earlier, you have to pass Moodle exams to pass the course. You can have higher grades by doing lab works.
 
-You can get up to 5 points in each lab (Total 30 points). Grade is determined based on those points next.
+You can get up to 5 points in each lab (A total of 30 points). The grade is determined based on those points next.
 
 Total Points|Total Grade
 :-:|:-:
@@ -130,7 +130,7 @@ Total Points|Total Grade
 
 ## Moodle exams
 
-5 Moodle exams (every week but last one), are required to pass the course. Exams are based on lecture topics and additional material.
+6 Moodle exams (every week but the last one), are required to pass the course. Exams are based on lecture topics and additional material.
 
 ## Deadlines
 
@@ -138,16 +138,16 @@ Total Points|Total Grade
 
   
 
-Each week has deadline for corresponding lab exercise.
+Each week has a deadline for the corresponding lab exercise.
 
 Course week|Lecture Topics|Laboratory|Deadline
 :-:|:-:|:-:|:--:
-1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing | 14.09.2020, at 23:55
-2 | Network security, risk | Network and websecurity | 21.09.2020, at 23:55
-3 | Cybercrime, botnets, malware  | Botnets and malwares | 28.09.2020, at 23:55
-4 | Software vulnerabilities and exploits | Shellcoding | 5.10.2020, at 23:55
-5 | Hardware security | HW and side channels | 12.10.2020, at 23:55
-6 | Production security, IoT security | Digital forensics| 19.10.2020, at 23:55
+1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing | 13.09.2021, at 23:59
+2 | Network security, risk | Network and web security | 20.09.2021, at 23:59
+3 | Cybercrime, botnets, malware  | Botnets and malware | 27.09.2021, at 23:59
+4 | Software vulnerabilities and exploits | Shellcoding | 4.10.2021, at 23:59
+5 | Hardware security | HW and side channels | 11.10.2021, at 23:59
+6 | Production security, IoT security | Digital forensics| 18.10.2021, at 23:59
 
 
 
@@ -158,44 +158,44 @@ Course week|Lecture Topics|Laboratory|Deadline
 
 <details><summary>Details (Click to collapse!)</summary>
 
-Laboratory assignments utilize set of various tools and also handle potentially malicious files in Lab 3. Thus it is recommended to handle files in isolated environment, or at least the execution of tools happens in isolated environment at some level.
+Laboratory assignments utilize a set of various tools and also handle potentially malicious files in Lab 3. Thus it is recommended to handle files in an isolated environment, or at least the execution of tools happens in an isolated environment at some level.
 
-Straightforward solution for this are pre-configured virtual machines - if you have enough disk space and performance on your computer to use them. **For Windows users - this is the most convenient way.**
+A straightforward solution for this is pre-configured virtual machines - if you have enough disk space and performance on your computer to use them. **For Windows users - this is the most convenient way.**
 
-If you are already using Linux/macOS based operating system, the other option is to use specific tool called as [cincan-command](https://cincan.gitlab.io/cincan-command/).
-It is wrapper for Docker to run different kind of tools in isolated matter. It makes installation of wide variety of tools easier while providing some level of isolation as well. The most of the tools used in exercises, are usable with it. It requires that Python 3.6+ and Docker are functioning in your system. Installation steps can be found from [documentation.](https://cincan.gitlab.io/cincan-command/installation.html)
+If you are already using Linux/macOS-based operating system, the other option is to use a specific tool called [cincan-command](https://cincan.gitlab.io/cincan-command/).
+It is a wrapper for Docker to run a different kinds of tools in isolated matter. It makes the installation of a wide variety of tools easier while providing some level of isolation as well. Most of the tools used in exercises are usable with it. It requires that Python 3.6+ and Docker are functioning in your system. Installation steps can be found from [documentation.](https://cincan.gitlab.io/cincan-command/installation.html)
 
-If you want, you can install packages in normal way, or just to use provided virtual machine on Linux host as well.
+If you want, you can install packages in a normal way, or just use provided virtual machine on the Linux host as well.
 
 ### Virtual machines
 
-Note: If you are using following virtual machines in your own pc, they are pre-configured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your pc, you might want to reduce this pre-configured RAM. 
+Note: If you are using the following virtual machines on your own pc, they are pre-configured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your pc, you might want to reduce this pre-configured RAM. 
 
 Each lab utilizes one of the virtual machines below:
 
-* Kali Linux - for shellcoding, fuzzing, web security and malware lab
+* Kali Linux - for shellcoding, fuzzing, web security, and malware lab
   * User: kali
   * Password: kali
 
 * ChipWhisperer Jupyter virtual machine
   * Both VMWare and VirtualBox versions available, more accurate information about setup on lab 5 page
 
-**Direct download links for these machines are provided in the Moodle page!**
+**Direct download links for these machines are provided on the Moodle page!**
 
 They are 7zip compressed. Run machine from *.vmx* file with VMware Player/VMware Workstation.
 
-These virtual machines are located on the University network drive, in case download speed on direct URLs are slow.
+These virtual machines are located on the University network drive, in case the download speed on direct URLs is slow.
 
 
 ## Classroom specific instructions (TS135/TS137/Any computer with VMware installed)
 
-If you are in the University premises and can access to laboratory computer which has VMware installed.
+If you are on the University premises and can access to laboratory computer which has VMware installed.
 
 ### **Copy machine and run locally**
 
-If you have enough space on your lab computer, and you are not too hesitated to start, recommended way is to copy virtual machine from network drive, and then start it locally. This way changes are not lost in shutdown.
+If you have enough space on your lab computer, and you are not too hesitant to start, the recommended way is to copy the virtual machine from the network drive, and then start it locally. This way changes are not lost in the shutdown.
 
-You can mount network drive with following cmd command:
+You can mount the network drive with the following cmd command:
 
 ```
 net use z: "\\kaappi\Virtuaalikoneet$"
@@ -206,7 +206,7 @@ net use z: "\\cifs.isi.oulu.fi\Virtuaalikoneet$"
 ```
 
 
-There should be now new Z: drive, named as Virtuaalikoneet$
+There should be now new Z: drive, named Virtuaalikoneet$
 
 And virtual machines are located in:
 
@@ -222,7 +222,7 @@ When the virtual machine asks if you have copied or moved the machine, press __"
 
 You can mount network drive into your own PC, if it has been connected to [Eduroam ](http://www.oulu.fi/ict/eduroam).
 
-After you have successfully connected to network, you can mount network drive as following. If any credentials are asked, username is username@student.oulu.fi
+After you have successfully connected to the network, you can mount the network drive as follows. If any credentials are asked, the username is username@student.oulu.fi
 
 ### Windows
 Open Windows cmd:
@@ -230,9 +230,9 @@ Open Windows cmd:
 ```shell
 net use z: "\\kaappi\Virtuaalikoneet$"
 ```
-Drive should be mounted after giving correct credentials.
+The drive should be mounted after giving correct credentials.
 
-If the domain `kaappi` is not found, try to use following instead:
+If the domain `kaappi` is not found, try to use the following instead:
 ```shell
 net use z: "\\cifs.isi.oulu.fi\Virtuaalikoneet$" 
 ```
@@ -254,7 +254,7 @@ Virtual machines are located in:
 Virtuaalikoneet$ -> VMware -> CompSec
 
 #### Running the Virtual machines under QEMU (Linux host)
-If you are using QEMU/KVM, you cannot directly load the .vmdk file to run the virtual machines as-is due to lack of support for split .vmdk files.
+If you are using QEMU/KVM, you cannot directly load the .vmdk file to run the virtual machines as-is due to a lack of support for split .vmdk files.
 
 In order to combine the .vmdk disk parts into a format QEMU can load you need to convert them into a .qcow2 disk file using qemu-img: 
 ```shell
@@ -263,22 +263,22 @@ qemu-img convert Kali.vmdk Kali.qcow2
 
 ## Getting virtual machines remotely
 
-If direct download URLs are not functioning for any reason and if you are not able to get in to University to copy virtual machines from network drive by using Lab computer, you can do it remotely as well.
-This requires setting up *VPN - connection* to University network.
-This can be acquired by following guidelines presented [here.](https://www.oulu.fi/ict/openvpn) OpenVPN software is being used.
+If direct download URLs are not functioning for any reason and if you are not able to get into University to copy virtual machines from a network drive by using Lab computer, you can do it remotely as well.
+This requires setting up *VPN - connection* to the University network.
+This can be acquired by following the guidelines presented [here.](https://www.oulu.fi/ict/openvpn) OpenVPN software is being used.
 
-After you have successfully connected to network, instructions are same as [here.](#getting-virtual-machines-over-eduroam-university-wlan)
+After you have successfully connected to the network, instructions are the same as [here.](#getting-virtual-machines-over-eduroam-university-wlan)
 
 </details>
 
 ## Contribution
 
-Do you have a lot of ideas or suggestions to improve course?
+Do you have a lot of ideas or suggestions to improve the course?
 Fork repository, and make a pull request. Let's have a look!
 
-This might have positive effect for your grade as well.
+This might have a positive effect on your grade as well.
 
-Current contributors for the course (order by last name):
+Current contributors for the course (order by the last name):
 
   * Aku Haataja (as course assistant)
   * Lauri Haverinen (as course assistant)
@@ -288,8 +288,8 @@ Current contributors for the course (order by last name):
 
 ## License
 
-Any information, guidelines, tutorials, examples or code pieces here are for teaching purposes, under MIT license, unless otherwise declared.
+Any information, guidelines, tutorials, examples, or code pieces here are for teaching purposes, under MIT license, unless otherwise declared.
 
 This repository contains tutorials and examples for how to use some specific tools
 
-* The licence of corresponding tool should be applied for the usage of tool
+* The license of the corresponding tool should be applied for the usage of the tool
