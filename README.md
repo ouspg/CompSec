@@ -30,8 +30,6 @@ The course is organized by Oulu University Secure Programming Group (OUSPG)
 
 * [Grading](#Grading)
 
-* [Final coursework topics](#Final-coursework-topics)
-
 * [Virtual machines (Lab environment)](#lab-environment)
 
 * [Contribution](#Contribution)
