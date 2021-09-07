@@ -197,7 +197,7 @@ You can launch the virtual machine with following *PowerShell* commands.
 
 #### For Kali Linux
  
-1. Mount network drive (If the domain 'kaappi' is not found, you can use "\\cifs.isi.oulu.fi\Virtuaalikoneet$")
+1. Mount network drive (If the domain 'kaappi' is not found, you can use "\\\cifs.isi.oulu.fi\Virtuaalikoneet$")
 ```powershell
 New-PSDrive -Persist -Name "Z" -PSProvider "FileSystem" -Root "\\kaappi\Virtuaalikoneet$"
 ```
