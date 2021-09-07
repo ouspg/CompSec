@@ -189,20 +189,36 @@ These virtual machines are located on the University network drive, in case the 
 
 If you are on the University premises and can access to laboratory computer which has VMware installed.
 
+### Run machine directly from the network drive
+ 
+This is the recommended method, if your computer does not have enough free space on Windows drive.
+Kali Linux requires around 30GB at the moment and ChipWhisperer around 7GB.
+You can launch the virtual machine with following *PowerShell* commands.
+
+#### For Kali Linux
+ 
+1. Mount network drive (If the domain 'kaappi' is not found, you can use "\\cifs.isi.oulu.fi\Virtuaalikoneet$")
+```powershell
+New-PSDrive -Persist -Name "Z" -PSProvider "FileSystem" -Root "\\kaappi\Virtuaalikoneet$"
+```
+2. Create temprary directory (Correct path is important!)
+```powershell
+New-Item -Path "C:\Temp" -Name "Kali" -ItemType "directory"
+```
+3. Copy VMware configuration file from the network drive
+```powershell
+Copy-Item "Z:\VMware\CompSec\Kali_x64_2021\Kali-Linux_nonpersistent.vmx" -Destination "C:\Temp\Kali"
+```
+4. Launch the virtual machine
+```powershell
+Start-Process -FilePath "C:\Temp\Kali\Kali-Linux_nonpersistent.vmx"
+```
+ 
 ### **Copy machine and run locally**
 
 If you have enough space on your lab computer, and you are not too hesitant to start, the recommended way is to copy the virtual machine from the network drive, and then start it locally. This way changes are not lost in the shutdown.
 
-You can mount the network drive with the following cmd command:
-
-```
-net use z: "\\kaappi\Virtuaalikoneet$"
-```
-If the domain `kaappi` is not found, try to use following instead:
-```shell
-net use z: "\\cifs.isi.oulu.fi\Virtuaalikoneet$" 
-```
-
+You can mount the network drive as above.
 
 There should be now new Z: drive, named Virtuaalikoneet$
 
@@ -212,7 +228,7 @@ Virtuaalikoneet$ -> VMware -> CompSec
 
 Copy selected virtual machine to C:\Temp folder.
 
-Run machine from *.vmx* file, which ***does not*** say 'copy and run'.
+Run machine from *.vmx* file, which ***does not*** say 'nonpersistent'.
 
 When the virtual machine asks if you have copied or moved the machine, press __"I copied it"__.
 
