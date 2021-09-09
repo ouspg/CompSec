@@ -43,7 +43,7 @@ sudo pacman -R <package-name>
 ```
 
 Upgrade all packages
-```
+```console
 sudo pacman -Syu
 ```
 
@@ -86,3 +86,11 @@ Restart apache with
 ```console
 sudo systemctl restart httpd.service
 ```
+
+### Lab 4
+
+Task 3A might not be possible to do directly on Arch Linux (protected). It is possible to implement this in Kali based Docker image for example.
+
+### Lab 6
+
+Some tools are missing, but this is intentional.
