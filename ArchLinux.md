@@ -7,7 +7,7 @@ Package ecosystem is also much better than in Kali Linux, if you are willing to 
 
 ## Image Info
 
-Gnome Desktop Environment as default.
+Image is distributed in OVA format and uses Gnome Desktop Environment as default.
 
 VirtualBox 6.1 guest additions included. Use same version for the best experience.
 
