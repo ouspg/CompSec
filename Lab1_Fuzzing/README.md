@@ -167,7 +167,7 @@ __Hint__: Make sure that you are actually running the UnRTF with a crash file! I
 ### Fuzz testing your own program
 
 In this task, you will write a small C program and fuzz test it. In task 1, you created a *.txt* file containing ```12 EF``` and 100 malformed samples of it. We will use them in this task. Your program must take a text file as an input and check the file for the following requirements:
-- The file contains **two and only tokens** that are separated with a space
+- The file contains **two and only two tokens** that are separated with a space
 - First token is an **integer**
 - Second token is a **string**
 - If the content of the text file is as specified above, return 1, otherwise 0
