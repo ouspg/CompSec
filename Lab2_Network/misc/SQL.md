@@ -10,7 +10,7 @@
 
 Lets fo over the concept of SQL injection with a simple example. Lets use OWASP Juice shop as an demonstration tool. In Juice shop the system takes your input and shows results based on that. For example if I search for an apple it shows apple related results
 
-<img src="img/search_apple.png">
+<img src="../img/search_apple.png">
 
 How does the juice shop or a similar system turn your search result to products on the screen? Generally systems like this take the input and the backend (php-, python-, nodejs-server etc) uses it to generate a SQL-query which it sends to the SQL-server. From this the backend gets the product information and is then able to show the products on the screen. The SQL-query is generally something like this:
 
@@ -56,7 +56,7 @@ Modified
 SELECT * FROM table_name WHERE condition LIKE '%'user_input%'
 ```
 Like you see the formatting breaks. There are too many brackets and a query like this should cause a SQL-error if you input it to the Juice Shop.
-<img src="img/search_'user_input.png">
+<img src="../img/search_'user_input.png">
 This way we can "escape the bracket" so to speak and this way start adding to the previous query. However this is pointless if we keep getting errors due to broken syntax caused by any code left after the user_input part. A way around this is to use SQLs comment symbol "--". With this be can wipe out everything after our injected command. for example if we send 'INJECTION--
 
  ```sql
