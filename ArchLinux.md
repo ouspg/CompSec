@@ -89,6 +89,22 @@ sudo systemctl restart httpd.service
 
 ### Lab 4
 
+For compiling 32-bit versions of the binaries, 32-bit support must be enabled. This is not implemented in the provided VM version by default.
+
+Edit file `/etc/pacman.conf`
+
+Uncomment the following lines:
+```conf
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+```
+
+Then install 32-bit development packages:
+```console
+sudo pacman -Sy && sudo pacman -S multilib-devel
+```
+
+
 Task 3A might not be possible to do directly on Arch Linux (protected). It is possible to implement this in Kali based Docker image for example.
 
 ### Lab 6
