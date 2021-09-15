@@ -8,7 +8,7 @@
 
 ### Scenario
 
-Lets fo over the concept of SQL injection with a simple example. Lets use OWASP Juice shop as an demonstration tool. In Juice shop the system takes your input and shows results based on that. For example if I search for an apple it shows apple related results
+Lets go over the concept of SQL injection with a simple example. Lets use OWASP Juice shop as an demonstration tool. In Juice shop the system takes your input and shows results based on that. For example if I search for an apple it shows apple related results
 
 <img src="../img/search_apple.png">
 
@@ -35,7 +35,7 @@ Command WHERE is used to filter results to what is specified in the "condition" 
 SELECT * FROM Students WHERE Course="Compsec"
 
 ```
-would go over all columns from tabel Students and return the ones whos column named "Course" contains the word "Compsec".
+would go over all columns from table Students and return the ones whos column named "Course" contains the word "Compsec".
 
 
  LIKE command is used to limit the search for results that contain a specific pattern. In this case the word "user_input". The %-signs over the result are wild cards that mean that the results should match one or more characters of the specified string. For example
@@ -86,7 +86,7 @@ This example returns the results of both SELECT commands. There are few requirem
 
 * The columns in each SELECT statement must also be in the same order
 
-These requirements make utilizing UNION in SQL injection harder. It is unlikely that the attacker knows the exact structure of the SQL tables so forming an UNION command that returns something it shouldn't can require some educated guesswork. In the exercise you will see that the server returns error messages that you can use to guess the tarble structures.
+These requirements make utilizing UNION in SQL injection harder. It is unlikely that the attacker knows the exact structure of the SQL tables so forming an UNION command that returns something it shouldn't can require some educated guesswork. In the exercise you will see that the server returns error messages that you can use to guess the table structures.
 
 
 
