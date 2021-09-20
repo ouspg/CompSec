@@ -8,7 +8,7 @@
 
 ### Scenario
 
-Lets fo over the concept of SQL injection with a simple example. Lets use OWASP Juice shop as an demonstration tool. In Juice shop the system takes your input and shows results based on that. For example if I search for an apple it shows apple related results
+Lets go over the concept of SQL injection with a simple example. Lets use OWASP Juice shop as an demonstration tool. In Juice shop the system takes your input and shows results based on that. For example if I search for an apple it shows apple related results
 
 <img src="../img/search_apple.png">
 
@@ -35,7 +35,7 @@ Command WHERE is used to filter results to what is specified in the "condition" 
 SELECT * FROM Students WHERE Course="Compsec"
 
 ```
-would go over all columns from tabel Students and return the ones whos column named "Course" contains the word "Compsec".
+would go over all columns from table Students and return the ones whos column named "Course" contains the word "Compsec".
 
 
  LIKE command is used to limit the search for results that contain a specific pattern. In this case the word "user_input". The %-signs over the result are wild cards that mean that the results should match one or more characters of the specified string. For example
@@ -47,7 +47,7 @@ would do the same as the above mentioned example.
 
 ### Injection
 
-No that we understand what the example query does we can go over the idea behind SQL injection. Like discussed earlier we can only change the "user_input" part of the query. How could this be an issue? And how can this be abused? Lets change the "user_input" to "'user_input". 
+Now that we understand what the example query does we can go over the idea behind SQL injection. Like discussed earlier we can only change the "user_input" part of the query. How could this be an issue? And how can this be abused? Lets change the "user_input" to "'user_input". 
 
 ```sql
 Original
@@ -57,7 +57,7 @@ SELECT * FROM table_name WHERE condition LIKE '%'user_input%'
 ```
 Like you see the formatting breaks. There are too many brackets and a query like this should cause a SQL-error if you input it to the Juice Shop.
 <img src="../img/search_'user_input.png">
-This way we can "escape the bracket" so to speak and this way start adding to the previous query. However this is pointless if we keep getting errors due to broken syntax caused by any code left after the user_input part. A way around this is to use SQLs comment symbol "--". With this be can wipe out everything after our injected command. for example if we send 'INJECTION--
+This way we can "escape the bracket" so to speak and this way start adding to the previous query. However this is pointless if we keep getting errors due to broken syntax caused by any code left after the user_input part. A way around this is to use SQLs comment symbol "--". With this we can wipe out everything after our injected command. For example, if we send 'INJECTION--
 
  ```sql
 Original
@@ -86,7 +86,7 @@ This example returns the results of both SELECT commands. There are few requirem
 
 * The columns in each SELECT statement must also be in the same order
 
-These requirements make utilizing UNION in SQL injection harder. It is unlikely that the attacker knows the exact structure of the SQL tables so forming an UNION command that returns something it shouldn't can require some educated guesswork. In the exercise you will see that the server returns error messages that you can use to guess the tarble structures.
+These requirements make utilizing UNION in SQL injection harder. It is unlikely that the attacker knows the exact structure of the SQL tables so forming an UNION command that returns something it shouldn't can require some educated guesswork. In the exercise you will see that the server returns error messages that you can use to guess the table structures.
 
 
 
