@@ -145,7 +145,7 @@ Illegal instruction
 #
 
 ```
-Note, that using a script like above expects program to take input as argument. Also, the way memory address is actually used as input, is not so straightforward. (Is your system Little- or Big-endian?)
+Note, that using a script like above expects program to take input as an argument. Also, the way memory address is actually used as input, is not so straightforward. (Is your system Little- or Big-endian?)
 
 You probably have to disable protections mentioned in prerequisites to be able to succeed. In this case, stack canaries might cause problems, if you are using distribution other than Kali Linux.
 
@@ -159,24 +159,24 @@ Tip: If your hidden function contains printing - add a newline ending to the str
 ---
 Task 2 : Arbitrary code execution
 ----
-The goal of this task is to create bit more advanced payload: some arbitrary code that we are willing to execute, by passing it to our previously created vulnerable program. Notably this means execution of our own program inside of another program.
+The goal of this task is to create a bit more advanced payload: some arbitrary code that we are willing to execute, by passing it to our previously created vulnerable program. Notably this means execution of our own program inside of another program.
 
-In practice, first we need functionality for payload in C/C++ code, and then it should be transformed to machine code. Transform means in this case rewriting: *it is NOT good idea to get assembly code automatically from your binary*, which you made earlier.
+In practice, first we need functionality for payload in C/C++ code, and then it should be transformed to machine code. Transform means in this case rewriting: *it is **NOT** a good idea to get assembly code automatically from your binary*, which you made earlier. 
 
- Later this machine code should be combined with other instructions to be suitable as payload. 
+ Later this machine code should be combined with other instructions to be suitable as a payload. 
 
 It's not necessary to do functionality in C/C++ at first, if the assembly language is well known, but we are doing it now for learning purposes.
 
-Finally our machine code is somehow executed in vulnerable program.
+Finally our machine code is somehow executed in the vulnerable program.
 
 Extra: Maybe the most known white paper about this method can be found [here][0].
 
 ### A) Making a simple program to open Shell.
 
- The origin of shellcoding was to access to shell with usage of specifically crafted payloads.
+ The origin of shellcoding was access to shell with usage of specifically crafted payloads.
  Let's respect the traditions. It should be easy to understand.
 
-> ***Make a simple program, which opens local shell. Example would be in execution like this:***
+> ***Make a simple program, which opens a local shell. Example would be execution like this:***
 
 ```shell
 # gcc -o simpleshell Simpleshell.c 
@@ -191,16 +191,16 @@ This program represents functionality of our later arbitrary code.
 
  To be able to execute arbitrary code in our vulnerable program we made in Task 1, we need to transfer payload functionality to direct machine instructions.
  
- This means that we are going to turn code into assembly code, and further transforming it into shellcode. In the other words, **rewriting** (do not try to generate automatically with gcc for example) previous functionality from A task into IA-32 assembly. (Or other instruction set, if system does not support this.)
+ This means that we are going to turn C/C++ code into assembly code, and further transform it into shellcode. In the other words, **rewriting** (do not try to generate automatically with gcc for example) previous functionality from A task into IA-32 assembly. (Or other instruction set, if the system does not support this.)
 
-You can find short introduction to assembly and shellcoding here: https://0x00sec.org/t/linux-shellcoding-part-1-0/289 
+You can find a short introduction to assembly and shellcoding here: https://0x00sec.org/t/linux-shellcoding-part-1-0/289 
 
 And some more here:
 http://hackoftheday.securitytube.net/2013/04/demystifying-execve-shellcode-stack.html
 
 And one post more: https://dhavalkapil.com/blogs/Shellcode-Injection/
 
-It's possible to this for x86 or x64 machines, but x86 (32 - bit) version is recommended.
+It's possible to do this for x86 or x64 machines, but the x86 (32 - bit) version is recommended.
 
 Final shellcode could look something like this (but it's probably longer):
 
@@ -208,54 +208,54 @@ Final shellcode could look something like this (but it's probably longer):
 \x62\x69\x89\xe3\x31\x6e\x2f\x73\x6\x31\xc0\x50\x68
 ```
 
-You should confirm, that your shellcode is actually working. There are examples in both provided links. Vulnerable binary must be compiled for same instruction set(x86/x64) than shellcode.
+You should confirm that your shellcode is actually working. There are examples in both provided links. Vulnerable binary must be compiled for the same instruction set (x86/x64) than shellcode.
 
 > ***Transfer (rewrite) your C/C++ code functionality as it is to assembly and further to shellcode.***
 
 
 ### C) Making the final payload and executing it
 
-At this point our executable part of payload should be ready-to-go. The question then arises: how we can actually execute whole payload in a vulnerable program?
+At this point our executable part of the payload should be ready-to-go. The question then arises: how can we actually execute the whole payload in a vulnerable program?
 
-Previously in Task 1 we have executed specific function from vulnerable program by using crafted payload, which contained just one address in addition of padding, which filled the input buffer.
+Previously in Task 1 we have executed a specific function from the vulnerable program by using a crafted payload, which contained just one address in addition to padding, which filled the input buffer.
 
-We can probably still use the same vulnerable program again for executing payload. You still have to compile vulnerable program correctly to disable some protections.
+We can still use the same vulnerable program again for executing payload. You still have to compile the vulnerable program correctly to disable some protections.
 
-This time we are executing arbitrary code, which is probably totally unrelated to vulnerable program. We are using virtual space of other program to run our own program.
+This time we are executing arbitrary code, which is probably totally unrelated to the vulnerable program. We are using the virtual space of another program to run our own program.
 
-Once we have confirmed, that executable payload is working (should have been done in the end of 2B ), we can go forward.
+Once we have confirmed that the executable payload is working (should have been done at the end of 2B ), we can go forward.
 
 The idea for executing this payload:
 
 1. Store executable instructions to memory space of the program
-2. Somehow make machine to execute payload as program from the start of this location.
+2. Somehow make the machine execute the payload as a program from the start of this location.
 
 Storing itself isn't a problem, payload goes as input to the program. As we are storing payload inside the program, *executable instructions should not overflow, as otherwise code might be split and it won't work*. Your program's size for input should be enough: your executable instructions can fit there.
 
-At this point you should know the size of your payload in bytes. Increase the buffer size of vulnerable program if needed.
+At this point you should know the size of your payload in bytes. Increase the buffer size of the vulnerable program if needed.
 
 Try to find suitable padding before proceeding now, so you can overflow return addresses. You can test it like in Task 1.
 
 In this case, more likely the problem is to find  out the address of the beginning of our payload, and then execute it. There are many ways to achieve this, but here are few examples:
 
-1. At the time of program execution, when input is actually used and stored, you can try to disassemble registers and addresses (Maybe right after execution of unsafe library function?), and try to find your payload instructions. If you find permanent place, you could try to figure out the address of it, and call your code from there. You can try this in gdb first, but address outside of it should not be hard to guess afterwards. Think about how local variables or function parameters are stored. This could guide you to look at for correct place.
+1. At the time of program execution, when input is actually used and stored, you can try to disassemble registers and addresses (Maybe right after execution of an unsafe library function?), and try to find your payload instructions. If you find a permanent place, you could try to figure out the address of it, and call your code from there. You can try this in gdb first, but addresses outside of it should not be hard to guess afterwards. Think about how local variables or function parameters are stored. This could guide you to look for the correct place.
 
-2. Another choice is just to guess the location of shellcode. We have disabled some protections, so we know, that in every program, stack starts from same address. We just need to guess the correct offset from it. Manually this could be very hard. You could try create script, which finds base address, changes address, and tries to run payload each time on it.
+2. Another choice is just to guess the location of the shellcode. We have disabled some protections, so we know that in every program, the stack starts from the same address. We just need to guess the correct offset from it. Manually this could be very hard. You could try to create a script, which finds the base address, changes the address, and then tries to run the payload each time on it.
 
-You can do this task at first inside GDB, to run your arbitrary code, and open shell.
+You can do this task at first inside GDB, to run your arbitrary code for finally opening the shell.
 
 To get full points from this task, you should execute it outside of GDB.
 
 More information can be found [here][0], how to succeed.
 
-In GDB, ASLR is not enabled by default. When you want to spawn shell outside of gdb, you have to disable ASLR manually. This can be done with:
+In GDB, ASLR is not enabled by default. When you want to spawn the shell outside of gdb, you have to disable ASLR manually. This can be done with:
 ```
 echo 0 | sudo tee /proc/sys/kernel/randomize_va_space 
 ```
 
-> ***Make a step-by-step report like previously (what, why and how), including command line commands and sourcefiles you used to success of executing arbitrary code on vulnerable program,by finally opening local shell outside of GDB.***
+> ***Make a step-by-step report like previously (what, why and how), including command line commands and sourcefiles you used to successfully execute arbitrary code on the vulnerable program, by finally opening the local shell outside of GDB.***
 
-Tip: *Does NOP sled sound familiar?*
+Tip: *Does the NOP sled sound familiar?*
 
 ---
 Task 3 : Defeating No-eXecute
