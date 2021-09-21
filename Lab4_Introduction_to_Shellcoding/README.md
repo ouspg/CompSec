@@ -2,24 +2,24 @@ Computer Security Lab 4: Introduction to Shellcoding and a bit more
 ====
 
 ## Preliminary tasks
-It would be good to read Background and Prerequisites sections beforehand.
+It would be good to read the background and prerequisites sections beforehand.
 
-Particularly, article presented by Aleph One offers good introduction to stacks and their legacy (and current) vulnerabilities. This can be found from [here.](http://phrack.org/issues/49/14.html#article)
+Particularly, the article presented by Aleph One offers a good introduction to stacks and their legacy (and current) vulnerabilities. This can be found from [here.](http://phrack.org/issues/49/14.html#article)
 
 Background
 ---
 
-Input validation and sanitization is one of the major challenges in software development. Improperly implemented validation and sanitization could lead to unexpected or unwanted situations, which have negative effect for functionality and thus security of software.
+Input validation and sanitization is one of the major challenges in software development. Improperly implemented validation and sanitization could lead to unexpected or unwanted situations, which have a negative effect on functionality and thus security of software.
 
-Buffer overflows and buffer over-reads should be a familiar topic from the lectures. These are some of the results from invalid input validation, and could lead in the worst case to possibility of arbitrary code execution in the system of vulnerable program.
+Buffer overflows and buffer over-reads should be a familiar topic from the lectures. These are some of the results from invalid input validation, and could lead in the worst case to the possibility of arbitrary code execution in the system of a vulnerable program.
 
-Misusing these flaws with specified payloads has been used as a classic way to get unauthorized shell access to compromised system. This method can be called as 'shellcoding', as **traditionally** shellcoding refers to anything, when piece of code is used as 'payload'  to get local or remote [shell](https://en.wikipedia.org/wiki/Shell_(computing)) access. The meaning of this term has evolved: today goal could be any imaginable task.
+Misusing these flaws with specified payloads has been used as a classic way to get unauthorized shell access to the compromised system. This method can be called as 'shellcoding', as **traditionally** shellcoding refers to anything, when a piece of code is used as a 'payload'  to get local or remote [shell](https://en.wikipedia.org/wiki/Shell_(computing)) access. The meaning of this term has evolved: today's goal could be any imaginable task.
 
-Executing payloads in vulnerable program could lead to privilege escalation. Vulnerable program which is running with system privileges, could execute arbitrary code with same privileges. Therefore if payload is able to spawn shell, it's done with system privileges. Acquiring shell access this way usually leads to full control of the system. This has led shell spawning to be one of the most common goals of attackers. History of shellcoding traces back to explanation in the article of Aleph One, introduced in [here.](http://phrack.org/issues/49/14.html#article)
+Executing payloads in vulnerable programs could lead to privilege escalation. Vulnerable program which is running with system privileges could execute arbitrary code with the same privileges. Therefore, if a payload is able to spawn a shell, it's done with system privileges (read more about SUID [here](https://vickieli.medium.com/becoming-root-through-an-suid-executable-47473173a6ec)). Acquiring shell access this way usually leads to full control of the system. This has led to shell spawning to be one of the most common goals of attackers. History of shellcoding traces back to an explanation in the article of Aleph One, introduced in [here.](http://phrack.org/issues/49/14.html#article)
 
-The intention of this exercise is to achieve hands-on experience by exploring software with improperly validated input. Further, by taking advantage of shellcoding, we should be aware of dangers what unintended behavior of software could inflict to overall system.
+The intention of this exercise is to achieve hands-on experience by exploring software with improperly validated input. Further, by taking advantage of shellcoding, we should be aware of the dangers that unintended behavior of software could inflict on the overall system.
 
- *The goal or intention of this exercise is **not** to courage to abuse or instruct these skills for something inappropriate. Can systems be truly secure, if they can't handle open discuss and testing?*
+ *The goal or intention of this exercise is **not** encourage abuse or instruct these skills for something inappropriate. Can systems be truly secure, if they can't handle open discussion and testing?*
 
 ---
 Grading
@@ -27,10 +27,10 @@ Grading
 <details open><summary>Details </summary>
 Make a short step-by-step report (what, why and how) of following tasks, and include source codes and the most important command line commands used in those tasks. It's recommended to read all tasks before starting. Actual instruction for what to do, is ***in bold and italics*** on each task.
 
-You are eligible to following grades in this exercise by doing tasks as defined. Great ideas and implementations could compensate some poorly implemented ones.
+You are eligible for the following grades in this exercise by doing tasks as defined. Great ideas and implementations could compensate for some poorly implemented ones.
 *Upper grade requires that all previous tasks have been done as well.*
 
-It is estimated, that you are able to do Tasks 1 & 2 during lab session (4 hours).
+It is estimated that you are able to do Tasks 1 & 2 during the lab session (4 hours).
 
 Tasks 3 & 4 are more advanced than earlier ones. Implementation will very likely take much more time.
 
@@ -45,10 +45,10 @@ By completing Task 1, grade 1 can be achieved.
 
 By doing Task 2 A&B, you are eligible for grade 2 from this lab. Completion of C part increases grade to 3.
 
-Difficulty on tasks is expected to be exponentially raising as you go forward with them. Without understanding of previous task, next one could be very ambiguous.
+Difficulty on tasks is expected to be exponentially rising as you go forward with them. Without understanding the previous task, the next one could be very ambiguous.
 
 *Return completed tasks to your private GitHub repository!
-There will be answer template.*
+There will be an answer template.*
 
 </details>
 
@@ -58,13 +58,13 @@ Some prerequisites
 ---
 This exercise is recommended to do with Kali Linux.
 
-You have to use C/C++ programming language in cases, when you want to create program with buffer overflow vulnerability.
+You have to use C/C++ programming language in cases when you want to create a program with buffer overflow vulnerability.
 
 At this point, you should have basic knowledge about how computer stack/memory and registers are working.
 
-Tasks are possible to do in both 32 - and 64 bit machine instructions as long as machine has support for them. Implementation will differ and be more challenging depending on version. It's recommended to use 32 - bit version, as you can find more examples from it: it could be generally easier to start with.
+Tasks are possible to do in both 32 - and 64 bit machine instructions as long as the machine has support for them. Implementation will differ and be more challenging depending on the version. It's recommended to use the 32 - bit version, as you can find more examples from it: it could be generally easier to start with.
 
-Tasks have been tested in Kali Linux x86_64 (Debian 4.14.12) and Ubuntu 18.04 LTS (as 32 - bit. 64 -bit version is more challenging in Ubuntu). Task 3A is not possible to do with latest Ubuntu.
+Tasks have been tested in Kali Linux x86_64. Task 3A is not possible to do with the latest Ubuntu, Arch Linux or any mature Linux environment which is intended for daily use.
 
 You might have to note following Linux protections
 
@@ -76,19 +76,20 @@ You might have to note following Linux protections
 > Check from [here](https://www.win.tue.nl/~aeb/linux/hh/protection.html) for some compiler flags.
 
 Find a way to disable them if needed.
-The most are compiler options.
+Most are compiler options.
 
 More information about protections in Ubuntu (and overall) can be found [here](https://wiki.ubuntu.com/Security/Features).
 
 On later tasks, we try to bypass some of them: specifically mentioning not to disable them.
 
+**Encoding really matters in these tasks, for example Python 2 print produces *just* data, whereas Python 3 print produces *encoded string* by default.** 
 
-### More readings for those who have interested:
+### More readings for those who are interested:
 
-A bit outdated but still excellent book for getting solid grasp of basics: 
+A bit outdated but still an excellent book for getting a solid grasp of the basics: 
 *The Shellcoder's Handbook: Discovering and Exploiting Security Holes (Chris Anley, Felix Lindner,  Gerardo Richarte and John Heasman)*
 
-## Advanced tools used in  this exercise
+## Advanced tools used in this exercise
 
 These are recommended to use in later tasks:
 * [radare2](https://github.com/radare/radare2) - advanced disassembler and forensics tool
@@ -99,39 +100,39 @@ These can be used in first tasks as well, but it is not necessary.
 ---
 Task 1 : Basics of buffer overflows
 ------
-In this first task, we are using simple program with buffer overflow vulnerability for analyzing the behavior of system. With specifically crafted input, we will change the behavior to something unintended for purpose of the program, but intended to us.
+In this first task, we are using a simple program with buffer overflow vulnerability for analyzing the behavior of the system. With specifically crafted input, we will change the behavior to something unintended for the purpose of the program, but intended to us.
 
-### A) Using program with improper input validation and analyzing overflow.
+### A) Using a program with improper input validation and analyzing overflow.
  
-We want to understand very basics of what is actually happening in the stack and in the registers of the machine at the time when overflow occurs.
+We want to understand the very basics of what is actually happening in the stack and in the registers of the machine at the time when overflow occurs.
 
 > Short intro to buffer overflows and analyzing tutorial can be found [here](Tutorials/Tutorial1A_Analyzing_overflow.md).
 
-Try it out by yourself. It is not necessary, if you are already very familiar with topic and able to answer to bolded questions.
+Try it out by yourself. It is not necessary, if you are already very familiar with the topic and able to answer bolded questions.
 
 Based on analyzing tutorial:
 
-What makes this particular (rip) register so interesting? What does ret instruction have to do with rip register in most cases of buffer overflows?
+What makes this particular (`rip`) register so interesting? What does `ret` instruction have to do with `rip` register in most cases of buffer overflows?
 
-This leads to conclusion, that in most cases we might need to put our buffer overflow in external function, and it's recommended to do so in this lab for not making things too hard. Depending on Operating System and architecture (x86/x64), overflowing return address of main function might not be that easy.
+This leads to the conclusion, that in most cases we might need to put our buffer overflow in an external function, and it's recommended to do so in this lab for not making things too hard. Depending on Operating System and architecture (x86/x64), overflowing the return address of the main function might not be that easy.
 
-You can do this task as 32 - bit or 64 - bit versions. By default, program is compiled as 64-bit in provided Kali Linux. By changing compiler flags, program can be compiled as 32-bit as well.
+You can do this task as 32 - bit or 64 - bit versions. By default, the program is compiled as 64-bit in provided Kali Linux. By changing compiler flags, the program can be compiled as 32-bit as well.
 
-In this case, stack canaries might cause problems, if you are using other distribution than Kali Linux. Those has to be disabled.
+In this case, stack canaries might cause problems if you are using a distribution other than Kali Linux. Those have to be disabled.
 
-> ***Explain shortly the role of the rip register and ret instruction, and why we are interested about them. Explain what is causing the overflow in [example program. ](src/vuln_progs/Overflow.c).  Further, analyze this program with gdb and try to find suitable size for overflow (padding size), which starts to fill up instruction pointer register. You can also make your own program, if you want.***
+> ***Explain briefly the role of the `rip` register and `ret` instruction, and why we are interested in them. Explain what is causing the overflow in [example program. ](src/vuln_progs/Overflow.c).  Further, analyze this program with gdb and try to find a suitable size for overflow (padding size), which starts to fill up the instruction pointer register. You can also make your own program, if you want.***
 
 ### B) Adding hidden (non-used) function to previous program. (And still executing it)
 
-In short introduction to buffer overflows at previous task, there was an example about accessing secret data by just overflowing the input. In this task, we are willing to do something similar, in a bit different way. We are changing the execution flow of program to something we want.
+In a short introduction to buffer overflows at the previous task, there was an example about accessing secret data by just overflowing the input. In this task, we are willing to do something similar, in a bit different way. We are changing the execution flow of the program to something we want.
 
-Let's add a new function to previously used program , but never actually use it.
+Let's add a new function to the previously used program , but never actually use it.
 
-We are going to execute this function by overflowing program with specified input (in other words, with our crafted payload). 
+We are going to execute this function by overflowing the program with specified input (in other words, with our crafted payload). 
 
-This payload uses some memory address what you should be able to figure out based on tutorial in A section. Suitable padding should be used that address can be overflowed to right place. Shortly, by *overflowing to correct place (with specific size of padding) with correct memory address , execution can jump to location of this memory address. Increase padding little by little.*
+This payload uses some memory address that you should be able to figure out based on the tutorial in section A. Suitable padding should be used so that the address can be overflowed to the right place. Shortly, by *overflowing to the correct place (with specific size of padding) with the correct memory address , execution can jump to the location of this memory address. Increase padding little by little.*
 
-Example scenario would be something like this. The function which is never actually called, is printing something and opening shell:
+Example scenario would be something like this. The function which is never actually called, is printing something and opening the shell:
 
 ```shell
 # ./Overflow $(python -c 'print "A" * 10')
@@ -144,15 +145,15 @@ Illegal instruction
 #
 
 ```
-Note, that using script like above expects that program is taking input as argument. Also, the way how memory address is actually used as input, is not so straightforward. (Is your system Little- or Big-endian?)
+Note, that using a script like above expects program to take input as argument. Also, the way memory address is actually used as input, is not so straightforward. (Is your system Little- or Big-endian?)
 
-You probably have to disable protections mentioned in prerequisites to be able to succeed. In this case, stack canaries might cause problems, if you are using other distribution than Kali Linux.
+You probably have to disable protections mentioned in prerequisites to be able to succeed. In this case, stack canaries might cause problems, if you are using distribution other than Kali Linux.
 
 
 
-> ***Find a way to disable these protections. Use gdb or similar program to analyze your program. Disassembling might be helpful. Find suitable address, and figure out what should be overflowed with it and how to get correct values into it, and finally execute function this way.***
+> ***Find a way to disable these protections. Use gdb or similar programs to analyze your program. Disassembling might be helpful. Find a suitable address, and figure out what should be overflowed with it and how to get the correct values into it, and finally execute the function this way.***
 
-Tip: If your hidden function contains printing - add newline ending to string. Otherwise it might not be printing anything what can be actually seen.
+Tip: If your hidden function contains printing - add a newline ending to the string. Otherwise it might not be printing anything that can be actually seen.
 
 
 ---
