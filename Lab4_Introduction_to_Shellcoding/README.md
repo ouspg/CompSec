@@ -268,37 +268,37 @@ Tip: *Does the NOP sled sound familiar?*
 ---
 Task 3 : Defeating No-eXecute
 ----
-In previous task we have executed some arbitrary code straight from the stack. This is bit simple and old method, and has been prevented some (long) time ago.
+In previous the task we have executed some arbitrary code straight from the stack. This is a bit simple and old method, and has been prevented some (long) time ago.
 
 NX - bit (no-eXecute) [was created][1] to separate areas in memory for storage of instructions and for storage of data.
 Processors will not execute data marked by NX - bit; in practice data which is just 'data'.
 
-This makes execution of our payload in the stack very hard, in case when it is stored as input to vulnerable program's memory area.
+This makes execution of our payload in the stack very hard, in case when it is stored as input to the vulnerable program's memory area.
 
 But what if we are *not* executing code in the stack?
-Previous prevention method has lead to forming of *code reuse attack techniques* (ret2libc, ROP, JOP, COOP etc.). These techniques are focusing on to using existing code to build required functionality. But from where to get code for reusing?
+THe previous prevention method has led to forming of *code reuse attack techniques* (ret2libc, ROP, JOP, COOP etc.). These techniques are focusing on using existing code to build required functionality. But from where to get code for reusing?
 
-*Presence of ASLR could be bypassed with specific implementation and combination of these techniques as well, but that will be left outside of this exercise, as it makes things a bit more complicated. Usually it requires information leak as well. By default it will probably prevent everything what we are doing next.*
+*Presence of ASLR could be bypassed with specific implementation and combination of these techniques as well, but that will be left outside of this exercise, as it makes things a bit more complicated. Usually it requires information leakage as well. By default it will probably prevent everything that we are doing next.*
 
-From previously mentioned techniques, we are taking short glance to ret2libc and ROP, which are some basic and original techniques.
+From previously mentioned techniques, we are taking a short glance at ret2libc and ROP, which are some basic and original techniques.
 
 ### A) Return-to-libc (aka ret2libc)
 
-One solution for this is... are libraries. Spefically: dynamic libraries, which are launched during only at the execution of the program.
-We can safely say, that it's very rare case if program is not using any libraries.
+One solution for this is... are libraries. Specifically: dynamic libraries, which are launched only during at the execution of the program.
+We can safely say that it's a very rare case if a program is not using any libraries.
 
-Library functions are not marked by NX - bit : they are existing instructions. By overflowing stack suitably, we might be able to execute library function with parameters we want.
-We could craft our payload in intention of using functions from libraries by overflowing return addresses to point towards them.
-Reusing functions of vulnerable program is possible as well, but it might not be that beneficial.
+Library functions are not marked by NX - bit : they are existing instructions. By overflowing the stack suitably, we might be able to execute library functions with parameters we want.
+We could craft our payload with the intention of using functions from libraries by overflowing return addresses to point towards them.
+Reusing functions of the vulnerable program is possible as well, but it might not be that beneficial.
 
 One very common library is **libc** (which probably named this method as 'ret2libc'), which grants a lot of flexibility. And the most useful function from there, could be *system()*. By giving */bin/sh* as an argument, we could start a shell.
-If we somehow can pass correct argument to system() function, code isn't executed in stack, it's executed in the address of system(). This was one of the earliest methods to bypass NX protection.
+If we somehow pass correct argument to the system() function, code isn't executed in the stack, it's executed in the address of system(). This was one of the earliest methods to bypass NX protection.
 
-> ***In this task, you should make example implementation of this ret2libc method. It could be for example spawning local shell. This time, **do not** disable NX protection (do not use -z execstack flag in compiler). Disabling other protections is still required. Like previously, make step by step report(what, why, how) including possible source files and command line commands which lead you to get shell access.***
+> ***In this task, you should make an example implementation of this ret2libc method. It could be for example spawning a local shell. This time, **do not** disable NX protection (do not use -z execstack flag in compiler). Disabling other protections is still required. Like previously, make a step by step report(what, why, how) including possible source files and command line commands which lead you to get shell access.***
 
 To be noted: 
-* You should check, if ASCII Armoring is present in your system. It should be disabled additionally for this task. In some systems, it might not be possible. It is recommended to use Kali Linux in this task.
-* This task is much easier to get done with 32 - bit binaries, because of they way how function parameters are passed in practice, when compared to 64-bit system. (Stack vs registers?)
+* You should check if ASCII Armoring is present in your system. It should be disabled additionally for this task. In some systems, it might not be possible. It is recommended to use Kali Linux in this task.
+* This task is much easier to get done with 32 - bit binaries, because of how function parameters are passed in practice, when compared to a 64-bit system. (Stack vs registers?)
 
 One simple implementation can be found from [this][2] paper for example.
 
