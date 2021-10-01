@@ -66,6 +66,11 @@ Tasks are possible to do in both 32 - and 64 bit machine instructions as long as
 
 Tasks have been tested in Kali Linux x86_64. Task 3A is not possible to do with the latest Ubuntu, Arch Linux or any mature Linux environment which is intended for daily use.
 
+On Kali Linux, you might need to install 32-bit support for `gcc`. This can be done as
+```console
+sudo apt-get update && sudo apt-get install gcc-multilib -y
+```
+
 You might have to note following Linux protections
 
 * Stack canaries (SSP)
@@ -212,6 +217,9 @@ You should confirm that your shellcode is actually working. There are examples i
 
 > ***Transfer (rewrite) your C/C++ code functionality as it is to assembly and further to shellcode.***
 
+**NOTE**: It seems that provided virtual machines do have additional protections in these days by having too up-to-date kernel. When testing your shellcode by assinging it into the variable, take a look for [mprotect](https://man7.org/linux/man-pages/man2/mprotect.2.html) syscall, which can be used to make static variables executable again. Example usage can be seen for example [here.](https://gist.github.com/securitytube/5318838#gistcomment-3614284) 
+
+One Stackoverflow post about explaining this matter can be found in [here.](https://stackoverflow.com/questions/9960721/how-to-get-c-code-to-execute-hex-machine-code/55893781#55893781)
 
 ### C) Making the final payload and executing it
 
