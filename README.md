@@ -288,18 +288,10 @@ After you have successfully connected to the network, instructions are the same 
 
 ## Contribution
 
-Do you have a lot of ideas or suggestions to improve the course?
-Fork repository, and make a pull request. Let's have a look!
+Do you have a lot of ideas or suggestions for improving the course?
+Fork the repository, and make a pull request. Let's have a look!
 
 This might have a positive effect on your grade as well.
-
-Current contributors for the course (order by the last name):
-
-  * Aku Haataja (as course assistant)
-  * Lauri Haverinen (as course assistant)
-  * Ville Kemppainen (as course assistant)
-  * Jukka Pajukangas (as course assistant)
-  * Niklas Saari (as course assistant)
 
 ## License
 
