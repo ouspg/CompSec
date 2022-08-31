@@ -140,12 +140,13 @@ Each week has a deadline for the corresponding lab exercise.
 
 Course week|Lecture Topics|Laboratory|Deadline
 :-:|:-:|:-:|:--:
-1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing | 13.09.2021, at 23:59
-2 | Network security, risk | Network and web security | 20.09.2021, at 23:59
-3 | Cybercrime, botnets, malware  | Botnets and malware | 27.09.2021, at 23:59
-4 | Software vulnerabilities and exploits | Shellcoding | 4.10.2021, at 23:59
-5 | Hardware security | HW and side channels | 11.10.2021, at 23:59
-6 | Production security, IoT security | Digital forensics| 18.10.2021, at 23:59
+1 | Introductory lecture, Computer Security in general, software and fuzz testing| Fuzzing | 12.09.2022, at 23:59
+2 | Network security, risk | Network and web security | 19.09.2022, at 23:59
+3 | Cybercrime, botnets, malware  | Botnets and malware | 26.09.2022, at 23:59
+4 | Software vulnerabilities and exploits | Shellcoding | 3.10.2022, at 23:59
+5 | Hardware security | HW and side channels | 10.10.2022, at 23:59
+6 | Production security, IoT security | Digital forensics| 17.10.2022, at 23:59
+7 | - | Improve any previous laboratory work | 24.10.2022, at 23:59
 
 
 
