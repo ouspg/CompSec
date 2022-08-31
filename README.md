@@ -146,7 +146,7 @@ Course week|Lecture Topics|Laboratory|Deadline
 4 | Software vulnerabilities and exploits | Shellcoding | 3.10.2022, at 23:59
 5 | Hardware security | HW and side channels | 10.10.2022, at 23:59
 6 | Production security, IoT security | Digital forensics| 17.10.2022, at 23:59
-7 | - | Improve any previous laboratory work | 24.10.2022, at 23:59
+7 | Legal issues | Improve any previous laboratory work | 24.10.2022, at 23:59
 
 
 
