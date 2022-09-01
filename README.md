@@ -168,8 +168,8 @@ If you want, you can install packages in a normal way, or just use the provided 
 
 ### Virtual machines
 
-**Note**
-If you are using the following virtual machines on your own PC, they are pre-configured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your PC, you might want to reduce this pre-configured RAM. 
+> **Note**
+> If you are using the following virtual machines on your own PC, they are pre-configured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your PC, you might want to reduce this pre-configured RAM. 
 
 Each lab utilizes one of the virtual machines below:
 
@@ -298,6 +298,6 @@ This might have a positive effect on your grade as well.
 
 Any information, guidelines, tutorials, examples, or code pieces here are for teaching purposes, under MIT license, unless otherwise declared.
 
-This repository contains tutorials and examples for how to use some specific tools
+[This](This) repository contains tutorials and examples for how to use some specific tools
 
 * The license of the corresponding tool should be applied for the usage of the tool
