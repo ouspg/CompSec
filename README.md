@@ -42,7 +42,7 @@ The course is organized by Oulu University Secure Programming Group (OUSPG)
 <details open><summary>Details</summary>
 
 
-The course has seven (7) lectures, six (6) laboratory exercises, and 6 Moodle exams. The course does not contain final coursework this year because separate course considering it is planned.
+The course has seven (7) lectures, six (6) laboratory exercises, and 6 Moodle exams. The course does not contain final coursework; instead see the course Computer Security Project 521253S for project work .
 
 Lectures are handling topics from a high perspective and they are not going technically deep. Moodle exams are based on the lectures.
 
@@ -72,7 +72,7 @@ All laboratory tasks are optional and total points from those will determine you
 
 Labs are divided into levels (which is the corresponding grade/points on that lab), level may contain one or several tasks.
 **The amount of tasks which are required for each level/grade is defined in the grading section of the corresponding lab.**
-Tasks are designed to become somewhat harder and time-consuming on each level.
+Tasks are designed to become somewhat harder and time-consuming on every level.
 Getting 2-3 points from each lab is doable for the average student with a reasonable amount of work, 4-5 points require a lot more time and skill.
 
 See [deadlines](#deadlines) section for information about deadlines of lab works.
@@ -115,7 +115,7 @@ git push
   
 As described earlier, you have to pass Moodle exams to pass the course. You can have higher grades by doing lab works.
 
-You can get up to 5 points in each lab (A total of 30 points). The grade is determined based on those points next.
+You can get up to 5 points in each lab (A total of 30 points). The grade is determined based on those points.
 
 Total Points|Total Grade
 :-:|:-:
@@ -162,13 +162,14 @@ Laboratory assignments utilize a set of various tools and also handle potentiall
 A straightforward solution for this is pre-configured virtual machines - if you have enough disk space and performance on your computer to use them. **For Windows users - this is the most convenient way.**
 
 If you are already using Linux/macOS-based operating system, the other option is to use a specific tool called [cincan-command](https://cincan.gitlab.io/cincan-command/).
-It is a wrapper for Docker to run a different kinds of tools in isolated matter. It makes the installation of a wide variety of tools easier while providing some level of isolation as well. Most of the tools used in exercises are usable with it. It requires that Python 3.6+ and Docker are functioning in your system. Installation steps can be found from [documentation.](https://cincan.gitlab.io/cincan-command/installation.html)
+It is a wrapper for Docker to run a different kinds of tools in isolated matter. It makes the installation of a wide variety of tools easier while providing some level of isolation as well. Most of the tools used in exercises are usable with it. It requires that Python 3.6+ and Docker are functioning in your system. Installation steps can be found from the [documentation.](https://cincan.gitlab.io/cincan-command/installation.html)
 
-If you want, you can install packages in a normal way, or just use provided virtual machine on the Linux host as well.
+If you want, you can install packages in a normal way, or just use the provided virtual machine on the Linux host as well.
 
 ### Virtual machines
 
-Note: If you are using the following virtual machines on your own pc, they are pre-configured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your pc, you might want to reduce this pre-configured RAM. 
+**Note**
+If you are using the following virtual machines on your own PC, they are pre-configured with 4GB of RAM for VMware player. So if you have less than 8 GB of RAM in your PC, you might want to reduce this pre-configured RAM. 
 
 Each lab utilizes one of the virtual machines below:
 
@@ -280,7 +281,7 @@ qemu-img convert Kali.vmdk Kali.qcow2
 
 If direct download URLs are not functioning for any reason and if you are not able to get into University to copy virtual machines from a network drive by using Lab computer, you can do it remotely as well.
 This requires setting up *VPN - connection* to the University network.
-This can be acquired by following the guidelines presented [here.](https://www.oulu.fi/ict/openvpn) OpenVPN software is being used.
+This can be acquired by following the guidelines presented [here.](https://www.oulu.fi/en/for-students/supporting-your-studies-and-contact-information-students/it-services-students/remote-desktops) OpenVPN software is being used.
 
 After you have successfully connected to the network, instructions are the same as [here.](#getting-virtual-machines-over-eduroam-university-wlan)
 
