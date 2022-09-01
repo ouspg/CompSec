@@ -133,7 +133,7 @@ So, here's what you need to do:
 
     __Hint__: See AFL [documentation](http://lcamtuf.coredump.cx/afl/README.txt) on how to start the fuzzer. You are fuzzing the UnRTF binary, which is located at ```~/unrtf/bin/unrtf```.
 
-7. Run the fuzzer until you get at least 50 unique crashes and observe the status window to see what is happening. A good description of the status window can be found [here](http://lcamtuf.coredump.cx/afl/status_screen.txt).
+7. Run the fuzzer until you get at least 50 unique (saved) crashes and observe the status window to see what is happening. A good description of the status window can be found [here](http://lcamtuf.coredump.cx/afl/status_screen.txt).
 
 **Command line used to configure unrtf**
 
