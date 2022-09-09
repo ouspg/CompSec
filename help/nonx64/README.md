@@ -6,6 +6,12 @@ The M1 Mac and other non x64 systems will not be able to directly run the provid
 (at least at the time of writing).
 VMWare is working on support emulating x64 on ARM, but in the meanwhile you need to perform some adjustments yourself.
 
+#### Tip for Networking
+
+This is a bit different in UTM. The default network driver is Shared Network so the VM will get its own IP.
+This will change the Week 5 Jupyter address from  `localhost:8888` to something like `http://192.168.64.4:8888/`.
+You can find out the ip address with `ip address`.
+
 ## Creating M1 Compatible Images
 
 ---
