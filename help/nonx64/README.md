@@ -74,12 +74,13 @@ Do this whole process for both of the VM images
 7. Continue until you reach the final dialog displaying your configuration
     1. You can choose to share a folder with the VM. This is optional but helps with file transfer.
 8. Check _Show VM Settings_ and finish the setup
-9. In the VM settings go to the QEMU tab and un-check _UEFI Boot_
-10. On the left side of the VM settings find your disks and select the default one
-11. Delete the default disk
-12. Create a new disk by clicking _New Drive_ and select _Import..._ and find your `qcow2` file
-13. Make sure the new disk type is _Disk Image_ and interface _IDE_
-14. Start the VM
+9. In the VM settings perform the following adjustments
+   1. Go to the QEMU tab and un-check _UEFI Boot_
+   2. On the left side of the VM settings find your _Drives_ and select the default one
+   3. Delete the default disk
+   4. Create a new disk by clicking _New Drive_ and select _Import..._ and find your `qcow2` file
+   5. Make sure the new disk type is _Disk Image_ and interface _IDE_
+10. Start the VM
 
 #### Sharing files and clipboard to the VM
 
