@@ -7,8 +7,9 @@ VMWare is working on support emulating x64 on ARM, but in the meanwhile you need
 
 ---
 
-This process creates very large files so make sure you have around 120gb available if you are using the kali image.
+This will only work with images coming in `.ova` format so the Kali VM will not work `.vmwarevm`.
 The images can only consist of one `.vmdk` image, otherwise the scripts need some changes.
+This uses around 3-4 times the image size disk space while converting so make sure you have enough.
 
 ### Using provided Docker Image
 
