@@ -186,6 +186,9 @@ They are 7zip compressed. Run machine from *.vmx* file with VMware Player/VMware
 
 These virtual machines are located on the University network drive, in case the download speed on direct URLs is slow.
 
+#### Instructions for non x64 machines
+
+[Check here](./help/nonx64)
 
 ## Classroom specific instructions (TS135/TS137/Any computer with VMware installed)
 
