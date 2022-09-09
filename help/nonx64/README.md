@@ -64,7 +64,7 @@ Do this for both course VM images
 Do this whole process for both of the VM images
 
 1. Open UTM
-2. New Virtual Machine
+2. New Virtual Machine via __Emulate__
 3. Choose _Other_ operating system
 4. Check _skip ISO boot_ option and continue
 5. Make sure the architecture is `x86_64` and use the default settings
