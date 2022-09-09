@@ -1,14 +1,24 @@
 ## Notes for M1 Mac and other non x64 machines
 
-The M1 Mac will not be able to directly run the provided virtual machine images (at the time of writing).
+---
+
+The M1 Mac and other non x64 systems will not be able to directly run the provided virtual machine images
+(at least at the time of writing).
 VMWare is working on support emulating x64 on ARM, but in the meanwhile you need to perform some adjustments yourself.
+
+#### Tip for Networking
+
+This is a bit different in UTM. The default network driver is Shared Network so the VM will get its own IP.
+This will change the Week 5 Jupyter address from  `localhost:8888` to something like `http://192.168.64.4:8888/`.
+You can find out the ip address with `ip address`.
 
 ## Creating M1 Compatible Images
 
 ---
 
-This process creates very large files so make sure you have around 120gb available if you are using the kali image.
+This will only work with images coming in `.ova` format so the Kali VM will not work `.vmwarevm`.
 The images can only consist of one `.vmdk` image, otherwise the scripts need some changes.
+This uses around 3-4 times the image size of disk space while converting so make sure you have enough.
 
 ### Using provided Docker Image
 
@@ -31,7 +41,7 @@ Do this for both course VM images
 
 ### Alternative Approach
 
-This might run a bit faster, but if you do not have the pre-requisites, will be more annoying to set up.
+This might run a bit faster, but will be more annoying to set up if you do not have the pre-requisites
 
 #### Required software
 
@@ -64,21 +74,23 @@ Do this for both course VM images
 Do this whole process for both of the VM images
 
 1. Open UTM
-2. New Virtual Machine
-3. Choose _Other_ operating system
-4. Check _skip ISO boot_ option and continue
+2. New Virtual Machine via __Emulate__
+3. Choose __Other__ operating system
+4. Check __skip ISO boot__ option and continue
 5. Make sure the architecture is `x86_64` and use the default settings
     1. You can increase the memory to up to 40% of host memory (save some for qemu JIT cache)
     2. Let the CPU cores option stay as _default_ or empty
 6. Specify a very small disk as this will be deleted later
 7. Continue until you reach the final dialog displaying your configuration
-8. Check _Show VM Settings_ and finish the setup
-9. In the VM settings go to the QEMU tab and un-check _UEFI Boot_
-10. On the left side of the VM settings find your disks and select the default one
-11. Delete the default disk
-12. Create a new disk by clicking _New Drive_ and select _Import..._ and find your `qcow2` file
-13. Make sure the new disk type is _Disk Image_ and interface _IDE_
-14. Start the VM
+    1. You can choose to share a folder with the VM. This is optional but helps with file transfer
+8. Check __Show VM Settings__ and finish the setup
+9. In the VM settings perform the following adjustments
+    1. Go to the QEMU tab and un-check __UEFI Boot__
+    2. On the left side of the VM settings find your __Drives__ and select the default one
+    3. Delete the default disk
+    4. Create a new disk by clicking __New Drive__ and select __Import...__ and find your `qcow2` file
+    5. Make sure the new disk type is __Disk Image__ and interface __IDE__
+10. Start the VM
 
 #### Sharing files and clipboard to the VM
 
