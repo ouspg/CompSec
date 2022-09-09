@@ -72,6 +72,7 @@ Do this whole process for both of the VM images
     2. Let the CPU cores option stay as _default_ or empty
 6. Specify a very small disk as this will be deleted later
 7. Continue until you reach the final dialog displaying your configuration
+    1. You can choose to share a folder with the VM. This is optional but helps with file transfer.
 8. Check _Show VM Settings_ and finish the setup
 9. In the VM settings go to the QEMU tab and un-check _UEFI Boot_
 10. On the left side of the VM settings find your disks and select the default one
