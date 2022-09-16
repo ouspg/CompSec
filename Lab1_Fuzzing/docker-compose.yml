@@ -1,0 +1,12 @@
+version: "3"
+services:
+  week1:
+    image: compsec/week1:latest
+    container_name: compsec-week1-fuzz
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - './shared:/home/compsec/shared'
+      - './misc:/home/compsec/misc:ro'
+    entrypoint: /bin/bash
