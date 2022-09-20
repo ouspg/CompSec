@@ -1,0 +1,32 @@
+version: "3"
+services:
+  juiceshop:
+    image: bkimminich/juice-shop:v8.7.2
+    container_name: compsec-week2-juiceshop
+    ports:
+      - '127.0.0.1:3000:3000'
+  webserver:
+    image: nginx:latest
+    container_name: compsec-week2-webserver
+    ports:
+      - '127.0.0.1:3001:80'
+    volumes:
+      - './webserver:/usr/share/nginx/html'
+  muumitalo:
+    build:
+      context: muumitalo
+      dockerfile: muumitalo.Dockerfile
+    image: compsec/muumitalo:latest
+    container_name: compsec-week2-muumitalo
+    ports:
+      - '127.0.0.1:3002:80'
+  csrf:
+    build:
+      context: csrfserver
+      dockerfile: csrf.Dockerfile
+    image: compsec/csrfserver:latest
+    container_name: compsec-week2-csrfserver
+    ports:
+      - '127.0.0.1:3003:80'
+    volumes:
+      - './csrfserver/main.py:/opt/csrfserver/app.py'
