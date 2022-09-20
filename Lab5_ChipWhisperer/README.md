@@ -1,6 +1,8 @@
 Computer Security Lab 5: ChipWhisperer
 ====
 
+Responsible person/main contact: Joni Liljeblad
+
 ## ToC
 * [Preliminary tasks](#Preliminary-tasks)
 * [Introduction](#Introduction)

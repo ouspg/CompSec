@@ -1,6 +1,8 @@
 Computer Security Lab 6: Digital Forensics
 ====
 
+Responsible person/main contact: Niklas Saari
+
 ## ToC
 * [Preliminary tasks](#Preliminary-tasks)
 * [Introduction](#Introduction)

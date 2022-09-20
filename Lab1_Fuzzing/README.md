@@ -1,6 +1,8 @@
 Computer Security Lab 1: Fuzzing
 ====
 
+Responsible person/main contact: Juha Kälkäinen
+
 ## Preliminary tasks
 
 * Create a Github account if you don't already have one

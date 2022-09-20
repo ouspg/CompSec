@@ -1,6 +1,8 @@
 Computer Security Lab 2: Networks and web security
 ====
 
+Responsible person/main contact: Juha Kälkäinen
+
 ## Preliminary tasks
 
 * Read the sections ```Background``` and ```Theory``` from this document and [```SQL.md```](misc/SQL.md)

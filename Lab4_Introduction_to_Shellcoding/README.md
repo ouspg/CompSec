@@ -1,6 +1,8 @@
 Computer Security Lab 4: Introduction to Shellcoding and a bit more
 ====
 
+Responsible person/main contact: Niklas Saari
+
 ## Preliminary tasks
 It would be good to read the background and prerequisites sections beforehand.
 
