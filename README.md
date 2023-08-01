@@ -1,5 +1,12 @@
 # 521155S Computer Security
 
+**This course has been divided into two new courses and is no longer being used.**
+See the new courses:
+  * Cyber Security II: Cloud and Network Security
+  * Cyber Security III: Software and Hardware Security
+
+---
+
 <p align="right">
 <img src="lib/images/ouspglogo4.png" alt="University of Oulu" height="100px" align="right"/>
 </p>
